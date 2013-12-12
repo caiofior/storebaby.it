@@ -1,0 +1,71 @@
+/**
+ * SFC - Featured Catagories Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@storefrontconsulting.com so we can send you a copy immediately.
+ *
+ *
+ * @package    SFC_FeaturedCategories
+ * @copyright  (C)Copyright 2010 StoreFront Consulting, Inc (http://www.StoreFrontConsulting.com/)
+ * @author     Adam Lundrigan
+ */
+
+.featured-cat {
+	float: left;
+	width: 142px;
+	padding: 10px;
+	margin: 0px 9px 10px 0px;
+	border: 1px solid #C4C1BC;
+}
+
+.featured-cat-right {
+	float: right;
+	margin: 0px;
+}
+
+.featured-cat .cat-image {
+	text-align: center;
+}
+
+.featured-cat .cat-image img {
+	width: 140px;
+	height: 94px;
+	border: 1px solid #C4C1BC;
+}
+
+.featured-cat .cat-title {
+	text-align: center;
+	border-bottom: 1px solid #C4C1BC;
+	margin-bottom: 8px;
+	padding-bottom: 4px;
+}
+
+.featured-cat .cat-title a,
+.featured-cat .cat-title a:hover
+{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: larger;
+	color: black;
+}
+
+.featured-cat ul {
+	list-style-type: disc;
+	list-style-position: inside;
+	padding: 0px 0px 0px 4px;
+	margin: 0px;
+} 
+
+.featured-cat li a, 
+.featured-cat li a:hover
+{
+	padding-left: 4px;
+	color: black;
+}

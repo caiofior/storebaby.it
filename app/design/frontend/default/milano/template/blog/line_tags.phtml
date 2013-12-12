@@ -1,0 +1,8 @@
+<ul class="postTags">
+    <?php
+    $tags = explode(',', $this->getPost()->getTags());
+	$i = 0;
+    foreach ($tags as $tag): $i++; ?>
+        <li<?php if($i == sizeof($tags)): ?> class="last"<?php endif; ?>><a href="<?php echo Mage::getUrl(Mage::helper('blog')->getRoute() . '/tag/' . urlencode($tag)) ?>"><?php echo $tag ?></a></li>
+    <?php endforeach; ?>	
+</ul>

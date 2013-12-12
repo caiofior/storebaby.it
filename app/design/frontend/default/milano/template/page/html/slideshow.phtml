@@ -1,0 +1,58 @@
+<?php
+if(Mage::getStoreConfig('milanoconfig/slideshow/use_slideshow') == 1):
+
+$_slides = array();
+for($_i=1; $_i<=6; $_i++){
+	if(Mage::getStoreConfig('milanoconfig/slideshow/slide'.$_i) == 1)
+	$_slides[$_i] = Mage::getStoreConfig('milanoconfig/slideshow/slide'.$_i.'_order');
+}
+arsort($_slides);
+$_baseURL = Mage::registry('themeMediaUrl').'slideshow/';
+?>
+<div class="slideshow-holder">
+	<div class="slideshow-holder-internal">
+        <div class="slideshow">
+            <div class="iosSlider">
+                <div class="slider">
+                    <?php foreach($_slides as $_key => $_val): ?>
+                    <div class="slide">
+                        <img class="royalImage" src="<?php echo $_baseURL.Mage::getStoreConfig('milanoconfig/slideshow/slide'.$_key.'_image'); ?>" alt="" />
+                        <div class="text1"><?php echo Mage::getStoreConfig('milanoconfig/slideshow/slide'.$_key.'_text1'); ?></div>
+                        <div class="text2"><?php echo Mage::getStoreConfig('milanoconfig/slideshow/slide'.$_key.'_text2'); ?></div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="sliderNavi">
+                    <?php for($_i=1; $_i<= count($_slides); $_i++): ?>
+                    <span class="naviItem<?php if($_i == 1) echo " selected"; ?>"><?php echo $_i; ?></span>
+                    <?php endfor; ?>
+                </div>
+                <div class="prev">&nbsp;</div>
+                <div class="next">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+	$_speed = Mage::getStoreConfig('milanoconfig/slideshow/speed');
+	$_autoplay = Mage::getStoreConfig('milanoconfig/slideshow/autoplay') == 1;
+ ?>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+    	$('.iosSlider').iosSlider({
+        	desktopClickDrag: true,
+            touchMoveThreshold:4,
+            snapToChildren: true,
+            infiniteSlider: true,
+            autoSlide:<?php echo ($_autoplay) ? 'true' : 'false'; ?>,
+            autoSlideTimer:<?php echo ($_speed) ? $_speed : '3000'  ?>,
+        	navSlideSelector: '.sliderNavi .naviItem',
+            navNextSelector: '.iosSlider .next',
+            navPrevSelector: '.iosSlider .prev',
+        	onSlideChange: slideContentChange,
+        	onSlideComplete: slideContentComplete,
+        	onSliderLoaded: slideContentLoaded
+		});
+	});
+</script>
+<?php endif; ?>

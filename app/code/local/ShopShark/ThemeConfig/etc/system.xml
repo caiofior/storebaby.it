@@ -1,0 +1,746 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <shopshark translate="label" module="ThemeConfig">
+            <label>ShopShark</label>
+            <sort_order>1</sort_order>
+        </shopshark>
+    </tabs>
+    <sections>
+        <milanoconfig translate="label" module="ThemeConfig">
+			<label>Milano Options</label>
+            <sort_order>1</sort_order>
+            <class>superclass</class>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>shopshark</tab>
+            <groups>
+                <activation_options translate="label">
+                    <label>Activate The Milano Theme</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<already_activated>
+								<label>Template Status</label>
+								<frontend_type>label</frontend_type>
+								<sort_order>1</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+						</already_activated>
+						<activate_template translate="label">
+			    			<label>Activate The Template</label>
+                            <frontend_type>button</frontend_type>
+							<frontend_model>ThemeConfig/activate</frontend_model>
+                            <comment><![CDATA[This will install all the CMS Pages and blocks and set the settings for the template]]></comment>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>	
+                        </activate_template>
+					</fields>
+				</activation_options>
+				<generaloptions translate="label">
+                    <label>General Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<!--design_variation translate="label">
+			    			<label>Design Variation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/designvariation</source_model>
+							<comment><![CDATA[Predefined design. Choose what fits your products best]]></comment>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </design_variation>
+						<color_schema translate="label">
+			    			<label>Template Color</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/colorschema</source_model>
+							<comment><![CDATA[Predefined color options. You can change to custom colors in the Custom Colors section]]></comment>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </color_schema -->
+						<logo translate="label">
+			    			<label>Logo Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/milano</upload_dir> 
+                            <base_url type="media" scope_info="1">wysiwyg/milano</base_url>
+							<comment><![CDATA[Images wider than 200px will be resized]]></comment>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </logo>
+						<!--footerlogo translate="label">
+			    			<label>Footer Logo Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/milano</upload_dir> 
+                            <base_url type="media" scope_info="1">wysiwyg/milano</base_url>
+							<comment><![CDATA[If the image height is more than 40 pixels the image will be resized to keep the layout]]></comment>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </footerlogo-->
+                        <topbtn translate="label">
+			    			<label>"Back To Top" Button</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </topbtn>
+						<show_subscribe translate="label">
+			    			<label>Show Subscribe To Newsletter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Disables the subscribe to newsletter form]]></comment>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </show_subscribe>                                           
+                    </fields>
+                </generaloptions>
+				<menuoptions translate="label">
+                    <label>Menu Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						 <menutype translate="label">
+			    			<label>Menu Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/menutypes</source_model>
+							<comment><![CDATA[MegaMenu is a wide style menu showing the subcategories in columns]]></comment>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </menutype>
+						<mmenu_style translate="label">
+			    			<label>Mega Menu Style</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/mmenustyle</source_model>
+							<comment><![CDATA[HTML block or Thumbnal from the category options. Can also be overriden for each category separately. Check the category display options.]]></comment>
+							<sort_order>10</sort_order>
+							<depends>
+                                <menutype>1</menutype>
+                            </depends>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </mmenu_style>
+						<show_home_link translate="label">
+			    			<label>Show Home Link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Disables the home link]]></comment>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </show_home_link>
+						<stickymenu translate="label">
+			    			<label>Sticky Menu</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[If enabled the main menu will stick to the top of the page when scrolling]]></comment>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </stickymenu>
+                        <additional_nav translate="label">
+			    			<label>Additional Navigation Link</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Blank to disable]]></comment>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </additional_nav> 
+                        <additional_nav_href translate="label">
+			    			<label>Additional Navigation Link Url</label>
+                            <frontend_type>text</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </additional_nav_href>                                          
+                    </fields>
+                </menuoptions>
+				<homeoptions translate="label">
+                    <label>Home Page Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<show_new_products translate="label">
+			    			<label>Show New Products Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Shows a new products slider on home page]]></comment>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </show_new_products>
+						<new_products_title translate="label">
+			    			<label>Title</label>
+                            <frontend_type>text</frontend_type>
+							<comment><![CDATA[Title for the new products slider]]></comment>
+							<sort_order>20</sort_order>
+							<depends>
+                                <show_new_products>1</show_new_products>
+                            </depends>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </new_products_title>
+						<new_products_cat_id translate="label">
+			    			<label>Limit to single category</label>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+							<comment><![CDATA[Put the category ID to which you want to limit the slider. No limit if empthy]]></comment>
+							<sort_order>25</sort_order>
+							<depends>
+                                <show_new_products>1</show_new_products>
+                            </depends>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </new_products_cat_id>
+						<show_sale_products translate="label">
+			    			<label>Show Sale Products Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Shows a sale products slider on home page]]></comment>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </show_sale_products>
+						<sale_products_title translate="label">
+			    			<label>Title</label>
+                            <frontend_type>text</frontend_type>
+							<comment><![CDATA[Title for the sale products slider]]></comment>
+							<sort_order>40</sort_order>
+							<depends>
+                                <show_sale_products>1</show_sale_products>
+                            </depends>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </sale_products_title>
+						<sale_products_cat_id translate="label">
+			    			<label>Limit to single category</label>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+							<comment><![CDATA[Put the category ID to which you want to limit the slider. No limit if empthy]]></comment>
+							<sort_order>45</sort_order>
+							<depends>
+                                <show_sale_products>1</show_sale_products>
+                            </depends>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </sale_products_cat_id>
+						<show_brands translate="label">
+			    			<label>Show Brands Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Shows a brands slider on home page]]></comment>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </show_brands>
+						<brands_title translate="label">
+			    			<label>Title</label>
+                            <frontend_type>text</frontend_type>
+							<comment><![CDATA[Title for the brands slider]]></comment>
+							<sort_order>60</sort_order>
+							<depends>
+                                <show_brands>1</show_brands>
+                            </depends>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </brands_title>
+						<show_blog translate="label">
+			    			<label>Show Latest Blog Posts</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Shows latest blog posts on the home page]]></comment>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </show_blog>
+						<blog_title translate="label">
+			    			<label>Title</label>
+                            <frontend_type>text</frontend_type>
+							<comment><![CDATA[Title for the latest blog posts]]></comment>
+							<sort_order>80</sort_order>
+							<depends>
+                                <show_blog>1</show_blog>
+                            </depends>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </blog_title>
+                    </fields>
+                </homeoptions>
+                <product_list translate="label">
+                    <label>Category Page Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<ajax_addtocart translate="label">
+			    			<label>"Add To Cart" uses AJAX</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Turns on AJAX Add To Cart]]></comment>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </ajax_addtocart>
+						<addto_wishlist translate="label">
+			    			<label>Add To Wishlist</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </addto_wishlist>
+						<addto_compare translate="label">
+			    			<label>Add To Compare</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </addto_compare>
+						<ajax_wishlist translate="label">
+			    			<label>Add to Wishlist And Add to Compare uses AJAX</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Turns on AJAX Add To Wishlist and Add To Compare]]></comment>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </ajax_wishlist>
+						<quick_view translate="label">
+			    			<label>Quick View</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </quick_view>
+                        <hover_swap translate="label">
+			    			<label>Product Hover Effect</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[Displays second product image on mouse over. The image is defined by putting &quot;back&quot; label for it in the image options for this product]]></comment>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </hover_swap>
+                        <column_count translate="label">
+			    			<label>Grid View Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/columncount</source_model>
+							<comment><![CDATA[Can be overriden for each category separately]]></comment>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </column_count>
+						<picture_aspect translate="label">
+			    			<label>Product Picture Format</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/picaspect</source_model>
+							<comment><![CDATA[The aspect ratio of the product picture. Set according to your pictures. Can be overriden for each category separately]]></comment>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </picture_aspect>
+						<product_list_style translate="label">
+			    			<label>Product List Style</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/productliststyle</source_model>
+							<comment><![CDATA[Boxed style draws a box around every product. Use what fits best.]]></comment>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </product_list_style> 
+                        <layer translate="label">
+			    			<label>Shopping Options</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/layertypes</source_model>
+							<comment><![CDATA[The state of the groups in the shopping options (the layered navigation). Opened or closed by default]]></comment>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </layer> 
+                        <new_label translate="label">
+			    			<label>"New Product" Label</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </new_label>
+                        <sale_label translate="label">
+			    			<label>"Sale" Label</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </sale_label>
+						<showgallery translate="label">
+			    			<label>Show Additional Images</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment><![CDATA[If enabled, this will show all additional images for this product in a small tooltip box]]></comment>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </showgallery>                             
+                    </fields>
+                </product_list>
+                <productpage translate="label">
+                    <label>Product Page Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>35</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <brand translate="label">
+			    			<label>Show Brand Image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </brand>
+                        <brand_attr translate="label">
+			    			<label>Brand Attribute Code</label>
+                            <frontend_type>text</frontend_type>
+							<comment>
+								<![CDATA[Text string with no spaces. Search for that code in Catalog -> Attributes -> Manage Attributes]]>
+							</comment>                            
+                            <depends>
+                                <brand>1</brand>
+                            </depends>                            
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </brand_attr>
+                        <brand_image_extension translate="label">
+			    			<label>Brand Image File Extension</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Without the leading dot</comment>
+                            <depends>
+                                <brand>1</brand>
+                            </depends>                            
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </brand_image_extension>
+						<brand_link_search_enabled translate="label">
+							<label>Brand Logo Is A Link To Search Results</label>
+							<comment>
+								<![CDATA[E.g. Microsoft logo will be a link to <strong>catalogsearch/result/?q=microsoft</strong>]]>
+							</comment>
+                            <depends>
+                                <brand>1</brand>
+                            </depends>                             
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</brand_link_search_enabled>
+						<brand_page_base_path translate="label">
+                            <label>Base Path To Brand's Pages</label>
+							<comment>
+								<![CDATA[Path is relative to the store root. No leading or trailing slashes. To use this path disable <strong>Brand Logo is a Link to Search Results</strong> option. For more details please refer to extension manual]]>
+							</comment>
+                            <depends>
+                                <brand>1</brand>
+                            </depends>                             
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </brand_page_base_path>                                                
+                        <use_zoom translate="label">
+			    			<label>Use Cloud Zoom For Product Images</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </use_zoom> 
+                        <use_carousel translate="label">
+			    			<label>Use product scrollbar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </use_carousel>                   
+                    </fields>
+                </productpage>
+                <share translate="label">
+                    <label>Share Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <use_share translate="label">
+			    			<label>Use Share Links</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </use_share>
+                        <share_code translate="label">
+			    			<label>Share Code</label>
+                            <frontend_type>textarea</frontend_type>
+							<sort_order>20</sort_order>
+                            <depends>
+                                <use_share>1</use_share>
+                            </depends>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </share_code>                        
+                    </fields>
+                </share>
+				<social translate="label">
+                    <label>Social</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <twitter translate="label">
+                            <label>Twitter Widget ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+							<validate>validate-number</validate>
+							<comment>
+								<![CDATA[
+									How to get a valid ID:
+									Go to www.twitter.com and sign in as normal, go to your settings page.
+									Go to "Widgets" on the left hand side. Create a new widget for what you need eg "user timeline" or "search" etc. 
+									Now go back to settings page, and then go back to widgets page, you should
+									see the widget you just created. Click edit.
+									Now look at the URL in your web browser, you will see a long number like this:
+									350896567504478208 <br /> Use this as your ID!
+								]]>
+							</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter>
+						<twitter_num_tweets translate="label">
+                            <label>Tweets to display</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+							<validate>validate-number</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_num_tweets>
+                        <facebook translate="label">
+                            <label>Facebook ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook>
+						<facebook_faces translate="label">
+                            <label>Show fans faces?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_faces>
+                    </fields>
+                </social>
+				<background translate="label">
+                    <label>Page Background Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <maincolor translate="label">
+			    			<label>Background Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ThemeConfig/adminhtml_system_config_form_field_color</frontend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </maincolor> 
+                        <pattern translate="label">
+			    			<label>Background Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">wysiwyg/milano</upload_dir> 
+                            <base_url type="media" scope_info="1">wysiwyg/milano</base_url>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </pattern>  
+                        <bg_repeat translate="label">
+			    			<label>Background Repeat</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/repeat</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </bg_repeat>
+                        <bg_attachment translate="label">
+			    			<label>Background Attachment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/attachment</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </bg_attachment> 
+                        <bg_position_x translate="label">
+			    			<label>Background Position (X)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/positionx</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </bg_position_x> 
+                        <bg_position_y translate="label">
+			    			<label>Background Position (Y)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ThemeConfig/positiony</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </bg_position_y>                                           
+                    </fields>
+                </background>
+                <colors translate="label">
+                    <label>Custom Colors</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <primary_color translate="label">
+			    			<label>Primary Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ThemeConfig/adminhtml_system_config_form_field_color</frontend_model>
+							<comment><![CDATA[Overrides the predefined settings]]></comment>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </primary_color>
+                        <primary_hover translate="label">
+			    			<label>Primary Hover Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ThemeConfig/adminhtml_system_config_form_field_color</frontend_model>
+							<comment><![CDATA[Overrides the predefined settings]]></comment>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </primary_hover>
+						<secondary_color translate="label">
+			    			<label>Secondary Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ThemeConfig/adminhtml_system_config_form_field_color</frontend_model>
+							<comment><![CDATA[Overrides the predefined settings]]></comment>
+							<sort_order>200</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </secondary_color>
+						<secondary_hover translate="label">
+			    			<label>Secondary Hover Color</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>ThemeConfig/adminhtml_system_config_form_field_color</frontend_model>
+							<comment><![CDATA[Overrides the predefined settings]]></comment>
+							<sort_order>300</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </secondary_hover>
+                    </fields>
+                </colors> 
+            </groups>
+        </milanoconfig>
+    </sections>
+</config>

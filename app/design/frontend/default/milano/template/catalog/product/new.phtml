@@ -1,0 +1,53 @@
+<?php if(Mage::getStoreConfig('milanoconfig/homeoptions/show_new_products') == 1): ?>
+<div class="slider-container">
+<h5><?php echo Mage::getStoreConfig('milanoconfig/homeoptions/new_products_title'); ?></h5>
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+    <div class="product-slider" id="newproducts">
+        <div class="carousel">
+            <div class="slider">
+                <?php $i=0; foreach ($_products->getItems() as $_product): $i++; ?>
+                    <div class="slide <?php if(($i == 4 && $_products->getSize() < 5) || ($i == $_products->getPageSize())) echo 'last'?>">
+                        <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(210) ?>" width="210" height="210" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" /></a>
+                        <div class="new-description">
+                        	<div class="labels-container"><?php include('view/labels.phtml'); ?></div>
+                            <h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo Mage::helper('core/string')->truncate($this->htmlEscape($_product->getName()), $length = 30, $etc = '...', $remainder = '', $breakWords = true); ?></a></h3>
+                            <?php echo $this->getPriceHtml($_product, true) ?>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php if($_products->getSize() > 4): ?>
+            <div class="prev new-arrow">&nbsp;</div>
+            <div class="next new-arrow">&nbsp;</div>
+        <?php endif; ?>
+    </div>
+    <div style="clear: both;"></div>
+    <?php if($_products->getSize() > 4): ?>
+        <script type="text/javascript">
+            jQuery('.new-arrow.prev').addClass('disabled');
+            jQuery('#newproducts > .carousel').iosSlider({
+                desktopClickDrag: true,
+                snapToChildren: true,
+                infiniteSlider: false,
+                navNextSelector: '.new-arrow.next',
+                navPrevSelector: '.new-arrow.prev',
+                lastSlideOffset: 3,
+                onFirstSlideComplete: function(){
+                    jQuery('.new-arrow.prev').addClass('disabled');
+                },
+                onLastSlideComplete: function(){
+                    jQuery('.new-arrow.next').addClass('disabled');
+                },
+                onSlideChange: function(){
+                    jQuery('.new-arrow.prev').removeClass('disabled');
+                    jQuery('.new-arrow.next').removeClass('disabled');
+                }
+            });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
+</div>
+<?php endif; ?>

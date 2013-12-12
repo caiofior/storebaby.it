@@ -1,0 +1,91 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div class="product-view">
+    <div class="product-essential">
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+ 		<div class="product-img-box">
+            <?php echo $this->getChildHtml('ajaxmedia') ?>
+        </div>
+        <div class="product-shop">
+            <div class="product-name">
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+            </div>
+ 
+            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php if ($_product->getTypeId() == 'grouped'):?>
+                <?php echo $this->getChildHtml('product_type_data_grouped') ?>
+            <?php endif;?>            
+ 
+            <?php if (!$this->hasOptions()):?>
+                <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <span id='ajax_loader' class="ajax_loader2" style='display:none'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+ 
+            <?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container1', '', true, true)):?>
+                <div id="container1">
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                    <span id='ajax_loader' style='display:none'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+                </div>
+                
+            <?php endif;?>
+ 
+        </div>
+        <div class="clearer"></div>
+        <?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container2', '', true, true)):?>
+            <div id="container2">
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                <span id='ajax_loader' style='display:none'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+            </div>
+            
+        <?php endif;?>
+    </form>
+    <script src="http://malsup.github.com/jquery.form.js"></script> 
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+		var url = jQuery('#product_addtocart_form').attr('action');
+		url = url.replace("checkout/cart","ajax/index");    
+
+        var msgHtml;
+        var productImg = jQuery('.main-thumbnail').html();
+        var windowOver = jQuery('#addedoverlay');
+        var windowBox = jQuery('#added');
+        var titleForBox = jQuery('#productname').text();   
+        var data = {'isAjax':1}
+        
+        jQuery('#product_addtocart_form').ajaxForm({
+            url: url,
+            data: data,
+            dataType: 'json',
+            beforeSubmit: function(){    
+                if(productAddToCartForm.validator.validate()){
+                    jQuery('#ajax_loader').show();                   
+                }else{
+                    return false;
+                }
+            },
+            error: function(data){
+            },
+            success : function(data,statusText,xhr ){
+                jQuery('#ajax_loader').hide();
+                parent.setAjaxData(data);
+				parent.jQuery.prettyPhoto.close();                             
+            }
+        });     
+    
+    //]]>
+    </script>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+/* All Levels */ /* Style consistent throughout all nav levels */
+#nav li { position:relative; text-align:left;	}
+#nav li.over { z-index:998; }
+#nav a,
+#nav a:hover { display:block; line-height:1.3em; text-decoration:none; }
+#nav span { display:block; cursor:pointer; white-space:nowrap; }
+#nav li ul span {white-space:normal; }
+
+/* 0 Level */
+/* 1st Level */
+#nav ul li.parent {  }
+#nav ul li.active { margin:0; border:0; }
+#nav ul a,
+#nav ul a:hover { float:none; padding:0; }
+#nav ul li a { font-weight:normal !important; }
+#nav ul.level0 { border-top: #b3a487 1px dotted; }
+
+#nav > li > ul > li ul { margin-left:3px; }
+.blocklist > li > ul > li,
+#nav > li > ul > li ul > li {  }
+.blocklist > li > ul > li { margin:2px 0 2px 0; }
+
+/* 2nd Level */
+#nav ul,
+#nav div { position:absolute; width:15em; left:-10000px; padding: 6px 15px 6px; background:#fff; font-size:11px; border: 4px #ccc solid; }
+#nav > div { background: #fff; padding-top: 8px; }
+#nav div ul { position:static; width:auto; border:none; padding:0; }
+
+/* 3rd+ Level */
+#nav ul ul,
+#nav ul div { top:5px; }
+
+#nav ul li a { font-size:13px; }
+#nav ul li a:hover { }
+
+/* ========================== */
+#nav > li  ul > li { padding:4px 0 4px 0; }
+/* ========================== */
+
+/* Show menu */
+#nav li ul.shown-sub,
+#nav li div.shown-sub { left:0; z-index:999; }
+#nav li .shown-sub ul.shown-sub,
+#nav li .shown-sub li div.shown-sub { left: 165px; top: -4px; background-image: none; }
+/********** Navigation > */
+
+#nav ul.level0 .parent > a > span { padding-right: 15px; text-transform: none; font-size: 12px; }
+#nav ul.level0 .parent > a > span:after { content: ""; position: absolute; right: 0; top: 7px; width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 7px solid #b3a487;
+}
+
+/* ======================================================================================= */

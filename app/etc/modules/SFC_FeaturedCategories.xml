@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SFC_FeaturedCategories>
+            <active>true</active>
+            <codePool>local</codePool>
+        </SFC_FeaturedCategories>
+    </modules>
+</config>

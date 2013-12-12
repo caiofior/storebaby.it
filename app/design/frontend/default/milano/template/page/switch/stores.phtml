@@ -1,0 +1,15 @@
+<?php if(count($this->getGroups())>1): ?>
+<div class="store-switcher">
+    <div class="store-switcher-title"><?php echo $this->htmlEscape(Mage::app()->getGroup()->getName()) ?></div>
+    <ul class="store-switcher-menu">    
+    <?php foreach ($this->getGroups() as $_group): ?>    
+		<?php $_selected = ($_group->getId()==$this->getCurrentGroupId()) ?>
+        <?php if(!$_selected): ?>
+        	<li class="store-switcher-item">
+        	<a href="<?php echo $_group->getHomeUrl() ?>"><?php echo $this->htmlEscape($_group->getName()) ?></a>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

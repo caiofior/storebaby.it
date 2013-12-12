@@ -1,0 +1,309 @@
+<?php
+// Init ===========================================================================================
+
+    $_helper = $this->helper('catalog/output');
+	$_productCollection = $this->getLoadedProductCollection();
+	$_collectionSize = $_productCollection->count();
+	
+	$_config = Mage::getStoreConfig('milanoconfig/product_list');
+    
+	$_columnCount = $_config['column_count'];
+	if(($_currentCategory = Mage::registry('current_category')) && ($_productsColumnCount = $_currentCategory->getProductsColumnCount())) {
+		$_customColumnCount = $_helper->categoryAttribute($_currentCategory, $_productsColumnCount, 'products_column_count');
+		if($_customColumnCount) $_columnCount = $_customColumnCount;
+	}
+	$this->setColumnCount($_columnCount);
+	
+	$_pictureAspect = $_config['picture_aspect'];
+	if(($_currentCategory = Mage::registry('current_category')) && ($_productsPictureAspect = $_currentCategory->getProductsPicAspect())) {
+		$_customPicAspect = $_helper->categoryAttribute($_currentCategory, $_productsPictureAspect, 'products_pic_aspect');
+		if($_customPicAspect) $_pictureAspect = $_customPicAspect;
+	}
+    	
+	$_hoverSwap = $_config['hover_swap'] == 1;
+	$_showGallery = $_config['showgallery'] == 1;
+	$_addToWishlist = $_config['addto_wishlist'] == 1;
+	$_addToCompare = $_config['addto_compare'] == 1;
+	$_quickView = $_config['quick_view'] == 1;
+	$_ajaxAddToCart =  $_config['ajax_addtocart'] == 1;
+	$_ajaxWishlist =  $_config['ajax_wishlist'] == 1;
+	
+	if($_hoverSwap || $_showGallery) $_listMedia = $this->getLayout()->createBlock("ajax/listmedia");
+	if($this->getData('singleColumnMode') == 1) $_singleColumnMode = true;
+
+// Layout ===========================================================================================
+if(!$_collectionSize): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products">
+
+	<?php echo $this->getToolbarHtml();
+	
+	// List Mode ====================================================================================
+	if($this->getMode()!='grid'):
+    	$_i = 0;
+    	$imgSize = 225; 
+	?>
+    <ol class="products-list" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+        <li class="item<?php if($_config['product_list_style'] == 1) echo" boxed"; if(++$_i==$_collectionSize) echo " last"; if($_i==1) echo " first"; if($_i%2) echo " odd"; else echo " even"; ?>" id="item-id-<?php echo $_product->getId()?>">
+        	
+			<?php if($_showGallery): 
+				$_thumbs = $_listMedia->setTemplate("catalog/product/list/mediaall.phtml")->setData('product', $_product)->toHtml();
+				if($_thumbs != 'null' && $_thumbs): ?>
+                	<div class="gallery-display"><div class="gallery-display-overlay"><?php echo $_thumbs; ?></div></div>
+            	<?php endif; 
+            endif; ?>
+            <?php $mainImg = $this->helper('catalog/image')->init($_product, 'small_image')->resize($imgSize); ?>
+            <?php if($_hoverSwap): $backImg = $_listMedia->setTemplate("catalog/product/list/media.phtml")->setData('size', $imgSize)->setData('product', $_product)->toHtml(); endif; ?>               
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                <?php if($backImg != 'null' && $backImg): ?><img src="<?php echo $backImg ?>" class="hover-image" width="<?php echo $imgSize ?>" height="<?php echo $imgSize ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /><?php endif; ?>
+                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($imgSize) ?>" <?php if($backImg != 'null' && $backImg): ?>class="hover-main-image" <?php endif; ?> width="<?php echo $imgSize ?>" height="<?php echo $imgSize ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+            </a>
+            
+            <div class="product-shop">
+                <div class="f-fix">
+                	<?php include('view/labels.phtml')  ?>
+                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; ?>
+                    <div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+                    <?php if($_addToWishlist || $_addToCompare): ?>
+                        <ul class="add-to-links">
+                            <?php if ($_addToWishlist && $this->helper('wishlist')->isAllow()) : ?>
+                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist" data-id="<?php echo $_product->getId(); ?>"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                            <?php endif; ?>
+                            <?php if($_addToCompare && $_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare" data-id="<?php echo $_product->getId(); ?>"><?php echo $this->__('Add to Compare') ?></a></li>
+                            <?php endif; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            
+            <div class="addtocont">
+                <?php echo $this->getPriceHtml($_product, true) ?>
+                <?php if($_product->isSaleable()): ?>
+                    <?php if (!($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped())) { ?>
+                    	<a href="<?php echo $this->getAddToCartUrl($_product); ?>" title="<?php echo $this->__('Add to Cart') ?>" class="btn-cart<?php if($_ajaxAddToCart) echo " ajax-addtocart" ?>"<?php if($_ajaxAddToCart): ?> data-id="<?php echo $_product->getId(); ?>"<?php endif; ?>><?php echo $this->__('Add to Cart') ?></a>
+                    <?php } else { ?>
+                    	<a href="<?php if($_ajaxAddToCart) echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId())); else echo $this->getAddToCartUrl($_product); ?>" title="<?php echo $this->__('Add to Cart') ?>" class="btn-cart<?php if($_ajaxAddToCart) echo " btn-quickview" ?>"<?php if($_ajaxAddToCart): ?> data-id="<?php echo $_product->getId(); ?>"<?php endif; ?>><?php echo $this->__('Add to Cart') ?></a>
+                    <?php }  ?>
+                    <?php if($_quickView){ ?>
+                    	<a href="<?php echo $this->getUrl('ajax/index/options', array('product_id'=>$_product->getId())); ?>" title="<?php echo $this->__('Quick View') ?>" class="btn-quickview" data-id="<?php echo $_product->getId(); ?>"><?php echo $this->__('Quick View') ?></a>
+                    <?php } ?>
+                <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                <?php endif; ?>            
+            </div>
+            
+        </li>
+    <?php endforeach; ?>
+    </ol>
+	<?php if($_showGallery): ?>
+    <script type="text/javascript">
+	//<![CDATA[
+		jQuery(document).ready(function(){
+			jQuery(".gallery-display").hoverIntent({
+				interval: 150, 
+				over: function(){ jQuery(this).find(".gallery-display-overlay").fadeIn(); }, 
+				timeout: 500, 
+				out: function(){ jQuery(this).find(".gallery-display-overlay").fadeOut(); }
+			});
+		});
+	//]]>
+	</script>
+    <?php endif; ?>
+
+    <?php else: // Grid Mode ===========================================================================================
+    
+	
+    
+    if(!$_singleColumnMode){ 
+		
+		//Left Column Mode
+		switch($_columnCount){
+			case 3:
+				$imgSize = 210;
+				$trimSize = 35;
+				break;
+			case 4:
+				$imgSize = 145;
+				$trimSize = 25;
+				break;
+			case 5:
+				$imgSize = $smallImgSize = 145;
+				$bigImgSize = 340;
+				$trimSize = $smallImgTrimSize = 25;
+				$bigImgTrimSize = 45;
+				break;
+		}
+		
+	} else { 
+	
+		//Single Column Mode
+		switch($_columnCount){
+			case 3:
+				$imgSize = 275;
+				$trimSize = 35;
+				break;
+			case 4:
+				$imgSize = 195;
+				$trimSize = 30;
+				break;
+			case 5:
+				$imgSize = $smallImgSize = 195;
+				$bigImgSize = 435;
+				$trimSize = $smallImgTrimSize = 30;
+				$bigImgTrimSize = 45;
+				break;
+		}
+	
+	}
+	
+	switch($_pictureAspect){
+		case 1:
+			$imgHeight = $imgSize;
+			$smallImgHeight = $smallImgSize;
+			$bigImgHeight = $bigImgSize;
+			break;
+		case 2:
+			$imgHeight = floor($imgSize * 1.5);
+			$smallImgHeight = floor($smallImgSize * 1.5);
+			$bigImgHeight = (abs($smallImgHeight-$smallImgSize)*2)+$bigImgSize;
+			break;
+		case 3:
+			$imgHeight = floor($imgSize * 1.75);
+			$smallImgHeight = floor($smallImgSize * 1.75);
+			$bigImgHeight = (abs($smallImgHeight-$smallImgSize)*2)+$bigImgSize;
+			break;
+		case 4:
+			$imgHeight = floor($imgSize * 2);
+			$smallImgHeight = floor($smallImgSize * 2);
+			$bigImgHeight = (abs($smallImgHeight-$smallImgSize)*2)+$bigImgSize;
+			break;
+		default:
+			$imgHeight = $imgSize;
+			$smallImgHeight = $smallImgSize;
+			$bigImgHeight = $bigImgSize;
+			break;
+	}
+	
+    $i=0;
+	foreach ($_productCollection as $_product): ?>
+        
+		<?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid columns<?php echo $_columnCount; if($_config['product_list_style'] == 1) echo " boxed"; if((($i-1)/$_columnCount)%2) echo " even"; else echo " odd"; if($i==1) echo " first"; if($i+$_columnCount > $_collectionSize) echo " last"; ?>">
+        <?php endif ?>
+            
+            <li class="item<?php if($_config['product_list_style'] == 1) echo" boxed"; if($_columnCount == 5) { $imgSize = $smallImgSize; $trimSize = $smallImgTrimSize; $imgHeight = $smallImgHeight; } if(($i-1)%$_columnCount==0): if($_columnCount == 5) { $imgSize = $bigImgSize; $trimSize = $bigImgTrimSize; $imgHeight = $bigImgHeight; } ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>" id="item-id-<?php echo $_product->getId()?>">
+                <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                <?php endif; ?>
+                <?php if($_showGallery): 
+						$_thumbs = $_listMedia->setTemplate("catalog/product/list/mediaall.phtml")->setData('product', $_product)->toHtml();
+							if($_thumbs != 'null' && $_thumbs): ?>
+                				<div class="gallery-display"><div class="gallery-display-overlay"><?php echo $_thumbs; ?></div></div>
+                    	<?php endif; 
+                endif; ?>
+                <?php $mainImg = $this->helper('catalog/image')->init($_product, 'small_image')->resize($imgSize, $imgHeight); ?>
+            	<?php if($_hoverSwap): $backImg = $_listMedia->setTemplate("catalog/product/list/media.phtml")->setData('size', $imgSize)->setData('height', $imgHeight)->setData('product', $_product)->toHtml(); endif; ?>            
+                
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                    <?php if($backImg != 'null' && $backImg): ?><img src="<?php echo $backImg ?>" class="hover-image" width="<?php echo $imgSize ?>" height="<?php echo $imgHeight ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /><?php endif; ?>
+                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($imgSize, $imgHeight) ?>" <?php if($backImg != 'null' && $backImg): ?>class="hover-main-image" <?php endif; ?> width="<?php echo $imgSize ?>" height="<?php echo $imgHeight ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                </a>
+                
+                <div class="moreinfo">
+                	<div class="addto">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php if (!($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped())) { ?>
+                                <a href="<?php echo $this->getAddToCartUrl($_product); ?>" title="<?php echo $this->__('Add to Cart') ?>" class="btn-cart<?php if($_ajaxAddToCart) echo " ajax-addtocart" ?>"<?php if($_ajaxAddToCart): ?> data-id="<?php echo $_product->getId(); ?>"<?php endif; ?>><?php echo $this->__('Add to Cart') ?></a>
+                            <?php } else { ?>
+                            	<a href="<?php if($_ajaxAddToCart) echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId())); else echo $this->getAddToCartUrl($_product); ?>" title="<?php echo $this->__('Add to Cart') ?>" class="btn-cart<?php if($_ajaxAddToCart) echo " btn-quickview" ?>"<?php if($_ajaxAddToCart): ?> data-id="<?php echo $_product->getId(); ?>"<?php endif; ?>><?php echo $this->__('Add to Cart') ?></a>
+                            <?php }  ?>
+                        <?php else: ?>
+                            <span class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></span>
+                        <?php endif; ?>
+                        <?php if($_addToWishlist || $_addToCompare || $_quickView){ $_i = 0; ?>
+                        	<ul class="add-to-links">
+                                <?php if ($_addToWishlist && $this->helper('wishlist')->isAllow()) : ?>
+                                    <li<?php if(!$_i++): ?> class="last"<?php endif; ?>><a title="<?php echo $this->__('Add to Wishlist') ?>" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist" data-id="<?php echo $_product->getId(); ?>"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                                <?php endif; ?>
+                                <?php if($_addToCompare && $_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                    <li<?php if(!$_i++): ?> class="last"<?php endif; ?>><a title="<?php echo $this->__('Add to Compare') ?>" href="<?php echo $_compareUrl ?>" class="link-compare" data-id="<?php echo $_product->getId(); ?>"><?php echo $this->__('Add to Compare') ?></a></li>
+                                <?php endif; ?>
+                                <?php if($_quickView): ?>
+                                    <li<?php if(!$_i++): ?> class="last"<?php endif; ?>><a href="<?php echo $this->getUrl('ajax/index/options', array('product_id'=>$_product->getId())); ?>" title="<?php echo $this->__('Quick View') ?>" class="btn-quickview" data-id="<?php echo $_product->getId(); ?>"><?php echo $this->__('Quick View') ?></a></li>
+                                <?php endif; ?>
+                            </ul>
+                        <?php } ?>
+                            <div class="clear"></div>
+                    </div>
+                	<div class="moreinfo-labels"><?php include('view/labels.phtml'); ?></div>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo Mage::helper('core/string')->truncate($_helper->productAttribute($_product, $_product->getName(), 'name'), $length = $trimSize, $etc = '...', $remainder = '', $breakWords = true); ?></a></h2>
+                    <div id='productname<?php echo $_product->getId()?>' style='display:none'><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></div>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                	<div class="clear"></div>
+                </div>
+            </li>
+        
+		<?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif; ?>
+        
+		<?php endforeach; ?>
+        
+		<script type="text/javascript">
+		//<![CDATA[
+			jQuery(document).ready(function(){
+				jQuery(".products-grid li").hoverIntent({
+					interval: 150,
+					over: show_addto,
+					timeout: 500,
+					out: hide_addto
+				});
+				function show_addto(){ jQuery(this).find(".addto").fadeIn(); }
+				function hide_addto(){ jQuery(this).find(".addto").fadeOut(); }
+			});
+			<?php if($_showGallery): ?>
+			jQuery(document).ready(function(){
+				jQuery(".gallery-display").hoverIntent({
+					interval: 150, 
+					over: function(){ jQuery(this).find(".gallery-display-overlay").fadeIn(); }, 
+					timeout: 500, 
+					out: function(){ jQuery(this).find(".gallery-display-overlay").fadeOut(); }
+				});
+			});
+    		<?php endif; ?>
+		//]]>
+        </script>
+    <?php endif; ?>
+        <script type="text/javascript">
+		//<![CDATA[
+			jQuery(document).ready(function (){
+				jQuery('.toolbar').jqTransform({imgPath:'<?php echo $this->getSkinUrl('images/jqforms/'); ?>'});
+				jQuery('.limiter').jqTransform({imgPath:'<?php echo $this->getSkinUrl('images/jqforms/'); ?>'});
+				jQuery("a[rel^='prettyPhoto']").prettyPhoto({
+					default_width: 820,
+					default_height: 600,
+					social_tools: '',
+				});
+			});
+			
+			var loaderBckImg = '<?php echo $this->getSkinUrl('images/loading.gif')?>';
+			var successMsg = '<?php echo $this->__('was successfully added to your shopping cart.') ?>';
+			var continueMsg = '<?php echo $this->__('Continue shopping') ?>';
+			var cartUrl = '<?php echo $this->getUrl('checkout/cart')?>';
+			var cartMsg = '<?php echo $this->__('View cart & checkout') ?>';
+		//]]>
+        </script>
+    <?php echo $this->getToolbarHtml() ?>
+</div>
+<?php endif; ?>

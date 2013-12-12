@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<root>
+    <cms>
+        <pages>
+            <item>
+                <title>Milano Home Page</title>
+                <identifier>milano_home</identifier>
+                <content><![CDATA[<a href="/what-s-new.html"><img src="{{media url="wysiwyg/milano/homepage/BANNER.png"}}" alt="Milano Premium Magento Theme" /></a>]]></content>
+                <is_active>1</is_active>
+                <sort_order>0</sort_order>
+                <stores>
+                    <item>0</item>
+                </stores>
+                <root_template>one_column</root_template>
+            </item>
+        </pages>
+        <blocks>
+            <item>
+                <title>Header Links</title>
+                <identifier>header_links</identifier>
+                <content><![CDATA[<ul>
+<li><a href="{{store direct_url="about-magento-demo-store"}}">About Us</a></li>
+<li><a href="{{store direct_url="blog"}}">Our Blog</a></li>
+<li><a href="{{store direct_url="customer-service"}}">Customer Service</a></li>
+<li><a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">Privacy Policy</a></li>
+<li class="last"><a href="{{store direct_url="contacts"}}">Contact Us</a></li>
+</ul>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Home Page Callout Block</title>
+                <identifier>home_callout</identifier>
+                <content><![CDATA[<ul class="home-callout">
+<li><a href="#" class="free-shipping">free shipping</a></li>
+<li><a href="#" class="promotions">promotions</a></li>
+<li><a href="#" class="support">support 24/7</a></li>
+<li><a href="#" class="top-seller">top seller</a></li>
+</ul>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>		
+			<item>
+                <title>Footer Links</title>
+                <identifier>footer_links</identifier>
+                <content><![CDATA[<ul>
+<li><a href="{{store direct_url="about-magento-demo-store"}}">About Us</a></li>
+<li><a href="{{store direct_url="customer-service"}}">Customer Service</a></li>
+<li class="last privacy"><a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">Privacy Policy</a></li>
+</ul>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Footer Menu</title>
+                <identifier>footer_menu</identifier>
+                <content><![CDATA[<div class="footer-column">
+<h4>Get Inspired</h4>
+<ul class="footer-list">
+<li><a href="#">Shoes</a></li>
+<li><a href="#">Perfumes</a></li>
+<li><a href="#">Bags</a></li>
+<li><a href="#">Make Up</a></li>
+<li><a href="#">Jewelry</a></li>
+<li><a href="#">Clothing</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Our Shops</h4>
+<ul class="footer-list">
+<li><a href="#">London</a></li>
+<li><a href="#">New Delhi</a></li>
+<li><a href="#">Toronto</a></li>
+<li><a href="#">Sidney</a></li>
+<li><a href="#">New York</a></li>
+<li><a href="#">Paris</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h4>Account</h4>
+<ul class="footer-list">
+<li><a href="#">Order Status</a></li>
+<li><a href="#">My Order History</a></li>
+<li><a href="#">My Favorites</a></li>
+<li><a href="#">Promo codes</a></li>
+<li><a href="#">Payments</a></li>
+<li><a href="#">Returns</a></li>
+</ul>
+</div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Footer Social</title>
+                <identifier>footer_social</identifier>
+                <content><![CDATA[<a title="facebook" href="#">1</a>
+<a title="gplus" href="#">2</a>
+<a title="twitter" href="#">3</a>
+<a title="linkedin" href="#">4</a>
+<a title="youtube" href="#">7</a>
+<a title="pinterest" href="#">6</a>
+]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Site Verified By</title>
+                <identifier>verified_by</identifier>
+                <content><![CDATA[<p>Site verified by: YourVerifier</p>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Product Promo Message</title>
+                <identifier>product_promo_message</identifier>
+                <content><![CDATA[<img src="{{media url="wysiwyg/milano/homepage/free-ground-shipping.png"}}" alt="" />]]></content>
+                <is_active>0</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Custom</title>
+                <identifier>custom_menu_1</identifier>
+                <content><![CDATA[<ul class="blocklist">
+<li class="level1 first parent"><a href="/shoes.html"><span>Shoes</span></a>
+<ul class="level1">
+<li class="level2 first">First Change</li>
+<li class="level2">Ballet Flats</li>
+<li class="level2">Boots</li>
+<li class="level2">Exotics</li>
+<li class="level2">Evening</li>
+<li class="level2">Slippers</li><br />
+<li class="level1 parent"><a href="/shoes.html"><span>Evening Shoes</span></a>
+<li class="level2">Boots</li>
+<li class="level2">Exotics</li>
+<li class="level2">Evening</li>
+<li class="level2">Ballet Flats</li>
+</ul>
+</li>
+<li class="level1 parent"><a href="/bags.html"><span>HANDBAGS</span></a>
+<ul class="level1">
+<li class="level2">New Arrivals</li>
+<li class="level2">Backpacks</li>
+<li class="level2">Beach Bags</li>
+<li class="level2">Crossbody Bags</li>
+<li class="level2">Shoulder Bags</li>
+<li class="level2">Totes</li><br />
+<li class="level1 parent"><a href="/shoes.html"><span>Moccasins</span></a>
+<li class="level2">Lace-Ups</li>
+<li class="level2">Loafers</li>
+<li class="level2">Slippers</li>
+<li class="level2">Car Bags</li>
+</ul>
+</li>
+</ul>
+<div class="nav-demo-block left">
+<h3>Art Major</h3>
+<img style="float: left;" src="{{media url="wysiwyg/milano/cblock/fashion-bnr-01.jpg"}}" alt="" /></div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Left Block 1</title>
+                <identifier>left_block_without_design1</identifier>
+                <content><![CDATA[<img style="margin: 5px 0 15px;" src="{{media url="wysiwyg/milano/banners/banner_D_G.jpg"}}" alt="" />]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Left Block 3</title>
+                <identifier>left_block3</identifier>
+                <content><![CDATA[<div style="border-bottom: 1px solid #efefef;">
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+</div>
+<div style="margin-top: 10px;">
+<p><strong>You can add this block from admin panel via CMS - Blocks</strong></p>
+</div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Right Block 1</title>
+                <identifier>right_block_without_design1</identifier>
+                <content><![CDATA[<img style="margin: 5px 0 15px;" src="{{media url="wysiwyg/milano/banners/banner_gucci.jpg"}}" alt="" />]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Product Custom HTML</title>
+                <identifier>product_custom_html</identifier>
+                <content><![CDATA[<h2>Custom HTML</h2>
+<p>Ultricies sociis ut vel parturient! Tempor! Nec quis turpis placerat ac hac tincidunt, velit, vel sit mauris a, dolor, natoque enim! Etiam risus? Elit, adipiscing dignissim ut et risus sit placerat, penatibus tincidunt, diam sed dignissim rhoncus mus lectus, penatibus arcu sit in mattis porta placerat. Ultricies velit odio. Vel? Aliquam nunc dolor! Nisi, cras, nunc, et auctor? Augue facilisis! Augue eu dis platea sed, placerat hac pid, lectus dapibus turpis in tincidunt arcu rhoncus auctor. Sit duis nascetur vut! Pulvinar egestas, aenean, sagittis odio enim magna, etiam platea nec lundium, nisi, mauris porttitor elementum a, tempor turpis.</p>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Header Menu</title>
+                <identifier>header_menu</identifier>
+                <content><![CDATA[<ul>
+<li><a href="#">News</a></li>
+<li><a href="#">Promotions</a></li>
+<li class="parent">
+<a href="#">Company</a>
+<ul>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Contacts</a></li>
+<li><a href="#">Privacy Policy</a></li>
+<li><a href="#">Shipping and Returns</a></li>
+<li><a href="#">Customer Support</a></li>
+</ul>
+</li>
+<li class="parent">
+<a href="#">Contacts</a>
+<ul>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Contacts</a></li>
+<li><a href="#">Privacy Policy</a></li>
+<li><a href="#">Shipping and Returns</a></li>
+<li><a href="#">Customer Support</a></li>
+</ul>
+</li>
+</ul>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Header Promo</title>
+                <identifier>header_promo</identifier>
+                <content><![CDATA[<div class="header-left" style="text-transform: uppercase;">special discount 20% <span style="color: #000;">for all club members</span></div>
+<div class="header-right">Four days only: 11/29 - 12/2</div>]]></content>
+                <is_active>0</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Footer Payment Options</title>
+                <identifier>footer_payment_options</identifier>
+                <content><![CDATA[<a class="visa" href="#">Visa</a>
+<a class="amex" href="#">American Express</a>
+<a class="mastercard" href="#">Mastercard</a>
+<a class="discover" href="#">Discover</a>
+<a class="paypal" href="#">PayPal</a>
+<a class="2co" href="#">2 Checkout</a>
+<a class="skrill" href="#">Skrill</a>
+<a class="worldpay" href="#">Worldpay</a>
+<a class="google" href="#">Google Pay</a>
+<a class="amazon" href="#">Amazon</a>
+<a class="delta" href="#">Delta</a>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Shopping Cart Promo Message</title>
+                <identifier>cart_promo</identifier>
+                <content><![CDATA[<span style="border-right: #818181 1px solid; padding-right: 5px; margin-right: 5px;">Order anytime at 1.124.567.8899</span><a href="{{store direct_url="customer-service"}}">Customer Service</a>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Home Page Blog Block Left Callout</title>
+                <identifier>home_blog_left</identifier>
+                <content><![CDATA[<a href="/blog"><img src="{{media url="wysiwyg/milano/homepage/home-banner-left_1.png"}}" alt="" /></a>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Home Page Blog Block Right Callout</title>
+                <identifier>home_blog_right</identifier>
+                <content><![CDATA[<a href="/blog"><img src="{{media url="wysiwyg/milano/homepage/home-banner-right_1.png"}}" alt="" /></a>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+        </blocks>
+    </cms>
+</root>

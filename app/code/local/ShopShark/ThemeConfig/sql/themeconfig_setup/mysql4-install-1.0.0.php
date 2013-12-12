@@ -1,0 +1,108 @@
+<?php
+/**
+ * @version   1.0 12.06.2013
+ * @author    ShopShark http://www.shopshark.com <mail@shopshark.com>
+ * @copyright Copyright (C) 2010 - 2013 ShopShark
+ */
+ 
+$installer = $this;
+$installer->startSetup();
+$installer->addAttribute('catalog_category', 'single_column_layout',  array(
+	'sort_order' => 35,
+    'type' => 'int',
+	'group' => 'Display Settings',
+	'backend' => '',
+	'frontend' => '',
+	'label' => 'Single Column Layout',
+	'input' => 'select',
+	'class' => '',
+	'source' => 'eav/entity_attribute_source_boolean',
+	'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
+	'visible' => true,
+	'required' => false,
+	'user_defined' => false,
+	'default' => 0,
+	'searchable' => false,
+	'filterable' => false,
+	'comparable' => false,
+	'visible_on_front' => false,
+	'unique' => false,
+));
+$installer->addAttribute('catalog_category', 'products_column_count',  array(
+	'sort_order' => 37,
+    'type' => 'int',
+	'group' => 'Display Settings',
+	'backend' => '',
+	'frontend' => '',
+	'label' => 'Product Grid Mode',
+	'input' => 'select',
+	'class' => '',
+	'source' => 'ThemeConfig/catcolumncount',
+	'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
+	'visible' => true,
+	'required' => false,
+	'user_defined' => false,
+	'default' => 0,
+	'searchable' => false,
+	'filterable' => false,
+	'comparable' => false,
+	'visible_on_front' => false,
+	'unique' => false,
+));
+$installer->addAttribute('catalog_category', 'products_pic_aspect',  array(
+	'sort_order' => 38,
+    'type' => 'int',
+	'group' => 'Display Settings',
+	'backend' => '',
+	'frontend' => '',
+	'label' => 'Product Picture Format',
+	'input' => 'select',
+	'class' => '',
+	'source' => 'ThemeConfig/catpicaspect',
+	'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
+	'visible' => true,
+	'required' => false,
+	'user_defined' => false,
+	'default' => 0,
+	'searchable' => false,
+	'filterable' => false,
+	'comparable' => false,
+	'visible_on_front' => false,
+	'unique' => false,
+));
+$installer->addAttribute('catalog_category', 'category_mmenu_style',  array(
+	'sort_order' => 65,
+    'type' => 'int',
+	'group' => 'Display Settings',
+	'backend' => '',
+	'frontend' => '',
+	'label' => 'Megamenu Style',
+	'input' => 'select',
+	'class' => '',
+	'source' => 'ThemeConfig/catmmenustyle',
+	'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
+	'visible' => true,
+	'required' => false,
+	'user_defined' => false,
+	'default' => 0,
+	'searchable' => false,
+	'filterable' => false,
+	'comparable' => false,
+	'visible_on_front' => false,
+	'unique' => false,
+));
+$installer->addAttribute('catalog_category', 'category_menu_description',  array(
+	'sort_order' => 70,
+	'group' => 'Display Settings',
+    'input' => 'textarea',
+    'type' => 'text',
+    'label' => 'Mega Menu Description',
+    'backend' => '',
+    'visible' => true,
+    'required' => false,
+    'wysiwyg_enabled' => true,
+    'visible_on_front' => true,
+    'is_html_allowed_on_front' => true,
+    'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
+));
+?>

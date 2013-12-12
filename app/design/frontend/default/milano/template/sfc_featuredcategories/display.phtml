@@ -1,0 +1,78 @@
+<?php
+/**
+ * SFC - Featured Catagories Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@storefrontconsulting.com so we can send you a copy immediately.
+ *
+ *
+ * @package    SFC_FeaturedCategories
+ * @copyright  (C)Copyright 2010 StoreFront Consulting, Inc (http://www.StoreFrontConsulting.com/)
+ * @author     Adam Lundrigan
+ */
+
+$_categories = $this->getFeaturedCategories();
+$_catNo = 0;
+?>
+
+<div class="featured-cat-block">
+	<div class="featured-cat-title"><h2>Featured Categories</h2></div>
+	<div class="featured-cat-content">
+		<?php
+		foreach ( $_categories as $FeaturedGroup ) {
+    		if ( isset($FeaturedGroup['Category']) ) {
+		?>
+			<div class="featured-cat <?php if(($_catNo++ % 4) == 3) echo 'featured-cat-right'; ?>">
+				<div class="cat-image">
+					<a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>">
+						<img 
+							src="<?php echo $FeaturedGroup['Category']->getImageUrl(); ?>" 
+							border="0"
+							alt="View <?php echo $FeaturedGroup['Category']->getName() ?>" />
+					</a>
+				</div>
+				<div class="cat-title"><a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>"><?php echo $FeaturedGroup['Category']->getName(); ?></a></div>
+				<ul>
+					<?php
+					if ( isset($FeaturedGroup['Subcats']) && count($FeaturedGroup['Subcats']) > 0 ) {
+						foreach ( $FeaturedGroup['Subcats'] as $SubCat ) {
+					?>
+						<li><a href="<?php echo $SubCat->getUrl(); ?>"><?php echo $SubCat->getName(); ?></a></li>
+					<?php }} ?>
+					<li><a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>">More...</a></li>
+				</ul>
+			</div>
+		<?php }} ?>
+		<br style="clear:both"/>
+		
+		<script type="text/javascript">
+		<!--
+		//document.observe("dom:loaded", function() {
+		window.onload = function() {
+			var count = 0;
+			var maxHeight = new Array();
+			$$('.featured-cat').each(function(item){
+				if ( maxHeight[Math.floor(count/4)] == undefined ) maxHeight[Math.floor(count/4)] = 0;
+				if ( item.getHeight() > maxHeight[Math.floor(count/4)] )
+					maxHeight[Math.floor(count/4)] = item.getHeight();
+				count++;
+			});
+		
+			count = 0;
+        		$$('.featured-cat').each(function(item){
+                		item.setStyle({height:maxHeight[Math.floor(count/4)] + 'px'});
+                		count++;
+        		});
+		};
+		-->
+		</script>
+
+	</div>
+</div>

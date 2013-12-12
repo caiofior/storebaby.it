@@ -1,0 +1,49 @@
+<?php
+$_social_config = Mage::getStoreConfig('milanoconfig/social');
+?>
+<div class="footer-container">
+    <div class="footer-menu-container">
+        <?php echo $this->getChildHtml('bottomContainer') ?>
+        <div class="f-left footer-left">
+            <div class="footer-menu"><?php echo $this->getChildHtml('footer_menu'); ?></div>
+            <?php if(Mage::getStoreConfig('milanoconfig/generaloptions/show_subscribe') == 1): ?><div class="newsletter"><?php echo $this->getChildHtml('newsletter'); ?></div><?php endif; ?>
+        </div>
+        <div class="f-right">
+            <div class="footer-right">
+                <?php if(!empty($_social_config['twitter'])): ?>
+                	<div class="footer-column twitter-box">
+                    	<h4><?php echo $this->__('Twitter');?></h4>
+                    	<div id="tweets"></div>
+						<script type="text/javascript">
+						//<![CDATA[
+							jQuery(function($){ twitterFetcher.fetch('<?php echo $_social_config['twitter']; ?>', 'tweets', <?php echo $_social_config['twitter_num_tweets']; ?>, true); });
+						//]]>
+                        </script>
+                	</div>
+                <?php endif; ?>
+                <?php if(!empty($_social_config['facebook'])): ?>
+                	<div class="footer-column facebook-box">
+                    	<h4><?php echo $this->__('Facebook');?></h4>
+                    	<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2F<?php echo $_social_config['facebook'] ?>&amp;width=240<?php if($_social_config['facebook_faces'] == 0): ?>&amp;show_faces=false<?php endif; ?>&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                	</div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php if($_footer_social = $this->getChildHtml('footer_social')): ?><div class="follow-us"><?php echo $_footer_social; ?></div><?php endif; ?>
+        <?php if($_footer_payment_options = $this->getChildHtml('footer_payment_options')): ?><div class="payment-options"><?php echo $_footer_payment_options; ?></div><?php endif; ?>
+        <?php if($_verified_by = $this->getChildHtml('verified_by')): ?><div class="verified-by"><?php echo $_verified_by; ?></div><?php endif; ?>
+        <div class="clear"></div>
+    </div>  
+</div>
+<div class="footer-last-container">
+    <div class="footer-last">
+        <div class="f-left">
+			<?php echo $this->getChildHtml('cms_footer_links'); ?>
+            <?php echo $this->getChildHtml('footer_links'); ?>
+        </div>
+        <div class="f-right">
+        	<?php echo $this->getCopyright(); ?>
+        </div>
+    </div>
+</div>
+<?php if(Mage::getStoreConfig('milanoconfig/generaloptions/topbtn') == 1): ?><div id="message"><a href="#top" id="top-link">&nbsp;</a></div><?php endif; ?>

@@ -1,0 +1,13 @@
+.newproducts .newproduct_grid { margin-left:-114px; }
+.product-view .newproduct_grid { margin-left:0; }
+.product-view cufon canvas { z-index:1; }
+cufon canvas { z-index:2; }
+#nav{ z-index:1; }
+.block-cart-header { z-index:5; }
+button.button span { margin: 0 ; }
+.footer-container .form-subscribe input.input-text { width:165px; }
+.form-search input.input-text { width: 193px; }
+.footer-container .form-subscribe button.button { float:right; margin-top:-27px; }
+.product-view #added { margin-left: -150px; }
+.products-grid .add-to-links { margin-left:-5px; }
+#zoom-window {z-index: 10000;}

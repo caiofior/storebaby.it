@@ -1,0 +1,68 @@
+<?php
+$config = Mage::getStoreConfig('sharkslideshow/revolutionslider');
+$helper = Mage::helper('cms');
+$processor = $helper->getBlockTemplateProcessor();
+?>
+<div class="fullwidthbanner-container">
+    <div class="fullwidthbanner">
+        <ul>
+	        <?php
+	        $slides = $this->getSlides();
+	        foreach($slides as $s) {
+		        $attr = '';
+		        if ( !empty( $s['transition'] ) ) {
+					$attr .= ' data-transition="'.$s['transition'].'"';
+			    }
+		        if ( !empty( $s['masterspeed'] ) ) {
+					$attr .= ' data-masterspeed="'.$s['masterspeed'].'"';
+			    }
+		        if ( !empty( $s['slotamount'] ) ) {
+					$attr .= ' data-slotamount="'.$s['slotamount'].'"';
+			    }
+		        if ( !empty( $s['link'] ) ) {
+					$attr .= ' data-link="'.$s['link'].'"';
+			    }
+		        if ( !empty( $s['thumb'] ) ) {
+					$attr .= ' data-thumb="'.$s['thumb'].'"';
+			    }
+		?>
+			<li <?php echo $attr; ?> >
+                <?php if ( !empty( $s['image'] ) ) { ?>
+                <img src="<?php echo Mage::getBaseUrl('media') . $s['image'] ?>" alt="" />
+                <?php } ?>
+				<?php if ( !empty( $s['text'] ) ) { ?>
+                <?php echo $processor->filter($s['text']) ?>
+                <?php } ?>
+			</li>
+		<?php } ?>
+        </ul>
+	    <?php if ( $config['timeline'] ) { ?>
+        <div class="tp-bannertimer tp-<?php echo $config['timeline_position']; ?>"></div>
+	    <?php } ?>
+    </div>
+</div>
+<script type="text/javascript">
+    var CONFIG_REVOLUTION = {
+        delay:<?php echo (is_numeric($config['delay']) ? $config['delay'] : 9000); ?>,
+        startwidth:<?php echo (is_numeric($config['startwidth']) ? $config['startwidth'] : 1920); ?>,
+        startheight:<?php echo (is_numeric($config['startheight']) ? $config['startheight'] : 400); ?>,
+        hideThumbs:<?php echo (is_numeric($config['hideThumbs']) ? $config['hideThumbs'] : 200); ?>,
+        navigationType:"<?php echo $config['navigationType']; ?>",
+        navigationArrows:"<?php echo $config['navigationArrows']; ?>",
+        navigationStyle:"<?php echo $config['navigationStyle']; ?>",
+        touchenabled:"<?php echo $config['touchenabled']; ?>",
+        shuffle:"<?php echo $config['shuffle']; ?>",
+        navOffsetHorizontal:<?php echo (is_numeric($config['navOffsetHorizontal']) ? $config['navOffsetHorizontal'] : 0); ?>,
+        navOffsetVertical:<?php echo (is_numeric($config['navOffsetVertical']) ? $config['navOffsetVertical'] : 20); ?>,
+        onHoverStop:"<?php echo $config['onHoverStop']; ?>",
+        thumbWidth:<?php echo (is_numeric($config['thumbWidth']) ? $config['thumbWidth'] : 100); ?>,
+        thumbHeight:<?php echo (is_numeric($config['thumbHeight']) ? $config['thumbHeight'] : 50); ?>,
+        thumbAmount:<?php echo (is_numeric($config['thumbAmount']) ? $config['thumbAmount'] : 5); ?>,
+        hideCaptionAtLimit:<?php echo (is_numeric($config['hideCaptionAtLimit']) ? $config['hideCaptionAtLimit'] : 0); ?>,
+        hideAllCaptionAtLilmit:<?php echo (is_numeric($config['hideAllCaptionAtLilmit']) ? $config['hideAllCaptionAtLilmit'] : 0); ?>,
+        hideSliderAtLimit:<?php echo (is_numeric($config['hideSliderAtLimit']) ? $config['hideSliderAtLimit'] : 0); ?>,
+        stopAtSlide:<?php echo (is_numeric($config['stopAtSlide']) ? $config['stopAtSlide'] : -1); ?>,
+        stopAfterLoops:<?php echo (is_numeric($config['stopAfterLoops']) ? $config['stopAfterLoops'] : -1); ?>,
+        fullWidth:"on"
+    };
+</script>

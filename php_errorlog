@@ -1,0 +1,6 @@
+[11-Dec-2013 19:31:54 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'File '/home/joachim/design.storebaby.it/media/wysiwyg/milano/' does not exists.' in /home/joachim/design.storebaby.it/lib/Varien/File/Transfer/Adapter/Http.php:96
+Stack trace:
+#0 /home/joachim/design.storebaby.it/get.php(205): Varien_File_Transfer_Adapter_Http->send('/home/joachim/d...')
+#1 /home/joachim/design.storebaby.it/get.php(165): sendFile('/home/joachim/d...')
+#2 {main}
+  thrown in /home/joachim/design.storebaby.it/lib/Varien/File/Transfer/Adapter/Http.php on line 96

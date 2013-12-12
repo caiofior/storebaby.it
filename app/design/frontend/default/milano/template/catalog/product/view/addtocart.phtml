@@ -1,0 +1,53 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if(!$_product->isGrouped()): ?>
+        <div class="quanitybox">         
+            <label for="qty"><?php echo $this->__('Quantity:') ?></label>
+            <input type="button" class="quantity_box_button_down" onclick="qtyDown()" value="-" />         
+            <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty()===null?1:$this->getProductDefaultQty(); ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+            <input type="button" class="quantity_box_button_up" onclick="qtyUp()" value="+" />
+        </div>
+        <?php endif; ?>        
+        <button type="submit" title="<?php echo $buttonTitle ?>" class="button btn-cart" ><span><span><?php echo $buttonTitle ?></span></span></button>
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+    var qty_el = document.getElementById('qty'); 
+    var qty;
+	if (qty_el) {
+		qty = qty_el.value; 
+		if(qty < 2){
+			jQuery('.quantity_box_button_down').css({
+				'visibility' : 'hidden'
+			});
+		}
+	}
+    function qtyDown(){
+        var qty_el = document.getElementById('qty'); 
+        var qty = qty_el.value; 
+        if( qty == 2) {
+            jQuery('.quantity_box_button_down').css({
+                'visibility' : 'hidden'
+            });
+        }
+        if( !isNaN( qty ) && qty > 0 ){
+            qty_el.value--;
+        }         
+        return false;
+    }
+    
+    function qtyUp(){
+        var qty_el = document.getElementById('qty'); 
+        var qty = qty_el.value; 
+        if( !isNaN( qty )) {
+            qty_el.value++;
+        }
+        jQuery('.quantity_box_button_down').css({
+            'visibility' : 'visible'
+        });
+        return false;
+    }
+</script>

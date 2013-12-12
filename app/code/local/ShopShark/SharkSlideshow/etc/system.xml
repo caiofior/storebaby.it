@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<shopshark translate="label" module="sharkslideshow">
+			<label>ShopShark</label>
+			<sort_order>1</sort_order>
+		</shopshark>
+	</tabs>
+	<sections>
+		<sharkslideshow translate="label" module="sharkslideshow">
+			<label>Slideshow Options</label>
+			<tab>shopshark</tab>
+			<sort_order>5</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+                <revolutionslider>
+                    <label>ShopShark Slider Config</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <delay>
+                            <label>Change Interval: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>The time one slide stays on the screen in Milliseconds (Default: 9000)</comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </delay>
+                        <startheight>
+                            <label>Slide Height: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>The height of the images you upload in pixels. Other screen sizes will be calculated from this value. Default is 400.</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </startheight>
+                        <startwidth>
+                            <label>Slide Width: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>The height of the images you upload in pixels. Other screen sizes will be calculated from this value. Default is 1754.</comment>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </startwidth>
+                        <!--hideThumbs>
+                            <label>Hide thumbs delay: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Delay after which the slide thumnbails will be hidden. Default is 200.</comment>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </hideThumbs>
+                        <navigationType>
+                            <label>Navigation bar type: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sharkslideshow/config_revolution_navbar</source_model>
+                            <comment><![CDATA[Display type of the navigation bar (Default:"none").<br />
+                                ** In Fullwidth version thumbs wont be displayed  if navigation offset set to shwop thumbs outside of the container ! Thumbs must be showen in the container!]]></comment>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </navigationType -->
+                        <navigationArrows>
+                            <label>Position of the Navigation Arrows: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sharkslideshow/config_revolution_navarrows</source_model>
+                            <comment>Display position of the Navigation Arrows</comment>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </navigationArrows>
+                        <!-- navigationStyle>
+                            <label>Navigation bullets: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sharkslideshow/config_revolution_navbullets</source_model>
+                            <comment><![CDATA[Look of the navigation bullets (Default: "round")<br />
+                                ** If you choose navbar-old, we recommend to choose Navigation Arrows to nexttobullets]]></comment>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </navigationStyle -->
+                        <touchenabled>
+                            <label>Enable Swipe Function on touch devices: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sharkslideshow/config_revolution_onoff</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </touchenabled>
+                        <shuffle>
+                            <label>Shuffle slides in random order: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sharkslideshow/config_revolution_onoff</source_model>
+                            <sort_order>85</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </shuffle>
+                        <navOffsetHorizontal>
+                            <label>Navigation offset (horizontal): </label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[The Bar is centered but could be moved this pixel count left(e.g. -10) or right (Default: 0)<br />** By resizing the banner, it will be always centered!]]></comment>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </navOffsetHorizontal>
+                        <!--<navOffsetVertical>
+                            <label>Navigation offset (vertical): </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>The Bar is bound to the bottom but could be moved this pixel count up (e. g. -20) or down (Default: 20)</comment>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </navOffsetVertical>-->
+                        <onHoverStop>
+                            <label>Stop the Timer when hovering the slider: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sharkslideshow/config_revolution_onoff</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </onHoverStop>
+                        <!-- thumbWidth>
+                            <label>Width of one Thumbnail: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment> (only if thumb is selected. Default:100)</comment>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </thumbWidth>
+                        <thumbHeight>
+                            <label>the basic Height of one Thumbnail: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment> (only if thumb is selected. Default:50)</comment>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </thumbHeight>
+                        <thumbAmount>
+                            <label>the amount of the Thumbs visible same time: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment> (only if thumb is selected)
+                                ** All Thumbs will be hidden in smallest Responsive Level, and in smaller level default size is reseted to 60x30px. Can be modificated in the settings.css file)</comment>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </thumbAmount -->
+                        <!-- hideCaptionAtLimit>
+                            <label>Hide caption limit: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>It defines if a caption should be shown under a Width Limit ( Based on The Width of Banner ! ) You need to define the captions which should be shown seperately with data-captionhidden="on/off"</comment>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </hideCaptionAtLimit>
+                        <hideAllCaptionAtLilmit>
+                            <label>Hide all caption limit: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Hide all The Captions if Width of Browser is less then this value</comment>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </hideAllCaptionAtLilmit>
+                        <hideSliderAtLimit>
+                            <label>Hide slider limit: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Under this Limit the Slider is hidden and the timer is stopped</comment>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </hideSliderAtLimit -->
+                        <stopAtSlide>
+                            <label>Stop at selected Slide Number: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>-1 or 1 to 999. Stop at selected Slide Number. If set to -1 it will loop without stopping. Only available if stopAfterLoops is not equal -1!</comment>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </stopAtSlide>
+                        <stopAfterLoops>
+                            <label>Stop at selected Slide Number after slide looped "x" time: </label>
+                            <frontend_type>text</frontend_type>
+                            <comment>-1 or 0 to 999. Stop at selected Slide Number (stopAtSlide) after slide looped "x" time, where x this Number. If set to -1 it will loop without stopping. Only available if stopAtSlide not equal -1!</comment>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </stopAfterLoops>
+                        <timeline>
+                            <label>Show timeline: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </timeline>
+                        <timeline_position>
+                            <label>Timeline position: </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sharkslideshow/config_revolution_timeline</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                        </timeline_position>
+                    </fields>
+                </revolutionslider>
+			</groups>
+		</sharkslideshow>
+	</sections>
+</config>

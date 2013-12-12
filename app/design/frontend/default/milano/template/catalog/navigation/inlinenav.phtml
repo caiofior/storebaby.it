@@ -1,0 +1,12 @@
+<?php if (!Mage::registry('current_category')) return ?>
+<?php $_categories = $this->getCurrentChildCategories() ?>
+<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+<?php if($_count): ?>
+                <ul class="inline-categories">
+                <?php foreach ($_categories as $_category): ?>
+                    <?php if($_category->getIsActive()): $_i++ ?>
+                    <li<?php if($_i == 1):?> class="first"<?php endif ?>><a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>><?php echo $this->htmlEscape($_category->getName()) ?></a> (<?php echo $_category->getProductCount() ?>)</li>
+                    <?php endif; ?>
+                <?php endforeach ?>
+                </ul>
+<?php endif; ?>
