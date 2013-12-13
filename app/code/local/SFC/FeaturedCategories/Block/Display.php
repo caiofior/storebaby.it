@@ -20,6 +20,43 @@
 
 class SFC_FeaturedCategories_Block_Display extends Mage_Core_Block_Template
 {
+        public function fastGetFeaturedCategories() {
+                $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+                $categoriesIds = array();
+                $categoryProductsIds = array();
+                $rawCategriesIds=$read->fetchAll(
+                        'SELECT `entity_id`,`path` FROM `catalog_category_entity`'
+                );
+                foreach($rawCategriesIds as $cat ){
+                    $catId = $cat['entity_id'];
+                    $rawSubCatId = explode('/',$cat['path']);
+                    foreach($rawSubCatId as $subCat) {
+                        if (!key_exists($subCat, $categoriesIds))
+                                $categoriesIds[$subCat]=array();
+                        $categoriesIds[$subCat][]=$catId;
+                    }
+                } 
+                $featuredCategriesIds=$read->fetchCol(
+                        'SELECT `entity_id` FROM `catalog_category_entity_int` WHERE'.
+                        ' `attribute_id` = (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code` = "is_featured_category") '.
+                        ' AND `value`=1'
+                );
+                foreach ($featuredCategriesIds as $featuredCategoryId) {
+                    if (key_exists($featuredCategoryId, $categoriesIds)) {
+                        $sqlCategoryFilter='';
+                        foreach($categoriesIds[$featuredCategoryId] as $categoryId) 
+                            $sqlCategoryFilter .= ' OR `category_id` = '.$categoryId;
+                        $featuredProducts = $read->fetchCol(
+                        'SELECT `sku` FROM `catalog_product_entity` WHERE'.
+                        '`entity_id` IN (SELECT `product_id` FROM `catalog_category_product` WHERE FALSE  '.
+                        $sqlCategoryFilter.') LIMIT 2'
+                        );
+                        $categoryProductsIds[$featuredCategoryId]=$featuredProducts;
+                    }
+                } 
+                return $categoryProductsIds;
+            
+        }
 	protected function getFeaturedCategories()
 	{
 		$Categories = array();
