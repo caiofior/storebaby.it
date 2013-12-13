@@ -21,7 +21,7 @@
  * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 
-.db-menu ul li a { background:transparent url(http://127.0.0.1/storebaby.it/skin/adminhtml/default/default/images/db-menu-bg-up.gif) repeat-x 0px 3px; height:26px; }
-.db-menu ul li a:hover, .db-menu ul li a.hover { background:transparent url(http://127.0.0.1/storebaby.it/skin/adminhtml/default/default/images/db-menu-bg-hov.gif) repeat-x 0px 3px; }
+.db-menu ul li a { background:transparent url(http://develop.storebaby.it/skin/adminhtml/default/default/images/db-menu-bg-up.gif) repeat-x 0px 3px; height:26px; }
+.db-menu ul li a:hover, .db-menu ul li a.hover { background:transparent url(http://develop.storebaby.it/skin/adminhtml/default/default/images/db-menu-bg-hov.gif) repeat-x 0px 3px; }
 .graph-block { height:auto; }
 .db-menu { width:947px; }

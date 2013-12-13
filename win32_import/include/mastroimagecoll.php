@@ -118,7 +118,7 @@ class MastroImageColl {
                 if (!is_dir($magentoFileName))
                     mkdir($magentoFileName);
                 $magentoFileName .= DIRECTORY_SEPARATOR;
-                $imagesSubDirs = array();
+                $imagesSubDirs = array('media','catalog','product');
                 if (key_exists($convertCommand, self::$imageDirs)) {
                     $magentoFileName .= self::$imageDirs[$convertCommand];
                     if (!is_dir($magentoFileName))
@@ -156,10 +156,28 @@ class MastroImageColl {
                         $this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert) !== false
                 ) {
                     $command = 'convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1';
-                    exec($command, $status );
-                    if (sizeof($status) > 0 )
-                    {
-                        $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$mastroFile.' '.implode($status));
+                    $status = '';
+                    $commandHandle = proc_open($command,array(
+                        0 => array('pipe', 'r'),
+                        1 => array('pipe', 'w'),
+                        2 => array('pipe', 'w')
+                         ), $pipes);
+                    if (is_resource($commandHandle)) {
+                        $startProcTime = microtime(true);
+                        while(microtime(true) < $startProcTime + 5)
+                        {
+                            $procStatus = proc_get_status($commandHandle);
+                            $status .= stream_get_contents($pipes[1]);
+                            if($procStatus['running'])
+                                usleep(100);
+                            else
+                                return true;
+                        }
+                    }
+                    else $status = 'error';
+                    proc_terminate($commandHandle);
+                    if (strlen($status) > 0 ) {
+                        $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$mastroFile.' '.$status);
                        
                     }
                     if (

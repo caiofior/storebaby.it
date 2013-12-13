@@ -38,7 +38,7 @@
 }
 
 .calendar .nav {
-  background: transparent url(http://127.0.0.1/storebaby.it/js/calendar/menuarrow.gif) no-repeat 100% 100%;
+  background: transparent url(http://develop.storebaby.it/js/calendar/menuarrow.gif) no-repeat 100% 100%;
 }
 
 .calendar thead .title { /* This holds the current "month, year" */
@@ -297,7 +297,7 @@
     top: 0;
     left: 0;
     border:1px solid #6593cf;
-    background: #c3daf9 url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/tb-blue.gif) repeat-x 0 -16px;
+    background: #c3daf9 url(http://develop.storebaby.it/js/extjs/resources/images/default/box/tb-blue.gif) repeat-x 0 -16px;
     padding:2px;
 }
 .ext-el-mask-msg div {
@@ -322,7 +322,7 @@
 
 .x-mask-loading div {
     padding:5px 10px 5px 25px;
-    background: #eee url('http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/loading.gif') no-repeat 5px 5px;
+    background: #eee url('http://develop.storebaby.it/js/extjs/resources/images/default/grid/loading.gif') no-repeat 5px 5px;
     line-height: 16px;
 }
 
@@ -482,7 +482,7 @@
 .x-shadow .xsmc {
     float: left;
     height: 100%;
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow-c.png);
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow-c.png);
 }
 
 .x-shadow .xst, .x-shadow .xsb {
@@ -492,40 +492,40 @@
 }
 
 .x-shadow .xsml {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow-lr.png) repeat-y 0 0;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow-lr.png) repeat-y 0 0;
 }
 
 .x-shadow .xsmr {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow-lr.png) repeat-y -6px 0;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow-lr.png) repeat-y -6px 0;
 }
 
 .x-shadow .xstl {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow.png) no-repeat 0 0;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow.png) no-repeat 0 0;
 }
 
 .x-shadow .xstc {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow.png) repeat-x 0 -30px;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow.png) repeat-x 0 -30px;
 }
 
 .x-shadow .xstr {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow.png) repeat-x 0 -18px;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow.png) repeat-x 0 -18px;
 }
 
 .x-shadow .xsbl {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow.png) no-repeat 0 -12px;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow.png) no-repeat 0 -12px;
 }
 
 .x-shadow .xsbc {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow.png) repeat-x 0 -36px;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow.png) repeat-x 0 -36px;
 }
 
 .x-shadow .xsbr {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shadow.png) repeat-x 0 -6px;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shadow.png) repeat-x 0 -6px;
 }
 
 .loading-indicator {
     font-size: 11px;
-    background-image: url('http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/loading.gif');
+    background-image: url('http://develop.storebaby.it/js/extjs/resources/images/default/grid/loading.gif');
     background-repeat: no-repeat;
     background-position: left;
     padding-left: 20px;
@@ -607,16 +607,16 @@
 }
 
 .x-tabs-strip .on .x-tabs-right {
-	 background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tabs/tab-sprite.gif) no-repeat right 0;
+	 background: url(http://develop.storebaby.it/js/extjs/resources/images/default/tabs/tab-sprite.gif) no-repeat right 0;
 }
 .x-tabs-strip .on .x-tabs-left {
-	 background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tabs/tab-sprite.gif) no-repeat 0 -100px;
+	 background: url(http://develop.storebaby.it/js/extjs/resources/images/default/tabs/tab-sprite.gif) no-repeat 0 -100px;
 }
 .x-tabs-strip .x-tabs-right {
-	 background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tabs/tab-sprite.gif) no-repeat right -50px;
+	 background: url(http://develop.storebaby.it/js/extjs/resources/images/default/tabs/tab-sprite.gif) no-repeat right -50px;
 }
 .x-tabs-strip .x-tabs-left {
-	 background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tabs/tab-sprite.gif) no-repeat 0 -150px;
+	 background: url(http://develop.storebaby.it/js/extjs/resources/images/default/tabs/tab-sprite.gif) no-repeat 0 -150px;
 }
 
 .x-tabs-strip  a {
@@ -637,7 +637,7 @@
 .x-tabs-strip .x-tabs-closable .close-icon{
 	line-height: 1px;
 	font-size:1px;
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/tab-close.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/tab-close.gif);
 	display:block;
 	position:absolute;
 	right:5px;top:4px;
@@ -645,10 +645,10 @@
 	cursor:pointer;
 }
 .x-tabs-strip .on .close-icon{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/tab-close-on.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/tab-close-on.gif);
 }
 .x-tabs-strip .x-tabs-closable .close-over{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/tab-close-on.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/tab-close-on.gif);
 }
 .x-tabs-body {
     border:1px solid #6593cf;
@@ -661,16 +661,16 @@
 	padding-bottom:2px;
 }
 .x-tabs-bottom .x-tabs-strip .x-tabs-right {
-	 background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tabs/tab-btm-inactive-right-bg.gif) no-repeat bottom left;
+	 background: url(http://develop.storebaby.it/js/extjs/resources/images/default/tabs/tab-btm-inactive-right-bg.gif) no-repeat bottom left;
 }
 .x-tabs-bottom .x-tabs-strip .x-tabs-left {
-	 background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tabs/tab-btm-inactive-left-bg.gif) no-repeat bottom right;
+	 background: url(http://develop.storebaby.it/js/extjs/resources/images/default/tabs/tab-btm-inactive-left-bg.gif) no-repeat bottom right;
 }
 .x-tabs-bottom .x-tabs-strip .on .x-tabs-right {
-	 background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tabs/tab-btm-right-bg.gif) no-repeat bottom left;
+	 background: url(http://develop.storebaby.it/js/extjs/resources/images/default/tabs/tab-btm-right-bg.gif) no-repeat bottom left;
 }
 .x-tabs-bottom .x-tabs-strip .on .x-tabs-left {
-	 background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tabs/tab-btm-left-bg.gif) no-repeat bottom right;
+	 background: url(http://develop.storebaby.it/js/extjs/resources/images/default/tabs/tab-btm-left-bg.gif) no-repeat bottom right;
 }
 .x-tabs-bottom .x-tabs-strip  a {
 	position:relative;
@@ -688,7 +688,7 @@
     border-bottom:0 none;
 }
 
-.x-form-field{    margin: 0 0 0 0;  /*  font:normal 12px tahoma, arial, helvetica, sans-serif;*/}.x-form-text, textarea.x-form-field{    padding: 1px 3px;    background:#fff url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/text-bg.gif) repeat-x 0 0;    border: 1px solid #B5B8C8;}.x-form-text {    height:22px;    line-height:18px;    vertical-align:middle;}.ext-ie .x-form-text {    margin-top:-1px;     margin-bottom:-1px;    height:22px;     line-height:18px;}.ext-strict .x-form-text {    height:18px;}.ext-safari .x-form-text {    height:20px; }.ext-gecko .x-form-text {    padding-top:2px;     padding-bottom:0;}.x-form-select-one {    height:20px;    line-height:18px;    vertical-align:middle;    background-color:#fff;     border: 1px solid #B5B8C8;}.x-form-field-wrap {    position:relative;    zoom:1;    white-space: nowrap;}.x-editor .x-form-check-wrap {    background:#fff;}.x-form-field-wrap .x-form-trigger{    width:17px;    height:21px;    border:0;    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/trigger.gif) no-repeat 0 0;    cursor:pointer;    border-bottom: 1px solid #B5B8C8;    position:absolute;    top:0;}.ext-safari .x-form-field-wrap .x-form-trigger{    height:19px; }.x-form-field-wrap .x-form-clear-trigger{    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/clear-trigger.gif);    cursor:pointer;}.x-form-field-wrap .x-form-search-trigger{    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/search-trigger.gif);    cursor:pointer;}.ext-safari .x-form-field-wrap .x-form-trigger{    right:0;}.x-form-field-wrap .x-form-twin-triggers{    }.x-form-field-wrap .x-form-twin-triggers .x-form-trigger{    position:static;    top:auto;    vertical-align:top;}.x-form-field-wrap .x-form-trigger-over{    background-position:-17px 0;}.x-form-field-wrap .x-form-trigger-click{    background-position:-34px 0;}.x-trigger-wrap-focus .x-form-trigger{    background-position:-51px 0;}.x-trigger-wrap-focus .x-form-trigger-over{    background-position:-68px 0;}.x-trigger-wrap-focus .x-form-trigger-click{    background-position:-85px 0;}.x-trigger-wrap-focus .x-form-trigger{    border-bottom: 1px solid #7eadd9;}.x-item-disabled .x-form-trigger-over{    background-position:0 0 !important;    border-bottom: 1px solid #B5B8C8;}.x-item-disabled .x-form-trigger-click{    background-position:0 0 !important;    border-bottom: 1px solid #B5B8C8;}.x-form-focus, textarea.x-form-focus{	border: 1px solid #7eadd9;}.x-form-invalid, textarea.x-form-invalid{	background:#fff url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/invalid_line.gif) repeat-x bottom;	border: 1px solid #dd7870;}.ext-safari .x-form-invalid{	background-color:#ffeeee;	border: 1px solid #ff7870;}.x-editor {    visibility:hidden;    padding:0;    margin:0;}.x-form-check-wrap {    line-height:18px;}.ext-ie .x-form-check-wrap input {    width:15px;    height:15px;}.x-editor .x-form-check-wrap {    padding:3px;}.x-editor .x-form-checkbox {    height:13px;    border: 0 none;}.x-form-grow-sizer {	/* font:normal 12px tahoma, arial, helvetica, sans-serif;*/    left: -10000px;	padding: 8px 3px;    position: absolute;    visibility:hidden;    top: -10000px;	white-space: pre-wrap;    white-space: -moz-pre-wrap;    white-space: -pre-wrap;    white-space: -o-pre-wrap;    word-wrap: break-word;    zoom:1;}.x-form-grow-sizer p {    margin:0 !important;    border:0 none !important;    padding:0 !important;}.x-form-item {    /*font:normal 12px tahoma, arial, helvetica, sans-serif; */   display:block;    margin-bottom:4px;}.x-form-item label {    display:block;    float:left;    width:100px;    padding:3px;    padding-left:0;    clear:left;    z-index:2;    position:relative;}.x-form-element {    padding-left:105px;    position:relative;}.x-form-invalid-msg {    color:#ee0000;    padding:2px;    padding-left:18px;  /*  font:normal 11px tahoma, arial, helvetica, sans-serif; */   background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shared/warning.gif) no-repeat 0 2px;    line-height:16px;    width:200px;}.x-form-label-right label {   text-align:right;}.x-form-label-top .x-form-item label {    width:auto;    float:none;    clear:none;    display:inline;    margin-bottom:4px;    position:static;}.x-form-label-top .x-form-element {    padding-left:0;    padding-top:4px;}.x-form-label-top .x-form-item {    padding-bottom:4px;}.x-form fieldset {    border:1px solid #B5B8C8;    padding:10px 10px 5px 10px;    margin-bottom:10px;}.x-form fieldset legend {  /*  font:bold 11px tahoma, arial, helvetica, sans-serif;    */color:#15428b;}.ext-ie .x-form fieldset legend {    margin-bottom:10px;}.ext-ie .x-form fieldset {    padding-top: 0;}.x-form-empty-field {    color:gray;}.x-small-editor .x-form-field { /*   font:normal 11px arial, tahoma, helvetica, sans-serif; */}.x-small-editor .x-form-text {    height:20px;    line-height:16px;    vertical-align:middle;}.ext-ie .x-small-editor .x-form-text {    margin-top:-1px !important;     margin-bottom:-1px !important;    height:20px !important;     line-height:16px !important;}.ext-strict .x-small-editor .x-form-text {    height:16px !important;}.ext-safari .x-small-editor .x-form-field {   /*     font:normal 12px arial, tahoma, helvetica, sans-serif; */}.ext-ie .x-small-editor .x-form-text {    height:20px;    line-height:16px;}.ext-border-box .x-small-editor .x-form-text {    height:20px;}.x-small-editor .x-form-select-one {    height:20px;    line-height:16px;    vertical-align:middle;}.x-small-editor .x-form-num-field {    text-align:right;}.x-small-editor .x-form-field-wrap .x-form-trigger{    height:19px;}.x-form-clear {    clear:both;    height:0;    overflow:hidden;    line-height:0;    font-size:0;}.x-form-clear-left {    clear:left;    height:0;    overflow:hidden;    line-height:0;    font-size:0;}.x-form-cb-label {    width:'auto' !important;    float:none !important;    clear:none !important;    display:inline !important;    margin-left:4px;}.x-form-column {    float:left;    padding:0;    margin:0;    width:48%;    overflow:hidden;    zoom:1;}.x-form .x-form-btns-ct .x-btn{	float:right;	clear:none;}.x-form .x-form-btns-ct .x-form-btns td {	border:0;	padding:0;}.x-form .x-form-btns-ct .x-form-btns-right table{	float:right;	clear:none;}.x-form .x-form-btns-ct .x-form-btns-left table{	float:left;	clear:none;}.x-form .x-form-btns-ct .x-form-btns-center{	text-align:center; }.x-form .x-form-btns-ct .x-form-btns-center table{	margin:0 auto; }.x-form .x-form-btns-ct table td.x-form-btn-td{	padding:3px;}.x-form .x-form-btns-ct .x-btn-focus .x-btn-left{	background-position:0 -147px;}.x-form .x-form-btns-ct .x-btn-focus .x-btn-right{	background-position:0 -168px;}.x-form .x-form-btns-ct .x-btn-focus .x-btn-center{	background-position:0 -189px;}.x-form .x-form-btns-ct .x-btn-click .x-btn-center{	background-position:0 -126px;}.x-form .x-form-btns-ct .x-btn-click  .x-btn-right{	background-position:0 -84px;}.x-form .x-form-btns-ct .x-btn-click .x-btn-left{	background-position:0 -63px;}.x-form-invalid-icon {    width:16px;    height:18px;    visibility:hidden;    position:absolute;    left:0;    top:0;    display:block;    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/exclamation.gif) no-repeat 0 2px;}.x-btn{
+.x-form-field{    margin: 0 0 0 0;  /*  font:normal 12px tahoma, arial, helvetica, sans-serif;*/}.x-form-text, textarea.x-form-field{    padding: 1px 3px;    background:#fff url(http://develop.storebaby.it/js/extjs/resources/images/default/form/text-bg.gif) repeat-x 0 0;    border: 1px solid #B5B8C8;}.x-form-text {    height:22px;    line-height:18px;    vertical-align:middle;}.ext-ie .x-form-text {    margin-top:-1px;     margin-bottom:-1px;    height:22px;     line-height:18px;}.ext-strict .x-form-text {    height:18px;}.ext-safari .x-form-text {    height:20px; }.ext-gecko .x-form-text {    padding-top:2px;     padding-bottom:0;}.x-form-select-one {    height:20px;    line-height:18px;    vertical-align:middle;    background-color:#fff;     border: 1px solid #B5B8C8;}.x-form-field-wrap {    position:relative;    zoom:1;    white-space: nowrap;}.x-editor .x-form-check-wrap {    background:#fff;}.x-form-field-wrap .x-form-trigger{    width:17px;    height:21px;    border:0;    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/form/trigger.gif) no-repeat 0 0;    cursor:pointer;    border-bottom: 1px solid #B5B8C8;    position:absolute;    top:0;}.ext-safari .x-form-field-wrap .x-form-trigger{    height:19px; }.x-form-field-wrap .x-form-clear-trigger{    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/clear-trigger.gif);    cursor:pointer;}.x-form-field-wrap .x-form-search-trigger{    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/search-trigger.gif);    cursor:pointer;}.ext-safari .x-form-field-wrap .x-form-trigger{    right:0;}.x-form-field-wrap .x-form-twin-triggers{    }.x-form-field-wrap .x-form-twin-triggers .x-form-trigger{    position:static;    top:auto;    vertical-align:top;}.x-form-field-wrap .x-form-trigger-over{    background-position:-17px 0;}.x-form-field-wrap .x-form-trigger-click{    background-position:-34px 0;}.x-trigger-wrap-focus .x-form-trigger{    background-position:-51px 0;}.x-trigger-wrap-focus .x-form-trigger-over{    background-position:-68px 0;}.x-trigger-wrap-focus .x-form-trigger-click{    background-position:-85px 0;}.x-trigger-wrap-focus .x-form-trigger{    border-bottom: 1px solid #7eadd9;}.x-item-disabled .x-form-trigger-over{    background-position:0 0 !important;    border-bottom: 1px solid #B5B8C8;}.x-item-disabled .x-form-trigger-click{    background-position:0 0 !important;    border-bottom: 1px solid #B5B8C8;}.x-form-focus, textarea.x-form-focus{	border: 1px solid #7eadd9;}.x-form-invalid, textarea.x-form-invalid{	background:#fff url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/invalid_line.gif) repeat-x bottom;	border: 1px solid #dd7870;}.ext-safari .x-form-invalid{	background-color:#ffeeee;	border: 1px solid #ff7870;}.x-editor {    visibility:hidden;    padding:0;    margin:0;}.x-form-check-wrap {    line-height:18px;}.ext-ie .x-form-check-wrap input {    width:15px;    height:15px;}.x-editor .x-form-check-wrap {    padding:3px;}.x-editor .x-form-checkbox {    height:13px;    border: 0 none;}.x-form-grow-sizer {	/* font:normal 12px tahoma, arial, helvetica, sans-serif;*/    left: -10000px;	padding: 8px 3px;    position: absolute;    visibility:hidden;    top: -10000px;	white-space: pre-wrap;    white-space: -moz-pre-wrap;    white-space: -pre-wrap;    white-space: -o-pre-wrap;    word-wrap: break-word;    zoom:1;}.x-form-grow-sizer p {    margin:0 !important;    border:0 none !important;    padding:0 !important;}.x-form-item {    /*font:normal 12px tahoma, arial, helvetica, sans-serif; */   display:block;    margin-bottom:4px;}.x-form-item label {    display:block;    float:left;    width:100px;    padding:3px;    padding-left:0;    clear:left;    z-index:2;    position:relative;}.x-form-element {    padding-left:105px;    position:relative;}.x-form-invalid-msg {    color:#ee0000;    padding:2px;    padding-left:18px;  /*  font:normal 11px tahoma, arial, helvetica, sans-serif; */   background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/shared/warning.gif) no-repeat 0 2px;    line-height:16px;    width:200px;}.x-form-label-right label {   text-align:right;}.x-form-label-top .x-form-item label {    width:auto;    float:none;    clear:none;    display:inline;    margin-bottom:4px;    position:static;}.x-form-label-top .x-form-element {    padding-left:0;    padding-top:4px;}.x-form-label-top .x-form-item {    padding-bottom:4px;}.x-form fieldset {    border:1px solid #B5B8C8;    padding:10px 10px 5px 10px;    margin-bottom:10px;}.x-form fieldset legend {  /*  font:bold 11px tahoma, arial, helvetica, sans-serif;    */color:#15428b;}.ext-ie .x-form fieldset legend {    margin-bottom:10px;}.ext-ie .x-form fieldset {    padding-top: 0;}.x-form-empty-field {    color:gray;}.x-small-editor .x-form-field { /*   font:normal 11px arial, tahoma, helvetica, sans-serif; */}.x-small-editor .x-form-text {    height:20px;    line-height:16px;    vertical-align:middle;}.ext-ie .x-small-editor .x-form-text {    margin-top:-1px !important;     margin-bottom:-1px !important;    height:20px !important;     line-height:16px !important;}.ext-strict .x-small-editor .x-form-text {    height:16px !important;}.ext-safari .x-small-editor .x-form-field {   /*     font:normal 12px arial, tahoma, helvetica, sans-serif; */}.ext-ie .x-small-editor .x-form-text {    height:20px;    line-height:16px;}.ext-border-box .x-small-editor .x-form-text {    height:20px;}.x-small-editor .x-form-select-one {    height:20px;    line-height:16px;    vertical-align:middle;}.x-small-editor .x-form-num-field {    text-align:right;}.x-small-editor .x-form-field-wrap .x-form-trigger{    height:19px;}.x-form-clear {    clear:both;    height:0;    overflow:hidden;    line-height:0;    font-size:0;}.x-form-clear-left {    clear:left;    height:0;    overflow:hidden;    line-height:0;    font-size:0;}.x-form-cb-label {    width:'auto' !important;    float:none !important;    clear:none !important;    display:inline !important;    margin-left:4px;}.x-form-column {    float:left;    padding:0;    margin:0;    width:48%;    overflow:hidden;    zoom:1;}.x-form .x-form-btns-ct .x-btn{	float:right;	clear:none;}.x-form .x-form-btns-ct .x-form-btns td {	border:0;	padding:0;}.x-form .x-form-btns-ct .x-form-btns-right table{	float:right;	clear:none;}.x-form .x-form-btns-ct .x-form-btns-left table{	float:left;	clear:none;}.x-form .x-form-btns-ct .x-form-btns-center{	text-align:center; }.x-form .x-form-btns-ct .x-form-btns-center table{	margin:0 auto; }.x-form .x-form-btns-ct table td.x-form-btn-td{	padding:3px;}.x-form .x-form-btns-ct .x-btn-focus .x-btn-left{	background-position:0 -147px;}.x-form .x-form-btns-ct .x-btn-focus .x-btn-right{	background-position:0 -168px;}.x-form .x-form-btns-ct .x-btn-focus .x-btn-center{	background-position:0 -189px;}.x-form .x-form-btns-ct .x-btn-click .x-btn-center{	background-position:0 -126px;}.x-form .x-form-btns-ct .x-btn-click  .x-btn-right{	background-position:0 -84px;}.x-form .x-form-btns-ct .x-btn-click .x-btn-left{	background-position:0 -63px;}.x-form-invalid-icon {    width:16px;    height:18px;    visibility:hidden;    position:absolute;    left:0;    top:0;    display:block;    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/form/exclamation.gif) no-repeat 0 2px;}.x-btn{
 	/*font:normal 11px tahoma, verdana, helvetica; */
 	cursor:pointer;
 	white-space: nowrap;
@@ -752,12 +752,12 @@
 .x-btn-left{
 	width:3px;
 	height:21px;
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/btn-sprite.gif) no-repeat 0 0;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/btn-sprite.gif) no-repeat 0 0;
 }
 .x-btn-right{
 	width:3px;
 	height:21px;
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/btn-sprite.gif) no-repeat 0 -21px;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/btn-sprite.gif) no-repeat 0 -21px;
 }
 .x-btn-left i, .x-btn-right i{
 	display:block;
@@ -767,7 +767,7 @@
     line-height:1px;
 }
 .x-btn-center{
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/btn-sprite.gif) repeat-x 0 -42px;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/btn-sprite.gif) repeat-x 0 -42px;
 	vertical-align: middle;
 	text-align:center;
 	padding:0 5px;
@@ -804,27 +804,27 @@
     height:21px;
     padding:0 !important;
     display:block;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/btn-arrow.gif) no-repeat left 3px;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/btn-arrow.gif) no-repeat left 3px;
 }
 .x-btn-with-menu  .x-btn-center {
     padding-right:2px !important;
 }
 .x-btn-with-menu  .x-btn-center em {
     display:block;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow.gif) no-repeat right 0;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow.gif) no-repeat right 0;
 	padding-right:10px;
 }
 
 .x-btn-text-icon .x-btn-with-menu .x-btn-center em {
     display:block;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow.gif) no-repeat right 3px;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow.gif) no-repeat right 3px;
 	padding-right:10px;
 }.x-toolbar{
 	border-top: 1px solid #eaf0f7;
     border-bottom: 1px solid #a9bfd3;
     display: block;
 	padding:2px;
-    background:#d0def0 url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/panel-title-light-bg.gif) repeat-x;
+    background:#d0def0 url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/panel-title-light-bg.gif) repeat-x;
     position:relative;
 }
 .x-toolbar .x-item-disabled .x-btn-icon {
@@ -837,7 +837,7 @@
 }
 .mso .x-toolbar, .x-grid-mso .x-toolbar{
 	border: 0 none;
-	background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/mso-hd.gif);
+	background: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/mso-hd.gif);
 }
 .x-toolbar td, .x-toolbar span, .x-toolbar input, .x-toolbar div, .x-toolbar select, .x-toolbar label{
 	white-space: nowrap;
@@ -876,33 +876,33 @@
 }
 .x-toolbar .x-btn-menu-arrow-wrap .x-btn-center button {
     width:12px;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow.gif) no-repeat 0 3px;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow.gif) no-repeat 0 3px;
 }
 .x-toolbar .x-btn-text-icon .x-btn-menu-arrow-wrap .x-btn-center button {
     width:12px;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow.gif) no-repeat 0 3px;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow.gif) no-repeat 0 3px;
 }
 .x-toolbar .x-btn-over .x-btn-menu-arrow-wrap .x-btn-center button {
 	background-position: 0 -47px;
 }
 .x-toolbar .x-btn-over .x-btn-left{
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 0;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 0;
 }
 .x-toolbar .x-btn-over .x-btn-right{
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -21px;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -21px;
 }
 .x-toolbar .x-btn-over .x-btn-center{
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) repeat-x 0 -42px;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) repeat-x 0 -42px;
 }
 
 .x-toolbar .x-btn-click .x-btn-left, .x-toolbar .x-btn-pressed .x-btn-left, .x-toolbar .x-btn-menu-active .x-btn-left{
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -63px;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -63px;
 }
 .x-toolbar .x-btn-click .x-btn-right, .x-toolbar .x-btn-pressed .x-btn-right, .x-toolbar .x-btn-menu-active .x-btn-right{
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -84px;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -84px;
 }
 .x-toolbar .x-btn-click .x-btn-center, .x-toolbar .x-btn-pressed .x-btn-center, .x-toolbar .x-btn-menu-active .x-btn-center{
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) repeat-x 0 -105px;
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/tb-btn-sprite.gif) repeat-x 0 -105px;
 }
 
 .x-toolbar .x-btn-with-menu .x-btn-center em{
@@ -913,7 +913,7 @@
    padding:2px;
 }
 .x-toolbar .ytb-sep {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/grid-split.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/grid-split.gif);
 	background-position: center;
 	background-repeat: no-repeat;
 	display: block;
@@ -929,7 +929,7 @@
     width:2px;
 }
 .mso .x-toolbar .ytb-sep, .x-grid-mso .x-toolbar .ytb-sep{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/grid-blue-split.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/grid-blue-split.gif);
 }
 
 
@@ -950,34 +950,34 @@
 	height:14px;
 }
 .x-grid-page-first .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/page-first.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/page-first.gif);
 }
 .x-grid-loading .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/done.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/done.gif);
 }
 .x-grid-page-last .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/page-last.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/page-last.gif);
 }
 .x-grid-page-next .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/page-next.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/page-next.gif);
 }
 .x-grid-page-prev .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/page-prev.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/page-prev.gif);
 }
 .x-item-disabled .x-grid-loading .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/loading.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/loading.gif);
 }
 .x-item-disabled .x-grid-page-first .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/page-first-disabled.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/page-first-disabled.gif);
 }
 .x-item-disabled .x-grid-page-last .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/page-last-disabled.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/page-last-disabled.gif);
 }
 .x-item-disabled .x-grid-page-next .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/page-next-disabled.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/page-next-disabled.gif);
 }
 .x-item-disabled .x-grid-page-prev .x-btn-text{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/page-prev-disabled.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/page-prev-disabled.gif);
 }
 .x-paging-info {
     position:absolute;
@@ -1068,35 +1068,35 @@
 	 opacity:1;
 }
 .x-resizable-over .x-resizable-handle-east, .x-resizable-pinned .x-resizable-handle-east{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/e-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/e-handle.gif);
 	 background-position: left;
 }
 .x-resizable-over .x-resizable-handle-west, .x-resizable-pinned .x-resizable-handle-west{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/e-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/e-handle.gif);
 	 background-position: left;
 }
 .x-resizable-over .x-resizable-handle-south, .x-resizable-pinned .x-resizable-handle-south{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/s-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/s-handle.gif);
     background-position: top;
 }
 .x-resizable-over .x-resizable-handle-north, .x-resizable-pinned .x-resizable-handle-north{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/s-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/s-handle.gif);
     background-position: top;
 }
 .x-resizable-over .x-resizable-handle-southeast, .x-resizable-pinned .x-resizable-handle-southeast{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/se-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/se-handle.gif);
     background-position: top left;
 }
 .x-resizable-over .x-resizable-handle-northwest, .x-resizable-pinned .x-resizable-handle-northwest{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/nw-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/nw-handle.gif);
     background-position:bottom right;
 }
 .x-resizable-over .x-resizable-handle-northeast, .x-resizable-pinned .x-resizable-handle-northeast{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/ne-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/ne-handle.gif);
     background-position: bottom left;
 }
 .x-resizable-over .x-resizable-handle-southwest, .x-resizable-pinned .x-resizable-handle-southwest{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/sw-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/sw-handle.gif);
     background-position: top right;
 }
 .x-resizable-proxy{
@@ -1213,7 +1213,7 @@
 
 
 .x-grid-header{
-	background: #ebeadb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/grid-hrow.gif) repeat-x;
+	background: #ebeadb url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/grid-hrow.gif) repeat-x;
 	overflow:hidden;
 	position:relative;
 	cursor:default;
@@ -1229,7 +1229,7 @@
 	border-bottom: 1px solid #c3daf9;
 }
 .x-grid-hd-over .x-grid-hd-text {
-	background: #fafafa url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/grid-hrow.gif) repeat-x 0 1px;
+	background: #fafafa url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/grid-hrow.gif) repeat-x 0 1px;
 	padding-bottom:1px;
     border-bottom: 1px solid #b3cae9;
 }
@@ -1242,11 +1242,11 @@
 	vertical-align: middle;
 }
 .x-grid-header .sort-asc .x-grid-sort-icon {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/sort_asc.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/sort_asc.gif);
 	display: inline;
 }
 .x-grid-header .sort-desc .x-grid-sort-icon {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/sort_desc.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/sort_desc.gif);
 	display: inline;
 }
 
@@ -1269,7 +1269,7 @@
     padding-top:4px;
 }
 .x-grid-split {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/grid-split.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/grid-split.gif);
 	background-position: center;
 	background-repeat: no-repeat;
 	cursor: e-resize;
@@ -1289,7 +1289,7 @@
 }
 
 .x-dd-drag-proxy .x-grid-hd-inner{
-	background: #ebeadb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/grid-hrow.gif) repeat-x;
+	background: #ebeadb url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/grid-hrow.gif) repeat-x;
 	height:22px;
 	width:120px;
 }
@@ -1306,10 +1306,10 @@
 	z-index:20000;
 }
 .col-move-top{
-	background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/col-move-top.gif) no-repeat left top;
+	background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/col-move-top.gif) no-repeat left top;
 }
 .col-move-bottom{
-	background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/col-move-bottom.gif) no-repeat left top;
+	background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/col-move-bottom.gif) no-repeat left top;
 }
 
 
@@ -1335,7 +1335,7 @@
 }
 
 .x-grid-locked td.x-grid-row-marker, .x-grid-locked .x-grid-row-selected td.x-grid-row-marker{
-    background: #ebeadb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/grid-hrow.gif) repeat-x 0 bottom !important;
+    background: #ebeadb url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/grid-hrow.gif) repeat-x 0 bottom !important;
     vertical-align:middle !important;
     color:black;
     padding:0;
@@ -1352,7 +1352,7 @@
 
 
 .x-grid-dirty-cell {
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/dirty.gif) no-repeat 0 0;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/dirty.gif) no-repeat 0 0;
 }
 
 
@@ -1391,16 +1391,16 @@
 
 
 .xg-hmenu-sort-asc .x-menu-item-icon{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/hmenu-asc.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/hmenu-asc.gif);
 }
 .xg-hmenu-sort-desc .x-menu-item-icon{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/hmenu-desc.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/hmenu-desc.gif);
 }
 .xg-hmenu-lock .x-menu-item-icon{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/hmenu-lock.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/hmenu-lock.gif);
 }
 .xg-hmenu-unlock .x-menu-item-icon{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/hmenu-unlock.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/hmenu-unlock.gif);
 }
 
 
@@ -1493,7 +1493,7 @@
     background-color:#c3daf9;
 }
 .x-layout-panel-hd{
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/panel-title-light-bg.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/panel-title-light-bg.gif);
     color: black;
     border-bottom:1px solid #98c0f4;
     position:relative;
@@ -1534,33 +1534,33 @@
     background-position:center;
 }
 .x-layout-close{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/panel-close.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/panel-close.gif);
 }
 .x-layout-stick{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/stick.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/stick.gif);
 }
 .x-layout-collapse-west,.x-layout-expand-east{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/collapse.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/collapse.gif);
 }
 .x-layout-expand-west,.x-layout-collapse-east{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/expand.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/expand.gif);
 }
 .x-layout-collapse-north,.x-layout-expand-south{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/ns-collapse.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/ns-collapse.gif);
 }
 .x-layout-expand-north,.x-layout-collapse-south{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/ns-expand.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/ns-expand.gif);
 }
 .x-layout-split-h{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/e-handle.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/e-handle.gif);
     background-position: left;
 }
 .x-layout-split-v{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/s-handle.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/s-handle.gif);
     background-position: top;
 }
 .x-layout-panel .x-tabs-wrap{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/gradient-bg.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/gradient-bg.gif);
 }
 .x-layout-panel .x-tabs-body {
     background-color:white;
@@ -1593,7 +1593,7 @@
 	border: 2px solid #6593cf;
 }
 .x-layout-panel-proxy {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/gradient-bg.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/gradient-bg.gif);
 	background-color:#c3daf9;
 	border:1px dashed #6593cf;
 	z-index:10001;
@@ -1650,7 +1650,7 @@
 .x-reader .x-layout-nested-layout .x-layout-panel-south{
     border:1px solid #99bbe8;
 }.x-dlg-proxy {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/gradient-bg.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/gradient-bg.gif);
 	background-color:#c3daf9;
 	border:1px solid #6593cf;
 	z-index:10001;
@@ -1697,7 +1697,7 @@ body.x-body-masked .x-dlg select {
 	left:300;top:0;
 }
 .x-dlg .x-dlg-hd {
-	background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) repeat-x 0 -82px;
+	background: url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) repeat-x 0 -82px;
 	background-color:navy;
 	color:#FFF;
 	/*font:bold 12px "sans serif", tahoma, verdana, helvetica; */
@@ -1706,16 +1706,16 @@ body.x-body-masked .x-dlg select {
     white-space: nowrap;
 }
 .x-dlg .x-dlg-hd-left {
-	background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) no-repeat 0 -41px;
+	background: url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) no-repeat 0 -41px;
 	padding-left:3px;
 	margin:0;
 }
 .x-dlg .x-dlg-hd-right {
-	background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) no-repeat right 0;
+	background: url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) no-repeat right 0;
 	padding-right:3px;
 }
 .x-dlg .x-dlg-dlg-body{
-	background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/gradient-bg.gif);
+	background:url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/gradient-bg.gif);
 	border:1px solid #6593cf;
 	border-top:0 none;
 	padding:10px;
@@ -1829,54 +1829,54 @@ body.x-body-masked .x-dlg select {
 	visibility:inherit;
 }
 .x-dlg .x-dlg-close {
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/close.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/close.gif);
 }
 .x-dlg .x-dlg-collapse {
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/collapse.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/collapse.gif);
 }
 .x-dlg-collapsed .x-dlg-collapse {
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/expand.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/expand.gif);
 }
 .x-dlg .x-dlg-close-over, .x-dlg .x-dlg-collapse-over {
     
 }
 .x-dlg div.x-resizable-handle-east{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/e-handle.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/e-handle.gif);
 	border:0;
 	background-position:right;
 	margin-right:0;
 }
 .x-dlg div.x-resizable-handle-south{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/s-handle-dark.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/s-handle-dark.gif);
 	border:0;
 	height:6px;
 }
 .x-dlg div.x-resizable-handle-west{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/e-handle.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/e-handle.gif);
 	border:0;
 	background-position:1px;
 }
 .x-dlg div.x-resizable-handle-north{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/s.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/s.gif);
 	border:0;
 }
 .x-dlg div.x-resizable-handle-northeast, .xtheme-gray .x-dlg div.x-resizable-handle-northeast{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/s.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/s.gif);
 	border:0;
 }
 .x-dlg div.x-resizable-handle-northwest, .xtheme-gray .x-dlg div.x-resizable-handle-northwest{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/s.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/s.gif);
 	border:0;
 }
 .x-dlg div.x-resizable-handle-southeast{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/se-handle.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/se-handle.gif);
 	background-position: bottom right;
 	width:8px;
 	height:8px;
 	border:0;
 }
 .x-dlg div.x-resizable-handle-southwest{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/sizer/sw-handle-dark.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/sizer/sw-handle-dark.gif);
 	background-position: top right;
 	margin-left:1px;
 	margin-bottom:1px;
@@ -1908,7 +1908,7 @@ body.x-body-masked .x-dlg select {
 }
 #x-msg-box .ext-mb-progress {
 	height:18px;
-	background: #e0e8f3 url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/bg.gif) repeat-x;
+	background: #e0e8f3 url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/bg.gif) repeat-x;
 }
 #x-msg-box .ext-mb-progress-bar {
 	height:18px;
@@ -1921,7 +1921,7 @@ body.x-body-masked .x-dlg select {
 }
 
 #x-msg-box .x-msg-box-wait {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/loading.gif) no-repeat left;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/loading.gif) no-repeat left;
     display:block;
     width:300px;
     padding-left:18px;
@@ -1971,13 +1971,13 @@ body.x-body-masked .x-dlg select {
 	z-index:1;
 }
 .x-dd-drop-nodrop .x-dd-drop-icon{
-  background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/dd/drop-no.gif);
+  background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/dd/drop-no.gif);
 }
 .x-dd-drop-ok .x-dd-drop-icon{
-  background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/dd/drop-yes.gif);
+  background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/dd/drop-yes.gif);
 }
 .x-dd-drop-ok-add .x-dd-drop-icon{
-  background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/dd/drop-add.gif);
+  background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/dd/drop-add.gif);
 }.x-tree-icon, .x-tree-ec-icon, .x-tree-elbow-line, .x-tree-elbow, .x-tree-elbow-end, .x-tree-elbow-plus, .x-tree-elbow-minus, .x-tree-elbow-end-plus, .x-tree-elbow-end-minus{
 	border: 0 none;
 	height: 18px;
@@ -2000,13 +2000,13 @@ body.x-body-masked .x-dlg select {
 
 
 .x-tree-node-collapsed .x-tree-node-icon{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/folder.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/folder.gif);
 }
 .x-tree-node-expanded .x-tree-node-icon{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/folder-open.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/folder-open.gif);
 }
 .x-tree-node-leaf .x-tree-node-icon{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/leaf.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/leaf.gif);
 }
 
 .x-tree-noicon .x-tree-node-icon{
@@ -2014,7 +2014,7 @@ body.x-body-masked .x-dlg select {
 }
 
 .x-tree-node-loading .x-tree-node-icon{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/loading.gif) !important;
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/loading.gif) !important;
 }
 .x-tree-node-loading a span{
 	 font-style: italic;
@@ -2023,25 +2023,25 @@ body.x-body-masked .x-dlg select {
 
 
 .x-tree-lines .x-tree-elbow{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow.gif);
 }
 .x-tree-lines .x-tree-elbow-plus{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-plus.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-plus.gif);
 }
 .x-tree-lines .x-tree-elbow-minus{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-minus.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-minus.gif);
 }
 .x-tree-lines .x-tree-elbow-end{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-end.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-end.gif);
 }
 .x-tree-lines .x-tree-elbow-end-plus{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-end-plus.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-end-plus.gif);
 }
 .x-tree-lines .x-tree-elbow-end-minus{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-end-minus.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-end-minus.gif);
 }
 .x-tree-lines .x-tree-elbow-line{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-line.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-line.gif);
 }
 
 
@@ -2049,19 +2049,19 @@ body.x-body-masked .x-dlg select {
 	background:transparent;
 }
 .x-tree-no-lines .x-tree-elbow-plus{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-plus-nl.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-plus-nl.gif);
 }
 .x-tree-no-lines .x-tree-elbow-minus{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-minus-nl.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-minus-nl.gif);
 }
 .x-tree-no-lines .x-tree-elbow-end{
 	background:transparent;
 }
 .x-tree-no-lines .x-tree-elbow-end-plus{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-end-plus-nl.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-end-plus-nl.gif);
 }
 .x-tree-no-lines .x-tree-elbow-end-minus{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/elbow-end-minus-nl.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/elbow-end-minus-nl.gif);
 }
 .x-tree-no-lines .x-tree-elbow-line{
 	background:transparent;
@@ -2138,16 +2138,16 @@ body.x-body-masked .x-dlg select {
 	display:none !important;
 }
 .x-tree-drop-ok-append .x-dd-drop-icon{
-  background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/drop-add.gif);
+  background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/drop-add.gif);
 }
 .x-tree-drop-ok-above .x-dd-drop-icon{
-  background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/drop-over.gif);
+  background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/drop-over.gif);
 }
 .x-tree-drop-ok-below .x-dd-drop-icon{
-  background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/drop-under.gif);
+  background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/drop-under.gif);
 }
 .x-tree-drop-ok-between .x-dd-drop-icon{
-  background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/tree/drop-between.gif);
+  background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/tree/drop-between.gif);
 }
 .x-tip{
 	position: absolute;
@@ -2158,7 +2158,7 @@ body.x-body-masked .x-dlg select {
     border:0 none;
 }
 .x-tip .x-tip-close{
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/close.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/close.gif);
 	height: 15px;
 	float:right;
 	width: 15px;
@@ -2167,32 +2167,32 @@ body.x-body-masked .x-dlg select {
     display:none;
 }
 .x-tip .x-tip-top {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 -12px;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 -12px;
 	height:6px;
     overflow:hidden;
 }
 .x-tip .x-tip-top-left {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 0;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 0;
 	padding-left:6px;
     zoom:1;
 }
 .x-tip .x-tip-top-right {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat right 0;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat right 0;
 	padding-right:6px;
     zoom:1;
 }
 .x-tip .x-tip-ft {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 -18px;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 -18px;
 	height:6px;
     overflow:hidden;
 }
 .x-tip .x-tip-ft-left {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 -6px;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 -6px;
 	padding-left:6px;
     zoom:1;
 }
 .x-tip .x-tip-ft-right {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat right -6px;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat right -6px;
 	padding-right:6px;
     zoom:1;
 }
@@ -2201,12 +2201,12 @@ body.x-body-masked .x-dlg select {
     /* font: normal 11px tahoma,arial,helvetica,sans-serif; */
 }
 .x-tip .x-tip-bd-left {
-	background: #fff url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 -24px;
+	background: #fff url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat 0 -24px;
 	padding-left:6px;
     zoom:1;
 }
 .x-tip .x-tip-bd-right {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat right -24px;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/qtip/tip-sprite.gif) no-repeat right -24px;
 	padding-right:6px;
     zoom:1;
 }
@@ -2231,39 +2231,39 @@ body.x-body-masked .x-dlg select {
 }
 
 .x-form-invalid-tip .x-tip-top {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
 }
 .x-form-invalid-tip .x-tip-top-left {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
 }
 .x-form-invalid-tip .x-tip-top-right {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
 }
 .x-form-invalid-tip .x-tip-ft {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
 }
 .x-form-invalid-tip .x-tip-ft-left {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
 }
 .x-form-invalid-tip .x-tip-ft-right {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
 }
 .x-form-invalid-tip .x-tip-bd-left {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
 }
 .x-form-invalid-tip .x-tip-bd-right {
-	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
+	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/form/error-tip-corners.gif);
 }
 .x-form-invalid-tip .x-tip-bd .x-tip-bd-inner {
     padding-left:24px;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/form/exclamation.gif) no-repeat 2px 2px;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/form/exclamation.gif) no-repeat 2px 2px;
 }
 .x-form-invalid-tip .x-tip-bd-inner {
     padding:2px;
-}.x-date-picker {    border: 1px solid #1b376c;    border-top:0 none;    background:#fff;	 position:relative;}.x-date-picker a {    -moz-outline:0 none;    outline:0 none;}.x-date-inner, .x-date-inner td, .x-date-inner th{    border-collapse:separate;}.x-date-middle,.x-date-left,.x-date-right {	background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) repeat-x 0 -83px;	color:#FFF;	/* font:bold 11px "sans serif", tahoma, verdana, helvetica;	*/ overflow:hidden;}.x-date-middle .x-btn-left,.x-date-middle .x-btn-center,.x-date-middle .x-btn-right{	background:transparent !important;    vertical-align:middle;}.x-date-middle .x-btn .x-btn-text {    color:#fff;}.x-date-middle .x-btn-with-menu  .x-btn-center em {    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow-light.gif) no-repeat right 0;}.x-date-right, .x-date-left {    width:18px;}.x-date-right{    text-align:right;}.x-date-middle {    padding-top:2px;padding-bottom:2px;}.x-date-right a, .x-date-left a{    display:block;    width:16px;	height:16px;	background-position: center;	background-repeat: no-repeat;	cursor:pointer;    -moz-opacity: 0.6;    opacity:.6;    filter: alpha(opacity=60);}.x-date-right a:hover, .x-date-left a:hover{    -moz-opacity: 1;    opacity:1;    filter: alpha(opacity=100);}.x-date-right a {    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shared/right-btn.gif);    margin-right:2px;    text-decoration:none !important;}.x-date-left a{	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shared/left-btn.gif);    margin-left:2px;    text-decoration:none !important;}table.x-date-inner {    width:100%;    table-layout:fixed;}.x-date-inner th {    width:25px;}.x-date-inner th {    background: #dfecfb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;    text-align:right !important;	border-bottom: 1px solid #a3bad9;   /* font:normal 10px arial, helvetica,tahoma,sans-serif;*/	color:#233d6d;	cursor:default;    padding:0;    border-collapse:separate;}.x-date-inner th span {    display:block;    padding:2px;    padding-right:7px;}.x-date-inner td {    border: 1px solid #fff;	text-align:right;    padding:0;}.x-date-inner a {    padding:2px 5px;    display:block;  /* font:normal 11px arial, helvetica,tahoma,sans-serif;*/	text-decoration:none;    color:black;    text-align:right;    zoom:1;}.x-date-inner .x-date-active{	cursor:pointer;	color:black;}.x-date-inner .x-date-selected a{	background: #dfecfb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;	border:1px solid #8db2e3;   padding:1px 4px;}.x-date-inner .x-date-today a{	border: 1px solid darkred;    padding:1px 4px;}.x-date-inner .x-date-selected span{    font-weight:bold;}.x-date-inner .x-date-prevday a,.x-date-inner .x-date-nextday a {	color:#aaaaaa;    text-decoration:none !important;}.x-date-bottom {    padding:4px;    border-top: 1px solid #a3bad9;    background: #dfecfb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;}.x-date-inner a:hover, .x-date-inner .x-date-disabled a:hover{    text-decoration:none !important;    color:black;    background: #ddecfe;}.x-date-inner .x-date-disabled a {	cursor:default;	background:#eeeeee;	color:#bbbbbb;}.x-date-mmenu{    background:#eeeeee !important;}.x-date-mmenu .x-menu-item {	font-size:10px;	padding:1px 24px 1px 4px;	white-space: nowrap;	color:#000;}.x-date-mmenu .x-menu-item .x-menu-item-icon {    width:10px;height:10px;margin-right:5px;    background-position:center -4px !important;}.x-date-mp {	position:absolute;	left:0;	top:0;	background:white;	display:none;}.x-date-mp td {    padding:2px;	/* font:normal 11px arial, helvetica,tahoma,sans-serif;*/}td.x-date-mp-month,td.x-date-mp-year,td.x-date-mp-ybtn {   border: 0 none;	text-align:center;	vertical-align: middle;	width:25%;}.x-date-mp-ok {	margin-right:3px;}.x-date-mp-btns button {	text-decoration:none;	text-align:center;	text-decoration:none !important;	background:#083772;	color:white;	border:1px solid;	border-color: #3366cc #000055 #000055 #3366cc;	padding:1px 3px 1px;	/* font:normal 11px arial, helvetica,tahoma,sans-serif;*/	cursor:pointer;}.x-date-mp-btns {	background: #dfecfb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;}.x-date-mp-btns td {	border-top: 1px solid #c5d2df;   text-align:center;}td.x-date-mp-month a,td.x-date-mp-year a {	display:block;	padding:2px 4px;	text-decoration:none;	text-align:center;	color:#15428b;}td.x-date-mp-month a:hover,td.x-date-mp-year a:hover {	color:#15428b;	text-decoration:none;	cursor:pointer;	background: #ddecfe;}td.x-date-mp-sel a {	padding:1px 3px;	background: #dfecfb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;	border:1px solid #8db2e3;}.x-date-mp-ybtn a {    overflow:hidden;    width:15px;    height:15px;    cursor:pointer;    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/tool-sprites.gif) no-repeat;    display:block;    margin:0 auto;}.x-date-mp-ybtn a.x-date-mp-next {    background-position:0 -120px;}.x-date-mp-ybtn a.x-date-mp-next:hover {    background-position:-15px -120px;}.x-date-mp-ybtn a.x-date-mp-prev {    background-position:0 -105px;}.x-date-mp-ybtn a.x-date-mp-prev:hover {    background-position:-15px -105px;}.x-date-mp-ybtn {   text-align:center;}td.x-date-mp-sep {   border-right:1px solid #c5d2df;}.x-menu {
+}.x-date-picker {    border: 1px solid #1b376c;    border-top:0 none;    background:#fff;	 position:relative;}.x-date-picker a {    -moz-outline:0 none;    outline:0 none;}.x-date-inner, .x-date-inner td, .x-date-inner th{    border-collapse:separate;}.x-date-middle,.x-date-left,.x-date-right {	background: url(http://develop.storebaby.it/js/extjs/resources/images/default/basic-dialog/hd-sprite.gif) repeat-x 0 -83px;	color:#FFF;	/* font:bold 11px "sans serif", tahoma, verdana, helvetica;	*/ overflow:hidden;}.x-date-middle .x-btn-left,.x-date-middle .x-btn-center,.x-date-middle .x-btn-right{	background:transparent !important;    vertical-align:middle;}.x-date-middle .x-btn .x-btn-text {    color:#fff;}.x-date-middle .x-btn-with-menu  .x-btn-center em {    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/toolbar/btn-arrow-light.gif) no-repeat right 0;}.x-date-right, .x-date-left {    width:18px;}.x-date-right{    text-align:right;}.x-date-middle {    padding-top:2px;padding-bottom:2px;}.x-date-right a, .x-date-left a{    display:block;    width:16px;	height:16px;	background-position: center;	background-repeat: no-repeat;	cursor:pointer;    -moz-opacity: 0.6;    opacity:.6;    filter: alpha(opacity=60);}.x-date-right a:hover, .x-date-left a:hover{    -moz-opacity: 1;    opacity:1;    filter: alpha(opacity=100);}.x-date-right a {    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/shared/right-btn.gif);    margin-right:2px;    text-decoration:none !important;}.x-date-left a{	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/shared/left-btn.gif);    margin-left:2px;    text-decoration:none !important;}table.x-date-inner {    width:100%;    table-layout:fixed;}.x-date-inner th {    width:25px;}.x-date-inner th {    background: #dfecfb url(http://develop.storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;    text-align:right !important;	border-bottom: 1px solid #a3bad9;   /* font:normal 10px arial, helvetica,tahoma,sans-serif;*/	color:#233d6d;	cursor:default;    padding:0;    border-collapse:separate;}.x-date-inner th span {    display:block;    padding:2px;    padding-right:7px;}.x-date-inner td {    border: 1px solid #fff;	text-align:right;    padding:0;}.x-date-inner a {    padding:2px 5px;    display:block;  /* font:normal 11px arial, helvetica,tahoma,sans-serif;*/	text-decoration:none;    color:black;    text-align:right;    zoom:1;}.x-date-inner .x-date-active{	cursor:pointer;	color:black;}.x-date-inner .x-date-selected a{	background: #dfecfb url(http://develop.storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;	border:1px solid #8db2e3;   padding:1px 4px;}.x-date-inner .x-date-today a{	border: 1px solid darkred;    padding:1px 4px;}.x-date-inner .x-date-selected span{    font-weight:bold;}.x-date-inner .x-date-prevday a,.x-date-inner .x-date-nextday a {	color:#aaaaaa;    text-decoration:none !important;}.x-date-bottom {    padding:4px;    border-top: 1px solid #a3bad9;    background: #dfecfb url(http://develop.storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;}.x-date-inner a:hover, .x-date-inner .x-date-disabled a:hover{    text-decoration:none !important;    color:black;    background: #ddecfe;}.x-date-inner .x-date-disabled a {	cursor:default;	background:#eeeeee;	color:#bbbbbb;}.x-date-mmenu{    background:#eeeeee !important;}.x-date-mmenu .x-menu-item {	font-size:10px;	padding:1px 24px 1px 4px;	white-space: nowrap;	color:#000;}.x-date-mmenu .x-menu-item .x-menu-item-icon {    width:10px;height:10px;margin-right:5px;    background-position:center -4px !important;}.x-date-mp {	position:absolute;	left:0;	top:0;	background:white;	display:none;}.x-date-mp td {    padding:2px;	/* font:normal 11px arial, helvetica,tahoma,sans-serif;*/}td.x-date-mp-month,td.x-date-mp-year,td.x-date-mp-ybtn {   border: 0 none;	text-align:center;	vertical-align: middle;	width:25%;}.x-date-mp-ok {	margin-right:3px;}.x-date-mp-btns button {	text-decoration:none;	text-align:center;	text-decoration:none !important;	background:#083772;	color:white;	border:1px solid;	border-color: #3366cc #000055 #000055 #3366cc;	padding:1px 3px 1px;	/* font:normal 11px arial, helvetica,tahoma,sans-serif;*/	cursor:pointer;}.x-date-mp-btns {	background: #dfecfb url(http://develop.storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;}.x-date-mp-btns td {	border-top: 1px solid #c5d2df;   text-align:center;}td.x-date-mp-month a,td.x-date-mp-year a {	display:block;	padding:2px 4px;	text-decoration:none;	text-align:center;	color:#15428b;}td.x-date-mp-month a:hover,td.x-date-mp-year a:hover {	color:#15428b;	text-decoration:none;	cursor:pointer;	background: #ddecfe;}td.x-date-mp-sel a {	padding:1px 3px;	background: #dfecfb url(http://develop.storebaby.it/js/extjs/resources/images/default/shared/glass-bg.gif) repeat-x left top;	border:1px solid #8db2e3;}.x-date-mp-ybtn a {    overflow:hidden;    width:15px;    height:15px;    cursor:pointer;    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/tool-sprites.gif) no-repeat;    display:block;    margin:0 auto;}.x-date-mp-ybtn a.x-date-mp-next {    background-position:0 -120px;}.x-date-mp-ybtn a.x-date-mp-next:hover {    background-position:-15px -120px;}.x-date-mp-ybtn a.x-date-mp-prev {    background-position:0 -105px;}.x-date-mp-ybtn a.x-date-mp-prev:hover {    background-position:-15px -105px;}.x-date-mp-ybtn {   text-align:center;}td.x-date-mp-sep {   border-right:1px solid #c5d2df;}.x-menu {
 	border:1px solid #718bb7;
     z-index: 15000;
-	background: #fff url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/menu/menu.gif) repeat-y;
+	background: #fff url(http://develop.storebaby.it/js/extjs/resources/images/default/menu/menu.gif) repeat-y;
 }
 .ext-ie .x-menu {
     zoom:1;
@@ -2288,7 +2288,7 @@ body.x-body-masked .x-dlg select {
 	padding:1px;
 }
 .x-menu-item-arrow{
-	background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/menu/menu-parent.gif) no-repeat right;
+	background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/menu/menu-parent.gif) no-repeat right;
 }
 .x-menu-sep {
 	display:block;
@@ -2333,18 +2333,18 @@ body.x-body-masked .x-dlg select {
 }
 
 .x-menu-check-item .x-menu-item-icon{
-	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/menu/unchecked.gif) no-repeat center;
+	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/menu/unchecked.gif) no-repeat center;
 }
 
 .x-menu-item-checked .x-menu-item-icon{
-	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/menu/checked.gif);
+	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/menu/checked.gif);
 }
 .x-menu-group-item .x-menu-item-icon{
 	background: transparent;
 }
 
 .x-menu-item-checked .x-menu-group-item .x-menu-item-icon{
-    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/menu/group-checked.gif) no-repeat center;
+    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/menu/group-checked.gif) no-repeat center;
 }
 
 .x-menu-plain {
@@ -2370,12 +2370,12 @@ body.x-body-masked .x-dlg select {
 .x-date-menu {
    padding:0 !important;
 }
-.x-box-tl {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/corners.gif) no-repeat 0 0;    zoom:1;}.x-box-tc {	height: 8px;	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/tb.gif) repeat-x 0 0;	overflow: hidden;}.x-box-tr {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/corners.gif) no-repeat right -8px;}.x-box-ml {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/l.gif) repeat-y 0;	padding-left: 4px;	overflow: hidden;    zoom:1;}.x-box-mc {	background: #eee url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/tb.gif) repeat-x 0 -16px;	padding: 4px 10px;	/*font-family: "Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;	*/color: #393939;	font-size: 12px;}.x-box-mc h3 {	font-size: 14px;	font-weight: bold;	margin: 0 0 4 0;    zoom:1;}.x-box-mr {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/r.gif) repeat-y right;	padding-right: 4px;	overflow: hidden;}.x-box-bl {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/corners.gif) no-repeat 0 -16px;    zoom:1;}.x-box-bc {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/tb.gif) repeat-x 0 -8px;	height: 8px;	overflow: hidden;}.x-box-br {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/corners.gif) no-repeat right -24px;}.x-box-tl, .x-box-bl {	padding-left: 8px;	overflow: hidden;}.x-box-tr, .x-box-br {	padding-right: 8px;	overflow: hidden;}.x-box-blue .x-box-bl, .x-box-blue .x-box-br, .x-box-blue .x-box-tl, .x-box-blue .x-box-tr {	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/corners-blue.gif);}.x-box-blue .x-box-bc, .x-box-blue .x-box-mc, .x-box-blue .x-box-tc {	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/tb-blue.gif);}.x-box-blue .x-box-mc {	background-color: #c3daf9;}.x-box-blue .x-box-mc h3 {	color: #17385b;}.x-box-blue .x-box-ml {	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/l-blue.gif);}.x-box-blue .x-box-mr {	background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/r-blue.gif);}#x-debug-browser .x-tree .x-tree-node a span {    color:#222297;    font-size:12px;    padding-top:2px;   /* font-family:"courier","courier new"; */   line-height:18px;}#x-debug-browser .x-tree a i {    color:#FF4545;    font-style:normal;}#x-debug-browser .x-tree a em {    color:#999;}#x-debug-browser .x-tree .x-tree-node .x-tree-selected a span{    background:#c3daf9;}#x-debug-browser pre, .x-debug-browser pre xmp {   /*  font:normal 11px tahoma, arial, helvetica, sans-serif !important ;*/    white-space: -moz-pre-wrap;    white-space: -pre-wrap;    white-space: -o-pre-wrap;    word-wrap: break-word;}#x-debug-browser pre {    display:block;    padding:5px !important;    border-bottom:1px solid #eeeeee !important;}#x-debug-browser pre xmp {    padding:0 !important;    margin:0 !important;}#x-debug-console .x-layout-panel-center, #x-debug-inspector .x-layout-panel-center {      border-right:1px solid #98c0f4;}#x-debug-console textarea {    border: 0 none;    font-size:12px;  /*  font-family:"courier","courier new";  */  padding-top:4px;    padding-left:4px;}.x-debug-frame {    background:#eeeeee;    border:1px dashed #aaaaaa;}.x-combo-list {    border:1px solid #98c0f4;    background:#ddecfe;    zoom:1;    overflow:hidden;}.x-combo-list-inner {    overflow:auto;    background:white;    position:relative;     zoom:1;    overflow-x:hidden;}.x-combo-list-hd {  /*  font:bold 11px tahoma, arial, helvetica, sans-serif;  */  color:#15428b;    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/layout/panel-title-light-bg.gif);    border-bottom:1px solid #98c0f4;    padding:3px;}.x-resizable-pinned .x-combo-list-inner {    border-bottom:1px solid #98c0f4;}.x-combo-list-item {  /*  font:normal 12px tahoma, arial, helvetica, sans-serif;  */  padding:2px;    border:1px solid #fff;    white-space: nowrap;    overflow:hidden;    text-overflow: ellipsis;}.x-combo-list .x-combo-selected{	background-color: #c3daf9 !important;    cursor:pointer;    border:1px solid #336699;}.x-combo-noedit{    cursor:pointer;}.x-panel-header {    overflow:hidden;    zoom:1;    color:#15428b;	/* font:bold 11px tahoma,arial,verdana,sans-serif; */   padding:5px 3px 4px 5px;    border:1px solid #99bbe8;    background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-top-bottom.gif) repeat-x 0 -1px;}.x-panel-body {    border:1px solid #99bbe8;    border-top:0 none;    overflow:hidden;    background:white;}.x-panel-body-noheader {    border-top:1px solid #99bbe8;}.x-panel-header {    overflow:hidden;    zoom:1;}.x-panel-tl .x-panel-header {    color:#15428b;	/* font:bold 11px tahoma,arial,verdana,sans-serif; */   padding:5px 0 4px 0;    border:0 none;    background:transparent;}.x-panel-tl .x-panel-icon, .x-window-tl .x-panel-icon {    padding-left:20px !important;    background-repeat:no-repeat;    background-position:0 4px;    zoom:1;}.x-panel-inline-icon {    width:16px;	 height:16px;    background-repeat:no-repeat;    background-position:0 0;	 vertical-align:middle;	 margin-right:4px;	 margin-top:-1px;	 margin-bottom:-1px;}.x-panel-tc {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-top-bottom.gif) repeat-x 0 0;	overflow:hidden;}.x-panel-tl {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-corners-sprite.gif) no-repeat 0 0;	padding-left:6px;    zoom:1;    border-bottom:1px solid #99bbe8;}.x-panel-tr {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-corners-sprite.gif) no-repeat right 0;	padding-right:6px;}.x-panel-bc {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-top-bottom.gif) repeat-x 0 bottom;    zoom:1;}.x-panel-bc .x-panel-footer {    padding-bottom:1px;    zoom:1;}.x-panel-nofooter .x-panel-bc {	height:1px;}.x-panel-bl {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-corners-sprite.gif) no-repeat 0 bottom;	padding-left:1px;    zoom:1;}.x-panel-br {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-corners-sprite.gif) no-repeat right bottom;	padding-right:1px;    zoom:1;}.x-panel-mc {    border:0 none;    padding:0;    margin:0; /*   font: normal 11px tahoma,arial,helvetica,sans-serif; */   background:white;}.x-panel-mc .x-panel-body {    background:transparent;    border:0 none;}.x-panel-ml {	background: #fff url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-left-right.gif) repeat-y 0 0;	padding-left:1px;    zoom:1;}.x-panel-mr {	background: transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/white-left-right.gif) repeat-y right 0;	padding-right:1px;    zoom:1;}.x-panel-blue .x-panel-tl, .x-panel-blue .x-panel-tr, .x-panel-blue .x-panel-bl, .x-panel-blue .x-panel-br {    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/corners-sprite.gif);}.x-panel-blue .x-panel-tc, .x-panel-blue .x-panel-bc {    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/top-bottom.gif);}.x-panel-blue .x-panel-ml, .x-panel-blue .x-panel-mr {	background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/left-right.gif);}.x-panel-blue .x-panel-mc{    padding-top:6px;    background:#dfe8f6;}.x-panel-blue .x-panel-tl {	padding-left:6px;}.x-panel-blue .x-panel-tr {	padding-right:6px;}.x-panel-blue .x-panel-bc .x-panel-footer {    padding-bottom:6px;}.x-panel-blue .x-panel-nofooter .x-panel-bc {	height:6px;}.x-panel-blue .x-panel-bl {	padding-left:6px;}.x-panel-blue .x-panel-br {	padding-right:6px;}.x-panel-blue .x-panel-ml {	padding-left:6px;}.x-panel-blue .x-panel-mr {	padding-right:6px;}.x-panel-bwrap {    overflow:hidden;}.x-panel-body {    overflow:hidden;}.x-panel-collapsed .x-resizable-handle{    display:none;}.x-tool {    overflow:hidden;    width:15px;    height:15px;    float:right;    cursor:pointer;    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/panel/tool-sprites.gif) no-repeat;    margin-left:2px;}.x-tool-toggle {    background-position:0 -60px;}.x-tool-toggle-over {    background-position:-15px -60px;}.x-panel-collapsed .x-tool-toggle {    background-position:0 -75px;}.x-panel-collapsed .x-tool-toggle-over {    background-position:-15px -75px;}.x-tool-close {    background-position:0 -0;}.x-tool-close-over {    background-position:-15px 0;}.x-tool-minimize {    background-position:0 -15px;}.x-tool-minimize-over {    background-position:-15px -15px;}.x-tool-maximize {    background-position:0 -30px;}.x-tool-maximize-over {    background-position:-15px -30px;}.x-tool-restore {    background-position:0 -45px;}.x-tool-restore-over {    background-position:-15px -45px;}.x-tool-gear {    background-position:0 -90px;}.x-tool-gear-over {    background-position:-15px -90px;}.x-tool-pin {    background-position:0 -135px;}.x-tool-pin-over {    background-position:-15px -135px;}.x-tool-unpin {    background-position:0 -150px;}.x-tool-unpin-over {    background-position:-15px -150px;}.x-tool-right {    background-position:0 -165px;}.x-tool-right-over {    background-position:-15px -165px;}.x-tool-left {    background-position:0 -180px;}.x-tool-left-over {    background-position:-15px -180px;}.x-tool-up {    background-position:0 -210px;}.x-tool-up-over {    background-position:-15px -210px;}.x-tool-down {    background-position:0 -195px;}.x-tool-down-over {    background-position:-15px -195px;}.x-tool-refresh {    background-position:0 -225px;}.x-tool-refresh-over {    background-position:-15px -225px;}.x-panel-ghost {    background:#cbddf3;    z-index:12000;    overflow:hidden;    position:absolute;    left:0;top:0;    opacity:.65;    -moz-opacity:.65;    filter:alpha(opacity=65);}.x-panel-ghost ul {    margin:0;    padding:0;    overflow:hidden;    font-size:0;    line-height:0;    border:1px solid #84a0c4;    border-top:0 none;    display:block;}.x-panel-ghost * {    cursor:move !important;}.x-panel-btns-ct {    padding:5px;}.x-panel-btns-ct .x-btn{	float:right;	clear:none;}.x-panel-btns-ct .x-panel-btns td {	border:0;	padding:0;}.x-panel-btns-ct .x-panel-btns-right table{	float:right;	clear:none;}.x-panel-btns-ct .x-panel-btns-left table{	float:left;	clear:none;}.x-panel-btns-ct .x-panel-btns-center{	text-align:center; }.x-panel-btns-ct .x-panel-btns-center table{	margin:0 auto; }.x-panel-btns-ct table td.x-panel-btn-td{	padding:3px;}.x-panel-btns-ct .x-btn-focus .x-btn-left{	background-position:0 -147px;}.x-panel-btns-ct .x-btn-focus .x-btn-right{	background-position:0 -168px;}.x-panel-btns-ct .x-btn-focus .x-btn-center{	background-position:0 -189px;}.x-panel-btns-ct .x-btn-over .x-btn-left{	background-position:0 -63px;}.x-panel-btns-ct .x-btn-over .x-btn-right{	background-position:0 -84px;}.x-panel-btns-ct .x-btn-over .x-btn-center{	background-position:0 -105px;}.x-panel-btns-ct .x-btn-click .x-btn-center{	background-position:0 -126px;}.x-panel-btns-ct .x-btn-click  .x-btn-right{	background-position:0 -84px;}.x-panel-btns-ct .x-btn-click .x-btn-left{	background-position:0 -63px;}.x-html-editor-wrap {
+.x-box-tl {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/box/corners.gif) no-repeat 0 0;    zoom:1;}.x-box-tc {	height: 8px;	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/box/tb.gif) repeat-x 0 0;	overflow: hidden;}.x-box-tr {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/box/corners.gif) no-repeat right -8px;}.x-box-ml {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/box/l.gif) repeat-y 0;	padding-left: 4px;	overflow: hidden;    zoom:1;}.x-box-mc {	background: #eee url(http://develop.storebaby.it/js/extjs/resources/images/default/box/tb.gif) repeat-x 0 -16px;	padding: 4px 10px;	/*font-family: "Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;	*/color: #393939;	font-size: 12px;}.x-box-mc h3 {	font-size: 14px;	font-weight: bold;	margin: 0 0 4 0;    zoom:1;}.x-box-mr {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/box/r.gif) repeat-y right;	padding-right: 4px;	overflow: hidden;}.x-box-bl {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/box/corners.gif) no-repeat 0 -16px;    zoom:1;}.x-box-bc {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/box/tb.gif) repeat-x 0 -8px;	height: 8px;	overflow: hidden;}.x-box-br {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/box/corners.gif) no-repeat right -24px;}.x-box-tl, .x-box-bl {	padding-left: 8px;	overflow: hidden;}.x-box-tr, .x-box-br {	padding-right: 8px;	overflow: hidden;}.x-box-blue .x-box-bl, .x-box-blue .x-box-br, .x-box-blue .x-box-tl, .x-box-blue .x-box-tr {	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/box/corners-blue.gif);}.x-box-blue .x-box-bc, .x-box-blue .x-box-mc, .x-box-blue .x-box-tc {	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/box/tb-blue.gif);}.x-box-blue .x-box-mc {	background-color: #c3daf9;}.x-box-blue .x-box-mc h3 {	color: #17385b;}.x-box-blue .x-box-ml {	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/box/l-blue.gif);}.x-box-blue .x-box-mr {	background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/box/r-blue.gif);}#x-debug-browser .x-tree .x-tree-node a span {    color:#222297;    font-size:12px;    padding-top:2px;   /* font-family:"courier","courier new"; */   line-height:18px;}#x-debug-browser .x-tree a i {    color:#FF4545;    font-style:normal;}#x-debug-browser .x-tree a em {    color:#999;}#x-debug-browser .x-tree .x-tree-node .x-tree-selected a span{    background:#c3daf9;}#x-debug-browser pre, .x-debug-browser pre xmp {   /*  font:normal 11px tahoma, arial, helvetica, sans-serif !important ;*/    white-space: -moz-pre-wrap;    white-space: -pre-wrap;    white-space: -o-pre-wrap;    word-wrap: break-word;}#x-debug-browser pre {    display:block;    padding:5px !important;    border-bottom:1px solid #eeeeee !important;}#x-debug-browser pre xmp {    padding:0 !important;    margin:0 !important;}#x-debug-console .x-layout-panel-center, #x-debug-inspector .x-layout-panel-center {      border-right:1px solid #98c0f4;}#x-debug-console textarea {    border: 0 none;    font-size:12px;  /*  font-family:"courier","courier new";  */  padding-top:4px;    padding-left:4px;}.x-debug-frame {    background:#eeeeee;    border:1px dashed #aaaaaa;}.x-combo-list {    border:1px solid #98c0f4;    background:#ddecfe;    zoom:1;    overflow:hidden;}.x-combo-list-inner {    overflow:auto;    background:white;    position:relative;     zoom:1;    overflow-x:hidden;}.x-combo-list-hd {  /*  font:bold 11px tahoma, arial, helvetica, sans-serif;  */  color:#15428b;    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/default/layout/panel-title-light-bg.gif);    border-bottom:1px solid #98c0f4;    padding:3px;}.x-resizable-pinned .x-combo-list-inner {    border-bottom:1px solid #98c0f4;}.x-combo-list-item {  /*  font:normal 12px tahoma, arial, helvetica, sans-serif;  */  padding:2px;    border:1px solid #fff;    white-space: nowrap;    overflow:hidden;    text-overflow: ellipsis;}.x-combo-list .x-combo-selected{	background-color: #c3daf9 !important;    cursor:pointer;    border:1px solid #336699;}.x-combo-noedit{    cursor:pointer;}.x-panel-header {    overflow:hidden;    zoom:1;    color:#15428b;	/* font:bold 11px tahoma,arial,verdana,sans-serif; */   padding:5px 3px 4px 5px;    border:1px solid #99bbe8;    background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-top-bottom.gif) repeat-x 0 -1px;}.x-panel-body {    border:1px solid #99bbe8;    border-top:0 none;    overflow:hidden;    background:white;}.x-panel-body-noheader {    border-top:1px solid #99bbe8;}.x-panel-header {    overflow:hidden;    zoom:1;}.x-panel-tl .x-panel-header {    color:#15428b;	/* font:bold 11px tahoma,arial,verdana,sans-serif; */   padding:5px 0 4px 0;    border:0 none;    background:transparent;}.x-panel-tl .x-panel-icon, .x-window-tl .x-panel-icon {    padding-left:20px !important;    background-repeat:no-repeat;    background-position:0 4px;    zoom:1;}.x-panel-inline-icon {    width:16px;	 height:16px;    background-repeat:no-repeat;    background-position:0 0;	 vertical-align:middle;	 margin-right:4px;	 margin-top:-1px;	 margin-bottom:-1px;}.x-panel-tc {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-top-bottom.gif) repeat-x 0 0;	overflow:hidden;}.x-panel-tl {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-corners-sprite.gif) no-repeat 0 0;	padding-left:6px;    zoom:1;    border-bottom:1px solid #99bbe8;}.x-panel-tr {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-corners-sprite.gif) no-repeat right 0;	padding-right:6px;}.x-panel-bc {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-top-bottom.gif) repeat-x 0 bottom;    zoom:1;}.x-panel-bc .x-panel-footer {    padding-bottom:1px;    zoom:1;}.x-panel-nofooter .x-panel-bc {	height:1px;}.x-panel-bl {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-corners-sprite.gif) no-repeat 0 bottom;	padding-left:1px;    zoom:1;}.x-panel-br {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-corners-sprite.gif) no-repeat right bottom;	padding-right:1px;    zoom:1;}.x-panel-mc {    border:0 none;    padding:0;    margin:0; /*   font: normal 11px tahoma,arial,helvetica,sans-serif; */   background:white;}.x-panel-mc .x-panel-body {    background:transparent;    border:0 none;}.x-panel-ml {	background: #fff url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-left-right.gif) repeat-y 0 0;	padding-left:1px;    zoom:1;}.x-panel-mr {	background: transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/white-left-right.gif) repeat-y right 0;	padding-right:1px;    zoom:1;}.x-panel-blue .x-panel-tl, .x-panel-blue .x-panel-tr, .x-panel-blue .x-panel-bl, .x-panel-blue .x-panel-br {    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/corners-sprite.gif);}.x-panel-blue .x-panel-tc, .x-panel-blue .x-panel-bc {    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/top-bottom.gif);}.x-panel-blue .x-panel-ml, .x-panel-blue .x-panel-mr {	background-image:url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/left-right.gif);}.x-panel-blue .x-panel-mc{    padding-top:6px;    background:#dfe8f6;}.x-panel-blue .x-panel-tl {	padding-left:6px;}.x-panel-blue .x-panel-tr {	padding-right:6px;}.x-panel-blue .x-panel-bc .x-panel-footer {    padding-bottom:6px;}.x-panel-blue .x-panel-nofooter .x-panel-bc {	height:6px;}.x-panel-blue .x-panel-bl {	padding-left:6px;}.x-panel-blue .x-panel-br {	padding-right:6px;}.x-panel-blue .x-panel-ml {	padding-left:6px;}.x-panel-blue .x-panel-mr {	padding-right:6px;}.x-panel-bwrap {    overflow:hidden;}.x-panel-body {    overflow:hidden;}.x-panel-collapsed .x-resizable-handle{    display:none;}.x-tool {    overflow:hidden;    width:15px;    height:15px;    float:right;    cursor:pointer;    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/panel/tool-sprites.gif) no-repeat;    margin-left:2px;}.x-tool-toggle {    background-position:0 -60px;}.x-tool-toggle-over {    background-position:-15px -60px;}.x-panel-collapsed .x-tool-toggle {    background-position:0 -75px;}.x-panel-collapsed .x-tool-toggle-over {    background-position:-15px -75px;}.x-tool-close {    background-position:0 -0;}.x-tool-close-over {    background-position:-15px 0;}.x-tool-minimize {    background-position:0 -15px;}.x-tool-minimize-over {    background-position:-15px -15px;}.x-tool-maximize {    background-position:0 -30px;}.x-tool-maximize-over {    background-position:-15px -30px;}.x-tool-restore {    background-position:0 -45px;}.x-tool-restore-over {    background-position:-15px -45px;}.x-tool-gear {    background-position:0 -90px;}.x-tool-gear-over {    background-position:-15px -90px;}.x-tool-pin {    background-position:0 -135px;}.x-tool-pin-over {    background-position:-15px -135px;}.x-tool-unpin {    background-position:0 -150px;}.x-tool-unpin-over {    background-position:-15px -150px;}.x-tool-right {    background-position:0 -165px;}.x-tool-right-over {    background-position:-15px -165px;}.x-tool-left {    background-position:0 -180px;}.x-tool-left-over {    background-position:-15px -180px;}.x-tool-up {    background-position:0 -210px;}.x-tool-up-over {    background-position:-15px -210px;}.x-tool-down {    background-position:0 -195px;}.x-tool-down-over {    background-position:-15px -195px;}.x-tool-refresh {    background-position:0 -225px;}.x-tool-refresh-over {    background-position:-15px -225px;}.x-panel-ghost {    background:#cbddf3;    z-index:12000;    overflow:hidden;    position:absolute;    left:0;top:0;    opacity:.65;    -moz-opacity:.65;    filter:alpha(opacity=65);}.x-panel-ghost ul {    margin:0;    padding:0;    overflow:hidden;    font-size:0;    line-height:0;    border:1px solid #84a0c4;    border-top:0 none;    display:block;}.x-panel-ghost * {    cursor:move !important;}.x-panel-btns-ct {    padding:5px;}.x-panel-btns-ct .x-btn{	float:right;	clear:none;}.x-panel-btns-ct .x-panel-btns td {	border:0;	padding:0;}.x-panel-btns-ct .x-panel-btns-right table{	float:right;	clear:none;}.x-panel-btns-ct .x-panel-btns-left table{	float:left;	clear:none;}.x-panel-btns-ct .x-panel-btns-center{	text-align:center; }.x-panel-btns-ct .x-panel-btns-center table{	margin:0 auto; }.x-panel-btns-ct table td.x-panel-btn-td{	padding:3px;}.x-panel-btns-ct .x-btn-focus .x-btn-left{	background-position:0 -147px;}.x-panel-btns-ct .x-btn-focus .x-btn-right{	background-position:0 -168px;}.x-panel-btns-ct .x-btn-focus .x-btn-center{	background-position:0 -189px;}.x-panel-btns-ct .x-btn-over .x-btn-left{	background-position:0 -63px;}.x-panel-btns-ct .x-btn-over .x-btn-right{	background-position:0 -84px;}.x-panel-btns-ct .x-btn-over .x-btn-center{	background-position:0 -105px;}.x-panel-btns-ct .x-btn-click .x-btn-center{	background-position:0 -126px;}.x-panel-btns-ct .x-btn-click  .x-btn-right{	background-position:0 -84px;}.x-panel-btns-ct .x-btn-click .x-btn-left{	background-position:0 -63px;}.x-html-editor-wrap {
     border:1px solid #a9bfd3;
     background:white;
 }
 .x-html-editor-tb .x-btn-text {
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/editor/tb-sprite.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/editor/tb-sprite.gif) no-repeat;
 }
 .x-html-editor-tb .x-edit-bold .x-btn-text {
     background-position:0 0;
@@ -2435,7 +2435,7 @@ body.x-body-masked .x-dlg select {
     left:45%;
     top:35%;
     border:3px solid #dfd7ba;
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/loading_bg.gif) no-repeat #eae2ca;
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/magento/loading_bg.gif) no-repeat #eae2ca;
     padding:85px 15px 15px 15px;
     font-size:14px;
         font-weight:bold;;
@@ -2448,7 +2448,7 @@ body.x-body-masked .x-dlg select {
 
 .ext-el-mask-msg {
     border:1px solid #aaa;
-    background: #ddd url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/box/tb.gif) repeat-x 0 -16px;
+    background: #ddd url(http://develop.storebaby.it/js/extjs/resources/images/default/box/tb.gif) repeat-x 0 -16px;
 }
 .ext-el-mask-msg div {
     border:1px solid #ccc;
@@ -2459,13 +2459,13 @@ body.x-body-masked .x-dlg select {
  */
  .x-tree-node { font-weight:normal; font-size:12px; list-style-type:none;}
 .x-tree-node-collapsed .x-tree-node-icon{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/folder.gif) no-repeat 0 50%;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/folder.gif) no-repeat 0 50%;
 }
 .x-tree-node-expanded .x-tree-node-icon {
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/folder-open.gif) no-repeat 0 50%;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/folder-open.gif) no-repeat 0 50%;
 }
 .x-tree-node-leaf .x-tree-node-icon{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/leaf.gif) no-repeat 0 50%;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/leaf.gif) no-repeat 0 50%;
 }
 
 .x-tree-noicon .x-tree-node-icon{
@@ -2473,7 +2473,7 @@ body.x-body-masked .x-dlg select {
 }
 
 .x-tree-node-loading .x-tree-node-icon{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/default/grid/loading.gif) !important;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/default/grid/loading.gif) !important;
 }
 .x-tree-node-loading a span{
      font-style: italic;
@@ -2482,25 +2482,25 @@ body.x-body-masked .x-dlg select {
 .x-tree-node .x-tree-selected a span { background:#f5d6c7; color:#000; }
 
 .x-tree-lines .x-tree-elbow{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow.gif) no-repeat ;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow.gif) no-repeat ;
 }
 .x-tree-lines .x-tree-elbow-plus{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-plus.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-plus.gif) no-repeat;
 }
 .x-tree-lines .x-tree-elbow-minus{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-minus.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-minus.gif) no-repeat;
 }
 .x-tree-lines .x-tree-elbow-end{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-end.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-end.gif) no-repeat;
 }
 .x-tree-lines .x-tree-elbow-end-plus{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-end-plus.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-end-plus.gif) no-repeat;
 }
 .x-tree-lines .x-tree-elbow-end-minus{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-end-minus.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-end-minus.gif) no-repeat;
 }
 .x-tree-lines .x-tree-elbow-line{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-line.gif);
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-line.gif);
 }
 
 
@@ -2508,19 +2508,19 @@ body.x-body-masked .x-dlg select {
     background:transparent;
 }
 .x-tree-no-lines .x-tree-elbow-plus{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-plus-nl.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-plus-nl.gif) no-repeat;
 }
 .x-tree-no-lines .x-tree-elbow-minus{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-minus-nl.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-minus-nl.gif) no-repeat;
 }
 .x-tree-no-lines .x-tree-elbow-end{
     background:transparent;
 }
 .x-tree-no-lines .x-tree-elbow-end-plus{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-end-plus-nl.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-end-plus-nl.gif) no-repeat;
 }
 .x-tree-no-lines .x-tree-elbow-end-minus{
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tree/elbow-end-minus-nl.gif) no-repeat;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/tree/elbow-end-minus-nl.gif) no-repeat;
 }
 .x-tree-no-lines .x-tree-elbow-line{
     background:transparent;
@@ -2536,7 +2536,7 @@ body.x-body-masked .x-dlg select {
     background:#faf9f4;
 }
 .x-menu-item-arrow{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/menu/menu-parent.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/menu/menu-parent.gif);
 }
 .x-menu-item-icon { width:1px; height:5px; margin-right:5px; }
 .x-menu-item {
@@ -2581,7 +2581,7 @@ body.x-body-masked .x-dlg select {
     top:1px;
     width:6px;
     height:22px; 
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/grid/grid-split.gif) no-repeat 2px 0;
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/magento/grid/grid-split.gif) no-repeat 2px 0;
 }
 
 .x-grid-col {
@@ -2597,7 +2597,7 @@ body.x-body-masked .x-dlg select {
 .x-grid-row-selected td, .x-grid-locked .x-grid-row-selected td {background:#f5d6c7 !important; }
 .x-grid-row-selected span, .x-grid-row-selected b, .x-grid-row-selected div, .x-grid-row-selected strong, .x-grid-row-selected i { color:#000 !important; }
 
-.x-grid-body { background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/grid/grid-body-bg.gif) repeat; border-bottom:1px solid #c2b483; }
+.x-grid-body { background:url(http://develop.storebaby.it/js/extjs/resources/images/magento/grid/grid-body-bg.gif) repeat; border-bottom:1px solid #c2b483; }
 .x-grid-locked .x-grid-body td {
     background: #f0efe4;
     border-right: 1px solid #D6D2C2;
@@ -2623,7 +2623,7 @@ body.x-body-masked .x-dlg select {
 
 
 .x-grid-locked td.x-grid-row-marker, .x-grid-locked .x-grid-row-selected td.x-grid-row-marker{
-    background: #ebeadb url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/grid/grid-hrow.gif) repeat-x 0 bottom !important;
+    background: #ebeadb url(http://develop.storebaby.it/js/extjs/resources/images/gray/grid/grid-hrow.gif) repeat-x 0 bottom !important;
     vertical-align:middle !important;
     color:black;
     padding:0;
@@ -2642,7 +2642,7 @@ body.x-body-masked .x-dlg select {
 * Basic-Dialog 
 */
 .x-dlg-proxy {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/layout/gradient-bg.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/layout/gradient-bg.gif);
     background-color:#EAE8D5;
     border:1px solid #b3b6b0;
 }
@@ -2650,17 +2650,17 @@ body.x-body-masked .x-dlg select {
     background:#aaaaaa;
 }
 .x-dlg-proxy .tabset{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/layout/gradient-bg.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/layout/gradient-bg.gif);
 }
 .x-dlg .x-dlg-hd {
-    background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/hd-sprite.gif) repeat-x 0 -82px;
+    background: url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/hd-sprite.gif) repeat-x 0 -82px;
     background-color:#511c01;
 }
 .x-dlg .x-dlg-hd-left {
-    background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/hd-sprite.gif) no-repeat 0 -41px;
+    background: url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/hd-sprite.gif) no-repeat 0 -41px;
 }
 .x-dlg .x-dlg-hd-right {
-    background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/hd-sprite.gif) no-repeat right 0;
+    background: url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/hd-sprite.gif) no-repeat right 0;
 }
 .x-dlg .x-dlg-dlg-body{
     background:#faf9f4;
@@ -2685,42 +2685,42 @@ body.x-body-masked .x-dlg select {
 }
 .x-dlg .x-dlg-close, .x-dlg .x-dlg-collapse { width:18px; height:18px; }
 .x-dlg .x-dlg-close {
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/pop_close.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/pop_close.gif);
 }
 .x-dlg .x-dlg-collapse {
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/pop_collapse.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/pop_collapse.gif);
 }
 .x-dlg-collapsed .x-dlg-collapse {
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/expand.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/expand.gif);
 }
 .x-dlg div.x-resizable-handle-east{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/basic-dialog/e-handle.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/basic-dialog/e-handle.gif);
     border:0 none;
 }
 .x-dlg div.x-resizable-handle-south{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/basic-dialog/s-handle.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/basic-dialog/s-handle.gif);
     border:0 none;
 }
 .x-dlg div.x-resizable-handle-west{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/basic-dialog/e-handle.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/basic-dialog/e-handle.gif);
     border:0 none;
 }
 .x-dlg div.x-resizable-handle-southeast{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/basic-dialog/se-handle.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/basic-dialog/se-handle.gif);
     background-position: bottom right;
     width:8px;
     height:8px;
     border:0;
 }
 .x-dlg div.x-resizable-handle-southwest{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/sw-handle-dark.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/sw-handle-dark.gif);
     background-position: top right;
     margin-left:1px;
     margin-bottom:1px;
     border:0;
 }
 .x-dlg div.x-resizable-handle-north{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/s.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/s.gif);
     border:0 none;
 }
 
@@ -2742,25 +2742,25 @@ body.x-body-masked .x-dlg select {
     text-transform:capitalize;
 }
 .x-tabs-top .x-tabs-strip .on .x-tabs-right {
-     background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tabs/tab-sprite.gif) no-repeat right 0;
+     background: url(http://develop.storebaby.it/js/extjs/resources/images/magento/tabs/tab-sprite.gif) no-repeat right 0;
 }
 .x-tabs-top .x-tabs-strip .on .x-tabs-left {
-     background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tabs/tab-sprite.gif) no-repeat 0px -52px;
+     background: url(http://develop.storebaby.it/js/extjs/resources/images/magento/tabs/tab-sprite.gif) no-repeat 0px -52px;
 }
 .x-tabs-top .x-tabs-strip .x-tabs-right {
-     background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tabs/tab-sprite.gif) no-repeat right -26px;
+     background: url(http://develop.storebaby.it/js/extjs/resources/images/magento/tabs/tab-sprite.gif) no-repeat right -26px;
 }
 .x-tabs-top .x-tabs-strip .x-tabs-left {
-     background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/tabs/tab-sprite.gif) no-repeat 0px -78px;
+     background: url(http://develop.storebaby.it/js/extjs/resources/images/magento/tabs/tab-sprite.gif) no-repeat 0px -78px;
 }
 .x-tabs-strip .x-tabs-closable .close-icon{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/layout/tab-close.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/layout/tab-close.gif);
 }
 .x-tabs-strip .on .close-icon{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/layout/tab-close-on.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/layout/tab-close-on.gif);
 }
 .x-tabs-strip .x-tabs-closable .close-over{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/layout/tab-close-on.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/layout/tab-close-on.gif);
 }
 .x-tabs-body {
     border:1px solid #aca899;
@@ -2773,16 +2773,16 @@ body.x-body-masked .x-dlg select {
     border-top:1px solid #aca899;
 }
 .x-tabs-bottom .x-tabs-strip .x-tabs-right {
-     background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/tabs/tab-btm-inactive-right-bg.gif) no-repeat bottom left;
+     background: url(http://develop.storebaby.it/js/extjs/resources/images/gray/tabs/tab-btm-inactive-right-bg.gif) no-repeat bottom left;
 }
 .x-tabs-bottom .x-tabs-strip .x-tabs-left {
-     background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/tabs/tab-btm-inactive-left-bg.gif) no-repeat bottom right;
+     background: url(http://develop.storebaby.it/js/extjs/resources/images/gray/tabs/tab-btm-inactive-left-bg.gif) no-repeat bottom right;
 }
 .x-tabs-bottom .x-tabs-strip .on .x-tabs-right {
-     background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/tabs/tab-btm-right-bg.gif) no-repeat bottom left;
+     background: url(http://develop.storebaby.it/js/extjs/resources/images/gray/tabs/tab-btm-right-bg.gif) no-repeat bottom left;
 }
 .x-tabs-bottom .x-tabs-strip .on .x-tabs-left {
-     background: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/tabs/tab-btm-left-bg.gif) no-repeat bottom right;
+     background: url(http://develop.storebaby.it/js/extjs/resources/images/gray/tabs/tab-btm-left-bg.gif) no-repeat bottom right;
 }
 
 .x-tabs-bottom .x-tabs-body {
@@ -2793,28 +2793,28 @@ body.x-body-masked .x-dlg select {
 /* QuickTips */
 
 .x-tip .x-tip-top {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
 }
 .x-tip .x-tip-top-left {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
 }
 .x-tip .x-tip-top-right {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
 }
 .x-tip .x-tip-ft {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
 }
 .x-tip .x-tip-ft-left {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
 }
 .x-tip .x-tip-ft-right {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
 }
 .x-tip .x-tip-bd-left {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
 }
 .x-tip .x-tip-bd-right {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/qtip/tip-sprite.gif);
 }
 
 /* BorderLayout */
@@ -2853,10 +2853,10 @@ body.x-body-masked .x-dlg select {
     /* font:bold 12px verdana, helvetica, sans-serif; */ }
 
 /* section specific header icons */
-.categories-tree-region .x-layout-panel-hd { background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/layout/icon-catalog.gif); }
-.products-grid-region .x-layout-panel-hd { background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/layout/icon-category.gif); }
-.product-form-region .x-layout-panel-hd { background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/layout/icon-product.gif); }
-.my-tasks-region .x-layout-panel-hd { background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/layout/icon-my-tasks.gif); }
+.categories-tree-region .x-layout-panel-hd { background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/layout/icon-catalog.gif); }
+.products-grid-region .x-layout-panel-hd { background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/layout/icon-category.gif); }
+.product-form-region .x-layout-panel-hd { background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/layout/icon-product.gif); }
+.my-tasks-region .x-layout-panel-hd { background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/layout/icon-my-tasks.gif); }
 
 .x-layout-panel-hd-tools { padding:0; }
 .x-layout-tools-button { padding:0; }
@@ -2866,31 +2866,31 @@ body.x-body-masked .x-dlg select {
         border:0;
         margin:0;
 }
-.x-layout-close { background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/panel_close.gif) no-repeat 0 0; }
-.x-layout-tools-button-over .x-layout-close { background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/panel_close.gif) no-repeat 0 -18px }
+.x-layout-close { background:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/panel_close.gif) no-repeat 0 0; }
+.x-layout-tools-button-over .x-layout-close { background:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/panel_close.gif) no-repeat 0 -18px }
 .x-layout-stick{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/layout/stick.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/layout/stick.gif);
 }
 
-.x-layout-collapse-west,.x-layout-expand-east{ background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/collapse.gif);}
-.x-layout-expand-west,.x-layout-collapse-east{background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/expand.gif);}
-.x-layout-collapse-north,.x-layout-expand-south{ background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/ns-collapse.gif);}
-.x-layout-expand-north,.x-layout-collapse-south{ background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/ns-expand.gif);}
+.x-layout-collapse-west,.x-layout-expand-east{ background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/collapse.gif);}
+.x-layout-expand-west,.x-layout-collapse-east{background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/expand.gif);}
+.x-layout-collapse-north,.x-layout-expand-south{ background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/ns-collapse.gif);}
+.x-layout-expand-north,.x-layout-collapse-south{ background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/ns-expand.gif);}
 
-.x-layout-tools-button-over .x-layout-collapse-west,.x-layout-tools-button-over .x-layout-expand-east{ background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/collapse-on.gif);}
-.x-layout-tools-button-over .x-layout-expand-west,.x-layout-tools-button-over .x-layout-collapse-east{background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/expand-on.gif);}
-.x-layout-tools-button-over .x-layout-collapse-north,.x-layout-tools-button-over .x-layout-expand-south{ background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/ns-collapse-on.gif);}
-.x-layout-tools-button-over .x-layout-expand-north,.x-layout-tools-button-over .x-layout-collapse-south{ background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/basic-dialog/ns-expand-on.gif);}
+.x-layout-tools-button-over .x-layout-collapse-west,.x-layout-tools-button-over .x-layout-expand-east{ background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/collapse-on.gif);}
+.x-layout-tools-button-over .x-layout-expand-west,.x-layout-tools-button-over .x-layout-collapse-east{background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/expand-on.gif);}
+.x-layout-tools-button-over .x-layout-collapse-north,.x-layout-tools-button-over .x-layout-expand-south{ background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/ns-collapse-on.gif);}
+.x-layout-tools-button-over .x-layout-expand-north,.x-layout-tools-button-over .x-layout-collapse-south{ background-image:url(http://develop.storebaby.it/js/extjs/resources/images/magento/basic-dialog/ns-expand-on.gif);}
 
 .x-layout-split-h{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/e-handle-dark.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/e-handle-dark.gif);
 }
 .x-layout-split-v{
-    background-image:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/s-handle-dark.gif);
+    background-image:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/s-handle-dark.gif);
 }
 .x-layout-panel .x-tabs-wrap {
         padding-top:10px;
-        background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/layout/checkered-bg.gif) repeat-x 0 100%;
+        background:url(http://develop.storebaby.it/js/extjs/resources/images/magento/layout/checkered-bg.gif) repeat-x 0 100%;
 }
 .x-layout-container .x-layout-panel-north { border:none;}
 .x-layout-nested-layout .x-layout-panel-north { border-bottom:none; }
@@ -2906,42 +2906,42 @@ body.x-body-masked .x-dlg select {
     border: 2px solid #aca899;
 }
 .x-layout-panel-proxy {
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/layout/gradient-bg.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/layout/gradient-bg.gif);
     background-color:#f3f2e7;
     border:1px dashed #aca899;
 }
 /** Resizable */
 
 .x-resizable-over .x-resizable-handle-east, .x-resizable-pinned .x-resizable-handle-east{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/e-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/e-handle.gif);
      background-position: left;
 }
 .x-resizable-over .x-resizable-handle-east, .x-resizable-pinned .x-resizable-handle-west{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/e-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/e-handle.gif);
      background-position: left;
 }
 .x-resizable-over .x-resizable-handle-south, .x-resizable-pinned .x-resizable-handle-south{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/s-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/s-handle.gif);
     background-position: top;
 }
 .x-resizable-over .x-resizable-handle-south, .x-resizable-pinned .x-resizable-handle-north{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/s-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/s-handle.gif);
     background-position: top;
 }
 .x-resizable-over .x-resizable-handle-southeast, .x-resizable-pinned .x-resizable-handle-southeast{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/se-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/se-handle.gif);
     background-position: top left;
 }
 .x-resizable-over .x-resizable-handle-northwest,.x-resizable-pinned .x-resizable-handle-northwest{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/nw-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/nw-handle.gif);
     background-position:bottom right;
 }
 .x-resizable-over .x-resizable-handle-northeast,.x-resizable-pinned .x-resizable-handle-northeast{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/ne-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/ne-handle.gif);
     background-position: bottom left;
 }
 .x-resizable-over .x-resizable-handle-southwest,.x-resizable-pinned .x-resizable-handle-southwest{
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/sizer/sw-handle.gif);
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/gray/sizer/sw-handle.gif);
     background-position: top right;
 }
 .x-resizable-proxy{
@@ -2950,7 +2950,7 @@ body.x-body-masked .x-dlg select {
 
 /** Toolbar */
 .x-toolbar { 
-    background:url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/toolbar/toolbar-bg.gif) repeat-x #dbeff3;
+    background:url(http://develop.storebaby.it/js/extjs/resources/images/magento/toolbar/toolbar-bg.gif) repeat-x #dbeff3;
     border:none;
     border-top:1px solid #b3d6dc;
     padding:2px 4px;
@@ -2970,22 +2970,22 @@ body.x-body-masked .x-dlg select {
 }
 .x-toolbar .x-btn-menu-arrow-wrap .x-btn-center button {
     width:12px;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/toolbar/btn-arrow.gif) no-repeat 0 50%;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/toolbar/btn-arrow.gif) no-repeat 0 50%;
 }
 .x-btn-with-menu  .x-btn-center em {
     display:block;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/toolbar/btn-arrow.gif) no-repeat right 50%;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/toolbar/btn-arrow.gif) no-repeat right 50%;
         padding-right:10px;
 }
 .x-btn-text-icon .x-btn-with-menu .x-btn-center em {
     display:block;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/toolbar/btn-arrow.gif) no-repeat right 50%;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/toolbar/btn-arrow.gif) no-repeat right 50%;
         padding-right:13px;
 }
 .x-btn-text-icon .x-btn-center .x-btn-text {padding-left:20px; }
 .x-toolbar .x-btn-text-icon .x-btn-menu-arrow-wrap .x-btn-center button {
     width:12px;
-    background:transparent url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/magento/toolbar/btn-arrow.gif) no-repeat 0 50%;
+    background:transparent url(http://develop.storebaby.it/js/extjs/resources/images/magento/toolbar/btn-arrow.gif) no-repeat 0 50%;
 }
 
 /* For top menu only*/
@@ -3019,7 +3019,7 @@ body.x-body-masked .x-dlg select {
 }
 .x-combo-list-hd {
     color:#222;
-    background-image: url(http://127.0.0.1/storebaby.it/js/extjs/resources/images/gray/layout/panel-title-light-bg.gif);
+    background-image: url(http://develop.storebaby.it/js/extjs/resources/images/gray/layout/panel-title-light-bg.gif);
     border-bottom:1px solid #aca899;
 }
 .x-resizable-pinned .x-combo-list-inner {
@@ -3069,58 +3069,58 @@ input.l-tcb {
 .dialog_nw {
 	width: 9px;
 	height: 23px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/top_left.gif) no-repeat 0 0;		
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/top_left.gif) no-repeat 0 0;		
 }
 
 .dialog_n {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/top_mid.gif) repeat-x 0 0;	
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/top_mid.gif) repeat-x 0 0;	
 	height: 23px;
 }
 
 .dialog_ne {
 	width: 9px;
 	height: 23px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/top_right.gif) no-repeat 0 0;		
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/top_right.gif) no-repeat 0 0;		
 }
 
 .dialog_e {
 	width: 2px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/center_right.gif) repeat-y 0 0;	
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/center_right.gif) repeat-y 0 0;	
 }
 
 .dialog_w {
 	width: 2px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/center_left.gif) repeat-y 0 0;		
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/center_left.gif) repeat-y 0 0;		
 }
 
 .dialog_sw {
 	width: 9px;
 	height: 19px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/bottom_left.gif) no-repeat 0 0;			
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/bottom_left.gif) no-repeat 0 0;			
 }
 
 .dialog_s {
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/bottom_mid.gif) repeat-x 0 0;		
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/bottom_mid.gif) repeat-x 0 0;		
 	height: 19px;
 }
 
 .dialog_se {
 	width: 9px;
 	height: 19px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/bottom_right.gif) no-repeat 0 0;			
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/bottom_right.gif) no-repeat 0 0;			
 }
 
 .dialog_sizer {
 	width: 9px;
 	height: 19px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/sizer.gif) no-repeat 0 0;	
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/sizer.gif) no-repeat 0 0;	
 	cursor:se-resize;	
 }
 
 .dialog_close {
 	width: 14px;
 	height: 14px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/close.gif) no-repeat 0 0;			
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/close.gif) no-repeat 0 0;			
 	position:absolute;
 	top:5px;
 	left:8px;
@@ -3131,7 +3131,7 @@ input.l-tcb {
 .dialog_minimize {
 	width: 14px;
 	height: 15px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/minimize.gif) no-repeat 0 0;			
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/minimize.gif) no-repeat 0 0;			
 	position:absolute;
 	top:5px;
 	left:28px;
@@ -3142,7 +3142,7 @@ input.l-tcb {
 .dialog_maximize {
 	width: 14px;
 	height: 15px;
-	background: transparent url(http://127.0.0.1/storebaby.it/js/prototype/windows/themes/default/maximize.gif) no-repeat 0 0;			
+	background: transparent url(http://develop.storebaby.it/js/prototype/windows/themes/default/maximize.gif) no-repeat 0 0;			
 	position:absolute;
 	top:5px;
 	left:49px;

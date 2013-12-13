@@ -21,38 +21,92 @@
 $_categories = $this->getFeaturedCategories();
 $_catNo = 0;
 ?>
+----  static
+<div class="bs-featuredCategories">
+  <div class="bs-row">
+    <!--item 1-->
+    <div class="bs-cat bs-blue">
+      <a href="#" title="Category Name" class="title">
+        <h2>Trio combinabili</h2>
+      </a>
+      <div class="bs-left">
+        <a href="#" title="" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-blue.png), url(<?php echo Mage::registry('themeMediaUrl'); ?>red/85-category_default.jpg);"></a>
+      </div>
+      <div class="bs-right">
+        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/7714-thickbox_default.jpg" title="" alt="" /></a>
+        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/8031-thickbox_default.jpg" title="" alt="" /></a>
+      </div>
+    </div>
+    <!--item 2-->
+    <div class="bs-cat bs-red">
+      <a href="#" title="Category Name" class="title">
+        <h2>ELETRODOMESTICI</h2>
+      </a>
+      <div class="bs-left">
+        <a href="#" title="" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-red.png), url(<?php echo Mage::registry('themeMediaUrl'); ?>red/10.jpg);"></a>
+      </div>
+      <div class="bs-right">
+        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/7714-thickbox_default.jpg" title="" alt="" /></a>
+        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/8031-thickbox_default.jpg" title="" alt="" /></a>
+      </div>
+    </div>
+    <!--item 3-->
+    <div class="bs-cat bs-orange">
+      <a href="#" title="Category Name" class="title">
+        <h2>SCARPINE E ABBIGLIAMENTO NEONATO</h2>
+      </a>
+      <div class="bs-left">
+        <a href="#" title="" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-orange.png),  url(<?php echo Mage::registry('themeMediaUrl'); ?>red/104.jpg);"></a>
+      </div>
+      <div class="bs-right">
+        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/7714-thickbox_default.jpg" title="" alt="" /></a>
+        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/8031-thickbox_default.jpg" title="" alt="" /></a>
+      </div>
+    </div>
+  </div>
+  <!--END bs-row-->
 
+
+  
+
+</div>
+
+end ----  static
 <div class="featured-cat-block">
-	<div class="featured-cat-title"><h2>Featured Categories</h2></div>
-	<div class="featured-cat-content">
-		<?php
+  <div class="featured-cat-content">
+    <?php
 		foreach ( $_categories as $FeaturedGroup ) {
     		if ( isset($FeaturedGroup['Category']) ) {
 		?>
-			<div class="featured-cat <?php if(($_catNo++ % 4) == 3) echo 'featured-cat-right'; ?>">
-				<div class="cat-image">
-					<a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>">
-						<img 
+    <div class="featured-cat <?php if(($_catNo++ % 3) == 2) echo 'featured-cat-right'; ?>">
+      <div class="cat-image">
+        <a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>">
+          <img 
 							src="<?php echo $FeaturedGroup['Category']->getImageUrl(); ?>" 
 							border="0"
 							alt="View <?php echo $FeaturedGroup['Category']->getName() ?>" />
-					</a>
-				</div>
-				<div class="cat-title"><a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>"><?php echo $FeaturedGroup['Category']->getName(); ?></a></div>
-				<ul>
-					<?php
+        </a>
+      </div>
+      <div class="cat-title">
+        <a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>"><?php echo $FeaturedGroup['Category']->getName(); ?></a>
+      </div>
+      <ul>
+        <?php
 					if ( isset($FeaturedGroup['Subcats']) && count($FeaturedGroup['Subcats']) > 0 ) {
 						foreach ( $FeaturedGroup['Subcats'] as $SubCat ) {
 					?>
-						<li><a href="<?php echo $SubCat->getUrl(); ?>"><?php echo $SubCat->getName(); ?></a></li>
-					<?php }} ?>
-					<li><a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>">More...</a></li>
-				</ul>
-			</div>
-		<?php }} ?>
-		<br style="clear:both"/>
-		
-		<script type="text/javascript">
+        <li>
+          <a href="<?php echo $SubCat->getUrl(); ?>"><?php echo $SubCat->getName(); ?></a>
+        </li>
+        <?php }} ?>
+        <li>
+          <a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>">More...</a>
+        </li>
+      </ul>
+    </div>
+    <?php }} ?>
+    <br style="clear:both"/>
+    <script type="text/javascript">
 		<!--
 		//document.observe("dom:loaded", function() {
 		window.onload = function() {
@@ -73,6 +127,5 @@ $_catNo = 0;
 		};
 		-->
 		</script>
-
-	</div>
+  </div>
 </div>
