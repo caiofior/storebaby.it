@@ -89,7 +89,7 @@ end ----  static
       <div class="bs-right">
         <?php foreach ($productIds as $productId) : 
             $product = Mage::getModel('catalog/product')->load($productId); ?>
-        <a href="<?php echo $product->getUrl(); ?>" title="<?php echo $product->getName(); ?>"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/7714-thickbox_default.jpg" title="<?php echo $product->getName(); ?>" alt="<?php echo $product->getName(); ?>" /></a>
+        <a href="<?php echo $product->getUrl(); ?>" title="<?php echo $product->getName(); ?>"><img src="<?php echo Mage::helper('catalog/image')->init($product, 'small_image')->resize(163, 100);; ?>" title="<?php echo $product->getName(); ?>" alt="<?php echo $product->getName(); ?>" /></a>
         <?php endforeach; ?>
       </div>
       <?php endif; ?>

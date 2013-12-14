@@ -164,18 +164,21 @@ class MastroImageColl {
                          ), $pipes);
                     if (is_resource($commandHandle)) {
                         $startProcTime = microtime(true);
-                        while(microtime(true) < $startProcTime + 5)
-                        {
+                        $procStatus = proc_get_status($commandHandle);
+                        while(microtime(true) < $startProcTime + 5 && $procStatus['running']) {
+                            
+                            usleep(10);
                             $procStatus = proc_get_status($commandHandle);
-                            $status .= stream_get_contents($pipes[1]);
-                            if($procStatus['running'])
-                                usleep(100);
-                            else
-                                return true;
                         }
+                        if (microtime(true) > $startProcTime + 5) {
+                            echo 'Long file conversion '.$mastroFile.PHP_EOL;
+                            proc_terminate($commandHandle,9);
+                            posix_kill($procStatus['pid'], 9);
+                        }
+                        proc_close($commandHandle);
                     }
                     else $status = 'error';
-                    proc_terminate($commandHandle);
+                  
                     if (strlen($status) > 0 ) {
                         $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$mastroFile.' '.$status);
                        
