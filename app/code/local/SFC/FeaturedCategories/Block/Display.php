@@ -33,7 +33,7 @@ class SFC_FeaturedCategories_Block_Display extends Mage_Core_Block_Template
                     foreach($rawSubCatId as $subCat) {
                         if (!key_exists($subCat, $categoriesIds))
                                 $categoriesIds[$subCat]=array();
-                        $categoriesIds[$subCat][]=$catId;
+                        $categoriesIds[$subCat][$catId]=$catId;
                     }
                 } 
                 $featuredCategriesIds=$read->fetchCol(
@@ -44,10 +44,10 @@ class SFC_FeaturedCategories_Block_Display extends Mage_Core_Block_Template
                 foreach ($featuredCategriesIds as $featuredCategoryId) {
                     if (key_exists($featuredCategoryId, $categoriesIds)) {
                         $sqlCategoryFilter='';
-                        foreach($categoriesIds[$featuredCategoryId] as $categoryId) 
+                        foreach(array_values($categoriesIds[$featuredCategoryId]) as $categoryId) 
                             $sqlCategoryFilter .= ' OR `category_id` = '.$categoryId;
                         $featuredProducts = $read->fetchCol(
-                        'SELECT `sku` FROM `catalog_product_entity` WHERE'.
+                        'SELECT `entity_id` FROM `catalog_product_entity` WHERE'.
                         '`entity_id` IN (SELECT `product_id` FROM `catalog_category_product` WHERE FALSE  '.
                         $sqlCategoryFilter.') LIMIT 2'
                         );

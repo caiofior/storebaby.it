@@ -17,10 +17,9 @@
  * @copyright  (C)Copyright 2010 StoreFront Consulting, Inc (http://www.StoreFrontConsulting.com/)
  * @author     Adam Lundrigan
  */
-var_dump($this->fastGetFeaturedCategories());
-die();
-$_categories = $this->getFeaturedCategories();
-$_catNo = 0;
+$categories = $this->fastGetFeaturedCategories();
+
+
 ?>
 ----  static
 <div class="bs-featuredCategories">
@@ -66,67 +65,39 @@ $_catNo = 0;
     </div>
   </div>
   <!--END bs-row-->
-
-
-  
-
 </div>
-
 end ----  static
-<div class="featured-cat-block">
-  <div class="featured-cat-content">
-    <?php
-		foreach ( $_categories as $FeaturedGroup ) {
-    		if ( isset($FeaturedGroup['Category']) ) {
-		?>
-    <div class="featured-cat <?php if(($_catNo++ % 3) == 2) echo 'featured-cat-right'; ?>">
-      <div class="cat-image">
-        <a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>">
-          <img 
-							src="<?php echo $FeaturedGroup['Category']->getImageUrl(); ?>" 
-							border="0"
-							alt="View <?php echo $FeaturedGroup['Category']->getName() ?>" />
-        </a>
+<?php if (sizeof($categories > 0 )) : ?>
+<div class="bs-featuredCategories">
+  <div class="bs-row">
+  <?php 
+  $categoryCont = 0;
+  foreach ($categories as $categoryId => $productIds) :
+  if ($categoryCont++ % 3  == 0 ) : ?>
+  </div><div class="bs-row">
+  <?php endif;
+  $category = Mage::getModel('catalog/category')->load($categoryId);
+  ?>
+      <div class="bs-cat <?php echo $category->getData('category_color_home'); ?>">
+      <a href="<?php echo $category->getUrl(); ?>" title="<?php echo $category->getName(); ?>" class="title">
+        <h2><?php echo $category->getName(); ?></h2>
+      </a>
+      <div class="bs-left">
+        <a href="<?php echo $category->getUrl(); ?>" title="" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-blue.png), url(<?php echo Mage::registry('themeMediaUrl'); ?>red/85-category_default.jpg);"></a>
       </div>
-      <div class="cat-title">
-        <a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>"><?php echo $FeaturedGroup['Category']->getName(); ?></a>
+      <?php if (is_array($productIds)) : ?>
+      <div class="bs-right">
+        <?php foreach ($productIds as $productId) : 
+            $product = Mage::getModel('catalog/product')->load($productId); ?>
+        <a href="<?php echo $product->getUrl(); ?>" title="<?php echo $product->getName(); ?>"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/7714-thickbox_default.jpg" title="<?php echo $product->getName(); ?>" alt="<?php echo $product->getName(); ?>" /></a>
+        <?php endforeach; ?>
       </div>
-      <ul>
-        <?php
-					if ( isset($FeaturedGroup['Subcats']) && count($FeaturedGroup['Subcats']) > 0 ) {
-						foreach ( $FeaturedGroup['Subcats'] as $SubCat ) {
-					?>
-        <li>
-          <a href="<?php echo $SubCat->getUrl(); ?>"><?php echo $SubCat->getName(); ?></a>
-        </li>
-        <?php }} ?>
-        <li>
-          <a href="<?php echo $FeaturedGroup['Category']->getUrl(); ?>">More...</a>
-        </li>
-      </ul>
+      <?php endif; ?>
     </div>
-    <?php }} ?>
-    <br style="clear:both"/>
-    <script type="text/javascript">
-		<!--
-		//document.observe("dom:loaded", function() {
-		window.onload = function() {
-			var count = 0;
-			var maxHeight = new Array();
-			$$('.featured-cat').each(function(item){
-				if ( maxHeight[Math.floor(count/4)] == undefined ) maxHeight[Math.floor(count/4)] = 0;
-				if ( item.getHeight() > maxHeight[Math.floor(count/4)] )
-					maxHeight[Math.floor(count/4)] = item.getHeight();
-				count++;
-			});
-		
-			count = 0;
-        		$$('.featured-cat').each(function(item){
-                		item.setStyle({height:maxHeight[Math.floor(count/4)] + 'px'});
-                		count++;
-        		});
-		};
-		-->
-		</script>
+  <?php  endforeach; ?>
   </div>
 </div>
+<?php endif; ?>
+
+
+
