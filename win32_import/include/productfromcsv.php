@@ -78,7 +78,8 @@ size NUMERIC,
 md5 TEXT,
 modify_date NUMERIC,
 create_date NUMERIC,
-expire_date NUMERIC
+expire_date NUMERIC,
+corrupted NUMERIC
 );');
         $this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL');
         register_shutdown_function(array($this, 'execOnShutdown'));

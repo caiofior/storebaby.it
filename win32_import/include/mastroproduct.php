@@ -130,5 +130,12 @@ class MastroProduct {
     public function getData() {
         return $this->data;
     }
+     /**
+     * Sets product data
+     * @return array
+     */
+    public function setData($key,$value) {
+        return $this->data[$key]=$value;
+    }
 
 }

@@ -84,13 +84,19 @@ class MastroImageColl {
             ean13=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\',
             descrizione=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['DESCRIZIONE']).'\',
             vendita=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['VENDITA']).'\',
-            image=\''.$fileName.'\',
+            image=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($fileName).'\',
             size=\''.filesize($this->mastroProduct->getProductFromCsv()->getConfig('BMP_DIR').DIRECTORY_SEPARATOR.$fileName).'\',
             md5=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString(md5(serialize($data))).'\',
             expire_date=NULL,
             modify_date=DATETIME(\'now\')
             WHERE code = \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\'
             ; ');
+        if(key_exists('corrupted',$data) && $data['corrupted']==1)
+            $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('UPDATE product SET 
+            corrupted=\'1\'
+            WHERE code = \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\'
+            ; ');
+      
         $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('UPDATE product SET create_date=DATETIME(\'now\') WHERE code = \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\' AND (create_date=\'\' OR create_date IS NULL)');
     }
     /**
@@ -101,8 +107,12 @@ class MastroImageColl {
     public function checkFile ($fileName) {
         $parsedFilename = $this->parseFilename($fileName);
         $size = $this->mastroProduct->getProductFromCsv()->getImageDb()->querySingle('SELECT size FROM product WHERE code =\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\'');
-        return is_file($this->mastroProduct->getProductFromCsv()->getConfig('BMP_DIR').DIRECTORY_SEPARATOR.$fileName) && 
-        filesize($this->mastroProduct->getProductFromCsv()->getConfig('BMP_DIR').DIRECTORY_SEPARATOR.$fileName) != $size;
+        $corrupted = $this->mastroProduct->getProductFromCsv()->getImageDb()->querySingle('SELECT corrupted FROM product WHERE code =\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\'');
+        return (
+                is_file($this->mastroProduct->getProductFromCsv()->getConfig('BMP_DIR').DIRECTORY_SEPARATOR.$fileName) && 
+                filesize($this->mastroProduct->getProductFromCsv()->getConfig('BMP_DIR').DIRECTORY_SEPARATOR.$fileName) != $size &&
+                $corrupted != 1
+                );
         
     }
     /**
@@ -155,7 +165,8 @@ class MastroImageColl {
                         $this->mastroProduct->getProductFromCsv()->getConfig($convertCommand) !== false &&
                         $this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert) !== false
                 ) {
-                    $command = 'convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1';
+                    $timeout = 20;
+                    $command = 'timeout -s SIGKILL '. $timeout . ' convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
                     $status = '';
                     $commandHandle = proc_open($command,array(
                         0 => array('pipe', 'r'),
@@ -165,16 +176,23 @@ class MastroImageColl {
                     if (is_resource($commandHandle)) {
                         $startProcTime = microtime(true);
                         $procStatus = proc_get_status($commandHandle);
-                        while(microtime(true) < $startProcTime + 5 && $procStatus['running']) {
-                            
+                        $ticks = 0;
+                        while(microtime(true) < $startProcTime + $timeout && $procStatus['running']) {
+                            if ($ticks++ % 5000 == 0 && $ticks > 1)
+                                echo 'Long file conversion '.ceil($ticks/5000).' s '.$fileName['filename'].PHP_EOL;
                             usleep(10);
                             $procStatus = proc_get_status($commandHandle);
                         }
-                        if (microtime(true) > $startProcTime + 5) {
-                            echo 'Long file conversion '.$mastroFile.PHP_EOL;
+                        if (microtime(true) > $startProcTime + $timeout) {
+                            $status =  'File conversion exceeded '.$fileName['filename'];
+                            echo 'File conversion exceeded '.$fileName['filename'].PHP_EOL;
+                            echo $command.PHP_EOL;
                             proc_terminate($commandHandle,9);
-                            posix_kill($procStatus['pid'], 9);
+                            posix_kill($procStatus['pid'],9);
+                            $this->mastroProduct->setData('corrupted',1);
+                            $this->saveData($fileName['parsedFilename'],$this->mastroProduct->getData());
                         }
+                        
                         proc_close($commandHandle);
                     }
                     else $status = 'error';
