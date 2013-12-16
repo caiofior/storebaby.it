@@ -266,8 +266,8 @@ class Mage_Catalog_Block_Navigation extends Mage_Core_Block_Template
 		
 		// add the thumbnail
 		if($_isThumbnail) $html[] = '<img src="'.Mage::getBaseUrl('media').'catalog/category/'.$categoryThumbnail.'" />';			
-					
-        $html[] = '<span>' . $this->escapeHtml($category->getName()) . '</span>';
+        $categoryClass = Mage::getModel('catalog/category')->load($category->getId());
+        $html[] = '<span>' . $categoryClass->getData('navigation_style') . $this->escapeHtml($category->getName()) . '</span>';
         $html[] = '</a>';
 
         // render children

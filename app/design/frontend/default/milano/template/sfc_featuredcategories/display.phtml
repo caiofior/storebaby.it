@@ -83,13 +83,14 @@ end ----  static
         <h2><?php echo $category->getName(); ?></h2>
       </a>
       <div class="bs-left">
-        <a href="<?php echo $category->getUrl(); ?>" title="" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-blue.png), url(<?php echo Mage::registry('themeMediaUrl'); ?>red/85-category_default.jpg);"></a>
+        <img src="<?php echo Mage::helper('catalog/image')->init($category, 'small_image')->resize(163, 100); ?>" alt="image url: ....">
+        <a href="<?php echo $category->getUrl(); ?>" title="<?php echo $category->getName(); ?>" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-blue.png), url(<?php echo Mage::registry('themeMediaUrl'); ?>red/85-category_default.jpg);"></a>
       </div>
       <?php if (is_array($productIds)) : ?>
       <div class="bs-right">
         <?php foreach ($productIds as $productId) : 
             $product = Mage::getModel('catalog/product')->load($productId); ?>
-        <a href="<?php echo $product->getProductUrl(); ?>" title="<?php echo $product->getName(); ?>"><img src="<?php echo Mage::helper('catalog/image')->init($product, 'small_image')->resize(163, 100);; ?>" title="<?php echo $product->getName(); ?>" alt="<?php echo $product->getName(); ?>" /></a>
+        <a href="<?php echo $product->getProductUrl(); ?>" title="<?php echo $product->getName(); ?>"><img src="<?php echo Mage::helper('catalog/image')->init($product, 'small_image')->resize(163, 100); ?>" title="<?php echo $product->getName(); ?>" alt="<?php echo $product->getName(); ?>" /></a>
         <?php endforeach; ?>
       </div>
       <?php endif; ?>
