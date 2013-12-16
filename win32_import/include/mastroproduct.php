@@ -65,7 +65,7 @@ class MastroProduct {
      */
     public function __construct(ProductFromCsv $product_from_csv) {
         $this->productFromCsv = $product_from_csv;
-        $this->magentoProduct = new MagentoProduct($this->productFromCsv);
+        $this->magentoProduct = new MagentoProduct($this);
         $this->mastroImageColl = new MastroImageColl($this);
     }
 
@@ -137,5 +137,11 @@ class MastroProduct {
     public function setData($key,$value) {
         return $this->data[$key]=$value;
     }
-
+    /**
+     * Returns headers
+     * @return array
+     */
+    public function getHeaders () {
+        return self::$headers;
+    }
 }

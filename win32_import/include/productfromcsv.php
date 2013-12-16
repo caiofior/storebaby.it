@@ -122,7 +122,7 @@ corrupted NUMERIC
         $mastroProduct = new MastroProduct($this);
         $rowCount = 0;
         $byteCount = 0;
-
+        
         while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false  ) {
             
             $byteCount += (strlen($buffer)+2);
@@ -144,8 +144,12 @@ corrupted NUMERIC
                 $row = iconv ('WINDOWS-1252','UTF-8',$row);
                 $mastroProduct->importFromCsvRow($row);
                 $magentoProduct = $mastroProduct->createMagentoProduct();
-                if ($magentoProduct instanceof MagentoProduct)
+                
+                if ($magentoProduct instanceof MagentoProduct) {
+                    //if (ftell($this->magentoCsvHandle) == 0)
+                    //    fwrite($this->magentoCsvHandle, $magentoProduct->getCsvHeaders().PHP_EOL);
                     fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow().PHP_EOL);
+                }
                 
                 $rowCount++;
                 $row = '';
