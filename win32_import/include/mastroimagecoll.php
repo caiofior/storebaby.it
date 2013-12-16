@@ -162,8 +162,9 @@ class MastroImageColl {
                             $this->checkFile($fileName['filename']) ||
                             !is_file($magentoFileName . $magentoPath)
                         ) &&
-                        $this->mastroProduct->getProductFromCsv()->getConfig($convertCommand) !== false &&
-                        $this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert) !== false
+                        is_string($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand)) &&
+                        is_string($this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert))
+                        
                 ) {
                     $timeout = 20;
                     $command = 'timeout -s SIGKILL '. $timeout . ' convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
@@ -246,7 +247,6 @@ class MastroImageColl {
                     
 
                 }
-                    
                 return $return;
     }
     /**

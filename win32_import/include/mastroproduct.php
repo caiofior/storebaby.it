@@ -102,12 +102,11 @@ class MastroProduct {
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
         if (sizeof($fileName) == 1 && $fileName[0] != '') {
             $fileName = str_replace('\\', '', $fileName[0]);
-            $magentoProduct->setData('photo',$this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND'));
-            $magentoProduct->setData('photo_thumbnail',$this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND_THUMBNAIL'));
-            
+            $magentoProduct->setData('image',$this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND'));
+            $magentoProduct->setData('small_image',$this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND_THUMBNAIL'));
         }
         
-        if ( $magentoProduct->getData('photo') != '') {
+        if ( $magentoProduct->getData('image') != '') {
             $getModifiedData = $this->mastroImageColl->getModifiedData($this->data);
             if ($getModifiedData != '') {
                 $magentoProduct->setData('_category_names',$this->productFromCsv->getCategory($this->data['REPARTO']));
