@@ -3,6 +3,7 @@ win32_import/config.php
 Milano_Premium_Magento_Theme_1_3_5.zip
 media/*
 var/*
+magmi/conf/*
 win32_import/magento_csv/*
 win32_import/magento_images/*
 win32_import/old/*

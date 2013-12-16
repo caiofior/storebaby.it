@@ -1,0 +1,24 @@
+title:MAGMI by dweeves - version:0.7.18
+startup:Running Magmi Product Import Engine v1.7.1 by dweeves
+startup:Import Profile:default
+startup:Import Mode:create
+step:step:0.5%
+plugin;Magmi_CSVDataSource;pluginhello:CSV Datasource-1.3-Dweeves- 
+plugin;Magmi_DefaultAttributeItemProcessor;pluginhello:Standard Attribute Import-1.0.5-Dweeves- 
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - Importing CSV : /home/caiofior/public_html/storebaby.it/var/import/import-20131215080818-1_export_all_products.csv using separator [ , ] enclosing [ " ]
+startup:Performing Datasouce Lookup...
+lookup:2:0.0019168853759766
+startup:Found 2 records, took 0.0019168853759766 sec
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - No BOM detected, assuming File is UTF8 without BOM...
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - 73 CSV headers columns found
+columns:73
+plugin;Magmi_DefaultAttributeItemProcessor;startup:Standard Attribute Import v1.0.5 - Newly created items will have default values for columns:
+startup:Ajusted processed columns:73
+itime:1 - 0.00069689750671387 - 0.00069689750671387
+dbtime:0 - 0 - 0 - 0
+itime:2 - 0.094450950622559 - 0.092888116836548
+dbtime:22 - 0.022025108337402 - 0.022025108337402 - 22
+itime:2 - 0.17780804634094 - 0.082464218139648
+dbtime:39 - 0.03736424446106 - 0.015339136123657 - 17
+info:Skus imported OK:2/2
+end:Import Ended
