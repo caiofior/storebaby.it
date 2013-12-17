@@ -73,7 +73,7 @@ class MagentoProduct {
         'max_sale_qty'=>'0',
         'use_config_max_sale_qty'=>'1',
         'is_in_stock'=>'1',
-        'low_stock_date',
+        'low_stock_date'=>null,
         'notify_stock_qty'=>'0',
         'use_config_notify_stock_qty'=>'1',
         'manage_stock'=>'0',
@@ -89,8 +89,8 @@ class MagentoProduct {
         'product_name'=>null,
         'store_id'=>'0',
         'product_type_id'=>'simple',
-        'product_status_changed',
-        'product_changed_websites'
+        'product_status_changed'=>null,
+        'product_changed_websites'=>null
 
     );
     /**
@@ -99,7 +99,7 @@ class MagentoProduct {
      */
     public function __construct(MastroProduct $mastroProduct) {
         foreach($mastroProduct->getHeaders() as $header)
-            self::$headers['ZZ_'.$header]=null;
+            self::$headers['MASTRO_'.$header]=null;
         $this->productFromCsv = $mastroProduct->getProductFromCsv();
     }
     /**
@@ -133,8 +133,11 @@ class MagentoProduct {
     public function getCsvRow() {
         $data = $this->data;
         foreach ($data as $key => $value) {
-            if (preg_match('/[^\-0-9 ,\.]/', $value))
+            if (preg_match('/^[\-0-9 ,\.]+$/', $value))
                 $data[$key]='"'.str_replace (',','.',$value).'"';
+            else
+                $data[$key]='"'.addslashes($value).'"';
+               
         }
         return implode(',',$data);
     }
@@ -145,8 +148,7 @@ class MagentoProduct {
     public function getCsvHeaders() {
         $headers = array_keys(self::$headers);
         foreach ($headers as $key=>$field) {
-            if (preg_match('/[^\-0-9 ,\.]/', $field))
-                $headers[$key]='"'.str_replace (',','.',$field).'"';
+            $data[$key]='"'.addslashes($value).'"';
         }
         return implode(',',$headers);
     }    

@@ -161,8 +161,12 @@ class MastroImageColl {
                         is_string($this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert))
                         
                 ) {
-                    $timeout = 20;
-                    $command = 'timeout -s SIGKILL '. $timeout . ' convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
+                    switch (PHP_OS) {
+                        default :
+                        $timeout = 20;
+                        $command = 'timeout -s SIGKILL '. $timeout . ' convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
+                        break;
+                    }
                     $status = '';
                     $commandHandle = proc_open($command,array(
                         0 => array('pipe', 'r'),

@@ -1,24 +1,537 @@
 title:MAGMI by dweeves - version:0.7.18
 startup:Running Magmi Product Import Engine v1.7.1 by dweeves
 startup:Import Profile:default
-startup:Import Mode:create
+startup:Import Mode:xcreate
 step:step:0.5%
 plugin;Magmi_CSVDataSource;pluginhello:CSV Datasource-1.3-Dweeves- 
 plugin;Magmi_DefaultAttributeItemProcessor;pluginhello:Standard Attribute Import-1.0.5-Dweeves- 
-plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - Importing CSV : /home/caiofior/public_html/storebaby.it/var/import/import-20131215080818-1_export_all_products.csv using separator [ , ] enclosing [ " ]
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - Importing CSV : /home/caiofior/public_html/storebaby.it/var/import/import.csv using separator [ , ] enclosing [ " ]
 startup:Performing Datasouce Lookup...
-lookup:2:0.0019168853759766
-startup:Found 2 records, took 0.0019168853759766 sec
+lookup:258:0.19102692604065
+startup:Found 258 records, took 0.19102692604065 sec
 plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - No BOM detected, assuming File is UTF8 without BOM...
-plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - 73 CSV headers columns found
-columns:73
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - 96 CSV headers columns found
+columns:96
 plugin;Magmi_DefaultAttributeItemProcessor;startup:Standard Attribute Import v1.0.5 - Newly created items will have default values for columns:
-startup:Ajusted processed columns:73
-itime:1 - 0.00069689750671387 - 0.00069689750671387
-dbtime:0 - 0 - 0 - 0
-itime:2 - 0.094450950622559 - 0.092888116836548
-dbtime:22 - 0.022025108337402 - 0.022025108337402 - 22
-itime:2 - 0.17780804634094 - 0.082464218139648
-dbtime:39 - 0.03736424446106 - 0.015339136123657 - 17
-info:Skus imported OK:2/2
+startup:Ajusted processed columns:96
+skip:skipping existing sku:8003670227892 - xcreate mode set
+itime:2 - 0.0046939849853516 - 0.0046939849853516
+dbtime:1 - 0.0004727840423584 - 0.0004727840423584 - 1
+skip:skipping existing sku:8003670240235 - xcreate mode set
+skip:skipping existing sku:8003670240259 - xcreate mode set
+itime:4 - 0.012624979019165 - 0.0070979595184326
+dbtime:3 - 0.0011954307556152 - 0.00072264671325684 - 2
+skip:skipping existing sku:8003670240266 - xcreate mode set
+skip:skipping existing sku:8003670240273 - xcreate mode set
+itime:6 - 0.019883871078491 - 0.0064229965209961
+dbtime:5 - 0.0019512176513672 - 0.00075578689575195 - 2
+skip:skipping existing sku:8003670262275 - xcreate mode set
+skip:skipping existing sku:8003670304173 - xcreate mode set
+itime:8 - 0.026378870010376 - 0.0057477951049805
+dbtime:7 - 0.0026664733886719 - 0.00071525573730469 - 2
+skip:skipping existing sku:8003670365679 - xcreate mode set
+skip:skipping existing sku:8003670365686 - xcreate mode set
+itime:10 - 0.032433986663818 - 0.0053379535675049
+dbtime:9 - 0.0033366680145264 - 0.00067019462585449 - 2
+skip:skipping existing sku:8003670655916 - xcreate mode set
+skip:skipping existing sku:8003670655923 - xcreate mode set
+itime:12 - 0.041092872619629 - 0.0078208446502686
+dbtime:11 - 0.0040154457092285 - 0.00067877769470215 - 2
+skip:skipping existing sku:8003670693611 - xcreate mode set
+skip:skipping existing sku:8003670693666 - xcreate mode set
+itime:14 - 0.062480926513672 - 0.012922048568726
+dbtime:13 - 0.0082087516784668 - 0.0041933059692383 - 2
+skip:skipping existing sku:8003670693703 - xcreate mode set
+skip:skipping existing sku:8003670693710 - xcreate mode set
+itime:16 - 0.078105926513672 - 0.015302896499634
+dbtime:15 - 0.0098042488098145 - 0.0015954971313477 - 2
+skip:skipping existing sku:8003670693741 - xcreate mode set
+skip:skipping existing sku:8003670693772 - xcreate mode set
+itime:18 - 0.087553024291992 - 0.0087070465087891
+dbtime:17 - 0.010518312454224 - 0.00071406364440918 - 2
+skip:skipping existing sku:8003670693826 - xcreate mode set
+skip:skipping existing sku:8003670728894 - xcreate mode set
+itime:20 - 0.11094403266907 - 0.021584033966064
+dbtime:19 - 0.012537479400635 - 0.0020191669464111 - 2
+skip:skipping existing sku:8003670730002 - xcreate mode set
+skip:skipping existing sku:8003670730163 - xcreate mode set
+itime:22 - 0.12031602859497 - 0.0090081691741943
+dbtime:21 - 0.015214920043945 - 0.0026774406433105 - 2
+skip:skipping existing sku:8003670730170 - xcreate mode set
+skip:skipping existing sku:8003670730187 - xcreate mode set
+itime:24 - 0.12764501571655 - 0.0061800479888916
+dbtime:23 - 0.01652979850769 - 0.0013148784637451 - 2
+skip:skipping existing sku:8003670730217 - xcreate mode set
+skip:skipping existing sku:8003670730224 - xcreate mode set
+itime:26 - 0.13379287719727 - 0.0054259300231934
+dbtime:25 - 0.017210006713867 - 0.00068020820617676 - 2
+skip:skipping existing sku:8003670730286 - xcreate mode set
+skip:skipping existing sku:8003670749394 - xcreate mode set
+itime:28 - 0.14152693748474 - 0.0058190822601318
+dbtime:27 - 0.017868280410767 - 0.00065827369689941 - 2
+skip:skipping existing sku:8003670753070 - xcreate mode set
+skip:skipping existing sku:8003670761136 - xcreate mode set
+itime:30 - 0.14824390411377 - 0.0059218406677246
+dbtime:29 - 0.018527507781982 - 0.00065922737121582 - 2
+skip:skipping existing sku:8003670761143 - xcreate mode set
+skip:skipping existing sku:8003670777038 - xcreate mode set
+itime:32 - 0.1542010307312 - 0.0051710605621338
+dbtime:31 - 0.019194364547729 - 0.00066685676574707 - 2
+skip:skipping existing sku:8003670777045 - xcreate mode set
+skip:skipping existing sku:8003670789369 - xcreate mode set
+itime:34 - 0.160728931427 - 0.0052988529205322
+dbtime:33 - 0.0198655128479 - 0.0006711483001709 - 2
+skip:skipping existing sku:8003670791508 - xcreate mode set
+skip:skipping existing sku:8003670791515 - xcreate mode set
+itime:36 - 0.16655993461609 - 0.0049998760223389
+dbtime:35 - 0.020583629608154 - 0.00071811676025391 - 2
+skip:skipping existing sku:8003670792130 - xcreate mode set
+skip:skipping existing sku:8003670797456 - xcreate mode set
+itime:38 - 0.17843890190125 - 0.011157035827637
+dbtime:37 - 0.027588605880737 - 0.007004976272583 - 2
+skip:skipping existing sku:8003670797463 - xcreate mode set
+skip:skipping existing sku:8003670800866 - xcreate mode set
+itime:40 - 0.1900110244751 - 0.011245965957642
+dbtime:39 - 0.031405687332153 - 0.003817081451416 - 2
+skip:skipping existing sku:8003670801030 - xcreate mode set
+skip:skipping existing sku:8003670955788 - xcreate mode set
+itime:42 - 0.19653391838074 - 0.0061850547790527
+dbtime:41 - 0.032088756561279 - 0.00068306922912598 - 2
+skip:skipping existing sku:8003670957720 - xcreate mode set
+skip:skipping existing sku:8003670957737 - xcreate mode set
+itime:44 - 0.203204870224 - 0.005836009979248
+dbtime:43 - 0.032768726348877 - 0.00067996978759766 - 2
+skip:skipping existing sku:8025081904551 - xcreate mode set
+skip:skipping existing sku:8025081906616 - xcreate mode set
+itime:46 - 0.20965003967285 - 0.0057179927825928
+dbtime:45 - 0.033440828323364 - 0.0006721019744873 - 2
+skip:skipping existing sku:8025081907033 - xcreate mode set
+skip:skipping existing sku:8025081907194 - xcreate mode set
+itime:48 - 0.2167809009552 - 0.0052058696746826
+dbtime:47 - 0.034111022949219 - 0.00067019462585449 - 2
+skip:skipping existing sku:8025081907507 - xcreate mode set
+skip:skipping existing sku:8025081910286 - xcreate mode set
+itime:50 - 0.23453497886658 - 0.016946077346802
+dbtime:49 - 0.034858226776123 - 0.0007472038269043 - 2
+skip:skipping existing sku:8025081910729 - xcreate mode set
+skip:skipping existing sku:8025081910736 - xcreate mode set
+itime:52 - 0.2505419254303 - 0.015681982040405
+dbtime:51 - 0.037892818450928 - 0.0030345916748047 - 2
+skip:skipping existing sku:8025081910743 - xcreate mode set
+skip:skipping existing sku:8025081911085 - xcreate mode set
+itime:54 - 0.2630090713501 - 0.012119054794312
+dbtime:53 - 0.039254426956177 - 0.001361608505249 - 2
+skip:skipping existing sku:8003670167587 - xcreate mode set
+skip:skipping existing sku:8003670190554 - xcreate mode set
+itime:56 - 0.273442029953 - 0.0097200870513916
+dbtime:55 - 0.041084766387939 - 0.0018303394317627 - 2
+skip:skipping existing sku:8003670216445 - xcreate mode set
+skip:skipping existing sku:8003670224143 - xcreate mode set
+itime:58 - 0.29388093948364 - 0.018285989761353
+dbtime:57 - 0.049980878829956 - 0.0088961124420166 - 2
+skip:skipping existing sku:8003670224211 - xcreate mode set
+skip:skipping existing sku:8003670342649 - xcreate mode set
+itime:60 - 0.30374789237976 - 0.009505033493042
+dbtime:59 - 0.050670862197876 - 0.00068998336791992 - 2
+skip:skipping existing sku:8003670342656 - xcreate mode set
+skip:skipping existing sku:8003670358107 - xcreate mode set
+itime:62 - 0.3110020160675 - 0.0064330101013184
+dbtime:61 - 0.051372051239014 - 0.0007011890411377 - 2
+skip:skipping existing sku:8003670358145 - xcreate mode set
+skip:skipping existing sku:8003670626459 - xcreate mode set
+itime:64 - 0.31731700897217 - 0.0055820941925049
+dbtime:63 - 0.052030801773071 - 0.00065875053405762 - 2
+skip:skipping existing sku:8003670626466 - xcreate mode set
+skip:skipping existing sku:8003670687658 - xcreate mode set
+itime:66 - 0.32376194000244 - 0.005728006362915
+dbtime:65 - 0.052732706069946 - 0.000701904296875 - 2
+skip:skipping existing sku:8003670687726 - xcreate mode set
+skip:skipping existing sku:8003670695615 - xcreate mode set
+itime:68 - 0.33063697814941 - 0.0061519145965576
+dbtime:67 - 0.054269790649414 - 0.0015370845794678 - 2
+skip:skipping existing sku:8003670696254 - xcreate mode set
+skip:skipping existing sku:8003670696261 - xcreate mode set
+itime:70 - 0.33976006507874 - 0.0084061622619629
+dbtime:69 - 0.054928064346313 - 0.00065827369689941 - 2
+skip:skipping existing sku:8003670696285 - xcreate mode set
+skip:skipping existing sku:8008577007219 - xcreate mode set
+itime:72 - 0.34591603279114 - 0.0054099559783936
+dbtime:71 - 0.055598974227905 - 0.0006709098815918 - 2
+skip:skipping existing sku:8008577507221 - xcreate mode set
+skip:skipping existing sku:8008577007608 - xcreate mode set
+itime:74 - 0.35195207595825 - 0.0053091049194336
+dbtime:73 - 0.056302785873413 - 0.00070381164550781 - 2
+skip:skipping existing sku:8008577007646 - xcreate mode set
+skip:skipping existing sku:8008577007660 - xcreate mode set
+itime:76 - 0.35824990272522 - 0.0055739879608154
+dbtime:75 - 0.056958675384521 - 0.0006558895111084 - 2
+skip:skipping existing sku:8008577007738 - xcreate mode set
+skip:skipping existing sku:8008577007813 - xcreate mode set
+itime:78 - 0.36520600318909 - 0.0060849189758301
+dbtime:77 - 0.057611227035522 - 0.00065255165100098 - 2
+skip:skipping existing sku:8008577007844 - xcreate mode set
+skip:skipping existing sku:8008577007868 - xcreate mode set
+itime:80 - 0.37748289108276 - 0.011523008346558
+dbtime:79 - 0.058272123336792 - 0.00066089630126953 - 2
+skip:skipping existing sku:8008577007875 - xcreate mode set
+skip:skipping existing sku:8008577007882 - xcreate mode set
+itime:82 - 0.38657093048096 - 0.0087170600891113
+dbtime:81 - 0.062622785568237 - 0.0043506622314453 - 2
+skip:skipping existing sku:8008577007899 - xcreate mode set
+skip:skipping existing sku:8008577007943 - xcreate mode set
+itime:84 - 0.39317989349365 - 0.0062859058380127
+dbtime:83 - 0.063352823257446 - 0.00073003768920898 - 2
+skip:skipping existing sku:8008577008018 - xcreate mode set
+skip:skipping existing sku:8008577008025 - xcreate mode set
+itime:86 - 0.3998429775238 - 0.0059449672698975
+dbtime:85 - 0.064014673233032 - 0.00066184997558594 - 2
+skip:skipping existing sku:8008577008049 - xcreate mode set
+skip:skipping existing sku:8008577008056 - xcreate mode set
+itime:88 - 0.42177295684814 - 0.021198034286499
+dbtime:87 - 0.064700603485107 - 0.0006859302520752 - 2
+skip:skipping existing sku:8008577008070 - xcreate mode set
+skip:skipping existing sku:8008577008100 - xcreate mode set
+itime:90 - 0.43461298942566 - 0.012452125549316
+dbtime:89 - 0.067599773406982 - 0.002899169921875 - 2
+skip:skipping existing sku:0735259002283 - xcreate mode set
+skip:skipping existing sku:0735259002443 - xcreate mode set
+itime:92 - 0.4486448764801 - 0.013708829879761
+dbtime:91 - 0.069873809814453 - 0.0022740364074707 - 2
+skip:skipping existing sku:0735259002450 - xcreate mode set
+skip:skipping existing sku:0735259002542 - xcreate mode set
+itime:94 - 0.45985388755798 - 0.0062899589538574
+dbtime:93 - 0.070560216903687 - 0.0006864070892334 - 2
+skip:skipping existing sku:0735259002580 - xcreate mode set
+skip:skipping existing sku:0735259002634 - xcreate mode set
+itime:96 - 0.47279286384583 - 0.0071258544921875
+dbtime:95 - 0.071227312088013 - 0.00066709518432617 - 2
+skip:skipping existing sku:8008577008094 - xcreate mode set
+skip:skipping existing sku:5010415548009 - xcreate mode set
+itime:98 - 0.48979687690735 - 0.013769865036011
+dbtime:97 - 0.079132080078125 - 0.0079047679901123 - 2
+skip:skipping existing sku:8032638560023 - xcreate mode set
+skip:skipping existing sku:A900266040 - xcreate mode set
+itime:100 - 0.49651288986206 - 0.006354808807373
+dbtime:99 - 0.079792976379395 - 0.00066089630126953 - 2
+skip:skipping existing sku:A900266077 - xcreate mode set
+skip:skipping existing sku:A901088094 - xcreate mode set
+itime:102 - 0.50369501113892 - 0.006309986114502
+dbtime:101 - 0.080498933792114 - 0.00070595741271973 - 2
+skip:skipping existing sku:A901088169 - xcreate mode set
+skip:skipping existing sku:A902975491 - xcreate mode set
+itime:104 - 0.51044988632202 - 0.0053188800811768
+dbtime:103 - 0.081119775772095 - 0.00062084197998047 - 2
+skip:skipping existing sku:A903024204 - xcreate mode set
+skip:skipping existing sku:A903907638 - xcreate mode set
+itime:106 - 0.51689291000366 - 0.0057170391082764
+dbtime:105 - 0.081739902496338 - 0.00062012672424316 - 2
+skip:skipping existing sku:A907221586 - xcreate mode set
+skip:skipping existing sku:A908077454 - xcreate mode set
+itime:108 - 0.52469992637634 - 0.0060310363769531
+dbtime:107 - 0.08237361907959 - 0.00063371658325195 - 2
+skip:skipping existing sku:A908077466 - xcreate mode set
+skip:skipping existing sku:A908078417 - xcreate mode set
+itime:110 - 0.53103494644165 - 0.0055010318756104
+dbtime:109 - 0.083067893981934 - 0.00069427490234375 - 2
+skip:skipping existing sku:A908078431 - xcreate mode set
+skip:skipping existing sku:A908078443 - xcreate mode set
+itime:112 - 0.5368390083313 - 0.0050709247589111
+dbtime:111 - 0.083683967590332 - 0.00061607360839844 - 2
+skip:skipping existing sku:A908338231 - xcreate mode set
+skip:skipping existing sku:A908960305 - xcreate mode set
+itime:114 - 0.54371690750122 - 0.0057408809661865
+dbtime:113 - 0.084315776824951 - 0.00063180923461914 - 2
+skip:skipping existing sku:A908960711 - xcreate mode set
+skip:skipping existing sku:A908960800 - xcreate mode set
+itime:116 - 0.55147004127502 - 0.0060989856719971
+dbtime:115 - 0.085848569869995 - 0.0015327930450439 - 2
+skip:skipping existing sku:A908961422 - xcreate mode set
+skip:skipping existing sku:A903960134 - xcreate mode set
+itime:118 - 0.55861902236938 - 0.006425142288208
+dbtime:117 - 0.086661577224731 - 0.00081300735473633 - 2
+skip:skipping existing sku:8017619160607 - xcreate mode set
+skip:skipping existing sku:5010415302168 - xcreate mode set
+itime:120 - 0.56466007232666 - 0.0051290988922119
+dbtime:119 - 0.087305784225464 - 0.00064420700073242 - 2
+skip:skipping existing sku:5010415302342 - xcreate mode set
+skip:skipping existing sku:5010415302366 - xcreate mode set
+itime:122 - 0.57062602043152 - 0.0051281452178955
+dbtime:121 - 0.088006019592285 - 0.00070023536682129 - 2
+skip:skipping existing sku:5010415302540 - xcreate mode set
+skip:skipping existing sku:5010415362087 - xcreate mode set
+itime:124 - 0.58788800239563 - 0.01654314994812
+dbtime:123 - 0.090674161911011 - 0.0026681423187256 - 2
+skip:skipping existing sku:5010415362162 - xcreate mode set
+skip:skipping existing sku:5010415362186 - xcreate mode set
+itime:126 - 0.59895491600037 - 0.010670900344849
+dbtime:125 - 0.09271240234375 - 0.0020382404327393 - 2
+skip:skipping existing sku:8011250014220 - xcreate mode set
+skip:skipping existing sku:8011250209091 - xcreate mode set
+itime:128 - 0.62415599822998 - 0.024873971939087
+dbtime:127 - 0.093440294265747 - 0.00072789192199707 - 2
+skip:skipping existing sku:8011250210370 - xcreate mode set
+skip:skipping existing sku:8011250210592 - xcreate mode set
+itime:130 - 0.6482150554657 - 0.023719072341919
+dbtime:129 - 0.094641208648682 - 0.0012009143829346 - 2
+skip:skipping existing sku:8011250210813 - xcreate mode set
+skip:skipping existing sku:8011250221000 - xcreate mode set
+itime:132 - 0.66067290306091 - 0.0075550079345703
+dbtime:131 - 0.096608400344849 - 0.001967191696167 - 2
+skip:skipping existing sku:8011250322004 - xcreate mode set
+skip:skipping existing sku:8011250325005 - xcreate mode set
+itime:134 - 0.66810703277588 - 0.0050239562988281
+dbtime:133 - 0.097250461578369 - 0.00064206123352051 - 2
+skip:skipping existing sku:8011250326002 - xcreate mode set
+skip:skipping existing sku:8011250327009 - xcreate mode set
+itime:136 - 0.68264293670654 - 0.013813018798828
+dbtime:135 - 0.098669767379761 - 0.0014193058013916 - 2
+skip:skipping existing sku:8011250328006 - xcreate mode set
+skip:skipping existing sku:8011250331006 - xcreate mode set
+itime:138 - 0.69286108016968 - 0.0098960399627686
+dbtime:137 - 0.10071969032288 - 0.0020499229431152 - 2
+skip:skipping existing sku:8011250332003 - xcreate mode set
+skip:skipping existing sku:8011250333000 - xcreate mode set
+itime:140 - 0.69965195655823 - 0.0059258937835693
+dbtime:139 - 0.10143065452576 - 0.00071096420288086 - 2
+skip:skipping existing sku:8011250355002 - xcreate mode set
+skip:skipping existing sku:8011250505223 - xcreate mode set
+itime:142 - 0.7082679271698 - 0.0060160160064697
+dbtime:141 - 0.10207366943359 - 0.00064301490783691 - 2
+skip:skipping existing sku:8011250515222 - xcreate mode set
+skip:skipping existing sku:8011250515772 - xcreate mode set
+itime:144 - 0.71681189537048 - 0.0077588558197021
+dbtime:143 - 0.10272932052612 - 0.0006556510925293 - 2
+skip:skipping existing sku:8011250515864 - xcreate mode set
+skip:skipping existing sku:8011250577008 - xcreate mode set
+itime:146 - 0.72426104545593 - 0.0066430568695068
+dbtime:145 - 0.10340118408203 - 0.0006718635559082 - 2
+skip:skipping existing sku:8011250580152 - xcreate mode set
+skip:skipping existing sku:8022788010301 - xcreate mode set
+itime:148 - 0.73046708106995 - 0.0054161548614502
+dbtime:147 - 0.10403823852539 - 0.00063705444335938 - 2
+skip:skipping existing sku:8022788100101 - xcreate mode set
+error:No sku info found for record #149
+itime:150 - 0.73550295829773 - 0.0042948722839355
+dbtime:148 - 0.10435652732849 - 0.00031828880310059 - 1
+skip:skipping existing sku:8022788100507 - xcreate mode set
+error:No sku info found for record #151
+itime:152 - 0.74170899391174 - 0.0054810047149658
+dbtime:149 - 0.10476350784302 - 0.00040698051452637 - 1
+error:No sku info found for record #152
+error:No sku info found for record #153
+itime:154 - 0.74566388130188 - 0.0032308101654053
+dbtime:149 - 0.10476350784302 - 0 - 0
+error:No sku info found for record #154
+error:No sku info found for record #155
+itime:156 - 0.75000596046448 - 0.003619909286499
+dbtime:149 - 0.10476350784302 - 0 - 0
+skip:skipping existing sku:8022788103003 - xcreate mode set
+error:No sku info found for record #157
+itime:158 - 0.75549006462097 - 0.0047581195831299
+dbtime:150 - 0.10507869720459 - 0.00031518936157227 - 1
+error:No sku info found for record #158
+error:No sku info found for record #159
+itime:160 - 0.75946998596191 - 0.003248929977417
+dbtime:150 - 0.10507869720459 - 0 - 0
+error:No sku info found for record #160
+error:No sku info found for record #161
+itime:162 - 0.76418399810791 - 0.0039401054382324
+dbtime:150 - 0.10507869720459 - 0 - 0
+skip:skipping existing sku:8022788105007 - xcreate mode set
+error:No sku info found for record #163
+itime:164 - 0.78176188468933 - 0.016855955123901
+dbtime:151 - 0.10540652275085 - 0.00032782554626465 - 1
+error:No sku info found for record #164
+error:No sku info found for record #165
+itime:166 - 0.78960800170898 - 0.0042800903320312
+dbtime:151 - 0.10540652275085 - 0 - 0
+error:No sku info found for record #166
+error:No sku info found for record #167
+itime:168 - 0.79854607582092 - 0.0085711479187012
+dbtime:151 - 0.10540652275085 - 0 - 0
+skip:skipping existing sku:8022788108008 - xcreate mode set
+error:No sku info found for record #169
+itime:170 - 0.808021068573 - 0.0091571807861328
+dbtime:152 - 0.10884165763855 - 0.0034351348876953 - 1
+error:No sku info found for record #170
+error:No sku info found for record #171
+itime:172 - 0.81468796730042 - 0.0059518814086914
+dbtime:152 - 0.10884165763855 - 0 - 0
+error:No sku info found for record #172
+error:No sku info found for record #173
+itime:174 - 0.82389402389526 - 0.0040090084075928
+dbtime:152 - 0.10884165763855 - 0 - 0
+skip:skipping existing sku:8022788110001 - xcreate mode set
+error:No sku info found for record #175
+itime:176 - 0.84386706352234 - 0.01049017906189
+dbtime:153 - 0.10921740531921 - 0.00037574768066406 - 1
+error:No sku info found for record #176
+error:No sku info found for record #177
+itime:178 - 0.85030508041382 - 0.0060861110687256
+dbtime:153 - 0.10921740531921 - 0 - 0
+error:No sku info found for record #178
+error:No sku info found for record #179
+itime:180 - 0.85518193244934 - 0.0041048526763916
+dbtime:153 - 0.10921740531921 - 0 - 0
+skip:skipping existing sku:8022788113002 - xcreate mode set
+error:No sku info found for record #181
+itime:182 - 0.86069703102112 - 0.0047810077667236
+dbtime:154 - 0.10954236984253 - 0.00032496452331543 - 1
+error:No sku info found for record #182
+error:No sku info found for record #183
+itime:184 - 0.86467099189758 - 0.0031471252441406
+dbtime:154 - 0.10954236984253 - 0 - 0
+error:No sku info found for record #184
+error:No sku info found for record #185
+itime:186 - 0.86943387985229 - 0.0039358139038086
+dbtime:154 - 0.10954236984253 - 0 - 0
+skip:skipping existing sku:8022788115006 - xcreate mode set
+error:No sku info found for record #187
+itime:188 - 0.8824188709259 - 0.012259960174561
+dbtime:155 - 0.10986304283142 - 0.0003206729888916 - 1
+error:No sku info found for record #188
+error:No sku info found for record #189
+itime:190 - 0.88978099822998 - 0.0070440769195557
+dbtime:155 - 0.10986304283142 - 0 - 0
+error:No sku info found for record #190
+error:No sku info found for record #191
+itime:192 - 0.89477396011353 - 0.0046379566192627
+dbtime:155 - 0.10986304283142 - 0 - 0
+skip:skipping existing sku:8022788118007 - xcreate mode set
+error:No sku info found for record #193
+itime:194 - 0.89954590797424 - 0.0040469169616699
+dbtime:156 - 0.11018586158752 - 0.00032281875610352 - 1
+error:No sku info found for record #194
+error:No sku info found for record #195
+itime:196 - 0.90455889701843 - 0.0042929649353027
+dbtime:156 - 0.11018586158752 - 0 - 0
+error:No sku info found for record #196
+error:No sku info found for record #197
+itime:198 - 0.90884304046631 - 0.0034341812133789
+dbtime:156 - 0.11018586158752 - 0 - 0
+skip:skipping existing sku:8022788200504 - xcreate mode set
+skip:skipping existing sku:8022788206001 - xcreate mode set
+itime:200 - 0.91635584831238 - 0.0067119598388672
+dbtime:158 - 0.11083579063416 - 0.00064992904663086 - 2
+skip:skipping existing sku:8022788208005 - xcreate mode set
+error:No sku info found for record #201
+itime:202 - 0.92224907875061 - 0.0050301551818848
+dbtime:159 - 0.11115455627441 - 0.00031876564025879 - 1
+skip:skipping existing sku:8022788308002 - xcreate mode set
+skip:skipping existing sku:8022788308606 - xcreate mode set
+itime:204 - 0.92865896224976 - 0.005666971206665
+dbtime:161 - 0.11178517341614 - 0.00063061714172363 - 2
+skip:skipping existing sku:8022788309603 - xcreate mode set
+skip:skipping existing sku:8022788406005 - xcreate mode set
+itime:206 - 0.93521595001221 - 0.0057199001312256
+dbtime:163 - 0.11249494552612 - 0.00070977210998535 - 2
+skip:skipping existing sku:8022788408009 - xcreate mode set
+error:No sku info found for record #207
+itime:208 - 0.94069385528564 - 0.0047478675842285
+dbtime:164 - 0.11281204223633 - 0.00031709671020508 - 1
+skip:skipping existing sku:8019630010077 - xcreate mode set
+skip:skipping existing sku:8019630010848 - xcreate mode set
+itime:210 - 0.94668006896973 - 0.0051431655883789
+dbtime:166 - 0.11353611946106 - 0.00072407722473145 - 2
+skip:skipping existing sku:8019630010855 - xcreate mode set
+skip:skipping existing sku:8019630011050 - xcreate mode set
+itime:212 - 0.96568298339844 - 0.018263101577759
+dbtime:168 - 0.11423897743225 - 0.00070285797119141 - 2
+skip:skipping existing sku:8019630012149 - xcreate mode set
+skip:skipping existing sku:8019630018202 - xcreate mode set
+itime:214 - 0.97962594032288 - 0.013598918914795
+dbtime:170 - 0.11768913269043 - 0.0034501552581787 - 2
+skip:skipping existing sku:8019630018219 - xcreate mode set
+skip:skipping existing sku:8019630020250 - xcreate mode set
+itime:216 - 0.99376702308655 - 0.013801097869873
+dbtime:172 - 0.12281036376953 - 0.0051212310791016 - 2
+skip:skipping existing sku:5010415302663 - xcreate mode set
+skip:skipping existing sku:4001998141122 - xcreate mode set
+itime:218 - 1.0062160491943 - 0.011701107025146
+dbtime:174 - 0.12387108802795 - 0.0010607242584229 - 2
+skip:skipping existing sku:4001998166118 - xcreate mode set
+skip:skipping existing sku:4001998166125 - xcreate mode set
+itime:220 - 1.0243809223175 - 0.0074880123138428
+dbtime:176 - 0.12489819526672 - 0.0010271072387695 - 2
+skip:skipping existing sku:4001998166217 - xcreate mode set
+skip:skipping existing sku:4001998166224 - xcreate mode set
+itime:222 - 1.035984992981 - 0.0077340602874756
+dbtime:178 - 0.12556338310242 - 0.00066518783569336 - 2
+skip:skipping existing sku:4001998166231 - xcreate mode set
+skip:skipping existing sku:4001998166248 - xcreate mode set
+itime:224 - 1.0434250831604 - 0.0067150592803955
+dbtime:180 - 0.12658929824829 - 0.001025915145874 - 2
+skip:skipping existing sku:4001998166255 - xcreate mode set
+skip:skipping existing sku:4001998166262 - xcreate mode set
+itime:226 - 1.0497899055481 - 0.005640983581543
+dbtime:182 - 0.12728929519653 - 0.00069999694824219 - 2
+skip:skipping existing sku:4001998166316 - xcreate mode set
+skip:skipping existing sku:4001998166323 - xcreate mode set
+itime:228 - 1.0562250614166 - 0.0056440830230713
+dbtime:184 - 0.12791609764099 - 0.00062680244445801 - 2
+skip:skipping existing sku:4001998166354 - xcreate mode set
+skip:skipping existing sku:4001998166361 - xcreate mode set
+itime:230 - 1.0625500679016 - 0.0055890083312988
+dbtime:186 - 0.12854027748108 - 0.00062417984008789 - 2
+skip:skipping existing sku:4001998166590 - xcreate mode set
+skip:skipping existing sku:4001998166699 - xcreate mode set
+itime:232 - 1.0696978569031 - 0.0064218044281006
+dbtime:188 - 0.12916731834412 - 0.00062704086303711 - 2
+skip:skipping existing sku:4001998166811 - xcreate mode set
+skip:skipping existing sku:4001998166828 - xcreate mode set
+itime:234 - 1.0846939086914 - 0.014237880706787
+dbtime:190 - 0.12987446784973 - 0.00070714950561523 - 2
+skip:skipping existing sku:4001998166873 - xcreate mode set
+skip:skipping existing sku:4001998167702 - xcreate mode set
+itime:236 - 1.094694852829 - 0.0078368186950684
+dbtime:192 - 0.13259243965149 - 0.0027179718017578 - 2
+skip:skipping existing sku:4001998167733 - xcreate mode set
+skip:skipping existing sku:4001998167757 - xcreate mode set
+itime:238 - 1.1020998954773 - 0.0066738128662109
+dbtime:194 - 0.13324880599976 - 0.0006563663482666 - 2
+skip:skipping existing sku:4001998167771 - xcreate mode set
+skip:skipping existing sku:4001998167788 - xcreate mode set
+itime:240 - 1.1101279258728 - 0.0072588920593262
+dbtime:196 - 0.13480949401855 - 0.0015606880187988 - 2
+skip:skipping existing sku:4001998167795 - xcreate mode set
+skip:skipping existing sku:4001998167818 - xcreate mode set
+itime:242 - 1.1165580749512 - 0.005695104598999
+dbtime:198 - 0.13543653488159 - 0.00062704086303711 - 2
+skip:skipping existing sku:4001998167917 - xcreate mode set
+skip:skipping existing sku:4001998167924 - xcreate mode set
+itime:244 - 1.1237819194794 - 0.0063760280609131
+dbtime:200 - 0.13609075546265 - 0.00065422058105469 - 2
+skip:skipping existing sku:4001998167962 - xcreate mode set
+skip:skipping existing sku:4001998168112 - xcreate mode set
+itime:246 - 1.1298408508301 - 0.0053238868713379
+dbtime:202 - 0.13672399520874 - 0.00063323974609375 - 2
+skip:skipping existing sku:4001998168129 - xcreate mode set
+skip:skipping existing sku:4001998168136 - xcreate mode set
+itime:248 - 1.1498990058899 - 0.019323110580444
+dbtime:204 - 0.14187288284302 - 0.0051488876342773 - 2
+skip:skipping existing sku:4001998168211 - xcreate mode set
+skip:skipping existing sku:4001998168228 - xcreate mode set
+itime:250 - 1.1618628501892 - 0.011599779129028
+dbtime:206 - 0.14254879951477 - 0.00067591667175293 - 2
+skip:skipping existing sku:4001998168235 - xcreate mode set
+skip:skipping existing sku:4001998168242 - xcreate mode set
+itime:252 - 1.1739609241486 - 0.01176905632019
+dbtime:208 - 0.14607000350952 - 0.003521203994751 - 2
+skip:skipping existing sku:4001998168297 - xcreate mode set
+skip:skipping existing sku:4001998168303 - xcreate mode set
+itime:254 - 1.1868948936462 - 0.010048866271973
+dbtime:210 - 0.1508686542511 - 0.0047986507415771 - 2
+skip:skipping existing sku:4001998168310 - xcreate mode set
+skip:skipping existing sku:4001998168327 - xcreate mode set
+itime:256 - 1.2096998691559 - 0.011515855789185
+dbtime:212 - 0.15222239494324 - 0.0013537406921387 - 2
+error:No sku info found for record #256
+error:No sku info found for record #257
+itime:258 - 1.2162408828735 - 0.0061938762664795
+dbtime:212 - 0.15222239494324 - 0 - 0
+error:No sku info found for record #258
+itime:258 - 1.2195498943329 - 0.0029349327087402
+dbtime:212 - 0.15222239494324 - 0 - 0
+info:Skus imported OK:0/258
+warning:Skus imported KO:258/258
 end:Import Ended

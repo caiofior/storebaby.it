@@ -146,8 +146,8 @@ corrupted NUMERIC
                 $magentoProduct = $mastroProduct->createMagentoProduct();
                 
                 if ($magentoProduct instanceof MagentoProduct) {
-                    //if (ftell($this->magentoCsvHandle) == 0)
-                    //    fwrite($this->magentoCsvHandle, $magentoProduct->getCsvHeaders().PHP_EOL);
+                    if (ftell($this->magentoCsvHandle) == 0)
+                        fwrite($this->magentoCsvHandle, $magentoProduct->getCsvHeaders().PHP_EOL);
                     fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow().PHP_EOL);
                 }
                 
@@ -186,7 +186,7 @@ corrupted NUMERIC
          if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
          
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL']);
+            curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL'].'?'.  http_build_query(array('message'=> urlencode($this->log))));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $output = curl_exec($ch);
             curl_close($ch);  
