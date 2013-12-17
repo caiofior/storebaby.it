@@ -183,6 +183,14 @@ corrupted NUMERIC
             ftp_put($this->ftp, 'import.csv',$magentoCsvFilname,  FTP_ASCII);
             ftp_close($this->ftp);
         }
+         if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
+         
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL']);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $output = curl_exec($ch);
+            curl_close($ch);  
+         }
     }
     /**
      * Gets config parameter
