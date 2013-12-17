@@ -24,8 +24,7 @@ class MastroImageColl {
      * @var array
      */
     private static $imageDirs =array(
-        'CONVERT_COMMAND'=>'full',
-        'CONVERT_COMMAND_THUMBNAIL'=>'thumbnail',
+        'CONVERT_COMMAND_THUMBNAIL'=>'small',
     );
     /**
      * Creatreslist of parsed name files and set up db for storing previus image sizes
@@ -128,14 +127,7 @@ class MastroImageColl {
                 if (!is_dir($magentoFileName))
                     mkdir($magentoFileName);
                 $magentoFileName .= DIRECTORY_SEPARATOR;
-                $imagesSubDirs = array('media','catalog','product');
-                if (key_exists($convertCommand, self::$imageDirs)) {
-                    $magentoFileName .= self::$imageDirs[$convertCommand];
-                    if (!is_dir($magentoFileName))
-                        mkdir($magentoFileName);
-                    $magentoFileName .= DIRECTORY_SEPARATOR;
-                    $imagesSubDirs[]=self::$imageDirs[$convertCommand];
-                }
+                $imagesSubDirs = array('media','import');
                 $magentoPath = '';
                 $magentoUrl = '';
                 if (strlen($fileName['parsedFilename']) > 2) {
@@ -153,8 +145,11 @@ class MastroImageColl {
                     $magentoPath .= DIRECTORY_SEPARATOR;
                     $magentoUrl .= '/';
                 }
-                $magentoPath .= $fileName['parsedFilename'] . '.jpeg';
-                $magentoUrl .= $fileName['parsedFilename'] . '.jpeg';
+                $suffix = '';
+                if (key_exists($convertCommand, self::$imageDirs))
+                        $suffix = '_'.self::$imageDirs[$convertCommand];
+                $magentoPath .= $fileName['parsedFilename'] . $suffix . '.jpeg';
+                $magentoUrl .= $fileName['parsedFilename'] . $suffix . '.jpeg';
                 $return = $magentoUrl;
                 if (
                         $fileName['filename'] != '' &&
@@ -238,10 +233,10 @@ class MastroImageColl {
                     }
                     $fileList = ftp_nlist($ftp,'.');
                     if (
-                            !in_array($fileName['parsedFilename'] . '.jpeg', $fileList) ||
-                             ftp_size ($ftp,$fileName['parsedFilename'] . '.jpeg') != filesize($magentoFileName . $magentoPath)
+                            !in_array($fileName['parsedFilename'] .$suffix . '.jpeg', $fileList) ||
+                             ftp_size ($ftp,$fileName['parsedFilename'] . $suffix . '.jpeg') != filesize($magentoFileName . $magentoPath)
                         ) {
-                            ftp_put($ftp, $fileName['parsedFilename'] . '.jpeg', $magentoFileName . $magentoPath,  FTP_BINARY);
+                            ftp_put($ftp, $fileName['parsedFilename'] . $suffix.  '.jpeg', $magentoFileName . $magentoPath,  FTP_BINARY);
                     }
                     ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
                     

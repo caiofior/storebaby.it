@@ -168,6 +168,15 @@ corrupted NUMERIC
         fclose($this->magentoCsvHandle);
         if (is_resource($this->ftp)) {
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $imagesSubDirs = array('var','import');
+            foreach ($imagesSubDirs as $dir) {
+                        $fileList = ftp_nlist($this->ftp,'.');
+                        if (!in_array($dir, $fileList)) {
+                            ftp_mkdir($this->ftp,$dir);
+                        }
+                        ftp_chdir($this->ftp,$dir);
+   
+            }
             $fileList = ftp_nlist($this->ftp,'.');
             if (in_array('import.csv', $fileList))
                 ftp_delete ($this->ftp, 'import.csv');
