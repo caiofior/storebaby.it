@@ -7,4 +7,5 @@ magmi/conf/*
 win32_import/magento_csv/*
 win32_import/magento_images/*
 win32_import/old/*
+win32_import/log/*
 win32_import/BMP/*
