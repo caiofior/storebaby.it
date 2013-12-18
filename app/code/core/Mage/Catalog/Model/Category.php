@@ -482,7 +482,19 @@ class Mage_Catalog_Model_Category extends Mage_Catalog_Model_Abstract
         $urlKey = trim($urlKey, '-');
         return $urlKey;
     }
-
+    /**
+     * Retrieve thumbnail image URL
+     * added by ROMARS
+     * @return string
+     */
+     public function getThumbnailUrl()
+            {
+                $url = false;
+                if ($image = $this->getThumbnail()) {
+                    $url = Mage::getBaseUrl('media').'catalog/category/'.$image;
+                }
+                return $url;
+    }
     /**
      * Retrieve image URL
      *
