@@ -148,7 +148,7 @@ class MagentoProduct {
     public function getCsvHeaders() {
         $headers = array_keys(self::$headers);
         foreach ($headers as $key=>$field) {
-            $data[$key]='"'.addslashes($value).'"';
+            $data[$key]='"'.addslashes($field).'"';
         }
         return implode(',',$headers);
     }    

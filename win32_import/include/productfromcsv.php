@@ -68,6 +68,7 @@ class ProductFromCsv {
             mkdir($dbFile);
         $dbFile .= DIRECTORY_SEPARATOR.'mastro';
         $this->imageDb = new SQLite3($dbFile);
+        echo 'Setting up database'.PHP_EOL;
         $this->imageDb->exec('CREATE TABLE IF NOT EXISTS product (
 code TEXT PRIMARY KEY,
 ean13 TEXT UNIQUE ON CONFLICT REPLACE,
@@ -81,6 +82,7 @@ create_date NUMERIC,
 expire_date NUMERIC,
 corrupted NUMERIC
 );');
+        echo 'Fixing database'.PHP_EOL;
         $this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL');
         register_shutdown_function(array($this, 'execOnShutdown'));
     }
@@ -89,6 +91,36 @@ corrupted NUMERIC
      * @throws Exception
      */
     public function import() {
+        
+        
+        if (key_exists('MASTRO_COMMAND',$this->config)) {
+            echo 'Export command '.$this->config['MASTRO_COMMAND'].PHP_EOL;
+            $timeout = 30;
+            $commandHandle = proc_open($this->config['MASTRO_COMMAND'],array(
+                0 => array('pipe', 'r'),
+                1 => array('pipe', 'w'),
+                2 => array('pipe', 'w')
+                 ), $pipes);
+            if (is_resource($commandHandle)) {
+                $startProcTime = microtime(true);
+                $procStatus = proc_get_status($commandHandle);
+                $ticks = 0;
+                while(microtime(true) < $startProcTime + $timeout && $procStatus['running']) {
+                    if ($ticks++ % 5000 == 0 && $ticks > 1)
+                        echo 'Export in progress '.ceil($ticks/5000).PHP_EOL;
+                    usleep(10);
+                    $procStatus = proc_get_status($commandHandle);
+
+                }
+                if (microtime(true) > $startProcTime + $timeout) {
+                    echo 'Export command executed '.PHP_EOL;
+                    proc_terminate($commandHandle,9);
+                    posix_kill($procStatus['pid'],9);
+                }
+
+                proc_close($commandHandle);
+            }
+        }
         $this->mastroCsvHandle = fopen($this->config['MASTRO_CSV_FILE'], 'r');
         if (key_exists('FTP_SERVER', $this->config)) {
             $this->ftp = ftp_connect($this->config['FTP_SERVER']);
@@ -104,6 +136,10 @@ corrupted NUMERIC
             $this->config['FTP_BASE_DIR'] = ftp_pwd($this->ftp).DIRECTORY_SEPARATOR.$this->config['FTP_BASE_DIR'];
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
         }
+        if (is_resource($this->ftp))
+            echo 'FTP connection with  '.$this->config['FTP_SERVER'].PHP_EOL;
+        if (key_exists('CONVERT_COMMAND',$this->config))
+            echo 'Image conversion command   '.$this->config['CONVERT_COMMAND'].PHP_EOL;
         $magentoCsvFilname = getcwd().DIRECTORY_SEPARATOR.'magento_csv';
         if (!is_dir($magentoCsvFilname))
             mkdir($magentoCsvFilname);
@@ -159,7 +195,7 @@ corrupted NUMERIC
                     $rimaningTime = $microtime*$this->mastroCsvLastpos/$byteCount-$microtime;
                     echo 'Progress:'.intval($byteCount/$this->mastroCsvLastpos*100-1)." %\t";
                     echo 'Products: '.$rowCount."\t";
-                    echo 'Rimaning time: '.intval($rimaningTime/60+1)."m\t";
+                    echo 'Remaning time: '.intval($rimaningTime/60+1)."m\t";
                     echo 'ETA:'.date('G:i:s',$this->startTime+$microtime+$rimaningTime).PHP_EOL; 
                 }
             }

@@ -161,42 +161,24 @@ class MastroImageColl {
                         is_string($this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert))
                         
                 ) {
-                    switch (PHP_OS) {
-                        default :
-                        $timeout = 20;
-                        $command = 'timeout -s SIGKILL '. $timeout . ' convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
-                        break;
-                    }
                     $status = '';
-                    $commandHandle = proc_open($command,array(
-                        0 => array('pipe', 'r'),
-                        1 => array('pipe', 'w'),
-                        2 => array('pipe', 'w')
-                         ), $pipes);
-                    if (is_resource($commandHandle)) {
-                        $startProcTime = microtime(true);
-                        $procStatus = proc_get_status($commandHandle);
-                        $ticks = 0;
-                        while(microtime(true) < $startProcTime + $timeout && $procStatus['running']) {
-                            if ($ticks++ % 5000 == 0 && $ticks > 1)
-                                echo 'Long file conversion '.ceil($ticks/5000).' s '.$fileName['filename'].PHP_EOL;
-                            usleep(10);
-                            $procStatus = proc_get_status($commandHandle);
-                        }
-                        if (microtime(true) > $startProcTime + $timeout) {
-                            $status =  'File conversion exceeded '.$fileName['filename'];
-                            echo 'File conversion exceeded '.$fileName['filename'].PHP_EOL;
-                            echo $command.PHP_EOL;
-                            proc_terminate($commandHandle,9);
-                            posix_kill($procStatus['pid'],9);
-                            $this->mastroProduct->setData('corrupted',1);
-                            $this->saveData($fileName['parsedFilename'],$this->mastroProduct->getData());
-                        }
-                        
-                        proc_close($commandHandle);
+                    echo 'Converting image '.$fileName['filename'].PHP_EOL;
+                    switch (PHP_OS) {
+                        case 'WINNT' :
+                            $timeout = 20;
+                            $command = '"'.__DIR__.'\..\lib\imagick\convert.exe" ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
+                            $status = exec($command);
+                        break;
+                        default :
+                            $timeout = 20;
+                            $command = 'timeout -s SIGKILL '. $timeout . ' convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
+                            $status = exec($command);
+                            
+                            break;
                     }
-                    else $status = 'error';
-                  
+                    
+                    
+                    
                     if (strlen($status) > 0 ) {
                         $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$mastroFile.' '.$status);
                        
@@ -240,6 +222,7 @@ class MastroImageColl {
                             !in_array($fileName['parsedFilename'] .$suffix . '.jpeg', $fileList) ||
                              ftp_size ($ftp,$fileName['parsedFilename'] . $suffix . '.jpeg') != filesize($magentoFileName . $magentoPath)
                         ) {
+                            echo 'Uploading image '.$fileName['filename'].PHP_EOL;
                             ftp_put($ftp, $fileName['parsedFilename'] . $suffix.  '.jpeg', $magentoFileName . $magentoPath,  FTP_BINARY);
                     }
                     ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
