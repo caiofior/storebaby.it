@@ -165,6 +165,7 @@ UNIQUE (key, sku) ON CONFLICT IGNORE
         $rowCount = 0;
         $byteCount = 0;
         fseek($this->mastroCsvHandle, 0);
+        
         fseek($this->mastroCsvHandle, 0);
         while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false  ) {
             
