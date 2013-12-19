@@ -111,6 +111,7 @@ class MastroProduct {
             if ($getModifiedData != '') {
                 $magentoProduct->setData('categories',$this->productFromCsv->getCategory($this->data['REPARTO']));
                 $magentoProduct->setData('sku',$this->data['EAN13']);
+                $magentoProduct->setData('re_skus',$this->productFromCsv->getReSkus($this->data['DESCRIZIONE']));
                 $magentoProduct->setData('name', ucfirst(strtolower($this->data['DESCRIZIONE'])));
                 $magentoProduct->setData('meta_title', 'Articoli infanzia');
                 $magentoProduct->setData('meta_description', 'Articoli infanzia '.ucfirst(strtolower($this->data['DESCRIZIONE'])));
@@ -123,7 +124,7 @@ class MastroProduct {
                 $magentoProduct->setData('meta_keyword', 'Articoli infanzia');
                 $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
                 if('LOCAZIONE_MAG'=='99' && $magentoProduct->getData('qty')== 0)
-                    $magentoProduct->setData('status','Disabled');
+                    return false;
                 $magentoProduct->setData('news_from_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
                 $magentoProduct->setData('news_to_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData+3600 * 24 * 7 * 7 ));
                 $magentoProduct->setData('modify_data',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
@@ -138,10 +139,14 @@ class MastroProduct {
     }
     /**
      * Returns product data
-     * @return array
+     * @param string $key
+     * @return array|string
      */
-    public function getData() {
-        return $this->data;
+     public function getData($key = null) {
+        if (!is_null($key) && key_exists($key, $this->data))
+                return $this->data[$key];
+        else 
+            return $this->data;
     }
      /**
      * Sets product data

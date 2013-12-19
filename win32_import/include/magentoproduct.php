@@ -25,6 +25,7 @@ class MagentoProduct {
         'category_ids'=>null,
         'categories'=>null,
         'sku'=>null,
+        're_skus'=>null,
         'has_options'=>'0',
         'name'=>null,
         'meta_title'=>null,

@@ -1,4 +1,5 @@
 <?php
+declare(ticks = 1); 
 /**
  * Reads csv stream and creates a product
  */
@@ -49,6 +50,11 @@ class ProductFromCsv {
      */
     private $log;
     /**
+     * related products
+     * @var array
+     */
+    private $related = array();
+    /**
      * Parses config file
      * @param type $sconfig_file
      * @throws Exception
@@ -82,14 +88,10 @@ create_date NUMERIC,
 expire_date NUMERIC,
 corrupted NUMERIC
 );');
-         $this->imageDb->exec('CREATE TABLE IF NOT EXISTS related (
-key TEXT PRIMARY KEY,
-sku TEXT,
-UNIQUE (key, sku) ON CONFLICT IGNORE
-);');
         echo 'Fixing database'.PHP_EOL;
         $this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL;');
-        $this->imageDb->exec('DELETE FROM related;');
+        pcntl_signal(SIGINT, array($this, 'execOnShutdown'));
+        pcntl_signal(SIGTERM,array($this, 'execOnShutdown'));
         register_shutdown_function(array($this, 'execOnShutdown'));
     }
     /**
@@ -165,7 +167,52 @@ UNIQUE (key, sku) ON CONFLICT IGNORE
         $rowCount = 0;
         $byteCount = 0;
         fseek($this->mastroCsvHandle, 0);
-        
+        echo 'Find related products '.PHP_EOL;
+        while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false  ) {
+            $byteCount += (strlen($buffer)+2);
+            $lastchar = ord(substr($buffer,strlen($buffer)-1));
+            
+            while (
+                    $lastchar==10 ||
+                    $lastchar==13
+                    ) {
+                $buffer = substr($buffer,0,strlen($buffer)-1);
+                $lastchar = ord(substr($buffer,strlen($buffer)-1));
+            }
+
+            if (strlen($row) > 0)
+                $row .= '<br/>';
+            $row .= $buffer;
+            
+            if (preg_match('/\*\*$/', $buffer)) {
+                $row = iconv ('WINDOWS-1252','UTF-8',$row);
+                $mastroProduct->importFromCsvRow($row);
+                $key = $this->generateKey($mastroProduct->getData('DESCRIZIONE'));
+                if($key != '') {
+                    if (!key_exists($key,$this->related))
+                            $this->related[$key] = '';
+                    else if ($this->related[$key] != '' )
+                            $this->related[$key] .= ',';
+                    $this->related[$key] .= $mastroProduct->getData('EAN13');
+                }
+                $rowCount++;
+                $row = '';
+                if ($rowCount/100 == (int) ($rowCount/100)) {
+                    $microtime = microtime(true)-$this->startTime;
+                    $rimaningTime = $microtime*$this->mastroCsvLastpos/$byteCount-$microtime;
+                    echo 'Progress:'.intval($byteCount/$this->mastroCsvLastpos*100-1)." %\t";
+                    echo 'Products: '.$rowCount."\t";
+                    echo 'Remaning time: '.intval($rimaningTime/60+1)."m\t";
+                    echo 'ETA:'.date('G:i:s',$this->startTime+$microtime+$rimaningTime).PHP_EOL; 
+                }
+            }
+             
+         }
+        $row = '';
+        $mastroProduct = new MastroProduct($this);
+        $rowCount = 0;
+        $byteCount = 0;
+        echo 'Create CSV file '.PHP_EOL;
         fseek($this->mastroCsvHandle, 0);
         while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false  ) {
             
@@ -284,7 +331,10 @@ UNIQUE (key, sku) ON CONFLICT IGNORE
       * Called on export end
       */
      public function execOnShutdown() {
-         $this->imageDb->exec('CREATE TABLE IF NOT EXISTS log (
+         $dbFile = getcwd().DIRECTORY_SEPARATOR.'log';
+         $dbFile .= DIRECTORY_SEPARATOR.'mastro';
+         $imageDb = new SQLite3($dbFile);
+         $imageDb->exec('CREATE TABLE IF NOT EXISTS log (
 datetime NUMERIC,
 message TEXT
 );');
@@ -295,14 +345,30 @@ message TEXT
             $this->log .= "file\t" . $error["file"] . PHP_EOL;
             $this->log .= "line\t" . $error["line"] . PHP_EOL;
          }
-         $this->imageDb->exec('INSERT INTO log (datetime,message) VALUES (
+         $imageDb->exec('INSERT INTO log (datetime,message) VALUES (
             DATETIME(\'now\'),
             \''.$this->imageDb->escapeString($this->log).'\'
             ); ');
          
-         $this->imageDb->exec('DELETE FROM log WHERE datetime < DATETIME("now","-1 month");');
-         $this->imageDb->close();
+         $imageDb->exec('DELETE FROM log WHERE datetime < DATETIME("now","-1 month");');
+         $imageDb->close();
+         exit;
+     }
+     private function generateKey($descrizione) {
+         preg_match('/[^ ]*( [^ ]*)?( [^ ]*)?/',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT',$descrizione)),$key);
+         if (sizeof($key)>0)
+             return $key[0];
+         else return '';
+         
+     }
+     /**
+      * Return related sku
+      * @return array
+      */
+     public function getReSkus ($descrizione) {
+         return $this->related[$this->generateKey($descrizione)];
      }
 }
+
 
 
