@@ -82,8 +82,14 @@ create_date NUMERIC,
 expire_date NUMERIC,
 corrupted NUMERIC
 );');
+         $this->imageDb->exec('CREATE TABLE IF NOT EXISTS related (
+key TEXT PRIMARY KEY,
+sku TEXT,
+UNIQUE (key, sku) ON CONFLICT IGNORE
+);');
         echo 'Fixing database'.PHP_EOL;
-        $this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL');
+        $this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL;');
+        $this->imageDb->exec('DELETE FROM related;');
         register_shutdown_function(array($this, 'execOnShutdown'));
     }
     /**
@@ -158,7 +164,8 @@ corrupted NUMERIC
         $mastroProduct = new MastroProduct($this);
         $rowCount = 0;
         $byteCount = 0;
-        
+        fseek($this->mastroCsvHandle, 0);
+        fseek($this->mastroCsvHandle, 0);
         while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false  ) {
             
             $byteCount += (strlen($buffer)+2);

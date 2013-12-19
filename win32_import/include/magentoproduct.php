@@ -23,6 +23,7 @@ class MagentoProduct {
         'attribute_set'=>'Default',
         'type'=>'simple',
         'category_ids'=>null,
+        'categories'=>null,
         'sku'=>null,
         'has_options'=>'0',
         'name'=>null,

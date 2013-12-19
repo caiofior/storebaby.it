@@ -109,7 +109,7 @@ class MastroProduct {
         if ( $magentoProduct->getData('image') != '') {
             $getModifiedData = $this->mastroImageColl->getModifiedData($this->data);
             if ($getModifiedData != '') {
-                $magentoProduct->setData('_category_names',$this->productFromCsv->getCategory($this->data['REPARTO']));
+                $magentoProduct->setData('categories',$this->productFromCsv->getCategory($this->data['REPARTO']));
                 $magentoProduct->setData('sku',$this->data['EAN13']);
                 $magentoProduct->setData('name', ucfirst(strtolower($this->data['DESCRIZIONE'])));
                 $magentoProduct->setData('meta_title', 'Articoli infanzia');
@@ -118,11 +118,14 @@ class MastroProduct {
                 $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim($this->data['DESCRIZIONE'])))).'.html');
                 $magentoProduct->setData('weight', '0.1');
                 $magentoProduct->setData('price',$this->data['VENDITA']+1*($this->data['IVA']/100));
-                $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE */i', '', $this->data['TESTO']));
-                $magentoProduct->setData('short_description', preg_replace('/\..*/','',preg_replace('/^DESCRIZIONE */i', '', $this->data['TESTO'])));
+                $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\>)]*/i', '', $this->data['TESTO']));
+                $magentoProduct->setData('short_description', preg_replace('/\..*/','',preg_replace('/^DESCRIZIONE[ (\<br\>)]*/i', '', $this->data['TESTO'])));
                 $magentoProduct->setData('meta_keyword', 'Articoli infanzia');
                 $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
-                $magentoProduct->setData('is_new',($getModifiedData-time()) < 3600 * 24 * 7 * 7 );
+                if('LOCAZIONE_MAG'=='99' && $magentoProduct->getData('qty')== 0)
+                    $magentoProduct->setData('status','Disabled');
+                $magentoProduct->setData('news_from_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
+                $magentoProduct->setData('news_to_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData+3600 * 24 * 7 * 7 ));
                 $magentoProduct->setData('modify_data',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
                 $magentoProduct->setData('create_data',  strftime('%Y-%m-%d %H:%M:%S',$this->mastroImageColl->getCreationData($this->data)));
                 foreach (self::$headers as $mastro) {
