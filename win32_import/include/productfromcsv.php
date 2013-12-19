@@ -354,6 +354,11 @@ message TEXT
          $imageDb->close();
          exit;
      }
+     /**
+      * Genereate a keu form a produc name
+      * @param string $descrizione
+      * @return string
+      */
      private function generateKey($descrizione) {
          preg_match('/[^ ]*( [^ ]*)?( [^ ]*)?/',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT',$descrizione)),$key);
          if (sizeof($key)>0)
@@ -366,7 +371,10 @@ message TEXT
       * @return array
       */
      public function getReSkus ($descrizione) {
-         return $this->related[$this->generateKey($descrizione)];
+         $key = $this->generateKey($descrizione);
+         if (key_exists($key,$this->related))
+            return $this->related[$this->generateKey($descrizione)];
+         else return '';
      }
 }
 
