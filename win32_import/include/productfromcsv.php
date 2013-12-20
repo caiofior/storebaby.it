@@ -50,11 +50,6 @@ class ProductFromCsv {
      */
     private $log;
     /**
-     * related products
-     * @var array
-     */
-    private $related = array();
-    /**
      * Parses config file
      * @param type $sconfig_file
      * @throws Exception
@@ -166,52 +161,6 @@ corrupted NUMERIC
         $mastroProduct = new MastroProduct($this);
         $rowCount = 0;
         $byteCount = 0;
-        fseek($this->mastroCsvHandle, 0);
-        echo 'Find related products '.PHP_EOL;
-        while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false  ) {
-            $byteCount += (strlen($buffer)+2);
-            $lastchar = ord(substr($buffer,strlen($buffer)-1));
-            
-            while (
-                    $lastchar==10 ||
-                    $lastchar==13
-                    ) {
-                $buffer = substr($buffer,0,strlen($buffer)-1);
-                $lastchar = ord(substr($buffer,strlen($buffer)-1));
-            }
-
-            if (strlen($row) > 0)
-                $row .= '<br/>';
-            $row .= $buffer;
-            
-            if (preg_match('/\*\*$/', $buffer)) {
-                $row = iconv ('WINDOWS-1252','UTF-8',$row);
-                $mastroProduct->importFromCsvRow($row);
-                $key = $this->generateKey($mastroProduct->getData('DESCRIZIONE'));
-                if($key != '') {
-                    if (!key_exists($key,$this->related))
-                            $this->related[$key] = '';
-                    else if ($this->related[$key] != '' )
-                            $this->related[$key] .= ',';
-                    $this->related[$key] .= $mastroProduct->getData('EAN13');
-                }
-                $rowCount++;
-                $row = '';
-                if ($rowCount/100 == (int) ($rowCount/100)) {
-                    $microtime = microtime(true)-$this->startTime;
-                    $rimaningTime = $microtime*$this->mastroCsvLastpos/$byteCount-$microtime;
-                    echo 'Progress:'.intval($byteCount/$this->mastroCsvLastpos*100-1)." %\t";
-                    echo 'Products: '.$rowCount."\t";
-                    echo 'Remaning time: '.intval($rimaningTime/60+1)."m\t";
-                    echo 'ETA:'.date('G:i:s',$this->startTime+$microtime+$rimaningTime).PHP_EOL; 
-                }
-            }
-             
-         }
-        $row = '';
-        $mastroProduct = new MastroProduct($this);
-        $rowCount = 0;
-        $byteCount = 0;
         echo 'Create CSV file '.PHP_EOL;
         fseek($this->mastroCsvHandle, 0);
         while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false  ) {
@@ -241,7 +190,6 @@ corrupted NUMERIC
                         fwrite($this->magentoCsvHandle, $magentoProduct->getCsvHeaders().PHP_EOL);
                     fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow().PHP_EOL);
                 }
-                
                 $rowCount++;
                 $row = '';
                 if ($rowCount/100 == (int) ($rowCount/100)) {
@@ -353,28 +301,6 @@ message TEXT
          $imageDb->exec('DELETE FROM log WHERE datetime < DATETIME("now","-1 month");');
          $imageDb->close();
          exit;
-     }
-     /**
-      * Genereate a keu form a produc name
-      * @param string $descrizione
-      * @return string
-      */
-     private function generateKey($descrizione) {
-         preg_match('/[^ ]*( [^ ]*)?( [^ ]*)?/',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT',$descrizione)),$key);
-         if (sizeof($key)>0)
-             return $key[0];
-         else return '';
-         
-     }
-     /**
-      * Return related sku
-      * @return array
-      */
-     public function getReSkus ($descrizione) {
-         $key = $this->generateKey($descrizione);
-         if (key_exists($key,$this->related))
-            return $this->related[$this->generateKey($descrizione)];
-         else return '';
      }
 }
 

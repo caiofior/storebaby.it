@@ -28,7 +28,11 @@ class MastroProduct {
      * @var MastroImageColl
      */
     private $mastroImageColl;
-
+    /**
+     * related products
+     * @var array
+     */
+    private $related = array();
     /**
      * Collumn headers ima Mastro Csv
      * @var array 
@@ -108,11 +112,14 @@ class MastroProduct {
         
         if ( $magentoProduct->getData('image') != '') {
             $getModifiedData = $this->mastroImageColl->getModifiedData($this->data);
+            $key = $this->generateKey($this->data['DESCRIZIONE']);
+            
             if ($getModifiedData != '') {
                 $magentoProduct->setData('categories',$this->productFromCsv->getCategory($this->data['REPARTO']));
                 $magentoProduct->setData('sku',$this->data['EAN13']);
-                $magentoProduct->setData('re_skus',$this->productFromCsv->getReSkus($this->data['DESCRIZIONE']));
+                $magentoProduct->setData('xre_skus',$key);
                 $magentoProduct->setData('name', ucfirst(strtolower($this->data['DESCRIZIONE'])));
+                $magentoProduct->setData('brand', ucfirst(strtolower($this->data['MARCA'])));
                 $magentoProduct->setData('meta_title', 'Articoli infanzia');
                 $magentoProduct->setData('meta_description', 'Articoli infanzia '.ucfirst(strtolower($this->data['DESCRIZIONE'])));
                 $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim($this->data['DESCRIZIONE'])))));
@@ -131,6 +138,13 @@ class MastroProduct {
                 $magentoProduct->setData('create_data',  strftime('%Y-%m-%d %H:%M:%S',$this->mastroImageColl->getCreationData($this->data)));
                 foreach (self::$headers as $mastro) {
                     $magentoProduct->setData('MASTRO_'.$mastro, $this->data[$mastro]);
+                }
+                if($key != '') {
+                    if (!key_exists($key,$this->related))
+                            $this->related[$key] = '';
+                    else if ($this->related[$key] != '' )
+                            $this->related[$key] .= ',';
+                    $this->related[$key] .= $this->data['EAN13'];
                 }
             }
             return $magentoProduct;
@@ -162,4 +176,26 @@ class MastroProduct {
     public function getHeaders () {
         return self::$headers;
     }
+      /**
+      * Genereate a keu form a produc name
+      * @param string $descrizione
+      * @return string
+      */
+     private function generateKey($descrizione) {
+         preg_match('/[^ ]*( [^ ]*)?( [^ ]*)?/',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT',$descrizione)),$key);
+         if (sizeof($key)>0)
+             return $key[0];
+         else return '';
+         
+     }
+     /**
+      * Return related sku
+      * @return array
+      */
+     public function getReSkus ($descrizione) {
+         $key = $this->generateKey($descrizione);
+         if (key_exists($key,$this->related))
+            return $this->related[$this->generateKey($descrizione)];
+         else return '';
+     }
 }

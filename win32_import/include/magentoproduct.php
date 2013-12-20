@@ -26,8 +26,10 @@ class MagentoProduct {
         'categories'=>null,
         'sku'=>null,
         're_skus'=>null,
+        'xre_skus'=>null,
         'has_options'=>'0',
         'name'=>null,
+        'brand'=>null,
         'meta_title'=>null,
         'meta_description'=>null,
         'image'=>null,
@@ -135,8 +137,8 @@ class MagentoProduct {
     public function getCsvRow() {
         $data = $this->data;
         foreach ($data as $key => $value) {
-            if (preg_match('/^[\-0-9 ,\.]+$/', $value))
-                $data[$key]='"'.str_replace (',','.',$value).'"';
+            if (preg_match('/^[\-0-9 \.]+$/', $value))
+                $data[$key]=$value;
             else
                 $data[$key]='"'.addslashes($value).'"';
                
