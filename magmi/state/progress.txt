@@ -4,534 +4,713 @@ startup:Import Profile:default
 startup:Import Mode:xcreate
 step:step:0.5%
 plugin;Magmi_CSVDataSource;pluginhello:CSV Datasource-1.3-Dweeves- 
+plugin;CategoryImporter;pluginhello:On the fly category creator/importer-0.2.3-Dweeves-http://sourceforge.net/apps/mediawiki/magmi/index.php?title=On_the_fly_category_creator/importer 
+plugin;ImageAttributeItemProcessor;pluginhello:Image attributes processor-1.0.25-Dweeves-http://sourceforge.net/apps/mediawiki/magmi/index.php?title=Image_attributes_processor 
+plugin;RelatedProducts;pluginhello:Product relater-1.0.3-Dweeves,jwtechniek-http://sourceforge.net/apps/mediawiki/magmi/index.php?title=Product_relater 
 plugin;Magmi_DefaultAttributeItemProcessor;pluginhello:Standard Attribute Import-1.0.5-Dweeves- 
 plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - Importing CSV : /home/caiofior/public_html/storebaby.it/var/import/import.csv using separator [ , ] enclosing [ " ]
 startup:Performing Datasouce Lookup...
-lookup:258:0.19102692604065
-startup:Found 258 records, took 0.19102692604065 sec
+lookup:952:0.56443309783936
+startup:Found 952 records, took 0.56443309783936 sec
 plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - No BOM detected, assuming File is UTF8 without BOM...
-plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - 96 CSV headers columns found
-columns:96
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - 100 CSV headers columns found
+columns:100
 plugin;Magmi_DefaultAttributeItemProcessor;startup:Standard Attribute Import v1.0.5 - Newly created items will have default values for columns:
-startup:Ajusted processed columns:96
-skip:skipping existing sku:8003670227892 - xcreate mode set
-itime:2 - 0.0046939849853516 - 0.0046939849853516
-dbtime:1 - 0.0004727840423584 - 0.0004727840423584 - 1
-skip:skipping existing sku:8003670240235 - xcreate mode set
-skip:skipping existing sku:8003670240259 - xcreate mode set
-itime:4 - 0.012624979019165 - 0.0070979595184326
-dbtime:3 - 0.0011954307556152 - 0.00072264671325684 - 2
-skip:skipping existing sku:8003670240266 - xcreate mode set
-skip:skipping existing sku:8003670240273 - xcreate mode set
-itime:6 - 0.019883871078491 - 0.0064229965209961
-dbtime:5 - 0.0019512176513672 - 0.00075578689575195 - 2
-skip:skipping existing sku:8003670262275 - xcreate mode set
-skip:skipping existing sku:8003670304173 - xcreate mode set
-itime:8 - 0.026378870010376 - 0.0057477951049805
-dbtime:7 - 0.0026664733886719 - 0.00071525573730469 - 2
-skip:skipping existing sku:8003670365679 - xcreate mode set
-skip:skipping existing sku:8003670365686 - xcreate mode set
-itime:10 - 0.032433986663818 - 0.0053379535675049
-dbtime:9 - 0.0033366680145264 - 0.00067019462585449 - 2
-skip:skipping existing sku:8003670655916 - xcreate mode set
-skip:skipping existing sku:8003670655923 - xcreate mode set
-itime:12 - 0.041092872619629 - 0.0078208446502686
-dbtime:11 - 0.0040154457092285 - 0.00067877769470215 - 2
-skip:skipping existing sku:8003670693611 - xcreate mode set
-skip:skipping existing sku:8003670693666 - xcreate mode set
-itime:14 - 0.062480926513672 - 0.012922048568726
-dbtime:13 - 0.0082087516784668 - 0.0041933059692383 - 2
-skip:skipping existing sku:8003670693703 - xcreate mode set
-skip:skipping existing sku:8003670693710 - xcreate mode set
-itime:16 - 0.078105926513672 - 0.015302896499634
-dbtime:15 - 0.0098042488098145 - 0.0015954971313477 - 2
-skip:skipping existing sku:8003670693741 - xcreate mode set
-skip:skipping existing sku:8003670693772 - xcreate mode set
-itime:18 - 0.087553024291992 - 0.0087070465087891
-dbtime:17 - 0.010518312454224 - 0.00071406364440918 - 2
-skip:skipping existing sku:8003670693826 - xcreate mode set
-skip:skipping existing sku:8003670728894 - xcreate mode set
-itime:20 - 0.11094403266907 - 0.021584033966064
-dbtime:19 - 0.012537479400635 - 0.0020191669464111 - 2
-skip:skipping existing sku:8003670730002 - xcreate mode set
-skip:skipping existing sku:8003670730163 - xcreate mode set
-itime:22 - 0.12031602859497 - 0.0090081691741943
-dbtime:21 - 0.015214920043945 - 0.0026774406433105 - 2
-skip:skipping existing sku:8003670730170 - xcreate mode set
-skip:skipping existing sku:8003670730187 - xcreate mode set
-itime:24 - 0.12764501571655 - 0.0061800479888916
-dbtime:23 - 0.01652979850769 - 0.0013148784637451 - 2
-skip:skipping existing sku:8003670730217 - xcreate mode set
-skip:skipping existing sku:8003670730224 - xcreate mode set
-itime:26 - 0.13379287719727 - 0.0054259300231934
-dbtime:25 - 0.017210006713867 - 0.00068020820617676 - 2
-skip:skipping existing sku:8003670730286 - xcreate mode set
-skip:skipping existing sku:8003670749394 - xcreate mode set
-itime:28 - 0.14152693748474 - 0.0058190822601318
-dbtime:27 - 0.017868280410767 - 0.00065827369689941 - 2
-skip:skipping existing sku:8003670753070 - xcreate mode set
-skip:skipping existing sku:8003670761136 - xcreate mode set
-itime:30 - 0.14824390411377 - 0.0059218406677246
-dbtime:29 - 0.018527507781982 - 0.00065922737121582 - 2
-skip:skipping existing sku:8003670761143 - xcreate mode set
-skip:skipping existing sku:8003670777038 - xcreate mode set
-itime:32 - 0.1542010307312 - 0.0051710605621338
-dbtime:31 - 0.019194364547729 - 0.00066685676574707 - 2
-skip:skipping existing sku:8003670777045 - xcreate mode set
-skip:skipping existing sku:8003670789369 - xcreate mode set
-itime:34 - 0.160728931427 - 0.0052988529205322
-dbtime:33 - 0.0198655128479 - 0.0006711483001709 - 2
-skip:skipping existing sku:8003670791508 - xcreate mode set
-skip:skipping existing sku:8003670791515 - xcreate mode set
-itime:36 - 0.16655993461609 - 0.0049998760223389
-dbtime:35 - 0.020583629608154 - 0.00071811676025391 - 2
-skip:skipping existing sku:8003670792130 - xcreate mode set
-skip:skipping existing sku:8003670797456 - xcreate mode set
-itime:38 - 0.17843890190125 - 0.011157035827637
-dbtime:37 - 0.027588605880737 - 0.007004976272583 - 2
-skip:skipping existing sku:8003670797463 - xcreate mode set
-skip:skipping existing sku:8003670800866 - xcreate mode set
-itime:40 - 0.1900110244751 - 0.011245965957642
-dbtime:39 - 0.031405687332153 - 0.003817081451416 - 2
-skip:skipping existing sku:8003670801030 - xcreate mode set
-skip:skipping existing sku:8003670955788 - xcreate mode set
-itime:42 - 0.19653391838074 - 0.0061850547790527
-dbtime:41 - 0.032088756561279 - 0.00068306922912598 - 2
-skip:skipping existing sku:8003670957720 - xcreate mode set
-skip:skipping existing sku:8003670957737 - xcreate mode set
-itime:44 - 0.203204870224 - 0.005836009979248
-dbtime:43 - 0.032768726348877 - 0.00067996978759766 - 2
-skip:skipping existing sku:8025081904551 - xcreate mode set
-skip:skipping existing sku:8025081906616 - xcreate mode set
-itime:46 - 0.20965003967285 - 0.0057179927825928
-dbtime:45 - 0.033440828323364 - 0.0006721019744873 - 2
-skip:skipping existing sku:8025081907033 - xcreate mode set
-skip:skipping existing sku:8025081907194 - xcreate mode set
-itime:48 - 0.2167809009552 - 0.0052058696746826
-dbtime:47 - 0.034111022949219 - 0.00067019462585449 - 2
-skip:skipping existing sku:8025081907507 - xcreate mode set
-skip:skipping existing sku:8025081910286 - xcreate mode set
-itime:50 - 0.23453497886658 - 0.016946077346802
-dbtime:49 - 0.034858226776123 - 0.0007472038269043 - 2
-skip:skipping existing sku:8025081910729 - xcreate mode set
-skip:skipping existing sku:8025081910736 - xcreate mode set
-itime:52 - 0.2505419254303 - 0.015681982040405
-dbtime:51 - 0.037892818450928 - 0.0030345916748047 - 2
-skip:skipping existing sku:8025081910743 - xcreate mode set
-skip:skipping existing sku:8025081911085 - xcreate mode set
-itime:54 - 0.2630090713501 - 0.012119054794312
-dbtime:53 - 0.039254426956177 - 0.001361608505249 - 2
-skip:skipping existing sku:8003670167587 - xcreate mode set
-skip:skipping existing sku:8003670190554 - xcreate mode set
-itime:56 - 0.273442029953 - 0.0097200870513916
-dbtime:55 - 0.041084766387939 - 0.0018303394317627 - 2
-skip:skipping existing sku:8003670216445 - xcreate mode set
-skip:skipping existing sku:8003670224143 - xcreate mode set
-itime:58 - 0.29388093948364 - 0.018285989761353
-dbtime:57 - 0.049980878829956 - 0.0088961124420166 - 2
-skip:skipping existing sku:8003670224211 - xcreate mode set
-skip:skipping existing sku:8003670342649 - xcreate mode set
-itime:60 - 0.30374789237976 - 0.009505033493042
-dbtime:59 - 0.050670862197876 - 0.00068998336791992 - 2
-skip:skipping existing sku:8003670342656 - xcreate mode set
-skip:skipping existing sku:8003670358107 - xcreate mode set
-itime:62 - 0.3110020160675 - 0.0064330101013184
-dbtime:61 - 0.051372051239014 - 0.0007011890411377 - 2
-skip:skipping existing sku:8003670358145 - xcreate mode set
-skip:skipping existing sku:8003670626459 - xcreate mode set
-itime:64 - 0.31731700897217 - 0.0055820941925049
-dbtime:63 - 0.052030801773071 - 0.00065875053405762 - 2
-skip:skipping existing sku:8003670626466 - xcreate mode set
-skip:skipping existing sku:8003670687658 - xcreate mode set
-itime:66 - 0.32376194000244 - 0.005728006362915
-dbtime:65 - 0.052732706069946 - 0.000701904296875 - 2
-skip:skipping existing sku:8003670687726 - xcreate mode set
-skip:skipping existing sku:8003670695615 - xcreate mode set
-itime:68 - 0.33063697814941 - 0.0061519145965576
-dbtime:67 - 0.054269790649414 - 0.0015370845794678 - 2
-skip:skipping existing sku:8003670696254 - xcreate mode set
-skip:skipping existing sku:8003670696261 - xcreate mode set
-itime:70 - 0.33976006507874 - 0.0084061622619629
-dbtime:69 - 0.054928064346313 - 0.00065827369689941 - 2
-skip:skipping existing sku:8003670696285 - xcreate mode set
-skip:skipping existing sku:8008577007219 - xcreate mode set
-itime:72 - 0.34591603279114 - 0.0054099559783936
-dbtime:71 - 0.055598974227905 - 0.0006709098815918 - 2
-skip:skipping existing sku:8008577507221 - xcreate mode set
-skip:skipping existing sku:8008577007608 - xcreate mode set
-itime:74 - 0.35195207595825 - 0.0053091049194336
-dbtime:73 - 0.056302785873413 - 0.00070381164550781 - 2
-skip:skipping existing sku:8008577007646 - xcreate mode set
-skip:skipping existing sku:8008577007660 - xcreate mode set
-itime:76 - 0.35824990272522 - 0.0055739879608154
-dbtime:75 - 0.056958675384521 - 0.0006558895111084 - 2
-skip:skipping existing sku:8008577007738 - xcreate mode set
-skip:skipping existing sku:8008577007813 - xcreate mode set
-itime:78 - 0.36520600318909 - 0.0060849189758301
-dbtime:77 - 0.057611227035522 - 0.00065255165100098 - 2
-skip:skipping existing sku:8008577007844 - xcreate mode set
-skip:skipping existing sku:8008577007868 - xcreate mode set
-itime:80 - 0.37748289108276 - 0.011523008346558
-dbtime:79 - 0.058272123336792 - 0.00066089630126953 - 2
-skip:skipping existing sku:8008577007875 - xcreate mode set
-skip:skipping existing sku:8008577007882 - xcreate mode set
-itime:82 - 0.38657093048096 - 0.0087170600891113
-dbtime:81 - 0.062622785568237 - 0.0043506622314453 - 2
-skip:skipping existing sku:8008577007899 - xcreate mode set
-skip:skipping existing sku:8008577007943 - xcreate mode set
-itime:84 - 0.39317989349365 - 0.0062859058380127
-dbtime:83 - 0.063352823257446 - 0.00073003768920898 - 2
-skip:skipping existing sku:8008577008018 - xcreate mode set
-skip:skipping existing sku:8008577008025 - xcreate mode set
-itime:86 - 0.3998429775238 - 0.0059449672698975
-dbtime:85 - 0.064014673233032 - 0.00066184997558594 - 2
-skip:skipping existing sku:8008577008049 - xcreate mode set
-skip:skipping existing sku:8008577008056 - xcreate mode set
-itime:88 - 0.42177295684814 - 0.021198034286499
-dbtime:87 - 0.064700603485107 - 0.0006859302520752 - 2
-skip:skipping existing sku:8008577008070 - xcreate mode set
-skip:skipping existing sku:8008577008100 - xcreate mode set
-itime:90 - 0.43461298942566 - 0.012452125549316
-dbtime:89 - 0.067599773406982 - 0.002899169921875 - 2
-skip:skipping existing sku:0735259002283 - xcreate mode set
-skip:skipping existing sku:0735259002443 - xcreate mode set
-itime:92 - 0.4486448764801 - 0.013708829879761
-dbtime:91 - 0.069873809814453 - 0.0022740364074707 - 2
-skip:skipping existing sku:0735259002450 - xcreate mode set
-skip:skipping existing sku:0735259002542 - xcreate mode set
-itime:94 - 0.45985388755798 - 0.0062899589538574
-dbtime:93 - 0.070560216903687 - 0.0006864070892334 - 2
-skip:skipping existing sku:0735259002580 - xcreate mode set
-skip:skipping existing sku:0735259002634 - xcreate mode set
-itime:96 - 0.47279286384583 - 0.0071258544921875
-dbtime:95 - 0.071227312088013 - 0.00066709518432617 - 2
-skip:skipping existing sku:8008577008094 - xcreate mode set
-skip:skipping existing sku:5010415548009 - xcreate mode set
-itime:98 - 0.48979687690735 - 0.013769865036011
-dbtime:97 - 0.079132080078125 - 0.0079047679901123 - 2
-skip:skipping existing sku:8032638560023 - xcreate mode set
-skip:skipping existing sku:A900266040 - xcreate mode set
-itime:100 - 0.49651288986206 - 0.006354808807373
-dbtime:99 - 0.079792976379395 - 0.00066089630126953 - 2
-skip:skipping existing sku:A900266077 - xcreate mode set
-skip:skipping existing sku:A901088094 - xcreate mode set
-itime:102 - 0.50369501113892 - 0.006309986114502
-dbtime:101 - 0.080498933792114 - 0.00070595741271973 - 2
-skip:skipping existing sku:A901088169 - xcreate mode set
-skip:skipping existing sku:A902975491 - xcreate mode set
-itime:104 - 0.51044988632202 - 0.0053188800811768
-dbtime:103 - 0.081119775772095 - 0.00062084197998047 - 2
-skip:skipping existing sku:A903024204 - xcreate mode set
-skip:skipping existing sku:A903907638 - xcreate mode set
-itime:106 - 0.51689291000366 - 0.0057170391082764
-dbtime:105 - 0.081739902496338 - 0.00062012672424316 - 2
-skip:skipping existing sku:A907221586 - xcreate mode set
-skip:skipping existing sku:A908077454 - xcreate mode set
-itime:108 - 0.52469992637634 - 0.0060310363769531
-dbtime:107 - 0.08237361907959 - 0.00063371658325195 - 2
-skip:skipping existing sku:A908077466 - xcreate mode set
-skip:skipping existing sku:A908078417 - xcreate mode set
-itime:110 - 0.53103494644165 - 0.0055010318756104
-dbtime:109 - 0.083067893981934 - 0.00069427490234375 - 2
-skip:skipping existing sku:A908078431 - xcreate mode set
-skip:skipping existing sku:A908078443 - xcreate mode set
-itime:112 - 0.5368390083313 - 0.0050709247589111
-dbtime:111 - 0.083683967590332 - 0.00061607360839844 - 2
-skip:skipping existing sku:A908338231 - xcreate mode set
-skip:skipping existing sku:A908960305 - xcreate mode set
-itime:114 - 0.54371690750122 - 0.0057408809661865
-dbtime:113 - 0.084315776824951 - 0.00063180923461914 - 2
-skip:skipping existing sku:A908960711 - xcreate mode set
-skip:skipping existing sku:A908960800 - xcreate mode set
-itime:116 - 0.55147004127502 - 0.0060989856719971
-dbtime:115 - 0.085848569869995 - 0.0015327930450439 - 2
-skip:skipping existing sku:A908961422 - xcreate mode set
-skip:skipping existing sku:A903960134 - xcreate mode set
-itime:118 - 0.55861902236938 - 0.006425142288208
-dbtime:117 - 0.086661577224731 - 0.00081300735473633 - 2
-skip:skipping existing sku:8017619160607 - xcreate mode set
-skip:skipping existing sku:5010415302168 - xcreate mode set
-itime:120 - 0.56466007232666 - 0.0051290988922119
-dbtime:119 - 0.087305784225464 - 0.00064420700073242 - 2
-skip:skipping existing sku:5010415302342 - xcreate mode set
-skip:skipping existing sku:5010415302366 - xcreate mode set
-itime:122 - 0.57062602043152 - 0.0051281452178955
-dbtime:121 - 0.088006019592285 - 0.00070023536682129 - 2
-skip:skipping existing sku:5010415302540 - xcreate mode set
-skip:skipping existing sku:5010415362087 - xcreate mode set
-itime:124 - 0.58788800239563 - 0.01654314994812
-dbtime:123 - 0.090674161911011 - 0.0026681423187256 - 2
-skip:skipping existing sku:5010415362162 - xcreate mode set
-skip:skipping existing sku:5010415362186 - xcreate mode set
-itime:126 - 0.59895491600037 - 0.010670900344849
-dbtime:125 - 0.09271240234375 - 0.0020382404327393 - 2
-skip:skipping existing sku:8011250014220 - xcreate mode set
-skip:skipping existing sku:8011250209091 - xcreate mode set
-itime:128 - 0.62415599822998 - 0.024873971939087
-dbtime:127 - 0.093440294265747 - 0.00072789192199707 - 2
-skip:skipping existing sku:8011250210370 - xcreate mode set
-skip:skipping existing sku:8011250210592 - xcreate mode set
-itime:130 - 0.6482150554657 - 0.023719072341919
-dbtime:129 - 0.094641208648682 - 0.0012009143829346 - 2
-skip:skipping existing sku:8011250210813 - xcreate mode set
-skip:skipping existing sku:8011250221000 - xcreate mode set
-itime:132 - 0.66067290306091 - 0.0075550079345703
-dbtime:131 - 0.096608400344849 - 0.001967191696167 - 2
-skip:skipping existing sku:8011250322004 - xcreate mode set
-skip:skipping existing sku:8011250325005 - xcreate mode set
-itime:134 - 0.66810703277588 - 0.0050239562988281
-dbtime:133 - 0.097250461578369 - 0.00064206123352051 - 2
-skip:skipping existing sku:8011250326002 - xcreate mode set
-skip:skipping existing sku:8011250327009 - xcreate mode set
-itime:136 - 0.68264293670654 - 0.013813018798828
-dbtime:135 - 0.098669767379761 - 0.0014193058013916 - 2
-skip:skipping existing sku:8011250328006 - xcreate mode set
-skip:skipping existing sku:8011250331006 - xcreate mode set
-itime:138 - 0.69286108016968 - 0.0098960399627686
-dbtime:137 - 0.10071969032288 - 0.0020499229431152 - 2
-skip:skipping existing sku:8011250332003 - xcreate mode set
-skip:skipping existing sku:8011250333000 - xcreate mode set
-itime:140 - 0.69965195655823 - 0.0059258937835693
-dbtime:139 - 0.10143065452576 - 0.00071096420288086 - 2
-skip:skipping existing sku:8011250355002 - xcreate mode set
-skip:skipping existing sku:8011250505223 - xcreate mode set
-itime:142 - 0.7082679271698 - 0.0060160160064697
-dbtime:141 - 0.10207366943359 - 0.00064301490783691 - 2
-skip:skipping existing sku:8011250515222 - xcreate mode set
-skip:skipping existing sku:8011250515772 - xcreate mode set
-itime:144 - 0.71681189537048 - 0.0077588558197021
-dbtime:143 - 0.10272932052612 - 0.0006556510925293 - 2
-skip:skipping existing sku:8011250515864 - xcreate mode set
-skip:skipping existing sku:8011250577008 - xcreate mode set
-itime:146 - 0.72426104545593 - 0.0066430568695068
-dbtime:145 - 0.10340118408203 - 0.0006718635559082 - 2
-skip:skipping existing sku:8011250580152 - xcreate mode set
-skip:skipping existing sku:8022788010301 - xcreate mode set
-itime:148 - 0.73046708106995 - 0.0054161548614502
-dbtime:147 - 0.10403823852539 - 0.00063705444335938 - 2
-skip:skipping existing sku:8022788100101 - xcreate mode set
+startup:Ajusted processed columns:100
+warning:Invalid category ids found for sku 8003670227892:
+warning:Invalid category ids found for sku 8003670240235:
+warning:Invalid category ids found for sku 8003670240259:
+warning:Invalid category ids found for sku 8003670240266:
+itime:5 - 0.5815589427948 - 0.5815589427948
+dbtime:124 - 0.18330430984497 - 0.18330430984497 - 124
+warning:Invalid category ids found for sku 8003670240273:
+warning:Invalid category ids found for sku 8003670262275:
+warning:Invalid category ids found for sku 8003670304173:
+warning:Invalid category ids found for sku 8003670365679:
+warning:Invalid category ids found for sku 8003670365686:
+itime:10 - 1.3967568874359 - 0.81466698646545
+dbtime:267 - 0.46412682533264 - 0.28082251548767 - 143
+warning:Invalid category ids found for sku 8003670655923:
+warning:Invalid category ids found for sku 8003670693611:
+warning:Invalid category ids found for sku 8003670693666:
+warning:Invalid category ids found for sku 8003670693703:
+itime:15 - 2.2576930522919 - 0.86056113243103
+dbtime:409 - 0.66895842552185 - 0.20483160018921 - 142
+warning:Invalid category ids found for sku 8003670693710:
+warning:Invalid category ids found for sku 8003670693741:
+warning:Invalid category ids found for sku 8003670693772:
+warning:Invalid category ids found for sku 8003670728894:
+itime:20 - 3.7770729064941 - 1.5181050300598
+dbtime:552 - 1.2203524112701 - 0.55139398574829 - 143
+warning:Invalid category ids found for sku 8003670730002:
+warning:Invalid category ids found for sku 8003670730217:
+itime:25 - 4.5392220020294 - 0.7617769241333
+dbtime:696 - 1.5406591892242 - 0.3203067779541 - 144
+warning:Invalid category ids found for sku 8003670749394:
+warning:Invalid category ids found for sku 8003670761136:
+itime:30 - 5.2169198989868 - 0.67732501029968
+dbtime:841 - 1.733535528183 - 0.19287633895874 - 145
+warning:Invalid category ids found for sku 8003670761143:
+warning:Invalid category ids found for sku 8003670777038:
+warning:Invalid category ids found for sku 8003670777045:
+itime:35 - 5.9647130966187 - 0.7474160194397
+dbtime:985 - 1.9800107479095 - 0.24647521972656 - 144
+warning:Invalid category ids found for sku 8003670797456:
+warning:Invalid category ids found for sku 8003670797463:
+itime:40 - 6.8149700164795 - 0.84987497329712
+dbtime:1125 - 2.2306425571442 - 0.25063180923462 - 140
+warning:Invalid category ids found for sku 8003670955788:
+warning:Invalid category ids found for sku 8003670957720:
+warning:Invalid category ids found for sku 8003670957737:
+warning:Invalid category ids found for sku 8025081904551:
+itime:45 - 7.5812160968781 - 0.765869140625
+dbtime:1270 - 2.4962468147278 - 0.26560425758362 - 145
+warning:Invalid category ids found for sku 8025081906616:
+warning:Invalid category ids found for sku 8025081907507:
+itime:50 - 8.4801850318909 - 0.89841103553772
+dbtime:1411 - 2.793384552002 - 0.29713773727417 - 141
+itime:55 - 9.5471839904785 - 1.0661160945892
+dbtime:1561 - 3.0259544849396 - 0.23256993293762 - 150
+itime:60 - 10.31166100502 - 0.76411509513855
+dbtime:1704 - 3.269282579422 - 0.24332809448242 - 143
+itime:65 - 10.967216014862 - 0.65517401695251
+dbtime:1844 - 3.4846835136414 - 0.21540093421936 - 140
+itime:70 - 11.658168077469 - 0.69056510925293
+dbtime:1985 - 3.6695907115936 - 0.18490719795227 - 141
+itime:75 - 12.379132032394 - 0.72058606147766
+dbtime:2130 - 3.9106595516205 - 0.24106884002686 - 145
+warning:Invalid category ids found for sku 8008577007844:
+itime:80 - 13.193428993225 - 0.81392502784729
+dbtime:2271 - 4.2240221500397 - 0.31336259841919 - 141
+warning:Invalid category ids found for sku 8008577007899:
+itime:85 - 14.916614055634 - 1.7228081226349
+dbtime:2412 - 4.9025936126709 - 0.67857146263123 - 141
+warning:Invalid category ids found for sku 8008577008025:
+warning:Invalid category ids found for sku 8008577008049:
+warning:Invalid category ids found for sku 8008577008056:
+itime:90 - 15.718919038773 - 0.80193495750427
+dbtime:2553 - 5.1863675117493 - 0.28377389907837 - 141
+itime:95 - 16.562092065811 - 0.84279298782349
+dbtime:2693 - 5.4253096580505 - 0.23894214630127 - 140
+warning:Invalid category ids found for sku 8032638560023:
+warning:Invalid category ids found for sku A900266040:
+itime:100 - 17.343400001526 - 0.78077602386475
+dbtime:2835 - 5.7019503116608 - 0.27664065361023 - 142
+warning:Invalid category ids found for sku A900266077:
+warning:Invalid category ids found for sku A901088094:
+warning:Invalid category ids found for sku A901088169:
+warning:Invalid category ids found for sku A902975491:
+warning:Invalid category ids found for sku A903024204:
+itime:105 - 18.093780994415 - 0.75001001358032
+dbtime:2975 - 5.9745447635651 - 0.2725944519043 - 140
+warning:Invalid category ids found for sku A903907638:
+warning:Invalid category ids found for sku A907221586:
+warning:Invalid category ids found for sku A908077454:
+warning:Invalid category ids found for sku A908077466:
+warning:Invalid category ids found for sku A908078417:
+itime:110 - 18.974632024765 - 0.88047194480896
+dbtime:3118 - 6.3091535568237 - 0.33460879325867 - 143
+warning:Invalid category ids found for sku A908078431:
+warning:Invalid category ids found for sku A908078443:
+warning:Invalid category ids found for sku A908338231:
+warning:Invalid category ids found for sku A908960305:
+warning:Invalid category ids found for sku A908960711:
+itime:115 - 20.10653591156 - 1.1315188407898
+dbtime:3264 - 6.6735901832581 - 0.36443662643433 - 146
+warning:Invalid category ids found for sku A908960800:
+warning:Invalid category ids found for sku A908961422:
+warning:Invalid category ids found for sku A903960134:
+warning:Invalid category ids found for sku 8017619160607:
+itime:120 - 20.905441999435 - 0.79853010177612
+dbtime:3404 - 6.9295222759247 - 0.25593209266663 - 140
+warning:Invalid category ids found for sku 5010415362087:
+warning:Invalid category ids found for sku 5010415362162:
+itime:125 - 21.756749868393 - 0.85092782974243
+dbtime:3544 - 7.1736307144165 - 0.24410843849182 - 140
+warning:Invalid category ids found for sku 5010415362186:
+itime:130 - 22.589464902878 - 0.83232688903809
+dbtime:3688 - 7.4553360939026 - 0.28170537948608 - 144
+itime:135 - 23.444446086884 - 0.85458207130432
+dbtime:3831 - 7.7081165313721 - 0.25278043746948 - 143
+itime:140 - 24.278961896896 - 0.83415102958679
+dbtime:3974 - 7.9886507987976 - 0.28053426742554 - 143
+itime:145 - 25.074006080627 - 0.7941620349884
+dbtime:4121 - 8.2263576984406 - 0.23770689964294 - 147
 error:No sku info found for record #149
-itime:150 - 0.73550295829773 - 0.0042948722839355
-dbtime:148 - 0.10435652732849 - 0.00031828880310059 - 1
-skip:skipping existing sku:8022788100507 - xcreate mode set
+itime:150 - 26.526539087296 - 1.452141046524
+dbtime:4236 - 8.6393709182739 - 0.41301321983337 - 115
 error:No sku info found for record #151
-itime:152 - 0.74170899391174 - 0.0054810047149658
-dbtime:149 - 0.10476350784302 - 0.00040698051452637 - 1
 error:No sku info found for record #152
 error:No sku info found for record #153
-itime:154 - 0.74566388130188 - 0.0032308101654053
-dbtime:149 - 0.10476350784302 - 0 - 0
 error:No sku info found for record #154
+itime:155 - 27.251013994217 - 0.72394204139709
+dbtime:4264 - 8.6971290111542 - 0.057758092880249 - 28
 error:No sku info found for record #155
-itime:156 - 0.75000596046448 - 0.003619909286499
-dbtime:149 - 0.10476350784302 - 0 - 0
-skip:skipping existing sku:8022788103003 - xcreate mode set
 error:No sku info found for record #157
-itime:158 - 0.75549006462097 - 0.0047581195831299
-dbtime:150 - 0.10507869720459 - 0.00031518936157227 - 1
 error:No sku info found for record #158
 error:No sku info found for record #159
-itime:160 - 0.75946998596191 - 0.003248929977417
-dbtime:150 - 0.10507869720459 - 0 - 0
+itime:160 - 27.457892894745 - 0.20652294158936
+dbtime:4292 - 8.7461941242218 - 0.049065113067627 - 28
 error:No sku info found for record #160
 error:No sku info found for record #161
-itime:162 - 0.76418399810791 - 0.0039401054382324
-dbtime:150 - 0.10507869720459 - 0 - 0
-skip:skipping existing sku:8022788105007 - xcreate mode set
 error:No sku info found for record #163
-itime:164 - 0.78176188468933 - 0.016855955123901
-dbtime:151 - 0.10540652275085 - 0.00032782554626465 - 1
 error:No sku info found for record #164
+itime:165 - 27.61461687088 - 0.1564028263092
+dbtime:4320 - 8.7947232723236 - 0.048529148101807 - 28
 error:No sku info found for record #165
-itime:166 - 0.78960800170898 - 0.0042800903320312
-dbtime:151 - 0.10540652275085 - 0 - 0
 error:No sku info found for record #166
 error:No sku info found for record #167
-itime:168 - 0.79854607582092 - 0.0085711479187012
-dbtime:151 - 0.10540652275085 - 0 - 0
-skip:skipping existing sku:8022788108008 - xcreate mode set
 error:No sku info found for record #169
-itime:170 - 0.808021068573 - 0.0091571807861328
-dbtime:152 - 0.10884165763855 - 0.0034351348876953 - 1
+itime:170 - 27.772924900055 - 0.15798783302307
+dbtime:4348 - 8.8344841003418 - 0.039760828018188 - 28
 error:No sku info found for record #170
 error:No sku info found for record #171
-itime:172 - 0.81468796730042 - 0.0059518814086914
-dbtime:152 - 0.10884165763855 - 0 - 0
 error:No sku info found for record #172
 error:No sku info found for record #173
-itime:174 - 0.82389402389526 - 0.0040090084075928
-dbtime:152 - 0.10884165763855 - 0 - 0
-skip:skipping existing sku:8022788110001 - xcreate mode set
+itime:175 - 27.930079936981 - 0.15682005882263
+dbtime:4376 - 8.8881940841675 - 0.053709983825684 - 28
 error:No sku info found for record #175
-itime:176 - 0.84386706352234 - 0.01049017906189
-dbtime:153 - 0.10921740531921 - 0.00037574768066406 - 1
 error:No sku info found for record #176
 error:No sku info found for record #177
-itime:178 - 0.85030508041382 - 0.0060861110687256
-dbtime:153 - 0.10921740531921 - 0 - 0
 error:No sku info found for record #178
 error:No sku info found for record #179
-itime:180 - 0.85518193244934 - 0.0041048526763916
-dbtime:153 - 0.10921740531921 - 0 - 0
-skip:skipping existing sku:8022788113002 - xcreate mode set
+itime:180 - 27.943541049957 - 0.013081073760986
+dbtime:4376 - 8.8881940841675 - 0 - 0
 error:No sku info found for record #181
-itime:182 - 0.86069703102112 - 0.0047810077667236
-dbtime:154 - 0.10954236984253 - 0.00032496452331543 - 1
 error:No sku info found for record #182
 error:No sku info found for record #183
-itime:184 - 0.86467099189758 - 0.0031471252441406
-dbtime:154 - 0.10954236984253 - 0 - 0
 error:No sku info found for record #184
+itime:185 - 28.089848995209 - 0.14597511291504
+dbtime:4404 - 8.9354076385498 - 0.047213554382324 - 28
 error:No sku info found for record #185
-itime:186 - 0.86943387985229 - 0.0039358139038086
-dbtime:154 - 0.10954236984253 - 0 - 0
-skip:skipping existing sku:8022788115006 - xcreate mode set
 error:No sku info found for record #187
-itime:188 - 0.8824188709259 - 0.012259960174561
-dbtime:155 - 0.10986304283142 - 0.0003206729888916 - 1
 error:No sku info found for record #188
 error:No sku info found for record #189
-itime:190 - 0.88978099822998 - 0.0070440769195557
-dbtime:155 - 0.10986304283142 - 0 - 0
+itime:190 - 28.241084098816 - 0.15090823173523
+dbtime:4432 - 8.9836313724518 - 0.048223733901978 - 28
 error:No sku info found for record #190
 error:No sku info found for record #191
-itime:192 - 0.89477396011353 - 0.0046379566192627
-dbtime:155 - 0.10986304283142 - 0 - 0
-skip:skipping existing sku:8022788118007 - xcreate mode set
 error:No sku info found for record #193
-itime:194 - 0.89954590797424 - 0.0040469169616699
-dbtime:156 - 0.11018586158752 - 0.00032281875610352 - 1
 error:No sku info found for record #194
+itime:195 - 28.446863889694 - 0.2052857875824
+dbtime:4460 - 9.0323052406311 - 0.048673868179321 - 28
 error:No sku info found for record #195
-itime:196 - 0.90455889701843 - 0.0042929649353027
-dbtime:156 - 0.11018586158752 - 0 - 0
 error:No sku info found for record #196
 error:No sku info found for record #197
-itime:198 - 0.90884304046631 - 0.0034341812133789
-dbtime:156 - 0.11018586158752 - 0 - 0
-skip:skipping existing sku:8022788200504 - xcreate mode set
-skip:skipping existing sku:8022788206001 - xcreate mode set
-itime:200 - 0.91635584831238 - 0.0067119598388672
-dbtime:158 - 0.11083579063416 - 0.00064992904663086 - 2
-skip:skipping existing sku:8022788208005 - xcreate mode set
+itime:200 - 28.73743391037 - 0.29024887084961
+dbtime:4517 - 9.1277284622192 - 0.095423221588135 - 57
 error:No sku info found for record #201
-itime:202 - 0.92224907875061 - 0.0050301551818848
-dbtime:159 - 0.11115455627441 - 0.00031876564025879 - 1
-skip:skipping existing sku:8022788308002 - xcreate mode set
-skip:skipping existing sku:8022788308606 - xcreate mode set
-itime:204 - 0.92865896224976 - 0.005666971206665
-dbtime:161 - 0.11178517341614 - 0.00063061714172363 - 2
-skip:skipping existing sku:8022788309603 - xcreate mode set
-skip:skipping existing sku:8022788406005 - xcreate mode set
-itime:206 - 0.93521595001221 - 0.0057199001312256
-dbtime:163 - 0.11249494552612 - 0.00070977210998535 - 2
-skip:skipping existing sku:8022788408009 - xcreate mode set
+itime:205 - 29.299088954926 - 0.56127905845642
+dbtime:4629 - 9.331915140152 - 0.20418667793274 - 112
 error:No sku info found for record #207
-itime:208 - 0.94069385528564 - 0.0047478675842285
-dbtime:164 - 0.11281204223633 - 0.00031709671020508 - 1
-skip:skipping existing sku:8019630010077 - xcreate mode set
-skip:skipping existing sku:8019630010848 - xcreate mode set
-itime:210 - 0.94668006896973 - 0.0051431655883789
-dbtime:166 - 0.11353611946106 - 0.00072407722473145 - 2
-skip:skipping existing sku:8019630010855 - xcreate mode set
-skip:skipping existing sku:8019630011050 - xcreate mode set
-itime:212 - 0.96568298339844 - 0.018263101577759
-dbtime:168 - 0.11423897743225 - 0.00070285797119141 - 2
-skip:skipping existing sku:8019630012149 - xcreate mode set
-skip:skipping existing sku:8019630018202 - xcreate mode set
-itime:214 - 0.97962594032288 - 0.013598918914795
-dbtime:170 - 0.11768913269043 - 0.0034501552581787 - 2
-skip:skipping existing sku:8019630018219 - xcreate mode set
-skip:skipping existing sku:8019630020250 - xcreate mode set
-itime:216 - 0.99376702308655 - 0.013801097869873
-dbtime:172 - 0.12281036376953 - 0.0051212310791016 - 2
-skip:skipping existing sku:5010415302663 - xcreate mode set
-skip:skipping existing sku:4001998141122 - xcreate mode set
-itime:218 - 1.0062160491943 - 0.011701107025146
-dbtime:174 - 0.12387108802795 - 0.0010607242584229 - 2
-skip:skipping existing sku:4001998166118 - xcreate mode set
-skip:skipping existing sku:4001998166125 - xcreate mode set
-itime:220 - 1.0243809223175 - 0.0074880123138428
-dbtime:176 - 0.12489819526672 - 0.0010271072387695 - 2
-skip:skipping existing sku:4001998166217 - xcreate mode set
-skip:skipping existing sku:4001998166224 - xcreate mode set
-itime:222 - 1.035984992981 - 0.0077340602874756
-dbtime:178 - 0.12556338310242 - 0.00066518783569336 - 2
-skip:skipping existing sku:4001998166231 - xcreate mode set
-skip:skipping existing sku:4001998166248 - xcreate mode set
-itime:224 - 1.0434250831604 - 0.0067150592803955
-dbtime:180 - 0.12658929824829 - 0.001025915145874 - 2
-skip:skipping existing sku:4001998166255 - xcreate mode set
-skip:skipping existing sku:4001998166262 - xcreate mode set
-itime:226 - 1.0497899055481 - 0.005640983581543
-dbtime:182 - 0.12728929519653 - 0.00069999694824219 - 2
-skip:skipping existing sku:4001998166316 - xcreate mode set
-skip:skipping existing sku:4001998166323 - xcreate mode set
-itime:228 - 1.0562250614166 - 0.0056440830230713
-dbtime:184 - 0.12791609764099 - 0.00062680244445801 - 2
-skip:skipping existing sku:4001998166354 - xcreate mode set
-skip:skipping existing sku:4001998166361 - xcreate mode set
-itime:230 - 1.0625500679016 - 0.0055890083312988
-dbtime:186 - 0.12854027748108 - 0.00062417984008789 - 2
-skip:skipping existing sku:4001998166590 - xcreate mode set
-skip:skipping existing sku:4001998166699 - xcreate mode set
-itime:232 - 1.0696978569031 - 0.0064218044281006
-dbtime:188 - 0.12916731834412 - 0.00062704086303711 - 2
-skip:skipping existing sku:4001998166811 - xcreate mode set
-skip:skipping existing sku:4001998166828 - xcreate mode set
-itime:234 - 1.0846939086914 - 0.014237880706787
-dbtime:190 - 0.12987446784973 - 0.00070714950561523 - 2
-skip:skipping existing sku:4001998166873 - xcreate mode set
-skip:skipping existing sku:4001998167702 - xcreate mode set
-itime:236 - 1.094694852829 - 0.0078368186950684
-dbtime:192 - 0.13259243965149 - 0.0027179718017578 - 2
-skip:skipping existing sku:4001998167733 - xcreate mode set
-skip:skipping existing sku:4001998167757 - xcreate mode set
-itime:238 - 1.1020998954773 - 0.0066738128662109
-dbtime:194 - 0.13324880599976 - 0.0006563663482666 - 2
-skip:skipping existing sku:4001998167771 - xcreate mode set
-skip:skipping existing sku:4001998167788 - xcreate mode set
-itime:240 - 1.1101279258728 - 0.0072588920593262
-dbtime:196 - 0.13480949401855 - 0.0015606880187988 - 2
-skip:skipping existing sku:4001998167795 - xcreate mode set
-skip:skipping existing sku:4001998167818 - xcreate mode set
-itime:242 - 1.1165580749512 - 0.005695104598999
-dbtime:198 - 0.13543653488159 - 0.00062704086303711 - 2
-skip:skipping existing sku:4001998167917 - xcreate mode set
-skip:skipping existing sku:4001998167924 - xcreate mode set
-itime:244 - 1.1237819194794 - 0.0063760280609131
-dbtime:200 - 0.13609075546265 - 0.00065422058105469 - 2
-skip:skipping existing sku:4001998167962 - xcreate mode set
-skip:skipping existing sku:4001998168112 - xcreate mode set
-itime:246 - 1.1298408508301 - 0.0053238868713379
-dbtime:202 - 0.13672399520874 - 0.00063323974609375 - 2
-skip:skipping existing sku:4001998168129 - xcreate mode set
-skip:skipping existing sku:4001998168136 - xcreate mode set
-itime:248 - 1.1498990058899 - 0.019323110580444
-dbtime:204 - 0.14187288284302 - 0.0051488876342773 - 2
-skip:skipping existing sku:4001998168211 - xcreate mode set
-skip:skipping existing sku:4001998168228 - xcreate mode set
-itime:250 - 1.1618628501892 - 0.011599779129028
-dbtime:206 - 0.14254879951477 - 0.00067591667175293 - 2
-skip:skipping existing sku:4001998168235 - xcreate mode set
-skip:skipping existing sku:4001998168242 - xcreate mode set
-itime:252 - 1.1739609241486 - 0.01176905632019
-dbtime:208 - 0.14607000350952 - 0.003521203994751 - 2
-skip:skipping existing sku:4001998168297 - xcreate mode set
-skip:skipping existing sku:4001998168303 - xcreate mode set
-itime:254 - 1.1868948936462 - 0.010048866271973
-dbtime:210 - 0.1508686542511 - 0.0047986507415771 - 2
-skip:skipping existing sku:4001998168310 - xcreate mode set
-skip:skipping existing sku:4001998168327 - xcreate mode set
-itime:256 - 1.2096998691559 - 0.011515855789185
-dbtime:212 - 0.15222239494324 - 0.0013537406921387 - 2
-error:No sku info found for record #256
-error:No sku info found for record #257
-itime:258 - 1.2162408828735 - 0.0061938762664795
-dbtime:212 - 0.15222239494324 - 0 - 0
-error:No sku info found for record #258
-itime:258 - 1.2195498943329 - 0.0029349327087402
-dbtime:212 - 0.15222239494324 - 0 - 0
-info:Skus imported OK:0/258
-warning:Skus imported KO:258/258
+itime:210 - 30.126471996307 - 0.8270149230957
+dbtime:4743 - 9.5318505764008 - 0.19993543624878 - 114
+itime:215 - 30.860909938812 - 0.73407006263733
+dbtime:4883 - 9.7653176784515 - 0.23346710205078 - 140
+itime:220 - 31.829467058182 - 0.96818614006042
+dbtime:5023 - 10.007850408554 - 0.24253273010254 - 140
+itime:225 - 32.642564058304 - 0.81271696090698
+dbtime:5169 - 10.302942276001 - 0.2950918674469 - 146
+itime:230 - 33.47042798996 - 0.82747006416321
+dbtime:5321 - 10.629249334335 - 0.32630705833435 - 152
+itime:235 - 34.176385879517 - 0.70547795295715
+dbtime:5464 - 10.834131717682 - 0.20488238334656 - 143
+itime:240 - 34.98780798912 - 0.81105494499207
+dbtime:5604 - 11.097932100296 - 0.26380038261414 - 140
+itime:245 - 35.820734024048 - 0.83253192901611
+dbtime:5744 - 11.339546203613 - 0.24161410331726 - 140
+itime:250 - 36.939852952957 - 1.1187498569489
+dbtime:5890 - 11.588527441025 - 0.2489812374115 - 146
+itime:255 - 38.089124917984 - 1.1488859653473
+dbtime:6039 - 12.141549825668 - 0.55302238464355 - 149
+itime:260 - 39.556976079941 - 1.4673540592194
+dbtime:6179 - 12.628695964813 - 0.4871461391449 - 140
+itime:265 - 40.258624076843 - 0.70127511024475
+dbtime:6322 - 12.886054992676 - 0.25735902786255 - 143
+warning:Invalid category ids found for sku A908960610:
+itime:270 - 41.451271057129 - 1.1922600269318
+dbtime:6463 - 13.141444921494 - 0.25538992881775 - 141
+itime:275 - 42.733386039734 - 1.2817399501801
+dbtime:6603 - 13.376522064209 - 0.23507714271545 - 140
+itime:280 - 43.599819898605 - 0.86602282524109
+dbtime:6744 - 13.610434770584 - 0.23391270637512 - 141
+warning:Invalid category ids found for sku 5012909004749:
+warning:Invalid category ids found for sku 5012909005272:
+itime:285 - 44.371481895447 - 0.7712869644165
+dbtime:6884 - 13.900409221649 - 0.28997445106506 - 140
+warning:Invalid category ids found for sku 5012909005418:
+warning:Invalid category ids found for sku 5012909005647:
+warning:Invalid category ids found for sku 5012909005685:
+warning:Invalid category ids found for sku 5012909005692:
+warning:Invalid category ids found for sku 5012909006002:
+itime:290 - 45.186073064804 - 0.81422400474548
+dbtime:7024 - 14.241758584976 - 0.34134936332703 - 140
+warning:Invalid category ids found for sku 5012909006156:
+warning:Invalid category ids found for sku 5012909007160:
+warning:Invalid category ids found for sku 7612367001366:
+warning:Invalid category ids found for sku 7612367005265:
+itime:295 - 46.044684886932 - 0.85824680328369
+dbtime:7164 - 14.566231489182 - 0.32447290420532 - 140
+warning:Invalid category ids found for sku 8420421061459:
+itime:300 - 47.514183998108 - 1.4691269397736
+dbtime:7307 - 14.831859588623 - 0.26562809944153 - 143
+itime:305 - 48.227216959 - 0.71199297904968
+dbtime:7449 - 14.995578527451 - 0.16371893882751 - 142
+warning:Invalid category ids found for sku 8003670605119:
+itime:310 - 48.818259954453 - 0.59020805358887
+dbtime:7592 - 15.214978456497 - 0.21939992904663 - 143
+itime:315 - 49.572233915329 - 0.75314903259277
+dbtime:7733 - 15.386157751083 - 0.17117929458618 - 141
+itime:320 - 50.949680089951 - 1.377030134201
+dbtime:7877 - 15.992413043976 - 0.60625529289246 - 144
+warning:Invalid category ids found for sku 5012909006941:
+warning:Invalid category ids found for sku 5012909006781:
+warning:Invalid category ids found for sku 5012909006484:
+warning:Invalid category ids found for sku 8025081912501:
+warning:Invalid category ids found for sku 8025081912518:
+itime:325 - 52.072592973709 - 1.1225099563599
+dbtime:8020 - 16.302831411362 - 0.31041836738586 - 143
+warning:Invalid category ids found for sku 8025081912525:
+warning:Invalid category ids found for sku 7612367008778:
+itime:330 - 52.888377904892 - 0.81537199020386
+dbtime:8164 - 16.604914903641 - 0.30208349227905 - 144
+warning:Invalid category ids found for sku A904926247:
+warning:Invalid category ids found for sku A904926262:
+warning:Invalid category ids found for sku A904926223:
+warning:Invalid category ids found for sku 8025081913331:
+warning:Invalid category ids found for sku 8025081913348:
+itime:335 - 53.961772918701 - 1.0730240345001
+dbtime:8310 - 16.893970966339 - 0.28905606269836 - 146
+warning:Invalid category ids found for sku 8025081913355:
+warning:Invalid category ids found for sku 8025081913362:
+warning:Invalid category ids found for sku 8025081913379:
+warning:Invalid category ids found for sku 8025081913386:
+itime:340 - 54.973387956619 - 1.0107429027557
+dbtime:8462 - 17.293492555618 - 0.39952158927917 - 152
+itime:345 - 55.542877912521 - 0.56910300254822
+dbtime:8605 - 17.476554632187 - 0.1830620765686 - 143
+itime:350 - 56.231268882751 - 0.68745183944702
+dbtime:8748 - 17.712183475494 - 0.2356288433075 - 143
+itime:355 - 57.574846982956 - 1.3431940078735
+dbtime:8888 - 17.943221092224 - 0.23103761672974 - 140
+itime:360 - 58.298116922379 - 0.72288489341736
+dbtime:9028 - 18.20970749855 - 0.26648640632629 - 140
+itime:365 - 59.13249707222 - 0.83398604393005
+dbtime:9168 - 18.40903878212 - 0.19933128356934 - 140
+itime:370 - 59.81308889389 - 0.6802179813385
+dbtime:9308 - 18.663845539093 - 0.25480675697327 - 140
+error:No sku info found for record #371
+itime:375 - 60.446841001511 - 0.63337802886963
+dbtime:9420 - 18.860473871231 - 0.19662833213806 - 112
+warning:Invalid category ids found for sku 3220661413941:
+warning:Invalid category ids found for sku 8712930001966:
+warning:Invalid category ids found for sku 8712933203381:
+itime:380 - 62.451623916626 - 2.0044028759003
+dbtime:9560 - 19.493515253067 - 0.63304138183594 - 140
+itime:385 - 63.288685083389 - 0.83669018745422
+dbtime:9701 - 19.755433320999 - 0.26191806793213 - 141
+warning:Invalid category ids found for sku 8003670758709:
+warning:Invalid category ids found for sku 8003670728863:
+warning:Invalid category ids found for sku 8003670728870:
+warning:Invalid category ids found for sku 5010415362124:
+itime:390 - 64.129231929779 - 0.84013104438782
+dbtime:9841 - 20.065908432007 - 0.31047511100769 - 140
+warning:Invalid category ids found for sku 654102:
+itime:395 - 64.96789598465 - 0.83829188346863
+dbtime:9988 - 20.346186876297 - 0.28027844429016 - 147
+itime:400 - 65.799831867218 - 0.83156776428223
+dbtime:10128 - 20.572068214417 - 0.22588133811951 - 140
+itime:405 - 66.616724014282 - 0.81650900840759
+dbtime:10283 - 20.878390073776 - 0.30632185935974 - 155
+warning:Invalid category ids found for sku 8420421201367:
+itime:410 - 67.712792873383 - 1.0949997901917
+dbtime:10423 - 21.183223724365 - 0.30483365058899 - 140
+warning:Invalid category ids found for sku 8025081913799:
+warning:Invalid category ids found for sku 8025081913805:
+warning:Invalid category ids found for sku 8025081913812:
+warning:Invalid category ids found for sku 8025081913829:
+warning:Invalid category ids found for sku 8025081913836:
+itime:415 - 68.834286928177 - 1.1200120449066
+dbtime:10578 - 21.724019289017 - 0.54079556465149 - 155
+warning:Invalid category ids found for sku 8025081913843:
+warning:Invalid category ids found for sku 8003670974406:
+warning:Invalid category ids found for sku 5012909005722:
+itime:420 - 69.606221914291 - 0.77058982849121
+dbtime:10721 - 22.071560382843 - 0.34754109382629 - 143
+itime:425 - 70.402504920959 - 0.79592895507812
+dbtime:10864 - 22.299257278442 - 0.22769689559937 - 143
+itime:430 - 71.283828020096 - 0.88095498085022
+dbtime:11011 - 22.555046081543 - 0.25578880310059 - 147
+warning:Invalid category ids found for sku 8420421061978:
+warning:Invalid category ids found for sku 8420421402139:
+itime:435 - 72.491542100906 - 1.2073361873627
+dbtime:11154 - 22.813333034515 - 0.25828695297241 - 143
+warning:Invalid category ids found for sku 8420421061985:
+warning:Invalid category ids found for sku 8420421061992:
+warning:Invalid category ids found for sku 8420421201220:
+warning:Invalid category ids found for sku 8003670984566:
+itime:440 - 74.549917936325 - 2.0569729804993
+dbtime:11297 - 23.509905576706 - 0.69657254219055 - 143
+warning:Invalid category ids found for sku 8003670984573:
+itime:445 - 75.316228866577 - 0.76595282554626
+dbtime:11438 - 23.816284179688 - 0.30637860298157 - 141
+itime:450 - 76.165155887604 - 0.84850096702576
+dbtime:11578 - 24.044687986374 - 0.2284038066864 - 140
+itime:455 - 76.772665023804 - 0.60713696479797
+dbtime:11721 - 24.211562633514 - 0.1668746471405 - 143
+itime:460 - 77.832572937012 - 1.0595269203186
+dbtime:11864 - 24.487634420395 - 0.27607178688049 - 143
+itime:465 - 78.637022018433 - 0.80407309532166
+dbtime:12004 - 24.758488178253 - 0.27085375785828 - 140
+itime:470 - 79.325058937073 - 0.68765902519226
+dbtime:12148 - 25.025182962418 - 0.26669478416443 - 144
+warning:Invalid category ids found for sku 3504108053298:
+warning:Invalid category ids found for sku 8003670842002:
+itime:475 - 80.172550916672 - 0.84711289405823
+dbtime:12289 - 25.337346792221 - 0.31216382980347 - 141
+itime:480 - 80.952229976654 - 0.77932691574097
+dbtime:12438 - 25.652028083801 - 0.3146812915802 - 149
+warning:Invalid category ids found for sku 8003670996613:
+itime:485 - 81.733062982559 - 0.78037309646606
+dbtime:12579 - 25.93495798111 - 0.28292989730835 - 141
+warning:Invalid category ids found for sku 8003670996620:
+warning:Invalid category ids found for sku 8003670996644:
+itime:490 - 82.682760953903 - 0.94932103157043
+dbtime:12726 - 26.265105485916 - 0.33014750480652 - 147
+itime:495 - 83.504085063934 - 0.82091498374939
+dbtime:12873 - 26.613995790482 - 0.34889030456543 - 147
+itime:500 - 84.364032030106 - 0.85526204109192
+dbtime:13020 - 26.895652294159 - 0.28165650367737 - 147
+itime:505 - 86.383073091507 - 2.0184772014618
+dbtime:13166 - 27.663326501846 - 0.76767420768738 - 146
+warning:Invalid category ids found for sku 8003670990369:
+warning:Invalid category ids found for sku 8025081915298:
+warning:Invalid category ids found for sku 8025081915304:
+warning:Invalid category ids found for sku 8025081915311:
+itime:510 - 87.981901884079 - 1.5984399318695
+dbtime:13318 - 28.283001899719 - 0.61967539787292 - 152
+warning:Invalid category ids found for sku 8025081915328:
+warning:Invalid category ids found for sku 8025081915335:
+warning:Invalid category ids found for sku 8025081915342:
+warning:Invalid category ids found for sku 7330863017512:
+warning:Invalid category ids found for sku 7330863017505:
+itime:515 - 89.164454936981 - 1.1821730136871
+dbtime:13470 - 28.973970174789 - 0.69096827507019 - 152
+warning:Invalid category ids found for sku 4015167015909:
+warning:Invalid category ids found for sku 8008577008179:
+warning:Invalid category ids found for sku 8017619123220:
+warning:Invalid category ids found for sku 8031575094516:
+itime:520 - 90.183546066284 - 1.0187129974365
+dbtime:13610 - 29.401104927063 - 0.42713475227356 - 140
+warning:Invalid category ids found for sku 8031575014125:
+warning:Invalid category ids found for sku 8031575014606:
+warning:Invalid category ids found for sku 8031575014613:
+warning:Invalid category ids found for sku 8031575014620:
+warning:Invalid category ids found for sku 8031575014637:
+itime:525 - 91.192879915237 - 1.0082569122314
+dbtime:13756 - 29.808237075806 - 0.40713214874268 - 146
+warning:Invalid category ids found for sku 8031575014729:
+warning:Invalid category ids found for sku 8031575015092:
+warning:Invalid category ids found for sku 8031575015115:
+warning:Invalid category ids found for sku 8031575015153:
+warning:Invalid category ids found for sku 8031575015160:
+itime:530 - 92.291673898697 - 1.0984268188477
+dbtime:13896 - 30.185343742371 - 0.37710666656494 - 140
+warning:Invalid category ids found for sku 8031575015177:
+warning:Invalid category ids found for sku 8031575015238:
+warning:Invalid category ids found for sku 8031575015245:
+warning:Invalid category ids found for sku 8031575015559:
+warning:Invalid category ids found for sku 8031575030026:
+itime:535 - 93.574143886566 - 1.2821009159088
+dbtime:14039 - 30.518172502518 - 0.33282876014709 - 143
+warning:Invalid category ids found for sku 8031575043101:
+warning:Invalid category ids found for sku 8031575043200:
+warning:Invalid category ids found for sku 8031575043309:
+warning:Invalid category ids found for sku 8031575043408:
+warning:Invalid category ids found for sku 8003670849971:
+itime:540 - 94.77800488472 - 1.2034769058228
+dbtime:14179 - 30.806293964386 - 0.28812146186829 - 140
+warning:Invalid category ids found for sku 8003670849988:
+warning:Invalid category ids found for sku 8003670959823:
+warning:Invalid category ids found for sku 8003670959861:
+itime:545 - 95.721778869629 - 0.94341087341309
+dbtime:14322 - 31.12264084816 - 0.3163468837738 - 143
+itime:550 - 96.972835063934 - 1.2506740093231
+dbtime:14474 - 31.681171178818 - 0.55853033065796 - 152
+itime:555 - 98.569539070129 - 1.5963270664215
+dbtime:14626 - 32.077273607254 - 0.39610242843628 - 152
+itime:560 - 99.536931991577 - 0.96701908111572
+dbtime:14781 - 32.574362516403 - 0.49708890914917 - 155
+itime:565 - 100.42854189873 - 0.89123797416687
+dbtime:14924 - 32.861980676651 - 0.2876181602478 - 143
+warning:Invalid category ids found for sku 4008600089971:
+warning:Invalid category ids found for sku 4008600090090:
+itime:570 - 101.3463010788 - 0.9173800945282
+dbtime:15064 - 33.136888742447 - 0.2749080657959 - 140
+warning:Invalid category ids found for sku 4008600090212:
+warning:Invalid category ids found for sku 4008600098850:
+warning:Invalid category ids found for sku 4008600098911:
+warning:Invalid category ids found for sku 4008600099956:
+itime:575 - 102.09347009659 - 0.74631714820862
+dbtime:15204 - 33.466205358505 - 0.32931661605835 - 140
+warning:Invalid category ids found for sku 4008600282518:
+warning:Invalid category ids found for sku 4008600283386:
+warning:Invalid category ids found for sku 4008600098836:
+warning:Invalid category ids found for sku 4008600098799:
+warning:Invalid category ids found for sku 4008600098898:
+itime:580 - 103.41866588593 - 1.3241939544678
+dbtime:15344 - 33.852447986603 - 0.38624262809753 - 140
+warning:Invalid category ids found for sku 8003670842057:
+warning:Invalid category ids found for sku 8003670842453:
+warning:Invalid category ids found for sku 8003670844891:
+warning:Invalid category ids found for sku 8003670845843:
+warning:Invalid category ids found for sku 8003670986836:
+itime:585 - 104.30015397072 - 0.88094997406006
+dbtime:15484 - 34.202908992767 - 0.35046100616455 - 140
+warning:Invalid category ids found for sku 8003670986843:
+warning:Invalid category ids found for sku 8003670988670:
+warning:Invalid category ids found for sku 8003670988687:
+warning:Invalid category ids found for sku 8003670989257:
+itime:590 - 105.27848100662 - 0.97773504257202
+dbtime:15627 - 34.523262500763 - 0.32035350799561 - 143
+warning:Invalid category ids found for sku 8003670959854:
+warning:Invalid category ids found for sku 8003670959830:
+warning:Invalid category ids found for sku 8003670959847:
+itime:595 - 106.01577401161 - 0.73692393302917
+dbtime:15770 - 34.827210664749 - 0.30394816398621 - 143
+itime:600 - 106.72108888626 - 0.70493292808533
+dbtime:15910 - 35.075909137726 - 0.24869847297668 - 140
+itime:605 - 107.43424296379 - 0.71275901794434
+dbtime:16050 - 35.31051325798 - 0.23460412025452 - 140
+itime:610 - 108.30000591278 - 0.86538600921631
+dbtime:16200 - 35.571037530899 - 0.2605242729187 - 150
+warning:Invalid category ids found for sku 8008577008193:
+itime:615 - 109.94162487984 - 1.6409239768982
+dbtime:16346 - 36.293514490128 - 0.72247695922852 - 146
+itime:620 - 110.81203699112 - 0.87002611160278
+dbtime:16498 - 36.672377109528 - 0.37886261940002 - 152
+warning:Invalid category ids found for sku 8003670974390:
+warning:Invalid category ids found for sku 8003670999003:
+itime:625 - 111.55034804344 - 0.73789405822754
+dbtime:16641 - 36.988238096237 - 0.31586098670959 - 143
+warning:Invalid category ids found for sku 8003670999010:
+warning:Invalid category ids found for sku 8003670999041:
+warning:Invalid category ids found for sku 8420421062401:
+itime:630 - 112.72284698486 - 1.1721210479736
+dbtime:16781 - 37.343073368073 - 0.35483527183533 - 140
+itime:635 - 113.73915600777 - 1.0159270763397
+dbtime:16925 - 37.674416542053 - 0.33134317398071 - 144
+itime:640 - 114.39583086967 - 0.65629982948303
+dbtime:17068 - 37.871989488602 - 0.19757294654846 - 143
+warning:Invalid category ids found for sku 8003670845539:
+itime:645 - 115.17589688301 - 0.77915787696838
+dbtime:17217 - 38.191614627838 - 0.31962513923645 - 149
+warning:Invalid category ids found for sku 8003670846680:
+warning:Invalid category ids found for sku 8003670852117:
+warning:Invalid category ids found for sku 8003670852414:
+warning:Invalid category ids found for sku 8003670852421:
+warning:Invalid category ids found for sku 8003670856344:
+itime:650 - 116.25832509995 - 1.0820460319519
+dbtime:17357 - 38.492034435272 - 0.30041980743408 - 140
+warning:Invalid category ids found for sku 8003670975038:
+warning:Invalid category ids found for sku 8003670989325:
+warning:Invalid category ids found for sku 8003670842088:
+warning:Invalid category ids found for sku 8003670842507:
+itime:655 - 117.063808918 - 0.80511093139648
+dbtime:17497 - 38.832326889038 - 0.34029245376587 - 140
+warning:Invalid category ids found for sku 8003670842514:
+warning:Invalid category ids found for sku 8003670842699:
+warning:Invalid category ids found for sku 8003670996248:
+itime:660 - 118.08271598816 - 1.0185050964355
+dbtime:17637 - 39.128161668777 - 0.29583477973938 - 140
+warning:Invalid category ids found for sku 8031575050000:
+warning:Invalid category ids found for sku 4400000189259:
+warning:Invalid category ids found for sku 4400000189266:
+warning:Invalid category ids found for sku 8420421403112:
+itime:665 - 119.18797397614 - 1.1048560142517
+dbtime:17780 - 39.406883716583 - 0.27872204780579 - 143
+warning:Invalid category ids found for sku 4008600100461:
+warning:Invalid category ids found for sku 8003670843122:
+itime:670 - 120.18129301071 - 0.99285101890564
+dbtime:17920 - 39.821982383728 - 0.41509866714478 - 140
+warning:Invalid category ids found for sku 8025081915090:
+itime:675 - 121.37128090858 - 1.1896228790283
+dbtime:18067 - 40.293497800827 - 0.471515417099 - 147
+warning:Invalid category ids found for sku 8025081915106:
+warning:Invalid category ids found for sku 8025081915113:
+warning:Invalid category ids found for sku 8025081915120:
+warning:Invalid category ids found for sku 8025081915137:
+warning:Invalid category ids found for sku 8025081915144:
+itime:680 - 122.25259399414 - 0.88094091415405
+dbtime:18210 - 40.638639211655 - 0.34514141082764 - 143
+warning:Invalid category ids found for sku 4250226001022:
+itime:685 - 124.28800106049 - 2.0350410938263
+dbtime:18353 - 40.884525537491 - 0.24588632583618 - 143
+error:No sku info found for record #685
+itime:690 - 124.75400495529 - 0.46557188034058
+dbtime:18468 - 41.002722978592 - 0.11819744110107 - 115
+itime:695 - 125.47697305679 - 0.72213697433472
+dbtime:18614 - 41.249270200729 - 0.24654722213745 - 146
+itime:700 - 126.75080704689 - 1.2734520435333
+dbtime:18754 - 41.456387519836 - 0.20711731910706 - 140
+itime:705 - 127.44824409485 - 0.69706010818481
+dbtime:18903 - 41.699911594391 - 0.24352407455444 - 149
+warning:Invalid category ids found for sku 5012909010412:
+warning:Invalid category ids found for sku 5012909010450:
+warning:Invalid category ids found for sku 5012909013390:
+warning:Invalid category ids found for sku 5012909013420:
+itime:710 - 128.60064005852 - 1.1519300937653
+dbtime:19049 - 41.998722314835 - 0.29881072044373 - 146
+warning:Invalid category ids found for sku 8003670845140:
+warning:Invalid category ids found for sku 8003670845157:
+itime:715 - 129.46484303474 - 0.86383414268494
+dbtime:19189 - 42.317913293839 - 0.31919097900391 - 140
+warning:Invalid category ids found for sku 8003670857624:
+itime:720 - 130.32328009605 - 0.85806107521057
+dbtime:19335 - 42.619267463684 - 0.30135416984558 - 146
+itime:725 - 131.19898796082 - 0.87487506866455
+dbtime:19484 - 42.909814596176 - 0.29054713249207 - 149
+itime:730 - 132.78279304504 - 1.5827980041504
+dbtime:19639 - 43.539538145065 - 0.62972354888916 - 155
+itime:735 - 133.6927819252 - 0.90962100028992
+dbtime:19785 - 43.774781227112 - 0.23524308204651 - 146
+itime:740 - 134.51995992661 - 0.8268039226532
+dbtime:19934 - 44.069764137268 - 0.29498291015625 - 149
+warning:Invalid category ids found for sku 7612367012287:
+itime:745 - 135.2805519104 - 0.75949883460999
+dbtime:20074 - 44.325403928757 - 0.25563979148865 - 140
+warning:Invalid category ids found for sku 7612367016827:
+warning:Invalid category ids found for sku 8003670842033:
+warning:Invalid category ids found for sku 8003670842620:
+itime:750 - 136.14678192139 - 0.86583995819092
+dbtime:20216 - 44.638147830963 - 0.31274390220642 - 142
+warning:Invalid category ids found for sku 8003670842682:
+itime:755 - 137.31190490723 - 1.1647458076477
+dbtime:20356 - 44.883991003036 - 0.24584317207336 - 140
+warning:Invalid category ids found for sku 8003670842637:
+itime:760 - 138.51156592369 - 1.1985428333282
+dbtime:20496 - 45.184515953064 - 0.30052495002747 - 140
+itime:765 - 139.3232729435 - 0.81067204475403
+dbtime:20642 - 45.508239507675 - 0.32372355461121 - 146
+itime:770 - 140.07574105263 - 0.75200510025024
+dbtime:20791 - 45.738610029221 - 0.23037052154541 - 149
+warning:Invalid category ids found for sku 0857040000916:
+warning:Invalid category ids found for sku 7612367016575:
+warning:Invalid category ids found for sku 5010415211163:
+itime:775 - 140.92213892937 - 0.84601593017578
+dbtime:20931 - 46.075896501541 - 0.33728647232056 - 140
+warning:Invalid category ids found for sku 5010415312938:
+itime:780 - 141.70394992828 - 0.78144383430481
+dbtime:21071 - 46.401251077652 - 0.32535457611084 - 140
+itime:785 - 142.43010187149 - 0.72567796707153
+dbtime:21211 - 46.67985534668 - 0.27860426902771 - 140
+itime:790 - 144.28778886795 - 1.8573079109192
+dbtime:21354 - 47.243804931641 - 0.56394958496094 - 143
+itime:795 - 144.99967598915 - 0.71150588989258
+dbtime:21497 - 47.515281915665 - 0.27147698402405 - 143
+itime:800 - 145.73856806755 - 0.73851013183594
+dbtime:21637 - 47.774574995041 - 0.25929307937622 - 140
+itime:805 - 146.48145008087 - 0.74205017089844
+dbtime:21783 - 47.963087797165 - 0.18851280212402 - 146
+warning:Invalid category ids found for sku 5012909010498:
+warning:Invalid category ids found for sku 5012909010504:
+itime:810 - 147.33711791039 - 0.85458183288574
+dbtime:21932 - 48.311380386353 - 0.34829258918762 - 149
+itime:815 - 148.44519686699 - 1.1064939498901
+dbtime:22073 - 48.556452512741 - 0.24507212638855 - 141
+warning:Invalid category ids found for sku 8031575096220:
+warning:Invalid category ids found for sku 8031575096336:
+itime:820 - 149.35059309006 - 0.90500402450562
+dbtime:22213 - 48.838695764542 - 0.28224325180054 - 140
+warning:Invalid category ids found for sku 8033714003038:
+itime:825 - 150.0795519352 - 0.72856593132019
+dbtime:22356 - 49.146818399429 - 0.3081226348877 - 143
+warning:Invalid category ids found for sku 8003670857617:
+itime:830 - 150.99012303352 - 0.91018605232239
+dbtime:22502 - 49.499806165695 - 0.35298776626587 - 146
+warning:Invalid category ids found for sku 8420421403211:
+itime:835 - 151.9125828743 - 0.92207098007202
+dbtime:22646 - 49.818556308746 - 0.31875014305115 - 144
+itime:840 - 152.88233590126 - 0.96936893463135
+dbtime:22790 - 50.017978429794 - 0.19942212104797 - 144
+warning:Invalid category ids found for sku 7612367010955:
+itime:845 - 153.81966304779 - 0.93692803382874
+dbtime:22936 - 50.303551197052 - 0.28557276725769 - 146
+itime:850 - 155.50918388367 - 1.6891229152679
+dbtime:23085 - 50.979814291 - 0.67626309394836 - 149
+warning:Invalid category ids found for sku A939571889:
+itime:855 - 156.52419900894 - 1.0146360397339
+dbtime:23228 - 51.323333978653 - 0.34351968765259 - 143
+warning:Invalid category ids found for sku 8003670844839:
+warning:Invalid category ids found for sku 8003670851714:
+itime:860 - 157.3478410244 - 0.82320713996887
+dbtime:23368 - 51.65722823143 - 0.3338942527771 - 140
+warning:Invalid category ids found for sku 8003670860808:
+warning:Invalid category ids found for sku 8003670860815:
+warning:Invalid category ids found for sku 8003670860822:
+warning:Invalid category ids found for sku 8003670862376:
+itime:865 - 159.23032999039 - 1.8821070194244
+dbtime:23508 - 51.994370937347 - 0.33714270591736 - 140
+warning:Invalid category ids found for sku 8003670862680:
+itime:870 - 160.06393098831 - 0.8332040309906
+dbtime:23648 - 52.336149692535 - 0.34177875518799 - 140
+warning:Invalid category ids found for sku 8003670935063:
+warning:Invalid category ids found for sku 8003670935087:
+warning:Invalid category ids found for sku 8003670935506:
+warning:Invalid category ids found for sku 8003670982821:
+itime:875 - 160.90284705162 - 0.83844017982483
+dbtime:23788 - 52.672816038132 - 0.33666634559631 - 140
+warning:Invalid category ids found for sku 8003670994428:
+warning:Invalid category ids found for sku 8003670997467:
+itime:880 - 161.76262187958 - 0.85940384864807
+dbtime:23931 - 52.9802942276 - 0.30747818946838 - 143
+itime:885 - 162.60075688362 - 0.83773493766785
+dbtime:24074 - 53.324826478958 - 0.34453225135803 - 143
+warning:Invalid category ids found for sku 8712930025221:
+itime:890 - 163.48363208771 - 0.88248801231384
+dbtime:24220 - 53.609602212906 - 0.28477573394775 - 146
+warning:Invalid category ids found for sku 8712930026068:
+warning:Invalid category ids found for sku 8712930026174:
+warning:Invalid category ids found for sku 8712930026808:
+warning:Invalid category ids found for sku 8712930027188:
+itime:895 - 164.51735806465 - 1.0333380699158
+dbtime:24366 - 54.026545763016 - 0.41694355010986 - 146
+itime:900 - 165.470952034 - 0.95320796966553
+dbtime:24519 - 54.473822116852 - 0.44727635383606 - 153
+itime:905 - 168.00921797752 - 2.5378849506378
+dbtime:24662 - 55.210140705109 - 0.73631858825684 - 143
+itime:910 - 168.99136590958 - 0.98176789283752
+dbtime:24805 - 55.62730717659 - 0.41716647148132 - 143
+itime:915 - 170.05302906036 - 1.0612711906433
+dbtime:24948 - 56.023525238037 - 0.39621806144714 - 143
+itime:920 - 170.96079802513 - 0.90738606452942
+dbtime:25088 - 56.378502368927 - 0.35497713088989 - 140
+itime:925 - 171.922508955 - 0.96133303642273
+dbtime:25231 - 56.739273786545 - 0.3607714176178 - 143
+itime:930 - 173.45077204704 - 1.5278911590576
+dbtime:25381 - 57.25137090683 - 0.51209712028503 - 150
+itime:935 - 174.46592497826 - 1.0147171020508
+dbtime:25533 - 57.670500993729 - 0.4191300868988 - 152
+itime:940 - 175.55722403526 - 1.0904500484467
+dbtime:25685 - 58.175794363022 - 0.50529336929321 - 152
+warning:Invalid category ids found for sku 8031575096213:
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /5/0/5010415400154_small.jpeg cannot be found in images path
+warning:Invalid category ids found for sku 5010415400154:
+error:No sku info found for record #944
+itime:945 - 176.42756700516 - 0.86997294425964
+dbtime:25793 - 58.515409946442 - 0.3396155834198 - 108
+error:No sku info found for record #945
+error:No sku info found for record #946
+error:No sku info found for record #947
+error:No sku info found for record #948
+error:No sku info found for record #949
+itime:950 - 176.45373106003 - 0.025827169418335
+dbtime:25793 - 58.515409946442 - 0 - 0
+error:No sku info found for record #950
+error:No sku info found for record #951
+error:No sku info found for record #952
+itime:952 - 176.51153707504 - 0.057471990585327
+dbtime:25794 - 58.556267976761 - 0.040858030319214 - 1
+info:Skus imported OK:898/952
+warning:Skus imported KO:54/952
 end:Import Ended

@@ -292,6 +292,9 @@ class CategoryImporter extends Magmi_ItemProcessor
 		//added position handling
 		for($i=0;$i<count($catparts);$i++)
 		{
+                    if(!key_exists($i,$catids))
+                         $catids[$i]='';
+                    if(key_exists($i,$catpos))
 			$catids[$i].="::".$catpos[$i];
 		}
 		

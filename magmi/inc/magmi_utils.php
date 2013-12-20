@@ -44,13 +44,13 @@ function trimarray(&$arr)
 function getRelative(&$val)
 {
 	$dir="+";
-	if($val[0]=="-")
+	if(strlen($val)> 0 && $val[0]=="-")
 	{
 		$val=substr($val,1);
 		$dir="-";
 	}
 	else 
-	if($val[0]=="+")
+	if(strlen($val)> 0 && $val[0]=="+")
 	{
 		$val=substr($val,1);
 	}
