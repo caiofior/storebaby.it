@@ -117,7 +117,7 @@ class MastroProduct {
             if ($getModifiedData != '') {
                 $magentoProduct->setData('categories',$this->productFromCsv->getCategory($this->data['REPARTO']));
                 $magentoProduct->setData('sku',$this->data['EAN13']);
-                $magentoProduct->setData('xre_skus',$key);
+                $magentoProduct->setData('xre_skus',$this->getReSkus($key));
                 $magentoProduct->setData('name', ucfirst(strtolower($this->data['DESCRIZIONE'])));
                 $magentoProduct->setData('brand', ucfirst(strtolower($this->data['MARCA'])));
                 $magentoProduct->setData('meta_title', 'Articoli infanzia');
@@ -192,10 +192,9 @@ class MastroProduct {
       * Return related sku
       * @return array
       */
-     public function getReSkus ($descrizione) {
-         $key = $this->generateKey($descrizione);
+     public function getReSkus ($key) {
          if (key_exists($key,$this->related))
-            return $this->related[$this->generateKey($descrizione)];
+            return $this->related[$key];
          else return '';
      }
 }
