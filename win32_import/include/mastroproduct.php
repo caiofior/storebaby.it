@@ -118,20 +118,33 @@ class MastroProduct {
             
             if ($getModifiedData != '') {
                 $categories = $this->productFromCsv->getCategory($this->data['REPARTO']);
+                $categoriesBranches = array_unique(preg_split('/[;,\/]/', $categories));
+                $rawCategoriesWords = array_unique(preg_split('/[ ;,\/]/', strtolower($categories)));
+                $categoriesWords = array();
+                foreach($rawCategoriesWords as $rawCategoriesWord) {
+                    if (strlen($rawCategoriesWord)>3)
+                        $categoriesWords[] = $rawCategoriesWord;
+                }
+                $rawNameWords = array_unique(preg_split('/[ ;,\/]/', strtolower($this->data['DESCRIZIONE'])));
+                $nameWords = array();
+                foreach($rawNameWords as $rawNameWord) {
+                    if (strlen($rawNameWord)>3)
+                        $nameWords[] = $rawNameWord;
+                }
                 $magentoProduct->setData('categories',$categories);
                 $magentoProduct->setData('sku',$this->data['EAN13']);
                 $magentoProduct->setData('xre_skus',$this->getReSkus($key));
                 $magentoProduct->setData('name', ucfirst(strtolower($this->data['DESCRIZIONE'])));
                 $magentoProduct->setData('brand', ucfirst(strtolower($this->data['MARCA'])));
-                $magentoProduct->setData('meta_title', 'Articoli infanzia');
-                $magentoProduct->setData('meta_description', 'Articoli infanzia '.ucfirst(strtolower($this->data['DESCRIZIONE'])));
+                $magentoProduct->setData('meta_title', 'Articoli infanzia - '.ucfirst(strtolower($this->data['DESCRIZIONE'])));
+                $magentoProduct->setData('meta_description', 'Articoli infanzia > '.implode(' > ',$categoriesBranches).' > '.ucfirst(strtolower($this->data['DESCRIZIONE'])));
                 $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim($this->data['DESCRIZIONE'])))));
                 $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim($this->data['DESCRIZIONE'])))).'.html');
                 $magentoProduct->setData('weight', '0.1');
                 $magentoProduct->setData('price',$this->data['VENDITA']+1*($this->data['IVA']/100));
                 $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', $this->data['TESTO']));
                 $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', $this->data['TESTO'])));
-                $magentoProduct->setData('meta_keyword', 'Articoli infanzia');
+                $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
                 $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
                 if('LOCAZIONE_MAG'=='99' && $magentoProduct->getData('qty')== 0)
                     return false;
