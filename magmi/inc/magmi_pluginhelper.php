@@ -52,6 +52,7 @@ class Magmi_PluginHelper
 		$pluginclasses=array();
 		foreach($candidates as $pcfile)
 		{
+
 			$dirname=dirname(substr($pcfile,strlen($this->plugin_dir)));
 			if(substr(basename($dirname),0,2)!='__')
 			{
