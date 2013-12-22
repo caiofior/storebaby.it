@@ -1,6 +1,5 @@
 <div class="plugin_description">
-<p>This plugin can be used to send a email report for the import</p>
-<p>it uses PHP <b>mail</b> feature, <b>please ensure your setup is compatible with this</b></p>
+<p>This plugin can be used to send a email report for the import with SMTP config</p>
 </div>
 <ul class="formline">
 <li class="label">Email report to:</li>
