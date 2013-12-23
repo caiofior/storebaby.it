@@ -45,7 +45,7 @@ class MastroImageColl {
         }
     }
     /**
-     * Stips stange characters from name files
+     * Strips strange characters from name files
      * @param string $fileName
      * @return boolean
      */

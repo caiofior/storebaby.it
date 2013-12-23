@@ -146,7 +146,7 @@ class MastroProduct {
                 $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', $this->data['TESTO'])));
                 $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
                 $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
-                if('LOCAZIONE_MAG'=='99' && $magentoProduct->getData('qty')== 0)
+                if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0)
                     return false;
                 $magentoProduct->setData('news_from_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
                 $magentoProduct->setData('news_to_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData+3600 * 24 * 7 * 7 ));
