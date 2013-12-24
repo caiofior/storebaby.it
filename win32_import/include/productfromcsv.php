@@ -40,6 +40,11 @@ class ProductFromCsv {
      */
     private $ftp;
     /**
+     * Firt ftp start
+     * @var bool
+     */
+    private $initialFtp=true;
+    /**
      * Database with parsed image names, real name and size to detect modified images
      * @var SQLite3
      */
@@ -85,8 +90,6 @@ corrupted NUMERIC
 );');
         echo 'Fixing database'.PHP_EOL;
         $this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL;');
-        pcntl_signal(SIGINT, array($this, 'execOnShutdown'));
-        pcntl_signal(SIGTERM,array($this, 'execOnShutdown'));
         register_shutdown_function(array($this, 'execOnShutdown'));
     }
     /**
@@ -98,47 +101,10 @@ corrupted NUMERIC
         
         if (key_exists('MASTRO_COMMAND',$this->config)) {
             echo 'Export command '.$this->config['MASTRO_COMMAND'].PHP_EOL;
-            $timeout = 30;
-            $commandHandle = proc_open($this->config['MASTRO_COMMAND'],array(
-                0 => array('pipe', 'r'),
-                1 => array('pipe', 'w'),
-                2 => array('pipe', 'w')
-                 ), $pipes);
-            if (is_resource($commandHandle)) {
-                $startProcTime = microtime(true);
-                $procStatus = proc_get_status($commandHandle);
-                $ticks = 0;
-                while(microtime(true) < $startProcTime + $timeout && $procStatus['running']) {
-                    if ($ticks++ % 5000 == 0 && $ticks > 1)
-                        echo 'Export in progress '.ceil($ticks/5000).PHP_EOL;
-                    usleep(10);
-                    $procStatus = proc_get_status($commandHandle);
-
-                }
-                if (microtime(true) > $startProcTime + $timeout) {
-                    echo 'Export command executed '.PHP_EOL;
-                    proc_terminate($commandHandle,9);
-                    posix_kill($procStatus['pid'],9);
-                }
-
-                proc_close($commandHandle);
-            }
+            echo implode(exec ($this->config['MASTRO_COMMAND'])).PHP_EOL;
         }
         $this->mastroCsvHandle = fopen($this->config['MASTRO_CSV_FILE'], 'r');
-        if (key_exists('FTP_SERVER', $this->config)) {
-            $this->ftp = ftp_connect($this->config['FTP_SERVER']);
-            if (!is_resource($this->ftp))
-                throw new Exception('Wrong FTP server server:'.$this->config['FTP_SERVER'],1312100839);
-            if (key_exists('FTP_USER', $this->config)) {
-                if (!ftp_login($this->ftp, $this->config['FTP_USER'], $this->config['FTP_PASSWORD']))
-                    throw new Exception('Wrong FTP login user:'.$this->config['FTP_USER'].' password:'.$this->config['FTP_PASSWORD'],1312100835);
-            }
-            if (!key_exists('FTP_BASE_DIR', $this->config)) {
-                 $this->config['FTP_BASE_DIR'] = '';
-            }
-            $this->config['FTP_BASE_DIR'] = ftp_pwd($this->ftp).DIRECTORY_SEPARATOR.$this->config['FTP_BASE_DIR'];
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-        }
+        $this->setUpFtp();
         if (is_resource($this->ftp))
             echo 'FTP connection with  '.$this->config['FTP_SERVER'].PHP_EOL;
         if (key_exists('CONVERT_COMMAND',$this->config))
@@ -193,7 +159,7 @@ corrupted NUMERIC
                 $rowCount++;
                 $row = '';
                 if ($rowCount/100 == (int) ($rowCount/100)) {
-                    
+                    $this->setUpFtp();
                     $microtime = microtime(true)-$this->startTime;
                     $rimaningTime = $microtime*$this->mastroCsvLastpos/$byteCount-$microtime;
                     echo 'Progress:'.intval($byteCount/$this->mastroCsvLastpos*100-1)." %\t";
@@ -205,19 +171,20 @@ corrupted NUMERIC
         }
         fclose($this->mastroCsvHandle);
         fclose($this->magentoCsvHandle);
+        $this->setUpFtp();
         if (is_resource($this->ftp)) {
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
             $imagesSubDirs = array('var','import');
             foreach ($imagesSubDirs as $dir) {
                         $fileList = ftp_nlist($this->ftp,'.');
-                        if (!in_array($dir, $fileList)) {
+                        if (!is_array($fileList) || !in_array($dir, $fileList)) {
                             ftp_mkdir($this->ftp,$dir);
                         }
                         ftp_chdir($this->ftp,$dir);
    
             }
             $fileList = ftp_nlist($this->ftp,'.');
-            if (in_array('import.csv', $fileList))
+            if (is_array($fileList) && in_array('import.csv', $fileList))
                 ftp_delete ($this->ftp, 'import.csv');
             ftp_put($this->ftp, 'import.csv',$magentoCsvFilname,  FTP_ASCII);
             ftp_close($this->ftp);
@@ -300,7 +267,32 @@ message TEXT
             $output = curl_exec($ch);
             curl_close($ch);  
          }
-         exit;
+     }
+     /**
+      * 
+      * @throws Exception
+      */
+     public function setUpFtp () {
+         if (is_resource($this->ftp))
+             ftp_close ($this->ftp);
+         if (key_exists('FTP_SERVER', $this->config)) {
+            $this->ftp = ftp_connect($this->config['FTP_SERVER']);
+            if (!is_resource($this->ftp))
+                throw new Exception('Wrong FTP server server:'.$this->config['FTP_SERVER'],1312100839);
+            if (key_exists('FTP_USER', $this->config)) {
+                if (!ftp_login($this->ftp, $this->config['FTP_USER'], $this->config['FTP_PASSWORD']))
+                    throw new Exception('Wrong FTP login user:'.$this->config['FTP_USER'].' password:'.$this->config['FTP_PASSWORD'],1312100835);
+            }
+            if ($this->initialFtp) {
+                if (!key_exists('FTP_BASE_DIR', $this->config)) {
+                     $this->config['FTP_BASE_DIR'] = '';
+                }
+                $this->config['FTP_BASE_DIR'] = ftp_pwd($this->ftp).'/'.$this->config['FTP_BASE_DIR'];
+            }
+            $this->initialFtp = false;
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            
+        }
      }
 }
 

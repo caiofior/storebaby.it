@@ -24,7 +24,10 @@ public function getPluginInfo()
 		}
 		return $pp;
 	}
-
+        public function beforeImport()
+	{
+		die('HI');
+	}
 	public function afterImport()
 	{
 		

@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generato il: Dic 13, 2013 alle 07:53
--- Versione del server: 5.5.32-cll
+-- Generato il: Dic 23, 2013 alle 19:15
+-- Versione del server: 5.5.34-cll
 -- Versione PHP: 5.3.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -222,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
 --
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`, `rp_token`, `rp_token_created_at`) VALUES
-(1, 'StoreBabyName', 'StoreBabyLast', 'info@storebaby.it', 'admin', '958f488c841e69ac30f0aa4ed832852c:S6', '2013-12-13 06:40:46', '2013-12-11 17:49:44', '2013-12-13 05:40:46', 6, 0, 1, 'a:1:{s:11:"configState";a:48:{s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"0";s:12:"dev_template";s:1:"0";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"1";s:7:"dev_css";s:1:"1";s:31:"milanoconfig_activation_options";s:1:"1";s:27:"milanoconfig_generaloptions";s:1:"1";s:24:"milanoconfig_menuoptions";s:1:"1";s:24:"milanoconfig_homeoptions";s:1:"1";s:25:"milanoconfig_product_list";s:1:"1";s:24:"milanoconfig_productpage";s:1:"1";s:18:"milanoconfig_share";s:1:"1";s:19:"milanoconfig_social";s:1:"1";s:23:"milanoconfig_background";s:1:"1";s:19:"milanoconfig_colors";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_region";s:1:"1";s:14:"general_locale";s:1:"1";s:25:"general_store_information";s:1:"1";s:7:"web_url";s:1:"1";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:14:"design_package";s:1:"1";s:12:"design_theme";s:1:"1";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"1";s:17:"design_pagination";s:1:"1";s:12:"design_email";s:1:"1";s:25:"trans_email_ident_general";s:1:"1";s:23:"trans_email_ident_sales";s:1:"1";s:25:"trans_email_ident_support";s:1:"1";s:25:"trans_email_ident_custom1";s:1:"1";s:25:"trans_email_ident_custom2";s:1:"1";s:9:"blog_blog";s:1:"1";s:9:"blog_menu";s:1:"0";s:13:"blog_comments";s:1:"0";s:14:"blog_recaptcha";s:1:"0";s:8:"blog_rss";s:1:"0";}}', NULL, NULL);
+(1, 'StoreBabyName', 'StoreBabyLast', 'info@storebaby.it', 'admin', '958f488c841e69ac30f0aa4ed832852c:S6', '2013-12-23 12:55:41', '2013-12-11 17:49:44', '2013-12-23 11:55:41', 11, 0, 1, 'a:1:{s:11:"configState";a:58:{s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"0";s:12:"dev_template";s:1:"0";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"1";s:6:"dev_js";s:1:"1";s:7:"dev_css";s:1:"1";s:31:"milanoconfig_activation_options";s:1:"1";s:27:"milanoconfig_generaloptions";s:1:"1";s:24:"milanoconfig_menuoptions";s:1:"1";s:24:"milanoconfig_homeoptions";s:1:"1";s:25:"milanoconfig_product_list";s:1:"1";s:24:"milanoconfig_productpage";s:1:"1";s:18:"milanoconfig_share";s:1:"1";s:19:"milanoconfig_social";s:1:"1";s:23:"milanoconfig_background";s:1:"1";s:19:"milanoconfig_colors";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_region";s:1:"1";s:14:"general_locale";s:1:"1";s:25:"general_store_information";s:1:"1";s:7:"web_url";s:1:"1";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:14:"design_package";s:1:"1";s:12:"design_theme";s:1:"1";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"1";s:17:"design_pagination";s:1:"1";s:12:"design_email";s:1:"1";s:25:"trans_email_ident_general";s:1:"1";s:23:"trans_email_ident_sales";s:1:"1";s:25:"trans_email_ident_support";s:1:"1";s:25:"trans_email_ident_custom1";s:1:"1";s:25:"trans_email_ident_custom2";s:1:"1";s:9:"blog_blog";s:1:"1";s:9:"blog_menu";s:1:"0";s:13:"blog_comments";s:1:"0";s:14:"blog_recaptcha";s:1:"0";s:8:"blog_rss";s:1:"0";s:11:"system_cron";s:1:"0";s:11:"system_smtp";s:1:"0";s:15:"system_currency";s:1:"0";s:10:"system_log";s:1:"0";s:24:"system_adminnotification";s:1:"0";s:17:"system_lesti_smtp";s:1:"1";s:26:"system_external_page_cache";s:1:"0";s:13:"system_backup";s:1:"0";s:34:"system_media_storage_configuration";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";}}', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -769,7 +769,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity` (
 INSERT INTO `catalog_category_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `parent_id`, `created_at`, `updated_at`, `path`, `position`, `level`, `children_count`) VALUES
 (1, 3, 0, 0, '2013-12-11 17:48:18', '2013-12-11 17:48:18', '1', 0, 0, 2),
 (2, 3, 3, 1, '2013-12-11 17:48:18', '2013-12-11 17:48:18', '1/2', 1, 1, 1),
-(3, 3, 3, 2, '2013-12-12 10:01:50', '2013-12-12 10:54:31', '1/2/3', 1, 2, 0);
+(3, 3, 3, 2, '2013-12-12 09:20:31', '2013-12-17 18:26:48', '1/2/3', 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -789,7 +789,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_datetime` (
   KEY `IDX_CATALOG_CATEGORY_ENTITY_DATETIME_ENTITY_ID` (`entity_id`),
   KEY `IDX_CATALOG_CATEGORY_ENTITY_DATETIME_ATTRIBUTE_ID` (`attribute_id`),
   KEY `IDX_CATALOG_CATEGORY_ENTITY_DATETIME_STORE_ID` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog Category Datetime Attribute Backend Table' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog Category Datetime Attribute Backend Table' AUTO_INCREMENT=3 ;
 
 --
 -- Dump dei dati per la tabella `catalog_category_entity_datetime`
@@ -844,7 +844,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_int` (
   KEY `IDX_CATALOG_CATEGORY_ENTITY_INT_ENTITY_ID` (`entity_id`),
   KEY `IDX_CATALOG_CATEGORY_ENTITY_INT_ATTRIBUTE_ID` (`attribute_id`),
   KEY `IDX_CATALOG_CATEGORY_ENTITY_INT_STORE_ID` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog Category Integer Attribute Backend Table' AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog Category Integer Attribute Backend Table' AUTO_INCREMENT=19 ;
 
 --
 -- Dump dei dati per la tabella `catalog_category_entity_int`
@@ -859,16 +859,16 @@ INSERT INTO `catalog_category_entity_int` (`value_id`, `entity_type_id`, `attrib
 (6, 3, 67, 1, 2, 1),
 (7, 3, 42, 0, 3, 1),
 (8, 3, 67, 0, 3, 1),
-(9, 3, 50, 0, 3, NULL),
-(10, 3, 51, 0, 3, 1),
-(11, 3, 134, 0, 3, 1),
-(12, 3, 135, 0, 3, 0),
-(13, 3, 136, 0, 3, 0),
-(14, 3, 137, 0, 3, 0),
-(15, 3, 68, 0, 3, 0),
-(16, 3, 69, 0, 3, 0),
-(17, 3, 139, 0, 3, 1),
-(18, 3, 140, 0, 3, 0);
+(9, 3, 139, 0, 3, 1),
+(10, 3, 140, 0, 3, 0),
+(11, 3, 50, 0, 3, NULL),
+(12, 3, 51, 0, 3, 1),
+(13, 3, 134, 0, 3, 1),
+(14, 3, 135, 0, 3, 0),
+(15, 3, 136, 0, 3, 0),
+(16, 3, 137, 0, 3, 0),
+(17, 3, 68, 0, 3, 0),
+(18, 3, 69, 0, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -888,7 +888,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_text` (
   KEY `IDX_CATALOG_CATEGORY_ENTITY_TEXT_ENTITY_ID` (`entity_id`),
   KEY `IDX_CATALOG_CATEGORY_ENTITY_TEXT_ATTRIBUTE_ID` (`attribute_id`),
   KEY `IDX_CATALOG_CATEGORY_ENTITY_TEXT_STORE_ID` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog Category Text Attribute Backend Table' AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog Category Text Attribute Backend Table' AUTO_INCREMENT=11 ;
 
 --
 -- Dump dei dati per la tabella `catalog_category_entity_text`
@@ -924,7 +924,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_varchar` (
   KEY `IDX_CATALOG_CATEGORY_ENTITY_VARCHAR_ENTITY_ID` (`entity_id`),
   KEY `IDX_CATALOG_CATEGORY_ENTITY_VARCHAR_ATTRIBUTE_ID` (`attribute_id`),
   KEY `IDX_CATALOG_CATEGORY_ENTITY_VARCHAR_STORE_ID` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog Category Varchar Attribute Backend Table' AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog Category Varchar Attribute Backend Table' AUTO_INCREMENT=16 ;
 
 --
 -- Dump dei dati per la tabella `catalog_category_entity_varchar`
@@ -1010,7 +1010,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_flat_store_1` (
 INSERT INTO `catalog_category_flat_store_1` (`entity_id`, `parent_id`, `created_at`, `updated_at`, `path`, `position`, `level`, `children_count`, `store_id`, `name`, `is_active`, `url_key`, `description`, `image`, `meta_title`, `meta_keywords`, `meta_description`, `display_mode`, `landing_page`, `is_anchor`, `all_children`, `path_in_store`, `children`, `url_path`, `custom_design`, `custom_design_from`, `custom_design_to`, `page_layout`, `custom_layout_update`, `available_sort_by`, `default_sort_by`, `include_in_menu`, `custom_use_parent_settings`, `custom_apply_to_products`, `filter_price_range`, `thumbnail`, `single_column_layout`, `products_column_count`, `products_pic_aspect`, `category_mmenu_style`, `category_menu_description`, `is_featured_category`, `is_featured_subcat`) VALUES
 (1, 0, '2013-12-11 17:48:18', '2013-12-11 17:48:18', '1', 0, 0, 2, 1, 'Root Catalog', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 1, '2013-12-11 17:48:18', '2013-12-11 17:48:18', '1/2', 1, 1, 1, 1, 'Default Category', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 2, '2013-12-12 10:01:50', '2013-12-12 10:54:31', '1/2/3', 1, 2, 0, 1, 'Passeggio', 1, 'passeggio', NULL, NULL, NULL, NULL, NULL, 'PRODUCTS', NULL, 1, NULL, NULL, NULL, 'passeggio.html', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, 1, 0, 0, 0, NULL, 1, 0);
+(3, 2, '2013-12-12 09:20:31', '2013-12-12 09:20:31', '1/2/3', 1, 2, 0, 1, 'Passeggio', 1, 'passeggio', NULL, NULL, NULL, NULL, NULL, 'PRODUCTS', NULL, 1, NULL, NULL, NULL, 'passeggio.html', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, 1, 0, 0, 0, NULL, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1196,7 +1196,7 @@ INSERT INTO `catalog_eav_attribute` (`attribute_id`, `frontend_input_renderer`, 
 (78, NULL, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 'simple,configurable,virtual,bundle,downloadable', 0, 0, 0, 0),
 (79, NULL, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 'virtual,downloadable', 0, 0, 0, 0),
 (80, NULL, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 'simple,bundle', 0, 0, 0, 0),
-(81, NULL, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 'simple', 1, 0, 0, 0),
+(81, NULL, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, NULL, 1, 0, 0, 0),
 (82, NULL, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, NULL, 0, 0, 0, 0),
 (83, NULL, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, NULL, 0, 0, 0, 0),
 (84, NULL, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, NULL, 0, 0, 0, 0),
@@ -1256,7 +1256,9 @@ INSERT INTO `catalog_eav_attribute` (`attribute_id`, `frontend_input_renderer`, 
 (138, NULL, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, NULL, 0, 0, 1, 0),
 (139, NULL, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, 0, 0, 0, 0),
 (140, NULL, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, NULL, 0, 0, 0, 0),
-(141, NULL, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, 0, 0, 0, 0);
+(141, NULL, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, 0, 0, 0, 0),
+(142, NULL, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, NULL, 0, 0, 0, 0),
+(143, NULL, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2687,7 +2689,7 @@ INSERT INTO `cms_page` (`page_id`, `title`, `root_template`, `meta_keywords`, `m
 (4, 'Customer Service', 'three_columns', NULL, NULL, 'customer-service', NULL, '<div class="page-title">\r\n<h1>Customer Service</h1>\r\n</div>\r\n<ul class="disc">\r\n<li><a href="#answer1">Shipping &amp; Delivery</a></li>\r\n<li><a href="#answer2">Privacy &amp; Security</a></li>\r\n<li><a href="#answer3">Returns &amp; Replacements</a></li>\r\n<li><a href="#answer4">Ordering</a></li>\r\n<li><a href="#answer5">Payment, Pricing &amp; Promotions</a></li>\r\n<li><a href="#answer6">Viewing Orders</a></li>\r\n<li><a href="#answer7">Updating Account Information</a></li>\r\n</ul>\r\n<dl>\r\n<dt id="answer1">Shipping &amp; Delivery</dt>\r\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer2">Privacy &amp; Security</dt>\r\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer3">Returns &amp; Replacements</dt>\r\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer4">Ordering</dt>\r\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer5">Payment, Pricing &amp; Promotions</dt>\r\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer6">Viewing Orders</dt>\r\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer7">Updating Account Information</dt>\r\n<dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n</dl>', '2013-12-11 17:48:14', '2013-12-11 17:48:14', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Enable Cookies', 'one_column', NULL, NULL, 'enable-cookies', NULL, '<div class="std">\r\n    <ul class="messages">\r\n        <li class="notice-msg">\r\n            <ul>\r\n                <li>Please enable cookies in your web browser to continue.</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n    <div class="page-title">\r\n        <h1><a name="top"></a>What are Cookies?</h1>\r\n    </div>\r\n    <p>Cookies are short pieces of data that are sent to your computer when you visit a website. On later visits, this data is then returned to that website. Cookies allow us to recognize you automatically whenever you visit our site so that we can personalize your experience and provide you with better service. We also use cookies (and similar browser data, such as Flash cookies) for fraud prevention and other purposes. If your web browser is set to refuse cookies from our website, you will not be able to complete a purchase or take advantage of certain features of our website, such as storing items in your Shopping Cart or receiving personalized recommendations. As a result, we strongly encourage you to configure your web browser to accept cookies from our website.</p>\r\n    <h2 class="subtitle">Enabling Cookies</h2>\r\n    <ul class="disc">\r\n        <li><a href="#ie7">Internet Explorer 7.x</a></li>\r\n        <li><a href="#ie6">Internet Explorer 6.x</a></li>\r\n        <li><a href="#firefox">Mozilla/Firefox</a></li>\r\n        <li><a href="#opera">Opera 7.x</a></li>\r\n    </ul>\r\n    <h3><a name="ie7"></a>Internet Explorer 7.x</h3>\r\n    <ol>\r\n        <li>\r\n            <p>Start Internet Explorer</p>\r\n        </li>\r\n        <li>\r\n            <p>Under the <strong>Tools</strong> menu, click <strong>Internet Options</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Privacy</strong> tab</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-2.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Advanced</strong> button</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-3.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Put a check mark in the box for <strong>Override Automatic Cookie Handling</strong>, put another check mark in the <strong>Always accept session cookies </strong>box</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-4.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-5.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-6.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Restart Internet Explore</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h3><a name="ie6"></a>Internet Explorer 6.x</h3>\r\n    <ol>\r\n        <li>\r\n            <p>Select <strong>Internet Options</strong> from the Tools menu</p>\r\n            <p><img src="{{skin url="images/cookies/ie6-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> tab</p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Default</strong> button (or manually slide the bar down to <strong>Medium</strong>) under <strong>Settings</strong>. Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie6-2.gif"}}" alt="" /></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h3><a name="firefox"></a>Mozilla/Firefox</h3>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong>-menu in Mozilla</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Options...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection in the left part of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/firefox.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Expand the <strong>Cookies</strong> section</p>\r\n        </li>\r\n        <li>\r\n            <p>Check the <strong>Enable cookies</strong> and <strong>Accept cookies normally</strong> checkboxes</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong>.</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h3><a name="opera"></a>Opera 7.x</h3>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong> menu in Opera</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Preferences...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection near the bottom left of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/opera.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>The <strong>Enable cookies</strong> checkbox must be checked, and <strong>Accept all cookies</strong> should be selected in the &quot;<strong>Normal cookies</strong>&quot; drop-down</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n</div>\r\n', '2013-12-11 17:48:14', '2013-12-11 17:48:14', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 'Privacy Policy', 'one_column', NULL, NULL, 'privacy-policy-cookie-restriction-mode', 'Privacy Policy', '<p style="color: #ff0000; font-weight: bold; font-size: 13px">\n    Please replace this text with you Privacy Policy.\n    Please add any additional cookies your website uses below (e.g., Google Analytics)\n</p>\n<p>\n    This privacy policy sets out how {{config path="general/store_information/name"}} uses and protects any information\n    that you give {{config path="general/store_information/name"}} when you use this website.\n    {{config path="general/store_information/name"}} is committed to ensuring that your privacy is protected.\n    Should we ask you to provide certain information by which you can be identified when using this website,\n    then you can be assured that it will only be used in accordance with this privacy statement.\n    {{config path="general/store_information/name"}} may change this policy from time to time by updating this page.\n    You should check this page from time to time to ensure that you are happy with any changes.\n</p>\n<h2>What we collect</h2>\n<p>We may collect the following information:</p>\n<ul>\n    <li>name</li>\n    <li>contact information including email address</li>\n    <li>demographic information such as postcode, preferences and interests</li>\n    <li>other information relevant to customer surveys and/or offers</li>\n</ul>\n<p>\n    For the exhaustive list of cookies we collect see the <a href="#list">List of cookies we collect</a> section.\n</p>\n<h2>What we do with the information we gather</h2>\n<p>\n    We require this information to understand your needs and provide you with a better service,\n    and in particular for the following reasons:\n</p>\n<ul>\n    <li>Internal record keeping.</li>\n    <li>We may use the information to improve our products and services.</li>\n    <li>\n        We may periodically send promotional emails about new products, special offers or other information which we\n        think you may find interesting using the email address which you have provided.\n    </li>\n    <li>\n        From time to time, we may also use your information to contact you for market research purposes.\n        We may contact you by email, phone, fax or mail. We may use the information to customise the website\n        according to your interests.\n    </li>\n</ul>\n<h2>Security</h2>\n<p>\n    We are committed to ensuring that your information is secure. In order to prevent unauthorised access or disclosure,\n    we have put in place suitable physical, electronic and managerial procedures to safeguard and secure\n    the information we collect online.\n</p>\n<h2>How we use cookies</h2>\n<p>\n    A cookie is a small file which asks permission to be placed on your computer''s hard drive.\n    Once you agree, the file is added and the cookie helps analyse web traffic or lets you know when you visit\n    a particular site. Cookies allow web applications to respond to you as an individual. The web application\n    can tailor its operations to your needs, likes and dislikes by gathering and remembering information about\n    your preferences.\n</p>\n<p>\n    We use traffic log cookies to identify which pages are being used. This helps us analyse data about web page traffic\n    and improve our website in order to tailor it to customer needs. We only use this information for statistical\n    analysis purposes and then the data is removed from the system.\n</p>\n<p>\n    Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful\n    and which you do not. A cookie in no way gives us access to your computer or any information about you,\n    other than the data you choose to share with us. You can choose to accept or decline cookies.\n    Most web browsers automatically accept cookies, but you can usually modify your browser setting\n    to decline cookies if you prefer. This may prevent you from taking full advantage of the website.\n</p>\n<h2>Links to other websites</h2>\n<p>\n    Our website may contain links to other websites of interest. However, once you have used these links\n    to leave our site, you should note that we do not have any control over that other website.\n    Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst\n    visiting such sites and such sites are not governed by this privacy statement.\n    You should exercise caution and look at the privacy statement applicable to the website in question.\n</p>\n<h2>Controlling your personal information</h2>\n<p>You may choose to restrict the collection or use of your personal information in the following ways:</p>\n<ul>\n    <li>\n        whenever you are asked to fill in a form on the website, look for the box that you can click to indicate\n        that you do not want the information to be used by anybody for direct marketing purposes\n    </li>\n    <li>\n        if you have previously agreed to us using your personal information for direct marketing purposes,\n        you may change your mind at any time by writing to or emailing us at\n        {{config path="trans_email/ident_general/email"}}\n    </li>\n</ul>\n<p>\n    We will not sell, distribute or lease your personal information to third parties unless we have your permission\n    or are required by law to do so. We may use your personal information to send you promotional information\n    about third parties which we think you may find interesting if you tell us that you wish this to happen.\n</p>\n<p>\n    You may request details of personal information which we hold about you under the Data Protection Act 1998.\n    A small fee will be payable. If you would like a copy of the information held on you please write to\n    {{config path="general/store_information/address"}}.\n</p>\n<p>\n    If you believe that any information we are holding on you is incorrect or incomplete,\n    please write to or email us as soon as possible, at the above address.\n    We will promptly correct any information found to be incorrect.\n</p>\n<h2><a name="list"></a>List of cookies we collect</h2>\n<p>The table below lists the cookies we collect and what information they store.</p>\n<table class="data-table">\n    <thead>\n        <tr>\n            <th>COOKIE name</th>\n            <th>COOKIE Description</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <th>CART</th>\n            <td>The association with your shopping cart.</td>\n        </tr>\n        <tr>\n            <th>CATEGORY_INFO</th>\n            <td>Stores the category info on the page, that allows to display pages more quickly.</td>\n        </tr>\n        <tr>\n            <th>COMPARE</th>\n            <td>The items that you have in the Compare Products list.</td>\n        </tr>\n        <tr>\n            <th>CURRENCY</th>\n            <td>Your preferred currency</td>\n        </tr>\n        <tr>\n            <th>CUSTOMER</th>\n            <td>An encrypted version of your customer id with the store.</td>\n        </tr>\n        <tr>\n            <th>CUSTOMER_AUTH</th>\n            <td>An indicator if you are currently logged into the store.</td>\n        </tr>\n        <tr>\n            <th>CUSTOMER_INFO</th>\n            <td>An encrypted version of the customer group you belong to.</td>\n        </tr>\n        <tr>\n            <th>CUSTOMER_SEGMENT_IDS</th>\n            <td>Stores the Customer Segment ID</td>\n        </tr>\n        <tr>\n            <th>EXTERNAL_NO_CACHE</th>\n            <td>A flag, which indicates whether caching is disabled or not.</td>\n        </tr>\n        <tr>\n            <th>FRONTEND</th>\n            <td>You sesssion ID on the server.</td>\n        </tr>\n        <tr>\n            <th>GUEST-VIEW</th>\n            <td>Allows guests to edit their orders.</td>\n        </tr>\n        <tr>\n            <th>LAST_CATEGORY</th>\n            <td>The last category you visited.</td>\n        </tr>\n        <tr>\n            <th>LAST_PRODUCT</th>\n            <td>The most recent product you have viewed.</td>\n        </tr>\n        <tr>\n            <th>NEWMESSAGE</th>\n            <td>Indicates whether a new message has been received.</td>\n        </tr>\n        <tr>\n            <th>NO_CACHE</th>\n            <td>Indicates whether it is allowed to use cache.</td>\n        </tr>\n        <tr>\n            <th>PERSISTENT_SHOPPING_CART</th>\n            <td>A link to information about your cart and viewing history if you have asked the site.</td>\n        </tr>\n        <tr>\n            <th>POLL</th>\n            <td>The ID of any polls you have recently voted in.</td>\n        </tr>\n        <tr>\n            <th>POLLN</th>\n            <td>Information on what polls you have voted on.</td>\n        </tr>\n        <tr>\n            <th>RECENTLYCOMPARED</th>\n            <td>The items that you have recently compared.            </td>\n        </tr>\n        <tr>\n            <th>STF</th>\n            <td>Information on products you have emailed to friends.</td>\n        </tr>\n        <tr>\n            <th>STORE</th>\n            <td>The store view or language you have selected.</td>\n        </tr>\n        <tr>\n            <th>USER_ALLOWED_SAVE_COOKIE</th>\n            <td>Indicates whether a customer allowed to use cookies.</td>\n        </tr>\n        <tr>\n            <th>VIEWED_PRODUCT_IDS</th>\n            <td>The products that you have recently viewed.</td>\n        </tr>\n        <tr>\n            <th>WISHLIST</th>\n            <td>An encrypted list of products added to your Wishlist.</td>\n        </tr>\n        <tr>\n            <th>WISHLIST_CNT</th>\n            <td>The number of items in your Wishlist.</td>\n        </tr>\n    </tbody>\n</table>', '2013-12-11 17:48:14', '2013-12-11 17:48:14', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'Milano Home Page', 'one_column', NULL, NULL, 'milano_home', NULL, '{{block type="featuredcategories/display"\r\ntemplate="sfc_featuredcategories/display.phtml"}}', '2013-12-11 18:25:55', '2013-12-12 09:35:32', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+(7, 'Milano Home Page', 'one_column', NULL, NULL, 'milano_home', NULL, '{{block type="featuredcategories/display"\r\ntemplate="sfc_featuredcategories/display.phtml"}}', '2013-12-11 18:25:55', '2013-12-12 09:30:36', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2784,7 +2786,7 @@ CREATE TABLE IF NOT EXISTS `core_config_data` (
   `value` text COMMENT 'Config Value',
   PRIMARY KEY (`config_id`),
   UNIQUE KEY `UNQ_CORE_CONFIG_DATA_SCOPE_SCOPE_ID_PATH` (`scope`,`scope_id`,`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Config Data' AUTO_INCREMENT=198 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Config Data' AUTO_INCREMENT=303 ;
 
 --
 -- Dump dei dati per la tabella `core_config_data`
@@ -2987,7 +2989,112 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 (194, 'default', 0, 'blog/recaptcha/privatekey', NULL),
 (195, 'default', 0, 'blog/rss/enable', '0'),
 (196, 'default', 0, 'blog/rss/image', NULL),
-(197, 'default', 0, 'blog/rss/posts', NULL);
+(197, 'default', 0, 'blog/rss/posts', NULL),
+(198, 'default', 0, 'system/cron/schedule_generate_every', '15'),
+(199, 'default', 0, 'system/cron/schedule_ahead_for', '20'),
+(200, 'default', 0, 'system/cron/schedule_lifetime', '15'),
+(201, 'default', 0, 'system/cron/history_cleanup_every', '10'),
+(202, 'default', 0, 'system/cron/history_success_lifetime', '60'),
+(203, 'default', 0, 'system/cron/history_failure_lifetime', '600'),
+(204, 'default', 0, 'system/smtp/disable', '0'),
+(205, 'default', 0, 'system/smtp/host', 'localhost'),
+(206, 'default', 0, 'system/smtp/port', '25'),
+(207, 'default', 0, 'system/smtp/set_return_path', '0'),
+(208, 'default', 0, 'system/currency/installed', 'AFN,MGA,THB,PAB,ETB,VEB,BOB,VEF,GHS,CRC,SVC,NIC,CZK,DKK,ISK,NOK,SKK,SEK,EEK,GMD,DZD,JOD,IQD,KWD,LYD,MKD,TND,BHD,RSD,MAD,AED,STD,AUD,BZD,CAD,JMD,LRD,NAD,NZD,USD,XCD,BND,GYD,BSD,BMD,FJD,KYD,SBD,ZWD,BBD,HKD,SGD,TTD,SRD,VND,AMD,GQE,CVE,EUR,HUF,ANG,AWG,XOF,XPF,KMF,CDF,DJF,RWF,CHF,BIF,GNF,HTG,PYG,UAH,PGK,LAK,HRK,GEK,MWK,ZMK,AOA,BUK,MMK,GEL,LVL,ALL,HNL,SLL,MDL,ROL,SZL,TRL,LTL,LSL,AZM,TMM,BAM,MZN,NGN,ERN,BTN,BGN,TWD,ILS,MRO,MOP,TOP,ARS,CLP,COP,CUP,DOP,MXN,UYU,PHP,BWP,GTQ,ZAR,BRL,CNY,IRR,OMR,QAR,YER,KHR,MYR,BYR,RUB,MVR,INR,IDR,MUR,NPR,PKR,SCR,LKR,SAR,KES,SOS,UGX,TZS,PEN,KGS,TJS,EGP,GBP,LBP,SYP,FKP,GIP,SHP,SDG,UZS,BDT,WST,KZT,MNT,VUV,KPW,KRW,JPY,PLN,RHD,RON,AZN,TRY'),
+(209, 'default', 0, 'system/log/clean_after_day', '180'),
+(210, 'default', 0, 'system/log/enabled', '0'),
+(211, 'default', 0, 'system/log/time', '00,00,00'),
+(212, 'default', 0, 'system/log/frequency', 'D'),
+(213, 'default', 0, 'crontab/jobs/log_clean/schedule/cron_expr', NULL),
+(214, 'default', 0, 'crontab/jobs/log_clean/run/model', 'log/cron::logClean'),
+(215, 'default', 0, 'system/log/error_email', NULL),
+(216, 'default', 0, 'system/log/error_email_identity', 'general'),
+(217, 'default', 0, 'system/log/error_email_template', 'system_log_error_email_template'),
+(218, 'default', 0, 'system/adminnotification/use_https', '0'),
+(219, 'default', 0, 'system/adminnotification/frequency', '1'),
+(220, 'default', 0, 'system/lesti_smtp/enable', '1'),
+(221, 'default', 0, 'system/lesti_smtp/host', 'mail.storebaby.it'),
+(222, 'default', 0, 'system/lesti_smtp/port', '25'),
+(223, 'default', 0, 'system/lesti_smtp/username', 'info@storebaby.it'),
+(224, 'default', 0, 'system/lesti_smtp/password', 'iris11'),
+(225, 'default', 0, 'system/lesti_smtp/ssl', NULL),
+(226, 'default', 0, 'system/lesti_smtp/auth', 'login'),
+(227, 'default', 0, 'system/external_page_cache/enabled', '0'),
+(228, 'default', 0, 'system/backup/enabled', '0'),
+(229, 'default', 0, 'system/media_storage_configuration/media_storage', '0'),
+(230, 'default', 0, 'system/media_storage_configuration/media_database', 'default_setup'),
+(231, 'default', 0, 'system/media_storage_configuration/configuration_update_time', '3600'),
+(232, 'default', 0, 'advanced/modules_disable_output/ItalianLocale_Info', '0'),
+(233, 'default', 0, 'advanced/modules_disable_output/Lesti_Smtp', '0'),
+(234, 'default', 0, 'advanced/modules_disable_output/Mage_Admin', '0'),
+(235, 'default', 0, 'advanced/modules_disable_output/Mage_AdminNotification', '1'),
+(236, 'default', 0, 'advanced/modules_disable_output/Mage_Api', '0'),
+(237, 'default', 0, 'advanced/modules_disable_output/Mage_Api2', '0'),
+(238, 'default', 0, 'advanced/modules_disable_output/Mage_Authorizenet', '0'),
+(239, 'default', 0, 'advanced/modules_disable_output/Mage_Backup', '0'),
+(240, 'default', 0, 'advanced/modules_disable_output/Mage_Bundle', '0'),
+(241, 'default', 0, 'advanced/modules_disable_output/Mage_Captcha', '0'),
+(242, 'default', 0, 'advanced/modules_disable_output/Mage_Catalog', '0'),
+(243, 'default', 0, 'advanced/modules_disable_output/Mage_CatalogIndex', '0'),
+(244, 'default', 0, 'advanced/modules_disable_output/Mage_CatalogInventory', '0'),
+(245, 'default', 0, 'advanced/modules_disable_output/Mage_CatalogRule', '0'),
+(246, 'default', 0, 'advanced/modules_disable_output/Mage_CatalogSearch', '0'),
+(247, 'default', 0, 'advanced/modules_disable_output/Mage_Centinel', '0'),
+(248, 'default', 0, 'advanced/modules_disable_output/Mage_Checkout', '0'),
+(249, 'default', 0, 'advanced/modules_disable_output/Mage_Cms', '0'),
+(250, 'default', 0, 'advanced/modules_disable_output/Mage_Compiler', '0'),
+(251, 'default', 0, 'advanced/modules_disable_output/Mage_Connect', '0'),
+(252, 'default', 0, 'advanced/modules_disable_output/Mage_Contacts', '0'),
+(253, 'default', 0, 'advanced/modules_disable_output/Mage_Core', '0'),
+(254, 'default', 0, 'advanced/modules_disable_output/Mage_Cron', '0'),
+(255, 'default', 0, 'advanced/modules_disable_output/Mage_CurrencySymbol', '0'),
+(256, 'default', 0, 'advanced/modules_disable_output/Mage_Customer', '0'),
+(257, 'default', 0, 'advanced/modules_disable_output/Mage_Dataflow', '0'),
+(258, 'default', 0, 'advanced/modules_disable_output/Mage_Directory', '0'),
+(259, 'default', 0, 'advanced/modules_disable_output/Mage_Downloadable', '0'),
+(260, 'default', 0, 'advanced/modules_disable_output/Mage_Eav', '0'),
+(261, 'default', 0, 'advanced/modules_disable_output/Mage_GiftMessage', '0'),
+(262, 'default', 0, 'advanced/modules_disable_output/Mage_GoogleAnalytics', '0'),
+(263, 'default', 0, 'advanced/modules_disable_output/Mage_GoogleCheckout', '0'),
+(264, 'default', 0, 'advanced/modules_disable_output/Mage_ImportExport', '0'),
+(265, 'default', 0, 'advanced/modules_disable_output/Mage_Index', '0'),
+(266, 'default', 0, 'advanced/modules_disable_output/Mage_Install', '0'),
+(267, 'default', 0, 'advanced/modules_disable_output/Mage_Log', '0'),
+(268, 'default', 0, 'advanced/modules_disable_output/Mage_Media', '0'),
+(269, 'default', 0, 'advanced/modules_disable_output/Mage_Newsletter', '0'),
+(270, 'default', 0, 'advanced/modules_disable_output/Mage_Oauth', '0'),
+(271, 'default', 0, 'advanced/modules_disable_output/Mage_Page', '0'),
+(272, 'default', 0, 'advanced/modules_disable_output/Mage_PageCache', '0'),
+(273, 'default', 0, 'advanced/modules_disable_output/Mage_Paygate', '0'),
+(274, 'default', 0, 'advanced/modules_disable_output/Mage_Payment', '0'),
+(275, 'default', 0, 'advanced/modules_disable_output/Mage_Paypal', '0'),
+(276, 'default', 0, 'advanced/modules_disable_output/Mage_PaypalUk', '0'),
+(277, 'default', 0, 'advanced/modules_disable_output/Mage_Persistent', '0'),
+(278, 'default', 0, 'advanced/modules_disable_output/Mage_Poll', '0'),
+(279, 'default', 0, 'advanced/modules_disable_output/Mage_ProductAlert', '0'),
+(280, 'default', 0, 'advanced/modules_disable_output/Mage_Rating', '0'),
+(281, 'default', 0, 'advanced/modules_disable_output/Mage_Reports', '0'),
+(282, 'default', 0, 'advanced/modules_disable_output/Mage_Review', '0'),
+(283, 'default', 0, 'advanced/modules_disable_output/Mage_Rss', '0'),
+(284, 'default', 0, 'advanced/modules_disable_output/Mage_Rule', '0'),
+(285, 'default', 0, 'advanced/modules_disable_output/Mage_Sales', '0'),
+(286, 'default', 0, 'advanced/modules_disable_output/Mage_SalesRule', '0'),
+(287, 'default', 0, 'advanced/modules_disable_output/Mage_Sendfriend', '0'),
+(288, 'default', 0, 'advanced/modules_disable_output/Mage_Shipping', '0'),
+(289, 'default', 0, 'advanced/modules_disable_output/Mage_Sitemap', '0'),
+(290, 'default', 0, 'advanced/modules_disable_output/Mage_Tag', '0'),
+(291, 'default', 0, 'advanced/modules_disable_output/Mage_Tax', '0'),
+(292, 'default', 0, 'advanced/modules_disable_output/Mage_Usa', '0'),
+(293, 'default', 0, 'advanced/modules_disable_output/Mage_Weee', '0'),
+(294, 'default', 0, 'advanced/modules_disable_output/Mage_Widget', '0'),
+(295, 'default', 0, 'advanced/modules_disable_output/Mage_Wishlist', '0'),
+(296, 'default', 0, 'advanced/modules_disable_output/Mage_XmlConnect', '0'),
+(297, 'default', 0, 'advanced/modules_disable_output/Phoenix_Moneybookers', '0'),
+(298, 'default', 0, 'advanced/modules_disable_output/SFC_FeaturedCategories', '0'),
+(299, 'default', 0, 'advanced/modules_disable_output/ShopShark_Ajax', '0'),
+(300, 'default', 0, 'advanced/modules_disable_output/ShopShark_Blog', '0'),
+(301, 'default', 0, 'advanced/modules_disable_output/ShopShark_SharkSlideshow', '0'),
+(302, 'default', 0, 'advanced/modules_disable_output/ShopShark_ThemeConfig', '0');
 
 -- --------------------------------------------------------
 
@@ -3036,7 +3143,7 @@ CREATE TABLE IF NOT EXISTS `core_flag` (
 
 INSERT INTO `core_flag` (`flag_id`, `flag_code`, `state`, `flag_data`, `last_update`) VALUES
 (1, 'admin_notification_survey', 0, 'a:1:{s:13:"survey_viewed";b:1;}', '2013-12-11 17:49:45'),
-(2, 'catalog_product_flat', 0, 'a:1:{s:8:"is_built";b:1;}', '2013-12-12 10:54:50');
+(2, 'catalog_product_flat', 0, 'a:1:{s:8:"is_built";b:1;}', '2013-12-12 09:21:13');
 
 -- --------------------------------------------------------
 
@@ -3257,7 +3364,7 @@ CREATE TABLE IF NOT EXISTS `core_url_rewrite` (
   KEY `IDX_CORE_URL_REWRITE_STORE_ID` (`store_id`),
   KEY `FK_CORE_URL_REWRITE_CTGR_ID_CAT_CTGR_ENTT_ENTT_ID` (`category_id`),
   KEY `FK_CORE_URL_REWRITE_PRODUCT_ID_CATALOG_CATEGORY_ENTITY_ENTITY_ID` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Url Rewrites' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Url Rewrites' AUTO_INCREMENT=2 ;
 
 --
 -- Dump dei dati per la tabella `core_url_rewrite`
@@ -3643,7 +3750,14 @@ CREATE TABLE IF NOT EXISTS `customer_entity` (
   KEY `IDX_CUSTOMER_ENTITY_ENTITY_TYPE_ID` (`entity_type_id`),
   KEY `IDX_CUSTOMER_ENTITY_EMAIL_WEBSITE_ID` (`email`,`website_id`),
   KEY `IDX_CUSTOMER_ENTITY_WEBSITE_ID` (`website_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Entity' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Customer Entity' AUTO_INCREMENT=2 ;
+
+--
+-- Dump dei dati per la tabella `customer_entity`
+--
+
+INSERT INTO `customer_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `website_id`, `email`, `group_id`, `increment_id`, `store_id`, `created_at`, `updated_at`, `is_active`, `disable_auto_group_change`) VALUES
+(1, 1, 0, 1, 'caiofior@gmail.com', 1, NULL, 1, '2013-12-22 09:51:41', '2013-12-22 10:50:33', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -3742,7 +3856,17 @@ CREATE TABLE IF NOT EXISTS `customer_entity_varchar` (
   KEY `IDX_CUSTOMER_ENTITY_VARCHAR_ATTRIBUTE_ID` (`attribute_id`),
   KEY `IDX_CUSTOMER_ENTITY_VARCHAR_ENTITY_ID` (`entity_id`),
   KEY `IDX_CUSTOMER_ENTITY_VARCHAR_ENTITY_ID_ATTRIBUTE_ID_VALUE` (`entity_id`,`attribute_id`,`value`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Customer Entity Varchar' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Customer Entity Varchar' AUTO_INCREMENT=7 ;
+
+--
+-- Dump dei dati per la tabella `customer_entity_varchar`
+--
+
+INSERT INTO `customer_entity_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
+(1, 1, 5, 1, 'Claudio'),
+(2, 1, 7, 1, 'Fior'),
+(3, 1, 12, 1, '40bf68f6d3e1fda47633505d4e0e7c4c:7g'),
+(5, 1, 3, 1, 'Default Store View');
 
 -- --------------------------------------------------------
 
@@ -5520,7 +5644,7 @@ CREATE TABLE IF NOT EXISTS `eav_attribute` (
   PRIMARY KEY (`attribute_id`),
   UNIQUE KEY `UNQ_EAV_ATTRIBUTE_ENTITY_TYPE_ID_ATTRIBUTE_CODE` (`entity_type_id`,`attribute_code`),
   KEY `IDX_EAV_ATTRIBUTE_ENTITY_TYPE_ID` (`entity_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Eav Attribute' AUTO_INCREMENT=142 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Eav Attribute' AUTO_INCREMENT=144 ;
 
 --
 -- Dump dei dati per la tabella `eav_attribute`
@@ -5667,7 +5791,9 @@ INSERT INTO `eav_attribute` (`attribute_id`, `entity_type_id`, `attribute_code`,
 (138, 3, 'category_menu_description', NULL, NULL, 'text', NULL, NULL, 'textarea', 'Mega Menu Description', NULL, NULL, 0, 0, NULL, 0, NULL),
 (139, 3, 'is_featured_category', NULL, NULL, 'int', NULL, NULL, 'select', 'Is Category Featured', NULL, 'eav/entity_attribute_source_boolean', 0, 0, '0', 0, NULL),
 (140, 3, 'is_featured_subcat', NULL, NULL, 'int', NULL, NULL, 'select', 'Is Category Featured as Sub-Category', NULL, 'eav/entity_attribute_source_boolean', 0, 0, '0', 0, NULL),
-(141, 3, 'navigation_style', NULL, NULL, 'text', NULL, NULL, 'text', 'Navigation style', NULL, NULL, 0, 0, NULL, 0, NULL);
+(141, 3, 'navigation_style', NULL, NULL, 'text', NULL, NULL, 'text', 'Navigation style', NULL, NULL, 0, 0, NULL, 0, NULL),
+(142, 3, 'category_color_home', NULL, NULL, 'text', NULL, NULL, 'text', 'Category color in home page', NULL, NULL, 0, 0, NULL, 0, NULL),
+(143, 4, 'shared_on_social_networks', NULL, NULL, 'int', NULL, NULL, 'boolean', 'Shared on social network', NULL, 'eav/entity_attribute_source_boolean', 0, 1, '0', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -5841,7 +5967,7 @@ CREATE TABLE IF NOT EXISTS `eav_entity_attribute` (
   UNIQUE KEY `UNQ_EAV_ENTITY_ATTRIBUTE_ATTRIBUTE_GROUP_ID_ATTRIBUTE_ID` (`attribute_group_id`,`attribute_id`),
   KEY `IDX_EAV_ENTITY_ATTRIBUTE_ATTRIBUTE_SET_ID_SORT_ORDER` (`attribute_set_id`,`sort_order`),
   KEY `IDX_EAV_ENTITY_ATTRIBUTE_ATTRIBUTE_ID` (`attribute_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Eav Entity Attributes' AUTO_INCREMENT=140 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Eav Entity Attributes' AUTO_INCREMENT=311 ;
 
 --
 -- Dump dei dati per la tabella `eav_entity_attribute`
@@ -5918,43 +6044,10 @@ INSERT INTO `eav_entity_attribute` (`entity_attribute_id`, `entity_type_id`, `at
 (68, 3, 3, 6, 68, 5),
 (69, 3, 3, 6, 69, 6),
 (70, 3, 3, 5, 70, 51),
-(71, 4, 4, 7, 71, 1),
-(72, 4, 4, 7, 72, 2),
-(73, 4, 4, 7, 73, 3),
-(74, 4, 4, 7, 74, 4),
-(75, 4, 4, 8, 75, 1),
-(76, 4, 4, 8, 76, 3),
-(77, 4, 4, 8, 77, 4),
-(78, 4, 4, 8, 78, 5),
-(79, 4, 4, 8, 79, 6),
-(80, 4, 4, 7, 80, 5),
-(81, 4, 4, 9, 82, 1),
-(82, 4, 4, 9, 83, 2),
-(83, 4, 4, 9, 84, 3),
-(84, 4, 4, 10, 85, 1),
-(85, 4, 4, 10, 86, 2),
-(86, 4, 4, 10, 87, 3),
-(87, 4, 4, 10, 88, 4),
 (88, 4, 4, 7, 89, 6),
-(89, 4, 4, 8, 90, 2),
-(90, 4, 4, 8, 91, 7),
-(91, 4, 4, 7, 93, 7),
-(92, 4, 4, 7, 94, 8),
-(93, 4, 4, 10, 95, 5),
-(94, 4, 4, 7, 96, 9),
-(95, 4, 4, 7, 97, 10),
 (96, 4, 4, 7, 98, 11),
 (97, 4, 4, 8, 99, 8),
-(98, 4, 4, 11, 100, 1),
-(99, 4, 4, 11, 101, 2),
-(100, 4, 4, 7, 102, 12),
-(101, 4, 4, 12, 103, 1),
-(102, 4, 4, 12, 104, 2),
-(103, 4, 4, 12, 105, 3),
-(104, 4, 4, 12, 106, 4),
-(105, 4, 4, 12, 107, 5),
 (106, 4, 4, 7, 108, 13),
-(107, 4, 4, 12, 109, 6),
 (108, 4, 4, 7, 110, 14),
 (109, 4, 4, 7, 111, 15),
 (110, 4, 4, 7, 112, 16),
@@ -5962,17 +6055,9 @@ INSERT INTO `eav_entity_attribute` (`entity_attribute_id`, `entity_type_id`, `at
 (112, 4, 4, 7, 114, 18),
 (113, 4, 4, 7, 115, 19),
 (114, 4, 4, 7, 116, 20),
-(115, 4, 4, 7, 117, 21),
-(116, 4, 4, 8, 118, 9),
-(117, 4, 4, 8, 119, 10),
-(118, 4, 4, 8, 120, 11),
-(119, 4, 4, 8, 121, 12),
-(120, 4, 4, 8, 122, 13),
-(121, 4, 4, 17, 123, 1),
 (122, 4, 4, 7, 124, 22),
 (123, 4, 4, 7, 125, 23),
 (124, 4, 4, 7, 126, 24),
-(125, 4, 4, 8, 127, 14),
 (126, 4, 4, 7, 128, 25),
 (127, 4, 4, 7, 129, 26),
 (128, 4, 4, 7, 130, 27),
@@ -5986,7 +6071,51 @@ INSERT INTO `eav_entity_attribute` (`entity_attribute_id`, `entity_type_id`, `at
 (136, 3, 3, 5, 138, 70),
 (137, 3, 3, 3, 139, 1),
 (138, 3, 3, 3, 140, 2),
-(139, 3, 3, 3, 141, 3);
+(139, 3, 3, 3, 141, 3),
+(140, 3, 3, 3, 142, 3),
+(226, 4, 4, 7, 71, 1),
+(228, 4, 4, 7, 72, 2),
+(230, 4, 4, 7, 73, 3),
+(232, 4, 4, 7, 74, 4),
+(234, 4, 4, 7, 80, 5),
+(236, 4, 4, 7, 81, 12),
+(238, 4, 4, 7, 93, 6),
+(240, 4, 4, 7, 94, 7),
+(242, 4, 4, 7, 96, 8),
+(244, 4, 4, 7, 97, 9),
+(246, 4, 4, 7, 102, 10),
+(248, 4, 4, 7, 117, 11),
+(250, 4, 4, 8, 75, 1),
+(252, 4, 4, 8, 76, 3),
+(254, 4, 4, 8, 77, 4),
+(256, 4, 4, 8, 78, 5),
+(258, 4, 4, 8, 79, 6),
+(260, 4, 4, 8, 90, 2),
+(262, 4, 4, 8, 91, 7),
+(264, 4, 4, 8, 118, 8),
+(266, 4, 4, 8, 119, 9),
+(268, 4, 4, 8, 120, 10),
+(270, 4, 4, 8, 121, 11),
+(272, 4, 4, 8, 122, 12),
+(274, 4, 4, 8, 127, 13),
+(276, 4, 4, 9, 82, 1),
+(278, 4, 4, 9, 83, 2),
+(280, 4, 4, 9, 84, 3),
+(282, 4, 4, 9, 143, 4),
+(284, 4, 4, 10, 85, 1),
+(286, 4, 4, 10, 86, 2),
+(288, 4, 4, 10, 87, 3),
+(290, 4, 4, 10, 88, 4),
+(292, 4, 4, 10, 95, 5),
+(294, 4, 4, 11, 100, 1),
+(296, 4, 4, 11, 101, 2),
+(298, 4, 4, 12, 103, 1),
+(300, 4, 4, 12, 104, 2),
+(302, 4, 4, 12, 105, 3),
+(304, 4, 4, 12, 106, 4),
+(306, 4, 4, 12, 107, 5),
+(308, 4, 4, 12, 109, 6),
+(310, 4, 4, 17, 123, 1);
 
 -- --------------------------------------------------------
 
@@ -6397,7 +6526,7 @@ CREATE TABLE IF NOT EXISTS `index_event` (
   `new_data` mediumtext COMMENT 'New Data',
   PRIMARY KEY (`event_id`),
   UNIQUE KEY `UNQ_INDEX_EVENT_TYPE_ENTITY_ENTITY_PK` (`type`,`entity`,`entity_pk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Index Event' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Index Event' AUTO_INCREMENT=6 ;
 
 --
 -- Dump dei dati per la tabella `index_event`
@@ -6406,7 +6535,9 @@ CREATE TABLE IF NOT EXISTS `index_event` (
 INSERT INTO `index_event` (`event_id`, `type`, `entity`, `entity_pk`, `created_at`, `old_data`, `new_data`) VALUES
 (1, 'save', 'catalog_category', 1, '2013-12-11 17:48:18', NULL, 'a:5:{s:35:"cataloginventory_stock_match_result";b:0;s:34:"catalog_product_price_match_result";b:0;s:24:"catalog_url_match_result";b:1;s:37:"catalog_category_product_match_result";b:1;s:35:"catalogsearch_fulltext_match_result";b:1;}'),
 (2, 'save', 'catalog_category', 2, '2013-12-11 17:48:18', NULL, 'a:5:{s:35:"cataloginventory_stock_match_result";b:0;s:34:"catalog_product_price_match_result";b:0;s:24:"catalog_url_match_result";b:1;s:37:"catalog_category_product_match_result";b:1;s:35:"catalogsearch_fulltext_match_result";b:1;}'),
-(3, 'save', 'catalog_category', 3, '2013-12-12 10:01:51', NULL, 'a:5:{s:35:"cataloginventory_stock_match_result";b:0;s:34:"catalog_product_price_match_result";b:0;s:24:"catalog_url_match_result";b:1;s:37:"catalog_category_product_match_result";b:1;s:35:"catalogsearch_fulltext_match_result";b:1;}');
+(3, 'save', 'catalog_category', 3, '2013-12-12 09:20:31', NULL, 'a:6:{s:35:"cataloginventory_stock_match_result";b:0;s:34:"catalog_product_price_match_result";b:0;s:24:"catalog_url_match_result";b:1;s:33:"catalog_product_flat_match_result";b:0;s:37:"catalog_category_product_match_result";b:1;s:35:"catalogsearch_fulltext_match_result";b:1;}'),
+(4, 'save', 'catalog_eav_attribute', 81, '2013-12-17 18:43:56', NULL, 'a:6:{s:35:"cataloginventory_stock_match_result";b:0;s:34:"catalog_product_price_match_result";b:0;s:24:"catalog_url_match_result";b:0;s:33:"catalog_product_flat_match_result";b:1;s:37:"catalog_category_product_match_result";b:0;s:35:"catalogsearch_fulltext_match_result";b:0;}'),
+(5, 'save', 'catalog_eav_attribute', 143, '2013-12-22 09:37:58', NULL, 'a:6:{s:35:"cataloginventory_stock_match_result";b:0;s:34:"catalog_product_price_match_result";b:0;s:24:"catalog_url_match_result";b:0;s:33:"catalog_product_flat_match_result";b:0;s:37:"catalog_category_product_match_result";b:0;s:35:"catalogsearch_fulltext_match_result";b:1;}');
 
 -- --------------------------------------------------------
 
@@ -6430,15 +6561,15 @@ CREATE TABLE IF NOT EXISTS `index_process` (
 --
 
 INSERT INTO `index_process` (`process_id`, `indexer_code`, `status`, `started_at`, `ended_at`, `mode`) VALUES
-(1, 'catalog_product_attribute', 'pending', '2013-12-12 10:54:49', '2013-12-12 10:54:49', 'real_time'),
-(2, 'catalog_product_price', 'pending', '2013-12-12 10:54:49', '2013-12-12 10:54:49', 'real_time'),
-(3, 'catalog_url', 'pending', '2013-12-12 10:54:49', '2013-12-12 10:54:50', 'real_time'),
-(4, 'catalog_product_flat', 'pending', '2013-12-12 10:54:50', '2013-12-12 10:54:50', 'real_time'),
-(5, 'catalog_category_flat', 'pending', '2013-12-12 10:54:50', '2013-12-12 10:54:50', 'real_time'),
-(6, 'catalog_category_product', 'pending', '2013-12-12 10:54:50', '2013-12-12 10:54:50', 'real_time'),
-(7, 'catalogsearch_fulltext', 'pending', '2013-12-12 10:54:50', '2013-12-12 10:54:50', 'real_time'),
-(8, 'cataloginventory_stock', 'pending', '2013-12-12 10:54:48', '2013-12-12 10:54:49', 'real_time'),
-(9, 'tag_summary', 'pending', '2013-12-12 10:54:50', '2013-12-12 10:54:50', 'real_time');
+(1, 'catalog_product_attribute', 'pending', '2013-12-22 09:37:58', '2013-12-22 09:37:58', 'real_time'),
+(2, 'catalog_product_price', 'pending', '2013-12-12 09:21:13', '2013-12-12 09:21:13', 'real_time'),
+(3, 'catalog_url', 'pending', '2013-12-17 18:26:51', '2013-12-17 18:26:51', 'real_time'),
+(4, 'catalog_product_flat', 'require_reindex', '2013-12-17 18:43:56', '2013-12-17 18:43:56', 'real_time'),
+(5, 'catalog_category_flat', 'pending', '2013-12-12 09:21:13', '2013-12-12 09:21:14', 'real_time'),
+(6, 'catalog_category_product', 'pending', '2013-12-17 18:26:51', '2013-12-17 18:26:51', 'real_time'),
+(7, 'catalogsearch_fulltext', 'require_reindex', '2013-12-22 09:37:58', '2013-12-22 09:37:58', 'real_time'),
+(8, 'cataloginventory_stock', 'pending', '2013-12-12 09:21:12', '2013-12-12 09:21:13', 'real_time'),
+(9, 'tag_summary', 'pending', '2013-12-12 09:21:14', '2013-12-12 09:21:14', 'real_time');
 
 -- --------------------------------------------------------
 
@@ -6469,7 +6600,15 @@ CREATE TABLE IF NOT EXISTS `log_customer` (
   `store_id` smallint(5) unsigned NOT NULL COMMENT 'Store ID',
   PRIMARY KEY (`log_id`),
   KEY `IDX_LOG_CUSTOMER_VISITOR_ID` (`visitor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Log Customers Table' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Log Customers Table' AUTO_INCREMENT=3 ;
+
+--
+-- Dump dei dati per la tabella `log_customer`
+--
+
+INSERT INTO `log_customer` (`log_id`, `visitor_id`, `customer_id`, `login_at`, `logout_at`, `store_id`) VALUES
+(1, 12, 1, '2013-12-22 11:08:40', '2013-12-22 10:08:40', 1),
+(2, 13, 1, '2013-12-22 10:09:26', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -6484,6 +6623,13 @@ CREATE TABLE IF NOT EXISTS `log_quote` (
   `deleted_at` timestamp NULL DEFAULT NULL COMMENT 'Deletion Time',
   PRIMARY KEY (`quote_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Log Quotes Table';
+
+--
+-- Dump dei dati per la tabella `log_quote`
+--
+
+INSERT INTO `log_quote` (`quote_id`, `visitor_id`, `created_at`, `deleted_at`) VALUES
+(1, 12, '2013-12-22 09:51:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -6576,32 +6722,84 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (32, 1, '2013-12-11 20:12:10'),
 (33, 1, '2013-12-11 20:12:10'),
 (34, 2, '2013-12-12 08:20:01'),
-(35, 3, '2013-12-12 08:32:07'),
-(36, 3, '2013-12-12 09:18:16'),
-(37, 4, '2013-12-12 09:59:01'),
-(38, 4, '2013-12-12 09:59:56'),
-(39, 4, '2013-12-12 10:00:41'),
-(40, 4, '2013-12-12 10:02:40'),
-(41, 4, '2013-12-12 10:40:15'),
-(42, 4, '2013-12-12 10:44:25'),
-(43, 4, '2013-12-12 10:45:41'),
-(44, 4, '2013-12-12 10:46:41'),
-(45, 4, '2013-12-12 10:51:17'),
-(46, 4, '2013-12-12 10:52:35'),
-(47, 4, '2013-12-12 10:52:42'),
-(48, 4, '2013-12-12 10:54:57'),
-(49, 4, '2013-12-12 10:55:00'),
-(50, 5, '2013-12-12 14:58:17'),
-(51, 6, '2013-12-12 16:59:30'),
-(52, 6, '2013-12-12 17:10:59'),
-(53, 6, '2013-12-12 17:11:11'),
-(54, 6, '2013-12-12 17:13:25'),
-(55, 6, '2013-12-12 17:13:26'),
-(56, 6, '2013-12-12 17:13:27'),
-(57, 6, '2013-12-12 17:14:26'),
-(58, 6, '2013-12-12 17:14:27'),
-(59, 7, '2013-12-13 05:40:03'),
-(60, 7, '2013-12-13 05:41:40');
+(35, 3, '2013-12-12 09:07:22'),
+(36, 3, '2013-12-12 09:07:53'),
+(37, 3, '2013-12-12 09:11:58'),
+(38, 4, '2013-12-12 09:16:34'),
+(39, 4, '2013-12-12 09:20:35'),
+(40, 4, '2013-12-12 09:21:21'),
+(41, 4, '2013-12-12 09:22:37'),
+(42, 4, '2013-12-12 09:22:41'),
+(43, 4, '2013-12-12 09:25:21'),
+(44, 4, '2013-12-12 09:25:57'),
+(45, 4, '2013-12-12 09:26:26'),
+(46, 4, '2013-12-12 09:26:29'),
+(47, 4, '2013-12-12 09:28:39'),
+(48, 4, '2013-12-12 09:29:31'),
+(49, 4, '2013-12-12 09:30:42'),
+(50, 3, '2013-12-12 10:02:12'),
+(51, 5, '2013-12-12 10:52:17'),
+(52, 5, '2013-12-12 10:53:14'),
+(53, 5, '2013-12-12 10:57:58'),
+(54, 6, '2013-12-13 05:45:20'),
+(55, 7, '2013-12-16 14:13:15'),
+(56, 8, '2013-12-17 05:19:08'),
+(57, 9, '2013-12-17 18:25:07'),
+(58, 9, '2013-12-17 18:40:36'),
+(59, 9, '2013-12-17 18:40:38'),
+(60, 9, '2013-12-17 18:42:03'),
+(61, 10, '2013-12-21 13:33:51'),
+(62, 10, '2013-12-21 13:33:55'),
+(63, 10, '2013-12-21 13:34:05'),
+(64, 10, '2013-12-21 13:34:08'),
+(65, 11, '2013-12-22 09:17:48'),
+(66, 11, '2013-12-22 09:17:58'),
+(67, 12, '2013-12-22 09:50:21'),
+(68, 12, '2013-12-22 09:50:29'),
+(69, 12, '2013-12-22 09:51:01'),
+(70, 12, '2013-12-22 09:51:11'),
+(71, 12, '2013-12-22 09:51:42'),
+(72, 12, '2013-12-22 09:51:44'),
+(73, 12, '2013-12-22 09:58:01'),
+(74, 12, '2013-12-22 10:06:02'),
+(75, 12, '2013-12-22 10:06:10'),
+(76, 12, '2013-12-22 10:06:12'),
+(77, 12, '2013-12-22 10:06:23'),
+(78, 12, '2013-12-22 10:06:30'),
+(79, 12, '2013-12-22 10:06:32'),
+(80, 12, '2013-12-22 10:08:40'),
+(81, 13, '2013-12-22 10:08:42'),
+(82, 13, '2013-12-22 10:08:52'),
+(83, 13, '2013-12-22 10:08:55'),
+(84, 13, '2013-12-22 10:09:00'),
+(85, 13, '2013-12-22 10:09:12'),
+(86, 13, '2013-12-22 10:09:26'),
+(87, 13, '2013-12-22 10:09:28'),
+(88, 13, '2013-12-22 10:09:38'),
+(89, 13, '2013-12-22 10:09:47'),
+(90, 13, '2013-12-22 10:09:49'),
+(91, 13, '2013-12-22 10:09:57'),
+(92, 13, '2013-12-22 10:10:04'),
+(93, 13, '2013-12-22 10:10:07'),
+(94, 13, '2013-12-22 10:24:08'),
+(95, 13, '2013-12-22 10:24:19'),
+(96, 13, '2013-12-22 10:46:55'),
+(97, 13, '2013-12-22 10:46:57'),
+(98, 13, '2013-12-22 10:46:59'),
+(99, 13, '2013-12-22 10:47:25'),
+(100, 13, '2013-12-22 10:47:34'),
+(101, 13, '2013-12-22 10:47:38'),
+(102, 13, '2013-12-22 10:47:47'),
+(103, 13, '2013-12-22 10:47:55'),
+(104, 13, '2013-12-22 10:47:57'),
+(105, 13, '2013-12-22 10:50:05'),
+(106, 13, '2013-12-22 10:50:15'),
+(107, 13, '2013-12-22 10:50:18'),
+(108, 13, '2013-12-22 10:50:26'),
+(109, 13, '2013-12-22 10:50:34'),
+(110, 13, '2013-12-22 10:50:36'),
+(111, 20, '2013-12-23 12:14:34'),
+(112, 20, '2013-12-23 12:14:48');
 
 -- --------------------------------------------------------
 
@@ -6614,7 +6812,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) DEFAULT NULL COMMENT 'URL',
   `referer` varchar(255) DEFAULT NULL COMMENT 'Referrer',
   PRIMARY KEY (`url_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Log URL Info Table' AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Log URL Info Table' AUTO_INCREMENT=113 ;
 
 --
 -- Dump dei dati per la tabella `log_url_info`
@@ -6655,32 +6853,84 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (32, 'http://design.storebaby.it/index.php/', NULL),
 (33, 'http://design.storebaby.it/index.php/', NULL),
 (34, 'http://design.storebaby.it/', NULL),
-(35, 'http://develop.storebaby.it/', NULL),
-(36, 'http://develop.storebaby.it/', NULL),
-(37, 'http://develop.storebaby.it/', NULL),
-(38, 'http://develop.storebaby.it/', NULL),
-(39, 'http://develop.storebaby.it/', NULL),
-(40, 'http://develop.storebaby.it/', NULL),
-(41, 'http://develop.storebaby.it/', NULL),
-(42, 'http://develop.storebaby.it/', NULL),
-(43, 'http://develop.storebaby.it/', NULL),
-(44, 'http://develop.storebaby.it/', NULL),
-(45, 'http://develop.storebaby.it/', NULL),
-(46, 'http://develop.storebaby.it/', NULL),
-(47, 'http://develop.storebaby.it/index.php/catalog/category/view/id/3', 'http://develop.storebaby.it/'),
-(48, 'http://develop.storebaby.it/', NULL),
-(49, 'http://develop.storebaby.it/index.php/catalog/category/view/id/3', 'http://develop.storebaby.it/'),
-(50, 'http://develop.storebaby.it/', NULL),
-(51, 'http://develop.storebaby.it/', NULL),
-(52, 'http://develop.storebaby.it/index.php/catalog/category/view/id/3', 'http://develop.storebaby.it/'),
-(53, 'http://develop.storebaby.it/index.php/', 'http://develop.storebaby.it/index.php/passeggio.html'),
-(54, 'http://develop.storebaby.it/index.php/checkout/', 'http://develop.storebaby.it/index.php/'),
-(55, 'http://develop.storebaby.it/index.php/checkout/onepage/', 'http://develop.storebaby.it/index.php/'),
-(56, 'http://develop.storebaby.it/index.php/checkout/cart/', 'http://develop.storebaby.it/index.php/'),
-(57, 'http://develop.storebaby.it/index.php/', 'http://develop.storebaby.it/index.php/checkout/cart/'),
-(58, 'http://develop.storebaby.it/index.php/', 'http://develop.storebaby.it/index.php/checkout/cart/'),
-(59, 'http://develop.storebaby.it/', NULL),
-(60, 'http://develop.storebaby.it/', NULL);
+(35, 'http://design.storebaby.it/index.php', NULL),
+(36, 'http://design.storebaby.it/index.php/', 'http://design.storebaby.it/index.php'),
+(37, 'http://design.storebaby.it/index.php/catalogsearch/ajax/suggest/?q=Search%20entire%20store%20here...', 'http://design.storebaby.it/index.php/'),
+(38, 'http://design.storebaby.it/index.php/', NULL),
+(39, 'http://design.storebaby.it/index.php/', NULL),
+(40, 'http://design.storebaby.it/index.php/', NULL),
+(41, 'http://design.storebaby.it/index.php/', NULL),
+(42, 'http://design.storebaby.it/index.php/', NULL),
+(43, 'http://design.storebaby.it/index.php/', NULL),
+(44, 'http://design.storebaby.it/index.php/', NULL),
+(45, 'http://design.storebaby.it/index.php/', NULL),
+(46, 'http://design.storebaby.it/index.php/', NULL),
+(47, 'http://design.storebaby.it/index.php/', NULL),
+(48, 'http://design.storebaby.it/index.php/', NULL),
+(49, 'http://design.storebaby.it/index.php/', NULL),
+(50, 'http://design.storebaby.it/index.php/', 'http://design.storebaby.it/index.php'),
+(51, 'http://design.storebaby.it/index.php', NULL),
+(52, 'http://design.storebaby.it/index.php/catalog/category/view/id/3', 'http://design.storebaby.it/index.php'),
+(53, 'http://design.storebaby.it/index.php/', 'http://design.storebaby.it/index.php/passeggio.html'),
+(54, 'http://design.storebaby.it/', NULL),
+(55, 'http://design.storebaby.it/', NULL),
+(56, 'http://design.storebaby.it/', NULL),
+(57, 'http://design.storebaby.it/', NULL),
+(58, 'http://design.storebaby.it/', NULL),
+(59, 'http://design.storebaby.it/', 'http://design.storebaby.it/'),
+(60, 'http://design.storebaby.it/index.php/catalog/category/view/id/3', 'http://design.storebaby.it/'),
+(61, 'http://design.storebaby.it/', NULL),
+(62, 'http://design.storebaby.it/', 'http://design.storebaby.it/'),
+(63, 'http://design.storebaby.it/', NULL),
+(64, 'http://design.storebaby.it/', 'http://design.storebaby.it/'),
+(65, 'http://design.storebaby.it/', NULL),
+(66, 'http://design.storebaby.it/', 'http://design.storebaby.it/'),
+(67, 'http://develop.storebaby.it/', NULL),
+(68, 'http://develop.storebaby.it/', 'http://develop.storebaby.it/'),
+(69, 'http://develop.storebaby.it/index.php/customer/account/login/', 'http://develop.storebaby.it/'),
+(70, 'http://develop.storebaby.it/index.php/customer/account/create/', 'http://develop.storebaby.it/index.php/customer/account/login/'),
+(71, 'http://develop.storebaby.it/index.php/customer/account/createpost/', 'http://develop.storebaby.it/index.php/customer/account/create/'),
+(72, 'http://develop.storebaby.it/index.php/customer/account/index/', 'http://develop.storebaby.it/index.php/customer/account/create/'),
+(73, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/customer/account/index/'),
+(74, 'http://develop.storebaby.it/index.php/newsletter/manage/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(75, 'http://develop.storebaby.it/index.php/newsletter/manage/save/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(76, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(77, 'http://develop.storebaby.it/index.php/newsletter/manage/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(78, 'http://develop.storebaby.it/index.php/newsletter/manage/save/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(79, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(80, 'http://develop.storebaby.it/index.php/customer/account/logout/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(81, 'http://develop.storebaby.it/index.php/customer/account/logoutSuccess/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(82, 'http://develop.storebaby.it/index.php/customer/account/login/', 'http://develop.storebaby.it/index.php/customer/account/logoutSuccess/'),
+(83, 'http://develop.storebaby.it/index.php/', 'http://develop.storebaby.it/index.php/customer/account/logoutSuccess/'),
+(84, 'http://develop.storebaby.it/index.php/', 'http://develop.storebaby.it/index.php/'),
+(85, 'http://develop.storebaby.it/index.php/customer/account/login/', 'http://develop.storebaby.it/index.php/'),
+(86, 'http://develop.storebaby.it/index.php/customer/account/loginPost/', 'http://develop.storebaby.it/index.php/customer/account/login/'),
+(87, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/customer/account/login/'),
+(88, 'http://develop.storebaby.it/index.php/newsletter/manage/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(89, 'http://develop.storebaby.it/index.php/newsletter/manage/save/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(90, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(91, 'http://develop.storebaby.it/index.php/newsletter/manage/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(92, 'http://develop.storebaby.it/index.php/newsletter/manage/save/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(93, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(94, 'http://develop.storebaby.it/', NULL),
+(95, 'http://develop.storebaby.it/', 'http://develop.storebaby.it/'),
+(96, 'http://develop.storebaby.it/index.php/customer/address/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(97, 'http://develop.storebaby.it/index.php/customer/address/new/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(98, 'http://develop.storebaby.it/index.php/customer/address/new/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(99, 'http://develop.storebaby.it/index.php/newsletter/manage/', 'http://develop.storebaby.it/index.php/customer/address/new/'),
+(100, 'http://develop.storebaby.it/index.php/newsletter/manage/save/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(101, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(102, 'http://develop.storebaby.it/index.php/newsletter/manage/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(103, 'http://develop.storebaby.it/index.php/newsletter/manage/save/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(104, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(105, 'http://develop.storebaby.it/index.php/newsletter/manage/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(106, 'http://develop.storebaby.it/index.php/newsletter/manage/save/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(107, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(108, 'http://develop.storebaby.it/index.php/newsletter/manage/', 'http://develop.storebaby.it/index.php/customer/account/'),
+(109, 'http://develop.storebaby.it/index.php/newsletter/manage/save/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(110, 'http://develop.storebaby.it/index.php/customer/account/', 'http://develop.storebaby.it/index.php/newsletter/manage/'),
+(111, 'http://develop.storebaby.it/', NULL),
+(112, 'http://develop.storebaby.it/', 'http://develop.storebaby.it/');
 
 -- --------------------------------------------------------
 
@@ -6696,7 +6946,7 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'Last URL ID',
   `store_id` smallint(5) unsigned NOT NULL COMMENT 'Store ID',
   PRIMARY KEY (`visitor_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Log Visitors Table' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Log Visitors Table' AUTO_INCREMENT=21 ;
 
 --
 -- Dump dei dati per la tabella `log_visitor`
@@ -6705,11 +6955,18 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
 INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_visit_at`, `last_url_id`, `store_id`) VALUES
 (1, 'dl98b33v1l5rggc57dvhjvhbf3', '2013-12-11 17:50:13', '2013-12-11 20:12:10', 33, 1),
 (2, 'kaj8k1j5mr6kt4hde1la63css3', '2013-12-12 08:19:59', '2013-12-12 08:20:01', 34, 1),
-(3, 'u5ajkjn0g2kjrqbvpum9jhrgq7', '2013-12-12 08:32:06', '2013-12-12 09:18:16', 36, 1),
-(4, 'u863bn8fkdh5c0gdq1l7hvtfp3', '2013-12-12 09:59:00', '2013-12-12 10:55:00', 49, 1),
-(5, 'v5dhrglr5nt5u9oi867u8cojo2', '2013-12-12 14:58:15', '2013-12-12 14:58:17', 50, 1),
-(6, 'sb3kv8mndufukbmu919k26fav3', '2013-12-12 16:59:23', '2013-12-12 17:14:27', 58, 1),
-(7, '7fdg46kdapatse3ej0t88dcf96', '2013-12-13 05:40:00', '2013-12-13 05:41:40', 60, 1);
+(3, 'qk1m0i75o07ksvvj3grvu9mks7', '2013-12-12 09:07:20', '2013-12-12 10:02:12', 50, 1),
+(4, 'mdrtfgun5u2bhdjt9q35t4hru7', '2013-12-12 09:16:34', '2013-12-12 09:30:42', 49, 1),
+(5, 'orgprshiatg6cf8hg66ru00tm6', '2013-12-12 10:52:15', '2013-12-12 10:57:58', 53, 1),
+(6, 'aqaogkhuth6vvctb53en03k970', '2013-12-13 05:45:17', '2013-12-13 05:45:20', 54, 1),
+(7, 'i6iafc7ede763o50mn6oco9jr4', '2013-12-16 14:13:12', '2013-12-16 14:13:15', 55, 1),
+(8, 'bdiotd38meoi5q00dbl9ak8g21', '2013-12-17 05:19:06', '2013-12-17 05:19:08', 56, 1),
+(9, 'g0blh2d4v48p6utjrp6n98ecj1', '2013-12-17 18:25:04', '2013-12-17 18:42:03', 60, 1),
+(10, 'jvilbqm0ebedihiogsjsg3mbq2', '2013-12-21 13:33:48', '2013-12-21 13:34:08', 64, 1),
+(11, 'vl69ev7gpr4vcllulet1647ni7', '2013-12-22 09:17:45', '2013-12-22 09:17:58', 66, 1),
+(12, '4leq23co3rnpk2klp1roek33n1', '2013-12-22 09:50:20', '2013-12-22 10:08:40', 80, 1),
+(13, 'c22lv0g7lb78fc1a4chgp231o5', '2013-12-22 10:08:41', '2013-12-22 10:50:36', 110, 1),
+(20, 'danvdclntcfge2v5d6qt1cjuf7', '2013-12-23 12:14:31', '2013-12-23 12:14:48', 112, 1);
 
 -- --------------------------------------------------------
 
@@ -6735,11 +6992,18 @@ CREATE TABLE IF NOT EXISTS `log_visitor_info` (
 INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`, `http_accept_charset`, `http_accept_language`, `server_addr`, `remote_addr`) VALUES
 (1, 'http://design.storebaby.it/index.php/install/wizard/end/', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', NULL, 'en-US,en;q=0.5', 92738568, 1609366026),
 (2, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:25.0) Gecko/20100101 Firefox/25.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 1832165593),
-(3, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:25.0) Gecko/20100101 Firefox/25.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 1832165593),
-(4, NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36', NULL, 'en-US,en;q=0.8,it;q=0.6,ru;q=0.4', 92738568, 1326770081),
-(5, NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36', NULL, 'en-US,en;q=0.8,it;q=0.6,ru;q=0.4', 92738568, 1459945330),
-(6, NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36', NULL, 'en-US,en;q=0.8,it;q=0.6,ru;q=0.4', 92738568, 1459945330),
-(7, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:25.0) Gecko/20100101 Firefox/25.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 1832169713);
+(3, NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36', NULL, 'en-US,en;q=0.8,it;q=0.6,ru;q=0.4', 92738568, 1326770081),
+(4, NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', NULL, 'en-US,en;q=0.5', 92738568, 1326770081),
+(5, NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0', NULL, 'en-US,en;q=0.5', 92738568, 1326770081),
+(6, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:25.0) Gecko/20100101 Firefox/25.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 1832169713),
+(7, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:26.0) Gecko/20100101 Firefox/26.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 1832169997),
+(8, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:26.0) Gecko/20100101 Firefox/26.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 1832173198),
+(9, NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36', NULL, 'en-US,en;q=0.8,it;q=0.6,ru;q=0.4', 92738568, 1609366304),
+(10, NULL, 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36', NULL, 'en-US,en;q=0.8,it;q=0.6,ru;q=0.4', 92738568, 1325853281),
+(11, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:26.0) Gecko/20100101 Firefox/26.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 3653994588),
+(12, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:26.0) Gecko/20100101 Firefox/26.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 3653994588),
+(13, 'http://develop.storebaby.it/index.php/customer/account/', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:26.0) Gecko/20100101 Firefox/26.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 3653994588),
+(20, NULL, 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:26.0) Gecko/20100101 Firefox/26.0', NULL, 'it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3', 92738568, 628617238);
 
 -- --------------------------------------------------------
 
@@ -6798,7 +7062,14 @@ CREATE TABLE IF NOT EXISTS `newsletter_queue` (
   `queue_finish_at` timestamp NULL DEFAULT NULL COMMENT 'Queue Finish At',
   PRIMARY KEY (`queue_id`),
   KEY `IDX_NEWSLETTER_QUEUE_TEMPLATE_ID` (`template_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Queue' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Newsletter Queue' AUTO_INCREMENT=2 ;
+
+--
+-- Dump dei dati per la tabella `newsletter_queue`
+--
+
+INSERT INTO `newsletter_queue` (`queue_id`, `template_id`, `newsletter_type`, `newsletter_text`, `newsletter_styles`, `newsletter_subject`, `newsletter_sender_name`, `newsletter_sender_email`, `queue_status`, `queue_start_at`, `queue_finish_at`) VALUES
+(1, 1, NULL, '<p>Follow this link to unsubscribe</p>\r\n<!-- This tag is for unsubscribe link  -->\r\n<p><a href="{{var subscriber.getUnsubscriptionLink()}}">{{var subscriber.getUnsubscriptionLink()}}</a></p>', NULL, 'Test', 'CustomerSupport', 'info@storebaby.it', 0, '2013-12-22 10:11:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -6815,7 +7086,14 @@ CREATE TABLE IF NOT EXISTS `newsletter_queue_link` (
   KEY `IDX_NEWSLETTER_QUEUE_LINK_SUBSCRIBER_ID` (`subscriber_id`),
   KEY `IDX_NEWSLETTER_QUEUE_LINK_QUEUE_ID` (`queue_id`),
   KEY `IDX_NEWSLETTER_QUEUE_LINK_QUEUE_ID_LETTER_SENT_AT` (`queue_id`,`letter_sent_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Queue Link' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Newsletter Queue Link' AUTO_INCREMENT=2 ;
+
+--
+-- Dump dei dati per la tabella `newsletter_queue_link`
+--
+
+INSERT INTO `newsletter_queue_link` (`queue_link_id`, `queue_id`, `subscriber_id`, `letter_sent_at`) VALUES
+(1, 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -6829,6 +7107,13 @@ CREATE TABLE IF NOT EXISTS `newsletter_queue_store_link` (
   PRIMARY KEY (`queue_id`,`store_id`),
   KEY `IDX_NEWSLETTER_QUEUE_STORE_LINK_STORE_ID` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Queue Store Link';
+
+--
+-- Dump dei dati per la tabella `newsletter_queue_store_link`
+--
+
+INSERT INTO `newsletter_queue_store_link` (`queue_id`, `store_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -6847,7 +7132,14 @@ CREATE TABLE IF NOT EXISTS `newsletter_subscriber` (
   PRIMARY KEY (`subscriber_id`),
   KEY `IDX_NEWSLETTER_SUBSCRIBER_CUSTOMER_ID` (`customer_id`),
   KEY `IDX_NEWSLETTER_SUBSCRIBER_STORE_ID` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Subscriber' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Newsletter Subscriber' AUTO_INCREMENT=2 ;
+
+--
+-- Dump dei dati per la tabella `newsletter_subscriber`
+--
+
+INSERT INTO `newsletter_subscriber` (`subscriber_id`, `store_id`, `change_status_at`, `customer_id`, `subscriber_email`, `subscriber_status`, `subscriber_confirm_code`) VALUES
+(1, 1, NULL, 1, 'caiofior@gmail.com', 1, '5xbi2t1z35bzj8xvdhog7edwaqqwcebg');
 
 -- --------------------------------------------------------
 
@@ -6872,7 +7164,14 @@ CREATE TABLE IF NOT EXISTS `newsletter_template` (
   KEY `IDX_NEWSLETTER_TEMPLATE_TEMPLATE_ACTUAL` (`template_actual`),
   KEY `IDX_NEWSLETTER_TEMPLATE_ADDED_AT` (`added_at`),
   KEY `IDX_NEWSLETTER_TEMPLATE_MODIFIED_AT` (`modified_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter Template' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Newsletter Template' AUTO_INCREMENT=2 ;
+
+--
+-- Dump dei dati per la tabella `newsletter_template`
+--
+
+INSERT INTO `newsletter_template` (`template_id`, `template_code`, `template_text`, `template_text_preprocessed`, `template_styles`, `template_type`, `template_subject`, `template_sender_name`, `template_sender_email`, `template_actual`, `added_at`, `modified_at`) VALUES
+(1, 'Test', '<p>Follow this link to unsubscribe</p>\r\n<!-- This tag is for unsubscribe link  -->\r\n<p><a href="{{var subscriber.getUnsubscriptionLink()}}">{{var subscriber.getUnsubscriptionLink()}}</a></p>', NULL, NULL, 2, 'Test', 'CustomerSupport', 'info@storebaby.it', 1, '2013-12-22 10:10:54', '2013-12-22 10:10:54');
 
 -- --------------------------------------------------------
 
@@ -8618,7 +8917,14 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote` (
   PRIMARY KEY (`entity_id`),
   KEY `IDX_SALES_FLAT_QUOTE_CUSTOMER_ID_STORE_ID_IS_ACTIVE` (`customer_id`,`store_id`,`is_active`),
   KEY `IDX_SALES_FLAT_QUOTE_STORE_ID` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote' AUTO_INCREMENT=2 ;
+
+--
+-- Dump dei dati per la tabella `sales_flat_quote`
+--
+
+INSERT INTO `sales_flat_quote` (`entity_id`, `store_id`, `created_at`, `updated_at`, `converted_at`, `is_active`, `is_virtual`, `is_multi_shipping`, `items_count`, `items_qty`, `orig_order_id`, `store_to_base_rate`, `store_to_quote_rate`, `base_currency_code`, `store_currency_code`, `quote_currency_code`, `grand_total`, `base_grand_total`, `checkout_method`, `customer_id`, `customer_tax_class_id`, `customer_group_id`, `customer_email`, `customer_prefix`, `customer_firstname`, `customer_middlename`, `customer_lastname`, `customer_suffix`, `customer_dob`, `customer_note`, `customer_note_notify`, `customer_is_guest`, `remote_ip`, `applied_rule_ids`, `reserved_order_id`, `password_hash`, `coupon_code`, `global_currency_code`, `base_to_global_rate`, `base_to_quote_rate`, `customer_taxvat`, `customer_gender`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `is_changed`, `trigger_recollect`, `ext_shipping_info`, `gift_message_id`, `is_persistent`) VALUES
+(1, 1, '2013-12-22 09:51:41', '2013-12-22 09:51:41', NULL, 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', NULL, 1, 3, 1, 'caiofior@gmail.com', NULL, 'Claudio', NULL, 'Fior', NULL, NULL, NULL, 1, 0, '217.203.136.92', NULL, NULL, NULL, NULL, 'EUR', '1.0000', '1.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', 1, 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -8691,7 +8997,15 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_address` (
   `gift_message_id` int(11) DEFAULT NULL COMMENT 'Gift Message Id',
   PRIMARY KEY (`address_id`),
   KEY `IDX_SALES_FLAT_QUOTE_ADDRESS_QUOTE_ID` (`quote_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Address' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Sales Flat Quote Address' AUTO_INCREMENT=3 ;
+
+--
+-- Dump dei dati per la tabella `sales_flat_quote_address`
+--
+
+INSERT INTO `sales_flat_quote_address` (`address_id`, `quote_id`, `created_at`, `updated_at`, `customer_id`, `save_in_address_book`, `customer_address_id`, `address_type`, `email`, `prefix`, `firstname`, `middlename`, `lastname`, `suffix`, `company`, `street`, `city`, `region`, `region_id`, `postcode`, `country_id`, `telephone`, `fax`, `same_as_billing`, `free_shipping`, `collect_shipping_rates`, `shipping_method`, `shipping_description`, `weight`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `tax_amount`, `base_tax_amount`, `shipping_amount`, `base_shipping_amount`, `shipping_tax_amount`, `base_shipping_tax_amount`, `discount_amount`, `base_discount_amount`, `grand_total`, `base_grand_total`, `customer_notes`, `applied_taxes`, `discount_description`, `shipping_discount_amount`, `base_shipping_discount_amount`, `subtotal_incl_tax`, `base_subtotal_total_incl_tax`, `hidden_tax_amount`, `base_hidden_tax_amount`, `shipping_hidden_tax_amount`, `base_shipping_hidden_tax_amnt`, `shipping_incl_tax`, `base_shipping_incl_tax`, `vat_id`, `vat_is_valid`, `vat_request_id`, `vat_request_date`, `vat_request_success`, `gift_message_id`) VALUES
+(1, 1, '2013-12-22 09:51:41', '2013-12-22 09:51:41', 1, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL, NULL, NULL, '0.0000', NULL, NULL, NULL, NULL, NULL, '0.0000', '0.0000', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 1, '2013-12-22 09:51:41', '2013-12-22 09:51:41', 1, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL, NULL, NULL, '0.0000', NULL, NULL, NULL, NULL, NULL, '0.0000', '0.0000', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -10110,23 +10424,6 @@ CREATE TABLE IF NOT EXISTS `xmlconnect_queue` (
   PRIMARY KEY (`queue_id`),
   KEY `FK_2019AEC5FC55A516965583447CA26B14` (`template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Xmlconnect Notification Queue' AUTO_INCREMENT=1 ;
-
---
--- Limiti per le tabelle scaricate
---
-
---
--- Limiti per la tabella `catalog_category_flat_store_1`
---
-ALTER TABLE `catalog_category_flat_store_1`
-  ADD CONSTRAINT `FK_CAT_CTGR_FLAT_STORE_1_ENTT_ID_CAT_CTGR_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `catalog_category_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_CATALOG_CATEGORY_FLAT_STORE_1_STORE_ID_CORE_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limiti per la tabella `catalog_product_flat_1`
---
-ALTER TABLE `catalog_product_flat_1`
-  ADD CONSTRAINT `FK_CAT_PRD_FLAT_1_ENTT_ID_CAT_PRD_ENTT_ENTT_ID` FOREIGN KEY (`entity_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
