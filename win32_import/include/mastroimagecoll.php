@@ -53,10 +53,15 @@ class MastroImageColl {
         preg_match('/(.+?)(\.[^\.]+$|$)/', $fileName,$fileParts);
         if (!key_exists(1, $fileParts))
                 return false;
-        return str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim($fileParts[1]))));
+        switch (PHP_OS) {
+            case 'WINNT' :
+                return str_replace(' ','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($fileParts[1]))));
+            default:
+                return str_replace(' ','_',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT',trim($fileParts[1]))));
+        }
     }
     /**
-     * Gets the file name from athe name present in mastro csv
+     * Gets the file name from the name present in mastro csv
      * @param string $fileName
      * @return array
      */

@@ -407,8 +407,6 @@ while (($raw = fgetcsv($handle, 1000, ',')) !== false) {
     $this->write_connection->query('START TRANSACTION');
     $raw = array_combine($this->import_fields,$raw);
     $product = array();
-    /*foreach($this->column_association as $key=>$value)
-        $product[$value]=iconv('UTF-8','ISO-8859-1//TRANSLIT',$raw[$key]);*/
     foreach($this->column_association as $key=>$value)
         $product[$value]=$raw[$key];
     echo (ceil((ftell($handle)/$last)*100))." %\t".$product['sku']."\t".$product['name'];
