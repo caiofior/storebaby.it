@@ -117,7 +117,15 @@ class MastroProduct {
             $key = $this->generateKey($this->data['DESCRIZIONE']);
             
             if ($getModifiedData != '') {
-                $categories = $this->productFromCsv->getCategory($this->data['REPARTO']);
+                $mastroCategory = $this->data['REPARTO'];
+                if (
+                        in_array($mastroCategory, array('15.12','15.13','15.14','15.15','15.16','15.17','15.19')) 
+                        && preg_match('/fix/i', $this->data['DESCRIZIONE'])    
+                        )
+                     $mastroCategory = '15.c1';   
+                        
+                        
+                $categories = $this->productFromCsv->getCategory($mastroCategory);
                 $categoriesBranches = array_unique(preg_split('/[;,\/]/', $categories));
                 $rawCategoriesWords = array_unique(preg_split('/[ ;,\/]/', strtolower($categories)));
                 $categoriesWords = array();
