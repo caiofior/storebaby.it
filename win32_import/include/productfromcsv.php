@@ -63,6 +63,11 @@ class ProductFromCsv {
      * @var String
      */
     private $log;
+    /**
+     * Lock file
+     * @var string
+     */
+    private $lock;
 
     /**
      * Parses config file
@@ -82,6 +87,17 @@ class ProductFromCsv {
         $dbFile = getcwd() . DIRECTORY_SEPARATOR . 'log';
         if (!is_dir($dbFile))
             mkdir($dbFile);
+        $this->lock = $dbFile . DIRECTORY_SEPARATOR . 'lock';
+        if (
+                is_file($this->lock) &&
+                filemtime($this->lock)-time() > 3600 * 24 * 7
+            )
+                unlink ($this->lock);
+        if (is_file($this->lock))  {
+            echo 'An import processi is running, locked by '.$this->lock.PHP_EOL;
+            exit;
+        }
+        touch($this->lock);
         $dbFile .= DIRECTORY_SEPARATOR . 'mastro';
         $this->imageDb = new SQLite3($dbFile);
         echo 'Setting up database' . PHP_EOL;
@@ -172,10 +188,24 @@ corrupted NUMERIC
                 if ($rowCount / 100 == (int) ($rowCount / 100)) {
                     $microtime = microtime(true) - $this->startTime;
                     $rimaningTime = $microtime * $this->mastroCsvLastpos / $byteCount - $microtime;
-                    echo 'Progress:' . intval($byteCount / $this->mastroCsvLastpos * 100 - 1) . " %\t";
-                    echo 'Products: ' . $rowCount . "\t";
-                    echo 'Remaning time: ' . intval($rimaningTime / 60 + 1) . "m\t";
-                    echo 'ETA:' . date('G:i:s', $this->startTime + $microtime + $rimaningTime) . PHP_EOL;
+                    $progress =  'Progress:' . intval($byteCount / $this->mastroCsvLastpos * 100 - 1) . " %\t";
+                    $progress .= 'Products: ' . $rowCount . "\t";
+                    $progress .= 'Remaning time: ' . intval($rimaningTime / 60 + 1) . "m\t";
+                    $progress .= 'ETA:' . date('G:i:s', $this->startTime + $microtime + $rimaningTime) . PHP_EOL;
+                    echo $progress; 
+                    file_put_contents($this->lock, $progress);
+                    $this->setUpFtp();
+                    if (is_resource($this->ftp)) {
+                        ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+                        foreach (array('media','import') as $dir) {
+                            $fileList = ftp_nlist($this->ftp,'.');
+                            if (!in_array($dir, $fileList)) {
+                                ftp_mkdir($this->ftp,$dir);
+                            }
+                            ftp_chdir($this->ftp,$dir);
+                            ftp_put($this->ftp, 'progress.txt', $this->lock,  FTP_ASCII);
+                        }
+                    }
                 }
             }
         }
@@ -196,8 +226,18 @@ corrupted NUMERIC
             if (is_array($fileList) && in_array('import.csv', $fileList))
                 ftp_delete($this->ftp, 'import.csv');
             ftp_put($this->ftp, 'import.csv', $magentoCsvFilname, FTP_ASCII);
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            foreach (array('media','import') as $dir) {
+                $fileList = ftp_nlist($this->ftp,'.');
+                if (!in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp,$dir);
+                }
+                ftp_chdir($this->ftp,$dir);
+                ftp_delete($this->ftp, 'progress.txt');
+            }
             ftp_close($this->ftp);
         }
+        unlink ($this->lock);
     }
 
     /**
@@ -284,6 +324,7 @@ message TEXT
             $output = curl_exec($ch);
             curl_close($ch);
         }
+        unlink($this->lock);
     }
 
     /**
