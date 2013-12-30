@@ -116,7 +116,6 @@ corrupted NUMERIC
 );');
         echo 'Fixing database' . PHP_EOL;
         $this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL;');
-        register_shutdown_function(array($this, 'execOnShutdown'));
     }
 
     /**
@@ -237,7 +236,7 @@ corrupted NUMERIC
             }
             ftp_close($this->ftp);
         }
-        unlink ($this->lock);
+        $this->execOnShutdown();
     }
 
     /**
