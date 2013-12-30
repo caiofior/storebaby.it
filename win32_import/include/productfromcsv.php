@@ -319,7 +319,9 @@ message TEXT
         if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
 
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL'] . '?' . http_build_query(array('message' => urlencode($this->log))));
+            curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL']);
+            curl_setopt($ch,CURLOPT_POST, 1);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query(array('message' => urlencode($this->log))));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $output = curl_exec($ch);
             curl_close($ch);

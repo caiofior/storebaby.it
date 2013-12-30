@@ -22,7 +22,6 @@ class MagentoProduct {
         'websites'=>'Base',
         'attribute_set'=>'Default',
         'type'=>'simple',
-        'category_ids'=>null,
         'categories'=>null,
         'sku'=>null,
         're_skus'=>null,

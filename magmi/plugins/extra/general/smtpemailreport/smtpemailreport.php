@@ -66,8 +66,8 @@ public function getPluginInfo()
 
             $mail->Subject = 'Importazione prodotti del '.strftime('%Y-%m-%d %H:%M:%S') ;
             $content = '';
-            if (key_exists('message', $_GET))
-                    $content .=$_GET['message'].PHP_EOL;
+            if (key_exists('message', $_POST))
+                    $content .=$_POST['message'].PHP_EOL;
             $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     'state'.DIRECTORY_SEPARATOR.'progress.txt';
