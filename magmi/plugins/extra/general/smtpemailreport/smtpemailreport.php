@@ -52,20 +52,24 @@ public function getPluginInfo()
             $mail->addAddress($config['trans_email/ident_general/email']);
 
             $mail->WordWrap = 50;
+            $content = '';
             $dir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     'var'.DIRECTORY_SEPARATOR.'import'.DIRECTORY_SEPARATOR;
+            chmod($dir,'0777');
             if(is_file($dir.'import.csv')) {
                 if(is_file($dir.'import.csv.gz'))
                     unlink($dir.'import.csv.gz');
-                exec('gzip -k '.$dir.'import.csv');
+                $status = exec('gzip -k '.$dir.'import.csv');
                 if(is_file($dir.'import.csv.gz'))
-                $mail->addAttachment($dir.'import.csv.gz');
+                    $mail->addAttachment($dir.'import.csv.gz');
+                else
+                    $content .= 'Unable to create gzip file '.$status;
             }
-            $mail->isHTML(false);                                  // Set email format to HTML
+            $mail->isHTML(false);
 
             $mail->Subject = 'Importazione prodotti del '.strftime('%Y-%m-%d %H:%M:%S') ;
-            $content = '';
+            
             if (key_exists('message', $_POST))
                     $content .=$_POST['message'].PHP_EOL;
             $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
