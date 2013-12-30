@@ -103,6 +103,7 @@ class MastroProduct {
     public function createMagentoProduct() {
         $magentoProduct = $this->magentoProduct;
         $magentoProduct->emptyData();
+        
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
         if (sizeof($fileName) == 1 && $fileName[0] != '') {
             $fileName = str_replace('\\', '', $fileName[0]);
@@ -111,7 +112,6 @@ class MastroProduct {
             $magentoProduct->setData('small_image',$small_image);
             $magentoProduct->setData('thumbnail',$small_image);
         }
-        
         if ( $magentoProduct->getData('image') != '') {
             $getModifiedData = $this->mastroImageColl->getModifiedData($this->data);
             $key = $this->generateKey($this->data['DESCRIZIONE']);
@@ -170,8 +170,10 @@ class MastroProduct {
                             $this->related[$key] .= ',';
                     $this->related[$key] .= $this->data['EAN13'];
                 }
+                return $magentoProduct;
             }
-            return $magentoProduct;
+            else return false;
+            
         } else
             return false;
     }

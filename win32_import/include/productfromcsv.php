@@ -102,8 +102,8 @@ class ProductFromCsv {
         $this->imageDb = new SQLite3($dbFile);
         echo 'Setting up database' . PHP_EOL;
         $this->imageDb->exec('CREATE TABLE IF NOT EXISTS product (
-code TEXT PRIMARY KEY,
-ean13 TEXT UNIQUE ON CONFLICT REPLACE,
+ean13 TEXT PRIMARY KEY ON CONFLICT REPLACE,
+code TEXT,
 descrizione TEXT,
 vendita NUMERIC,
 image TEXT,
@@ -179,7 +179,7 @@ corrupted NUMERIC
 
                 if ($magentoProduct instanceof MagentoProduct) {
                     if (ftell($this->magentoCsvHandle) == 0)
-                        fwrite($this->magentoCsvHandle, $magentoProduct->getCsvHeaders() . PHP_EOL);
+                        fwrite($this->magentoCsvHandle,  "\xEF\xBB\xBF".$magentoProduct->getCsvHeaders() . PHP_EOL);
                     fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow() . PHP_EOL);
                 }
                 $rowCount++;

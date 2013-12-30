@@ -85,7 +85,6 @@ class MastroImageColl {
             DATETIME(\'now\')
             ); ');
         $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('UPDATE product SET 
-            ean13=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\',
             descrizione=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['DESCRIZIONE']).'\',
             vendita=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['VENDITA']).'\',
             image=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($fileName).'\',
@@ -93,15 +92,15 @@ class MastroImageColl {
             md5=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString(md5(serialize($data))).'\',
             expire_date=NULL,
             modify_date=DATETIME(\'now\')
-            WHERE code = \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\'
+            WHERE ean13=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\'
             ; ');
         if(key_exists('corrupted',$data) && $data['corrupted']==1)
             $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('UPDATE product SET 
             corrupted=\'1\'
-            WHERE code = \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\'
+            WHERE ean13=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\'
             ; ');
       
-        $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('UPDATE product SET create_date=DATETIME(\'now\') WHERE code = \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\' AND (create_date=\'\' OR create_date IS NULL)');
+        $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('UPDATE product SET create_date=DATETIME(\'now\') WHERE ean13=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\' AND (create_date=\'\' OR create_date IS NULL)');
     }
     /**
      * Checks if a file name exists and has been modified
