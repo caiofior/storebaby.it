@@ -141,7 +141,7 @@ class MastroProduct {
                 }
                 $magentoProduct->setData('categories',$categories);
                 $magentoProduct->setData('sku',$this->data['EAN13']);
-                $magentoProduct->setData('xre_skus',$this->getReSkus($key));
+                $magentoProduct->setData('cs_skus',$this->getReSkus($key));
                 $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
                 $magentoProduct->setData('brand', ucfirst(strtolower(stripslashes($this->data['MARCA']))));
                 $magentoProduct->setData('meta_title', 'Articoli infanzia - '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
@@ -156,10 +156,15 @@ class MastroProduct {
                 $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
                 if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0)
                     return false;
-                $magentoProduct->setData('news_from_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
-                $magentoProduct->setData('news_to_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData+3600 * 24 * 7 * 7 ));
+                if ($this->mastroImageColl->getModifiedDescription($this->data,$fileName)) {
+                    $magentoProduct->setData('shared_on_social_networks',  '0');
+                    $magentoProduct->setData('news_from_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
+                    $magentoProduct->setData('news_to_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData+3600 * 24 * 7 * 7 ));
+                }
                 $magentoProduct->setData('modify_data',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
                 $magentoProduct->setData('create_data',  strftime('%Y-%m-%d %H:%M:%S',$this->mastroImageColl->getCreationData($this->data)));
+                
+                
                 foreach (self::$headers as $mastro) {
                     $magentoProduct->setData('MASTRO_'.$mastro, $this->data[$mastro]);
                 }

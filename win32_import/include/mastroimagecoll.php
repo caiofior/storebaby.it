@@ -254,6 +254,30 @@ class MastroImageColl {
 
     }
     /**
+     * Returns if record has been modified
+     * @param string $data
+     * @return bool
+     */
+    public function getModifiedDescription($data,$fileName) {
+        $descriptiveData = array();
+        $descriptiveData['DESCRIZIONE']=$data['DESCRIZIONE'];
+        $descriptiveData['TESTO']=$data['TESTO'];
+        $descriptiveData['FILENAME']=$fileName;
+        $fileSize = '';
+        $mastroFile = $this->mastroProduct->getProductFromCsv()->getConfig('BMP_DIR') . DIRECTORY_SEPARATOR . $fileName;
+        if (is_file($mastroFile))
+            $fileSize = filesize ($mastroFile);
+        $descriptiveData['FILESIZE']=$fileSize;
+        $descriptiveDataHash = md5(serialize($descriptiveData));
+        $modified = $this->mastroProduct->getProductFromCsv()->getImageDb()->querySingle('SELECT description_md5 FROM product WHERE ean13 =\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\'') != $descriptiveDataHash;
+        if ($modified == true)
+            $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('UPDATE product SET 
+                description_md5=\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($descriptiveDataHash).'\'
+                WHERE ean13 = \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\'; ');
+        return $modified;
+        
+    }
+    /**
      * Get create date time
      * @param array $data
      * @return int

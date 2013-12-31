@@ -72,6 +72,9 @@ public function getPluginInfo()
                     WHERE `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1
                     ORDER BY `catalog_product_entity`.`updated_at` DESC 
                 LIMIT 10');
+            foreach ($products as $product) {
+                
+            }
             var_dump($products);
             die('HI');
 	}
