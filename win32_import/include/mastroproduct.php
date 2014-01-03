@@ -104,58 +104,63 @@ class MastroProduct {
         $magentoProduct = $this->magentoProduct;
         $magentoProduct->emptyData();
         
+        $key = $this->generateKey($this->data['DESCRIZIONE']);
+        $mastroCategory = $this->data['REPARTO'];
+        if (
+                in_array($mastroCategory, array('15.12','15.13','15.14','15.15','15.16','15.17','15.19')) 
+                && preg_match('/fix/i', $this->data['DESCRIZIONE'])    
+                )
+             $mastroCategory = '15.c1';   
+
+
+        $categories = $this->productFromCsv->getCategory($mastroCategory);
+        if ($categories == false)
+            return false;
+        $categoriesBranches = array_unique(preg_split('/[;,\/]/', $categories));
+        $rawCategoriesWords = array_unique(preg_split('/[ ;,\/]/', strtolower($categories)));
+        $categoriesWords = array();
+        foreach($rawCategoriesWords as $rawCategoriesWord) {
+            if (strlen($rawCategoriesWord)>3)
+                $categoriesWords[] = $rawCategoriesWord;
+        }
+        $rawNameWords = array_unique(preg_split('/[ ;,\/]/', strtolower($this->data['DESCRIZIONE'])));
+        $nameWords = array();
+        foreach($rawNameWords as $rawNameWord) {
+            if (strlen($rawNameWord)>3)
+                $nameWords[] = $rawNameWord;
+        }
+        $magentoProduct->setData('categories',$categories);
+        $magentoProduct->setData('sku',$this->data['EAN13']);
+        $magentoProduct->setData('cs_skus',$this->getReSkus($key));
+        $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
+        $magentoProduct->setData('brand', ucfirst(strtolower(stripslashes($this->data['MARCA']))));
+        $magentoProduct->setData('meta_title', 'Articoli infanzia - '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
+        $magentoProduct->setData('meta_description', 'Articoli infanzia > '.implode(' > ',$categoriesBranches).' > '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
+        $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))));
+        $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))).'.html');
+        $magentoProduct->setData('weight', '0.1');
+        $magentoProduct->setData('price',$this->data['VENDITA']+1*($this->data['IVA']/100));
+        $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
+        $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));
+        $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
+        $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
+        if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0)
+            return false;
+        
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
         if (sizeof($fileName) == 1 && $fileName[0] != '') {
             $fileName = str_replace('\\', '', $fileName[0]);
-            $magentoProduct->setData('image',$this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND'));
-            $small_image = $this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND_THUMBNAIL');
-            $magentoProduct->setData('small_image',$small_image);
-            $magentoProduct->setData('thumbnail',$small_image);
+            $image = $this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND');
+            $magentoProduct->setData('image',$image);
+            //$image = $this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND_THUMBNAIL');
+            $magentoProduct->setData('small_image',$image);
+            $magentoProduct->setData('thumbnail',$image);
         }
         if ( $magentoProduct->getData('image') != '') {
             $getModifiedData = $this->mastroImageColl->getModifiedData($this->data);
-            $key = $this->generateKey($this->data['DESCRIZIONE']);
+            
             
             if ($getModifiedData != '') {
-                $mastroCategory = $this->data['REPARTO'];
-                if (
-                        in_array($mastroCategory, array('15.12','15.13','15.14','15.15','15.16','15.17','15.19')) 
-                        && preg_match('/fix/i', $this->data['DESCRIZIONE'])    
-                        )
-                     $mastroCategory = '15.c1';   
-                        
-                        
-                $categories = $this->productFromCsv->getCategory($mastroCategory);
-                $categoriesBranches = array_unique(preg_split('/[;,\/]/', $categories));
-                $rawCategoriesWords = array_unique(preg_split('/[ ;,\/]/', strtolower($categories)));
-                $categoriesWords = array();
-                foreach($rawCategoriesWords as $rawCategoriesWord) {
-                    if (strlen($rawCategoriesWord)>3)
-                        $categoriesWords[] = $rawCategoriesWord;
-                }
-                $rawNameWords = array_unique(preg_split('/[ ;,\/]/', strtolower($this->data['DESCRIZIONE'])));
-                $nameWords = array();
-                foreach($rawNameWords as $rawNameWord) {
-                    if (strlen($rawNameWord)>3)
-                        $nameWords[] = $rawNameWord;
-                }
-                $magentoProduct->setData('categories',$categories);
-                $magentoProduct->setData('sku',$this->data['EAN13']);
-                $magentoProduct->setData('cs_skus',$this->getReSkus($key));
-                $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
-                $magentoProduct->setData('brand', ucfirst(strtolower(stripslashes($this->data['MARCA']))));
-                $magentoProduct->setData('meta_title', 'Articoli infanzia - '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
-                $magentoProduct->setData('meta_description', 'Articoli infanzia > '.implode(' > ',$categoriesBranches).' > '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
-                $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))));
-                $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))).'.html');
-                $magentoProduct->setData('weight', '0.1');
-                $magentoProduct->setData('price',$this->data['VENDITA']+1*($this->data['IVA']/100));
-                $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
-                $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));
-                $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
-                $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
-                if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0)
-                    return false;
                 if ($this->mastroImageColl->getModifiedDescription($this->data,$fileName)) {
                     $magentoProduct->setData('shared_on_social_networks',  '0');
                     $magentoProduct->setData('news_from_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));

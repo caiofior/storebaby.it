@@ -124,38 +124,11 @@ corrupted NUMERIC
      * @throws Exception
      */
     public function import() {
-
-
-        if (key_exists('MASTRO_COMMAND', $this->config)) {
-            echo 'Export command ' . $this->config['MASTRO_COMMAND'] . PHP_EOL;
-            echo implode(exec($this->config['MASTRO_COMMAND'])) . PHP_EOL;
-        }
-        $this->mastroCsvHandle = fopen($this->config['MASTRO_CSV_FILE'], 'r');
-        $this->setUpFtp();
-        if (is_resource($this->ftp))
-            echo 'FTP connection with  ' . $this->config['FTP_SERVER'] . PHP_EOL;
-        if (key_exists('CONVERT_COMMAND', $this->config))
-            echo 'Image conversion command   ' . $this->config['CONVERT_COMMAND'] . PHP_EOL;
-        $magentoCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv';
-        if (!is_dir($magentoCsvFilname))
-            mkdir($magentoCsvFilname);
-        $magentoCsvFilname .= DIRECTORY_SEPARATOR . 'import.csv';
-        if (is_file($magentoCsvFilname))
-            unlink($magentoCsvFilname);
-        $this->magentoCsvHandle = fopen($magentoCsvFilname, 'w');
-
-        $this->categories = json_decode(str_replace("'", '"', $this->config['CATEGORIES']), true);
-        if (!is_array($this->categories))
-            throw new Exception('Associative categories in config.ini are wrong', 1312061657);
-        if (!is_resource($this->mastroCsvHandle))
-            throw new Exception('Unable to open mastro CSV file ' . $this->config['MASTRO_CSV_FILE'], 1312030807);
-        $this->mastroCsvLastpos = filesize($this->config['MASTRO_CSV_FILE']);
+        $this->setuUpCvs();
         $row = '';
         $mastroProduct = new MastroProduct($this);
         $rowCount = 0;
         $byteCount = 0;
-        echo 'Create CSV file ' . PHP_EOL;
-        fseek($this->mastroCsvHandle, 0);
         while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false) {
 
             $byteCount += (strlen($buffer) + 2);
@@ -209,34 +182,7 @@ corrupted NUMERIC
                 }
             }
         }
-        fclose($this->mastroCsvHandle);
-        fclose($this->magentoCsvHandle);
-        $this->setUpFtp();
-        if (is_resource($this->ftp)) {
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            $imagesSubDirs = array('var', 'import');
-            foreach ($imagesSubDirs as $dir) {
-                $fileList = ftp_nlist($this->ftp, '.');
-                if (!is_array($fileList) || !in_array($dir, $fileList)) {
-                    ftp_mkdir($this->ftp, $dir);
-                }
-                ftp_chdir($this->ftp, $dir);
-            }
-            $fileList = ftp_nlist($this->ftp, '.');
-            if (is_array($fileList) && in_array('import.csv', $fileList))
-                ftp_delete($this->ftp, 'import.csv');
-            ftp_put($this->ftp, 'import.csv', $magentoCsvFilname, FTP_ASCII);
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            foreach (array('media','import') as $dir) {
-                $fileList = ftp_nlist($this->ftp,'.');
-                if (!in_array($dir, $fileList)) {
-                    ftp_mkdir($this->ftp,$dir);
-                }
-                ftp_chdir($this->ftp,$dir);
-                ftp_delete($this->ftp, 'progress.txt');
-            }
-            ftp_close($this->ftp);
-        }
+        $this->uploadCsv();
         $this->execOnShutdown();
     }
 
@@ -263,7 +209,7 @@ corrupted NUMERIC
         if (key_exists($mastroCode, $this->categories))
             return $this->categories[$mastroCode];
         else
-            return '';
+            return false;
     }
 
     /**
@@ -359,5 +305,69 @@ message TEXT
             }
         }
     }
+    /**
+     * Uploads CSV Data
+     */
+    private function uploadCsv (){
+        fclose($this->mastroCsvHandle);
+        fclose($this->magentoCsvHandle);
+        $this->setUpFtp();
+        if (is_resource($this->ftp)) {
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $imagesSubDirs = array('var', 'import');
+            foreach ($imagesSubDirs as $dir) {
+                $fileList = ftp_nlist($this->ftp, '.');
+                if (!is_array($fileList) || !in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp, $dir);
+                }
+                ftp_chdir($this->ftp, $dir);
+            }
+            $fileList = ftp_nlist($this->ftp, '.');
+            if (is_array($fileList) && in_array('import.csv', $fileList))
+                ftp_delete($this->ftp, 'import.csv');
+            ftp_put($this->ftp, 'import.csv', $magentoCsvFilname, FTP_ASCII);
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            foreach (array('media','import') as $dir) {
+                $fileList = ftp_nlist($this->ftp,'.');
+                if (!in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp,$dir);
+                }
+                ftp_chdir($this->ftp,$dir);
+                ftp_delete($this->ftp, 'progress.txt');
+            }
+            ftp_close($this->ftp);
+        }
+    }
+    /**
+     * Sets up the output csv
+     * @throws Exception
+     */
+    private function setuUpCvs () {
+        if (key_exists('MASTRO_COMMAND', $this->config)) {
+            echo 'Export command ' . $this->config['MASTRO_COMMAND'] . PHP_EOL;
+            echo implode(exec($this->config['MASTRO_COMMAND'])) . PHP_EOL;
+        }
+        $this->mastroCsvHandle = fopen($this->config['MASTRO_CSV_FILE'], 'r');
+        $this->setUpFtp();
+        if (is_resource($this->ftp))
+            echo 'FTP connection with  ' . $this->config['FTP_SERVER'] . PHP_EOL;
+        if (key_exists('CONVERT_COMMAND', $this->config))
+            echo 'Image conversion command   ' . $this->config['CONVERT_COMMAND'] . PHP_EOL;
+        $magentoCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv';
+        if (!is_dir($magentoCsvFilname))
+            mkdir($magentoCsvFilname);
+        $magentoCsvFilname .= DIRECTORY_SEPARATOR . 'import.csv';
+        if (is_file($magentoCsvFilname))
+            unlink($magentoCsvFilname);
+        $this->magentoCsvHandle = fopen($magentoCsvFilname, 'w');
 
+        $this->categories = json_decode(str_replace("'", '"', $this->config['CATEGORIES']), true);
+        if (!is_array($this->categories))
+            throw new Exception('Associative categories in config.ini are wrong', 1312061657);
+        if (!is_resource($this->mastroCsvHandle))
+            throw new Exception('Unable to open mastro CSV file ' . $this->config['MASTRO_CSV_FILE'], 1312030807);
+        $this->mastroCsvLastpos = filesize($this->config['MASTRO_CSV_FILE']);
+        echo 'Create CSV file ' . PHP_EOL;
+        fseek($this->mastroCsvHandle, 0);
+    }
 }
