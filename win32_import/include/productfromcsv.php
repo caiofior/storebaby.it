@@ -172,7 +172,7 @@ corrupted NUMERIC
                         ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
                         foreach (array('media','import') as $dir) {
                             $fileList = ftp_nlist($this->ftp,'.');
-                            if (!in_array($dir, $fileList)) {
+                            if (is_array($fileList) && !in_array($dir, $fileList)) {
                                 ftp_mkdir($this->ftp,$dir);
                             }
                             ftp_chdir($this->ftp,$dir);

@@ -133,7 +133,7 @@ class MastroProduct {
         $magentoProduct->setData('sku',$this->data['EAN13']);
         $magentoProduct->setData('cs_skus',$this->getReSkus($key));
         $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
-        $magentoProduct->setData('brand', ucfirst(strtolower(stripslashes($this->data['MARCA']))));
+        $magentoProduct->setData('manufacturer', ucfirst(strtolower(stripslashes($this->data['MARCA']))));
         $magentoProduct->setData('meta_title', 'Articoli infanzia - '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
         $magentoProduct->setData('meta_description', 'Articoli infanzia > '.implode(' > ',$categoriesBranches).' > '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
         $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))));

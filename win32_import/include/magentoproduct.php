@@ -63,7 +63,7 @@ class MagentoProduct {
         'custom_layout_update'=>null,
         'special_from_date'=>null,
         'special_to_date'=>null,
-        'shared_on_social_networks'=>null,
+        'shared_on_social_networks'=>'__MAGMI_IGNORE__ j',
         'news_from_date'=>null,
         'news_to_date'=>null,
         'custom_design_from'=>null,

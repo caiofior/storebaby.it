@@ -131,9 +131,9 @@ class MastroImageColl {
                 if (!is_dir($magentoFileName))
                     mkdir($magentoFileName);
                 $magentoFileName .= DIRECTORY_SEPARATOR;
-                $imagesSubDirs = array('media','import');
                 $magentoPath = '';
                 $magentoUrl = '+';
+                $imagesSubDirs = array('media','import');
                 if (strlen($fileName['parsedFilename']) > 2) {
                     $imagesSubDir = substr($fileName['parsedFilename'], 0, 1);
                     $imagesSubDirs[]=$imagesSubDir;
