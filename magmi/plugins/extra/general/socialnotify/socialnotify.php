@@ -17,18 +17,28 @@ public function getPluginInfo()
 		$pp=array();
 		foreach($params as $k=>$v)
 		{
-			if(preg_match("/^EMAILREP:.*$/",$k))
+			if(preg_match("/^SOCIAL:.*$/",$k))
 			{
 				$pp[$k]=$v;
 			}
 		}
 		return $pp;
 	}
-	public function beforeImport()
+	public function afterImport()
 	{
             if (!function_exists('PHPMailerAutoload'))
                require __DIR__.DIRECTORY_SEPARATOR.'phpmailer'.DIRECTORY_SEPARATOR.'PHPMailerAutoload.php';
-
+            $config = array();
+            foreach($this->selectAll(
+                    'SELECT `path`,`value` FROM `core_config_data`
+                     WHERE `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%" OR `path` = "web/unsecure/base_url"') as $value) {
+                $config [$value['path']]=$value['value'];
+            }
+            $imageDir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
+                    '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
+                    'media'.DIRECTORY_SEPARATOR.'catalog'.DIRECTORY_SEPARATOR.'product'.DIRECTORY_SEPARATOR;
+            
+            $imageDir = realpath($imageDir);
             $products = $this->selectAll(
                 '   SELECT `catalog_product_entity`.`entity_id` ,
                     `catalog_product_entity`.`sku` ,
@@ -71,12 +81,44 @@ public function getPluginInfo()
                     `catalog_product_entity_int`.`attribute_id`= (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code`="shared_on_social_networks")
                     WHERE `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1
                     ORDER BY `catalog_product_entity`.`updated_at` DESC 
-                LIMIT 10');
+                LIMIT '.$this->getParam("SOCIAL:topost",""));
             foreach ($products as $product) {
-                
+                if (!is_file($imageDir.$product['image']))
+                        continue;
+                $mail = new PHPMailer;
+                if ($config['system/lesti_smtp/enable'] == 1) {
+
+                    $mail->isSMTP();
+                    $mail->Host = $config['system/lesti_smtp/host'];
+                    if ($config['system/lesti_smtp/username'] != '' && $config['system/lesti_smtp/password'] != '')
+                        $mail->SMTPAuth = true; 
+                    $mail->Username = $config['system/lesti_smtp/username'];
+                    $mail->Password = $config['system/lesti_smtp/password'];
+                    if ($config['system/lesti_smtp/ssl'] != '')
+                        $mail->SMTPSecure = $config['system/lesti_smtp/ssl'];
+                }
+
+                $mail->From = $config['trans_email/ident_general/email'];
+                $mail->FromName = $config['trans_email/ident_general/name'];
+                $mail->addAddress($this->getParam("SOCIAL:facebook",""));
+
+                $mail->WordWrap = 50;
+                $mail->CharSet = 'UTF-8';
+                $mail->isHTML(false);
+                $mail->Subject = $product['name']. ' '.$config['web/unsecure/base_url'].$product['url_path'];
+                $mail->Body = ' ';
+                $mail->addAttachment($imageDir.$product['image']);
+                if($mail->send()) {
+                    echo 'Message sent.';
+                    $this->exec_stmt('REPLACE INTO `catalog_product_entity_int` SET `value`=1 ,
+                        `catalog_product_entity_int`.`attribute_id`= (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code`="shared_on_social_networks"),
+                        `catalog_product_entity_int`.`entity_id` = '.$product['entity_id'].'
+                         ');
+                } else {
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                }
             }
-            var_dump($products);
-            die('HI');
 	}
 
 }
