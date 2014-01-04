@@ -15,7 +15,11 @@ class ProductFromCsv {
      * @var resource
      */
     private $mastroCsvHandle;
-
+    /**
+     * Magento CSV File
+     * @var stfing
+     */
+    private $magentoCsvFile;
     /**
      * Magento CSV Handle
      * @var resource
@@ -325,7 +329,7 @@ message TEXT
             $fileList = ftp_nlist($this->ftp, '.');
             if (is_array($fileList) && in_array('import.csv', $fileList))
                 ftp_delete($this->ftp, 'import.csv');
-            ftp_put($this->ftp, 'import.csv', $magentoCsvFilname, FTP_ASCII);
+            ftp_put($this->ftp, 'import.csv', $this->magentoCsvFilname, FTP_ASCII);
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
             foreach (array('media','import') as $dir) {
                 $fileList = ftp_nlist($this->ftp,'.');
@@ -345,7 +349,7 @@ message TEXT
     private function setuUpCvs () {
         if (key_exists('MASTRO_COMMAND', $this->config)) {
             echo 'Export command ' . $this->config['MASTRO_COMMAND'] . PHP_EOL;
-            echo implode(exec($this->config['MASTRO_COMMAND'])) . PHP_EOL;
+            echo exec($this->config['MASTRO_COMMAND']) . PHP_EOL;
         }
         $this->mastroCsvHandle = fopen($this->config['MASTRO_CSV_FILE'], 'r');
         $this->setUpFtp();
@@ -353,13 +357,13 @@ message TEXT
             echo 'FTP connection with  ' . $this->config['FTP_SERVER'] . PHP_EOL;
         if (key_exists('CONVERT_COMMAND', $this->config))
             echo 'Image conversion command   ' . $this->config['CONVERT_COMMAND'] . PHP_EOL;
-        $magentoCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv';
-        if (!is_dir($magentoCsvFilname))
-            mkdir($magentoCsvFilname);
-        $magentoCsvFilname .= DIRECTORY_SEPARATOR . 'import.csv';
-        if (is_file($magentoCsvFilname))
-            unlink($magentoCsvFilname);
-        $this->magentoCsvHandle = fopen($magentoCsvFilname, 'w');
+        $this->magentoCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv';
+        if (!is_dir($this->magentoCsvFilname))
+            mkdir($this->magentoCsvFilname);
+        $this->magentoCsvFilname .= DIRECTORY_SEPARATOR . 'import.csv';
+        if (is_file($this->magentoCsvFilname))
+            unlink($this->magentoCsvFilname);
+        $this->magentoCsvHandle = fopen($this->magentoCsvFilname, 'w');
 
         $this->categories = json_decode(str_replace("'", '"', $this->config['CATEGORIES']), true);
         if (!is_array($this->categories))
