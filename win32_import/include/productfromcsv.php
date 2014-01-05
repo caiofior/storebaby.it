@@ -97,10 +97,6 @@ class ProductFromCsv {
                 filemtime($this->lock)-time() > 3600 * 24 * 7
             )
                 unlink ($this->lock);
-        if (is_file($this->lock))  {
-            echo 'An import processi is running, locked by '.$this->lock.PHP_EOL;
-            exit;
-        }
         touch($this->lock);
         $dbFile .= DIRECTORY_SEPARATOR . 'mastro';
         $this->imageDb = new SQLite3($dbFile);

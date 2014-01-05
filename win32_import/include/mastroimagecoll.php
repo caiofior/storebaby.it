@@ -27,6 +27,41 @@ class MastroImageColl {
         'CONVERT_COMMAND_THUMBNAIL'=>'small',
     );
     /**
+     *Convert Command
+     * @var string 
+     */
+    private $convertCommand;
+    /**
+     * Base name path
+     * @var string
+     */
+    private $fileName;
+    /**
+     * File name
+     * @var array
+     */
+    private $mastroFile;
+    /**
+     *Magento Path
+     * @var string
+     */
+    private $magentoPath;
+    /**
+     * Magento Url
+     * @var string
+     */
+    private $magentoUrl;
+    /**
+     * Images sub dirs
+     * @var array
+     */
+    private $imagesSubDirs;
+    /**
+     * Image sufix
+     * @var String
+     */
+    private $suffix;
+    /**
      * Creatreslist of parsed name files and set up db for storing previus image sizes
      * @param MastroProduct $mastroProduct
      * @throws Exception
@@ -125,116 +160,30 @@ class MastroImageColl {
      * @return string
      */
     public function resizeImage($fileName,$convertCommand) {
-                $fileName = $this->getFileName($fileName);
-                $mastroFile = $this->mastroProduct->getProductFromCsv()->getConfig('BMP_DIR') . DIRECTORY_SEPARATOR . $fileName['filename'];
-                $magentoFileName = getcwd() . DIRECTORY_SEPARATOR . 'magento_images';
-                if (!is_dir($magentoFileName))
-                    mkdir($magentoFileName);
-                $magentoFileName .= DIRECTORY_SEPARATOR;
-                $magentoPath = '';
-                $magentoUrl = '+';
-                $imagesSubDirs = array('media','import');
-                if (strlen($fileName['parsedFilename']) > 2) {
-                    $imagesSubDir = substr($fileName['parsedFilename'], 0, 1);
-                    $imagesSubDirs[]=$imagesSubDir;
-                    $magentoPath = $imagesSubDir;
-                    $magentoUrl .= '/' . $imagesSubDir;
-                    if (!is_dir($magentoFileName . $magentoPath))
-                        mkdir($magentoFileName . $magentoPath);
-                    $imagesSubDir=substr($fileName['parsedFilename'], 1, 1);
-                    $imagesSubDirs[]=$imagesSubDir;
-                    $magentoPath .= DIRECTORY_SEPARATOR . $imagesSubDir;
-                    $magentoUrl .= '/' . $imagesSubDir;
-                    if (!is_dir($magentoFileName . $magentoPath))
-                        mkdir($magentoFileName . $magentoPath);
-                    $magentoPath .= DIRECTORY_SEPARATOR;
-                    $magentoUrl .= '/';
-                }
-                $suffix = '';
-                if (key_exists($convertCommand, self::$imageDirs))
-                        $suffix = '_'.self::$imageDirs[$convertCommand];
-                $magentoPath .= $fileName['parsedFilename'] . $suffix . '.jpeg';
-                $magentoUrl .= $fileName['parsedFilename'] . $suffix . '.jpeg';
-                $return = $magentoUrl;
+                $this->fileName = $this->getFileName($fileName);
+                $this->convertCommand = $convertCommand;
+                $this->createImagePath($this->fileName['filename']);
                 if (
-                        $fileName['filename'] != '' &&
+                        $this->fileName['filename'] != '' &&
                         (
-                            $this->checkFile($fileName['filename']) ||
-                            !is_file($magentoFileName . $magentoPath)
+                            $this->checkFile($this->fileName['filename']) ||
+                            !is_file($this->magentoFileName . $this->magentoPath)
                         ) &&
-                        is_string($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand)) &&
+                        is_string($this->mastroProduct->getProductFromCsv()->getConfig($this->convertCommand)) &&
                         is_string($this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert))
                         
                 ) {
-                    $status = '';
-                    echo 'Converting image '.$fileName['filename'].PHP_EOL;
-                    switch (PHP_OS) {
-                        case 'WINNT' :
-                            $timeout = 20;
-                            $command = '"'.__DIR__.'\..\lib\imagick\convert.exe" ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
-                            $status = exec($command);
-                        break;
-                        default :
-                            $timeout = 20;
-                            $command = 'timeout -s SIGKILL '. $timeout . ' convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($convertCommand), $mastroFile, $magentoFileName . $magentoPath). ' 2>&1 ';
-                            $status = exec($command);
-                            
-                            break;
-                    }
-                    
-                    
-                    
-                    if (strlen($status) > 0 ) {
-                        $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$mastroFile.' '.$status);
-                       
-                    }
-                    if (
-                            !is_file($magentoFileName . $magentoPath) ||
-                            filesize($magentoFileName . $magentoPath) == 0
-                    ) {
-                        $return =  '';
-                        if (is_file($magentoFileName . $magentoPath))
-                            unlink($magentoFileName . $magentoPath);
-                    } else {
-                        if ($convertCommand == self::$mainImageConvert)
-                            $this->saveData($fileName['parsedFilename'],$this->mastroProduct->getData());
-                    }
+                    $this->imageConvert();
+                    $this->uploadFtp();
                 }
                 if (
-                        !is_file($magentoFileName . $magentoPath) ||
-                        $this->mastroProduct->getProductFromCsv()->getImageDb()->querySingle('SELECT strftime(\'%s\',modify_date) FROM product WHERE code =\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($fileName['parsedFilename']).'\'') == ''
+                        !is_file($this->magentoFileName . $this->magentoPath) ||
+                        $this->mastroProduct->getProductFromCsv()->getImageDb()->querySingle('SELECT strftime(\'%s\',modify_date) FROM product WHERE code =\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($this->fileName['parsedFilename']).'\'') == ''
                         
                    )
-                    $return = '';
-                $ftp = $this->mastroProduct->getProductFromCsv()->getFtp();
-                if (
-                        $return != '' &&
-                        is_resource($ftp) &&
-                        $this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert) !== false &&
-                        is_file($magentoFileName . $magentoPath)
-                        ) {
-                    ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
-                    foreach ($imagesSubDirs as $dir) {
-                        $fileList = ftp_nlist($ftp,'.');
-                        if (!in_array($dir, $fileList)) {
-                            ftp_mkdir($ftp,$dir);
-                        }
-                        ftp_chdir($ftp,$dir);
-   
-                    }
-                    $fileList = ftp_nlist($ftp,'.');
-                    if (
-                            !in_array($fileName['parsedFilename'] .$suffix . '.jpeg', $fileList) ||
-                             ftp_size ($ftp,$fileName['parsedFilename'] . $suffix . '.jpeg') != filesize($magentoFileName . $magentoPath)
-                        ) {
-                            echo 'Uploading image '.$fileName['filename'].PHP_EOL;
-                            ftp_put($ftp, $fileName['parsedFilename'] . $suffix.  '.jpeg', $magentoFileName . $magentoPath,  FTP_BINARY);
-                    }
-                    ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
-                    
-
-                }
-                return $return;
+                    $this->magentoUrl =  '';
+                
+                return $this->magentoUrl;
     }
     /**
      * Check if textual data has been modified
@@ -285,6 +234,130 @@ class MastroImageColl {
     public function getCreationData ($data) {
         $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('UPDATE product SET create_date=DATETIME(\'now\') WHERE ean13 = \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\' AND (create_date=\'\' OR create_date IS NULL)');
         return $this->mastroProduct->getProductFromCsv()->getImageDb()->querySingle('SELECT strftime(\'%s\',create_date) FROM product WHERE ean13 =\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\'');
+    }
+    /**
+     * Composes the image path
+     */
+    private function createImagePath() {
+        $this->mastroFile = $this->mastroProduct->getProductFromCsv()->getConfig('BMP_DIR') . DIRECTORY_SEPARATOR . $this->fileName['filename'];
+                $this->magentoFileName = getcwd() . DIRECTORY_SEPARATOR . 'magento_images';
+                if (!is_dir($this->magentoFileName))
+                    mkdir($this->magentoFileName);
+                $this->magentoFileName .= DIRECTORY_SEPARATOR;
+                $this->magentoPath = '';
+                $this->magentoUrl = '+';
+                $this->imagesSubDirs = array('media','import');
+                if (strlen($this->fileName['parsedFilename']) > 2) {
+                    $imagesSubDir = substr($this->fileName['parsedFilename'], 0, 1);
+                    $this->imagesSubDirs[]=$imagesSubDir;
+                    $this->magentoPath = $imagesSubDir;
+                    $this->magentoUrl .= '/' . $imagesSubDir;
+                    if (!is_dir($this->magentoFileName . $this->magentoPath))
+                        mkdir($this->magentoFileName . $this->magentoPath);
+                    $imagesSubDir=substr($this->fileName['parsedFilename'], 1, 1);
+                    $this->imagesSubDirs[]=$imagesSubDir;
+                    $this->magentoPath .= DIRECTORY_SEPARATOR . $imagesSubDir;
+                    $this->magentoUrl .= '/' . $imagesSubDir;
+                    if (!is_dir($this->magentoFileName . $this->magentoPath))
+                        mkdir($this->magentoFileName . $this->magentoPath);
+                    $this->magentoPath .= DIRECTORY_SEPARATOR;
+                    $this->magentoUrl .= '/';
+                }
+                $this->suffix = '';
+                if (key_exists($this->convertCommand, self::$imageDirs))
+                        $this->suffix = '_'.self::$imageDirs[$convertCommand];
+                $this->magentoPath .= $this->fileName['parsedFilename'] . $this->suffix . '.jpeg';
+                $this->magentoUrl .= $this->fileName['parsedFilename'] . $this->suffix . '.jpeg';
+    }
+    /**
+     * 
+     * Convertts the image
+     */
+    private function imageConvert() {
+                   $status = '';
+                    echo 'Converting image '.$this->fileName['filename'].PHP_EOL;
+                    switch (PHP_OS) {
+                        case 'WINNT' :
+                            $timeout = 20;
+                            $command = '"'.__DIR__.'\..\lib\imagick\convert.exe" ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($this->convertCommand), $this->mastroFile, $this->magentoFileName . $this->magentoPath). ' 2>&1 ';
+                            $status = exec($command);
+                        break;
+                        default :
+                            $timeout = 20;
+                            $command = 'timeout -s SIGKILL '. $timeout . ' convert ' . sprintf($this->mastroProduct->getProductFromCsv()->getConfig($this->convertCommand), $this->mastroFile, $this->magentoFileName . $this->magentoPath). ' 2>&1 ';
+                            $status = exec($command);
+                            
+                            break;
+                    }
+                    
+                    if (strlen($status) > 0 ) {
+                        $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$this->mastroFile.' '.$status);
+                       
+                    }
+                    if (
+                            !is_file($this->magentoFileName . $this->magentoPath) ||
+                            filesize($this->magentoFileName . $this->magentoPath) == 0
+                    ) {
+                        $this->magentoUrl='';
+                        if (is_file($this->magentoFileName . $this->magentoPath))
+                            unlink($this->magentoFileName . $this->magentoPath);
+                    } else {
+                        if ($this->convertCommand == self::$mainImageConvert)
+                            $this->saveData($this->fileName['parsedFilename'],$this->mastroProduct->getData());
+                    }
+    }
+    /**
+     * Uploads the image
+     */
+    private function uploadFtp() {
+                $ftp = $this->mastroProduct->getProductFromCsv()->getFtp();
+                $size = 0;
+                $count = 0;
+                $fileSize = filesize($this->magentoFileName . $this->magentoPath);
+                do {
+                if (
+                        $this->magentoUrl != '' &&
+                        is_resource($ftp) &&
+                        $this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert) !== false &&
+                        is_file($this->magentoFileName . $this->magentoPath)
+                        ) {
+                    ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
+                    foreach ($this->imagesSubDirs as $dir) {
+                        $fileList = ftp_nlist($ftp,'.');
+                        if (!in_array($dir, $fileList)) {
+                            ftp_mkdir($ftp,$dir);
+                        }
+                        ftp_chdir($ftp,$dir);
+   
+                    }
+                    $fileList = ftp_nlist($ftp,'.');
+                    if (
+                            !in_array($this->fileName['parsedFilename'] .$this->suffix . '.jpeg', $fileList) ||
+                             ftp_size ($ftp,$this->fileName['parsedFilename'] . $this->suffix . '.jpeg') != $fileSize
+                        ) {
+                            echo 'Uploading image '.$this->fileName['filename'].PHP_EOL;
+                            ftp_put($ftp, $this->fileName['parsedFilename'] . $this->suffix.  '.jpeg', $this->magentoFileName . $this->magentoPath,  FTP_BINARY);
+                    }
+                    ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
+                    foreach ($this->imagesSubDirs as $dir) {
+                        $fileList = ftp_nlist($ftp,'.');
+                        if (!in_array($dir, $fileList)) {
+                            ftp_mkdir($ftp,$dir);
+                        }
+                        ftp_chdir($ftp,$dir);
+   
+                    }
+                    $fileList = ftp_nlist($ftp,'.');
+                    if (
+                           in_array($this->fileName['parsedFilename'] .$this->suffix . '.jpeg', $fileList)
+                             
+                        ) {
+                            $size = ftp_size ($ftp,$this->fileName['parsedFilename'] . $this->suffix . '.jpeg') != filesize($this->magentoFileName . $this->magentoPath);
+                    }
+                    ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
+                }
+                $count++;
+                } while ($size != $fileSize || $count > 10);
     }
 }
 
