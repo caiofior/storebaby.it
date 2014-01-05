@@ -310,11 +310,11 @@ class MastroImageColl {
      * Uploads the image
      */
     private function uploadFtp() {
-                $ftp = $this->mastroProduct->getProductFromCsv()->getFtp();
                 $size = 0;
                 $count = 0;
                 $fileSize = filesize($this->magentoFileName . $this->magentoPath);
                 do {
+                    $ftp = $this->mastroProduct->getProductFromCsv()->getFtp();
                 if (
                         $this->magentoUrl != '' &&
                         is_resource($ftp) &&
@@ -357,7 +357,7 @@ class MastroImageColl {
                     ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
                 }
                 $count++;
-                } while ($size != $fileSize || $count > 10);
+                } while ($size == $fileSize || $count > 10);
     }
 }
 
