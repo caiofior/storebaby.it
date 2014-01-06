@@ -269,7 +269,7 @@ message TEXT
             curl_setopt($ch,CURLOPT_POST, 1);
             curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query(array('message' => $this->log)));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            echo strip_tags(curl_exec($ch)). PHP_EOL;
+            echo strip_tags(str_replace('</p>', PHP_EOL,curl_exec($ch))). PHP_EOL;
             curl_close($ch);
         }
         unlink($this->lock);
