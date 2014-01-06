@@ -263,13 +263,13 @@ message TEXT
         $imageDb->exec('DELETE FROM log WHERE datetime < DATETIME("now","-1 month");');
         $imageDb->close();
         if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
-
+            echo 'Call to magento update url ' . PHP_EOL;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL']);
             curl_setopt($ch,CURLOPT_POST, 1);
-            curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query(array('message' => urlencode($this->log))));
+            curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query(array('message' => $this->log)));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            $output = curl_exec($ch);
+            echo strip_tags(curl_exec($ch)). PHP_EOL;
             curl_close($ch);
         }
         unlink($this->lock);
@@ -311,8 +311,15 @@ message TEXT
     private function uploadCsv (){
         fclose($this->mastroCsvHandle);
         fclose($this->magentoCsvHandle);
-        $this->setUpFtp();
         if (is_resource($this->ftp)) {
+        $size = 0;
+        $count = 0;
+        $fileSize = null;
+        if (is_file($this->magentoCsvFilname))
+            $fileSize = filesize($this->magentoCsvFilname);
+        do {
+        $this->setUpFtp();
+        
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
             $imagesSubDirs = array('var', 'import');
             foreach ($imagesSubDirs as $dir) {
@@ -325,6 +332,7 @@ message TEXT
             $fileList = ftp_nlist($this->ftp, '.');
             if (is_array($fileList) && in_array('import.csv', $fileList))
                 ftp_delete($this->ftp, 'import.csv');
+            echo 'Uploading import.txt'.PHP_EOL;
             ftp_put($this->ftp, 'import.csv', $this->magentoCsvFilname, FTP_ASCII);
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
             foreach (array('media','import') as $dir) {
@@ -335,7 +343,25 @@ message TEXT
                 ftp_chdir($this->ftp,$dir);
                 ftp_delete($this->ftp, 'progress.txt');
             }
-            ftp_close($this->ftp);
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $imagesSubDirs = array('var', 'import');
+            foreach ($imagesSubDirs as $dir) {
+                $fileList = ftp_nlist($this->ftp, '.');
+                if (!is_array($fileList) || !in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp, $dir);
+                }
+                ftp_chdir($this->ftp, $dir);
+            }
+            $fileList = ftp_nlist($this->ftp, '.');
+            if (is_array($fileList) && in_array('import.csv', $fileList))
+                $size = ftp_size ($this->ftp, 'import.csv');
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $count++;
+            
+        }  while (($size == $fileSize || $fileSize == null) && $count < 10);
+        ftp_close($this->ftp);
+        if ($count >=10)
+                    $this->appendToLog('Error on uploading  CSV ');
         }
     }
     /**

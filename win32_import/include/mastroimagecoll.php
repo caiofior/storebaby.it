@@ -292,7 +292,6 @@ class MastroImageColl {
                     
                     if (strlen($status) > 0 ) {
                         $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$this->mastroFile.' '.$status);
-                       
                     }
                     if (
                             !is_file($this->magentoFileName . $this->magentoPath) ||
@@ -312,7 +311,9 @@ class MastroImageColl {
     private function uploadFtp() {
                 $size = 0;
                 $count = 0;
-                $fileSize = filesize($this->magentoFileName . $this->magentoPath);
+                $fileSize = null;
+                if (is_file($this->magentoFileName . $this->magentoPath))
+                    $fileSize = filesize($this->magentoFileName . $this->magentoPath);
                 do {
                     $ftp = $this->mastroProduct->getProductFromCsv()->getFtp();
                 if (
@@ -357,7 +358,9 @@ class MastroImageColl {
                     ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
                 }
                 $count++;
-                } while ($size == $fileSize || $count > 10);
+                } while (($size == $fileSize || $fileSize == null) && $count < 10);
+                if ($count >=10)
+                    $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$this->mastroFile);
     }
 }
 
