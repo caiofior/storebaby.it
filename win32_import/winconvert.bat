@@ -1,1 +1,1 @@
-"%CD%\lib\php\php.exe" "%CD%\convert.php"
+convert.bat

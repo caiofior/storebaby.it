@@ -9,18 +9,19 @@ class GoogleMerchant extends Magmi_ItemProcessor
 {
 
     private $googleMerchantHandle;
+    private $config;
     private $columns = array(
-        'id',
-        'title',
-        'description',
-        'google product category',
-        'product type',
-        'link',
-        'image link',
-        'condition',
-        'price',
-        'availability',
-        'brand'
+        'id'=>null,
+        'title'=>null,
+        'description'=>null,
+        'google product category'=>null,
+        'product type'=>null,
+        'link'=>null,
+        'image link'=>null,
+        'condition'=>null,
+        'price'=>null,
+        'availability'=>null,
+        'brand'=>null
 
     );
     public function getPluginInfo()
@@ -33,6 +34,12 @@ class GoogleMerchant extends Magmi_ItemProcessor
     }
 	public function initialize($params)
 	{
+            $this->config = array();
+            foreach($this->selectAll(
+                    'SELECT `path`,`value` FROM `core_config_data`
+                     WHERE `path` = "web/unsecure/base_url"') as $value) {
+                $this->config [$value['path']]=$value['value'];
+            }
             $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     'var'.DIRECTORY_SEPARATOR;
@@ -47,18 +54,19 @@ class GoogleMerchant extends Magmi_ItemProcessor
 		if (is_file($file))
                     unlink($file);    
             $this->googleMerchantHandle = fopen($file, 'w');
-            fwrite($this->googleMerchantHandle, implode("\t","\xEF\xBB\xBF".$this->columns).PHP_EOL);
+            fwrite($this->googleMerchantHandle, implode("\t","\xEF\xBB\xBF".arry_keys($this->columns)).PHP_EOL);
 	}
 	
 	public function processItemBeforeId($item,$params=null)
 	{
-            $googleMerchantData = array();
+            $googleMerchantData = $this->columns;
             $googleMerchantData['id']=$item['sku'];
             $googleMerchantData['title']=$item['name'];
             $googleMerchantData['description']=$item['description'];
             $googleMerchantData['google product category']='';
             $googleMerchantData['product type']=  str_replace('/', ' > ', $item['categories']);
-            $googleMerchantData['link']='';
+            $googleMerchantData['link']=$this->config['web/unsecure/base_url'].$item['url_path'];
+            $googleMerchantData['image link']=$this->config['web/unsecure/base_url'].'/media/catalog/product/'.$item['image'];
             var_dump($item);
                         die();
 		return true;
