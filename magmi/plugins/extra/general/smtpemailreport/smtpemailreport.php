@@ -58,13 +58,13 @@ public function getPluginInfo()
                     'var'.DIRECTORY_SEPARATOR.'import'.DIRECTORY_SEPARATOR;
             chmod($dir,0777);
             if(is_file($dir.'import.csv')) {
-                if(is_file($dir.'import.csv.gz'))
-                    unlink($dir.'import.csv.gz');
-                $status = exec('gzip -k '.$dir.'import.csv');
-                if(is_file($dir.'import.csv.gz'))
-                    $mail->addAttachment($dir.'import.csv.gz');
+                copy($dir.'import.csv', $dir.'last_import.csv');
+                $status = exec('gzip '.$dir.'last_import.csv');
+                if(is_file($dir.'last_import.csv.gz'))
+                    $mail->addAttachment($dir.'last_import.csv.gz');
                 else
                     $content .= 'Unable to create gzip file '.$status;
+                unlink($dir.'last_import.csv.gz');
             }
             $mail->isHTML(false);
 
