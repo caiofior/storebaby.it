@@ -54,7 +54,7 @@ class GoogleMerchant extends Magmi_ItemProcessor
 		if (is_file($file))
                     unlink($file);    
             $this->googleMerchantHandle = fopen($file, 'w');
-            fwrite($this->googleMerchantHandle, implode("\t","\xEF\xBB\xBF".arry_keys($this->columns)).PHP_EOL);
+            fwrite($this->googleMerchantHandle, implode("\t","\xEF\xBB\xBF".array_keys($this->columns)).PHP_EOL);
 	}
 	
 	public function processItemBeforeId($item,$params=null)
@@ -67,8 +67,6 @@ class GoogleMerchant extends Magmi_ItemProcessor
             $googleMerchantData['product type']=  str_replace('/', ' > ', $item['categories']);
             $googleMerchantData['link']=$this->config['web/unsecure/base_url'].$item['url_path'];
             $googleMerchantData['image link']=$this->config['web/unsecure/base_url'].'/media/catalog/product/'.$item['image'];
-            var_dump($item);
-                        die();
 		return true;
 	}
 	

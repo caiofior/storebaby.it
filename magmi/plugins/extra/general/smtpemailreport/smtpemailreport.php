@@ -31,7 +31,7 @@ public function getPluginInfo()
             $config = array();
             foreach($this->selectAll(
                     'SELECT `path`,`value` FROM `core_config_data`
-                     WHERE `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%"') as $value) {
+                     WHERE `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%" OR `path` = "web/unsecure/base_url"') as $value) {
                 $config [$value['path']]=$value['value'];
             }
             $mail = new PHPMailer;
@@ -52,19 +52,34 @@ public function getPluginInfo()
             $mail->addAddress($config['trans_email/ident_general/email']);
 
             $mail->WordWrap = 50;
+            
             $content = 'Import log';
+            ini_set('memory_limit', '256M');
             $dir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     'var'.DIRECTORY_SEPARATOR.'import'.DIRECTORY_SEPARATOR;
             chmod($dir,0777);
             if(is_file($dir.'import.csv')) {
-                copy($dir.'import.csv', $dir.'last_import.csv');
-                $status = exec('gzip '.$dir.'last_import.csv');
+                $status = exec('gzip -c '.$dir.'import.csv > '.$dir.'last_import.csv.gz');
                 if(is_file($dir.'last_import.csv.gz'))
                     $mail->addAttachment($dir.'last_import.csv.gz');
                 else
                     $content .= 'Unable to create gzip file '.$status;
-                unlink($dir.'last_import.csv.gz');
+            }
+            $backuplLink = '';
+            $dir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
+                    '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
+                    'var'.DIRECTORY_SEPARATOR.'backups'.DIRECTORY_SEPARATOR;
+            if (is_dir($dir)) {
+                $dirArray = scandir ($dir,SCANDIR_SORT_DESCENDING);
+                foreach ($dirArray as $dirItem) {
+                    if ($dirItem != '.'  && $dirItem != '..') {
+                        $backuplLink =  ' '.$config['web/unsecure/base_url'].'var/backups/'.$dirItem; 
+                        continue;
+                    }
+                        
+                }
+                
             }
             $mail->isHTML(false);
 
@@ -75,9 +90,11 @@ public function getPluginInfo()
             $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     'state'.DIRECTORY_SEPARATOR.'progress.txt';
-            if (is_file($file))
+            if (is_file($file)) {
+                chmod($file,0666);
                 $content .=file_get_contents($file).PHP_EOL;
-            $mail->Body    = $content;
+            }
+            $mail->Body    = $content.$backuplLink.PHP_EOL;
 
             if(!$mail->send()) {
                echo 'Message could not be sent.';

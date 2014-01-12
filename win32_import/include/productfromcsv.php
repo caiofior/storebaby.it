@@ -262,6 +262,7 @@ message TEXT
 
         $imageDb->exec('DELETE FROM log WHERE datetime < DATETIME("now","-1 month");');
         $imageDb->close();
+        $this->log .= ' Ended at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
         if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
             echo 'Call to magento update url ' . PHP_EOL;
             $ch = curl_init();
