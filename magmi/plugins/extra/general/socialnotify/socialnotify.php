@@ -105,7 +105,7 @@ public function getPluginInfo()
                 $mail->WordWrap = 50;
                 $mail->CharSet = 'UTF-8';
                 $mail->isHTML(false);
-                $mail->Subject = $product['name']. ' '.$config['web/unsecure/base_url'].$product['url_path'];
+                $mail->Subject = $product['name']. ' '.$config['web/unsecure/base_url'].'index.php/'.$product['url_path'];
                 $mail->Body = ' ';
                 $mail->addAttachment($imageDir.$product['image']);
                 if($mail->send()) {
