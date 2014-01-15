@@ -70,6 +70,7 @@ public function getPluginInfo()
             $dir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     'var'.DIRECTORY_SEPARATOR.'backups'.DIRECTORY_SEPARATOR;
+            chmod($dir,0777);
             if (is_dir($dir)) {
                 $dirArray = scandir ($dir,SCANDIR_SORT_DESCENDING);
                 foreach ($dirArray as $dirItem) {

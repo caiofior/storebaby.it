@@ -105,20 +105,15 @@ LIMIT 1
                 $this->googleMerchantCategories[$value['name']]=$value['google_merchant'];
             }
             $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
-                    '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
-                    'var'.DIRECTORY_SEPARATOR;
-            if (!is_dir($file))
-                mkdir($file);
-            
-            $file .= 'export'.DIRECTORY_SEPARATOR;
-		if (!is_dir($file))
-                mkdir($file);
-                
-            $file .= 'googlemerchant.csv';
+                    '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'googlemerchant.csv';
 		if (is_file($file))
                     unlink($file);    
             $this->googleMerchantHandle = fopen($file, 'w');
-            fwrite($this->googleMerchantHandle, "\xEF\xBB\xBF".implode("\t",array_keys($this->columns)).PHP_EOL);
+            $columns = array_keys($this->columns);
+            foreach ($columns as $key=>$field) {
+                $columns[$key]='"'.addslashes($field).'"';
+            }
+            fwrite($this->googleMerchantHandle, "\xEF\xBB\xBF".implode("\t",$columns).PHP_EOL);
 	}
 	/**
          * Add item to csv
@@ -148,6 +143,12 @@ LIMIT 1
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
             $googleMerchantData['gtin']=$item['sku'];
+            foreach ($googleMerchantData as $key => $value) {
+                if (preg_match('/^[\-0-9 \.]+$/', $value))
+                    $googleMerchantData[$key]=$value;
+                else
+                    $googleMerchantData[$key]='"'.addslashes($value).'"';
+            }
             fwrite($this->googleMerchantHandle, implode("\t",$googleMerchantData).PHP_EOL);
 		return true;
 	}
