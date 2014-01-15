@@ -110,9 +110,6 @@ LIMIT 1
                     unlink($file);    
             $this->googleMerchantHandle = fopen($file, 'w');
             $columns = array_keys($this->columns);
-            foreach ($columns as $key=>$field) {
-                $columns[$key]='"'.addslashes($field).'"';
-            }
             fwrite($this->googleMerchantHandle, "\xEF\xBB\xBF".implode("\t",$columns).PHP_EOL);
 	}
 	/**
@@ -143,12 +140,6 @@ LIMIT 1
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
             $googleMerchantData['gtin']=$item['sku'];
-            foreach ($googleMerchantData as $key => $value) {
-                if (preg_match('/^[\-0-9 \.]+$/', $value))
-                    $googleMerchantData[$key]=$value;
-                else
-                    $googleMerchantData[$key]='"'.addslashes($value).'"';
-            }
             fwrite($this->googleMerchantHandle, implode("\t",$googleMerchantData).PHP_EOL);
 		return true;
 	}
