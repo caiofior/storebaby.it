@@ -131,7 +131,7 @@ class MastroProduct {
         }
         $magentoProduct->setData('categories',$categories);
         $magentoProduct->setData('sku',$this->data['EAN13']);
-        $magentoProduct->setData('cs_skus',$this->getReSkus($key));
+        $magentoProduct->setData('us_skus',$this->getReSkus($key));
         $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
         if ($this->data['MARCA'] != '')
             $magentoProduct->setData('manufacturer', ucfirst(strtolower(stripslashes($this->data['MARCA']))).'::['.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['MARCA']))))).']');

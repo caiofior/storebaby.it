@@ -118,7 +118,7 @@ LIMIT 1
          * @param array $params
          * @return boolean
          */
-	public function processItemBeforeId($item,$params=null)
+	public function processItemBeforeId(&$item,$params=null)
 	{
             $googleMerchantData = $this->columns;
             $googleMerchantData['id']=$item['sku'];

@@ -1,0 +1,4 @@
+AuthUserFile /var/www/storebaby.it/magmi/.htpasswd
+AuthType Basic
+AuthName "Magmi Admin"
+Require valid-user

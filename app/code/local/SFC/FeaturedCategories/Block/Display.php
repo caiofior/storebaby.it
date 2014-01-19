@@ -49,7 +49,7 @@ class SFC_FeaturedCategories_Block_Display extends Mage_Core_Block_Template
                         $featuredProducts = $read->fetchCol(
                         'SELECT `entity_id` FROM `catalog_product_entity` WHERE'.
                         '`entity_id` IN (SELECT `product_id` FROM `catalog_category_product` WHERE FALSE  '.
-                        $sqlCategoryFilter.') LIMIT 2'
+                        $sqlCategoryFilter.') ORDER BY RAND() LIMIT 2'
                         );
                         $categoryProductsIds[$featuredCategoryId]=$featuredProducts;
                     }
