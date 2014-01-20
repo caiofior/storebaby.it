@@ -371,14 +371,12 @@ message TEXT
     private function downloadbackup (){
         if (is_resource($this->ftp)) {
         $count = 0;
-            
+            $fileList =array();
             $backupDir = getcwd() . DIRECTORY_SEPARATOR . 'backups';
             if (!is_dir($backupDir))
                 mkdir ($backupDir);
-
-            $fileList = ftp_nlist($this->ftp, '.');
-            foreach($fileList as $file) {
-                do {
+            while(sizeof($fileList) == 0 ) {
+                $this->setUpFtp();    
                 ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
                 $imagesSubDirs = array('var', 'backups');
                 foreach ($imagesSubDirs as $dir) {
@@ -388,9 +386,13 @@ message TEXT
                     }
                     ftp_chdir($this->ftp, $dir);
                 }
+                $fileList = ftp_nlist($this->ftp, '.');
+            }
+            foreach($fileList as $file) {
+                do {
                 $fileSize = null;
                 do {
-                    $this->setUpFtp();
+                    
                     if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
                             $fileSize = filesize($backupDir.DIRECTORY_SEPARATOR.$file);
                 if (
