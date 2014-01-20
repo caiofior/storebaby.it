@@ -183,6 +183,7 @@ corrupted NUMERIC
             }
         }
         $this->uploadCsv();
+        $this->downloadBackup();
         $this->execOnShutdown();
     }
 
@@ -360,9 +361,56 @@ message TEXT
             $count++;
             
         }  while (($size == $fileSize || $fileSize == null) && $count < 10);
-        ftp_close($this->ftp);
         if ($count >=10)
                     $this->appendToLog('Error on uploading  CSV ');
+        }
+    }
+    /**
+     * Downloads the backup
+     */
+    private function downloadbackup (){
+        if (is_resource($this->ftp)) {
+        $count = 0;
+            
+            $backupDir = getcwd() . DIRECTORY_SEPARATOR . 'backups';
+            if (!is_dir($backupDir))
+                mkdir ($backupDir);
+            $imagesSubDirs = array('var', 'backups');
+            foreach ($imagesSubDirs as $dir) {
+                $fileList = ftp_nlist($this->ftp, '.');
+                if (!is_array($fileList) || !in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp, $dir);
+                }
+                ftp_chdir($this->ftp, $dir);
+            }
+            $fileList = ftp_nlist($this->ftp, '.');
+            foreach($fileList as $file) {
+                do {
+                ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+                $fileSize = null;
+                do {
+                    $this->setUpFtp();
+                    if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
+                            $fileSize = filesize($backupDir.DIRECTORY_SEPARATOR.$file);
+                if (
+                        $file != '.' &&
+                        $file != '..' && (
+                            $fileSize == null ||
+                            filesize($backupDir.DIRECTORY_SEPARATOR.$file) == 0
+                       )
+                    ) {
+                        echo 'Downloading backup '.$file.PHP_EOL;
+                        ftp_get($this->ftp, $backupDir.DIRECTORY_SEPARATOR.$file,  $file, FTP_BINARY);
+                        $filesize =filesize($backupDir.DIRECTORY_SEPARATOR.$file);
+                    }
+                }
+                while (is_null($filesize));
+                $count++;
+                }
+                while ($count < 5);
+            }
+            
+        ftp_close($this->ftp);
         }
     }
     /**

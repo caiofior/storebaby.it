@@ -118,7 +118,7 @@ LIMIT 1
          * @param array $params
          * @return boolean
          */
-	public function processItemBeforeId(&$item,$params=null)
+	public function processItemBeforeId($item,$params=null)
 	{
             $googleMerchantData = $this->columns;
             $googleMerchantData['id']=$item['sku'];
@@ -140,6 +140,9 @@ LIMIT 1
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
             $googleMerchantData['gtin']=$item['sku'];
+            foreach($googleMerchantData as $key=>$value) {
+                 $googleMerchantData[$key]=str_replace("\t",' ',$value);
+            }
             fwrite($this->googleMerchantHandle, implode("\t",$googleMerchantData).PHP_EOL);
 		return true;
 	}
