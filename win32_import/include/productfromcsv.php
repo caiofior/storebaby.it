@@ -375,18 +375,19 @@ message TEXT
             $backupDir = getcwd() . DIRECTORY_SEPARATOR . 'backups';
             if (!is_dir($backupDir))
                 mkdir ($backupDir);
-            $imagesSubDirs = array('var', 'backups');
-            foreach ($imagesSubDirs as $dir) {
-                $fileList = ftp_nlist($this->ftp, '.');
-                if (!is_array($fileList) || !in_array($dir, $fileList)) {
-                    ftp_mkdir($this->ftp, $dir);
-                }
-                ftp_chdir($this->ftp, $dir);
-            }
+
             $fileList = ftp_nlist($this->ftp, '.');
             foreach($fileList as $file) {
                 do {
                 ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+                $imagesSubDirs = array('var', 'backups');
+                foreach ($imagesSubDirs as $dir) {
+                    $fileList = ftp_nlist($this->ftp, '.');
+                    if (!is_array($fileList) || !in_array($dir, $fileList)) {
+                        ftp_mkdir($this->ftp, $dir);
+                    }
+                    ftp_chdir($this->ftp, $dir);
+                }
                 $fileSize = null;
                 do {
                     $this->setUpFtp();
