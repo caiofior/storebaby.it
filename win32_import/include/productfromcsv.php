@@ -389,7 +389,7 @@ message TEXT
                 $fileList = ftp_nlist($this->ftp, '.');
             }
             foreach($fileList as $file) {
-                do {
+                if ($count > 5) continue;
                 $fileSize = null;
                 do {
                     
@@ -409,8 +409,6 @@ message TEXT
                 }
                 while (is_null($filesize));
                 $count++;
-                }
-                while ($count < 5);
             }
             
         ftp_close($this->ftp);
