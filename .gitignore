@@ -11,3 +11,4 @@ win32_import/lib/*
 win32_import/old/*
 win32_import/log/*
 win32_import/BMP/*
+win32_import/backups/*

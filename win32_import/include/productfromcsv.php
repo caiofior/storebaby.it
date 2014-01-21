@@ -271,8 +271,14 @@ message TEXT
             curl_setopt($ch,CURLOPT_POST, 1);
             curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query(array('message' => $this->log)));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            if (key_exists('UPDATE_MAGENTO_CREDENTIALS', $this->config)) {
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array("Authorization: Basic " . base64_encode('joachim:alfaalfa56')));
+                
+                
+            }
             echo strip_tags(str_replace('</p>', PHP_EOL,curl_exec($ch))). PHP_EOL;
             curl_close($ch);
+
         }
         unlink($this->lock);
     }
@@ -389,12 +395,14 @@ message TEXT
                 $fileList = ftp_nlist($this->ftp, '.');
             }
             foreach($fileList as $file) {
-                if ($count > 5) continue;
                 $fileSize = null;
+                if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
+                            $fileSize = filesize($backupDir.DIRECTORY_SEPARATOR.$file);
+                if ($count > 5 || $fileSize > 0) continue;
+ 
                 do {
                     
-                    if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
-                            $fileSize = filesize($backupDir.DIRECTORY_SEPARATOR.$file);
+                    
                 if (
                         $file != '.' &&
                         $file != '..' && (
