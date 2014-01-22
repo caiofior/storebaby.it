@@ -139,7 +139,9 @@ class MastroProduct {
         $magentoProduct->setData('meta_description', 'Articoli infanzia > '.implode(' > ',$categoriesBranches).' > '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
         $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))));
         $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))).'.html');
-        $magentoProduct->setData('weight', '0.1');
+        $weight = $this->productFromCsv->getWeight($mastroCategory);
+        if ($weight ==false) $weight = '0.1';
+        $magentoProduct->setData('weight', $weight);
         $magentoProduct->setData('price',$this->data['VENDITA']+1*($this->data['IVA']/100));
         $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
         $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));

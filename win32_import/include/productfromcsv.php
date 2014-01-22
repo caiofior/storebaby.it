@@ -33,7 +33,7 @@ class ProductFromCsv {
     private $mastroCsvLastpos;
 
     /**
-     * Satrt datetime
+     * Start datetime
      * @var int
      */
     private $startTime;
@@ -43,7 +43,11 @@ class ProductFromCsv {
      * @var array 
      */
     private $categories = array();
-
+    /**
+     *Association with weights
+     * @var array 
+     */
+    private $weigths = array();
     /**
      * FTP reference
      * @var resource
@@ -212,6 +216,18 @@ corrupted NUMERIC
         else
             return false;
     }
+    
+     /**
+     * Gets a weioght from Mastro Category Name
+     * @param string $mastroCode
+     * @return string
+     */
+    public function getWeight($mastroCode) {
+        if (key_exists($mastroCode, $this->weigths))
+            return $this->weigths[$mastroCode];
+        else
+            return false;
+    }
 
     /**
      * Returns Ftp resource
@@ -242,6 +258,26 @@ corrupted NUMERIC
      * Called on export end
      */
     public function execOnShutdown() {
+        if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
+            echo 'Call to magento update url ' . PHP_EOL;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL']);
+            curl_setopt($ch,CURLOPT_POST, true);
+            $data = array('message' => $this->log);
+            if (key_exists('UPDATE_MAGENTO_CREDENTIALS', $this->config)) {
+                curl_setopt($ch, CURLOPT_HEADER,false); 
+                $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
+                
+            }
+            curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
+            $output = strip_tags(str_replace('</p>', PHP_EOL,curl_exec($ch))). PHP_EOL;
+            $this->log .=$output;
+            echo $output;
+
+        }
+        $this->log .= ' Ended at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
         $dbFile = getcwd() . DIRECTORY_SEPARATOR . 'log';
         $dbFile .= DIRECTORY_SEPARATOR . 'mastro';
         $imageDb = new SQLite3($dbFile);
@@ -263,23 +299,8 @@ message TEXT
 
         $imageDb->exec('DELETE FROM log WHERE datetime < DATETIME("now","-1 month");');
         $imageDb->close();
-        $this->log .= ' Ended at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
-        if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
-            echo 'Call to magento update url ' . PHP_EOL;
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL']);
-            curl_setopt($ch,CURLOPT_POST, 1);
-            curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query(array('message' => $this->log)));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            if (key_exists('UPDATE_MAGENTO_CREDENTIALS', $this->config)) {
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array("Authorization: Basic " . base64_encode('joachim:alfaalfa56')));
-                
-                
-            }
-            echo strip_tags(str_replace('</p>', PHP_EOL,curl_exec($ch))). PHP_EOL;
-            curl_close($ch);
-
-        }
+        
+        
         unlink($this->lock);
     }
 
@@ -349,7 +370,9 @@ message TEXT
                     ftp_mkdir($this->ftp,$dir);
                 }
                 ftp_chdir($this->ftp,$dir);
-                ftp_delete($this->ftp, 'progress.txt');
+                $fileList = ftp_nlist($this->ftp, '.');
+                if (in_array('progress.txt',$fileList))
+                    ftp_delete($this->ftp, 'progress.txt');
             }
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
             $imagesSubDirs = array('var', 'import');
@@ -381,7 +404,8 @@ message TEXT
             $backupDir = getcwd() . DIRECTORY_SEPARATOR . 'backups';
             if (!is_dir($backupDir))
                 mkdir ($backupDir);
-            while(sizeof($fileList) == 0 ) {
+            $fileList = ftp_nlist($this->ftp, '.');
+            while(sizeof($fileList) == 0 || $count >5) {
                 $this->setUpFtp();    
                 ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
                 $imagesSubDirs = array('var', 'backups');
@@ -393,7 +417,9 @@ message TEXT
                     ftp_chdir($this->ftp, $dir);
                 }
                 $fileList = ftp_nlist($this->ftp, '.');
+                $count++;
             }
+            $count=0;
             foreach($fileList as $file) {
                 $fileSize = null;
                 if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
@@ -448,6 +474,9 @@ message TEXT
         $this->categories = json_decode(str_replace("'", '"', $this->config['CATEGORIES']), true);
         if (!is_array($this->categories))
             throw new Exception('Associative categories in config.ini are wrong', 1312061657);
+        $this->weigths = json_decode(str_replace("'", '"', $this->config['WEIGHTS']), true);
+        if (!is_array($this->weigths))
+            throw new Exception('Associative weights in config.ini are wrong', 1312061658);
         if (!is_resource($this->mastroCsvHandle))
             throw new Exception('Unable to open mastro CSV file ' . $this->config['MASTRO_CSV_FILE'], 1312030807);
         $this->mastroCsvLastpos = filesize($this->config['MASTRO_CSV_FILE']);
