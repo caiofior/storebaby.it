@@ -5,6 +5,7 @@ media/*
 var/*
 magmi/conf/*
 magmi/state/*
+googlemerchant.csv
 win32_import/magento_csv/*
 win32_import/magento_images/*
 win32_import/lib/*
