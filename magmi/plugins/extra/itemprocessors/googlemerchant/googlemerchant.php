@@ -34,10 +34,20 @@ class GoogleMerchant extends Magmi_ItemProcessor
         'price'=>null,
         'availability'=>null,
         'brand'=>null,
-        'gtin'=>null
+        'gtin'=>null,
+        'shipping'=>null
 
     );
+    /**
+     * Google merchants Categories
+     * @var array
+     */
     private $googleMerchantCategories =array();
+    /**
+     * Table rates data
+     * @var array
+     */
+    private $tableRates = array();
     /**
      * Returns plugin informations
      * @return array
@@ -104,6 +114,13 @@ LIMIT 1
 	) <> ""') as $value) {
                 $this->googleMerchantCategories[$value['name']]=$value['google_merchant'];
             }
+            foreach($this->selectAll(
+                    'SELECT `condition_value` as "weight", `price`
+                    FROM `shipping_tablerate` ORDER BY `condition_value` ASC') as $value) {
+                
+                
+                $this->tableRates[$value['weight']]=$value['price'];
+            }
             $file = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'googlemerchant.csv';
 		if (is_file($file))
@@ -118,12 +135,12 @@ LIMIT 1
          * @param array $params
          * @return boolean
          */
-	public function processItemBeforeId($item,$params=null)
+	public function processItemBeforeId(&$item,$params=null)
 	{
             $googleMerchantData = $this->columns;
             $googleMerchantData['id']=$item['sku'];
-            $googleMerchantData['title']=$item['name'];
-            $googleMerchantData['description']=$item['description'];
+            $googleMerchantData['title']=str_replace("\t",' ',$item['name']);
+            $googleMerchantData['description']=str_replace("\t",' ',$item['description']);
             $categories = preg_split('/[,\/]/',$item['categories']);
             $categories[]='Default Category';
             $category = '';
@@ -140,6 +157,12 @@ LIMIT 1
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
             $googleMerchantData['gtin']=$item['sku'];
+            
+            $shipExpense = '9.9';
+            foreach($this->tableRates as $tWeight => $tPrice)
+                if ($item['weight'] > $tWeight) $shipExpense = $tPrice;
+
+            $googleMerchantData['shipping']='IT::'.$shipExpense.' EUR';
             foreach($googleMerchantData as $key=>$value) {
                  $googleMerchantData[$key]=str_replace("\t",' ',$value);
             }

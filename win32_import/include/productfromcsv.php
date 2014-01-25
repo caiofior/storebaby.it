@@ -258,6 +258,7 @@ corrupted NUMERIC
      * Called on export end
      */
     public function execOnShutdown() {
+        $this->log .= ' Ended at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
         if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
             echo 'Call to magento update url ' . PHP_EOL;
             $ch = curl_init();
@@ -277,7 +278,6 @@ corrupted NUMERIC
             echo $output;
 
         }
-        $this->log .= ' Ended at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
         $dbFile = getcwd() . DIRECTORY_SEPARATOR . 'log';
         $dbFile .= DIRECTORY_SEPARATOR . 'mastro';
         $imageDb = new SQLite3($dbFile);
@@ -397,7 +397,7 @@ message TEXT
     /**
      * Downloads the backup
      */
-    private function downloadbackup (){
+    private function downloadBackup (){
         if (is_resource($this->ftp)) {
         $count = 0;
             $fileList =array();
@@ -421,11 +421,11 @@ message TEXT
             }
             $count=0;
             foreach($fileList as $file) {
-                $fileSize = null;
+                $filesize = null;
                 if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
-                            $fileSize = filesize($backupDir.DIRECTORY_SEPARATOR.$file);
-                if ($count > 5 || $fileSize > 0) continue;
- 
+                            $filesize = filesize($backupDir.DIRECTORY_SEPARATOR.$file);
+                if ($count > 5 || $filesize > 0) continue;
+                $iCount = 0;
                 do {
                     
                     
@@ -440,8 +440,9 @@ message TEXT
                         ftp_get($this->ftp, $backupDir.DIRECTORY_SEPARATOR.$file,  $file, FTP_BINARY);
                         $filesize =filesize($backupDir.DIRECTORY_SEPARATOR.$file);
                     }
+                    $iCount++;
                 }
-                while (is_null($filesize));
+                while (is_null($filesize) && $iCount <5);
                 $count++;
             }
             
