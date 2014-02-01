@@ -115,7 +115,7 @@ class CrossUpsellProducts extends Magmi_ItemProcessor
  }
  public function deleteCSellItems($item,$inf)
  {
-        $joininfo=$this->buildJoinCond($item,$inf,"cpe2.sku");
+ 	$joininfo=$this->buildJoinCond($item,$inf,"cpe2.sku");
  	$j2=$joininfo["join"]["cpe2.sku"];
  	if($j2!="")
  	{

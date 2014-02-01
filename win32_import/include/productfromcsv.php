@@ -432,13 +432,14 @@ message TEXT
                 if (
                         $file != '.' &&
                         $file != '..' && (
-                            $fileSize == null ||
+                            $filesize == null ||
                             filesize($backupDir.DIRECTORY_SEPARATOR.$file) == 0
                        )
                     ) {
                         echo 'Downloading backup '.$file.PHP_EOL;
                         ftp_get($this->ftp, $backupDir.DIRECTORY_SEPARATOR.$file,  $file, FTP_BINARY);
-                        $filesize =filesize($backupDir.DIRECTORY_SEPARATOR.$file);
+                        if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
+                            $filesize =filesize($backupDir.DIRECTORY_SEPARATOR.$file);
                     }
                     $iCount++;
                 }
