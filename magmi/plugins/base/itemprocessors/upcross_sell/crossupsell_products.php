@@ -36,7 +36,9 @@ class CrossUpsellProducts extends Magmi_ItemProcessor
  public function processItemAfterId(&$item,$params=null)
  {
  	$usell=isset($item["us_skus"])?$item["us_skus"]:null;
+        $xusell=isset($item["xus_skus"])?$item["xus_skus"]:null;
  	$csell=isset($item["cs_skus"])?$item["cs_skus"]:null;
+        $xcsell=isset($item["xcs_skus"])?$item["xcs_skus"]:null;
 	$pid=$params["product_id"];
 	$new=$params["new"];
  
@@ -49,6 +51,15 @@ class CrossUpsellProducts extends Magmi_ItemProcessor
 		}
  		$this->setUsellItems($item,$rinf["add"]);
  	}
+        if(isset($xusell) && trim($xusell)!="")
+ 	{
+ 		$rinf=$this->getRelInfos($xusell);
+		if($new==false)
+		{
+			$this->deleteXUsellItems($item,$rinf["del"]);
+		}
+ 		$this->setXUsellItems($item,$rinf["add"]);
+ 	}
  	if(isset($csell) && trim($csell)!="")
  	{
  		$rinf=$this->getRelInfos($csell);
@@ -57,6 +68,15 @@ class CrossUpsellProducts extends Magmi_ItemProcessor
 			$this->deleteCSellItems($item,$rinf["del"]);
 		}
 		$this->setCSellItems($item,$rinf["add"]);
+ 	}
+        if(isset($xcsell) && trim($xcsell)!="")
+ 	{
+ 		$rinf=$this->getRelInfos($xcsell);
+ 		if($new==false)
+		{
+			$this->deleteXCSellItems($item,$rinf["del"]);
+		}
+		$this->setXCSellItems($item,$rinf["add"]);
  	}
  }
  
@@ -76,10 +96,26 @@ class CrossUpsellProducts extends Magmi_ItemProcessor
 	$this->delete($sql,array_merge($joininfo["data"]["cpe2.sku"],array($item["sku"])));
  	}
  }
- 
+  public function deleteXUSellItems($item,$inf,$fullcross=false)
+ {
+ 	$joininfo=$this->buildJoinCond($item,$inf,"cpe2.sku,cpe.sku");
+ 	$j2=$joininfo["join"]["cpe2.sku"];
+        $j=$joininfo["join"]["cpe.sku"];
+ 	if($j2!="")
+ 	{
+ 	$sql="DELETE cplai.*,cpl.*
+ 		  FROM ".$this->tablename("catalog_product_entity")." as cpe
+ 		  JOIN ".$this->tablename("catalog_product_link_type")." as cplt ON cplt.code='up_sell'
+		  JOIN ".$this->tablename("catalog_product_link")." as cpl ON cpl.product_id=cpe.entity_id AND cpl.link_type_id=cplt.link_type_id
+ 		  JOIN ".$this->tablename("catalog_product_link_attribute_int")." as cplai ON cplai.link_id=cpl.link_id
+		  JOIN ".$this->tablename("catalog_product_entity")." as cpe2 ON cpe2.entity_id!=cpe.entity_id AND $j2
+		  WHERE cpe.sku=? OR $j";
+	$this->delete($sql,array_merge($joininfo["data"]["cpe2.sku"],array($item["sku"]),$joininfo["data"]["cpe.sku"]));
+ 	}
+ }
  public function deleteCSellItems($item,$inf)
  {
- 	$joininfo=$this->buildJoinCond($item,$inf,"cpe2.sku");
+        $joininfo=$this->buildJoinCond($item,$inf,"cpe2.sku");
  	$j2=$joininfo["join"]["cpe2.sku"];
  	if($j2!="")
  	{
@@ -94,7 +130,25 @@ class CrossUpsellProducts extends Magmi_ItemProcessor
 	$this->delete($sql,array_merge($joininfo["data"]["cpe2.sku"],array($item["sku"])));
  	}
  }
+  public function deleteXCSellItems($item,$inf,$fullcross=false)
+ {
+       	$joininfo=$this->buildJoinCond($item,$inf,"cpe2.sku,cpe.sku");
+ 	$j2=$joininfo["join"]["cpe2.sku"];
+        $j=$joininfo["join"]["cpe.sku"];
+ 	if($j2!="")
+ 	{
  
+ 	$sql="DELETE cplai.*,cpl.*
+ 		  FROM ".$this->tablename("catalog_product_entity")." as cpe
+		  JOIN ".$this->tablename("catalog_product_link_type")." as cplt ON cplt.code='cross_sell'
+ 		  JOIN ".$this->tablename("catalog_product_link")." as cpl ON cpl.product_id=cpe.entity_id AND cpl.link_type_id=cplt.link_type_id
+ 		  JOIN ".$this->tablename("catalog_product_link_attribute_int")." as cplai ON cplai.link_id=cpl.link_id
+		  JOIN ".$this->tablename("catalog_product_entity")." as cpe2 ON cpe2.entity_id!=cpe.entity_id AND $j2
+		  WHERE cpe.sku=? OR $j";
+	$this->delete($sql,array_merge($joininfo["data"]["cpe2.sku"],array($item["sku"]),$joininfo["data"]["cpe.sku"]));
+ 	}
+ 	
+ }
  public function getDirection(&$inf)
  {
  	$dir="+";
@@ -217,7 +271,37 @@ class CrossUpsellProducts extends Magmi_ItemProcessor
  	}
  	}
  }
- 
+  public function setXUSellItems($item,$rinfo,$fullrel=false)
+ {
+ 	if($this->checkRelated($rinfo)>0)
+ 	
+ 	{
+        $joininfo=$this->buildJoinCond($item,$rinfo,"cpe.sku,cpe2.sku");
+        $j2=$joininfo["join"]["cpe2.sku"];
+        $j=$joininfo["join"]["cpe.sku"];
+        if($j2!="")
+ 	{
+  		//insert into link table
+ 		$bsql="SELECT cplt.link_type_id,cpe.entity_id as product_id,cpe2.entity_id as linked_product_id 
+			FROM ".$this->tablename("catalog_product_entity")." as cpe
+			JOIN ".$this->tablename("catalog_product_entity")." as cpe2 ON cpe2.entity_id!=cpe.entity_id AND (cpe2.sku=? OR $j2)
+			JOIN ".$this->tablename("catalog_product_link_type")." as cplt ON cplt.code='up_sell'
+			WHERE cpe.sku=? OR $j ";
+                if(!$fullrel)
+                {
+                        $bsql.=" AND NOT($j AND $j2)";
+                }
+ 	$sql="INSERT IGNORE INTO ".$this->tablename("catalog_product_link")." (link_type_id,product_id,linked_product_id)  $bsql";
+ 	$data=array_merge(array($item["sku"]),$joininfo["data"]["cpe2.sku"],array($item["sku"]),$joininfo["data"]["cpe.sku"]);
+        if(!$fullrel)
+        {
+                $data=array_merge($data,$joininfo["data"]["cpe.sku"],$joininfo["data"]["cpe.sku"]);
+        }
+ 	$this->insert($sql,$data);
+ 	$this->updateLinkAttributeTable($item["sku"],$joininfo,'up_sell');
+ 	}
+ 	}
+ }
  public function setCSellItems($item,$rinfo)
  {
  	if($this->checkRelated($rinfo)>0)
@@ -240,7 +324,37 @@ class CrossUpsellProducts extends Magmi_ItemProcessor
  	}
  	}
  }
- 
+  public function setXCSellItems($item,$rinfo,$fullrel=false)
+ {
+ 	if($this->checkRelated($rinfo)>0)
+ 	
+ 	{
+ 	$joininfo=$this->buildJoinCond($item,$rinfo,"cpe.sku,cpe2.sku");
+        $j2=$joininfo["join"]["cpe2.sku"];
+        $j=$joininfo["join"]["cpe.sku"];
+        if($j2!="")
+ 	{
+  	//insert into link table
+ 	$bsql="SELECT cplt.link_type_id,cpe.entity_id as product_id,cpe2.entity_id as linked_product_id 
+			FROM ".$this->tablename("catalog_product_entity")." as cpe
+			JOIN ".$this->tablename("catalog_product_entity")." as cpe2 ON cpe2.entity_id!=cpe.entity_id AND (cpe2.sku=? OR $j2)
+			JOIN ".$this->tablename("catalog_product_link_type")." as cplt ON cplt.code='cross_sell'
+			WHERE cpe.sku=? OR $j ";
+        if(!$fullrel)
+        {
+                $bsql.=" AND NOT($j AND $j2)";
+        }
+ 	$sql="INSERT IGNORE INTO ".$this->tablename("catalog_product_link")." (link_type_id,product_id,linked_product_id)  $bsql";
+ 	$data=array_merge(array($item["sku"]),$joininfo["data"]["cpe2.sku"],array($item["sku"]),$joininfo["data"]["cpe.sku"]);
+        if(!$fullrel)
+        {
+                $data=array_merge($data,$joininfo["data"]["cpe.sku"],$joininfo["data"]["cpe.sku"]);
+        }
+ 	$this->insert($sql,$data);
+ 	$this->updateLinkAttributeTable($item["sku"],$joininfo,'cross_sell');
+ 	}
+ 	}
+ }
  public function updateLinkAttributeTable($sku,$joininfo,$reltype)
  {
  	 	//insert into attribute link attribute int table,reusing the same relations

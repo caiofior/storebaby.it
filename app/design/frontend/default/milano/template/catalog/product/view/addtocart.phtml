@@ -13,6 +13,9 @@
         <button type="submit" title="<?php echo $buttonTitle ?>" class="button btn-cart" ><span><span><?php echo $buttonTitle ?></span></span></button>
         <?php echo $this->getChildHtml('', true, true) ?>
     </div>
+    <?php if (Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product) < 1 ) : ?>
+    <div>Il prodotto non è al momento disponibile nei nostri magazzini; lo stiamo aspettando entro 30 giorni.</div>
+    <?php endif; ?>
 <?php endif; ?>
 <script type="text/javascript">
     var qty_el = document.getElementById('qty'); 

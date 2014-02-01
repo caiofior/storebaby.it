@@ -131,7 +131,7 @@ class MastroProduct {
         }
         $magentoProduct->setData('categories',$categories);
         $magentoProduct->setData('sku',$this->data['EAN13']);
-        $magentoProduct->setData('us_skus',$this->getReSkus($key));
+        $magentoProduct->setData('xus_skus',$this->getReSkus($key));
         $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
         if ($this->data['MARCA'] != '')
             $magentoProduct->setData('manufacturer', ucfirst(strtolower(stripslashes($this->data['MARCA']))).'::['.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['MARCA']))))).']');
@@ -142,7 +142,10 @@ class MastroProduct {
         $weight = $this->productFromCsv->getWeight($mastroCategory);
         if ($weight ==false) $weight = '0.1';
         $magentoProduct->setData('weight', $weight);
-        $magentoProduct->setData('price',$this->data['VENDITA']+1*($this->data['IVA']/100));
+        $iva =  $this->data['IVA'];
+        if ($iva = '21') $iva = '22';
+        $magentoProduct->setData('price',$this->data['VENDITA']+1*($iva/100));
+        $magentoProduct->setData('tax_class_id', $iva);
         $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
         $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));
         $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
