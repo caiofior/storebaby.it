@@ -404,8 +404,8 @@ message TEXT
             $backupDir = getcwd() . DIRECTORY_SEPARATOR . 'backups';
             if (!is_dir($backupDir))
                 mkdir ($backupDir);
-            $fileList = ftp_nlist($this->ftp, '.');
-            while(sizeof($fileList) == 0 || $count >5) {
+            $fileList = array();
+            while(sizeof($fileList) == 0 && $count <5) {
                 $this->setUpFtp();    
                 ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
                 $imagesSubDirs = array('var', 'backups');
@@ -437,6 +437,8 @@ message TEXT
                        )
                     ) {
                         echo 'Downloading backup '.$file.PHP_EOL;
+                        var_dump($backupDir.DIRECTORY_SEPARATOR.$file);
+                        die();
                         ftp_get($this->ftp, $backupDir.DIRECTORY_SEPARATOR.$file,  $file, FTP_BINARY);
                         if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
                             $filesize =filesize($backupDir.DIRECTORY_SEPARATOR.$file);

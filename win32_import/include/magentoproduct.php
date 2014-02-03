@@ -144,7 +144,7 @@ class MagentoProduct {
             if (preg_match('/^[\-0-9 \.]+$/', $value))
                 $data[$key]=$value;
             else
-                $data[$key]='"'.addslashes($value).'"';
+                $data[$key]='"'.$value.'"';
                
         }
         return implode(',',$data);
