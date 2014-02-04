@@ -144,7 +144,7 @@ class MagentoProduct {
             if (preg_match('/^[\-0-9 \.]+$/', $value))
                 $data[$key]=$value;
             else
-                $data[$key]='"'.$value.'"';
+                $data[$key]='"'.addcslashes($value,'"').'"';
                
         }
         return implode(',',$data);
@@ -156,7 +156,7 @@ class MagentoProduct {
     public function getCsvHeaders() {
         $headers = array_keys(self::$headers);
         foreach ($headers as $key=>$field) {
-            $headers[$key]='"'.addslashes($field).'"';
+            $headers[$key]='"'.addcslashes($field,'"').'"';
         }
         return implode(',',$headers);
     }    

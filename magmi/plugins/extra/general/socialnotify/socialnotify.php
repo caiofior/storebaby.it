@@ -57,13 +57,13 @@ public function getPluginInfo()
                         `catalog_product_entity_varchar`.`entity_id`=`catalog_product_entity`.`entity_id` AND
                         `catalog_product_entity_varchar`.`attribute_id`= 
                             (SELECT `attribute_id` FROM `eav_attribute` WHERE
-                            `attribute_code`="url_path" AND `entity_type_id`= 
+                            `attribute_code`="url_key" AND `entity_type_id`= 
                                 (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
                                 `entity_type_code`="catalog_product"
                                 )
                             )
                     LIMIT 1
-                    ) as url_path ,
+                    ) as url_key ,
                     (SELECT `value` FROM `catalog_product_entity_varchar` WHERE
                         `catalog_product_entity_varchar`.`entity_id`=`catalog_product_entity`.`entity_id` AND
                         `catalog_product_entity_varchar`.`attribute_id`= 
@@ -105,7 +105,18 @@ public function getPluginInfo()
                 $mail->WordWrap = 50;
                 $mail->CharSet = 'UTF-8';
                 $mail->isHTML(false);
-                $mail->Subject = $product['name']. ' '.$config['web/unsecure/base_url'].'index.php/'.$product['url_path'];
+                            $url_path = '';
+                foreach($this->selectAll(
+                        'SELECT `request_path` FROM `core_url_rewrite`
+                        WHERE `id_path` LIKE "product/%" AND `request_path` LIKE "%'.$product['url_key'].'%" 
+                        ORDER BY `category_id` ASC LIMIT 1') as $value) {
+
+
+                    $url_path =$value['request_path'];
+                }
+
+                if ($url_path == '' ) continue;
+                $mail->Subject = $product['name']. ' '.$config['web/unsecure/base_url'].'index.php/'.$url_path;
                 $mail->Body = ' ';
                 $mail->addAttachment($imageDir.$product['image']);
                 if($mail->send()) {

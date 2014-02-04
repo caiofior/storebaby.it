@@ -144,7 +144,8 @@ class MastroProduct {
         $magentoProduct->setData('weight', $weight);
         $iva =  $this->data['IVA'];
         if ($iva = '21') $iva = '22';
-        $magentoProduct->setData('price',$this->data['VENDITA']+1*($iva/100));
+        //$magentoProduct->setData('price',$this->data['VENDITA']+1*($iva/100));
+		$magentoProduct->setData('price',$this->data['VENDITA']);
         $magentoProduct->setData('tax_class_id', $iva);
         $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
         $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));
@@ -219,7 +220,7 @@ class MastroProduct {
         return self::$headers;
     }
       /**
-      * Genereate a keu form a produc name
+      * Genereate a key form a produc name
       * @param string $descrizione
       * @return string
       */

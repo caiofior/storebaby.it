@@ -135,7 +135,7 @@ LIMIT 1
          * @param array $params
          * @return boolean
          */
-	public function processItemBeforeId(&$item,$params=null)
+	public function processItemAfterId(&$item,$params=null)
 	{
             $googleMerchantData = $this->columns;
             $googleMerchantData['id']=$item['sku'];
@@ -150,7 +150,18 @@ LIMIT 1
             }
             $googleMerchantData['google product category']=$category;
             $googleMerchantData['product type']=  str_replace('/', ' > ', $item['categories']);
-            $googleMerchantData['link']=$this->config['web/unsecure/base_url'].'index.php/'.$item['url_path'];
+            $url_path = '';
+            foreach($this->selectAll(
+                    'SELECT `request_path` FROM `core_url_rewrite`
+                    WHERE `id_path` LIKE "product/%" AND `request_path` LIKE "%'.$item['url_key'].'%" 
+                    ORDER BY `category_id` ASC LIMIT 1') as $value) {
+                
+                
+                $url_path =$value['request_path'];
+            }
+            
+            if ($url_path == '' ) return;
+            $googleMerchantData['link']=$this->config['web/unsecure/base_url'].'index.php/'.$url_path;
             $googleMerchantData['image link']=$this->config['web/unsecure/base_url'].'media/catalog/product/'.preg_replace('/\+\//','',$item['image']);
             $googleMerchantData['condition']='new';
             $googleMerchantData['price']=$item['price'].' EUR';

@@ -437,8 +437,6 @@ message TEXT
                        )
                     ) {
                         echo 'Downloading backup '.$file.PHP_EOL;
-                        var_dump($backupDir.DIRECTORY_SEPARATOR.$file);
-                        die();
                         ftp_get($this->ftp, $backupDir.DIRECTORY_SEPARATOR.$file,  $file, FTP_BINARY);
                         if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
                             $filesize =filesize($backupDir.DIRECTORY_SEPARATOR.$file);
