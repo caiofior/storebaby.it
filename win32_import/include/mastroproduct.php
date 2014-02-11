@@ -60,7 +60,10 @@ class MastroProduct {
         'SOTTOSCORTA',
         'LOCAZIONE_MAG',
         'FOTO_ARTICOLO',
-        'TESTO'
+        'TESTO',
+        'DATA_MODIFICA',
+        'DATA_SCARICO',
+        'DATA_CARICO'
     );
 
      /**
@@ -143,7 +146,7 @@ class MastroProduct {
         if ($weight ==false) $weight = '0.1';
         $magentoProduct->setData('weight', $weight);
         $iva =  $this->data['IVA'];
-        if ($iva = '21') $iva = '22';
+        if ($iva == '21') $iva = '22';
         //$magentoProduct->setData('price',$this->data['VENDITA']+1*($iva/100));
 		$magentoProduct->setData('price',$this->data['VENDITA']);
         $magentoProduct->setData('tax_class_id', $iva);

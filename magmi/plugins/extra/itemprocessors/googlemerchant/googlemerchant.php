@@ -164,7 +164,7 @@ LIMIT 1
             $googleMerchantData['link']=$this->config['web/unsecure/base_url'].'index.php/'.$url_path;
             $googleMerchantData['image link']=$this->config['web/unsecure/base_url'].'media/catalog/product/'.preg_replace('/\+\//','',$item['image']);
             $googleMerchantData['condition']='new';
-            $googleMerchantData['price']=$item['price'].' EUR';
+            $googleMerchantData['price']=str_replace('.',',',$item['price']).' EUR';
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
             $googleMerchantData['gtin']=$item['sku'];
@@ -173,7 +173,7 @@ LIMIT 1
             foreach($this->tableRates as $tWeight => $tPrice)
                 if ($item['weight'] > $tWeight) $shipExpense = $tPrice;
 
-            $googleMerchantData['shipping']='IT::'.$shipExpense.' EUR';
+            $googleMerchantData['shipping']='IT::'.str_replace('.',',',$shipExpense).' EUR';
             foreach($googleMerchantData as $key=>$value) {
                  $googleMerchantData[$key]=str_replace("\t",' ',$value);
             }

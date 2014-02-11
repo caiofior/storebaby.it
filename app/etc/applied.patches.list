@@ -1,0 +1,12 @@
+2014-02-10 06:25:40 UTC | SUPEE-2677 | EE_1.13.0.2 | v2 | d20e6763cd0df70c4ac6e418c9775a1ff0f2618f | Tue Jan 14 17:49:25 2014 +0200 | v1.13.0.2..HEAD
+patching file app/code/core/Mage/Cms/Helper/Wysiwyg/Images.php
+patching file app/code/core/Mage/Cms/Model/Wysiwyg/Images/Storage.php
+
+
+2014-02-10 06:28:23 UTC | SUPEE-2629 | EE_1.12.0.0 | v1 | 5de775cf535e137b0b099d8066bd5b3a81f7ec4c | Wed Dec 11 16:50:40 2013 +0200 | v1.12.0.0..HEAD
+patching file app/code/core/Mage/Catalog/Model/Product.php
+patching file app/code/core/Mage/Core/Controller/Varien/Router/Standard.php
+patching file app/code/core/Mage/Install/etc/config.xml
+patching file app/code/core/Zend/Pdf/FileParserDataSource.php
+
+
