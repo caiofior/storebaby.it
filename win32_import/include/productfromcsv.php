@@ -309,29 +309,37 @@ message TEXT
      * @throws Exception
      */
     public function setUpFtp() {
+        if (!key_exists('FTP_SERVER', $this->config))
+            return;
         if (is_resource($this->ftp) && !is_array(ftp_nlist($this->ftp, '.'))) {
             ftp_close($this->ftp);
             $this->ftp = null;
             echo 'FTP reconnect'.PHP_EOL;
         }
-        if (!is_resource($this->ftp)) {
-            if (key_exists('FTP_SERVER', $this->config)) {
-                $this->ftp = ftp_connect($this->config['FTP_SERVER']);
-                if (!is_resource($this->ftp))
-                    throw new Exception('Wrong FTP server server:' . $this->config['FTP_SERVER'], 1312100839);
-                if (key_exists('FTP_USER', $this->config)) {
-                    if (!ftp_login($this->ftp, $this->config['FTP_USER'], $this->config['FTP_PASSWORD']))
-                        throw new Exception('Wrong FTP login user:' . $this->config['FTP_USER'] . ' password:' . $this->config['FTP_PASSWORD'], 1312100835);
-                }
-                if ($this->initialFtp) {
-                    if (!key_exists('FTP_BASE_DIR', $this->config)) {
-                        $this->config['FTP_BASE_DIR'] = '';
-                    }
-                    $this->config['FTP_BASE_DIR'] = ftp_pwd($this->ftp) . '/' . $this->config['FTP_BASE_DIR'];
-                }
-                $this->initialFtp = false;
-                ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+        $count = 0;
+        while (!is_resource($this->ftp) && $count < 5) {
+            $count++;
+            $this->ftp = ftp_connect($this->config['FTP_SERVER']);
+            if (!is_resource($this->ftp)) {
+                echo 'FTP server wrong or down '.$this->config['FTP_SERVER'].PHP_EOL;
+                sleep(5);
+                continue;
             }
+            if (key_exists('FTP_USER', $this->config)) {
+                if (!ftp_login($this->ftp, $this->config['FTP_USER'], $this->config['FTP_PASSWORD'])){
+                echo 'Wrong login to FTP server '.$this->config['FTP_SERVER'].' user:'.$this->config['FTP_USER'].' password:'.$this->config['FTP_PASSWORD'].PHP_EOL;
+                sleep(5);
+                continue;
+            }
+            }
+            if ($this->initialFtp) {
+                if (!key_exists('FTP_BASE_DIR', $this->config)) {
+                    $this->config['FTP_BASE_DIR'] = '';
+                }
+                $this->config['FTP_BASE_DIR'] = ftp_pwd($this->ftp) . '/' . $this->config['FTP_BASE_DIR'];
+            }
+            $this->initialFtp = false;
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
         }
     }
     /**
