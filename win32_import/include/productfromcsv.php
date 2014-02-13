@@ -251,7 +251,8 @@ corrupted NUMERIC
      * @param string $string
      */
     public function appendToLog($string) {
-        $this->log .= $string . PHP_EOL;
+       if (strlen($this->log) < 500)
+         $this->log .= $string . PHP_EOL;
     }
 
     /**
@@ -259,7 +260,23 @@ corrupted NUMERIC
      */
     public function execOnShutdown() {
         $this->log .= ' Ended at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
+        if (key_exists('CANCEL_MAGENTO_URL', $this->config)) {
+            echo 'Call to magento cancel url ' . PHP_EOL;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->config['CANCEL_MAGENTO_URL']);
+            if (key_exists('UPDATE_MAGENTO_CREDENTIALS', $this->config)) {
+                curl_setopt($ch, CURLOPT_HEADER,false); 
+                $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
+                curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
+                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
+                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,1200); 
+                curl_setopt($ch,CURLOPT_TIMEOUT,1200); 
+                
+            }
+            curl_exec($ch);
+        }
         if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
+            $this->log .= ' Magmi call start at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
             echo 'Call to magento update url ' . PHP_EOL;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $this->config['UPDATE_MAGENTO_URL']);
@@ -268,15 +285,15 @@ corrupted NUMERIC
             if (key_exists('UPDATE_MAGENTO_CREDENTIALS', $this->config)) {
                 curl_setopt($ch, CURLOPT_HEADER,false); 
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+                curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
                 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
+                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,1200); 
+                curl_setopt($ch,CURLOPT_TIMEOUT,1200); 
                 
             }
             curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
-            $output = strip_tags(str_replace('</p>', PHP_EOL,curl_exec($ch))). PHP_EOL;
-            $this->log .=$output;
-            echo $output;
-
+            curl_exec($ch);
+            $this->log .= ' Magmi call end at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
         }
         $dbFile = getcwd() . DIRECTORY_SEPARATOR . 'log';
         $dbFile .= DIRECTORY_SEPARATOR . 'mastro';
@@ -321,15 +338,17 @@ message TEXT
             $count++;
             $this->ftp = ftp_connect($this->config['FTP_SERVER']);
             if (!is_resource($this->ftp)) {
+                $this->appendToLog(strftime('%Y-%m-%d %H:%M:%S').' FTP server wrong or down '.$this->config['FTP_SERVER'].PHP_EOL);
                 echo 'FTP server wrong or down '.$this->config['FTP_SERVER'].PHP_EOL;
                 sleep(5);
                 continue;
             }
             if (key_exists('FTP_USER', $this->config)) {
                 if (!ftp_login($this->ftp, $this->config['FTP_USER'], $this->config['FTP_PASSWORD'])){
-                echo 'Wrong login to FTP server '.$this->config['FTP_SERVER'].' user:'.$this->config['FTP_USER'].' password:'.$this->config['FTP_PASSWORD'].PHP_EOL;
-                sleep(5);
-                continue;
+                    $this->appendToLog(strftime('%Y-%m-%d %H:%M:%S').' Wrong login to FTP server '.$this->config['FTP_SERVER'].' user:'.$this->config['FTP_USER'].' password:'.$this->config['FTP_PASSWORD'].PHP_EOL);
+                    echo 'Wrong login to FTP server '.$this->config['FTP_SERVER'].' user:'.$this->config['FTP_USER'].' password:'.$this->config['FTP_PASSWORD'].PHP_EOL;
+                    sleep(5);
+                    continue;
             }
             }
             if ($this->initialFtp) {
@@ -399,7 +418,7 @@ message TEXT
             
         }  while (($size == $fileSize || $fileSize == null) && $count < 10);
         if ($count >=10)
-                    $this->appendToLog('Error on uploading  CSV ');
+                $this->appendToLog('Error on uploading  CSV ');
         }
     }
     /**
@@ -407,6 +426,7 @@ message TEXT
      */
     private function downloadBackup (){
         if (is_resource($this->ftp)) {
+            echo 'Downloading backups'.PHP_EOL;
         $count = 0;
             $fileList =array();
             $backupDir = getcwd() . DIRECTORY_SEPARATOR . 'backups';
@@ -431,7 +451,7 @@ message TEXT
             foreach($fileList as $file) {
                 $filesize = null;
                 if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
-                            $filesize = filesize($backupDir.DIRECTORY_SEPARATOR.$file);
+                    $filesize = filesize($backupDir.DIRECTORY_SEPARATOR.$file);
                 if ($count > 5 || $filesize > 0) continue;
                 $iCount = 0;
                 do {
@@ -454,7 +474,7 @@ message TEXT
                 while (is_null($filesize) && $iCount <5);
                 $count++;
             }
-            
+            echo 'Downloading backups end'.PHP_EOL;
         ftp_close($this->ftp);
         }
     }

@@ -54,7 +54,7 @@ class Mage_Catalog_Block_Product_New extends Mage_Catalog_Block_Product_Abstract
                     array('attribute' => 'news_to_date', 'is'=>new Zend_Db_Expr('not null'))
                     )
               )
-            ->addAttributeToSort('news_from_date', 'asc')
+            ->addAttributeToSort('news_from_date', 'desc')
             //->setPageSize($this->getProductsCount())
 			->setPageSize(8)
             ->setCurPage(1)
