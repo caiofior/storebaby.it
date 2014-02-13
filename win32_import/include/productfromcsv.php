@@ -274,6 +274,7 @@ corrupted NUMERIC
                 
             }
             curl_exec($ch);
+            curl_close($ch);
         }
         if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
             $this->log .= ' Magmi call start at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
@@ -293,6 +294,7 @@ corrupted NUMERIC
             }
             curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
             curl_exec($ch);
+            curl_close($ch);
             $this->log .= ' Magmi call end at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
         }
         $dbFile = getcwd() . DIRECTORY_SEPARATOR . 'log';
