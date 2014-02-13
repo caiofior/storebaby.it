@@ -27,7 +27,7 @@ class ShopShark_ThemeConfig_Block_Brands extends Mage_Core_Block_Template
 		$_brand_attribute = Mage::getSingleton('eav/config') ->getAttribute('catalog_product', Mage::getStoreConfig('milanoconfig/productpage/brand_attr'));
 		$_brands = array();
 		foreach ($_brand_attribute->getSource()->getAllOptions(false, true) as $_brand){ 
-			$_brands[] = $_brand['label'];
+			$_brands[$_brand['value']] = $_brand['label'];
 		}
 		return $_brands; 
 	}

@@ -1,0 +1,48 @@
+<?php if ((Mage::getStoreConfig('milanoconfig/homeoptions/show_brands') == 1) && ($_brands = $this->getAllBrands()) && count($_brands)):
+$brandImageExt = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_image_extension'));
+$brandPageBasePath = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_page_base_path')); 
+$brandLinkSearch = Mage::getStoreConfig('milanoconfig/productpage/brand_link_search_enabled') == 1;
+?>
+<div id="creativeContent">
+  <div id="brands_header">
+    <h1>A-Z <span>Tutte nostre marche | StoreBaby</span></h1>
+    
+  </div>
+<ul id="listbrand" class="brandfilter">
+<?php $i=0; foreach ($_brands as $brand_id=>$_brand): $i++;
+					$brandValue = $_brand;	
+					$brandValueCode = str_replace(" ", "_", strtolower($brandValue));					
+					$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
+					if ($brandLinkSearch)
+						$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q='.$brandValue.'&manufacturer=' . $brand_id;
+						
+					elseif ($brandPageBasePath != '')
+					{
+						$basePath = ($brandPageBasePath == '/') ? '' : $brandPageBasePath . '/';
+						$brandPageUrl = Mage::getUrl() . $basePath . str_replace(" ", "-", strtolower($brandValue));
+					}
+					else
+						$brandPageUrl = '';
+				?>
+
+<?php if ($brandPageUrl != ''): ?>
+	<li><a href="<?php echo $brandPageUrl;?>" title="<?php echo str_replace("%s", $brandValue, $this->__('Click to see more products from %s')); ?>"><img src="<?php echo $brandImageUrl;?>" alt="<?php echo $brandValue; ?>" /> <span><?php echo $brandValueCode; ?> </span></a></li>
+<?php else: ?>
+	<li><?php echo $brandValueCode; ?></li>
+<?php endif; ?>
+<?php endforeach; ?>
+</ul>
+</div>
+<?php endif; ?>
+
+
+<script type="text/javascript">// <![CDATA[
+jQuery(document).ready(function () {
+	jQuery('.brandfilter').listnav({
+		noMatchText: 'Nessuna marca trovata con questo criterio.'
+	});
+	jQuery('.demo a').click(function(e) {
+		e.preventDefault();
+	});
+});
+// ]]></script> 
