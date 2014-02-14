@@ -269,11 +269,12 @@ corrupted NUMERIC
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
                 curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
                 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
-                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,1200); 
-                curl_setopt($ch,CURLOPT_TIMEOUT,1200); 
+                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600); 
+                curl_setopt($ch,CURLOPT_TIMEOUT,3600); 
                 
             }
             curl_exec($ch);
+            curl_close($ch);
         }
         if (key_exists('UPDATE_MAGENTO_URL', $this->config)) {
             $this->log .= ' Magmi call start at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
@@ -287,12 +288,13 @@ corrupted NUMERIC
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
                 curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
                 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
-                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,1200); 
-                curl_setopt($ch,CURLOPT_TIMEOUT,1200); 
+                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600); 
+                curl_setopt($ch,CURLOPT_TIMEOUT,3600); 
                 
             }
             curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
             curl_exec($ch);
+            curl_close($ch);
             $this->log .= ' Magmi call end at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
         }
         $dbFile = getcwd() . DIRECTORY_SEPARATOR . 'log';
