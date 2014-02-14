@@ -108,7 +108,7 @@ public function getPluginInfo()
                             $url_path = '';
                 foreach($this->selectAll(
                         'SELECT `request_path` FROM `core_url_rewrite`
-                        WHERE `id_path` LIKE "product/%" AND `request_path` LIKE "%'.$product['url_key'].'%" 
+                        WHERE `id_path` LIKE "product/%" AND `product_id` = "'.$product['entity_id'].'" 
                         ORDER BY `category_id` ASC LIMIT 1') as $value) {
 
 

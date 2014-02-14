@@ -153,13 +153,12 @@ LIMIT 1
             $url_path = '';
             foreach($this->selectAll(
                     'SELECT `request_path` FROM `core_url_rewrite`
-                    WHERE `id_path` LIKE "product/%" AND `request_path` LIKE "%'.$item['url_key'].'%" 
+                    WHERE `id_path` LIKE "product/%" AND `product_id` = "'.$params['product_id'].'" 
                     ORDER BY `category_id` ASC LIMIT 1') as $value) {
                 
                 
                 $url_path =$value['request_path'];
             }
-            
             if ($url_path == '' ) return;
             $googleMerchantData['link']=$this->config['web/unsecure/base_url'].'index.php/'.$url_path;
             $googleMerchantData['image link']=$this->config['web/unsecure/base_url'].'media/catalog/product/'.preg_replace('/\+\//','',$item['image']);
