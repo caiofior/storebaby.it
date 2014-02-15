@@ -135,6 +135,8 @@ class MastroProduct {
         $magentoProduct->setData('categories',$categories);
         $magentoProduct->setData('sku',$this->data['EAN13']);
         $magentoProduct->setData('xus_skus',$this->getReSkus($key));
+        if ($this->data['DESCRIZIONE'] == '')
+            return false;
         $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
         if ($this->data['MARCA'] != '')
             $magentoProduct->setData('manufacturer', ucfirst(strtolower(stripslashes($this->data['MARCA']))).'::['.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['MARCA']))))).']');
@@ -148,7 +150,9 @@ class MastroProduct {
         $iva =  $this->data['IVA'];
         if ($iva == '21') $iva = '22';
         //$magentoProduct->setData('price',$this->data['VENDITA']+1*($iva/100));
-		$magentoProduct->setData('price',$this->data['VENDITA']);
+        if ($this->data['VENDITA'] == '')
+            return false;
+	$magentoProduct->setData('price',$this->data['VENDITA']);
         $magentoProduct->setData('tax_class_id', $iva);
         $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
         $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));

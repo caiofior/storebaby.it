@@ -84,7 +84,8 @@ class Magmi_ReindexingPlugin extends Magmi_GeneralImportPlugin
 			$this->log("No indexes selected , skipping reindexing...","warning");
 			return true;
 		}
-		/*foreach($idxlist as $idx)
+                $out = exec ('rm -Rf '.__DIR__.'/../../../../../var/locks ');
+		foreach($idxlist as $idx)
 		{
 			$tstart=microtime(true);
 			$this->log("Reindexing $idx....","info");
@@ -99,21 +100,7 @@ class Magmi_ReindexingPlugin extends Magmi_GeneralImportPlugin
 				exit();
 			}			
 			flush();
-		}*/
-                $out = exec ('rm -Rf '.__DIR__.'/../../../../../var/locks ');
-                $tstart=microtime(true);
-                $this->log("Reindexing all....","info");
-
-                // Execute Reindex command, and specify that it should be ran from Magento directory
-                $out = exec($cl." reindexall");
-                $this->log($out,"info");
-                $tend=microtime(true);
-                $this->log("done in ".round($tend-$tstart,2). " secs","info");
-                if(Magmi_StateManager::getState()=="canceled")
-                {
-                        exit();
-                }			
-                flush();
+		}
                 $out = exec ('rm -Rf '.__DIR__.'/../../../../../var/cache ');
 	}
 			

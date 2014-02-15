@@ -74,18 +74,20 @@ public function getPluginInfo()
                                 )
                             )
                     LIMIT 1
-                    ) as image
+                    ) as image ,
+                    (SELECT `request_path` FROM `core_url_rewrite`
+                        WHERE `id_path` LIKE "product/%" AND `product_id` = `catalog_product_entity`.`entity_id`
+                        ORDER BY `category_id` ASC LIMIT 1
+                    ) as url_path
                     FROM `catalog_product_entity` 
                     LEFT JOIN `catalog_product_entity_int` ON 
                     `catalog_product_entity_int`.`entity_id`=`catalog_product_entity`.`entity_id` AND 
                     `catalog_product_entity_int`.`attribute_id`= (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code`="shared_on_social_networks")
                     WHERE `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1
+                    HAVING `url_path` <> ""
                     ORDER BY `catalog_product_entity`.`updated_at` DESC 
-                LIMIT 1000');
-            $count = 0;
+                LIMIT '.$this->getParam("SOCIAL:topost","10"));
             foreach ($products as $product) {
-                if ($count > $this->getParam("SOCIAL:topost","100"))
-                        continue;
                 if (!is_file($imageDir.$product['image']))
                         continue;
                 $mail = new PHPMailer;
@@ -109,18 +111,7 @@ public function getPluginInfo()
                 $mail->CharSet = 'UTF-8';
                 $mail->isHTML(false);
                             $url_path = '';
-                foreach($this->selectAll(
-                        'SELECT `request_path` FROM `core_url_rewrite`
-                        WHERE `id_path` LIKE "product/%" AND `product_id` = "'.$product['entity_id'].'" 
-                        ORDER BY `category_id` ASC LIMIT 1') as $value) {
-
-
-                    $url_path =$value['request_path'];
-                }
-
-                if ($url_path == '' ) continue;
-                $count++;
-                $mail->Subject = $product['name']. ' '.$config['web/unsecure/base_url'].'index.php/'.$url_path;
+                $mail->Subject = $product['name']. ' '.$config['web/unsecure/base_url'].'index.php/'.$product['url_path'];
                 $mail->Body = ' ';
                 $mail->addAttachment($imageDir.$product['image']);
                 if($mail->send()) {
