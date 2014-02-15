@@ -1,4 +1,4 @@
-"""Remember Me"" Default Value","""Ricordami"" Valore di Default"
+"""""Remember Me"""" Default Value","""""Ricordami"""" Valore di Default "
 "(Not %s?)","(Non %s?)"
 "* Required Fields","* Campi obbligatori"
 "Address","Indirizzo"
@@ -62,3 +62,4 @@
 "Welcome, %s!","Benvenuto, %s!"
 "What\'s this?","Cos\'è questo?"
 "Zip/Postal Code","Zip/Codice postale"
+"""Remember Me"" Default Value","""Ricordami"" impostato di default"

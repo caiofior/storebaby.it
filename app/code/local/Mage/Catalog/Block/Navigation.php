@@ -226,22 +226,24 @@ class Mage_Catalog_Block_Navigation extends Mage_Core_Block_Template
             $classes[] = 'active';
         }
         $linkClass = '';
+        $categoryClass = Mage::getModel('catalog/category')->load($category->getId());  // added by Romars
+        $csscatClass = $categoryClass->getData('navigation_style'); // added by Romars
         if ($isOutermost && $outermostItemClass) {
             $classes[] = $outermostItemClass;
-            $linkClass = ' class="'.$outermostItemClass.'"';
+            $linkClass = ' class="'.$outermostItemClass.' '.$csscatClass.'"'; // added by Romars
         }
         if ($isFirst) {
-            $classes[] = 'first';
+            $classes[] = 'first '.$csscatClass; // added by Romars
         }
         if ($isLast) {
-            $classes[] = 'last';
+            $classes[] = 'last '.$csscatClass; // added by Romars
         }
         if ($hasActiveChildren) {
-            $classes[] = 'parent';
+            $classes[] = 'parent '.$csscatClass; // added by Romars
             $this->_columnsCount++;
         }
 		if ($_isThumbnail) {
-			$classes[] = 'category-thumbnail';
+			$classes[] = 'category-thumbnail '.$csscatClass; // added by Romars
 		}
 
         // prepare list item attributes
@@ -261,13 +263,14 @@ class Mage_Catalog_Block_Navigation extends Mage_Core_Block_Template
         }
         $htmlLi .= '>';
         $html[] = $htmlLi;
-
 		$html[] = '<a href="'.$this->getCategoryUrl($category).'"'.$linkClass.'>';
 		
 		// add the thumbnail
 		if($_isThumbnail) $html[] = '<img src="'.Mage::getBaseUrl('media').'catalog/category/'.$categoryThumbnail.'" />';			
-        $categoryClass = Mage::getModel('catalog/category')->load($category->getId());
-        $html[] = '<span>' . $categoryClass->getData('navigation_style') . $this->escapeHtml($category->getName()) . '</span>';
+		// get atribute from backend
+		// added by Romars
+        $categoryClass = Mage::getModel('catalog/category')->load($category->getId()); 
+        $html[] = '<span class="'.$categoryClass->getData('navigation_style').'">'.$this->escapeHtml($category->getName()) . '</span>';
         $html[] = '</a>';
 
         // render children

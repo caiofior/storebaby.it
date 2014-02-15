@@ -152,9 +152,9 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
     <?php endif; ?>
     <td class="a-center item-product-quantity" width="75">	
-        <input type="button" class="quantity_box_button_down box_down<?php echo $_item->getId() ?>" onclick="qtyDown('<?php echo $_item->getId() ?>')" />         
+        <input type="button" class="quantity_box_button_down box_down<?php echo $_item->getId() ?>" value="-" onclick="qtyDown('<?php echo $_item->getId() ?>')" />         
         <input name="cart[<?php echo $_item->getId() ?>][qty]" id="cart[<?php echo $_item->getId() ?>][qty]" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" style="float: left; width:1.9em!important;" />
-        <input type="button" class="quantity_box_button_up" onclick="qtyUp('<?php echo $_item->getId() ?>')" />
+        <input type="button" class="quantity_box_button_up" value="+" onclick="qtyUp('<?php echo $_item->getId() ?>')" />
         <script type="text/javascript">
             var qty_el = document.getElementById('cart[<?php echo $_item->getId() ?>][qty]');
             var qty = qty_el.value; 

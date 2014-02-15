@@ -1,0 +1,73 @@
+
+  		<form name="ccform" action="<?php echo $this->getUrl('iwbank/processing/confirms2s') ?>" method="POST">
+				<img src="<?php echo $this->getSkinUrl($this->getLogoSrc()) ?>" />
+            	<h3>Ordine #<?php echo $this->order_number ?> <small>del <?php echo ($this->orderdate) ?></small></h3>
+				<ul class>
+					<?php foreach($this->items as $item) :?>
+					<li class="item"><p><?php echo $item->getName() ?></p>  <b>x<?php echo $item->getQty() ?></b></li>
+					<?php endforeach ?>
+					<li class="item total"> <b>Totale € <?php echo $this->order_total ?></b></li>
+				</ul>
+				<div class="clear"></div>
+                <h2>Informazioni sulla tua carta</h2>
+                <ul>
+                    <li>
+                        <label for="name_on_card">Carta intestata a</label>
+                        <input type="text" name="name_on_card" id="name_on_card">
+                    </li>
+                    <li>
+                        <ul class="cards">
+                        	<?php foreach ($this->getCards('array') as $card) : ?>
+                            <li class="<?php echo $card['value'] ?>"><?php echo $card['label'] ?></li>
+							<?php endforeach; ?>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <label for="card_number">Numero Carta</label>
+                        <input type="text" name="card_number" id="card_number">
+                    </li>
+
+                    <li class="vertical">
+                        <ul>
+                            <li>
+                                <label for="expiry_date">Scadenza <small>MM/AAAA</small></label>
+                                <input type="text" name="expiry_date" id="expiry_date" class="expiry_date" maxlength="10">
+                            </li>
+
+                            <li>
+                                <label for="cvv">CVV</label>
+                                <input type="text" name="cvv" id="cvv" maxlength="4">
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="vertical maestro">
+                        <ul>
+                            <li>
+                                <label for="issue_date">Issue date <small>MM/YYYY</small></label>
+                                <input type="text" name="issue_date" id="issue_date" maxlength="5">
+                            </li>
+
+                            <li>
+                                <span class="or">or</span>
+                                <label for="issue_number">Issue number</label>
+                                <input type="text" name="issue_number" id="issue_number" maxlength="2">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <input type="hidden" name="card_type" id="card_type" value="">
+                <input type="hidden" name="track" value="<?php echo $this->track ?>">
+              <b class="required">Inserisci le informazioni della tua carta</b>
+    		 <button class="confirm">Conferma questo ordine</button>
+            </form>
+         	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="<?php echo $this->getSkinUrl('iwbank/js/jquery.creditCardValidator.js') ?>"></script>
+
+<script type="text/javascript" >
+(function(){$(function(){$(".demo .numbers li").wrapInner('<a href="#"></a>').click(function(e){e.preventDefault();return $("#card_number").val($(this).text()).trigger("input")});$(".vertical.maestro").hide().css({opacity:0});return $("#card_number").validateCreditCard(function(e){if(e.card_type==null){$(".cards li").removeClass("off");$("#card_number").removeClass("valid");$(".vertical.maestro").slideUp({duration:200}).animate({opacity:0},{queue:!1,duration:200});return}$(".cards li").addClass("off");$(".cards ."+e.card_type.name).removeClass("off");e.card_type.name==="maestro"?$(".vertical.maestro").slideDown({duration:200}).animate({opacity:1},{queue:!1}):$(".vertical.maestro").slideUp({duration:200}).animate({opacity:0},{queue:!1,duration:200});return e.length_valid&&e.luhn_valid?$("#card_number").addClass("valid"):$("#card_number").removeClass("valid")},{accept:<?php echo $this->getCards() ?>})})}).call(this);
+</script>
+		<script src="<?php echo $this->getSkinUrl('iwbank/js/script.js') ?>"></script>
+      
+			

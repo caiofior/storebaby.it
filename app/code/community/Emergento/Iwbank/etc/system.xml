@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!-- Emergento -->
+<config>
+    <sections>
+        <payment>
+            <groups>
+                <iwbank_cc translate="label" module="iwbank">
+                    <label>Iwbank/Iwsmile Payment Gateway</label>
+                    <comment><![CDATA[Questo modulo è stato acquistato su <a href="http://gateways.emergento.com">Emergento Gateways</a>, puoi chiederci supporto da <a href="http://gateways.emergento.com/contacts/">qui</a>]]></comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <!-- campi default -->
+                        <paybymail translate="label">
+                            <label>Pay by Mail Attivo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                             <comment><![CDATA[]]></comment>
+                        </paybymail>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <test_mode translate="label">
+                            <label>Test Mode</label>
+                            <comment><![CDATA[
+                                è necessario usare gli account come segue per verificare i diversi esiti, 
+                                i dati di test sono i seguenti:
+                                <ul>
+                                    <li>conto 700000001 <b>esito OK</b> chiave mac: <b>ppooiiuu</b></li>
+                                    <li>conto 700000002 <b>esito KO</b> chiave mac: <b>ppooiiuukjj</b></li>
+                                </ul>
+                                ]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </test_mode>
+                        <title translate="label">
+                            <label>Etichetta del metodo di pagamento</label>
+                            <comment>questa informazione sarà visualizzata nel tuo checkout per indicare il tuo metodo di pagamento</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <transaction_prefix translate="label">
+                            <label>Prefisso</label>
+                            <comment>Questo prefisso verrà aggiunto alle tue transazioni con la banca in modo da rendere chiara la correlazione con il tuo ordine es. iwbank000000001, vedrai le tue transazioni in sales > transactions del tuo backend, valori consentiti a-z A-Z, massimo 6 caratteri</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-alpha validate-length maximum-length-6</validate>
+                        </transaction_prefix>
+                        <allowspecific translate="label">
+                            <label>Nazioni abilitate al pagamento</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>6</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Applica il pagamento solo alle nazioni specificate</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>7</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </specificcountry>
+
+                        <sort_order translate="label">
+                            <label>Sort order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sort_order>
+                        <!-- fine campi default -->
+
+                        <s2s_mode translate="label">
+                          <label>Server 2 Server Mode</label>
+                          <comment><![CDATA[modalità che permette di eseguire tutte le transazioni all'interno del tuo sito web, senza dover transitare sulle pagine di pagamento della banca <b>Attenzione:</b> Bisogna richiedere l'attivazione di questo servizio rivolgendosi alla propria banca]]></comment>
+                          <frontend_type>select</frontend_type>
+                          <source_model>adminhtml/system_config_source_yesno</source_model>
+                          <sort_order>2</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>0</show_in_store>
+                        </s2s_mode>
+                        
+                        <terminal_id translate="label">
+                            <label>Alias</label>
+                            <comment><![CDATA[Alias associato al vostro account della banca 
+                                <ul>
+                                    <li>conto 700000001 <b>esito OK</b> chiave mac: <b>ppooiiuu</b></li>
+                                    <li>conto 700000002 <b>esito KO</b> chiave mac: <b>ppooiiuukjj</b></li>
+                                </ul>
+                                ]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </terminal_id>
+                        <mac_key translate="label">
+                            <label>MAC Key</label>
+                            <comment><![CDATA[Chiave per la codifica delle comunicazioni con la banca, questa chiave verrà anche utilizzata per criptare le email di pagamento che invierai ai tuoi clienti con la modalità
+                                PAYBYMAIL
+                                ]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-length maximum-length-256</validate>
+                        </mac_key>
+                      <cctypes translate="label">
+                            <label>Carte Accettate</label>
+                            <comment>Carte di credito accettate, se non specificate verranno accettate tutte (utile per escludere American Express in caso di commissioni non accettate)</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>emergento_iwbank/source_cctype</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cctypes>
+
+                    </fields>
+                </iwbank_cc>
+            </groups>
+        </payment>
+    </sections>
+</config>

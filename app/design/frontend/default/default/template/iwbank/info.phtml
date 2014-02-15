@@ -1,0 +1,19 @@
+<?php
+/* Emergento */
+?>
+<p><?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?></p>
+
+<?php if ($_specificInfo = $this->getSpecificInformation()):?>
+<table>
+    <tbody>
+    <?php foreach ($_specificInfo as $_label => $_value):?>
+        <tr>
+            <th><?php echo $this->escapeHtml($_label)?>:</th>
+            <td><?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php endif;?>
+
+<?php echo $this->getChildHtml()?>

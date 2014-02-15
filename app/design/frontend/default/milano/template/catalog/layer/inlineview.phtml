@@ -6,7 +6,7 @@
         	<?php $i=0; foreach ($_filters as $_filter): ?>
             	<?php if($_filter->getItemsCount()): $i++; ?>
                 <dl>
-                    <dt id="filterlabel<?php echo $i;?>"><?php echo $this->__($_filter->getName()) ?></dt>
+                    <dt id="filterlabel<?php echo $i;?>"><div><?php echo $this->__($_filter->getName()) ?></div><span class="tip"><?php echo $this->__('Filtra risultati per') ?></span></dt>
                     <dd><?php echo $_filter->getHtml() ?></dd>
                     <script type="text/javascript" >
                             jQuery('#filterlabel<?php echo $i;?>').each(function(){

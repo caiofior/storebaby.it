@@ -1,0 +1,45 @@
+<?php if (Mage::helper('skipstep1')->isSkipEnabled()): ?>
+<script type="text/javascript">
+function toggleRegister(checkbox) {
+    // If registration is checked, or the customer has no choice => register
+    if (!checkbox || checkbox.checked) {
+        checkout.method = 'register';
+        new Ajax.Request(
+            checkout.saveMethodUrl,
+            {method: 'post', onFailure: checkout.ajaxFailure.bind(checkout), parameters: {method:'register'}}
+        );
+        Element.show('register-customer-password');
+        if ($('remember-me-box')) {
+            $('remember-me-box').show();
+        }
+    // If the customer has a choice, and chose not to register => checkout as guest
+    } else {
+        checkout.method = 'guest';
+        new Ajax.Request(
+            checkout.saveMethodUrl,
+            {method: 'post', onFailure: checkout.ajaxFailure.bind(checkout), parameters: {method:'guest'}}
+        );
+        Element.hide('register-customer-password');
+        if ($('remember-me-box')) {
+            $('remember-me-box').hide();
+        }
+    }
+}
+
+function toggleLogin() {
+    $('login-form').toggle();
+    $('co-billing-form').toggle();
+    $('billing-login-link').toggle();
+    $('billing-guest-link').toggle();
+}
+
+<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+checkout.method = '<?php echo Mage::getStoreConfig('checkout/skipstep1/default_method') ?>';
+checkout.gotoSection('billing');
+toggleRegister($('login:register'));
+<?php endif ?>
+<?php if ($this->getMessagesBlock()->getMessageCollection()->count()): // Failed login => message => hide address form / show login ?>
+toggleLogin();
+<?php endif ?>
+</script>
+<?php endif ?>

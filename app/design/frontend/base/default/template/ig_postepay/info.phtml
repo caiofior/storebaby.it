@@ -1,0 +1,11 @@
+<?php
+$_method = $this->getMethod();
+?>
+<p><?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?></p>
+<?php echo Mage::helper('ig_postepay')->__('Card number to recharge') ?>:<br /><strong><?php echo htmlspecialchars($_method->getConfig('creditcard')) ?></strong><br />
+<br />
+<?php echo Mage::helper('ig_postepay')->__('Credit card holder') ?>:<br /><strong><?php echo htmlspecialchars($_method->getConfig('creditholder')) ?></strong><br />
+<br />
+<?php echo Mage::helper('ig_postepay')->__('Fiscal code') ?>:<br /><strong><?php echo htmlspecialchars($_method->getConfig('cfholder')) ?></strong><br />
+<br />
+<small><?php echo nl2br(htmlspecialchars($_method->getConfig('freetext'))) ?></small>

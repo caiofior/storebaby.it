@@ -1,5 +1,6 @@
 <?php if(Mage::getStoreConfig('milanoconfig/homeoptions/show_new_products') == 1): ?>
-<div class="slider-container">
+<div class="slider-container sliderHome">
+
 <h5><?php echo Mage::getStoreConfig('milanoconfig/homeoptions/new_products_title'); ?></h5>
 <?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
     <div class="product-slider" id="newproducts">
@@ -9,10 +10,11 @@
                     <div class="slide <?php if(($i == 4 && $_products->getSize() < 5) || ($i == $_products->getPageSize())) echo 'last'?>">
                         <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(210) ?>" width="210" height="210" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" /></a>
-                        <div class="new-description">
-                        	<div class="labels-container"><?php include('view/labels.phtml'); ?></div>
-                            <h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo Mage::helper('core/string')->truncate($this->htmlEscape($_product->getName()), $length = 30, $etc = '...', $remainder = '', $breakWords = true); ?></a></h3>
+                            <div class="new-description">
                             <?php echo $this->getPriceHtml($_product, true) ?>
+                        	<?php /*?><div class="labels-container"><?php include('view/labels.phtml'); ?></div><?php */?>
+                            <h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo Mage::helper('core/string')->truncate($this->htmlEscape($_product->getName()), $length = 30, $etc = '...', $remainder = '', $breakWords = true); ?></a></h3>
+                            
                             <div style="clear: both;"></div>
                         </div>
                     </div>
@@ -49,5 +51,16 @@
         </script>
     <?php endif; ?>
 <?php endif; ?>
+
+<div class="nicy-container"><div><p></p></div></div>
+		<script type="text/javascript">
+			nicyHeight = jQuery('.product-slider').height();
+			
+			jQuery('.nicy-container').height(nicyHeight+45);
+			jQuery('.nicy-container DIV').height(nicyHeight+25);
+			jQuery('.nicy-container DIV p').height(nicyHeight+5);
+        </script>
+        
+
 </div>
 <?php endif; ?>

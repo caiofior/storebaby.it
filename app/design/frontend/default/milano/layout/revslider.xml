@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!--<layout version="0.1.0">
+<layout version="0.1.0">
     <cms_index_index>
 		<reference name="head">
 			<action method="addCss"><stylesheet>css/revsettings.css</stylesheet></action>
@@ -11,4 +11,4 @@
 			<block type="sharkslideshow/slideshow" name="slideshow" template="page/html/revslider.phtml" />
         </reference>
     </cms_index_index>
-</layout>-->
+</layout>

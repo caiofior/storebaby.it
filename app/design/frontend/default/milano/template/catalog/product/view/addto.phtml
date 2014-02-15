@@ -8,9 +8,7 @@
 <?php
     $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
 ?>
-<?php if($_compareUrl) : ?>
-    <li class="compare-li"><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-<?php endif; ?>
+
 <?php if ($this->canEmailToFriend()): ?>
     <li class="email-friend"><span class="separator">|</span> <a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></li>
 <?php endif; ?>

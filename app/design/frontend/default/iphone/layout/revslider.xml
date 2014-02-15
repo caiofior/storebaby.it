@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <cms_index_index>
+		<reference name="head">
+			<action method="removeItem"><stylesheet>css/revsettings.css</stylesheet></action>
+			<action method="removeItem"><stylesheet>css/revcaptions.css</stylesheet></action>
+            <action method="removeItem"><script>shopshark/jquery.themepunch.revolution.min.js</script></action>
+			<action method="removeItem"><script>shopshark/jquery.revolution.init.js</script></action>
+        </reference>
+		<reference name="root">
+			<!--<block type="sharkslideshow/slideshow" name="slideshow" template="page/html/revslider.phtml" />-->
+        </reference>
+    </cms_index_index>
+</layout>

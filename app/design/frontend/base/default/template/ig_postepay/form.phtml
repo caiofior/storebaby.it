@@ -1,0 +1,38 @@
+<?php
+$_code			= $this->getMethodCode();
+$_method		= $this->getMethod();
+$_img			= $this->getPaymentImageSrc();
+?>
+<fieldset class="form-list">
+	<?php if ($_img) { ?>
+	<div style="position: relative; left: 14em; top: -2.5em"><a href="http://www.poste.it/" target="_blank"><img src="<?php echo $_img ?>" alt="" /></a></div>
+	<?php } ?>
+	<ul id="payment_form_<?php echo $_code ?>" style="display:none;">
+		<?php if ($_method->getConfig('displaycheckout')) { ?>
+
+		<?php if ($_method->getConfig('creditcard') != '') { ?>
+		<li>
+			<?php echo Mage::helper('ig_postepay')->__('Card number to recharge') ?>: <strong><?php echo htmlspecialchars($_method->getConfig('creditcard')) ?></strong>
+		</li>
+		<?php } ?>
+		<?php if ($_method->getConfig('creditholder') != '') { ?>
+		<li>
+			<?php echo Mage::helper('ig_postepay')->__('Credit card holder') ?>: <strong><?php echo htmlspecialchars($_method->getConfig('creditholder')) ?></strong>
+		</li>
+		<?php } ?>
+		<?php if ($_method->getConfig('cfholder') != '') { ?>
+		<li>
+			<?php echo Mage::helper('ig_postepay')->__('Fiscal Code') ?>: <strong><?php echo htmlspecialchars($_method->getConfig('cfholder')) ?></strong>
+		</li>
+		<?php } ?>
+		<?php if ($_method->getConfig('freetext') != '') { ?>
+		<li>
+			<small><?php echo nl2br(htmlspecialchars($_method->getConfig('freetext'))) ?></small>
+		</li>
+		<?php } ?>
+
+		<?php } else { ?>
+		<li><?php echo Mage::helper('ig_postepay')->__('You will receive further shopper information via email') ?></li>
+		<?php } ?>
+	</ul>
+</fieldset>

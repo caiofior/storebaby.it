@@ -6,7 +6,6 @@
 "All","Tutto"
 "All Pages","Tutte le pagine"
 "All Product Types","Tutti i tipi di prodotti"
-"An error occurred during saving a widget: %s","Errore durante il salvataggio del widget: %s"
 "Anchor Categories","Ancora categorie"
 "Apply","Applica"
 "Assign to Store Views","Assegna alle viste del negozio"
@@ -43,7 +42,7 @@
 "Select All","Seleziona tutto"
 "Select Visible","Seleziona visibile"
 "Settings","Impostazioni"
-"Sort Order","Ordina"
+"Sort Order",Ordina
 "Sort Order of widget instances in the same block reference","Ordina esempi widget nello stesso blocco degli esempi"
 "Specific %s","Specifica %s"
 "Specified Page","Pagina specificata"

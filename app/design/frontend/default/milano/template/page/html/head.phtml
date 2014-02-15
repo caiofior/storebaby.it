@@ -4,11 +4,29 @@
 <meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
 <meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<meta property="og:locale" content="it_IT">
+<link rel="canonical" href="http://www.storebaby.it">
+<meta property="og:url" content="http://www.storebaby.it"/>
+<meta property="og:title" content="Store Baby - Articoli per infanzia Prodotti per bambini" />
+<meta property="og:site_name" content="storebaby.it" />
+<meta property="og:description" content="StoreBaby.it - negozio online con una fantastica selezione di articoli per infanzia, tanti modelli di Passeggini, Seggiolini, Lettini da campeggio, Giochi, Alimentazione, pappa e molto altro ancora... Pagamenti sicuri con consegna a domicilio in 24 ore.">
+<meta property="og:image" content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>wysiwyg/fblogo-big.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="858">
+<meta property="og:image:height" content="446">
+<meta property="og:type" content="website" />
+
+
+<link rel="author" href="https://plus.google.com/113160380943238250605" />
+
+
+
 <link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 <?php echo $this->getCssJsHtml() ?>
 <?php echo $this->getChildHtml() ?>
-<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php // echo $this->helper('core/js')->getTranslatorScript() // ROMARS EDITED ?> 
 <?php echo $this->getIncludes() ?>
 
 <!--[if lt IE 7]>

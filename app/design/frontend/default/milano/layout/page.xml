@@ -54,8 +54,6 @@ Default layout, loads most of the pages
 				<action method="addJs"><script>shopshark/jquery.prettyPhoto.js</script></action>
 				
 				<action method="addJs"><script>shopshark/twitterFetcher_min.js</script></action>
-                <action method="addCss"><stylesheet>css/storebaby.css</stylesheet></action> <!--ROMARS-->
-				
 				<block type="core/template" name="themeoptions" template="page/html/theme_options.phtml" />
             </block>
 

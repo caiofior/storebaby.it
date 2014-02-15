@@ -81,8 +81,11 @@ public function getPluginInfo()
                     `catalog_product_entity_int`.`attribute_id`= (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code`="shared_on_social_networks")
                     WHERE `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1
                     ORDER BY `catalog_product_entity`.`updated_at` DESC 
-                LIMIT '.$this->getParam("SOCIAL:topost",""));
+                LIMIT 1000');
+            $count = 0;
             foreach ($products as $product) {
+                if ($count > $this->getParam("SOCIAL:topost","100"))
+                        continue;
                 if (!is_file($imageDir.$product['image']))
                         continue;
                 $mail = new PHPMailer;
@@ -116,6 +119,7 @@ public function getPluginInfo()
                 }
 
                 if ($url_path == '' ) continue;
+                $count++;
                 $mail->Subject = $product['name']. ' '.$config['web/unsecure/base_url'].'index.php/'.$url_path;
                 $mail->Body = ' ';
                 $mail->addAttachment($imageDir.$product['image']);

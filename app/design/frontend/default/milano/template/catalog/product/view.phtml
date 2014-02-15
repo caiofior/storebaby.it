@@ -26,7 +26,24 @@ $_shortDescription = $_product->getShortDescription();
                     <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                     <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
                 </div>
+                <div class="addtocont clear">
+                	<?php if($_product->getTypeId() != 'bundle'): ?>
+                    	<?php echo $this->getPriceHtml($_product) ?>
+                        <span class="txtIva"><?php echo $this->__('Prezzo IVA inclusa') ?></span>
+					<?php else: ?>
+                        <span class="product-code"><?php echo $this->__('Product code:').'<strong>'.$_product->getSku().'</strong>'; ?></span>
+                        <?php echo $this->getChildHtml('product_type_data') ?>
+                    <?php endif;?> 
+                    <?php if($_product->getTypeId() != 'bundle'): ?>
+                    	<?php echo $this->getChildHtml('product_type_data') ?>
+                        <span class="product-code"><?php echo $this->__('Product code:').' <strong>'.$_product->getSku().'</strong>'; ?></span>
+                    <?php endif;?>
+                </div>
+    <?php if (Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 1 ) : ?>
+    <div class="nostock"><?php echo $this->__('Il prodotto non è al momento disponibile nei nostri magazzini, lo stiamo aspettando entro 30 giorni.') ?></div>
+    <?php endif; ?>
                 
+                <?php echo $this->getChildHtml('upsell_products') ?>
 				<?php if($_brand_enabled):
 					
 					$_brand_attr = $_config['brand_attr'];
@@ -53,6 +70,8 @@ $_shortDescription = $_product->getShortDescription();
 
 							?>
                             <div class="brand-logo clear">
+                            	<div class="title"><?php echo $this->__('Brand') ?></div>
+
                             	<?php if ($brandPageUrl != ''): ?>
                                 	<a href="<?php echo $brandPageUrl;?>" title="<?php echo str_replace("%s", $brandValue, $this->__('Click to see more products from %s')); ?>"><img src="<?php echo $brandImageUrl;?>" alt="<?php echo $brandValue; ?>" /></a>
                                 <?php else: ?>
@@ -68,18 +87,7 @@ $_shortDescription = $_product->getShortDescription();
                     <input type="hidden" name="related_product" id="related-products-field" value="" />
                 </div>
                 
-                <div class="addtocont clear">
-                    <?php if($_product->getTypeId() != 'bundle'): ?>
-                    	<?php echo $this->getChildHtml('product_type_data') ?>
-                        <span class="product-code"><?php echo $this->__('Product code:').' <strong>'.$_product->getSku().'</strong>'; ?></span>
-                    <?php endif;?>
-                	<?php if($_product->getTypeId() != 'bundle'): ?>
-                    	<?php echo $this->getPriceHtml($_product) ?>
-					<?php else: ?>
-                        <span class="product-code"><?php echo $this->__('Product code:').'<strong>'.$_product->getSku().'</strong>'; ?></span>
-                        <?php echo $this->getChildHtml('product_type_data') ?>
-                    <?php endif;?>                
-                </div>
+
                 
 				<?php if($_tierPriceHtml = $this->getTierPriceHtml()): ?>
                 	<div class="clear"><?php echo $_tierPriceHtml; ?></div>
@@ -89,11 +97,7 @@ $_shortDescription = $_product->getShortDescription();
                 	<div class="clear"><?php echo $_extraHint ?></div>
                 <?php endif; ?>
 				
-				<?php if ($_shortDescription):?>
-                    <div class="short-description clear">
-                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_shortDescription), 'short_description') ?></div>
-                    </div>
-                <?php endif;?>
+				
                 
                 <?php if($_alertUrls = $this->getChildHtml('alert_urls')): ?>
                 	<div class="product-alerts clear"><?php echo $_alertUrls; ?></div>
@@ -122,8 +126,11 @@ $_shortDescription = $_product->getShortDescription();
                         <?php echo $this->getChildHtml('addto') ?>
                     </div>
                 <?php endif; ?>
-                
-                <?php if($_infoAccordion = $this->getChildHtml('info_accordion')): ?>
+				<?php if ($_shortDescription):?>
+                    <div class="short-description clear">
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_shortDescription), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>                <?php if($_infoAccordion = $this->getChildHtml('info_accordion')): ?>
                 	<div class="clear"><?php echo $_infoAccordion ?></div>
                 <?php endif; ?>
                 
@@ -159,5 +166,5 @@ $_shortDescription = $_product->getShortDescription();
         <?php echo $this->getChildHtml('product_additional_data') ?>
     </div>
         <?php echo $this->getChildHtml('related_products') ?>
-        <?php echo $this->getChildHtml('upsell_products') ?>
+
 </div>

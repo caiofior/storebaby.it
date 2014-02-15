@@ -1,14 +1,15 @@
 <?php if ((Mage::getStoreConfig('milanoconfig/homeoptions/show_brands') == 1) && ($_brands = $this->getAllBrands()) && count($_brands)):
+shuffle($_brands); 
 $brandImageExt = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_image_extension'));
 $brandPageBasePath = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_page_base_path')); 
 $brandLinkSearch = Mage::getStoreConfig('milanoconfig/productpage/brand_link_search_enabled') == 1;
 ?>
-<div class="slider-container">
+<div class="slider-container sliderHome brandSlider">
 <h5><?php echo Mage::getStoreConfig('milanoconfig/homeoptions/brands_title'); ?></h5>
     <div class="brands">
         <div class="carousel">
             <div class="slider">
-                <?php $i=0; foreach ($_brands as $brand_id=>$_brand): $i++;
+                <?php $counter = 0; $i=0; foreach ($_brands as $_brand): if ($counter >= 20) break; $counter++; $i++;
 					$brandValue = trim($_brand);	
 					$brandValueCode = str_replace(" ", "_", strtolower($brandValue));					
 					$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
@@ -62,5 +63,16 @@ $brandLinkSearch = Mage::getStoreConfig('milanoconfig/productpage/brand_link_sea
             });               
         </script>    
     <?php endif; ?>
+    
+
+<div class="nicy-containerBrand"><div><p></p></div></div>
+		<script type="text/javascript">
+			nicyHeightBrand = jQuery('.brands').height();
+			jQuery('.nicy-containerBrand').height(nicyHeightBrand+10);
+			jQuery('.nicy-containerBrand DIV').height(nicyHeightBrand-10);
+			jQuery('.nicy-containerBrand DIV p').height(nicyHeightBrand-30);
+        </script>
+      
+        
 </div>
 <?php endif; ?>

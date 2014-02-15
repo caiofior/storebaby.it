@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+    <checkout_onepage_index>
+        <reference name="content">
+            <block type="core/template" name="checkout.onepage.skipstep1" template="skipstep1/skip.phtml"/>
+        </reference>
+        <reference name="checkout.onepage.billing">
+			<action method="setTemplate" ifconfig="checkout/skipstep1/plugandplay"><template>skipstep1/billing.phtml</template></action>
+			<block type="checkout/onepage_login" name="checkout.onepage.billing.login" as="login" template="skipstep1/login.phtml">
+			    <block type="persistent/form_remember" name="persistent.remember.me" template="persistent/remember_me.phtml" />
+			</block>
+		</reference>
+    </checkout_onepage_index>
+    
+</layout>

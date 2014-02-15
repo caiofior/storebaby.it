@@ -3,6 +3,7 @@ $config = Mage::getStoreConfig('sharkslideshow/revolutionslider');
 $helper = Mage::helper('cms');
 $processor = $helper->getBlockTemplateProcessor();
 ?>
+<div class="homeSlider">
 <div class="fullwidthbanner-container">
     <div class="fullwidthbanner">
         <ul>
@@ -41,11 +42,12 @@ $processor = $helper->getBlockTemplateProcessor();
 	    <?php } ?>
     </div>
 </div>
+</div>
 <script type="text/javascript">
     var CONFIG_REVOLUTION = {
         delay:<?php echo (is_numeric($config['delay']) ? $config['delay'] : 9000); ?>,
         startwidth:<?php echo (is_numeric($config['startwidth']) ? $config['startwidth'] : 1920); ?>,
-        startheight:<?php echo (is_numeric($config['startheight']) ? $config['startheight'] : 400); ?>,
+        startheight:<?php echo (is_numeric($config['startheight']) ? $config['startheight'] : 360); ?>,
         hideThumbs:<?php echo (is_numeric($config['hideThumbs']) ? $config['hideThumbs'] : 200); ?>,
         navigationType:"<?php echo $config['navigationType']; ?>",
         navigationArrows:"<?php echo $config['navigationArrows']; ?>",
@@ -63,6 +65,6 @@ $processor = $helper->getBlockTemplateProcessor();
         hideSliderAtLimit:<?php echo (is_numeric($config['hideSliderAtLimit']) ? $config['hideSliderAtLimit'] : 0); ?>,
         stopAtSlide:<?php echo (is_numeric($config['stopAtSlide']) ? $config['stopAtSlide'] : -1); ?>,
         stopAfterLoops:<?php echo (is_numeric($config['stopAfterLoops']) ? $config['stopAfterLoops'] : -1); ?>,
-        fullWidth:"on"
+        fullWidth:"off"
     };
 </script>

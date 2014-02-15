@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<layout> <!-- everything goes in here -->
+  <default> <!-- this container tells you what your default layout is. like 'header' and 'footer' -->
+    <!--<remove name="catalog.compare.sidebar" />
+    <remove name="checkout.cart.shipping" />
+	<remove name="checkout_cart_link" />
+    <remove name="right.permanent.callout" />
+    <remove name="left.permanent.callout" />
+    <remove name="left.newsletter" />
+    <remove name="right.reports.product.viewed" />
+    <remove name="paypal.partner.right.logo" />
+    <remove name="right.poll" />
+    <remove name="cart_sidebar" />
+    <remove name="checkout_cart_link" />
+    <remove name="catalog.compare.list" />-->
+<!--	<reference name="footer_links">
+            <action method="removeLinkByUrl"><url>http://localhost/design.storebaby.it/index.php/contacts/</url></action>
+    </reference>-->
+	
+ <reference name="head">
+        <!--<action method="addItem"><type>skin_js</type><name>js/my_js.js</name><params/></action>-->
+
+        <action method="removeItem"><type>skin_css</type><name>css/storebaby.css</name></action>
+
+ </reference>
+ 
+
+	
+
+
+	
+	
+	
+  </default>
+</layout>

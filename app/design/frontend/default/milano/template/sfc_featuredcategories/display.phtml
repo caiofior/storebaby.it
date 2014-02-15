@@ -16,57 +16,18 @@
  * @package    SFC_FeaturedCategories
  * @copyright  (C)Copyright 2010 StoreFront Consulting, Inc (http://www.StoreFrontConsulting.com/)
  * @author     Adam Lundrigan
+ *
+ * available colors [bs-blue][bs-blue][bs-orange][bs-red][bs-vio][bs-green]
+ *
+ *
  */
 $categories = $this->fastGetFeaturedCategories();
+
+
 ?>
-----  static
-<div class="bs-featuredCategories">
-  <div class="bs-row">
-    <!--item 1-->
-    <div class="bs-cat bs-blue">
-      <a href="#" title="Category Name" class="title">
-        <h2>Trio combinabili</h2>
-      </a>
-      <div class="bs-left">
-        <a href="#" title="" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-blue.png), url(<?php echo Mage::registry('themeMediaUrl'); ?>red/85-category_default.jpg);"></a>
-      </div>
-      <div class="bs-right">
-        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/7714-thickbox_default.jpg" title="" alt="" /></a>
-        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/8031-thickbox_default.jpg" title="" alt="" /></a>
-      </div>
-    </div>
-    <!--item 2-->
-    <div class="bs-cat bs-red">
-      <a href="#" title="Category Name" class="title">
-        <h2>ELETRODOMESTICI</h2>
-      </a>
-      <div class="bs-left">
-        <a href="#" title="" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-red.png), url(<?php echo Mage::registry('themeMediaUrl'); ?>red/10.jpg);"></a>
-      </div>
-      <div class="bs-right">
-        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/7714-thickbox_default.jpg" title="" alt="" /></a>
-        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/8031-thickbox_default.jpg" title="" alt="" /></a>
-      </div>
-    </div>
-    <!--item 3-->
-    <div class="bs-cat bs-orange">
-      <a href="#" title="Category Name" class="title">
-        <h2>SCARPINE E ABBIGLIAMENTO NEONATO</h2>
-      </a>
-      <div class="bs-left">
-        <a href="#" title="" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-orange.png),  url(<?php echo Mage::registry('themeMediaUrl'); ?>red/104.jpg);"></a>
-      </div>
-      <div class="bs-right">
-        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/7714-thickbox_default.jpg" title="" alt="" /></a>
-        <a href="#" title="Category Name"><img src="<?php echo Mage::registry('themeMediaUrl'); ?>red/8031-thickbox_default.jpg" title="" alt="" /></a>
-      </div>
-    </div>
-  </div>
-  <!--END bs-row-->
-</div>
-end ----  static
 <?php if (sizeof($categories > 0 )) : ?>
 <div class="bs-featuredCategories">
+<h5><?php echo $this->__('popular categories') ?></h5>
   <div class="bs-row">
   <?php 
   $categoryCont = 0;
@@ -81,14 +42,15 @@ end ----  static
         <h2><?php echo $category->getName(); ?></h2>
       </a>
       <div class="bs-left">
-        <img src="<?php echo Mage::helper('catalog/image')->init($category, 'small_image')->resize(163, 100); ?>" alt="image url: ....">
-        <a href="<?php echo $category->getUrl(); ?>" title="<?php echo $category->getName(); ?>" style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/bs-blue.png), url(<?php echo Mage::registry('themeMediaUrl'); ?>red/85-category_default.jpg);"></a>
+        <a href="<?php echo $category->getUrl(); ?>" title="<?php echo $category->getName(); ?>" 
+<?php /*?>        style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/<?php echo $category->getData('category_color_home'); ?>.png), url(<?php echo $category->getThumbnailUrl(); ?>);"></a><?php */?>
+        style="background-image: url(<?php echo $category->getThumbnailUrl(); ?>);"></a>
       </div>
       <?php if (is_array($productIds)) : ?>
       <div class="bs-right">
         <?php foreach ($productIds as $productId) : 
             $product = Mage::getModel('catalog/product')->load($productId); ?>
-        <a href="<?php echo $product->getProductUrl(); ?>" title="<?php echo $product->getName(); ?>"><img src="<?php echo Mage::helper('catalog/image')->init($product, 'small_image')->resize(163, 100); ?>" title="<?php echo $product->getName(); ?>" alt="<?php echo $product->getName(); ?>" /></a>
+        <a href="<?php echo $product->getProductUrl(); ?>" title="<?php echo $product->getName(); ?>"  style="background-image: url(<?php echo Mage::helper('catalog/image')->init($product, 'small_image')->resize(163, 100); ?>);" ></a>
         <?php endforeach; ?>
       </div>
       <?php endif; ?>

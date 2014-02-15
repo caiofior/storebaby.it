@@ -1,0 +1,64 @@
+<?php 
+/*Emergento */ 
+?>
+<html>
+<!-- meta http-equiv="refresh" content="0; URL=<?=$this->getContinueShoppingUrl()?>" -->
+<body>
+<div class="page-head">
+    <h3><?php echo $this->__('Error occured') ?></h3>
+    <p><?php
+    switch($_POST['RESPONSE']){
+        case '1':
+            echo 'Errore generico nel parsing del messaggio';
+  			break;
+  			case '2':
+  			    echo 'Errore tecnico';
+				break;
+				case '3':
+    		    echo 'Ordine non valido';
+				break;
+				case '4':
+  			    echo 'Lingua mancante o valore non ammesso';
+				break;
+      	case '5':
+				    echo 'Url errato';
+				break;
+			  case '6':
+				    echo 'Chiamata da IP non configurato';
+				break;
+				case '7':
+				    echo 'Errore nei campi opzionali';
+				break;
+      	case '8':
+				    echo 'MAC errato';
+				break;
+				case '9':
+				    echo 'Parametro VERSION_CODE non corretto';
+				break;
+  			case '10':
+  			    echo 'Parametro ACTION_CODE non corretto';
+				break;
+				case '11':
+				    echo 'Importo mancante o valore non ammesso';
+				break;
+      	case '12':
+				    echo 'Divisa mancante o valore non ammesso';
+				break;
+				case '13':
+				    echo 'e-mail non corretta';
+				break;
+				case '15':
+				    echo 'Errore nel parametro TRANSACTION_ID';
+				break;
+				case '16':
+				    echo 'Errore nel parametro TERMINAL_ID';
+				break;
+				case '17':
+				    echo 'Max numero di operazioni concesse con lo stesso campo TRANSACTION_ID';
+				break;
+    }
+    ?></p>
+</div>
+<p><?php echo $this->__('<a href="%s">continua lo shopping</a>.', $this->getContinueShoppingUrl()) ?></p>
+</body>
+</html>

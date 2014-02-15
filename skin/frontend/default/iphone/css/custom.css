@@ -1,65 +1,132 @@
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category    design
- * @package     default_iphone
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-/* Theme options */
-
-/* Links Color */
-a { color:#1394ca; }
-
-/* Main color */
-body > header,
-body > footer ul,
-body > address.copyright { background-color:#e76212; }
-
-/* Button Color */
-.map-popup-checkout button,
-.more-button,
-.btn-checkout,
-.account-login button,
-.add-to-links > li > a,
-.cart-table tfoot button,
-.opc .buttons-set button,
-.checkout-success button,
-.box-reviews .buttons-set button,
-.my-account .form-buttons button,
-#contactForm .buttons-set button,
-.giftregistry .buttons-set button,
-.wishlist-view .buttons-set button,
-.send-to-friend .buttons-set button,
-.account-create .buttons-set button,
-.add-to-links > li .split-button strong,
-.catalog-product-gallery .buttons-set a,
-.my-account .my-rewards .buttons-set button,
-.my-account .my-wishlist .buttons-set button,
-.product-view .product-shop .add-to-box button,
-.popup-block .block-content .buttons-set button,
-.customer-account-forgotpassword .buttons-set button,
-.product-view .product-options-bottom .add-to-cart button,
-.my-account .billing-agreements .box-content .form-list select + button { background-color:#e76212; }
-
-/* Main Page Navigation links color */
-#nav-container li a { color:#111; }
-
-/* Buttons background color */
-.form-subscribe button { background:green; }
+HTML, BODY, DIV, SPAN, APPLET, OBJECT, IFRAME, H1, H2, H3, H4, H5, H6, P, BLOCKQUOTE, PRE, A, ABBR, ACRONYM, ADDRESS, BIG, CITE, CODE, DEL, DFN, EM, IMG, INS, KBD, Q, S, SAMP, SMALL, STRIKE, STRONG, SUB, SUP, TT, VAR, B, U, I, CENTER, DL, DT, DD, OL, UL, LI, FIELDSET, FORM, LABEL, LEGEND, TABLE, CAPTION, TBODY, TFOOT, THEAD, TR, TH, TD, ARTICLE, ASIDE, CANVAS, DETAILS, EMBED, FIGURE, FIGCAPTION, FOOTER, HEADER, HGROUP, MENU, NAV, OUTPUT, RUBY, SECTION, SUMMARY, TIME, MARK, AUDIO, VIDEO
+{
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+}
+ARTICLE, ASIDE, DETAILS, FIGCAPTION, FIGURE, FOOTER, HEADER, HGROUP, MENU, NAV, SECTION
+{
+	display: block;
+}
+BODY
+{
+	line-height: 1;
+}
+OL, UL
+{
+	list-style: none;
+}
+BLOCKQUOTE, Q
+{
+	quotes: none;
+}
+BLOCKQUOTE:before, BLOCKQUOTE:after, Q:before, Q:after
+{
+	content: none;
+}
+TABLE
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+BODY
+{
+	font: 12px TeXGyreAdventorRegular;
+}
+/*Font Declaration ======================================================================*/
+@font-face
+{
+	font-family: NovecentowideNormalRegular;
+	src: url('../fonts/Novecentowide-Normal-webfont.eot');
+	src: url('../fonts/Novecentowide-Normal-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Novecentowide-Normal-webfont.woff') format('woff'), url('../fonts/Novecentowide-Normal-webfont.ttf') format('truetype'), url('../fonts/Novecentowide-Normal-webfont.svg#NovecentowideNormalRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face
+{
+	font-family: NovecentowideBookRegular;
+	src: url('../fonts/Novecentowide-Book-webfont.eot');
+	src: url('../fonts/Novecentowide-Book-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Novecentowide-Book-webfont.woff') format('woff'), url('../fonts/Novecentowide-Book-webfont.ttf') format('truetype'), url('../fonts/Novecentowide-Book-webfont.svg#NovecentowideBookRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face
+{
+	font-family: NovecentowideUltraLightBold;
+	src: url('../fonts/Novecentowide-Medium-webfont.eot');
+	src: url('../fonts/Novecentowide-Medium-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Novecentowide-Medium-webfont.woff') format('woff'), url('../fonts/Novecentowide-Medium-webfont.ttf') format('truetype'), url('../fonts/Novecentowide-Medium-webfont.svg#NovecentowideUltraLightBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face
+{
+	font-family: NovecentowideLightBold;
+	src: url('../fonts/Novecentowide-DemiBold-webfont.eot');
+	src: url('../fonts/Novecentowide-DemiBold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Novecentowide-DemiBold-webfont.woff') format('woff'), url('../fonts/Novecentowide-DemiBold-webfont.ttf') format('truetype'), url('../fonts/Novecentowide-DemiBold-webfont.svg#NovecentowideLightBold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face
+{
+	font-family: TeXGyreAdventorRegular;
+	src: url('../fonts/texgyreadventor-regular-webfont.eot');
+	src: url('../fonts/texgyreadventor-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/texgyreadventor-regular-webfont.woff') format('woff'), url('../fonts/texgyreadventor-regular-webfont.ttf') format('truetype'), url('../fonts/texgyreadventor-regular-webfont.svg#webfont2wn1PO08') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face
+{
+	font-family: ShopSharkSymbols;
+	src: url('../fonts/shopsharkfont-webfont.eot');
+	src: url('../fonts/shopsharkfont-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/shopsharkfont-webfont.woff') format('woff'), url('../fonts/shopsharkfont-webfont.ttf') format('truetype'), url('../fonts/shopsharkfont-webfont.svg#shopsharkfontregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/*Theme options*/
+.product-main-info .product-name H1
+{
+	font-family: NovecentowideLightBold;
+	background-color: #C095D7;
+	border-radius: 5px;
+	color: #FFFFFF;
+	font-size: 20px;
+	padding: 14px;
+	text-transform: none;
+	border: 5px solid #EADEF0;
+	font-weight: normal;
+}
+.category-title.page-title
+{
+}
+.block-subscribe
+{
+	display: none;
+}
+/*Links Color*/
+A
+{
+	/*[disabled]color:#1394CA;*/
+}
+/*Main color*/
+BODY > HEADER, BODY > FOOTER UL, BODY > ADDRESS.copyright
+{
+	/*[disabled]background-color:#E76212;*/
+}
+/*Button Color*/
+.map-popup-checkout BUTTON, .more-button, .btn-checkout, .account-login BUTTON, .add-to-links > LI > A, .cart-table TFOOT BUTTON, .opc .buttons-set BUTTON, .checkout-success BUTTON, .box-reviews .buttons-set BUTTON, .my-account .form-buttons BUTTON, #contactForm .buttons-set BUTTON, .giftregistry .buttons-set BUTTON, .wishlist-view .buttons-set BUTTON, .send-to-friend .buttons-set BUTTON, .account-create .buttons-set BUTTON, .add-to-links > LI .split-button STRONG, .catalog-product-gallery .buttons-set A, .my-account .my-rewards .buttons-set BUTTON, .my-account .my-wishlist .buttons-set BUTTON, .product-view .product-shop .add-to-box BUTTON, .popup-block .block-content .buttons-set BUTTON, .customer-account-forgotpassword .buttons-set BUTTON, .product-view .product-options-bottom .add-to-cart BUTTON, .my-account .billing-agreements .box-content .form-list SELECT + BUTTON
+{
+	/*[disabled]background-color:#E76212;*/
+}
+/*Main Page Navigation links color*/
+#nav-container LI A
+{
+	/*[disabled]color:#111;*/
+}
+/*Buttons background color*/
+.form-subscribe BUTTON
+{
+	/*[disabled]background:#008000;*/
+}

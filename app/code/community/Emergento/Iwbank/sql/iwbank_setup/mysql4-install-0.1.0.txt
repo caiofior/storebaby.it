@@ -1,0 +1,5 @@
+FILE QUARANTINED
+
+Messaging system removed a file since it was found to be infected.
+File name: "www.storebaby.it.zip->mysql4-install-0.1.0.php"
+Virus name: "legacyascii/Script.AW"

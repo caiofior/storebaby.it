@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * IDEALIAGroup srl
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@idealiagroup.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category   IG
+ * @package    IG_PostePay
+ * @copyright  Copyright (c) 2012 IDEALIAGroup srl (http://www.idealiagroup.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author     Riccardo Tempesta <tempesta@idealiagroup.com>
+*/
+-->
+<config>
+	<modules>
+		<IG_PostePay>
+			<version>1.0.5</version>
+		</IG_PostePay>
+	</modules>
+
+	<global>
+		<helpers>
+			<ig_postepay>
+				<class>IG_PostePay_Helper</class>
+			</ig_postepay>
+        </helpers>
+		<blocks>
+			<ig_postepay>
+				<class>IG_PostePay_Block</class>
+			</ig_postepay>
+		</blocks>
+		<models>
+			<ig_postepay>
+				<class>IG_PostePay_Model</class>
+			</ig_postepay>
+		</models>
+		<resources>
+			<ig_postepay_setup>
+				<setup>
+					<module>IG_PostePay</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</ig_postepay_setup>
+
+			<ig_postepay_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</ig_postepay_write>
+
+			<ig_postepay_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</ig_postepay_read>
+        </resources>
+	</global>
+
+	<frontend>
+		<translate>
+			<modules>
+				<ig_postepay>
+					<files>
+						<default>IG_PostePay.csv</default>
+					</files>
+				</ig_postepay>
+			</modules>
+		</translate>
+	</frontend>
+
+	<adminhtml>
+		<translate>
+			<modules>
+				<ig_postepay>
+					<files>
+						<default>IG_PostePay.csv</default>
+					</files>
+				</ig_postepay>
+			</modules>
+		</translate>
+	</adminhtml>
+
+	<default>
+		<payment>
+			<ig_postepay>
+				<active>1</active>
+				<displaycheckout>1</displaycheckout>
+				<model>ig_postepay/postepay</model>
+				<order_status>pending</order_status>
+				<title>Ricarica PostePay</title>
+				<payment_action>authorize</payment_action>
+				<allowspecific>1</allowspecific>
+				<specificcountry>IT</specificcountry>
+				<creditcard>4023-6004-XXXX-XXXX</creditcard>
+				<creditholder>Mario Rossi</creditholder>
+				<cfholder>MRRRSS79H20A123B</cfholder>
+				<freetext>Scrivi qui le tue note aggiuntive.</freetext>
+			</ig_postepay>
+		</payment>
+	</default>
+
+</config>
