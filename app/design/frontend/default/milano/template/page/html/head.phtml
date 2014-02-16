@@ -27,9 +27,9 @@ EOT;
 
 <meta property="og:locale" content="it_IT">
 <link rel="canonical" href="<?php echo Mage::getBaseUrl();?>">
-<meta property="og:url" content="<?php echo Mage::getBaseUrl();?>"/>
+<meta property="og:url" content="<?php echo Mage::helper('core/url')->getCurrentUrl();?>"/>
 <meta property="og:title" content="<?php echo $this->getTitle() ?>" />
-<meta property="og:site_name" content="<?php echo Mage::getBaseUrl();?>" />
+<meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName();?>" />
 <meta property="og:description" content="<?php echo htmlspecialchars($this->getDescription()) ?>">
 <meta property="og:image" content="<?php echo $image; ?>">
 <meta property="og:image:type" content="image/jpeg">
