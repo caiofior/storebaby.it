@@ -1,3 +1,23 @@
+<?php
+        $_product = null;
+        $image = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/fblogo-big.jpg';
+        $type = 'og:website';
+        $custom_meta ='';
+        if (
+            Mage::app()->getFrontController()->getRequest()->getModuleName() == 'catalog' &&
+            Mage::app()->getFrontController()->getRequest()->getControllerName() == 'product'
+        ) {
+            $params = Mage::app()->getFrontController()->getRequest()->getParams();
+            $_product = Mage::getModel('catalog/product')->load($params['id']);
+            $image =  Mage::helper('catalog/image')->init($_product, 'small_image')->resize(858, 446);
+            $price = number_format($_product->getPrice(),2);
+            $type = 'og:product';
+            $custom_meta =<<<EOT
+    <meta property="product:price:amount"      content="{$price}"/>
+    <meta property="product:price:currency"    content="EUR"/>
+EOT;
+        }
+?>
 <meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
 <title><?php echo $this->getTitle() ?></title>
 <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
@@ -6,17 +26,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <meta property="og:locale" content="it_IT">
-<link rel="canonical" href="http://www.storebaby.it">
-<meta property="og:url" content="http://www.storebaby.it"/>
-<meta property="og:title" content="Store Baby - Articoli per infanzia Prodotti per bambini" />
-<meta property="og:site_name" content="storebaby.it" />
-<meta property="og:description" content="StoreBaby.it - negozio online con una fantastica selezione di articoli per infanzia, tanti modelli di Passeggini, Seggiolini, Lettini da campeggio, Giochi, Alimentazione, pappa e molto altro ancora... Pagamenti sicuri con consegna a domicilio in 24 ore.">
-<meta property="og:image" content="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>wysiwyg/fblogo-big.jpg">
+<link rel="canonical" href="<?php echo Mage::getBaseUrl();?>">
+<meta property="og:url" content="<?php echo Mage::getBaseUrl();?>"/>
+<meta property="og:title" content="<?php echo $this->getTitle() ?>" />
+<meta property="og:site_name" content="<?php echo Mage::getBaseUrl();?>" />
+<meta property="og:description" content="<?php echo htmlspecialchars($this->getDescription()) ?>">
+<meta property="og:image" content="<?php echo $image; ?>">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="858">
 <meta property="og:image:height" content="446">
-<meta property="og:type" content="website" />
-
+<meta property="og:type" content="<?php echo $type; ?>" />
+<?php echo $custom_meta; ?>
 
 <link rel="author" href="https://plus.google.com/113160380943238250605" />
 
