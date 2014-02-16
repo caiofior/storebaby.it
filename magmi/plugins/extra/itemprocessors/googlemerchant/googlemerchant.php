@@ -139,7 +139,7 @@ LIMIT 1
 	{
             $googleMerchantData = $this->columns;
             $googleMerchantData['id']=$item['sku'];
-            if ($googleMerchantData['title'] == '')
+            if ($item['title'] == '')
                 return;
             $googleMerchantData['title']=str_replace("\t",' ',$item['name']);
             $googleMerchantData['description']=str_replace("\t",' ',$item['description']);
@@ -165,7 +165,7 @@ LIMIT 1
             $googleMerchantData['link']=$this->config['web/unsecure/base_url'].'index.php/'.$url_path;
             $googleMerchantData['image link']=$this->config['web/unsecure/base_url'].'media/catalog/product/'.preg_replace('/\+\//','',$item['image']);
             $googleMerchantData['condition']='new';
-            if ($googleMerchantData['price'] == '')
+            if ($item['price'] == '')
                 return;
             $googleMerchantData['price']=str_replace('.',',',$item['price']).' EUR';
             $googleMerchantData['availability']='in stock';
