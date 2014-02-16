@@ -59,7 +59,7 @@ $_shortDescription = $_product->getShortDescription();
 							$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
 
 							if ($brandLinkSearch)
-								$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q=' . $brandValue;
+								$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q=' . $brandValue . '&manufacturer=' . $_product->getData($attr->getAttributeCode());
 							elseif ($brandPageBasePath != '')
 							{
 								$basePath = ($brandPageBasePath == '/') ? '' : $brandPageBasePath . '/';

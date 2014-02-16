@@ -1,5 +1,5 @@
 <?php if ((Mage::getStoreConfig('milanoconfig/homeoptions/show_brands') == 1) && ($_brands = $this->getAllBrands()) && count($_brands)):
-shuffle($_brands); 
+$rand_keys = array_rand($_brands, 20); 
 $brandImageExt = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_image_extension'));
 $brandPageBasePath = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_page_base_path')); 
 $brandLinkSearch = Mage::getStoreConfig('milanoconfig/productpage/brand_link_search_enabled') == 1;
@@ -9,7 +9,8 @@ $brandLinkSearch = Mage::getStoreConfig('milanoconfig/productpage/brand_link_sea
     <div class="brands">
         <div class="carousel">
             <div class="slider">
-                <?php $counter = 0; $i=0; foreach ($_brands as $_brand): if ($counter >= 20) break; $counter++; $i++;
+                <?php $counter = 0; $i=0; foreach ($rand_keys as $brand_id): if ($counter >= 20) break; $counter++; $i++;
+					$_brand = $_brands[$brand_id];
 					$brandValue = trim($_brand);	
 					$brandValueCode = str_replace(" ", "_", strtolower($brandValue));					
 					$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
