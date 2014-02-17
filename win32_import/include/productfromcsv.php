@@ -16,8 +16,13 @@ class ProductFromCsv {
      */
     private $mastroCsvHandle;
     /**
+     * Mastro Utf8 CSV Handle
+     * @var resource
+     */
+    private $mastroUtf8CsvHandle;
+    /**
      * Magento CSV File
-     * @var stfing
+     * @var string
      */
     private $magentoCsvFile;
     /**
@@ -145,7 +150,8 @@ corrupted NUMERIC
                 $buffer = substr($buffer, 0, strlen($buffer) - 1);
                 $lastchar = ord(substr($buffer, strlen($buffer) - 1));
             }
-
+            if (is_reasource($this->mastroUtf8CsvHandle))
+                $this->mastroUtf8CsvHandle .= $buffer . PHP_EOL;
             if (strlen($row) > 0)
                 $row .= '<br/>';
             $row .= $buffer;
@@ -369,6 +375,8 @@ message TEXT
     private function uploadCsv (){
         fclose($this->mastroCsvHandle);
         fclose($this->magentoCsvHandle);
+        if (is_reasource($this->mastroUtf8CsvHandle))
+            fclose($this->mastroUtf8CsvHandle);
         if (is_resource($this->ftp)) {
         $size = 0;
         $count = 0;
@@ -488,6 +496,9 @@ message TEXT
         if (key_exists('MASTRO_COMMAND', $this->config)) {
             echo 'Export command ' . $this->config['MASTRO_COMMAND'] . PHP_EOL;
             echo exec($this->config['MASTRO_COMMAND']) . PHP_EOL;
+        }
+        if (key_exists('MASTRO_UTF8_FILE', $this->config)) {
+            $this->mastroUtf8CsvHandle = fopen($this->config['MASTRO_UTF8_FILE'], 'w');
         }
         $this->mastroCsvHandle = fopen($this->config['MASTRO_CSV_FILE'], 'r');
         $this->setUpFtp();
