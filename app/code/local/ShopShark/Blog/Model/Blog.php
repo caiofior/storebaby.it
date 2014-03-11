@@ -34,14 +34,15 @@ class ShopShark_Blog_Model_Blog extends Mage_Core_Model_Abstract {
     }
 	
 	public function getPostImage($width = false, $height = false) {
-        		
+		$width=452;
+
+
 		$img = $this->getData('post_image');
 		
 		if(empty($img)) return false;
 		
 		$imgDir = dirname($img);
 		$imgFile = basename($img);		
-		
 		if(!$width) return $img;
 		
 		//if(!$height) $height = $width;

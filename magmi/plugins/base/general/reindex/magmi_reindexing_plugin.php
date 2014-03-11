@@ -76,31 +76,21 @@ class Magmi_ReindexingPlugin extends Magmi_GeneralImportPlugin
 		{
 			session_write_close();
 		}
-		$cl=$this->getParam("REINDEX:phpcli")." ".__DIR__."/../../../../../shell/indexer.php ";
-		$idxlstr=$this->getParam("REINDEX:indexes","");
-		$idxlist=explode(",",$idxlstr);
-		if(count($idxlist)==0)
-		{
-			$this->log("No indexes selected , skipping reindexing...","warning");
-			return true;
-		}
-                $out = exec ('rm -Rf '.__DIR__.'/../../../../../var/locks ');
-		foreach($idxlist as $idx)
-		{
-			$tstart=microtime(true);
-			$this->log("Reindexing $idx....","info");
+
+                exec ('rm -Rf '.__DIR__.'/../../../../../var/locks ');
+
+		$tstart=microtime(true);
+		$this->log("Reindexing $idx....","info");
 			
-			// Execute Reindex command, and specify that it should be ran from Magento directory
-			$out = exec($cl."--reindex $idx");
-			$this->log($out,"info");
-			$tend=microtime(true);
-			$this->log("done in ".round($tend-$tstart,2). " secs","info");
-			if(Magmi_StateManager::getState()=="canceled")
-			{
-				exit();
-			}			
-			flush();
-		}
+	
+                exec('pkill -9 indexer.php');
+                pclose(popen("nohup \"".__DIR__."/indexer.sh\" 2>&1 > /dev/null &","r"));
+		$out = shell_exec('ps ax | grep php');
+		$this->log($out,"info");
+		$tend=microtime(true);
+		$this->log("done in ".round($tend-$tstart,2). " secs","info");
+		
+                
                 $out = exec ('rm -Rf '.__DIR__.'/../../../../../var/cache ');
 	}
 			

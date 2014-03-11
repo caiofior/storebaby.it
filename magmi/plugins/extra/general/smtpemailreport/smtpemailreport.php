@@ -74,8 +74,8 @@ public function getPluginInfo()
             if (is_dir($dir)) {
                 $dirArray = scandir ($dir,SCANDIR_SORT_DESCENDING);
                 foreach ($dirArray as $dirItem) {
-                    if ($dirItem != '.'  && $dirItem != '..') {
-                        $backuplLink =  ' '.$config['web/unsecure/base_url'].'var/backups/'.$dirItem; 
+                    if ($dirItem != '.'  && $dirItem != '..' && $dirItem != '.htaccess') {
+                        $backuplLink =  ' ftp://storebaby.it/public_html/var/backups/'.$dirItem; 
                         continue;
                     }
                         

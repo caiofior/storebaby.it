@@ -139,8 +139,8 @@ LIMIT 1
 	{
             $googleMerchantData = $this->columns;
             $googleMerchantData['id']=$item['sku'];
-            if ($item['title'] == '')
-                return;
+            if ($item['name'] == '')
+                return true;
             $googleMerchantData['title']=str_replace("\t",' ',$item['name']);
             $googleMerchantData['description']=str_replace("\t",' ',$item['description']);
             $categories = preg_split('/[,\/]/',$item['categories']);
@@ -161,13 +161,13 @@ LIMIT 1
                 
                 $url_path =$value['request_path'];
             }
-            if ($url_path == '' ) return;
+            if ($url_path == '' ) return true;
             $googleMerchantData['link']=$this->config['web/unsecure/base_url'].'index.php/'.$url_path;
             $googleMerchantData['image link']=$this->config['web/unsecure/base_url'].'media/catalog/product/'.preg_replace('/\+\//','',$item['image']);
             $googleMerchantData['condition']='new';
             if ($item['price'] == '')
-                return;
-            $googleMerchantData['price']=str_replace('.',',',$item['price']).' EUR';
+                return true;
+            $googleMerchantData['price']=$item['price'].' EUR';
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
             $googleMerchantData['gtin']=$item['sku'];
