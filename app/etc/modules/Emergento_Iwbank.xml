@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- Emergento -->
+<config>
+  <modules>
+    <Emergento_Iwbank>
+      <active>true</active>
+      <codePool>community</codePool>
+    </Emergento_Iwbank>
+  </modules>
+</config>

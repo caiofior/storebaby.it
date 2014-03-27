@@ -48,7 +48,7 @@ if ($_product->getCanShowPrice() !== false):?>
         <span class="price-tax">
             <span class="price-excluding-tax">
                 <span class="label"><?php echo Mage::helper('tax')->__('Excl. Tax:') ?></span>
-                <span class="price" id="price-excluding-tax-<?php echo $_product->getId() ?><?php echo $this->getIdSuffix() ?>">
+                <span itemprop="price" class="price" id="price-excluding-tax-<?php echo $_product->getId() ?><?php echo $this->getIdSuffix() ?>">
                 <?php if (!$canApplyMAP): ?>
                     <?php echo Mage::helper('core')->currency($_finalPrice,true,false) ?>
                 <?php endif ?>
@@ -71,7 +71,7 @@ if ($_product->getCanShowPrice() !== false):?>
             <?php endif; ?>
             <span class="price-including-tax">
                 <span class="label"><?php echo Mage::helper('tax')->__('Incl. Tax:') ?></span>
-                <span class="price" id="price-including-tax-<?php echo $_product->getId() ?><?php echo $this->getIdSuffix() ?>">
+                <span itemprop="price" class="price" id="price-including-tax-<?php echo $_product->getId() ?><?php echo $this->getIdSuffix() ?>">
                 <?php if (!$canApplyMAP): ?>
                     <?php echo Mage::helper('core')->currency($_finalPriceInclTax,true,false) ?>
                 <?php endif ?>
@@ -79,7 +79,7 @@ if ($_product->getCanShowPrice() !== false):?>
             </span>
         </span>
         <?php else: ?>
-        <span class="price" id="product-price-<?php echo $_product->getId() ?><?php echo $this->getIdSuffix() ?>">
+        <span class="price" itemprop="price" id="product-price-<?php echo $_product->getId() ?><?php echo $this->getIdSuffix() ?>">
             <?php if (!$canApplyMAP): ?>
                 <?php echo Mage::helper('core')->currency($_finalPrice,true,false) ?>
             <?php endif ?>

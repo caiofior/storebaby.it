@@ -90,6 +90,32 @@ public function getPluginInfo()
             foreach ($products as $product) {
                 if (!is_file($imageDir.$product['image']))
                         continue;
+
+                $mail = new PHPMailer;
+                if ($config['system/lesti_smtp/enable'] == 1) {
+
+                    $mail->isSMTP();
+                    $mail->Host = $config['system/lesti_smtp/host'];
+                    if ($config['system/lesti_smtp/username'] != '' && $config['system/lesti_smtp/password'] != '')
+                        $mail->SMTPAuth = true; 
+                    $mail->Username = $config['system/lesti_smtp/username'];
+                    $mail->Password = $config['system/lesti_smtp/password'];
+                    if ($config['system/lesti_smtp/ssl'] != '')
+                        $mail->SMTPSecure = $config['system/lesti_smtp/ssl'];
+                }
+
+                $mail->From = $config['trans_email/ident_general/email'];
+                $mail->FromName = $config['trans_email/ident_general/name'];
+                $mail->addAddress($this->getParam("SOCIAL:twitter",""));
+
+                $mail->WordWrap = 50;
+                $mail->CharSet = 'UTF-8';
+                $mail->isHTML(false);
+                            $url_path = '';
+                $mail->Subject = substr($product['name'],10,100). ' '.$config['web/unsecure/base_url'].'index.php/'.$product['url_path'];
+                $mail->Body = ' ';
+                $mail->send();
+
                 $mail = new PHPMailer;
                 if ($config['system/lesti_smtp/enable'] == 1) {
 
@@ -115,14 +141,13 @@ public function getPluginInfo()
                 $mail->Body = ' ';
                 $mail->addAttachment($imageDir.$product['image']);
                 if($mail->send()) {
-                    echo 'Message sent.';
+                    $this->log($config['web/unsecure/base_url'].'index.php/'.$product['url_path']." sent succesfully","info");
                     $this->exec_stmt('REPLACE INTO `catalog_product_entity_int` SET `value`=1 ,
                         `catalog_product_entity_int`.`attribute_id`= (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code`="shared_on_social_networks"),
                         `catalog_product_entity_int`.`entity_id` = '.$product['entity_id'].'
                          ');
                 } else {
-                    echo 'Message could not be sent.';
-                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                    $this->log($config['web/unsecure/base_url'].'index.php/'.$product['url_path']." not sent succesfully ". $mail->ErrorInfo,"info");
                 }
             }
 	}

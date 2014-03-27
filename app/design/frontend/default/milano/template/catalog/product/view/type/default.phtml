@@ -2,7 +2,7 @@
 <?php $_product = $this->getProduct() ?>
 
 <?php if ($_product->isAvailable()): ?>
-    <p class="availability in-stock"><label><?php echo $this->__('Availability:') ?></label> <span><?php echo $this->__('In stock') ?></span></p>
+    <p class="availability in-stock"><label ><?php echo $this->__('Availability:') ?></label> <span itemprop="availability" content="in_stock"><?php echo $this->__('In stock') ?></span></p>
 <?php else: ?>
     <p class="availability out-of-stock"><label><?php echo $this->__('Availability:') ?></label> <span><?php echo $this->__('Out of stock') ?></span></p>
 <?php endif; ?>

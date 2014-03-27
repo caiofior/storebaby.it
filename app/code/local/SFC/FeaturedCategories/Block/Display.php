@@ -45,15 +45,10 @@ class SFC_FeaturedCategories_Block_Display extends Mage_Core_Block_Template
                     if (key_exists($featuredCategoryId, $categoriesIds)) {
                         $sqlCategoryFilter='';
                         foreach(array_values($categoriesIds[$featuredCategoryId]) as $categoryId) 
-                            $sqlCategoryFilter .= ' OR `category_id` = '.$cate  goryId;
+                            $sqlCategoryFilter .= ' OR `category_id` = '.$categoryId;
                         $featuredProducts = $read->fetchCol(
                         'SELECT `entity_id` FROM `catalog_product_entity` WHERE'.
-                        '   (SELECT value FROM catalog_product_entity_int WHERE '.
-                        '   entity_id = `catalog_product_entity`=`entity_id` AND '.
-                        '   attribute_id = (SELECT attribute_id FROM eav_attribute WHERE '.
-                        '   entity_type_id=(SELECT entity_type_id FROM eav_entity_type WHERE entity_type_code="catalog_product") '.
-                        '   AND attribute_code="status") LIMIT 1) = 1 AND '
-                        '`entity_id` IN (SELECT `product_id` FROM `catalog_category_product` WHERE FALSE  '.
+                        '`entity_id` IN (SELECT `product_id` FROM `catalog_category_product` WHERE FALSE '.
                         $sqlCategoryFilter.') ORDER BY RAND() LIMIT 2'
                         );
                         $categoryProductsIds[$featuredCategoryId]=$featuredProducts;

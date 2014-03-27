@@ -1,0 +1,11 @@
+<config>
+	<modules>
+		<IG_PostePay>
+			<active>true</active>
+			<codePool>community</codePool>
+			<depends>
+				<Mage_Payment />
+			</depends>
+		</IG_PostePay>
+	</modules>
+</config>

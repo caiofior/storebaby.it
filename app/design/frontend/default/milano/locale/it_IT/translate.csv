@@ -20,7 +20,7 @@
 "Brand","Marca"
 "Quantity:","Quantità"
 "View Cart","Carrello"
-"Checkout","Paga ora"
+"Checkout","Acquista"
 "Total:","Totale:"
 "Continue shopping","Continua"
 "View cart & checkout","Vai al carrello e paga"
@@ -33,5 +33,8 @@
 "Short Description","Descrizione breve"
 "PayPal | Secure payment &raquo; ","PayPal | Pagamento sicuro &raquo; "
 "You will be charged an extra fee of %s.","Per questo metodo di pagamento è prevista una maggiorazione di + %s "
+"Read Full Post","Leggi il post completo"
+"Posted on","Pubblicato il"
+"Please enter a valid email address. For example johndoe@domain.com.","Indica una mail valida. Ad esempio johndoe@domain.com."
 
 

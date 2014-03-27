@@ -1,5 +1,5 @@
 <?php $_items = $this->getReviewsCollection()->getItems();?>
-<div class="box-collateral box-reviews" id="customer-reviews">
+<div class="box-collateral box-reviews" id="customer-reviews" itemprop="review">
     <?php if (count($_items)):?>
         <h2><?php echo $this->__('Customer Reviews') ?></h2>
         <?php echo $this->getChildHtml('toolbar') ?>

@@ -18,9 +18,15 @@
     </reference>-->
 	
  <reference name="head">
+ 		<!--<action method="addJs"><script>listnav/jquery-listnav-2.2.min.js</script></action>
+        <action method="addItem"><type>skin_css</type><name>css/listnav.css</name></action>-->
         <!--<action method="addItem"><type>skin_js</type><name>js/my_js.js</name><params/></action>-->
         <action method="addItem"><type>skin_css</type><name>css/storebaby.css</name></action>
  </reference>
+ 
+
+
+
  
 
 	

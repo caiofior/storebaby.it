@@ -1,0 +1,77 @@
+[26-Feb-2014 15:15:57 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 118
+[26-Feb-2014 15:15:57 UTC] PHP Warning:  require_once(../engines/.php): failed to open stream: No such file or directory in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 15:15:57 UTC] PHP Fatal error:  require_once(): Failed opening required '../engines/.php' (include_path='.:/usr/lib/php:/usr/local/lib/php:/home/joachim/public_html/magmi/inc:/home/joachim/public_html/magmi/integration/inc:/home/joachim/public_html/magmi/engines') in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 15:42:07 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 117
+[26-Feb-2014 15:42:07 UTC] PHP Warning:  require_once(../engines/.php): failed to open stream: No such file or directory in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 15:42:07 UTC] PHP Fatal error:  require_once(): Failed opening required '../engines/.php' (include_path='.:/usr/lib/php:/usr/local/lib/php:/home/joachim/public_html/magmi/inc:/home/joachim/public_html/magmi/integration/inc:/home/joachim/public_html/magmi/engines') in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 16:17:59 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 123
+[26-Feb-2014 16:17:59 UTC] PHP Warning:  require_once(../engines/.php): failed to open stream: No such file or directory in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 16:17:59 UTC] PHP Fatal error:  require_once(): Failed opening required '../engines/.php' (include_path='.:/usr/lib/php:/usr/local/lib/php:/home/joachim/public_html/magmi/inc:/home/joachim/public_html/magmi/integration/inc:/home/joachim/public_html/magmi/engines') in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 16:43:45 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 131
+[26-Feb-2014 16:43:45 UTC] PHP Warning:  require_once(../engines/.php): failed to open stream: No such file or directory in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 16:43:45 UTC] PHP Fatal error:  require_once(): Failed opening required '../engines/.php' (include_path='.:/usr/lib/php:/usr/local/lib/php:/home/joachim/public_html/magmi/inc:/home/joachim/public_html/magmi/integration/inc:/home/joachim/public_html/magmi/engines') in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 17:06:16 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 131
+[26-Feb-2014 17:06:16 UTC] PHP Warning:  require_once(../engines/.php): failed to open stream: No such file or directory in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 17:06:16 UTC] PHP Fatal error:  require_once(): Failed opening required '../engines/.php' (include_path='.:/usr/lib/php:/usr/local/lib/php:/home/joachim/public_html/magmi/inc:/home/joachim/public_html/magmi/integration/inc:/home/joachim/public_html/magmi/engines') in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 19:06:56 UTC] PHP Warning:  require_once(../engines/.php): failed to open stream: No such file or directory in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 19:06:56 UTC] PHP Fatal error:  require_once(): Failed opening required '../engines/.php' (include_path='.:/usr/lib/php:/usr/local/lib/php:/home/joachim/public_html/magmi/inc:/home/joachim/public_html/magmi/integration/inc:/home/joachim/public_html/magmi/engines') in /home/joachim/public_html/magmi/web/magmi_run.php on line 12
+[26-Feb-2014 19:06:56 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:25:18 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:49:08 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1393283104_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1393196407_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1393110007_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1393023904_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392937223_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392850833_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392764707_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392678309_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392591908_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392505234_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392418854_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392332443_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392246052_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392159629_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1392073279_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1391986868_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1391900457_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1391814045_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for 1391727628_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[26-Feb-2014 19:54:32 UTC] PHP Warning:  filemtime(): stat failed for .htaccess in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 133
+[27-Feb-2014 06:07:14 UTC] PHP Warning:  filemtime(): stat failed for 1393455620_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 121
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1393455620_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1393369210_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1393283104_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1393196407_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1393110007_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1393023904_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392937223_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392850833_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392764707_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392678309_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392591908_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392505234_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392418854_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392332443_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392246052_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392159629_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1392073279_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1391986868_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1391900457_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1391814045_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for 1391727628_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 09:18:32 UTC] PHP Warning:  filemtime(): stat failed for .htaccess in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[27-Feb-2014 13:08:19 UTC] PHP Warning:  filemtime(): stat failed for 1393455620_db.gz in /home/joachim/public_html/magmi/plugins/base/general/reindex/magmi_reindexing_plugin.php on line 101
+[17-Mar-2014 13:20:47 UTC] PHP Warning:  syntax error, unexpected '=' in /home/joachim/public_html/magmi/conf/SocialNotifyPlugin.conf on line 4
+ in /home/joachim/public_html/magmi/inc/properties.php on line 49
+[17-Mar-2014 13:20:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/joachim/public_html/magmi/inc/properties.php on line 50
+[17-Mar-2014 13:21:34 UTC] PHP Warning:  syntax error, unexpected '=' in /home/joachim/public_html/magmi/conf/SocialNotifyPlugin.conf on line 4
+ in /home/joachim/public_html/magmi/inc/properties.php on line 49
+[17-Mar-2014 13:21:34 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/joachim/public_html/magmi/inc/properties.php on line 50
+[17-Mar-2014 13:21:35 UTC] PHP Warning:  syntax error, unexpected '=' in /home/joachim/public_html/magmi/conf/SocialNotifyPlugin.conf on line 4
+ in /home/joachim/public_html/magmi/inc/properties.php on line 49
+[17-Mar-2014 13:21:35 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/joachim/public_html/magmi/inc/properties.php on line 50
+[17-Mar-2014 13:21:47 UTC] PHP Warning:  syntax error, unexpected '=' in /home/joachim/public_html/magmi/conf/SocialNotifyPlugin.conf on line 4
+ in /home/joachim/public_html/magmi/inc/properties.php on line 49
+[17-Mar-2014 13:21:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/joachim/public_html/magmi/inc/properties.php on line 50

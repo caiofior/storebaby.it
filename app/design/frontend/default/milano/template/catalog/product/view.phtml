@@ -12,7 +12,7 @@ $_shortDescription = $_product->getShortDescription();
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>    
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
-<div class="product-view">
+<div itemscope itemtype="http://data-vocabulary.org/Product" class="product-view">
 	
     <div class="product-essential">
     
@@ -23,7 +23,7 @@ $_shortDescription = $_product->getShortDescription();
         <div class="product-shop">
                 <div class="product-name clear">
                 	<?php include('view/labels.phtml') ?>
-                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    <h1 itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                     <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
                 </div>
                 <div class="addtocont clear">
@@ -31,16 +31,16 @@ $_shortDescription = $_product->getShortDescription();
                     	<?php echo $this->getPriceHtml($_product) ?>
                         <span class="txtIva"><?php echo $this->__('Prezzo IVA inclusa') ?></span>
 					<?php else: ?>
-                        <span class="product-code"><?php echo $this->__('Product code:').'<strong>'.$_product->getSku().'</strong>'; ?></span>
+                        <span class="product-code"><?php echo $this->__('Product code:').'<strong itemprop="identifier" content="mpn:'.$_product->getSku().'">'.$_product->getSku().'</strong>'; ?></span>
                         <?php echo $this->getChildHtml('product_type_data') ?>
                     <?php endif;?> 
                     <?php if($_product->getTypeId() != 'bundle'): ?>
                     	<?php echo $this->getChildHtml('product_type_data') ?>
-                        <span class="product-code"><?php echo $this->__('Product code:').' <strong>'.$_product->getSku().'</strong>'; ?></span>
+                        <span class="product-code"><?php echo $this->__('Product code:').' <strong itemprop="identifier" content="mpn:'.$_product->getSku().'">'.$_product->getSku().'</strong>'; ?></span>
                     <?php endif;?>
                 </div>
     <?php if (Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 1 ) : ?>
-    <div class="nostock"><?php echo $this->__('Il prodotto non è al momento disponibile nei nostri magazzini, lo stiamo aspettando entro 30 giorni.') ?></div>
+    <div class="nostock"><?php echo $this->__('Il prodotto non è al momento disponibile nei nostri magazzini; completa comunque l\'ordine e te lo faremo avere in 30 giorni.') ?></div>
     <?php endif; ?>
                 
                 <?php echo $this->getChildHtml('upsell_products') ?>
@@ -73,7 +73,7 @@ $_shortDescription = $_product->getShortDescription();
                             	<div class="title"><?php echo $this->__('Brand') ?></div>
 
                             	<?php if ($brandPageUrl != ''): ?>
-                                	<a href="<?php echo $brandPageUrl;?>" title="<?php echo str_replace("%s", $brandValue, $this->__('Click to see more products from %s')); ?>"><img src="<?php echo $brandImageUrl;?>" alt="<?php echo $brandValue; ?>" /></a>
+                                	<a itemprop="brand" href="<?php echo $brandPageUrl;?>" title="<?php echo str_replace("%s", $brandValue, $this->__('Click to see more products from %s')); ?>"><img src="<?php echo $brandImageUrl;?>" alt="<?php echo $brandValue; ?>" /></a>
                                 <?php else: ?>
                                 	<img src="<?php echo $brandImageUrl;?>" title="<?php echo $brandLabel .': '. $brandValue; ?>" alt="<?php echo $brandValue; ?>" />
                                 <?php endif; ?>
@@ -127,7 +127,7 @@ $_shortDescription = $_product->getShortDescription();
                     </div>
                 <?php endif; ?>
 				<?php if ($_shortDescription):?>
-                    <div class="short-description clear">
+                    <div class="short-description clear" itemprop="description">
                         <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_shortDescription), 'short_description') ?></div>
                     </div>
                 <?php endif;?>                <?php if($_infoAccordion = $this->getChildHtml('info_accordion')): ?>

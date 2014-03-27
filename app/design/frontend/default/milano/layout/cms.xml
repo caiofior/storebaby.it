@@ -42,6 +42,7 @@ Default layout, loads most of the pages
    				<action method="setBlockId"><block_id>home_callout</block_id></action>
 			</block>
         </reference>
+
     </cms_index_index>
 
     <cms_index_defaultindex>
