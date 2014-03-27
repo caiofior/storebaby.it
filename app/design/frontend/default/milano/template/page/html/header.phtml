@@ -38,7 +38,26 @@
             <div class="header-contactNr">
             	<div class="infoDiv infornr"></div>
                 <div class="infoDiv infoSkype">
-
+<?php if (strpos(Mage::helper('core/url')->getCurrentUrl(),'/checkout/') == false) : ?>
+<!-- Google Code per il tag di remarketing -->
+<!--------------------------------------------------
+I tag di remarketing possono non essere associati a informazioni di identificazione personale o inseriti in pagine relative a categorie sensibili. Ulteriori informazioni e istruzioni su come impostare il tag sono disponibili alla pagina: http://google.com/ads/remarketingsetup
+--------------------------------------------------->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1005441481;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1005441481/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>       
+<?php endif;?>
 <div id="SkypeButton_Call_storebaby_italia_1">
   <script type="text/javascript">
     Skype.ui({
