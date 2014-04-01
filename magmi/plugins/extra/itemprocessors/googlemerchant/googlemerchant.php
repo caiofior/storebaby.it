@@ -32,6 +32,7 @@ class GoogleMerchant extends Magmi_ItemProcessor
         'image link'=>null,
         'condition'=>null,
         'price'=>null,
+        'sale_price'=>null,
         'availability'=>null,
         'brand'=>null,
         'gtin'=>null,
@@ -168,6 +169,14 @@ LIMIT 1
             if ($item['price'] == '')
                 return true;
             $googleMerchantData['price']=$item['price'].' EUR';
+            
+            $salePrice = $this->selectone(
+               'SELECT MAX(`rule_price`) as "discounted_price" FROM `catalogrule_product_price` 
+                WHERE `product_id` = "'.$params['product_id'].'" AND `rule_date`=CURDATE()'
+            ,null,'discounted_price');
+            if ($salePrice != '')
+               $salePrice .= ' EUR';
+            $googleMerchantData['sale_price']=$salePrice;
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
             $googleMerchantData['gtin']=$item['sku'];
@@ -176,7 +185,7 @@ LIMIT 1
             foreach($this->tableRates as $tWeight => $tPrice)
                 if ($item['weight'] > $tWeight) $shipExpense = $tPrice;
 
-            $googleMerchantData['shipping']='IT:::'.str_replace('.',',',$shipExpense).' EUR';
+            $googleMerchantData['shipping']='IT:::'.str_replace(',','.',$shipExpense).' EUR';
             foreach($googleMerchantData as $key=>$value) {
                  $googleMerchantData[$key]=str_replace("\t",' ',$value);
             }
