@@ -80,7 +80,7 @@ class Magmi_ReindexingPlugin extends Magmi_GeneralImportPlugin
                 exec ('rm -Rf '.__DIR__.'/../../../../../var/locks ');
 
 		$tstart=microtime(true);
-		$this->log("Reindexing $idx....","info");
+		$this->log("Reindexing ....","info");
 			
 	
                 exec('pkill -9 indexer.php');

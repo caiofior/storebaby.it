@@ -1,4 +1,13 @@
 <?php
+define('ABSPATH',__DIR__.'/wp/');
+if (!isset($_SERVER))
+   $_SERVER=array();
+if (!key_exists('SERVER_NAME',$_SERVER))
+   $_SERVER['SERVER_NAME']='';
+require "wp/formatting.php";
+require "wp/functions.php";
+require "wp/plugin.php";
+require "NextScripts_APIs/postToGooglePlus.php";
 class SocialNotifyPlugin extends Magmi_GeneralImportPlugin
 {
 
@@ -91,6 +100,13 @@ public function getPluginInfo()
                 if (!is_file($imageDir.$product['image']))
                         continue;
 
+                 $loginError = doConnectToGooglePlus2($this->getParam("SOCIAL:gemail",""), $this->getParam("SOCIAL:gpassword",""));
+                 if (!$loginError) {
+                  // Image URL
+                  $lnk = array('img'=>$config['web/unsecure/base_url'].'/media/catalog/product/'.$product['image']);
+                  doPostToGooglePlus2($product['name']. ' '.$config['web/unsecure/base_url'].'index.php/'.$product['url_path'], $lnk, $this->getParam("SOCIAL:gpage",""));
+                  } 
+                die('HI');
                 $mail = new PHPMailer;
                 if ($config['system/lesti_smtp/enable'] == 1) {
 
