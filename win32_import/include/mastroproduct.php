@@ -118,7 +118,7 @@ class MastroProduct {
 
         $categories = $this->productFromCsv->getCategory($mastroCategory);
         if ($categories == false)
-            return false;
+            return $this->data['EAN13'].',"Category not found","'.$mastroCategory.'"';
         $categoriesBranches = array_unique(preg_split('/[;,\/]/', $categories));
         $rawCategoriesWords = array_unique(preg_split('/[ ;,\/]/', strtolower($categories)));
         $categoriesWords = array();
@@ -135,6 +135,8 @@ class MastroProduct {
         $magentoProduct->setData('categories',$categories);
         $magentoProduct->setData('sku',$this->data['EAN13']);
         $magentoProduct->setData('xus_skus',$this->getReSkus($key));
+        if ($this->data['DESCRIZIONE'] == '')
+            return $this->data['EAN13'].',"Missing description",""';
         $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
         if ($this->data['MARCA'] != '')
             $magentoProduct->setData('manufacturer', ucfirst(strtolower(stripslashes($this->data['MARCA']))).'::['.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['MARCA']))))).']');
@@ -148,6 +150,8 @@ class MastroProduct {
         $iva =  $this->data['IVA'];
         if ($iva == '21') $iva = '22';
         //$magentoProduct->setData('price',$this->data['VENDITA']+1*($iva/100));
+        if ($this->data['VENDITA'] == '')
+            return $this->data['EAN13'].',"Missing price",""';
 	$magentoProduct->setData('price',$this->data['VENDITA']);
         $magentoProduct->setData('tax_class_id', $iva);
         $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
@@ -155,7 +159,7 @@ class MastroProduct {
         $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
         $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
         if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0)
-            return false;
+            return $this->data['EAN13'].',"Code 99",""';
         
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
         if (sizeof($fileName) == 1 && $fileName[0] != '') {
@@ -192,10 +196,10 @@ class MastroProduct {
                 }
                 return $magentoProduct;
             }
-            else return false;
+            else $this->data['EAN13'].',"Nothing modified",""';
             
         } else
-            return false;
+            return $this->data['EAN13'].',"Missing image",""';
     }
     /**
      * Returns product data

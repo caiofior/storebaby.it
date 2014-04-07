@@ -1,92 +1,102 @@
 <?php
 /**
- * Reads csv stream and creates a product
- */
+* Reads csv stream and creates a product
+*/
 class ProductFromCsv {
 
     /**
-     * Config paramethers
-     * @var array
-     */
+* Config paramethers
+* @var array
+*/
     private $config = array();
 
     /**
-     * Mastro CSV Handle
-     * @var resource
-     */
+* Mastro CSV Handle
+* @var resource
+*/
     private $mastroCsvHandle;
     /**
-     * Mastro Utf8 CSV Handle
-     * @var resource
-     */
+* Mastro Utf8 CSV Handle
+* @var resource
+*/
     private $mastroUtf8CsvHandle;
     /**
-     * Magento CSV File
-     * @var string
-     */
-    private $magentoCsvFile;
+* Magento CSV File
+* @var string
+*/
+    private $magentoCsvFilname;
     /**
-     * Magento CSV Handle
-     * @var resource
-     */
+* Magento CSV Handle
+* @var resource
+*/
     private $magentoCsvHandle;
+        /**
+* Magento Excluded CSV File
+* @var string
+*/
+    private $magentoExcludedCsvFilname;
+    /**
+* Magento Excluded CSV Handle
+* @var resource
+*/
+    private $magentoExcludedCsvHandle;
 
     /**
-     * Last position
-     * @var int
-     */
+* Last position
+* @var int
+*/
     private $mastroCsvLastpos;
 
     /**
-     * Start datetime
-     * @var int
-     */
+* Start datetime
+* @var int
+*/
     private $startTime;
 
     /**
-     * Association with categories
-     * @var array 
-     */
+* Association with categories
+* @var array
+*/
     private $categories = array();
     /**
-     *Association with weights
-     * @var array 
-     */
+*Association with weights
+* @var array
+*/
     private $weigths = array();
     /**
-     * FTP reference
-     * @var resource
-     */
+* FTP reference
+* @var resource
+*/
     private $ftp;
 
     /**
-     * Firt ftp start
-     * @var bool
-     */
+* Firt ftp start
+* @var bool
+*/
     private $initialFtp = true;
 
     /**
-     * Database with parsed image names, real name and size to detect modified images
-     * @var SQLite3
-     */
+* Database with parsed image names, real name and size to detect modified images
+* @var SQLite3
+*/
     private $imageDb;
 
     /**
-     * Log activity
-     * @var String
-     */
+* Log activity
+* @var String
+*/
     private $log;
     /**
-     * Lock file
-     * @var string
-     */
+* Lock file
+* @var string
+*/
     private $lock;
 
     /**
-     * Parses config file
-     * @param type $sconfig_file
-     * @throws Exception
-     */
+* Parses config file
+* @param type $sconfig_file
+* @throws Exception
+*/
     public function __construct($sconfig_file) {
         if (ini_get('date.timezone') == '')
             ini_set('date.timezone', 'Europe/Rome');
@@ -129,9 +139,9 @@ corrupted NUMERIC
     }
 
     /**
-     * Starts data import
-     * @throws Exception
-     */
+* Starts data import
+* @throws Exception
+*/
     public function import() {
         $this->setuUpCvs();
         $row = '';
@@ -150,8 +160,8 @@ corrupted NUMERIC
                 $buffer = substr($buffer, 0, strlen($buffer) - 1);
                 $lastchar = ord(substr($buffer, strlen($buffer) - 1));
             }
-            if (is_reasource($this->mastroUtf8CsvHandle))
-                $this->mastroUtf8CsvHandle .= $buffer . PHP_EOL;
+            if (is_resource($this->mastroUtf8CsvHandle))
+                fwrite($this->mastroUtf8CsvHandle , iconv('WINDOWS-1252', 'UTF-8', $buffer ). PHP_EOL);
             if (strlen($row) > 0)
                 $row .= '<br/>';
             $row .= $buffer;
@@ -163,19 +173,26 @@ corrupted NUMERIC
 
                 if ($magentoProduct instanceof MagentoProduct) {
                     if (ftell($this->magentoCsvHandle) == 0)
-                        fwrite($this->magentoCsvHandle,  "\xEF\xBB\xBF".$magentoProduct->getCsvHeaders() . PHP_EOL);
+                        fwrite($this->magentoCsvHandle, "\xEF\xBB\xBF".$magentoProduct->getCsvHeaders() . PHP_EOL);
                     fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow() . PHP_EOL);
+                } else {
+                   if (ftell($this->magentoCsvHandle) == 0) {
+                        $tempMastro = new MastroProduct($this);
+                        fwrite($this->magentoCsvHandle, "\xEF\xBB\xBF".'"EAN","reason","info"' . implode(',',$tempMastro->getHeaders()) . PHP_EOL);
+                   }
+                   fwrite($this->magentoExcludedCsvHandle, $magentoProduct . str_replace('**', ',', $row) .PHP_EOL);
                 }
+                 
                 $rowCount++;
                 $row = '';
                 if ($rowCount / 100 == (int) ($rowCount / 100)) {
                     $microtime = microtime(true) - $this->startTime;
                     $rimaningTime = $microtime * $this->mastroCsvLastpos / $byteCount - $microtime;
-                    $progress =  'Progress:' . intval($byteCount / $this->mastroCsvLastpos * 100 - 1) . " %\t";
+                    $progress = 'Progress:' . intval($byteCount / $this->mastroCsvLastpos * 100 - 1) . " %\t";
                     $progress .= 'Products: ' . $rowCount . "\t";
                     $progress .= 'Remaning time: ' . intval($rimaningTime / 60 + 1) . "m\t";
                     $progress .= 'ETA:' . date('G:i:s', $this->startTime + $microtime + $rimaningTime) . PHP_EOL;
-                    echo $progress; 
+                    echo $progress;
                     file_put_contents($this->lock, $progress);
                     $this->setUpFtp();
                     if (is_resource($this->ftp)) {
@@ -186,7 +203,7 @@ corrupted NUMERIC
                                 ftp_mkdir($this->ftp,$dir);
                             }
                             ftp_chdir($this->ftp,$dir);
-                            ftp_put($this->ftp, 'progress.txt', $this->lock,  FTP_ASCII);
+                            ftp_put($this->ftp, 'progress.txt', $this->lock, FTP_ASCII);
                         }
                     }
                 }
@@ -198,10 +215,10 @@ corrupted NUMERIC
     }
 
     /**
-     * Gets config parameter
-     * @param null|string $key
-     * @return string|array
-     */
+* Gets config parameter
+* @param null|string $key
+* @return string|array
+*/
     public function getConfig($key = null) {
         if ($key == null)
             return $this->config;
@@ -212,10 +229,10 @@ corrupted NUMERIC
     }
 
     /**
-     * Gets a Magento Category name from Mastro Category Name
-     * @param string $mastroCode
-     * @return string
-     */
+* Gets a Magento Category name from Mastro Category Name
+* @param string $mastroCode
+* @return string
+*/
     public function getCategory($mastroCode) {
         if (key_exists($mastroCode, $this->categories))
             return $this->categories[$mastroCode];
@@ -224,10 +241,10 @@ corrupted NUMERIC
     }
     
      /**
-     * Gets a weioght from Mastro Category Name
-     * @param string $mastroCode
-     * @return string
-     */
+* Gets a weioght from Mastro Category Name
+* @param string $mastroCode
+* @return string
+*/
     public function getWeight($mastroCode) {
         if (key_exists($mastroCode, $this->weigths))
             return $this->weigths[$mastroCode];
@@ -236,34 +253,34 @@ corrupted NUMERIC
     }
 
     /**
-     * Returns Ftp resource
-     * @return resource
-     */
+* Returns Ftp resource
+* @return resource
+*/
     public function getFtp() {
         $this->setUpFtp();
         return $this->ftp;
     }
 
     /**
-     * Return Sqlite image db reference
-     * @return SQLite3
-     */
+* Return Sqlite image db reference
+* @return SQLite3
+*/
     public function getImageDb() {
         return $this->imageDb;
     }
 
     /**
-     * Appends a row to lof message
-     * @param string $string
-     */
+* Appends a row to lof message
+* @param string $string
+*/
     public function appendToLog($string) {
        if (strlen($this->log) < 500)
          $this->log .= $string . PHP_EOL;
     }
 
     /**
-     * Called on export end
-     */
+* Called on export end
+*/
     public function execOnShutdown() {
         $this->log .= ' Ended at: ' . strftime('%Y-%m-%d %H:%M:%S') . PHP_EOL;
         if (key_exists('CANCEL_MAGENTO_URL', $this->config)) {
@@ -271,12 +288,12 @@ corrupted NUMERIC
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $this->config['CANCEL_MAGENTO_URL']);
             if (key_exists('UPDATE_MAGENTO_CREDENTIALS', $this->config)) {
-                curl_setopt($ch, CURLOPT_HEADER,false); 
+                curl_setopt($ch, CURLOPT_HEADER,false);
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
                 curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
-                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
-                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600); 
-                curl_setopt($ch,CURLOPT_TIMEOUT,3600); 
+                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600);
+                curl_setopt($ch,CURLOPT_TIMEOUT,3600);
                 
             }
             curl_exec($ch);
@@ -290,12 +307,12 @@ corrupted NUMERIC
             curl_setopt($ch,CURLOPT_POST, true);
             $data = array('message' => $this->log);
             if (key_exists('UPDATE_MAGENTO_CREDENTIALS', $this->config)) {
-                curl_setopt($ch, CURLOPT_HEADER,false); 
+                curl_setopt($ch, CURLOPT_HEADER,false);
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
                 curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
-                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); 
-                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600); 
-                curl_setopt($ch,CURLOPT_TIMEOUT,3600); 
+                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600);
+                curl_setopt($ch,CURLOPT_TIMEOUT,3600);
                 
             }
             curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
@@ -318,9 +335,9 @@ message TEXT
             $this->log .= "line\t" . $error["line"] . PHP_EOL;
         }
         $imageDb->exec('INSERT INTO log (datetime,message) VALUES (
-            DATETIME(\'now\'),
-            \'' . $this->imageDb->escapeString($this->log) . '\'
-            ); ');
+DATETIME(\'now\'),
+\'' . $this->imageDb->escapeString($this->log) . '\'
+); ');
 
         $imageDb->exec('DELETE FROM log WHERE datetime < DATETIME("now","-1 month");');
         $imageDb->close();
@@ -330,9 +347,9 @@ message TEXT
     }
 
     /**
-     * Test ftp status
-     * @throws Exception
-     */
+* Test ftp status
+* @throws Exception
+*/
     public function setUpFtp() {
         if (!key_exists('FTP_SERVER', $this->config))
             return;
@@ -370,12 +387,13 @@ message TEXT
         }
     }
     /**
-     * Uploads CSV Data
-     */
+* Uploads CSV Data
+*/
     private function uploadCsv (){
         fclose($this->mastroCsvHandle);
         fclose($this->magentoCsvHandle);
-        if (is_reasource($this->mastroUtf8CsvHandle))
+        fclose($this->magentoExcludedCsvHandle);
+        if (is_resource($this->mastroUtf8CsvHandle))
             fclose($this->mastroUtf8CsvHandle);
         if (is_resource($this->ftp)) {
         $size = 0;
@@ -398,7 +416,7 @@ message TEXT
             $fileList = ftp_nlist($this->ftp, '.');
             if (is_array($fileList) && in_array('import.csv', $fileList))
                 ftp_delete($this->ftp, 'import.csv');
-            echo 'Uploading import.txt'.PHP_EOL;
+            echo 'Uploading import.csv'.PHP_EOL;
             ftp_put($this->ftp, 'import.csv', $this->magentoCsvFilname, FTP_ASCII);
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
             foreach (array('media','import') as $dir) {
@@ -426,14 +444,57 @@ message TEXT
             ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
             $count++;
             
-        }  while (($size == $fileSize || $fileSize == null) && $count < 10);
+        } while (($size == $fileSize || $fileSize == null) && $count < 10);
         if ($count >=10)
-                $this->appendToLog('Error on uploading  CSV ');
-        }
-    }
+                $this->appendToLog('Error on uploading CSV ');
+
+        
+        $size = 0;
+        $count = 0;
+        $fileSize = null;
+        if (is_file($this->magentoExcludedCsvFilname))
+            $fileSize = filesize($this->magentoExcludedCsvFilname);
+        do {
+        $this->setUpFtp();
+        
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $imagesSubDirs = array('var', 'import');
+            foreach ($imagesSubDirs as $dir) {
+                $fileList = ftp_nlist($this->ftp, '.');
+                if (!is_array($fileList) || !in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp, $dir);
+                }
+                ftp_chdir($this->ftp, $dir);
+            }
+            $fileList = ftp_nlist($this->ftp, '.');
+            if (is_array($fileList) && in_array('import.csv', $fileList))
+                ftp_delete($this->ftp, 'import.csv');
+            echo 'Uploading excluded.txt'.PHP_EOL;
+            ftp_put($this->ftp, 'excluded.csv', $this->magentoExcludedCsvFilname, FTP_ASCII);
+
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $imagesSubDirs = array('var', 'import');
+            foreach ($imagesSubDirs as $dir) {
+                $fileList = ftp_nlist($this->ftp, '.');
+                if (!is_array($fileList) || !in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp, $dir);
+                }
+                ftp_chdir($this->ftp, $dir);
+            }
+            $fileList = ftp_nlist($this->ftp, '.');
+            if (is_array($fileList) && in_array('excluded.csv', $fileList))
+                $size = ftp_size ($this->ftp, 'excluded.csv');
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $count++;
+            
+        } while (($size == $fileSize || $fileSize == null) && $count < 10);
+        if ($count >=10)
+                $this->appendToLog('Error on uploading excluded CSV ');
+      }
+}
     /**
-     * Downloads the backup
-     */
+* Downloads the backup
+*/
     private function downloadBackup (){
         if (is_resource($this->ftp)) {
             echo 'Downloading backups'.PHP_EOL;
@@ -444,7 +505,7 @@ message TEXT
                 mkdir ($backupDir);
             $fileList = array();
             while(sizeof($fileList) == 0 && $count <5) {
-                $this->setUpFtp();    
+                $this->setUpFtp();
                 ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
                 $imagesSubDirs = array('var', 'backups');
                 foreach ($imagesSubDirs as $dir) {
@@ -475,7 +536,7 @@ message TEXT
                        )
                     ) {
                         echo 'Downloading backup '.$file.PHP_EOL;
-                        ftp_get($this->ftp, $backupDir.DIRECTORY_SEPARATOR.$file,  $file, FTP_BINARY);
+                        ftp_get($this->ftp, $backupDir.DIRECTORY_SEPARATOR.$file, $file, FTP_BINARY);
                         if (is_file($backupDir.DIRECTORY_SEPARATOR.$file))
                             $filesize =filesize($backupDir.DIRECTORY_SEPARATOR.$file);
                     }
@@ -489,9 +550,9 @@ message TEXT
         }
     }
     /**
-     * Sets up the output csv
-     * @throws Exception
-     */
+* Sets up the output csv
+* @throws Exception
+*/
     private function setuUpCvs () {
         if (key_exists('MASTRO_COMMAND', $this->config)) {
             echo 'Export command ' . $this->config['MASTRO_COMMAND'] . PHP_EOL;
@@ -503,9 +564,10 @@ message TEXT
         $this->mastroCsvHandle = fopen($this->config['MASTRO_CSV_FILE'], 'r');
         $this->setUpFtp();
         if (is_resource($this->ftp))
-            echo 'FTP connection with  ' . $this->config['FTP_SERVER'] . PHP_EOL;
+            echo 'FTP connection with ' . $this->config['FTP_SERVER'] . PHP_EOL;
         if (key_exists('CONVERT_COMMAND', $this->config))
-            echo 'Image conversion command   ' . $this->config['CONVERT_COMMAND'] . PHP_EOL;
+            echo 'Image conversion command ' . $this->config['CONVERT_COMMAND'] . PHP_EOL;
+        
         $this->magentoCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv';
         if (!is_dir($this->magentoCsvFilname))
             mkdir($this->magentoCsvFilname);
@@ -513,6 +575,14 @@ message TEXT
         if (is_file($this->magentoCsvFilname))
             unlink($this->magentoCsvFilname);
         $this->magentoCsvHandle = fopen($this->magentoCsvFilname, 'w');
+        
+        $this->magentoExcludedCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv';
+        if (!is_dir($this->magentoExcludedCsvFilname))
+            mkdir($this->magentoExcludedCsvFilname);
+        $this->magentoExcludedCsvFilname .= DIRECTORY_SEPARATOR . 'excluded.csv';
+        if (is_file($this->magentoExcludedCsvFilname))
+            unlink($this->magentoExcludedCsvFilname);
+        $this->magentoExcludedCsvHandle = fopen($this->magentoExcludedCsvFilname, 'w');
 
         $this->categories = json_decode(str_replace("'", '"', $this->config['CATEGORIES']), true);
         if (!is_array($this->categories))

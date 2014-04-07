@@ -1,0 +1,488 @@
+title:MAGMI by dweeves - version:0.7.18
+startup:Running Magmi Product Import Engine v1.7.1 by dweeves
+startup:Import Profile:default
+startup:Import Mode:create
+step:step:0.5%
+plugin;Magmi_CSVDataSource;pluginhello:CSV Datasource-1.3-Dweeves- 
+plugin;ClearProductUtility;pluginhello:Disable products-0.1-caiofior- 
+plugin;Magmi_OptimizerPlugin;pluginhello:Magmi Optimizer-1.0.5-Dweeves-http://sourceforge.net/apps/mediawiki/magmi/index.php?title=Magmi_Optimizer 
+plugin;Magmi_ReindexingPlugin;pluginhello:Magmi Magento Reindexer-1.0.2-Dweeves-http://sourceforge.net/apps/mediawiki/magmi/index.php?title=Magmi_Magento_Reindexer 
+plugin;SmtpEmailReportPlugin;pluginhello:Import Report Smtp Mail Notifier-0.1-caiofior- 
+plugin;SocialNotifyPlugin;pluginhello:Social notify of new records-0.1-caiofior- 
+plugin;CategoryImporter;pluginhello:On the fly category creator/importer-0.2.3-Dweeves-http://sourceforge.net/apps/mediawiki/magmi/index.php?title=On_the_fly_category_creator/importer 
+plugin;GoogleMerchant;pluginhello:Google merchant center CSV generator-0.1-caiofior- 
+plugin;ImageAttributeItemProcessor;pluginhello:Image attributes processor-1.0.25-Dweeves-http://sourceforge.net/apps/mediawiki/magmi/index.php?title=Image_attributes_processor 
+plugin;CrossUpsellProducts;pluginhello:Cross/Upsell Importer-1.0.3-Dweeves-http://sourceforge.net/apps/mediawiki/magmi/index.php?title=Cross/Upsell_Importer 
+plugin;Magmi_DefaultAttributeItemProcessor;pluginhello:Standard Attribute Import-1.0.5-Dweeves- 
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - Importing CSV : /home/joachim/public_html/var/import/import.csv using separator [ , ] enclosing [ " ]
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Optimizing magmi
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Adding index MAGMI_EAOV_OPTIMIZATION_IDX on eav_attribute_option_value
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Already optmized!
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Adding index MAGMI_CPEM_OPTIMIZATION_IDX on catalog_product_entity_media_gallery
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Already optmized!
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Adding index MAGMI_CCEV_OPTIMIZATION_IDX on catalog_category_entity_varchar
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Already optmized!
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Adding index MAGMI_EA_CODE_OPTIMIZATION_IDX on eav_attribute
+plugin;Magmi_OptimizerPlugin;info:Magmi Optimizer v1.0.5 - Already optmized!
+startup:Performing Datasouce Lookup...
+lookup:8360:2.01508307457
+startup:Found 8360 records, took 2.01508307457 sec
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - File is UTF8 (BOM Detected)
+plugin;Magmi_CSVDataSource;startup:CSV Datasource v1.3 - 107 CSV headers columns found
+columns:107
+plugin;Magmi_DefaultAttributeItemProcessor;startup:Standard Attribute Import v1.0.5 - Newly created items will have default values for columns:
+startup:Ajusted processed columns:108
+itime:42 - 2.01922702789 - 2.01922702789
+dbtime:1345 - 0.673475265503 - 0.673475265503 - 1345
+itime:84 - 4.00139713287 - 1.98202204704
+dbtime:2715 - 1.25472593307 - 0.581250667572 - 1370
+itime:126 - 6.60387516022 - 2.60230016708
+dbtime:4095 - 2.01405835152 - 0.759332418442 - 1380
+itime:168 - 8.46501612663 - 1.86094117165
+dbtime:5473 - 2.56858849525 - 0.554530143738 - 1378
+itime:210 - 10.8506500721 - 2.38539910316
+dbtime:6855 - 3.2255461216 - 0.656957626343 - 1382
+itime:252 - 13.4783160686 - 2.62738990784
+dbtime:8233 - 3.97276854515 - 0.747222423553 - 1378
+itime:294 - 15.5782670975 - 2.09978699684
+dbtime:9595 - 4.46558332443 - 0.492814779282 - 1362
+itime:336 - 17.3871061802 - 1.80868411064
+dbtime:10948 - 5.01145768166 - 0.545874357224 - 1353
+itime:378 - 19.4587240219 - 2.07138895988
+dbtime:12315 - 5.65534639359 - 0.643888711929 - 1367
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /9/9/9989.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /9/9/9989.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /9/9/9989.jpeg cannot be found in images path
+itime:420 - 21.6720919609 - 2.21324181557
+dbtime:13669 - 6.2682788372 - 0.612932443619 - 1354
+itime:462 - 23.435986042 - 1.76369404793
+dbtime:15063 - 6.86833286285 - 0.60005402565 - 1394
+itime:504 - 26.1512579918 - 2.71514201164
+dbtime:16448 - 7.55485367775 - 0.686520814896 - 1385
+itime:546 - 28.8169009686 - 2.66542887688
+dbtime:17816 - 8.41280078888 - 0.85794711113 - 1368
+itime:588 - 30.4622919559 - 1.64525079727
+dbtime:19182 - 8.94066238403 - 0.527861595154 - 1366
+itime:630 - 31.9747130871 - 1.51226401329
+dbtime:20582 - 9.46294498444 - 0.522282600403 - 1400
+itime:672 - 33.7846419811 - 1.80979180336
+dbtime:21940 - 10.0313570499 - 0.568412065506 - 1358
+itime:714 - 35.3973779678 - 1.61258792877
+dbtime:23328 - 10.5141854286 - 0.482828378677 - 1388
+itime:756 - 37.2365660667 - 1.83901691437
+dbtime:24724 - 11.0396461487 - 0.525460720062 - 1396
+itime:798 - 39.1604530811 - 1.92374205589
+dbtime:26128 - 11.5974137783 - 0.557767629623 - 1404
+itime:840 - 40.6612730026 - 1.50066184998
+dbtime:27493 - 12.0934696198 - 0.496055841446 - 1365
+itime:882 - 42.6279029846 - 1.96647191048
+dbtime:28855 - 12.6618974209 - 0.568427801132 - 1362
+itime:924 - 44.0603091717 - 1.43227410316
+dbtime:30239 - 13.1373867989 - 0.475489377975 - 1384
+itime:966 - 45.8425951004 - 1.78214001656
+dbtime:31641 - 13.7923438549 - 0.654957056046 - 1402
+itime:1008 - 47.3385081291 - 1.49574708939
+dbtime:33066 - 14.5589947701 - 0.766650915146 - 1425
+itime:1050 - 49.0333039761 - 1.69451498985
+dbtime:34425 - 15.1706278324 - 0.611633062363 - 1359
+itime:1092 - 51.1757540703 - 2.14198899269
+dbtime:35778 - 15.9044497013 - 0.733821868896 - 1353
+itime:1134 - 53.0480780602 - 1.8721549511
+dbtime:37149 - 16.4980390072 - 0.593589305878 - 1371
+itime:1176 - 55.5875501633 - 2.53927516937
+dbtime:38516 - 17.3488492966 - 0.850810289383 - 1367
+itime:1218 - 56.998707056 - 1.41101288795
+dbtime:39852 - 17.9618384838 - 0.612989187241 - 1336
+itime:1260 - 59.0405480862 - 2.04160308838
+dbtime:41204 - 18.6098995209 - 0.648061037064 - 1352
+itime:1302 - 60.7083361149 - 1.66760706902
+dbtime:42578 - 19.158349514 - 0.548449993134 - 1374
+itime:1344 - 62.6173491478 - 1.9088280201
+dbtime:43996 - 19.7273466587 - 0.568997144699 - 1418
+itime:1386 - 64.8527650833 - 2.23514389992
+dbtime:45358 - 20.41583848 - 0.688491821289 - 1362
+itime:1428 - 66.639247179 - 1.78629612923
+dbtime:46726 - 20.9655241966 - 0.549685716629 - 1368
+itime:1470 - 68.2905900478 - 1.65115690231
+dbtime:48160 - 21.567224741 - 0.601700544357 - 1434
+itime:1512 - 70.2784581184 - 1.98769211769
+dbtime:49591 - 22.3271346092 - 0.75990986824 - 1431
+itime:1554 - 72.5941820145 - 2.31549787521
+dbtime:50962 - 23.1108622551 - 0.783727645874 - 1371
+itime:1596 - 74.6905190945 - 2.09610104561
+dbtime:52346 - 23.7230608463 - 0.612198591232 - 1384
+itime:1638 - 76.1807169914 - 1.49004197121
+dbtime:53694 - 24.1934776306 - 0.470416784286 - 1348
+itime:1680 - 78.0568380356 - 1.87597107887
+dbtime:55077 - 24.8420598507 - 0.648582220078 - 1383
+itime:1722 - 80.2603061199 - 2.20335006714
+dbtime:56469 - 25.5335128307 - 0.691452980042 - 1392
+itime:1764 - 82.2033879757 - 1.94292092323
+dbtime:57874 - 26.1160883904 - 0.582575559616 - 1405
+itime:1806 - 83.8190381527 - 1.6154589653
+dbtime:59243 - 26.6010704041 - 0.484982013702 - 1369
+itime:1848 - 86.0135769844 - 2.19437599182
+dbtime:60623 - 27.2117767334 - 0.610706329346 - 1380
+itime:1890 - 87.3339681625 - 1.32014417648
+dbtime:62009 - 27.7531929016 - 0.541416168213 - 1386
+itime:1932 - 88.9494991302 - 1.61536598206
+dbtime:63394 - 28.2766778469 - 0.523484945297 - 1385
+itime:1974 - 91.0489640236 - 2.099173069
+dbtime:64744 - 28.8940186501 - 0.617340803146 - 1350
+itime:2016 - 92.8730330467 - 1.82385396957
+dbtime:66106 - 29.4984936714 - 0.604475021362 - 1362
+itime:2058 - 94.2577910423 - 1.38457202911
+dbtime:67486 - 30.0077941418 - 0.509300470352 - 1380
+itime:2100 - 95.822810173 - 1.56484007835
+dbtime:68845 - 30.5109598637 - 0.503165721893 - 1359
+itime:2142 - 97.2964110374 - 1.47341299057
+dbtime:70233 - 31.0335454941 - 0.522585630417 - 1388
+itime:2184 - 99.1440160275 - 1.84740591049
+dbtime:71672 - 31.6749923229 - 0.641446828842 - 1439
+itime:2226 - 101.522812128 - 2.37861514091
+dbtime:73076 - 32.3764159679 - 0.70142364502 - 1404
+itime:2268 - 104.699340105 - 3.17613101006
+dbtime:74540 - 33.5662453175 - 1.18982934952 - 1464
+itime:2310 - 106.616341114 - 1.91682910919
+dbtime:75918 - 34.2789003849 - 0.712655067444 - 1378
+itime:2352 - 108.237565041 - 1.62110304832
+dbtime:77322 - 34.8706777096 - 0.591777324677 - 1404
+itime:2394 - 110.571308136 - 2.33354616165
+dbtime:78765 - 35.9073431492 - 1.03666543961 - 1443
+itime:2436 - 112.315670013 - 1.74422383308
+dbtime:80175 - 36.6240358353 - 0.716692686081 - 1410
+itime:2478 - 114.344233036 - 2.02825689316
+dbtime:81588 - 37.42167449 - 0.797638654709 - 1413
+itime:2520 - 117.458590031 - 3.1141409874
+dbtime:82995 - 38.538819313 - 1.11714482307 - 1407
+itime:2562 - 119.442260981 - 1.98331785202
+dbtime:84390 - 39.1225116253 - 0.583692312241 - 1395
+itime:2604 - 121.273772001 - 1.83135485649
+dbtime:85758 - 39.7822959423 - 0.659784317017 - 1368
+itime:2646 - 123.364776134 - 2.09084010124
+dbtime:87138 - 40.3100078106 - 0.527711868286 - 1380
+itime:2688 - 125.348227978 - 1.9833009243
+dbtime:88524 - 41.0050392151 - 0.695031404495 - 1386
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /8/0/8059147059435.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /8/0/8059147059435.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /8/0/8059147059435.jpeg cannot be found in images path
+itime:2730 - 127.010185957 - 1.66172099113
+dbtime:89901 - 41.5697448254 - 0.564705610275 - 1377
+itime:2772 - 128.753623962 - 1.74326491356
+dbtime:91308 - 42.1417195797 - 0.571974754333 - 1407
+itime:2814 - 130.22411108 - 1.47036004066
+dbtime:92745 - 42.8297550678 - 0.688035488129 - 1437
+itime:2856 - 131.744501114 - 1.52022504807
+dbtime:94185 - 43.4606122971 - 0.630857229233 - 1440
+itime:2898 - 133.375828028 - 1.63115692139
+dbtime:95571 - 44.0634052753 - 0.602792978287 - 1386
+itime:2940 - 135.575949192 - 2.19987607002
+dbtime:96966 - 44.7606472969 - 0.697242021561 - 1395
+itime:2982 - 137.221748114 - 1.64565515518
+dbtime:98373 - 45.3251805305 - 0.564533233643 - 1407
+itime:3024 - 138.985953093 - 1.76398706436
+dbtime:99777 - 45.9423155785 - 0.617135047913 - 1404
+itime:3066 - 140.688304186 - 1.70218515396
+dbtime:101205 - 46.5133895874 - 0.571074008942 - 1428
+itime:3108 - 143.047902107 - 2.35929012299
+dbtime:102618 - 47.2056188583 - 0.692229270935 - 1413
+itime:3150 - 145.914138079 - 2.86603093147
+dbtime:104022 - 47.9965527058 - 0.790933847427 - 1404
+itime:3192 - 148.148480177 - 2.23408913612
+dbtime:105411 - 48.6671967506 - 0.670644044876 - 1389
+itime:3234 - 149.920474052 - 1.77181005478
+dbtime:106779 - 49.2483365536 - 0.581139802933 - 1368
+itime:3276 - 152.612796068 - 2.692070961
+dbtime:108159 - 50.067224741 - 0.818888187408 - 1380
+itime:3318 - 155.29382205 - 2.68088006973
+dbtime:109572 - 50.8930037022 - 0.825778961182 - 1413
+itime:3360 - 157.552817106 - 2.25879096985
+dbtime:110979 - 51.7603232861 - 0.867319583893 - 1407
+itime:3402 - 158.855713129 - 1.30268597603
+dbtime:112374 - 52.2513258457 - 0.491002559662 - 1395
+itime:3444 - 161.002778053 - 2.14691209793
+dbtime:113790 - 52.9523429871 - 0.701017141342 - 1416
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /9/2/92168.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /9/2/92168.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /9/2/92168.jpeg cannot be found in images path
+itime:3486 - 162.737496138 - 1.7344751358
+dbtime:115146 - 53.579282999 - 0.626940011978 - 1356
+itime:3528 - 164.134092093 - 1.39514303207
+dbtime:116604 - 54.1468462944 - 0.567563295364 - 1458
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /4/4/44600075a.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /4/4/44600075a.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /4/4/44600075a.jpeg cannot be found in images path
+itime:3570 - 166.058344126 - 1.92408108711
+dbtime:118047 - 54.8626513481 - 0.715805053711 - 1443
+itime:3612 - 167.716180086 - 1.65756511688
+dbtime:119384 - 55.348074913 - 0.485423564911 - 1337
+itime:3654 - 169.346353054 - 1.63003087044
+dbtime:120778 - 55.9264013767 - 0.578326463699 - 1394
+itime:3696 - 170.729218006 - 1.3827419281
+dbtime:122179 - 56.4083366394 - 0.48193526268 - 1401
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /2/0/200197.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /2/0/200197.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /2/0/200197.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /8/0/8007300004242.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /8/0/8007300004242.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /8/0/8007300004242.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /1/6/162600.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /1/6/162600.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /1/6/162600.jpeg cannot be found in images path
+itime:3738 - 172.364298105 - 1.63493299484
+dbtime:123517 - 56.897892952 - 0.489556312561 - 1338
+itime:3780 - 173.836807966 - 1.47232794762
+dbtime:124876 - 57.5524909496 - 0.654597997665 - 1359
+itime:3822 - 176.104684114 - 2.26773405075
+dbtime:126271 - 58.2823047638 - 0.729813814163 - 1395
+itime:3864 - 178.378770113 - 2.27376198769
+dbtime:127690 - 59.0447912216 - 0.762486457825 - 1419
+itime:3906 - 181.124958038 - 2.74602007866
+dbtime:129076 - 60.0122568607 - 0.967465639114 - 1386
+itime:3948 - 183.619027138 - 2.49368810654
+dbtime:130519 - 61.1203022003 - 1.10804533958 - 1443
+itime:3990 - 185.148765087 - 1.5295650959
+dbtime:131938 - 61.7071592808 - 0.58685708046 - 1419
+itime:4032 - 187.309241056 - 2.16021895409
+dbtime:133339 - 62.4812791348 - 0.774119853973 - 1401
+itime:4074 - 189.248051167 - 1.9382891655
+dbtime:134767 - 63.1920304298 - 0.71075129509 - 1428
+itime:4116 - 191.519714117 - 2.27143502235
+dbtime:136222 - 63.8963868618 - 0.704356431961 - 1455
+itime:4158 - 193.379515171 - 1.8595790863
+dbtime:137623 - 64.5771102905 - 0.680723428726 - 1401
+itime:4200 - 195.935108185 - 2.55531311035
+dbtime:139003 - 65.418790102 - 0.841679811478 - 1380
+itime:4242 - 197.738386154 - 1.80299305916
+dbtime:140356 - 66.1217606068 - 0.702970504761 - 1353
+itime:4284 - 199.734861135 - 1.99625110626
+dbtime:141751 - 66.9224729538 - 0.800712347031 - 1395
+itime:4326 - 201.817901134 - 2.0827960968
+dbtime:143122 - 67.7109456062 - 0.788472652435 - 1371
+itime:4368 - 204.267920017 - 2.44979596138
+dbtime:144526 - 68.7900998592 - 1.07915425301 - 1404
+itime:4410 - 206.169988155 - 1.90179896355
+dbtime:145906 - 69.5663747787 - 0.77627491951 - 1380
+itime:4452 - 207.947767019 - 1.77760195732
+dbtime:147265 - 70.226121664 - 0.6597468853 - 1359
+itime:4494 - 209.502948046 - 1.55499196053
+dbtime:148672 - 70.928186655 - 0.702064990997 - 1407
+itime:4536 - 211.337685108 - 1.83441996574
+dbtime:150061 - 71.5455875397 - 0.617400884628 - 1389
+itime:4578 - 213.679305077 - 2.34148907661
+dbtime:151459 - 72.2345702648 - 0.688982725143 - 1398
+itime:4620 - 216.196478128 - 2.51676797867
+dbtime:152842 - 73.0750772953 - 0.840507030487 - 1383
+itime:4662 - 217.811444998 - 1.61471390724
+dbtime:154237 - 73.7198750973 - 0.644797801971 - 1395
+itime:4704 - 220.254582167 - 2.44286608696
+dbtime:155653 - 74.9348497391 - 1.2149746418 - 1416
+itime:4746 - 223.190801144 - 2.93607902527
+dbtime:157114 - 76.2734880447 - 1.33863830566 - 1461
+itime:4788 - 226.907099962 - 3.71613883972
+dbtime:158503 - 77.2332110405 - 0.959722995758 - 1389
+itime:4830 - 231.190427065 - 4.28305888176
+dbtime:159883 - 78.4378182888 - 1.20460724831 - 1380
+itime:4872 - 233.751327038 - 2.56071591377
+dbtime:161314 - 79.2248280048 - 0.787009716034 - 1431
+itime:4914 - 236.577105045 - 2.82561206818
+dbtime:162751 - 80.4360718727 - 1.21124386787 - 1437
+itime:4956 - 241.160030127 - 4.58256006241
+dbtime:164137 - 81.9585258961 - 1.52245402336 - 1386
+itime:4998 - 243.684199095 - 2.52395009995
+dbtime:165539 - 82.950094223 - 0.99156832695 - 1402
+itime:5040 - 245.673789024 - 1.98942184448
+dbtime:166940 - 83.7003958225 - 0.750301599503 - 1401
+itime:5082 - 248.121880054 - 2.44790005684
+dbtime:168352 - 84.5041866302 - 0.803790807724 - 1412
+itime:5124 - 250.892549038 - 2.77041006088
+dbtime:169768 - 85.220291853 - 0.716105222702 - 1416
+itime:5166 - 252.966755152 - 2.07406115532
+dbtime:171199 - 85.8857960701 - 0.665504217148 - 1431
+itime:5208 - 254.873089075 - 1.90607500076
+dbtime:172645 - 86.7374844551 - 0.85168838501 - 1446
+itime:5250 - 258.346328974 - 3.47303891182
+dbtime:174088 - 87.8816041946 - 1.14411973953 - 1443
+itime:5292 - 261.844563961 - 3.49810290337
+dbtime:175501 - 89.1429243088 - 1.26132011414 - 1413
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /5/3/5324_r13.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /5/3/5324_r13.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /5/3/5324_r13.jpeg cannot be found in images path
+itime:5334 - 264.84574008 - 3.00095200539
+dbtime:176926 - 90.3879497051 - 1.24502539635 - 1425
+itime:5376 - 267.915753126 - 3.06986999512
+dbtime:178345 - 91.4110229015 - 1.02307319641 - 1419
+itime:5418 - 269.594892979 - 1.67891788483
+dbtime:179770 - 92.1051514149 - 0.694128513336 - 1425
+itime:5460 - 270.869771004 - 1.27475786209
+dbtime:181201 - 92.6335623264 - 0.52841091156 - 1431
+itime:5502 - 273.139950991 - 2.26972293854
+dbtime:182584 - 93.5833408833 - 0.949778556824 - 1383
+itime:5544 - 274.67655015 - 1.53646707535
+dbtime:183976 - 94.2256574631 - 0.642316579819 - 1392
+itime:5586 - 276.294234991 - 1.61746191978
+dbtime:185347 - 94.8105885983 - 0.584931135178 - 1371
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /b/j/bj81926.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /b/j/bj81926.jpeg cannot be found in images path
+plugin;ImageAttributeItemProcessor;warning:Image attributes processor v1.0.25 - /b/j/bj81926.jpeg cannot be found in images path
+itime:5628 - 278.724511147 - 2.43010497093
+dbtime:186750 - 95.5539579391 - 0.743369340897 - 1403
+itime:5670 - 280.544438124 - 1.81973409653
+dbtime:188141 - 96.3210272789 - 0.767069339752 - 1391
+itime:5712 - 282.560359955 - 2.01572394371
+dbtime:189551 - 97.2888047695 - 0.967777490616 - 1410
+itime:5754 - 284.342657089 - 1.7821149826
+dbtime:190946 - 97.8717207909 - 0.582916021347 - 1395
+itime:5796 - 286.420431137 - 2.07747101784
+dbtime:192317 - 98.4559211731 - 0.584200382233 - 1371
+itime:5838 - 288.682859182 - 2.26214909554
+dbtime:193673 - 98.9632468224 - 0.507325649261 - 1356
+itime:5880 - 291.41655612 - 2.733492136
+dbtime:195032 - 99.8539631367 - 0.890716314316 - 1359
+itime:5922 - 293.715619087 - 2.29890012741
+dbtime:196433 - 101.010345936 - 1.15638279915 - 1401
+itime:5964 - 296.214591026 - 2.49867892265
+dbtime:197795 - 102.048236609 - 1.03789067268 - 1362
+itime:6006 - 298.832565069 - 2.61783909798
+dbtime:199217 - 103.34112215 - 1.29288554192 - 1422
+itime:6048 - 301.042777061 - 2.21005105972
+dbtime:200642 - 104.332465887 - 0.991343736649 - 1425
+itime:6090 - 302.380072117 - 1.33712315559
+dbtime:202094 - 104.90471077 - 0.572244882584 - 1452
+itime:6132 - 303.760025978 - 1.37978792191
+dbtime:203525 - 105.441170692 - 0.536459922791 - 1431
+itime:6174 - 305.741893053 - 1.9815659523
+dbtime:204938 - 106.100273132 - 0.65910243988 - 1413
+itime:6216 - 307.951326132 - 2.20922613144
+dbtime:206342 - 106.73321557 - 0.632942438126 - 1404
+itime:6258 - 310.664003134 - 2.71243000031
+dbtime:207794 - 107.680849791 - 0.947634220123 - 1452
+itime:6300 - 312.854289055 - 2.19011497498
+dbtime:209240 - 108.494233847 - 0.813384056091 - 1446
+itime:6342 - 314.948747158 - 2.09431219101
+dbtime:210677 - 109.302760601 - 0.808526754379 - 1437
+itime:6384 - 316.43759203 - 1.48862600327
+dbtime:212096 - 109.830555201 - 0.527794599533 - 1419
+itime:6426 - 318.029021978 - 1.59126782417
+dbtime:213536 - 110.458174229 - 0.627619028091 - 1440
+itime:6468 - 320.404874086 - 2.37570405006
+dbtime:214949 - 111.091457367 - 0.633283138275 - 1413
+itime:6510 - 321.965613127 - 1.56046104431
+dbtime:216339 - 111.659883738 - 0.568426370621 - 1390
+itime:6552 - 323.796036959 - 1.83024287224
+dbtime:217767 - 112.306644678 - 0.646760940552 - 1428
+itime:6594 - 326.205861092 - 2.4096019268
+dbtime:219219 - 113.126119614 - 0.819474935532 - 1452
+itime:6636 - 329.944815159 - 3.73881697655
+dbtime:220668 - 114.419058084 - 1.29293847084 - 1449
+itime:6678 - 333.626316071 - 3.68099808693
+dbtime:222126 - 115.865093708 - 1.44603562355 - 1458
+itime:6720 - 336.283320189 - 2.65668106079
+dbtime:223566 - 116.844308615 - 0.979214906693 - 1440
+itime:6762 - 338.429674149 - 2.14611697197
+dbtime:225018 - 117.550614595 - 0.706305980682 - 1452
+itime:6804 - 341.214020967 - 2.78395295143
+dbtime:226398 - 118.233289242 - 0.682674646378 - 1380
+itime:6846 - 343.102858067 - 1.88865208626
+dbtime:227775 - 118.759621859 - 0.526332616806 - 1377
+itime:6888 - 344.952078104 - 1.84906411171
+dbtime:229164 - 119.381218195 - 0.621596336365 - 1389
+itime:6930 - 346.951011181 - 1.99868321419
+dbtime:230613 - 120.045259953 - 0.664041757584 - 1449
+itime:6972 - 348.957570076 - 2.00639104843
+dbtime:232047 - 120.744861603 - 0.699601650238 - 1434
+itime:7014 - 351.329360962 - 2.37139678001
+dbtime:233502 - 121.541422606 - 0.796561002731 - 1455
+itime:7056 - 353.585801125 - 2.25622105598
+dbtime:234945 - 122.24468255 - 0.703259944916 - 1443
+itime:7098 - 355.956593037 - 2.37062501907
+dbtime:236373 - 122.979349613 - 0.734667062759 - 1428
+itime:7140 - 358.470545053 - 2.51367688179
+dbtime:237789 - 123.792449713 - 0.813100099564 - 1416
+itime:7182 - 361.256651163 - 2.78592610359
+dbtime:239235 - 124.517368078 - 0.724918365479 - 1446
+itime:7224 - 363.879144192 - 2.62227511406
+dbtime:240678 - 125.449337482 - 0.931969404221 - 1443
+itime:7266 - 365.856106043 - 1.97672796249
+dbtime:242121 - 126.065472603 - 0.616135120392 - 1443
+itime:7308 - 367.990321159 - 2.13395500183
+dbtime:243573 - 126.797965288 - 0.732492685318 - 1452
+itime:7350 - 370.296494007 - 2.30553197861
+dbtime:245028 - 127.498879194 - 0.700913906097 - 1455
+itime:7392 - 372.711472988 - 2.41468882561
+dbtime:246453 - 128.220983982 - 0.722104787827 - 1425
+itime:7434 - 375.52748704 - 2.81584405899
+dbtime:247893 - 129.053044796 - 0.832060813904 - 1440
+itime:7476 - 377.902552128 - 2.37479805946
+dbtime:249351 - 129.843649149 - 0.790604352951 - 1458
+itime:7518 - 380.151898146 - 2.24914002419
+dbtime:250809 - 130.771559715 - 0.92791056633 - 1458
+itime:7560 - 382.48102808 - 2.32895898819
+dbtime:252270 - 131.699957371 - 0.928397655487 - 1461
+itime:7602 - 386.574141979 - 4.09295392036
+dbtime:253731 - 133.215538263 - 1.51558089256 - 1461
+itime:7644 - 389.28491807 - 2.71028900146
+dbtime:255129 - 134.057324648 - 0.841786384583 - 1398
+itime:7686 - 391.617635012 - 2.33257102966
+dbtime:256533 - 134.845087767 - 0.787763118744 - 1404
+itime:7728 - 394.631575108 - 3.01360797882
+dbtime:257982 - 135.847363234 - 1.00227546692 - 1449
+itime:7770 - 396.805195093 - 2.1733880043
+dbtime:259393 - 136.616771698 - 0.769408464432 - 1411
+itime:7812 - 399.711158991 - 2.9057059288
+dbtime:260851 - 137.5001688 - 0.883397102356 - 1458
+itime:7854 - 402.272773981 - 2.56147289276
+dbtime:262321 - 138.567150593 - 1.06698179245 - 1470
+itime:7896 - 405.320199013 - 3.04714083672
+dbtime:263779 - 139.824673891 - 1.25752329826 - 1458
+itime:7938 - 407.836951971 - 2.51611185074
+dbtime:265189 - 140.789357662 - 0.964683771133 - 1410
+itime:7980 - 409.27304101 - 1.43590903282
+dbtime:266644 - 141.39948535 - 0.610127687454 - 1455
+itime:8022 - 411.624447107 - 2.35118198395
+dbtime:268042 - 142.159917116 - 0.76043176651 - 1398
+itime:8064 - 413.408471107 - 1.78383302689
+dbtime:269452 - 143.044544935 - 0.884627819061 - 1410
+itime:8106 - 414.586131096 - 1.17746305466
+dbtime:270832 - 143.586986542 - 0.542441606522 - 1380
+itime:8148 - 415.857458115 - 1.27111911774
+dbtime:272251 - 144.119881392 - 0.532894849777 - 1419
+itime:8190 - 417.655608177 - 1.79796719551
+dbtime:273631 - 144.872747183 - 0.752865791321 - 1380
+itime:8232 - 419.433452129 - 1.77754497528
+dbtime:275014 - 145.586127758 - 0.71338057518 - 1383
+itime:8274 - 421.149871111 - 1.71614909172
+dbtime:276400 - 146.232424736 - 0.646296977997 - 1386
+itime:8316 - 422.703968048 - 1.55391192436
+dbtime:277774 - 146.782386065 - 0.549961328506 - 1374
+itime:8358 - 424.298407078 - 1.59426593781
+dbtime:279175 - 147.392000914 - 0.609614849091 - 1401
+itime:8360 - 424.532687187 - 0.234084129333
+dbtime:279276 - 147.555361748 - 0.163360834122 - 101
+info:Skus imported OK:8360/8360
+plugin;Magmi_ReindexingPlugin;info:Magmi Magento Reindexer v1.0.2 - Cleaning flat tables before reindex...
+plugin;Magmi_ReindexingPlugin;info:Magmi Magento Reindexer v1.0.2 - running indexer
+plugin;Magmi_ReindexingPlugin;info:Magmi Magento Reindexer v1.0.2 - Reindexing ....
+plugin;Magmi_ReindexingPlugin;info:Magmi Magento Reindexer v1.0.2 - 22715 ?        S      2:11 /usr/bin/php /home/joachim/public_html/magmi/web/magmi_run.php<br>22921 ?        S      0:00 sh -c ps ax | grep php<br>22923 ?        S      0:00 grep php<br>
+plugin;Magmi_ReindexingPlugin;info:Magmi Magento Reindexer v1.0.2 - done in 0.07 secs
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-sacca-peanut-x-sport-nero-phil-teds-push-passeggin.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-sacca-peanut-x-sport-nero-phil-teds-push-passeggin.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-culla-completa-drappo-bianca-con-materasso-coprim.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-culla-completa-drappo-bianca-con-materasso-coprim.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-barriera-letto-universale-pieghevole-blu-sc.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-barriera-letto-universale-pieghevole-blu-sc.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-multidan-metal-bianco-baby-dan-cancelletti-di-si.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-multidan-metal-bianco-baby-dan-cancelletti-di-si.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-multidan-wood-bianco-baby-dan-cancelletti-di-sicu.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-multidan-wood-bianco-baby-dan-cancelletti-di-sicu.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-agganci-a-muro-x-flex-nero-baby-dan-barriere-prot-9252.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-agganci-a-muro-x-flex-nero-baby-dan-barriere-prot-9252.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-protezione-porta-forno-baby-dan-sicurezza-ca.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-protezione-porta-forno-baby-dan-sicurezza-ca.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-copri-presa-baby-dan-sicurezza-casa-una-casa-si.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-copri-presa-baby-dan-sicurezza-casa-una-casa-si.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-staffa-a-y-baby-dan-sicurezza-casa-una-casa-sic.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-staffa-a-y-baby-dan-sicurezza-casa-una-casa-sic.html sent succesfully
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-salvadita-baby-dan-sicurezza-casa-una-c.html not sent succesfully Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.
+plugin;SocialNotifyPlugin;info:Social notify of new records v0.1 - http://www.storebaby.it/index.php/articoli-infanzia-salvadita-baby-dan-sicurezza-casa-una-c.html not sent succesfully SMTP connect() failed.
+end:Import Ended

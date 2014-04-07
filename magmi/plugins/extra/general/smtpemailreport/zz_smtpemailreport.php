@@ -66,6 +66,13 @@ public function getPluginInfo()
                 else
                     $content .= 'Unable to create gzip file '.$status;
             }
+            if(is_file($dir.'excluded.csv')) {
+                $status = exec('gzip -c '.$dir.'excluded.csv > '.$dir.'last_excluded.csv.gz');
+                if(is_file($dir.'last_excluded.csv.gz'))
+                    $mail->addAttachment($dir.'last_excluded.csv.gz');
+                else
+                    $content .= 'Unable to create gzip file '.$status;
+            }
             $backuplLink = '';
             $dir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.

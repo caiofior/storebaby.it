@@ -106,7 +106,8 @@ public function getPluginInfo()
                   $lnk = array('img'=>$config['web/unsecure/base_url'].'/media/catalog/product/'.$product['image']);
                   doPostToGooglePlus2($product['name']. ' '.$config['web/unsecure/base_url'].'index.php/'.$product['url_path'], $lnk, $this->getParam("SOCIAL:gpage",""));
                   } 
-                die('HI');
+                  else 
+                      $this->log($config['web/unsecure/base_url'].'index.php/'.$product['url_path']." not sent succesfully ". $loginError,"info");
                 $mail = new PHPMailer;
                 if ($config['system/lesti_smtp/enable'] == 1) {
 
