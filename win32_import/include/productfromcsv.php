@@ -176,11 +176,11 @@ corrupted NUMERIC
                         fwrite($this->magentoCsvHandle, "\xEF\xBB\xBF".$magentoProduct->getCsvHeaders() . PHP_EOL);
                     fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow() . PHP_EOL);
                 } else {
-                   if (ftell($this->magentoCsvHandle) == 0) {
+                   if (ftell($this->magentoExcludedCsvHandle) == 0) {
                         $tempMastro = new MastroProduct($this);
-                        fwrite($this->magentoCsvHandle, "\xEF\xBB\xBF".'"EAN","reason","info"' . implode(',',$tempMastro->getHeaders()) . PHP_EOL);
+                        fwrite($this->magentoExcludedCsvHandle, "\xEF\xBB\xBF".'"EAN","reason","info",' . implode(',',$tempMastro->getHeaders()) . PHP_EOL);
                    }
-                   fwrite($this->magentoExcludedCsvHandle, $magentoProduct . str_replace('**', ',', $row) .PHP_EOL);
+                   fwrite($this->magentoExcludedCsvHandle, $magentoProduct . ','.str_replace('**', ',', $row) .PHP_EOL);
                 }
                  
                 $rowCount++;
@@ -467,8 +467,8 @@ DATETIME(\'now\'),
                 ftp_chdir($this->ftp, $dir);
             }
             $fileList = ftp_nlist($this->ftp, '.');
-            if (is_array($fileList) && in_array('import.csv', $fileList))
-                ftp_delete($this->ftp, 'import.csv');
+            if (is_array($fileList) && in_array('excluded.csv', $fileList))
+                ftp_delete($this->ftp, 'excluded.csv');
             echo 'Uploading excluded.txt'.PHP_EOL;
             ftp_put($this->ftp, 'excluded.csv', $this->magentoExcludedCsvFilname, FTP_ASCII);
 
