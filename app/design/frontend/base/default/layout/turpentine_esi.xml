@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+<!--
+    Nexcess.net Turpentine Extension for Magento
+    Copyright (C) 2012  Nexcess.net L.L.C.
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<layout version="0.1.0">
+    <!--
+        The `customer_login` and `customer_logout` events are automatically
+        added to the *flush_events* of all *private* ESI blocks, and should
+        not be specified in the layout
+    -->
+    <default>
+        <!--
+            New block used to warn users who choose to navigate without Varnish while it's activated.
+        -->
+        <reference name="after_body_start">
+            <block type="turpentine/notices" template="turpentine/notices.phtml" name="turpentine_notices" />
+        </reference>
+
+        <!--
+        A default Magento site includes a logged in user's name in the welcome
+        message and the number of items in the shopping cart so it must be
+        cached per-client.
+        -->
+        <reference name="header">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <wishlist_item_save_after/>
+                        <wishlist_item_delete_after/>
+                        <sales_quote_save_after/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+        <!-- This block is inside of the header block on mage EE, so it could
+        be commented out for EE stores for a small performance increase -->
+        <reference name="cart_sidebar">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <sales_quote_save_after/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+        <reference name="catalog.compare.sidebar">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <catalog_product_compare_add_product/>
+                        <catalog_product_compare_remove_product/>
+                        <catalog_product_compare_item_collection_clear/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+        <reference name="right.reports.product.viewed">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <catalog_controller_product_view/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+        <reference name="right.reports.product.compared">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <catalog_product_compare_add_product/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+        <reference name="right.poll">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <poll_vote_add/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+
+        <!-- Messages are not cached because the "messages cleared" event is
+        not reliable -->
+        <reference name="global_messages">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <method>ajax</method>
+                    <!-- if this is ever cached we should flush on this event
+                    <flush_events>
+                        <core_session_abstract_add_message/>
+                    </flush_events>
+                    -->
+                </params>
+            </action>
+        </reference>
+        <reference name="messages">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <method>ajax</method>
+                    <!-- if this is ever cached we should flush on this event
+                    <flush_events>
+                        <core_session_abstract_add_message/>
+                    </flush_events>
+                    -->
+                </params>
+            </action>
+        </reference>
+
+        <reference name="footer">
+            <action method="setEsiOptions">
+                <params>
+                    <!-- this is the default but we specifically set it so
+                    it actually gets picked up -->
+                    <access>public</access>
+                </params>
+            </action>
+        </reference>
+    </default>
+
+    <!-- Blocks only visible when logged in -->
+
+    <customer_logged_in>
+        <reference name="sale.reorder.sidebar">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <sales_quote_save_after/>
+                        <checkout_onepage_controller_success_action/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+    </customer_logged_in>
+
+    <!-- Catalog -->
+
+    <catalog_product_compare_index>
+        <!--
+            This ESI policy can be used to cache the product comparison popup
+            but since it's not likely to ever get a cache hit we just don't cache
+            the popup instead.
+        -->
+        <turpentine_cache_flag value="0"/>
+        <!--
+        <reference name="catalog.compare.list">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <catalog_product_compare_add_product/>
+                        <catalog_product_compare_remove_product/>
+                        <catalog_product_compare_item_collection_clear/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+        -->
+    </catalog_product_compare_index>
+
+
+    <!-- Checkout -->
+
+    <!-- We cache the checkout cart page on a per-client basis -->
+    <checkout_cart_index>
+        <turpentine_cache_flag value="0"/>
+        <!--
+        <reference name="checkout.cart">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <flush_events>
+                        <sales_quote_save_after/>
+                    </flush_events>
+                </params>
+            </action>
+        </reference>
+        -->
+    </checkout_cart_index>
+
+    <!-- We never cache anything in the checkout funnel -->
+    <checkout_onepage_index>
+        <turpentine_cache_flag value="0"/>
+    </checkout_onepage_index>
+
+    <checkout_onepage_progress>
+        <turpentine_cache_flag value="0"/>
+    </checkout_onepage_progress>
+
+    <checkout_onepage_paymentmethod>
+        <turpentine_cache_flag value="0"/>
+    </checkout_onepage_paymentmethod>
+
+    <checkout_onepage_shippingmethod>
+        <turpentine_cache_flag value="0"/>
+    </checkout_onepage_shippingmethod>
+
+    <checkout_onepage_additional>
+        <turpentine_cache_flag value="0"/>
+    </checkout_onepage_additional>
+
+    <checkout_onepage_review>
+        <turpentine_cache_flag value="0"/>
+    </checkout_onepage_review>
+
+    <checkout_onepage_success>
+        <turpentine_cache_flag value="0"/>
+    </checkout_onepage_success>
+
+    <checkout_onepage_failure>
+        <turpentine_cache_flag value="0"/>
+    </checkout_onepage_failure>
+
+    <!-- End Checkout -->
+
+    <!-- Customer Account -->
+
+    <customer_account>
+        <!--
+        Disabling caching here disables it for all the customer account sub-
+        pages, and it doesn't seem to be overridable. We'll do this for now
+        and add the sub-pages at some later release.
+        -->
+        <turpentine_cache_flag value="0"/>
+    </customer_account>
+
+    <customer_account_login>
+        <turpentine_cache_flag value="0"/>
+    </customer_account_login>
+
+    <customer_account_logoutsuccess>
+        <turpentine_cache_flag value="0"/>
+    </customer_account_logoutsuccess>
+
+    <customer_account_create>
+        <turpentine_cache_flag value="0"/>
+    </customer_account_create>
+
+    <customer_account_forgotpassword>
+        <turpentine_cache_flag value="0"/>
+    </customer_account_forgotpassword>
+
+    <customer_account_resetpassword>
+        <turpentine_cache_flag value="0"/>
+    </customer_account_resetpassword>
+
+    <customer_account_confirmation>
+        <turpentine_cache_flag value="0"/>
+    </customer_account_confirmation>
+
+<!--
+    <customer_account_edit>
+        <turpentine_cache_flag value="0"/>
+    </customer_account_edit>
+
+    <customer_account_index>
+        <turpentine_cache_flag value="1"/>
+        <reference name="customer_account_dashboard">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <dummy_blocks>
+                        <head/>
+                    </dummy_blocks>
+                </params>
+            </action>
+        </reference>
+    </customer_account_index>
+    <customer_address_index>
+        <turpentine_cache_flag value="0"/>
+    </customer_address_index>
+
+    <customer_address_view>
+        <turpentine_cache_flag value="0"/>
+    </customer_address_view>
+
+    <customer_address_form>
+        <turpentine_cache_flag value="0"/>
+    </customer_address_form>
+-->
+    <!-- End Customer Account -->
+
+    <!-- Sales -->
+<!--
+    <sales_order_history>
+        <turpentine_cache_flag value="1"/>
+        <reference name="sales.order.history">
+            <action method="setEsiOptions">
+                <params>
+                    <access>private</access>
+                    <dummy_blocks>
+                        <root/>
+                    </dummy_blocks>
+                </params>
+            </action>
+        </reference>
+    </sales_order_history>
+-->
+    <!-- End Sales -->
+</layout>

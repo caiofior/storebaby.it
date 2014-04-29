@@ -152,7 +152,7 @@ class MastroProduct {
         //$magentoProduct->setData('price',$this->data['VENDITA']+1*($iva/100));
         if ($this->data['VENDITA'] == '')
             return $this->data['EAN13'].',"Missing price",""';
-	$magentoProduct->setData('price',$this->data['VENDITA']);
+	$magentoProduct->setData('price',str_replace(',','.',str_replace('.','',$this->data['VENDITA'])));
         $magentoProduct->setData('tax_class_id', $iva);
         $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
         $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));
@@ -185,7 +185,7 @@ class MastroProduct {
                 
                 
                 foreach (self::$headers as $mastro) {
-                    $magentoProduct->setData('MASTRO_'.$mastro, $this->data[$mastro]);
+                    $magentoProduct->setData('MASTRO_'.$mastro, stripslashes($this->data[$mastro]));
                 }
                 if($key != '') {
                     if (!key_exists($key,$this->related))

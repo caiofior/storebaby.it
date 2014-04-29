@@ -20,7 +20,7 @@ Supported layout update handles (special):
 <!--
 Default layout, loads most of the pages
 -->
-
+       
     <default>
         <!-- Mage_Customer -->
         <reference name="top.links">
