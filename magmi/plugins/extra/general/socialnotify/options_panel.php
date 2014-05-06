@@ -10,8 +10,20 @@
 <li class="value"><input type="text" style="width:400px" name="SOCIAL:facebook" value="<?php echo $this->getParam("SOCIAL:facebook","")?>"><div class="fieldinfo">Facebook email</div></li>
 </ul>
 <ul class="formline">
-<li class="label">Twitter email:</li>
-<li class="value"><input type="text" style="width:400px" name="SOCIAL:twitter" value="<?php echo $this->getParam("SOCIAL:twitter","")?>"><div class="fieldinfo">Twitter email</div></li>
+<li class="label">Twitter Key:</li>
+<li class="value"><input type="text" style="width:400px" name="SOCIAL:twitterkey" value="<?php echo $this->getParam("SOCIAL:twitterkey","")?>"><div class="fieldinfo">Twitter key</div></li>
+</ul>
+<ul class="formline">
+<li class="label">Twitter Secret:</li>
+<li class="value"><input type="text" style="width:400px" name="SOCIAL:twittersecret" value="<?php echo $this->getParam("SOCIAL:twittersecret","")?>"><div class="fieldinfo">Twitter secret</div></li>
+</ul>
+<ul class="formline">
+<li class="label">Twitter Oauth Token:</li>
+<li class="value"><input type="text" style="width:400px" name="SOCIAL:twitterotoken" value="<?php echo $this->getParam("SOCIAL:twitterotoken","")?>"><div class="fieldinfo">Twitter Oauth token</div></li>
+</ul>
+<ul class="formline">
+<li class="label">Twitter Oauth Secret:</li>
+<li class="value"><input type="text" style="width:400px" name="SOCIAL:twitterosecret" value="<?php echo $this->getParam("SOCIAL:twitterosecret","")?>"><div class="fieldinfo">Twitter Oauth secret</div></li>
 </ul>
 <ul class="formline">
 <li class="label">Google + account:</li>

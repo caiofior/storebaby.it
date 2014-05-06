@@ -8,6 +8,8 @@ require "wp/formatting.php";
 require "wp/functions.php";
 require "wp/plugin.php";
 require "NextScripts_APIs/postToGooglePlus.php";
+require "twitteroauth-master/twitteroauth/twitteroauth.php";
+
 class SocialNotifyPlugin extends Magmi_GeneralImportPlugin
 {
 
@@ -96,6 +98,23 @@ public function getPluginInfo()
                     HAVING `url_path` <> ""
                     ORDER BY `catalog_product_entity`.`updated_at` DESC 
                 LIMIT '.$this->getParam("SOCIAL:topost","10"));
+
+                  $consumerKey = 'WDnbLyP6L94K46hYMF9ourq1W';
+                  $consumerSecret = '5M1QUbc2U8p7y9FHE6RXmTQuITlPW1v5EI0mUbARnLLjGwKL0G';
+                  $OAuthToken = '2287014847-QcQTqdhaun1U8X6djQgqk6xoDhwnmgpQXuqlOSo';
+                  $OAuthSecret = 'WaDHHycx1M9nUOufgQxseT0AzhAPCxnKN5fHwYMQeziTV';
+
+                  // Full path to twitterOAuth.php (change OAuth to your own path)
+
+
+                  // create new instance
+                  $tweet = new TwitterOAuth(
+                          $this->getParam("SOCIAL:twitterkey",""),
+                          $this->getParam("SOCIAL:twittersecret",""),
+                          $this->getParam("SOCIAL:twitterotoken",""),
+                          $this->getParam("SOCIAL:twitterosecret","")
+                        );
+
             foreach ($products as $product) {
                 if (!is_file($imageDir.$product['image']))
                         continue;
@@ -108,30 +127,14 @@ public function getPluginInfo()
                   } 
                   else 
                       $this->log($config['web/unsecure/base_url'].'index.php/'.$product['url_path']." not sent succesfully ". $loginError,"info");
-                $mail = new PHPMailer;
-                if ($config['system/lesti_smtp/enable'] == 1) {
+                  
+                  // Your Message
+                  $message = substr($product['name'],10,100). ' '.$config['web/unsecure/base_url'].'index.php/'.$product['url_path'];
 
-                    $mail->isSMTP();
-                    $mail->Host = $config['system/lesti_smtp/host'];
-                    if ($config['system/lesti_smtp/username'] != '' && $config['system/lesti_smtp/password'] != '')
-                        $mail->SMTPAuth = true; 
-                    $mail->Username = $config['system/lesti_smtp/username'];
-                    $mail->Password = $config['system/lesti_smtp/password'];
-                    if ($config['system/lesti_smtp/ssl'] != '')
-                        $mail->SMTPSecure = $config['system/lesti_smtp/ssl'];
-                }
-
-                $mail->From = $config['trans_email/ident_general/email'];
-                $mail->FromName = $config['trans_email/ident_general/name'];
-                $mail->addAddress($this->getParam("SOCIAL:twitter",""));
-
-                $mail->WordWrap = 50;
-                $mail->CharSet = 'UTF-8';
-                $mail->isHTML(false);
-                            $url_path = '';
-                $mail->Subject = substr($product['name'],10,100). ' '.$config['web/unsecure/base_url'].'index.php/'.$product['url_path'];
-                $mail->Body = ' ';
-                $mail->send();
+                  // Send tweet 
+                  $tweet->post('statuses/update', array('status' => $message));
+                  
+                
 
                 $mail = new PHPMailer;
                 if ($config['system/lesti_smtp/enable'] == 1) {
