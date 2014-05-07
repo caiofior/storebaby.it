@@ -99,11 +99,6 @@ public function getPluginInfo()
                     ORDER BY `catalog_product_entity`.`updated_at` DESC 
                 LIMIT '.$this->getParam("SOCIAL:topost","10"));
 
-                  $consumerKey = 'WDnbLyP6L94K46hYMF9ourq1W';
-                  $consumerSecret = '5M1QUbc2U8p7y9FHE6RXmTQuITlPW1v5EI0mUbARnLLjGwKL0G';
-                  $OAuthToken = '2287014847-QcQTqdhaun1U8X6djQgqk6xoDhwnmgpQXuqlOSo';
-                  $OAuthSecret = 'WaDHHycx1M9nUOufgQxseT0AzhAPCxnKN5fHwYMQeziTV';
-
                   // Full path to twitterOAuth.php (change OAuth to your own path)
 
 
