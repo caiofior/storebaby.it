@@ -13,6 +13,9 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <?php echo $this->htmlEscape($this->getProductName()) ?>
         <?php endif; ?>
         </h2>
+            <?php if (Mage::getModel('cataloginventory/stock_item')->loadByProduct($_item->getProduct())->getQty() < 1 ) : ?>
+    <div class="nostock-checkout"><?php echo $this->__('Il prodotto non e al momento disponibile nei nostri magazzini, lo stiamo aspettando entro 30 giorni.') ?></div>
+    <?php endif; ?>
         <?php if ($_options = $this->getOptionList()):?>
         <dl class="item-options">
             <?php foreach ($_options as $_option) : ?>

@@ -82,7 +82,7 @@ abstract class Mage_Shell_Abstract
         $this->_applyPhpVariables();
         $this->_parseArgs();
         $this->_construct();
-        $this->_validate();
+        //$this->_validate();
         $this->_showHelp();
     }
 

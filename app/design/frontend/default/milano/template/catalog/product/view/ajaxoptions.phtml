@@ -22,7 +22,9 @@
             <?php if ($_product->getTypeId() == 'grouped'):?>
                 <?php echo $this->getChildHtml('product_type_data_grouped') ?>
             <?php endif;?>            
- 
+     <?php if (Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 1 ) : ?>
+    <div class="nostock"><?php echo $this->__('Il prodotto non è al momento disponibile nei nostri magazzini; completa comunque l\'ordine e te lo faremo avere in 30 giorni.') ?></div>
+    <?php endif; ?>
             <?php if (!$this->hasOptions()):?>
                 <div class="add-to-box">
                     <?php if($_product->isSaleable()): ?>

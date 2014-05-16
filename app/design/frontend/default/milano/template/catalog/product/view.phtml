@@ -39,8 +39,39 @@ $_shortDescription = $_product->getShortDescription();
                         <span class="product-code"><?php echo $this->__('Product code:').' <strong itemprop="identifier" content="mpn:'.$_product->getSku().'">'.$_product->getSku().'</strong>'; ?></span>
                     <?php endif;?>
                 </div>
+                
+    <!-- SHOW SHIPPING RATES-->
+        <?php 
+		$quote = Mage::getModel('sales/quote');
+        $quote->getShippingAddress()->setCountryId('IT'); // Set your default shipping country here
+        $_product->getStockItem()->setUseConfigManageStock(false);
+		
+        $_product->getStockItem()->setManageStock(false);
+        $quote->addProduct($_product);
+        $quote->getShippingAddress()->setCollectShippingRates(true);
+        $quote->getShippingAddress()->collectTotals();
+		
+        $rates = $quote->getShippingAddress()->getShippingRatesCollection();
+		
+        // Find cheapest rate
+        $cheapestrate = null;
+        foreach ($rates as $rate) {
+            if (is_null($cheapestrate) || $rate->getPrice() < $cheapestrate) {
+                $cheapestrate = $rate->getPrice();
+				
+            }
+        }
+        $corehelper = Mage::helper('core');?>
+                
+                
     <?php if (Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 1 ) : ?>
-    <div class="nostock"><?php echo $this->__('Il prodotto non è al momento disponibile nei nostri magazzini; completa comunque l\'ordine e te lo faremo avere in 30 giorni.') ?></div>
+
+    <div class="nostock"><?php echo $this->__('Il prodotto non è al momento disponibile nei nostri magazzini, lo stiamo aspettando entro 30 giorni.') ?></div>
+		<?php else: ?>
+        
+           <?php if ($cheapestrate):?><span class="product-shipping"><b>Le spese di trasporto sono relative a questo prodotto.</b><?php echo $this->__('Spedizione corriere espresso:').' <strong>'.$corehelper->currency($cheapestrate).'</strong>'.'<br>Pronta consegna 1-2 giorni lavorativi'; ?></span><?php endif;?>
+<!-- END SHOW SHIPPING RATES-->
+
     <?php endif; ?>
                 
                 <?php echo $this->getChildHtml('upsell_products') ?>

@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * Nexcess.net Turpentine Extension for Magento
+ * Copyright (C) 2012  Nexcess.net L.L.C.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
+$debugEnabled = (bool)Mage::helper( 'turpentine/esi' )->getEsiDebugEnabled();
+$blockTag = sprintf( 'turpentine-esi-block-%s',
+    Mage::helper( 'turpentine/data' )->secureHash( $this->getNameInLayout() ) );
+
+if( $debugEnabled ) {
+    echo sprintf( '<!-- AJAX START [%s] -->', $this->getNameInLayout() ) . PHP_EOL;
+}
+/**
+ * Note that the new content will be inside the "turpentine-esi-block" div
+ * which could possible alter how things are displayed. If this turns out to
+ * be an issue we'll have to go back to using Ajax.Request so the container
+ * block is completely replaced which means no nice appear effect.
+ *
+ * @link http://prototypejs.org/doc/latest/ajax/index.html
+ * @link http://prototypejs.org/doc/latest/ajax/Ajax/Request/index.html
+ * @link http://prototypejs.org/doc/latest/dom/Element/replace/index.html
+ * @link http://madrobby.github.com/scriptaculous/effect-appear/
+ *
+ * @link http://api.jquery.com/jQuery.ajax/
+ * @link http://api.jquery.com/fadeIn/
+ */
+$_prototypeFunction = $debugEnabled ? 'onComplete' : 'onSuccess';
+$_jQueryFunction = $debugEnabled ? 'always' : 'done';
+echo <<<HTML
+<div id="$blockTag" style="display: none">
+    <script type="text/javascript">
+        (function() {
+            var blockTag = {$this->helper('core')->jsonEncode($blockTag)}, esiUrl = {$this->helper('core')->jsonEncode($this->getEsiUrl())};
+            if (typeof Ajax === 'object' && typeof Ajax.Updater === 'function') {
+                new Ajax.Updater(
+                    blockTag,
+                    esiUrl,
+                    {
+                        method: "get",
+                        evalScripts: true,
+                        {$_prototypeFunction}: function() {
+                            $(blockTag).appear({
+                                duration: 0.3
+                            });
+                        }
+                    }
+                );
+            } else if (typeof jQuery === 'function') {
+                jQuery.ajax(
+                    {
+                        url: esiUrl,
+                        type: "get",
+                        dataType: "html"
+                    }
+                ).{$_jQueryFunction}(function() {
+                    $(blockTag).fadeIn(300);
+                });
+            }
+        })();
+    </script>
+</div>
+HTML;
+if( $debugEnabled ) {
+    echo sprintf( '<!-- AJAX END [%s] -->', $this->getNameInLayout() ) . PHP_EOL;
+}
