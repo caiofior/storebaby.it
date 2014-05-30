@@ -58,10 +58,11 @@ class Mage_Catalog_Block_Product_List_Upsell extends Mage_Catalog_Block_Product_
             ->addStoreFilter()
         ;
         if (Mage::helper('catalog')->isModuleEnabled('Mage_Checkout')) {
+	 /**
             Mage::getResourceSingleton('checkout/cart')->addExcludeProductFilter($this->_itemCollection,
                 Mage::getSingleton('checkout/session')->getQuoteId()
             );
-
+	 **/
             $this->_addProductAttributesAndPrices($this->_itemCollection);
         }
 //        Mage::getSingleton('catalog/product_status')->addSaleableFilterToCollection($this->_itemCollection);

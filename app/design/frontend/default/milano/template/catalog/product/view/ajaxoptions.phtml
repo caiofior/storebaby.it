@@ -24,6 +24,10 @@
             <?php endif;?>            
      <?php if (Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty() < 1 ) : ?>
     <div class="nostock"><?php echo $this->__('Il prodotto non è al momento disponibile nei nostri magazzini; completa comunque l\'ordine e te lo faremo avere in 30 giorni.') ?></div>
+     <?php $productAlert = Mage::helper('productalert');
+    $productAlert->setProduct($_product);
+    ?>
+    <a href="<?php echo $productAlert->getSaveUrl(); ?>">Registrati per venir informato quanto il prodotto sarà nuovamente disponibile</a>
     <?php endif; ?>
             <?php if (!$this->hasOptions()):?>
                 <div class="add-to-box">

@@ -135,14 +135,13 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
          if (
                  $this->getParam("SOCIAL:gemail", "") != '' &&
                  $this->getParam("SOCIAL:gpassword", "") != '' &&
-                 $this->getParam("SOCIAL:gpage", "")
+                 $this->getParam("SOCIAL:gpage", "") != ''
          ) {
             $loginError = doConnectToGooglePlus2($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
-            if (!$loginError) {
-               // Image URL
-               $lnk = array('img' => $config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
-               doPostToGooglePlus2($product['name'] .' '. $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'], $lnk, $this->getParam("SOCIAL:gpage", ""));
-            } else
+            // Image URL
+            $lnk = array('img' => $config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
+            doPostToGooglePlus2($product['name'] .' '. $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'], $lnk, $this->getParam("SOCIAL:gpage", ""));
+            if ($loginError != '')
                $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
          }
          // Your Message
@@ -175,11 +174,14 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             $params = array(0, $this->getParam("WP:username", ""), $this->getParam("WP:password", ""), $content);
             $client->query('wp.newPost', $params);
             $post_id = $client->getResponse();
-
+            
+            $command = 'convert "' .$imageDir . $product['image']. '" -resize 604x270\\>  -resample 72 /tmp/storebaby.jpg 2>&1 ';
+            exec($command);
+            
             $content = array(
                 'name' => basename($product['image']),
                 'type' => mime_content_type(basename($product['image'])),
-                'bits' => new IXR_Base64(file_get_contents($imageDir . $product['image'])),
+                'bits' => new IXR_Base64(file_get_contents('/tmp/storebaby.jpg')),
                 true
             );
             $client->query('metaWeblog.newMediaObject', 1, $this->getParam("WP:username"), $this->getParam("WP:password"), $content);
