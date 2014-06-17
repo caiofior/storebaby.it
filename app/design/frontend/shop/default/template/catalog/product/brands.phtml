@@ -1,0 +1,78 @@
+<?php if ((Mage::getStoreConfig('milanoconfig/homeoptions/show_brands') == 1) && ($_brands = $this->getAllBrands()) && count($_brands)):
+shuffle($_brands); 
+$brandImageExt = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_image_extension'));
+$brandPageBasePath = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_page_base_path')); 
+$brandLinkSearch = Mage::getStoreConfig('milanoconfig/productpage/brand_link_search_enabled') == 1;
+?>
+<div class="slider-container sliderHome brandSlider">
+<h5><?php echo Mage::getStoreConfig('milanoconfig/homeoptions/brands_title'); ?></h5>
+    <div class="brands">
+        <div class="carousel">
+            <div class="slider">
+                <?php $counter = 0; $i=0; foreach ($_brands as $_brand): if ($counter >= 20) break; $counter++; $i++;
+					$brandValue = trim($_brand);	
+					$brandValueCode = str_replace(" ", "_", strtolower($brandValue));					
+					$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
+					
+					if ($brandLinkSearch)
+						$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q=' . $brandValue;
+					elseif ($brandPageBasePath != '')
+					{
+						$basePath = ($brandPageBasePath == '/') ? '' : $brandPageBasePath . '/';
+						$brandPageUrl = Mage::getUrl() . $basePath . str_replace(" ", "-", strtolower($brandValue));
+					}
+					else
+						$brandPageUrl = '';
+				?>
+                    <div class="slide <?php if($i == count($_brands)) echo 'last'?>">     
+                        <?php if ($brandPageUrl != ''): ?>
+                            <a href="<?php echo $brandPageUrl;?>" title="<?php echo str_replace("%s", $brandValue, $this->__('Click to see more products from %s')); ?>"><img src="<?php echo $brandImageUrl;?>" alt="<?php echo $brandValue; ?>" /></a>
+                    	<?php else: ?>
+                        	<img src="<?php echo $brandImageUrl;?>" title="<?php echo $brandLabel .': '. $brandValue; ?>" alt="<?php echo $brandValue; ?>" />
+                        <?php endif; ?>                  
+                    </div>
+                <?php endforeach; ?>
+            </div>             
+        </div>
+        <?php if(count($_brands) > 4): ?>
+            <div class="prev brands-arrow">&nbsp;</div>
+            <div class="next brands-arrow">&nbsp;</div>  
+        <?php endif; ?>
+    </div>     
+    <div style="clear: both;"></div>
+    <?php if(count($_brands) > 4): ?>
+        <script type="text/javascript">
+            jQuery('.brands-arrow.prev').addClass('disabled');
+            jQuery('.brands > .carousel').iosSlider({
+                desktopClickDrag: true,
+                snapToChildren: true,
+                infiniteSlider: false,
+                navNextSelector: '.brands-arrow.next',
+                navPrevSelector: '.brands-arrow.prev',
+                lastSlideOffset: 5,
+                onFirstSlideComplete: function(){
+                    jQuery('.brands-arrow.prev').addClass('disabled');
+                },
+                onLastSlideComplete: function(){
+                    jQuery('.brands-arrow.next').addClass('disabled');
+                },
+                onSlideChange: function(){
+                    jQuery('.brands-arrow.prev').removeClass('disabled');
+                    jQuery('.brands-arrow.next').removeClass('disabled');
+                }
+            });               
+        </script>    
+    <?php endif; ?>
+    
+
+<div class="nicy-containerBrand"><div><p></p></div></div>
+		<script type="text/javascript">
+			nicyHeightBrand = jQuery('.brands').height();
+			jQuery('.nicy-containerBrand').height(nicyHeightBrand+10);
+			jQuery('.nicy-containerBrand DIV').height(nicyHeightBrand-10);
+			jQuery('.nicy-containerBrand DIV p').height(nicyHeightBrand-30);
+        </script>
+      
+        
+</div>
+<?php endif; ?>

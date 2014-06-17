@@ -1,0 +1,67 @@
+<div id="top"></div>
+<div class="header-container">
+	<div class="header-small-container">
+        <div class="header">
+            <div class="header-left">
+            	<div class="bs-topSearch"><?php echo $this->getChildHtml('topSearch') ?>
+                	<a class="brandLink" rel="nofollow" href="<?php echo $this->getUrl('marche')?>"  >Cerca tra le nostre <strong>marche</strong> </a>
+                
+                </div>  <?php /*?>ROMARS<?php */?>
+                <?php // echo $this->getChildHtml('store_switcher') ?>
+                <?php //echo $this->getChildHtml('store_language') ?>
+				<?php //echo $this->getChildHtml('currency') ?>
+                <div class="cms-header-links"><?php // echo $this->getChildHtml('cms_header_links') ?></div>
+            </div>
+            <div class="header-right">
+                <span class="welcome-msg"><?php // echo $this->getWelcome() ?> </span>
+            </div>      
+        </div>
+    </div>
+    <div class="header-main-container">
+    	<div class="header">
+            <div class="header-left header-logo ">
+            	<?php if ($this->getIsHomePage()):?>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><h1><strong><?php echo Mage::getStoreConfig('general/store_information/name') ?></strong></h1><img src="<?php echo Mage::registry('themeMediaUrl').Mage::getStoreConfig('milanoconfig/generaloptions/logo'); ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                <?php else:?>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><h2><strong><?php echo Mage::getStoreConfig('general/store_information/name') ?></strong></h2><img src="<?php echo Mage::registry('themeMediaUrl').Mage::getStoreConfig('milanoconfig/generaloptions/logo'); ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                <?php endif?>
+            </div>
+            <div class="header-center header-menu">
+								<?php echo $this->getChildHtml('header_menu') ?>
+	
+            </div>
+<?php /*?>            <div class="header-right">
+                <?php //echo $this->getChildHtml('topLinks') ?> 
+                <?php // echo $this->getChildHtml('top_cart') ?> 
+
+                 
+            </div><?php */?>
+<?php /*?>            <div class="header-contactNr">
+            	<div class="infoDiv infornr"></div>
+                <div class="infoDiv infoSkype">
+
+                    <div id="SkypeButton_Call_storebaby_italia_1">
+                      <script type="text/javascript">
+                        Skype.ui({
+                          "name": "chat",
+                          "element": "SkypeButton_Call_storebaby_italia_1",
+                          "participants": ["Storebaby.it"],
+                          "imageSize": 14
+                        });
+                      </script>
+                    </div>
+                </div>
+                <div class="infoDiv infoWhatsup"></div>
+            
+            </div> <?php */?>   
+        </div>
+    </div>
+    <?php echo $this->getChildHtml('topMenu'); ?>
+    <div class="header-promo-container">
+    	<div class="header">
+			<?php // echo $this->getChildHtml('header_promo') ?>
+        </div>
+    </div>
+    <?php //echo $this->getChildHtml('topBread'); ?>
+    <?php //echo $this->getChildHtml('topContainer'); ?>
+</div>

@@ -1,0 +1,30 @@
+<?php if ((Mage::getStoreConfig('milanoconfig/homeoptions/show_blog') == 1) && ($posts = $this->getPosts()) && count($posts)): ?>
+<div class="home-blog-container">
+    <h5><?php echo Mage::getStoreConfig('milanoconfig/homeoptions/blog_title'); ?></h5>
+    <div class="home-blog-internal">
+        <div class="home-blog-left">
+            <?php echo $this->getChildHtml('homeBlogLeft') ?>
+        </div>
+        <div class="home-blog">
+            <?php foreach ($posts as $post): ?>
+                <div class="postWrapper">
+                    <?php if($img = $post->getPostImage(75)): ?>
+                    <div class="postImage">
+                        <a href="<?php echo $post->getAddress(); ?>" ><img src="<?php echo Mage::getBaseUrl('media').$img; ?>" /></a>
+                    </div>
+                    <?php endif; ?>
+                    <div class="postContent">
+                        <div class="postTitle">
+                            <h6><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h6>
+                        </div>
+                        <?php echo $post->getPostContent(); ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="home-blog-right">
+            <?php echo $this->getChildHtml('homeBlogRight') ?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

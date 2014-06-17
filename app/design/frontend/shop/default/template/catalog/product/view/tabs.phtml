@@ -1,0 +1,35 @@
+<?php if (!$this->getChildHtml('product_custom_html')): $first=' active first'; endif; $last = 'last'; ?>
+<ul class="product-tabs">
+	<?php if ($tab = $this->getChildHtml('product_custom_html')): ?>
+        <?php $tabTitle = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('product_custom_html')->getTitle(); ?>
+        <li id="product_tabs_custom" class="active first"></div><a href="#"><?php echo $tabTitle; ?></a></li>
+	<?php endif; ?>
+    <?php foreach ($this->getTabs() as $_index => $_tab): ?>
+        <?php if($this->getChildHtml($_tab['alias'])): ?>
+            <li id="product_tabs_<?php echo $_tab['alias'] ?>" class="<?php echo !$_index?$first:(($_index==count($this->getTabs())-1)? $last :''); echo $this->getAdditionalClass(); ?>"><a href="#"><?php echo $_tab['title']?></a></li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>
+<div class="product-tabs-content">
+<?php if ($tab = $this->getChildHtml('product_custom_html')): ?>
+    <div id="product_tabs_custom_contents"><?php echo $tab ?></div>
+<?php endif; ?>
+<?php foreach ($this->getTabs() as $_index => $_tab): ?>
+    <?php if($this->getChildHtml($_tab['alias'])): ?>
+        <div id="product_tabs_<?php echo $_tab['alias'] ?>_contents"><?php echo $this->getChildHtml($_tab['alias']) ?></div>
+    <?php endif; ?>
+<?php endforeach; ?>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+(function($) {
+  	$('.product-tabs > li > a').click(function(e) {
+		e.preventDefault();
+    	$('.product-tabs-content > div.active').removeClass('active').fadeOut();
+		if($(this).parent().attr('id')!='product_tabs_gallery') $("#"+$(this).parent().attr('id')+'_contents').addClass('active').fadeIn();
+		$('.product-tabs > li').removeClass('active');
+		$(this).parent().addClass('active');
+	});
+})(jQuery);
+//]]>
+</script>

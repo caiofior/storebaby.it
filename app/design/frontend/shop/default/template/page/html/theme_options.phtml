@@ -1,0 +1,140 @@
+<?php
+Mage::register('themeMediaUrl', Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wysiwyg/milano/');
+
+$_configColors = Mage::getStoreConfig('milanoconfig/colors');
+$_configBackground = Mage::getStoreConfig('milanoconfig/background');
+
+$_primary_color = $_configColors['primary_color'];
+$_primary_hover = $_configColors['primary_hover'];
+
+$_secondary_color = $_configColors['secondary_color'];
+$_secondary_hover = $_configColors['secondary_hover'];
+
+$_pattern = $_configBackground['pattern'];
+$_main_color = $_configBackground['maincolor'];
+$_bg_repeat = $_configBackground['bg_repeat'];
+$_bg_attachment = $_configBackground['bg_attachment'];
+$_bg_position_x = $_configBackground['bg_position_x'];
+$_bg_position_y = $_configBackground['bg_position_y'];
+
+$selectors = Array();
+$selectors['active_color'] = '
+button.btn-checkout,
+.breadcrumbs li strong,
+.header .welcome-msg,
+#nav li.level0.active > a > span,
+#tweets a,
+.products-grid li.item a.btn-cart,
+.products-grid .availability.out-of-stock span,
+.products-grid .add-to-links li a,
+.products-list li.item a.btn-cart,
+.products-list .desc a,
+#added a,
+.product-view .product-shop .short-description a,
+.product-view .product-shop .availability.in-stock span,
+.product_label,
+.add-to-cart button.button,
+.product-view .box-tags .form-add button.button > span,
+.product-tabs li.active a,
+.sp-methods .price,
+button.btn-checkout,
+.new-arrow.prev:active,
+.new-arrow.next:active,
+.sale-arrow.prev:active,
+.sale-arrow.next:active,
+.brands-arrow.prev:active,
+.brands-arrow.next:active
+';
+
+$selectors['active_color_hover'] = '
+.footer-container .follow-us a:hover,
+.products-grid .add-to-links li a:hover,
+.products-grid li.item.boxed:hover,
+.product-tabs li:hover a,
+#nav li.level0 > a:hover > span,
+.new-arrow.prev:hover, .new-arrow.prev:focus, .new-arrow.next:hover, .new-arrow.next:focus, .sale-arrow.prev:hover, .sale-arrow.prev:focus, .sale-arrow.next:hover, .sale-arrow.next:focus, .brands-arrow.prev:hover, .brands-arrow.prev:focus, .brands-arrow.next:hover, .brands-arrow.next:focus
+';
+
+$selectors['active_color3'] = '
+';
+
+$selectors['active_bg'] = '
+';
+
+$selectors['active_bg2'] = '
+';
+
+$selectors['active_border'] = '
+input.input-text:focus,textarea:focus,
+button.btn-checkout,
+.success-msg,
+#nav,
+.products-grid li .addto,
+.products-list li.item a.btn-cart,
+#added a,
+.add-to-cart button.button,
+.product-tabs,
+.product-tabs li.active a,
+input.input-text:focus,textarea:focus,
+button.btn-checkout
+';
+
+$selectors['dark_color'] = '
+.product_label.sale,
+.special-price .price
+';
+
+$selectors['dark_bg'] = '
+';
+
+$selectors['dark_color_hover'] = '
+';
+
+$selectors['dark_bg_hover'] = '
+';
+
+    function jsString($str='') { 
+        return trim(preg_replace("/('|\"|\r?\n)/", '', $str)); 
+    }
+
+?>
+<style type="text/css"><?php
+	if(!empty($selectors['active_color']) && !empty($_primary_color)):
+	echo jsString($selectors['active_color']); 			?>{ color: <?php echo $_primary_color ?>; }<?php endif;
+	
+	if(!empty($selectors['active_color_hover']) && !empty($_primary_hover)):
+	echo jsString($selectors['active_color_hover']);			?>{ color: <?php echo $_primary_hover ?>; }<?php endif;
+	
+	if(!empty($selectors['active_color3']) && !empty($_primary_color)):
+	echo jsString($selectors['active_color3']);			?>{ border-left-color: <?php echo $_primary_color ?>; }<?php endif;
+	
+	if(!empty($selectors['active_bg']) && !empty($_primary_color)):
+	echo jsString($selectors['active_bg']); 			?>{ background-color: <?php echo $_primary_color ?>; }<?php endif;
+	
+	if(!empty($selectors['active_bg2']) && !empty($_primary_hover)):
+    echo jsString($selectors['active_bg2']); 			?>{ background-color: <?php echo $_primary_hover ?>; text-decoration: underline; }<?php endif;
+	
+	if(!empty($selectors['active_border']) && !empty($_primary_color)):
+    echo jsString($selectors['active_border']); 		?>{ border-color: <?php echo $_primary_color ?>; }<?php endif;
+	
+	if(!empty($selectors['dark_color']) && !empty($_secondary_color)):
+    echo jsString($selectors['dark_color']); 			?>{ color: <?php echo $_secondary_color ?>; } <?php endif;
+	
+	if(!empty($selectors['dark_bg']) && !empty($_secondary_color)):
+    echo jsString($selectors['dark_bg']); 				?>{ background-color: <?php echo $_secondary_color ?>; } <?php endif;
+	
+	if(!empty($selectors['dark_color_hover']) && !empty($_secondary_color_hover)):
+	echo jsString($selectors['dark_color_hover']); 		?>{ color: <?php echo $_secondary_color_hover ?>; } <?php endif;
+	
+	if(!empty($selectors['dark_bg_hover']) && !empty($_secondary_color_hover)):
+    echo jsString($selectors['dark_bg_hover']); 		?>{ background-color: <?php echo $_secondary_color_hover ?>; } <?php endif;
+		
+	if(!empty($_primary_color)):
+	?> ::-moz-selection { background-color: <?php echo $_primary_color ?>; } ::selection { background-color: <?php echo $_primary_color ?>; }<?php endif;
+	if(!empty($_main_color) || !empty($_pattern)): 
+	?> body{ background-color: <?php echo $_main_color ?>; background-attachment: <?php echo $_bg_attachment ?>; background-position: <?php echo $_bg_position_y ?> <?php echo $_bg_position_x ?>; background-repeat: <?php echo $_bg_repeat ?>; <?php if($_pattern && $_pattern != ''): ?>background-image: url(<?php echo Mage::registry('themeMediaUrl').$_pattern ?>);<?php endif; ?> } <?php endif; ?>
+</style>
+<script type="text/javascript">
+	var BASE_URL = '<?php  echo $this->getBaseUrl(); ?>';
+	var CUSTOM_LINK_URL = '<?php echo Mage::getStoreConfig('milanoconfig/menuoptions/additional_nav_href'); ?>';  
+</script>

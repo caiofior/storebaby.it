@@ -1,0 +1,75 @@
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+	$_config = Mage::getStoreConfig('milanoconfig/productpage');
+	
+    $_use_zoom = $_config['use_zoom'] == 1;
+    $_use_carousel = $_config['use_carousel'] == 1;
+    $_layout = "horizontal"; 
+    $_thumbs_count = count($this->getGalleryImages());
+    $_i_thumbs = 0;
+	if($_product_video_url = $_product->getData('product_video_url')) {
+		$_have_video = true;
+		$_thumbs_count++;
+	}
+    switch($_layout){
+        case 'horizontal':
+            $_mainWidth = 500;
+            $_mainHeight = 500;
+            $_smWidth = 68;
+            $_smHeight = 68;
+            $_carWidth = 430;
+            $_zoomLeft = 0;
+            $_zoomWidth = 960;
+			$_zoomHeight = '100%';
+        break;
+    }
+?>
+<style>
+    .more-views { width:<?php echo $_carWidth ?>px; }
+</style>
+<div class="product-media layout_<?php echo $_layout ?>">
+    <div class="main-image" >   
+        <a id="zoom" class="<?php if($_thumbs_count<=1) echo " gallery-image"; if($_use_zoom) echo " cloud-zoom"; ?>" rel="position:'inside', smoothMove:2, showTitle: false" href="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>">
+            <?php
+                $_img = '<img class="zoom-image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($_mainWidth,$_mainHeight).'" width="'.$_mainWidth.'" height="'.$_mainHeight.'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                echo $_helper->productAttribute($_product, $_img, 'image');
+            ?>
+        </a>
+    </div>
+    <?php if ($_thumbs_count > 1):?>
+    <div class="more-views "<?php if($_use_carousel && $_thumbs_count <= 5): ?>style="width: <?php echo $_thumbs_count*86; ?>px;"<?php endif; ?>">
+        <div class="zoom-gallery slider">
+        	<?php if($_have_video):?>
+            	<div class="slide">
+                	<a class="product-video" rel="prettyPhoto" href="<?php echo $_product_video_url; ?>">video</a>
+                </div>
+            <?php endif; ?>
+            <?php foreach ($this->getGalleryImages() as $_image): $_i_thumbs++; ?>
+                <div class="slide <?php if($_thumbs_count == $_i_thumbs) echo 'last'; ?>">
+                    <a class="zoom-thumbnail gallery-image<?php if($_use_zoom) echo " cloud-zoom-gallery"; ?>"  rel="useZoom: 'zoom', smallImage: '<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_mainWidth,$_mainHeight); ?>'"  href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" data-easyzoom-source="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_mainWidth,$_mainHeight); ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_smWidth,$_smHeight); ?>" width="<?php echo $_smWidth ?>" height="<?php echo $_smHeight ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php if($_use_carousel && $_thumbs_count > 5): ?>
+        <div class="more-views-arrow prev">&nbsp;</div>
+        <div class="more-views-arrow next">&nbsp;</div>
+    <?php endif;?>
+	<?php endif;?>
+</div>    
+	<script type="text/javascript">
+        jQuery(function($){
+        	$.fn.prettyPhoto({show_title: false, social_tools: false, default_width: 800, default_height: 480});
+            $('#zoom').click(function(e){ e.preventDefault(); $.prettyPhoto.open($.map($('.gallery-image'),function(link){ return $(link).attr('href'); })); });
+    <?php if(!$_use_zoom): ?>
+        	$('.zoom-thumbnail').click(function(e){ e.preventDefault(); $.prettyPhoto.open($.map($('.gallery-image'),function(link){ return $(link).attr('href'); })); });
+    <?php endif;?>
+    <?php if($_have_video):?>
+    		$('.product-video').prettyPhoto({keyboard_shortcuts: false, show_title: false, social_tools: false, default_width: 800, default_height: 480});
+    <?php endif;?>
+    <?php if($_use_carousel && $_thumbs_count > 5): ?>	 
+            $('.more-views').iosSlider({desktopClickDrag: true, snapToChildren: true, infiniteSlider: false, navNextSelector: '.more-views-arrow.next', navPrevSelector: '.more-views-arrow.prev'});                         
+    <?php endif;?>
+    	});
+	</script>

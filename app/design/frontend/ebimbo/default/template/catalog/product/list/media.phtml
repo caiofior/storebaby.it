@@ -1,0 +1,21 @@
+<?php
+$imgSize = $this->getSize();
+$imgHeight = $this->getHeight();
+if(count($this->getGalleryImages()) > 1){
+$i=0; 
+foreach($this->getGalleryImages() as $_image): 
+$image = $this->helper('catalog/image')->init($this->getProduct(), 'small_image', $_image->getFile())->resize($imgSize,$imgHeight);
+if($this->htmlEscape($_image->getLabel()) == 'back'){
+$i++;
+if($i == 1){
+echo $image; 
+}
+} 
+endforeach; 
+if($i == 0){
+echo 'null';  
+}
+}else{
+echo 'null';  
+}
+?>

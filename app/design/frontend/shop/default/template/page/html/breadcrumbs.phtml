@@ -1,0 +1,23 @@
+<?php if($crumbs && is_array($crumbs)): ?>
+<div class="breadcrumbs">
+    <ul>
+        <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+            <li class="<?php echo $_crumbName ?>">
+            <?php if($_crumbInfo['link']): ?>
+                <a href="<?php echo $_crumbInfo['../../../../defaultw/template/page/html/link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>"><?php echo $this->htmlEscape($_crumbInfo['label']) ?></a>
+            <?php elseif($_crumbInfo['last']): ?>
+                <strong><?php echo $this->htmlEscape($_crumbInfo['label']) ?></strong>
+            <?php else: ?>
+                <?php echo $this->htmlEscape($_crumbInfo['label']) ?>
+            <?php endif; ?>
+            <?php if(!$_crumbInfo['last']): ?>
+                &nbsp;<span>&raquo;</span>&nbsp;
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+        	<li class="back">
+            	<a href="javascript: history.go(-1)"><?php echo $this->__('Return to Previous Page') ?></a>
+            </li>
+    </ul>
+</div>
+<?php endif; ?>

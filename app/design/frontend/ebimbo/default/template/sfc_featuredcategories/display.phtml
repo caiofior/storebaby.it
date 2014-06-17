@@ -1,0 +1,66 @@
+<?php
+/**
+ * SFC - Featured Catagories Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@storefrontconsulting.com so we can send you a copy immediately.
+ *
+ *
+ * @package    SFC_FeaturedCategories
+ * @copyright  (C)Copyright 2010 StoreFront Consulting, Inc (http://www.StoreFrontConsulting.com/)
+ * @author     Adam Lundrigan
+ *
+ * available colors [bs-blue][bs-blue][bs-orange][bs-red][bs-vio][bs-green]
+ *
+ *
+ */
+$categories = $this->fastGetFeaturedCategories();
+
+
+?>
+<?php if (sizeof($categories > 0 )) : ?>
+<div class="bs-featuredCategories">
+<h5><?php echo $this->__('popular categories') ?></h5>
+  <div class="bs-row">
+  <?php 
+  $categoryCont = 0;
+  foreach ($categories as $categoryId => $productIds) :
+  if ($categoryCont++ % 3  == 0 ) : ?>
+  </div><div class="bs-row">
+  <?php endif;
+  $category = Mage::getModel('catalog/category')->load($categoryId);
+  ?>
+      <div class="bs-cat <?php echo $category->getData('category_color_home'); ?>">
+      <a href="<?php echo $category->getUrl(); ?>" title="<?php echo $category->getName(); ?>" class="title">
+        <h2><?php echo $category->getName(); ?></h2>
+      </a>
+      <div class="bs-left">
+
+            
+        <a href="<?php echo $category->getUrl(); ?>" title="<?php echo $category->getName(); ?>" 
+<?php /*?>        style="background-image: url(<?php echo Mage::registry('themeMediaUrl'); ?>ts/<?php echo $category->getData('category_color_home'); ?>.png), url(<?php echo $category->getThumbnailUrl(); ?>);"></a><?php */?>
+        style="background-image: url(<?php echo $category->getThumbnailUrl(); ?>);"></a>
+      </div>
+      <?php if (is_array($productIds)) : ?>
+      <div class="bs-right">
+        <?php foreach ($productIds as $productId) : 
+            $product = Mage::getModel('catalog/product')->load($productId); ?>
+        <a href="<?php echo $product->getProductUrl(); ?>" title="<?php echo $product->getName(); ?>"  style="background-image: url(<?php echo Mage::helper('catalog/image')->init($product, 'small_image')->resize(163, 100); ?>);" ></a>
+        <?php endforeach; ?>
+      </div>
+      <?php endif; ?>
+    </div>
+  <?php  endforeach; ?>
+  </div>
+</div>
+<?php endif; ?>
+
+
+

@@ -1,0 +1,98 @@
+<?php if($this->getItems()->getSize()): ?>    
+<div class="block-related">
+	<div class="block-related-internal">
+    <h5><?php echo $this->__('You may also be interested in the following product(s)'); ?></h5>
+    <p class="related-block-subtitle"><?php echo $this->__('Check items to add to the cart or') ?>&nbsp;<a href="#" onclick="selectAllRelated(this); return false;"><?php echo $this->__('select all') ?></a></p>
+    <div class="clear"></div>
+    <div id="mycarousel" class="related related-slider">
+        <div class="slider" >        
+        <?php $_i_related = -1; ?>
+        <?php foreach($this->getItems() as $_item): $_i_related++; ?>
+            <div class="slide <?php if(($this->getItems()->getSize() == 4 && $_i_related == 3) || ($this->getItems()->getSize() == ($_i_related + 1))) echo 'last' ?>">
+                <div class="product">
+                <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+                    <?php if (!$_item->getRequiredOptions()): ?>
+                        <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+                    <?php endif; ?>
+                <?php endif; ?>
+                    <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(228) ?>" width="228" height="228" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>
+                    <div class="product-details">
+                    	<?php
+							$_product = $_item; 
+							include('../../../../../defaultw/template/catalog/product/view/labels.phtml');
+							unset($_product);
+						?>
+                        <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo Mage::helper('core/string')->truncate($this->htmlEscape($_item->getName()), $length = 30, $etc = '...', $remainder = '', $breakWords = true); ?></a></p>
+                        <?php echo $this->getPriceHtml($_item, true, '-related') ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+        </div>      
+        <script type="text/javascript">decorateList('mini-products-list', 'none-recursive')</script>
+        <div class="clear"></div>
+    </div>
+    <?php if($this->getItems()->getSize() > 4): ?>
+        <div class="prev">&nbsp;</div>
+        <div class="next">&nbsp;</div>
+        <script type="text/javascript">
+            jQuery('.block-related .prev').addClass('disabled');
+            jQuery('.related').iosSlider({
+                desktopClickDrag: true,
+                snapToChildren: true,
+                infiniteSlider: false,
+                navNextSelector: '.block-related .next',
+                navPrevSelector: '.block-related .prev',
+                lastSlideOffset: 3,
+                onFirstSlideComplete: function(){
+                    jQuery('.block-related .prev').addClass('disabled');
+                },
+                onLastSlideComplete: function(){
+                    jQuery('.block-related .next').addClass('disabled');
+                },
+                onSlideChange: function(){
+                    jQuery('.block-related .prev').removeClass('disabled');
+                    jQuery('.block-related .next').removeClass('disabled');
+                }
+            });               
+        </script>           
+    <?php endif; ?>    
+    <script type="text/javascript">
+    //<![CDATA[
+    $$('.related-checkbox').each(function(elem){
+        Event.observe(elem, 'click', addRelatedToProduct)
+    });
+
+    var relatedProductsCheckFlag = false;
+    function selectAllRelated(txt){
+        if (relatedProductsCheckFlag == false) {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = true;
+            });
+            relatedProductsCheckFlag = true;
+            txt.innerHTML="<?php echo $this->__('unselect all') ?>";
+        } else {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = false;
+            });
+            relatedProductsCheckFlag = false;
+            txt.innerHTML="<?php echo $this->__('select all') ?>";
+        }
+        addRelatedToProduct();
+    }
+
+    function addRelatedToProduct(){
+        var checkboxes = $$('.related-checkbox');
+        var values = [];
+        for(var i=0;i<checkboxes.length;i++){
+            if(checkboxes[i].checked) values.push(checkboxes[i].value);
+        }
+        if($('related-products-field')){
+            $('related-products-field').value = values.join(',');
+        }
+    }
+    //]]>
+    </script>
+    </div>
+</div>
+<?php endif ?>

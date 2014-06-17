@@ -1,0 +1,41 @@
+<?php $posts = $this->getPosts(); ?>
+<?php if (count($posts)): ?>
+<?php // echo $this->getChildHtml('blog_comments_toolbar'); ?>
+    <?php foreach ($posts as $post): ?>
+        <div class="postWrapper">
+    	
+		<?php if($img = $post->getPostImage(120)): ?>
+        <div class="postImage">
+        	<a href="<?php echo $post->getAddress(); ?>" ><img src="<?php echo Mage::getBaseUrl('media').$img; ?>" /></a>
+        </div>
+        <?php endif; ?>
+        
+        <div class="postContentWrapper">
+        
+            <div class="postTitle">
+                <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+                <h7 class="postDetails"><?php echo Mage::helper('blog')->__('Posted on'); ?> <span class="postDate"><?php echo $post->getCreatedTime(); ?></span>
+					<?php $postCats = $post->getCats(); ?>
+                    <?php if (!empty($postCats)): ?>
+                        <?php echo Mage::helper('blog')->__('in'); ?>
+                        <?php foreach ($postCats as $title => $url): ?>
+                            <a href="<?php echo $url; ?>"><?php echo $title; ?></a> 
+                        <?php endforeach; ?>
+                    <?php endif; ?><?php echo $this->__("by"); ?> <span class="poster"><?php echo $post->getUser(); ?></span>
+                </h7>
+            </div>
+            
+            <div class="postContent"><?php echo $post->getPostContent(); ?></div>
+            <div class="postReadmoreComments">
+			<?php if ($this->getCommentsEnabled()): ?>
+            	<?php echo $post->getCommentCount(); ?> <a href="<?php echo $post->getAddress(); ?>#commentBox" >Comments</a> | <a class="blog-read-more" href="<?php echo $post->getAddress(); ?>">Read Full Post</a>
+            <?php endif; ?>
+            </div>
+    	</div>
+    </div>
+    <?php endforeach; ?>
+<?php echo $this->getChildHtml('blog_comments_toolbar'); ?>
+<script type="text/javascript">jQuery(function(){ jQuery('.toolbar').jqTransform({imgPath:'<?php echo $this->getSkinUrl('images/jqforms/'); ?>'}); });</script>
+<?php else: ?>  
+    <?php echo Mage::helper('blog')->__('No Posts in this Category.'); ?>
+<?php endif; ?>

@@ -1,0 +1,163 @@
+<?php 
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$_config = Mage::getStoreConfig('milanoconfig/productpage');
+$_share_config = Mage::getStoreConfig('milanoconfig/share');
+$_brand_enabled = $_config['brand'] == 1;
+$_use_share = $_share_config['use_share'] == 1;
+$_share_code = $_share_config['share_code'];
+$_shortDescription = $_product->getShortDescription();
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>    
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+	
+    <div class="product-essential">
+    
+        <div class="product-img-box">
+        	<?php echo $this->getChildHtml('info_tabs') ?>
+        </div>
+        
+        <div class="product-shop">
+                <div class="product-name clear">
+                	<?php include('../../../../defaultw/template/catalog/product/view/labels.phtml') ?>
+                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                </div>
+                        <?php echo $this->getChildHtml('upsell_products') ?>
+
+				<?php if($_brand_enabled):
+					
+					$_brand_attr = $_config['brand_attr'];
+					if ($_product->getData($_brand_attr)):
+					
+							$brandImageExt = trim($_config['brand_image_extension']);
+							$brandPageBasePath = trim($_config['brand_page_base_path']);
+							$brandLinkSearch = $_config['brand_link_search_enabled'] == 1;
+							$attr = $_product->getResource()->getAttribute($_brand_attr);
+							$brandValue = trim($attr->getFrontend()->getValue($_product));
+							$brandValueCode = str_replace(" ", "_", strtolower($brandValue));
+							$brandLabel = $attr->getStoreLabel();
+							$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
+
+							if ($brandLinkSearch)
+								$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q=' . $brandValue;
+							elseif ($brandPageBasePath != '')
+							{
+								$basePath = ($brandPageBasePath == '/') ? '' : $brandPageBasePath . '/';
+								$brandPageUrl = Mage::getUrl() . $basePath . str_replace(" ", "-", strtolower($brandValue));
+							}
+							else
+								$brandPageUrl = '';
+
+							?>
+                            <div class="brand-logo clear">
+                            	<?php if ($brandPageUrl != ''): ?>
+                                	<a href="<?php echo $brandPageUrl;?>" title="<?php echo str_replace("%s", $brandValue, $this->__('Click to see more products from %s')); ?>"><img src="<?php echo $brandImageUrl;?>" alt="<?php echo $brandValue; ?>" /></a>
+                                <?php else: ?>
+                                	<img src="<?php echo $brandImageUrl;?>" title="<?php echo $brandLabel .': '. $brandValue; ?>" alt="<?php echo $brandValue; ?>" />
+                                <?php endif; ?>
+                            </div>
+                	<?php endif; ?>
+                <?php endif; ?>
+                
+                <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                <div class="no-display">
+                    <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                    <input type="hidden" name="related_product" id="related-products-field" value="" />
+                </div>
+                
+                <div class="addtocont clear">
+                    <?php if($_product->getTypeId() != 'bundle'): ?>
+                    	<?php echo $this->getChildHtml('product_type_data') ?>
+                        <span class="product-code"><?php echo $this->__('Product code:').' <strong>'.$_product->getSku().'</strong>'; ?></span>
+                    <?php endif;?>
+                	<?php if($_product->getTypeId() != 'bundle'): ?>
+                    	<?php echo $this->getPriceHtml($_product) ?>
+					<?php else: ?>
+                        <span class="product-code"><?php echo $this->__('Product code:').'<strong>'.$_product->getSku().'</strong>'; ?></span>
+                        <?php echo $this->getChildHtml('product_type_data') ?>
+                    <?php endif;?>                
+                </div>
+                
+				<?php if($_tierPriceHtml = $this->getTierPriceHtml()): ?>
+                	<div class="clear"><?php echo $_tierPriceHtml; ?></div>
+                <?php endif; ?>
+                
+				<?php if($_extraHint = $this->getChildHtml('extrahint')): ?>
+                	<div class="clear"><?php echo $_extraHint ?></div>
+                <?php endif; ?>
+				
+				<?php if ($_shortDescription):?>
+                    <div class="short-description clear">
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_shortDescription), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
+                
+                <?php if($_alertUrls = $this->getChildHtml('alert_urls')): ?>
+                	<div class="product-alerts clear"><?php echo $_alertUrls; ?></div>
+                <?php endif; ?>
+                
+                <?php if($_promoMessage = $this->getChildHtml('product_promo_message')): ?>
+                	<div class="clear"><?php echo $this->getChildHtml('product_promo_message') ?></div>
+                <?php endif; ?>
+                
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <div class="clear" id="container1"><?php echo $this->getChildChildHtml('container1', '', true, true) ?><div class="clear"></div></div>
+                <?php endif;?>
+                
+                <?php if ($_productDataGrouped = $this->getChildHtml('product_type_data_grouped')): ?>
+					<div class="clear"><?php echo $_productDataGrouped; ?></div>
+                <?php endif; ?>
+                
+				<?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box clear">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+                <?php endif; ?>
+                
+                <?php if($_infoAccordion = $this->getChildHtml('info_accordion')): ?>
+                	<div class="clear"><?php echo $_infoAccordion ?></div>
+                <?php endif; ?>
+                
+				<?php echo $this->getChildHtml('other');?>
+				
+				<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                   	<div class="clear" id="container2"><?php echo $this->getChildChildHtml('container2', '', true, true) ?></div>
+                <?php endif;?>
+                
+                </form>
+				<script type="text/javascript">
+                //<![CDATA[
+                    var productAddToCartForm = new VarienForm('product_addtocart_form');
+                    var loaderBckImg = '<?php echo $this->getSkinUrl('images/loading.gif')?>';
+                    var successMsg = '<?php echo $this->__('was successfully added to your shopping cart.') ?>';
+                    var continueMsg = '<?php echo $this->__('Continue shopping') ?>';
+                    var cartUrl = '<?php echo $this->getUrl('checkout/cart')?>';
+                    var cartMsg = '<?php echo $this->__('View cart & checkout') ?>';
+                    var errorMsg = '<?php echo $this->__('Error') ?>';
+					jQuery('.rating-links > a').click(function(e){ e.preventDefault(); jQuery('#product_tabs_product_review > a').click(); });
+                //]]>
+                </script>
+                
+				<?php if($_use_share && $_share_code): ?>
+                	<div class="clear"><?php echo $_share_code; ?></div>
+                <?php endif; ?>
+        </div>
+    
+    </div>
+    
+  	<div class="product-collateral">
+		<?php // echo $this->getChildHtml('info_tabs') ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+    </div>
+        <?php echo $this->getChildHtml('related_products') ?>
+</div>

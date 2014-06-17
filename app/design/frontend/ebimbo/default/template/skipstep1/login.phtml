@@ -1,0 +1,51 @@
+<?php if(!$this->isCustomerLoggedIn() && $this->helper('skipstep1')->isSkipEnabled()): ?>
+<p id="billing-login-link"><a href="#" onclick="toggleLogin();return false;"><?php echo $this->__('Already registered? Login here') ?></a></p>
+<p id="billing-guest-link" style="display: none"><?php echo $this->__('Please login here or') ?> <a href="#" onclick="toggleLogin();return false;"><?php echo $this->__('go back') ?></a></p>
+<form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post" style="display: none">
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<fieldset>
+    <ul class="form-list">
+        <li class="fields">
+            <div class="field">
+                <label for="login-email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry validate-email" id="login-email" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" />
+                </div>
+            </div>
+            <div class="field">
+                <label for="login-password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                <div class="input-box">
+                    <input type="password" class="input-text required-entry" id="login-password" name="login[password]" />
+                </div>
+            </div>
+        </li>    
+        <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+        <input name="context" type="hidden" value="checkout" />
+    </ul>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left"><?php echo $this->__('Forgot your password?') ?></a>
+        <button type="submit" class="button" onclick="onepageLogin(this)"><span><span><?php echo $this->__('Login') ?></span></span></button>
+    </div>
+</fieldset>    
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var loginForm = new VarienForm('login-form', true);
+    $('login-email').observe('keypress', bindLoginPost);
+    $('login-password').observe('keypress', bindLoginPost);
+    function bindLoginPost(evt){
+        if (evt.keyCode == Event.KEY_RETURN) {
+            loginForm.submit();
+        }
+    }
+    function onepageLogin(button)
+    {
+        if(loginForm.validator && loginForm.validator.validate()){
+            button.disabled = true;
+            loginForm.submit();
+        }
+    }
+//]]>
+</script>
+<?php endif ?>

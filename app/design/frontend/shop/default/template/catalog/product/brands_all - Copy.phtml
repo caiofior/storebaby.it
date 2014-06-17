@@ -1,0 +1,608 @@
+<?php if ((Mage::getStoreConfig('milanoconfig/homeoptions/show_brands') == 1) && ($_brands = $this->getAllBrands()) && count($_brands)):
+$brandImageExt = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_image_extension'));
+$brandPageBasePath = trim(Mage::getStoreConfig('milanoconfig/productpage/brand_page_base_path')); 
+$brandLinkSearch = Mage::getStoreConfig('milanoconfig/productpage/brand_link_search_enabled') == 1;
+?>
+<?php $i=0; foreach ($_brands as $_brand): $i++;
+					$brandValue = trim($_brand);	
+					$brandValueCode = str_replace(" ", "_", strtolower($brandValue));					
+					$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
+					
+					if ($brandLinkSearch)
+						$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q=' . $brandValue;
+					elseif ($brandPageBasePath != '')
+					{
+						$basePath = ($brandPageBasePath == '/') ? '' : $brandPageBasePath . '/';
+						$brandPageUrl = Mage::getUrl() . $basePath . str_replace(" ", "-", strtolower($brandValue));
+					}
+					else
+						$brandPageUrl = '';
+				?>
+<?php if ($brandPageUrl != ''): ?>
+
+<a href="<?php echo $brandPageUrl;?>" title="<?php echo str_replace("%s", $brandValue, $this->__('Click to see more products from %s')); ?>"> <?php echo $brandValue; ?> </a>
+<?php else: ?>
+<?php echo $brandValue; ?>
+<?php endif; ?>
+<?php endforeach; ?>
+<?php endif; ?>
+<div id="creativeContent">
+  <div id="brands_header">
+    <h1>A-Z <span>Tutte nostre marche | StoreBaby</span></h1>
+    <ul>
+      <li> <a class="letter_a" href="#">A</a> </li>
+      <li> <a class="letter_b" href="#">B</a> </li>
+      <li> <a class="letter_c" href="#">C</a> </li>
+      <li> <a class="letter_d" href="#">D</a> </li>
+      <li> <a class="letter_e" href="#">E</a> </li>
+      <li> <a class="letter_f" href="#">F</a> </li>
+      <li> <a class="letter_g" href="#">G</a> </li>
+      <li> <a class="letter_h" href="#">H</a> </li>
+      <li> <a class="letter_i" href="#">I</a> </li>
+      <li> <a class="letter_j" href="#">J</a> </li>
+      <li> <a class="letter_k" href="#">K</a> </li>
+      <li> <a class="letter_l" href="#">L</a> </li>
+      <li> <a class="letter_m" href="#">M</a> </li>
+      <li> <a class="letter_n" href="#">N</a> </li>
+      <li> <a class="letter_o" href="#">O</a> </li>
+      <li> <a class="letter_p" href="#">P</a> </li>
+      <li> <a class="letter_q" href="#">Q</a> </li>
+      <li> <a class="letter_r" href="#">R</a> </li>
+      <li> <a class="letter_s" href="#">S</a> </li>
+      <li> <a class="letter_t" href="#">T</a> </li>
+      <li> <a class="letter_u" href="#">U</a> </li>
+      <li> <a class="letter_v" href="#">V</a> </li>
+      <li> <a class="letter_w" href="#">W</a> </li>
+      <li> <a class="letter_x" href="#">X</a> </li>
+      <li> <a class="letter_y" href="#">Y</a> </li>
+      <li> <a class="letter_z" href="#">Z</a> </li>
+      <li> <a class="letter_a" href="#">Show All</a> </li>
+    </ul>
+  </div>
+------------------------- dynamico  
+  
+  <div id="brands_section">
+    <div id="letter_a" class="letter"> <h2>A</h2>
+      <ul>
+        <li> <a href="#">Abandon Ship</a> </li>
+        <li> <a href="#">Addict</a> </li>
+        <li> <a href="#">Adidas Originals</a> </li>
+        <li> <a href="#">Afends</a> </li>
+        <li> <a href="#">AJ Morgan</a> </li>
+        <li> <a href="#">Aldo</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Alpha Industries</a> </li>
+        <li> <a href="#">Altamont</a> </li>
+        <li> <a href="#">Alexander Mcqueen For Puma</a> </li>
+        <li> <a href="#">American Apparel</a> </li>
+        <li> <a href="#">Anerkjendt</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Anticulture</a> </li>
+        <li> <a href="#">Antoine &amp; Stanley</a> </li>
+        <li> <a href="#">Anthony Miles</a> </li>
+        <li> <a href="#">Antony Morato</a> </li>
+        <li> <a href="#">A Question Of</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Armani Exchange</a> </li>
+        <li> <a href="#">Asics</a> </li>
+        <li> <a href="#">ASOS</a> </li>
+        <li> <a href="#">Asos Black</a> </li>
+        <li> <a href="#">ASOS Crafted In</a> </li>
+      </ul>
+    </div>
+    <div id="letter_b" class="letter"> <h2>B</h2>
+      <ul>
+        <li> <a href="#">Barbour</a> </li>
+        <li> <a href="#">BASE LONDON</a> </li>
+        <li> <a href="#">Bellfield</a> </li>
+        <li> <a href="#">BEN SHERMAN</a> </li>
+        <li> <a href="#">United Colors Of Benetton</a> </li>
+        <li> <a href="#">BePriv</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Berghaus</a> </li>
+        <li> <a href="#">Billabong</a> </li>
+        <li> <a href="#">Bite by Dent de Man</a> </li>
+        <li> <a href="#">Bjorn Borg</a> </li>
+        <li> <a href="#">:Black Chocoolate</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Blk Pine</a> </li>
+        <li> <a href="#">Blood Brother</a> </li>
+        <li> <a href="#">Blood is the new Black</a> </li>
+        <li> <a href="#">Bobbies</a> </li>
+        <li> <a href="#">Boom Bap</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">BOXFRESH</a> </li>
+        <li> <a href="#">Boy London</a> </li>
+        <li> <a href="#">Brixtol</a> </li>
+        <li> <a href="#">Brixton</a> </li>
+        <li> <a href="#">Buttero</a> </li>
+      </ul>
+    </div>
+    <div id="letter_c" class="letter"> <h2>C</h2>
+      <ul>
+        <li> <a href="#">Calvin Klein</a> </li>
+        <li> <a href="#">Cambridge Satchel Company</a> </li>
+        <li> <a href="#">Canada Goose</a> </li>
+        <li> <a href="#">Carhartt</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Carrera</a> </li>
+        <li> <a href="#">Casio</a> </li>
+        <li> <a href="#">Caxton</a> </li>
+        <li> <a href="#">Cheap Monday</a> </li>
+        <li> <a href="#">Chelsea Peers</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">City Fellaz</a> </li>
+        <li> <a href="#">CLARKS ORIGINALS</a> </li>
+        <li> <a href="#">Classics 77</a> </li>
+        <li> <a href="#">Comme Des F Down</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Converse</a> </li>
+        <li> <a href="#">Creative Recreation</a> </li>
+        <li> <a href="#">Criminal Damage</a> </li>
+        <li> <a href="#">Cuckoos Nest</a> </li>
+      </ul>
+    </div>
+    <div id="letter_d" class="letter"> <h2>D</h2>
+      <ul>
+        <li> <a href="#">Dansk</a> </li>
+        <li> <a href="#">Deadrise</a> </li>
+        <li> <a href="#">Deus Ex Machina</a> </li>
+        <li> <a href="#">Denim &amp; Supply Ralph Lauren</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Dickies</a> </li>
+        <li> <a href="#">Diesel</a> </li>
+        <li> <a href="#">Dirty Roller</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Dockers</a> </li>
+        <li> <a href="#">Dolce &amp; Gabbana</a> </li>
+        <li> <a href="#">Dope Chef</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">DR DENIM</a> </li>
+        <li> <a href="#">Dr Martens</a> </li>
+        <li> <a href="#">Dune</a> </li>
+      </ul>
+    </div>
+    <div id="letter_e" class="letter"> <h2>E</h2>
+      <ul>
+        <li> <a href="#">EASTPAK</a> </li>
+        <li> <a href="#">Ebbets Field Flannels</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Edwin</a> </li>
+        <li> <a href="#">Eleven Paris</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Elvine</a> </li>
+        <li> <a href="#">Emporio Armani</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Epperson Mountaineering</a> </li>
+        <li> <a href="#">Esprit</a> </li>
+      </ul>
+    </div>
+    <div id="letter_f" class="letter"> <h2>F</h2>
+      <ul>
+        <li> <a href="#">55DSL</a> </li>
+        <li> <a href="#">Falke</a> </li>
+        <li> <a href="#">FARAH VINTAGE</a> </li>
+        <li> <a href="#">Fat Moose</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Fish &amp; Chips by Base London</a> </li>
+        <li> <a href="#">Fjallraven</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Fossil</a> </li>
+        <li> <a href="#">Franks</a> </li>
+        <li> <a href="#">Frank Wright</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Fred Perry</a> </li>
+        <li> <a href="#">French Connection</a> </li>
+        <li> <a href="#">Friend or Faux</a> </li>
+      </ul>
+    </div>
+    <div id="letter_g" class="letter"> <h2>G</h2>
+      <ul>
+        <li> <a href="#">G-SHOCK</a> </li>
+        <li> <a href="#">G-Star</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Gandys</a> </li>
+        <li> <a href="#">Gant Rugger</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Gloverall</a> </li>
+        <li> <a href="#">Goorin Hats</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Gourmet</a> </li>
+        <li> <a href="#">GRENSON</a> </li>
+      </ul>
+    </div>
+    <div id="letter_h" class="letter"> <h2>H</h2>
+      <ul>
+        <li> <a href="#">H by Hudson</a> </li>
+        <li> <a href="#">Happy Socks</a> </li>
+        <li> <a href="#">Havaianas</a> </li>
+        <li> <a href="#">Herschel</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Hilfiger Denim</a> </li>
+        <li> <a href="#">Homeys</a> </li>
+        <li> <a href="#">House Of Hounds</a> </li>
+        <li> <a href="#">Huf</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Hugo Boss</a> </li>
+        <li> <a href="#">Humor</a> </li>
+        <li> <a href="#">Hunter</a> </li>
+        <li> <a href="#">Hurley</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Hyde</a> </li>
+        <li> <a href="#">Hype</a> </li>
+        <li> <a href="#">Hypergrand</a> </li>
+      </ul>
+    </div>
+    <div id="letter_i" class="letter"> <h2>I</h2>
+      <ul>
+        <li> <a href="#">Icecream</a> </li>
+        <li> <a href="#">Ichiban</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Icon Brand</a> </li>
+        <li> <a href="#">Illustrated People</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Insight</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Izzue</a> </li>
+      </ul>
+    </div>
+    <div id="letter_j" class="letter"> <h2>J</h2>
+      <ul>
+        <li> <a href="#">Jack &amp; Jones</a> </li>
+        <li> <a href="#">Jack Wills</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Jeepers Peepers</a> </li>
+        <li> <a href="#">Jeffery West</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Jimmy'z</a> </li>
+        <li> <a href="#">John Varvatos</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Joyrich</a> </li>
+      </ul>
+    </div>
+    <div id="letter_k" class="letter"> <h2>K</h2>
+      <ul>
+        <li> <a href="#">Karl Lagerfeld</a> </li>
+        <li> <a href="#">Kg By Kurt Geiger</a> </li>
+        <li> <a href="#">Kigu</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Kidda Christopher Shannon</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">King Apparel</a> </li>
+        <li> <a href="#">Kr3w</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Kubban</a> </li>
+        <li> <a href="#">Kulte</a> </li>
+      </ul>
+    </div>
+    <div id="letter_l" class="letter"> <h2>L</h2>
+      <ul>
+        <li> <a href="#">Lacoste</a> </li>
+        <li> <a href="#">Lambretta</a> </li>
+        <li> <a href="#">Lazy Oaf</a> </li>
+        <li> <a href="#">Le Coq Sportif</a> </li>
+        <li> <a href="#">Le Fix</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Lee/Lee 101</a> </li>
+        <li> <a href="#">Levi's</a> </li>
+        <li> <a href="#">Levi's Vintage Clothing</a> </li>
+        <li> <a href="#">Libertine Libertine</a> </li>
+        <li> <a href="#">Liberty</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Lightning Bolt</a> </li>
+        <li> <a href="#">Limit</a> </li>
+        <li> <a href="#">Loake</a> </li>
+        <li> <a href="#">Lomography</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Lousy Livin'</a> </li>
+        <li> <a href="#">Lovebullets</a> </li>
+        <li> <a href="#">Love Moschino</a> </li>
+        <li> <a href="#">Lyle &amp; Scott</a> </li>
+      </ul>
+    </div>
+    <div id="letter_m" class="letter"> <h2>M</h2>
+      <ul>
+        <li> <a href="#">Majestic</a> </li>
+        <li> <a href="#">Marc By Marc Jacobs</a> </li>
+        <li> <a href="#">Maui &amp; Sons</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Merc</a> </li>
+        <li> <a href="#">Michael Kors</a> </li>
+        <li> <a href="#">Mi-Pac</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Mishka</a> </li>
+        <li> <a href="#">Minimum</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Mocks</a> </li>
+        <li> <a href="#">Money</a> </li>
+      </ul>
+    </div>
+    <div id="letter_n" class="letter"> <h2>N</h2>
+      <ul>
+        <li> <a href="#">Native Youth</a> </li>
+        <li> <a href="#">Neff</a> </li>
+        <li> <a href="#">Neuw</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">New Balance</a> </li>
+        <li> <a href="#">NEW ERA</a> </li>
+        <li> <a href="#">New Look</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">New Love Club</a> </li>
+        <li> <a href="#">Nike</a> </li>
+        <li> <a href="#">Nixon Watches</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Noose &amp; Monkey</a> </li>
+        <li> <a href="#">North Face</a> </li>
+        <li> <a href="#">Nudie Jeans</a> </li>
+      </ul>
+    </div>
+    <div id="letter_o" class="letter"> <h2>O</h2>
+      <ul>
+        <li> <a href="#">Oakley</a> </li>
+        <li> <a href="#">Odd Future</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Oiler &amp; Boiler</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">OnePiece</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Onitsuka Tiger</a> </li>
+      </ul>
+    </div>
+    <div id="letter_p" class="letter"> <h2>P</h2>
+      <ul>
+        <li> <a href="#">Palladium</a> </li>
+        <li> <a href="#">Parka London</a> </li>
+        <li> <a href="#">Patagonia</a> </li>
+        <li> <a href="#">Paul Smith Jeans</a> </li>
+        <li> <a href="#">Penfield</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Pepe Jeans/Pepe Heritage</a> </li>
+        <li> <a href="#">Persol</a> </li>
+        <li> <a href="#">Peter Werth</a> </li>
+        <li> <a href="#">Polo Ralph Lauren</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Pony</a> </li>
+        <li> <a href="#">Primark</a> </li>
+        <li> <a href="#">PRINGLE</a> </li>
+        <li> <a href="#">PS by Paul Smith</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Puffa</a> </li>
+        <li> <a href="#">Pull&amp;Bear</a> </li>
+        <li> <a href="#">Puma</a> </li>
+        <li> <a href="#">Pro Green X Puma</a> </li>
+      </ul>
+    </div>
+    <div id="letter_q" class="letter"> <h2>Q</h2>
+      <ul>
+        <li> <a href="#">Quay Eyeware</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Quiksilver</a> </li>
+      </ul>
+    </div>
+    <div id="letter_r" class="letter"> <h2>R</h2>
+      <ul>
+        <li> <a href="#">Ralph Lauren</a> </li>
+        <li> <a href="#">Rains</a> </li>
+        <li> <a href="#">Ray-Ban</a> </li>
+        <li> <a href="#">Reason</a> </li>
+        <li> <a href="#">Reclaimed Vintage</a> </li>
+        <li> <a href="#">RED WING</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Reebok</a> </li>
+        <li> <a href="#">Religion</a> </li>
+        <li> <a href="#">REPLAY</a> </li>
+        <li> <a href="#">Reiss</a> </li>
+        <li> <a href="#">Retrosuperfuture</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Revolution</a> </li>
+        <li> <a href="#">Ridley's House of Novelty</a> </li>
+        <li> <a href="#">Rivieras</a> </li>
+        <li> <a href="#">River Island</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Rolando Sturlini</a> </li>
+        <li> <a href="#">Rook</a> </li>
+        <li> <a href="#">Royal Republiq</a> </li>
+        <li> <a href="#">RVCA</a> </li>
+      </ul>
+    </div>
+    <div id="letter_s" class="letter"> <h2>S</h2>
+      <ul>
+        <li> <a href="#">Sandqvist</a> </li>
+        <li> <a href="#">Saucony</a> </li>
+        <li> <a href="#">Schott</a> </li>
+        <li> <a href="#">Scotch &amp; Soda</a> </li>
+        <li> <a href="#">Sekonda</a> </li>
+        <li> <a href="#">Selected Homme</a> </li>
+        <li> <a href="#">Seven London</a> </li>
+        <li> <a href="#">Sik Silk</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">SIMON CARTER</a> </li>
+        <li> <a href="#">SinStar</a> </li>
+        <li> <a href="#">Sixpack France</a> </li>
+        <li> <a href="#">!Solid</a> </li>
+        <li> <a href="#">Sons of the Silent Age</a> </li>
+        <li> <a href="#">Son of Wild</a> </li>
+        <li> <a href="#">Soulland</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Sprayground</a> </li>
+        <li> <a href="#">Speedo</a> </li>
+        <li> <a href="#">SPITFIRE</a> </li>
+        <li> <a href="#">SSUR</a> </li>
+        <li> <a href="#">Stance</a> </li>
+        <li> <a href="#">STORM</a> </li>
+        <li> <a href="#">Stussy</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Suit</a> </li>
+        <li> <a href="#">Superdry</a> </li>
+        <li> <a href="#">Superga</a> </li>
+        <li> <a href="#">Supra</a> </li>
+        <li> <a href="#">SUPREMEBEING</a> </li>
+        <li> <a href="#">Sweet Pants</a> </li>
+        <li> <a href="#">Systvm</a> </li>
+      </ul>
+    </div>
+    <div id="letter_t" class="letter"> <h2>T</h2>
+      <ul>
+        <li> <a href="#">10 Deep</a> </li>
+        <li> <a href="#">Tally &amp; Hoe</a> </li>
+        <li> <a href="#">Ted Baker</a> </li>
+        <li> <a href="#">The Critical Slide Society</a> </li>
+        <li> <a href="#">The Hundreds</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">The Kooples Sport</a> </li>
+        <li> <a href="#">The Quiet Life</a> </li>
+        <li> <a href="#">The Snapback Cap Co</a> </li>
+        <li> <a href="#">Thompson</a> </li>
+        <li> <a href="#">Topo Designs</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Timberland</a> </li>
+        <li> <a href="#">Timex</a> </li>
+        <li> <a href="#">Toddland</a> </li>
+        <li> <a href="#">Tommy Hilfiger</a> </li>
+        <!--mp_trans_remove_start-->
+        <li> <a href="#">Toms</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Trainerspotter</a> </li>
+        <li> <a href="#">Trickers</a> </li>
+        <li> <a href="#">True Religion</a> </li>
+        <li> <a href="#">Two Angle</a> </li>
+      </ul>
+    </div>
+    <div id="letter_u" class="letter"> <h2>U</h2>
+      <ul>
+        <li> <a href="#">Undefeated</a> </li>
+        <li> <a href="#">Underground</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Uniforms for the Dedicated</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">United Colors Of Benetton</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Universal Works</a> </li>
+        <li> <a href="#">Urban Eccentric</a> </li>
+      </ul>
+    </div>
+    <div id="letter_v" class="letter"> <h2>V</h2>
+      <ul>
+        <li> <a href="#">Vans</a> </li>
+        <li> <a href="#">Verb</a> </li>
+        <li> <a href="#">Villain</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Vintage</a> </li>
+        <li> <a href="#">Vito</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Vivienne Westwood</a> </li>
+        <li> <a href="#">Voi Jeans</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Volcom</a> </li>
+        <li> <a href="#">Volklore</a> </li>
+      </ul>
+    </div>
+    <div id="letter_w" class="letter"> <h2>W</h2>
+      <ul>
+        <li> <a href="#">Wemoto</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Wesc</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Wood Wood</a> </li>
+      </ul>
+      <ul>
+        <li> <a href="#">Wrangler</a> </li>
+      </ul>
+    </div>
+    <div id="letter_y" class="letter"> <h2>Y</h2>
+      <ul>
+        <li> <a href="#">YMC</a> </li>
+      </ul>
+    </div>
+    <div id="letter_z" class="letter"> <h2>Z</h2>
+      <ul>
+        <li> <a href="#">Zephyr</a> </li>
+      </ul>
+    </div>
+  </div>
+  
+---------------------------  
+  
+</div>
+<script type="text/javascript">// <![CDATA[
+jQuery(document).ready(function () {
+    jQuery("#brands_header a").click(function (event) {
+		event.preventDefault();
+		var letter = jQuery(this).attr("class");
+        if(jQuery("#" + letter).length > 0)
+        {
+          var letterPos = jQuery("#" + letter).offset().top;
+          var scrollAmt = (jQuery("#brands_section").offset().top) - letterPos;
+          jQuery("#brands_section").stop(true).animate({
+              'margin-top' : scrollAmt + "px"
+          }, 700);
+        }
+    });
+});
+// ]]></script> 

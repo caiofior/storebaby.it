@@ -1,0 +1,36 @@
+<?php if(count($this->getItemCollection()->getItems())): ?>
+
+<div class="product_colorBox">
+    <div class="title"><?php echo $this->__('Color') ?></div>
+    
+    <table class="" >
+    <?php  $this->setColumnCount(1); // uncomment this line if you want to have another number of columns. also can be changed in layout ?>
+    <?php $this->resetItemsIterator() ?>
+    <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
+        <tr>
+        <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
+            <?php if($_link=$this->getIterableItem()): ?>
+            <td>
+            	<div class="product_colorItem">
+                	<h3><a href="<?php echo $_link->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_link->getName()) ?>">
+					<?php //echo Mage::helper('core/string')->truncate($this->htmlEscape($_link->getName()), $length = 25, $etc = '...', $remainder = '', $breakWords = true); ?>
+                    <?php echo $_link->getName(); ?></a>
+                    </h3>
+                    <p class="pcI-image" style="display:none;">
+                    	<img src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image')->resize(188) ?>" width="188" alt="<?php echo $this->htmlEscape($_link->getName()) ?>" />
+                    </p>
+                
+                </div>
+            </td>	
+            <?php else: ?>
+            <td class="empty">&nbsp;</td>
+            <?php endif; ?>
+        <?php endfor; ?>
+        </tr>
+    <?php endfor; ?>
+    </table>
+    <script type="text/javascript">decorateTable('upsell-product-table')</script>
+
+</div>
+
+<?php endif ?>

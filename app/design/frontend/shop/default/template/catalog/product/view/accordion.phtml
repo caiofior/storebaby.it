@@ -1,0 +1,36 @@
+<?php
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ */
+if (!$this->getChildHtml('product_custom_html')): $first=' first'; endif; $last = 'last'; ?>
+<dl class="product-accordion">
+	<?php if ($tab = $this->getChildHtml('product_custom_html')): ?>
+        <?php $tabTitle = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('product_custom_html')->getTitle(); ?>
+        <dt id="product_accordion_custom" class="first"><a href=""><?php echo $tabTitle; ?></a></dt>
+        <dd id="product_tabs_custom_contents"><?php echo $tab ?></dd>
+	<?php endif; ?>
+    <?php foreach ($this->getTabs() as $_index => $_tab): ?>
+        <?php if($this->getChildHtml($_tab['alias'])): ?>
+            <dt id="product_accordion_<?php echo $_tab['alias'] ?>" class="<?php echo !$_index?$first:(($_index==count($this->getTabs())-1)? $last :'')?>"><a href=""><?php echo $_tab['title']?></a></dt>
+            <dd id="product_accordion_<?php echo $_tab['alias'] ?>_contents"><?php echo $this->getChildHtml($_tab['alias']) ?></dd>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</dl>
+<script type="text/javascript">
+//<![CDATA[
+(function($) {
+	var allPanels = $('.product-accordion > dd').hide();
+	$('.product-accordion > dt > a').click(function(e) {
+		e.preventDefault();
+		var panel = $(this).parent().next();
+		if(panel.hasClass('active')) panel.removeClass('active').slideUp();
+		else {
+			$('.product-accordion > dd.active').removeClass('active').slideUp();
+			panel.addClass('active').slideDown();
+		}
+	});
+})(jQuery);
+//]]>
+</script>

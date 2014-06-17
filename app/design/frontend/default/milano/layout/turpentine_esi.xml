@@ -160,9 +160,6 @@
     </customer_logged_in>
 
     <!-- Catalog -->
-    <catalog_product_view>
-        <turpentine_cache_flag value="0"/>
-    </catalog_product_view>
     <catalog_product_compare_index>
         <!--
             This ESI policy can be used to cache the product comparison popup

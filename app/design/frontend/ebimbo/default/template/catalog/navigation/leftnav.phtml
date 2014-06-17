@@ -1,0 +1,31 @@
+<div class="block left-categorys">
+    <?php
+		$_helper = $this->helper('catalog/output');
+		
+        $currentCat = Mage::registry('current_category');
+        echo '<div class="block-title"><h2>'.$currentCat->getName().'</h2></div>';
+		
+		if($_description = $currentCat->getDescription()): ?>
+        <div class="category-description">
+            <?php echo $_helper->categoryAttribute($currentCat, $_description, 'description') ?>
+        </div>
+        <?php endif;
+        
+        if ( $currentCat->getParentId() == Mage::app()->getStore()->getRootCategoryId() ){
+            $loadCategory = $currentCat;
+        }else{
+            $loadCategory = Mage::getModel('catalog/category')->load($currentCat->getId());
+        }
+        $subCategories = explode(',', $loadCategory->getChildren());  
+        if(count($subCategories) > 1){
+            echo '<div class="block-content left-categorys-container">';
+            foreach ( $subCategories as $subCategoryId ){
+                $cat = Mage::getModel('catalog/category')->load($subCategoryId);
+                if($cat->getIsActive()){
+                    echo '<a href="'.$cat->getURL().'">'.$cat->getName().'</a>';
+                }
+            }
+            echo '</div>';
+        }
+    ?>
+</div>

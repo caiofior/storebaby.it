@@ -1,0 +1,26 @@
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $_use_zoom = Mage::getStoreConfig('milanoconfig/productpage/use_zoom') == 1;
+    $_use_carousel = Mage::getStoreConfig('milanoconfig/productpage/use_carousel') == 1;
+    $_layout = "horizontal"; 
+    $_thumbs_count = count($this->getGalleryImages());
+    $_i_thumbs = 0;
+	if($_product_video_url = $_product->getData('product_video_url')) {
+		$_have_video = true;
+		$_thumbs_count++;
+	}
+?>
+<?php 
+	$_mainWidth = 400;
+    $_mainHeight = 400;
+    $_smWidth = 68;
+    $_smHeight = 68;
+    $_carWidth = 430;   
+?>
+    <div class="main-image" >   
+            <?php
+                $_img = '<img class="zoom-image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($_mainWidth,$_mainHeight).'" width="'.$_mainWidth.'" height="'.$_mainHeight.'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                echo $_helper->productAttribute($_product, $_img, 'image');
+            ?>
+    </div>

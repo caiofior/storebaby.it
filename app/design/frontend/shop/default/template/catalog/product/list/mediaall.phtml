@@ -1,0 +1,12 @@
+<?php
+if(count($this->getGalleryImages()) > 1){
+	foreach($this->getGalleryImages() as $_image): 
+		$image = $this->helper('catalog/image')->init($this->getProduct(), 'small_image', $_image->getFile())->resize(50);
+		?>
+		<span class="gallery-thumb"><img src="<?php echo $image; ?>" width="50" height="50" /></span>
+        <?php
+	endforeach; 
+}else{
+echo 'null';  
+}
+?>

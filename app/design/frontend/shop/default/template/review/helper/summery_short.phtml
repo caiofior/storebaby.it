@@ -1,0 +1,12 @@
+<?php if ($this->getReviewsCount()): ?>
+    <div class="ratings">
+        <?php if ($this->getRatingSummary()):?>
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
+            </div>
+        <?php endif;?>
+        <span class="amount"><a href="#product_tabs_product_review"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a></span>
+    </div>
+<?php elseif ($this->getDisplayIfEmpty()): ?>
+    <p class="no-rating"><a href="#product_tabs_product_review"><?php echo $this->__('Be the first to review this product') ?></a></p>
+<?php endif; ?>

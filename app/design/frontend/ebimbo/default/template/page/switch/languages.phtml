@@ -1,0 +1,15 @@
+<?php if(count($this->getStores())>1): ?>
+<div class="form-language">
+	<div class="form-language-title"><?php echo $this->htmlEscape(Mage::app()->getStore()->getName()) ?></div>
+    <ul class="form-language-menu">
+    <?php foreach ($this->getStores() as $_lang): ?>
+        <li class="form-language-item">
+            <?php $_selected = ($_lang->getId() == $this->getCurrentStoreId())?>
+            <?php if(!$_selected): ?>
+                <a href="<?php echo $_lang->getCurrentUrl() ?>"><?php echo $this->htmlEscape($_lang->getName()) ?></a>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>
