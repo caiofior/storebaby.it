@@ -31,7 +31,7 @@ public function getPluginInfo()
             $config = array();
             foreach($this->selectAll(
                     'SELECT `path`,`value` FROM `core_config_data`
-                     WHERE `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%" OR `path` = "web/unsecure/base_url"') as $value) {
+                     WHERE  `scope` = "default" AND ( `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%" OR `path` = "web/unsecure/base_url")') as $value) {
                 $config [$value['path']]=$value['value'];
             }
             $mail = new PHPMailer;

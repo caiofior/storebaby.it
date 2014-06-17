@@ -70,7 +70,7 @@ class GoogleMerchant extends Magmi_ItemProcessor
             $this->config = array();
             foreach($this->selectAll(
                     'SELECT `path`,`value` FROM `core_config_data`
-                     WHERE `path` = "web/unsecure/base_url"') as $value) {
+                     WHERE `scope` = "default" AND `path` = "web/unsecure/base_url"') as $value) {
                 $this->config [$value['path']]=$value['value'];
             }
             foreach($this->selectAll(

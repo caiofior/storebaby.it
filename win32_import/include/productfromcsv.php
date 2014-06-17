@@ -180,7 +180,7 @@ corrupted NUMERIC
                         $tempMastro = new MastroProduct($this);
                         fwrite($this->magentoExcludedCsvHandle, "\xEF\xBB\xBF".'"EAN","reason","info",' . implode(',',$tempMastro->getHeaders()) . PHP_EOL);
                    }
-                   fwrite($this->magentoExcludedCsvHandle, $magentoProduct .','. str_replace('**', ',', stripslashes($row)) .PHP_EOL);
+                   fwrite($this->magentoExcludedCsvHandle, $magentoProduct .',"'. str_replace('**', '","', $row) .'"'.PHP_EOL);
                 }
                  
                 $rowCount++;

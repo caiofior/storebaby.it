@@ -211,9 +211,6 @@ class Magmi_CSVReader extends Magmi_Mixin
                                            $row[]='EMPTY'.$c++;
                                         while (sizeof($cols)<sizeof($row))
                                            $cols[]='EMPTY'.$c++;
-                                        var_dump(array_combine($cols,$row));  
-					var_dump("warning: line $this->_curline , wrong column number : $rcols found over $this->_nhcols, line skipped","warning");
-                                        die();
 					continue;
 				}
 				break;

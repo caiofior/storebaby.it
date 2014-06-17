@@ -106,7 +106,7 @@ class MastroProduct {
     public function createMagentoProduct() {
         $magentoProduct = $this->magentoProduct;
         $magentoProduct->emptyData();
-        
+        $webSites = array('Base','Ebimbo');
         $key = $this->generateKey($this->data['DESCRIZIONE']);
         $mastroCategory = $this->data['REPARTO'];
         if (
@@ -157,10 +157,12 @@ class MastroProduct {
         $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
         $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));
         $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
+		if ($this->data['ESISTENZA']-$this->data['IMPEGNATO'] >0)
+           $webSites[] = 'Retail';
         $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
         if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0)
             return $this->data['EAN13'].',"Code 99",""';
-        
+        $magentoProduct->setData('websites',  implode('', $webSites));
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
         if (sizeof($fileName) == 1 && $fileName[0] != '') {
             $fileName = str_replace('\\', '', $fileName[0]);

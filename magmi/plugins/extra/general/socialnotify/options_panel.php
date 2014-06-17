@@ -39,17 +39,17 @@
 </ul>
 <ul class="formline">
 <li class="label">Word Press RPC url:</li>
-<li class="value"><input type="text" style="width:400px" name="WP:url" value="<?php echo $this->getParam("WP:url","")?>"><div class="fieldinfo">url</div></li>
+<li class="value"><input type="text" style="width:400px" name="SOCIAL:wpurl" value="<?php echo $this->getParam("SOCIAL:wpurl","")?>"><div class="fieldinfo">url</div></li>
 </ul>
 <ul class="formline">
 <li class="label">Word Press username:</li>
-<li class="value"><input type="text" style="width:400px" name="WP:username" value="<?php echo $this->getParam("WP:username","")?>"><div class="fieldinfo">username</div></li>
+<li class="value"><input type="text" style="width:400px" name="SOCIAL:wpusername" value="<?php echo $this->getParam("SOCIAL:wpusername","")?>"><div class="fieldinfo">username</div></li>
 </ul>
 <ul class="formline">
 <li class="label">Word Press password:</li>
-<li class="value"><input type="text" style="width:400px" name="WP:password" value="<?php echo $this->getParam("WP:password","")?>"><div class="fieldinfo">password</div></li>
+<li class="value"><input type="text" style="width:400px" name="SOCIAL:wppassword" value="<?php echo $this->getParam("SOCIAL:wppassword","")?>"><div class="fieldinfo">password</div></li>
 </ul>
 <ul class="formline">
 <li class="label">Word Press category id:</li>
-<li class="value"><input type="text" style="width:400px" name="WP:category_id" value="<?php echo $this->getParam("WP:category_id","")?>"><div class="fieldinfo">Category id</div></li>
+<li class="value"><input type="text" style="width:400px" name="SOCIAL:wpcategory_id" value="<?php echo $this->getParam("SOCIAL:wpcategory_id","")?>"><div class="fieldinfo">Category id</div></li>
 </ul>

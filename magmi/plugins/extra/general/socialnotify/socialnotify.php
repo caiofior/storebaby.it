@@ -38,7 +38,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
       $config = array();
       foreach ($this->selectAll(
               'SELECT `path`,`value` FROM `core_config_data`
-                     WHERE `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%" OR `path` = "web/unsecure/base_url"') as $value) {
+                     WHERE `scope` = "default" AND ( `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%" OR `path` = "web/unsecure/base_url")') as $value) {
          $config [$value['path']] = $value['value'];
       }
       $imageDir = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR .
@@ -118,13 +118,11 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                     HAVING `url_path` <> ""
                     ORDER BY `catalog_product_entity`.`updated_at` DESC 
                 LIMIT ' . $this->getParam("SOCIAL:topost", "10"));
-
       // Full path to twitterOAuth.php (change OAuth to your own path)
       // create new instance
       $tweet = new TwitterOAuth(
               $this->getParam("SOCIAL:twitterkey", ""), $this->getParam("SOCIAL:twittersecret", ""), $this->getParam("SOCIAL:twitterotoken", ""), $this->getParam("SOCIAL:twitterosecret", "")
       );
-
       foreach ($products as $product) {
          if (!is_file($imageDir . $product['image']))
             continue;
@@ -139,8 +137,9 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
          ) {
             $loginError = doConnectToGooglePlus2($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
             // Image URL
-            $lnk = array('img' => $config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
+	    $lnk = doGetGoogleUrlInfo2($config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
             doPostToGooglePlus2($product['name'] .' '. $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'], $lnk, $this->getParam("SOCIAL:gpage", ""));
+
             if ($loginError != '')
                $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
          }
@@ -157,21 +156,23 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             $tweet->post('statuses/update', array('status' => $message));
          }
          if (
-                 $this->getParam("WP:url", "") != '' &&
-                 $this->getParam("WP:username") != '' &&
-                 $this->getParam("WP:password", "") != ''
+                 $this->getParam("SOCIAL:wpurl", "") != '' &&
+                 $this->getParam("SOCIAL:wpusername") != '' &&
+                 $this->getParam("SOCIAL:wppassword", "") != ''
          ) {
-            $client = new IXR_Client($this->getParam("WP:url", ""));
-            $description = utf8_decode($product['description']);
+            $client = new IXR_Client($this->getParam("SOCIAL:wpurl", ""));
+	    $description = substr($product['description'],0,100);
+	    $description .= '<!--more-->';
+            $description .= substr($product['description'],100);
             $description .= '<br/><a href="' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . '">' . $product['name'] . '</a>';
             $content = array(
                 'post_status' => 'draft',
                 'post_type' => 'post',
                 'post_title' => $product['name'],
                 'post_content' => $description,
-                'terms' => array('category' => array($this->getParam("WP:category_id", "")))
+                'terms' => array('category' => array($this->getParam("SOCIAL:wpcategory_id", "")))
             );
-            $params = array(0, $this->getParam("WP:username", ""), $this->getParam("WP:password", ""), $content);
+            $params = array(0, $this->getParam("SOCIAL:wpusername", ""), $this->getParam("SOCIAL:wppassword", ""), $content);
             $client->query('wp.newPost', $params);
             $post_id = $client->getResponse();
             
@@ -184,14 +185,14 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                 'bits' => new IXR_Base64(file_get_contents('/tmp/storebaby.jpg')),
                 true
             );
-            $client->query('metaWeblog.newMediaObject', 1, $this->getParam("WP:username"), $this->getParam("WP:password"), $content);
+            $client->query('metaWeblog.newMediaObject', 1, $this->getParam("SOCIAL:wpusername"), $this->getParam("SOCIAL:wppassword"), $content);
             $media = $client->getResponse();
             $content = array(
                 'post_status' => 'publish',
                 'mt_keywords' => preg_replace('/^[^,]*, /', '', $product['category_names']),
                 'wp_post_thumbnail' => $media['id']
             );
-            $client->query('metaWeblog.editPost', $post_id, $this->getParam("WP:username"), $this->getParam("WP:password"), $content, true);
+            $client->query('metaWeblog.editPost', $post_id, $this->getParam("SOCIAL:wpusername"), $this->getParam("SOCIAL:wppassword"), $content, true);
          }
          $mail = new PHPMailer;
          if ($this->getParam("SOCIAL:facebook", "") != '') {
