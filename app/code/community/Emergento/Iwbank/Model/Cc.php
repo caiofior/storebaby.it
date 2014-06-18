@@ -3,85 +3,151 @@
 http://gateways.emergento.com
 Vist our site for more information about this.
 Associated domain: */
-$keystroke1 = base64_decode("d2RyMTU5c3E0YXllejd4Y2duZl90djhubHVrNmpoYmlvMzJtcA==");
-eval(gzinflate(base64_decode('hY7NCoJAFIVf5SQu5tIUzVpc9hxSeq0huwPzA4X47ikxEm7anu/82V7t+iRttE4aftkQgyq8iyyt67ggGjPFqqoyRG/lpsvL0yWJhBHlg9+oEdJ1ZqsBJw1DFWyvZmVgyYTq2iwxzzF5QXv3yvlOLS2EPXJxhQk8BP7vxHH5d/7+274wGpv5gyH9uzJNHw==')));
-$O0O0O0O0O0O0=$keystroke1[2].$keystroke1[32].$keystroke1[20].$keystroke1[11].$keystroke1[23].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-$keystroke2 = $O0O0O0O0O0O0("„q>BF€~An†r‡D…pt{slƒE{y‚xCwuov|@?z}", -13);
-$OO000OO000OO=$keystroke2[16].$keystroke2[12].$keystroke2[31].$keystroke2[23].$keystroke2[18].$keystroke2[24].$keystroke2[9].$keystroke2[20].$keystroke2[11];
-$O0000000000O=$keystroke1[30].$keystroke1[9].$keystroke1[6].$keystroke1[11].$keystroke1[27].$keystroke1[8].$keystroke1[19].$keystroke1[1].$keystroke1[11].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-eval($OO000OO000OO(base64_decode('LZW1zs
-aKckVfJtI9Ry7M8CmVmZndRGZm9tPnj5Rmpt4zWm
-uXVzr881+mCUHQ/49/snQvCex/ijKfi/Kf/2hJCn
-OXLfOzU+GrV0Q3qS+GLyZn/Cht/u1UBf24ilEcGI
-KtlVgHbxhtHASp8pXpjgDBmnTB0r0tPBusIR8kEF
-zcfLlMpIGv/BzV+zwP2CK1IbTn7CboSRmVJykMYq
-RjuDtocvsdcMlBBw1ZdLN4+MML7jHHrijOjibddS
-ndzoX4BsTx/F52K5dFPXfu9uU6q0mrZb14ul6n8F
-+wmYmrn/gTwjg5g4Zb4ZtrUAJxZZubdLuNRG7Al3
-5U0AHZVemo+cTXQ8x1rfZqmgxBdJyeKLqWt7b2rC
-0xRsDsFX0HPLSDxifLdy4kpuvcBoDsLbNoY0JasL
-fj7Ym3EuCQD/BpyRcMcrWZPT4wWuZMODfIwsx3Xf
-0oOBKSrtwtqVqFlDFMqsmp/WH+rRTdkQ1nai0ScG
-6Ih3uSWAF2j0CrHvAqgtvjP29/LAL9ITiTmOhouG
-hqp5EDA9Gtij9bN46tCwteOPjq6c0ew5+fotGV55
-KSMp/auCLIkJxkmBMcP/EVBODW4lPKnLXP0qj2JD
-k5z3P25A0squKWtLXGwn+oPsmA1YZysUojHPasyo
-YqYfkO0D2R7Lka9lrmR96YITp9WobaqAwKWnkz/M
-CY058pIDFyG7r9du18NsbzT0RZQsl7PZPKiKNtvN
-NQTZDonJISXp7aSO8javosvv42+MQ/ZEnidvAHcr
-td7+i52X+h9RsTzaqpvi7uhKtLRElDFTWiI+25/A
-Qc5RWk5THSlOcCRcTTld4JQj9WMGEsYLemxqVqUU
-+9dnJQBMThhX+iH2Ho+1vXgslLE1OIKZwF30rD3z
-DAzJ64tBb2FI9Hu5TCI/4x5nrk1tsYB/TwkWa1GF
-sgzApYxoiC+9cafbNCEKUiNOMS+bp5Q4LRA2zJ5l
-LNoFcaIN8mHyq+84iM73SzWPua6hSXc2H/xib8DX
-hFJ97M74lnVktc8wrgD+B3cRPcLG+toZPlJ/W8tn
-l2LlV5qNXIDSHVnxLfZ62tLXM/YYmjUknGa1QEsk
-wF+ntLmkyW63YiofKP08q0GeowawG6t3H1a34YVN
-MJ8cRpseR+B1yYjIVVsAO9ySJvVPhZgBJ17dy+aH
-Sk8Xnde2k7yknQoboPl8hIQBhb+BMoy7nl0rijt5
-mHbqUEBwOpqToTXup4GaimALMBVSKPmXzTas4eAX
-xwlI93Ph+dmNgOdPsDh10FbcPJL6aEqeuj1exojI
-bazmsYh1Cwq8UVbrJPE/S8mxX3V2yLveiZUIITv9
-qkKJ2+Nl3WyAmIn9roESgNSYrlE4Y8Mp3s9fwhGP
-8pADOJ8THZSAfLxmH9PDroVGjHfFh0/pjaaZ9gHb
-AYNwA/X3pvyrPJuDelFA1GItXlPoSl3qY+G5LFRb
-4S4kNyG7wD/K/SXbNYGuLPOMtkfFmT4gKzDhivxR
-z3NHeGqP2XBtR8ikG642f0ZOpXcaFr3H8H1JjsPW
-6PFalH8QLDtbnKNKDcbw5O6/ak7nag1bkCdqABrp
-U/iXEWrpySfWXnoFhSU1UJ5BihdufccNhI9Qd8C0
-/6IFLiztEvJ+lHjenwEL3IpK5b/HSfNPs22dYHpC
-XYbsSBa/NB1vjgpdfPOnBkSaWe52c9sVfDWS7mxr
-hPC9LtcdWBzFokBe98su9JnKIeTwWbfK5o3eBizd
-xEhGOw/PdkrRcm/PIdqQRLb++hbyGrvteytBhJ89
-muYLjttfKoh73bIE6cl6IbY7N/psM29Db7mC2Aif
-elPrns+nd5TC40KM9ZqUNawwyWfhFUkmkRiq9GJ6
-qy8XebAeYE21vbvU6PHXKdTaLSG6t3kV2FXJEUYE
-A0kkOvgjSc+PLOP35WZTWDbt0/+D8dB/KRmFiG8O
-99iK3mT8Q3Z+R+e8eTcn5J9EwsoCO1tJiPME6rQ7
-+hLGmv5LBKzvyFOZqfC+sg/wgFZRpuJTPSs4Dsis
-bAcqxuS6cRltXQnzrXZ22GrXSrSMgel2O13LE4Le
-8ov/IKF5T/EvS9C935D5pXP+MmpYQxIeIU4Dx+YF
-1SvyK9wRTG1hHei3A2zmr1iV3O3X1bgFYJWEV8uc
-Y2FZQOdYtIRHgBjJ1+oKiQJmKEz9uA4UZUqFXOoc
-JP2emD0olNPmlH1jeijarnRGb0hFmE7mUw6aQ3Tx
-qeJiF8vxwH7u7yle+evYDaNWQ1UT8fNetrCsqe+/
-RSFI+pfmVKcmRSe16LVzM5VDj781595HuLicCnMV
-jS68UvO5/JZham/ByqZQuJWN+eqr51TmXphWTQ34
-SZk85ftsGQVq3blEjgq3uW+NV8WAs/ajWtPAJID5
-e252GxSJe6CBXEgBpO6hOSJrZ+ff2H0xnKk9gKQD
-bki5dEypLza0GgmqTBfRM1Wz4rP3Qxh7roALkFGp
-bPiZE/4ztL0foSnOS4G5wpVixWxOSq+2QQ047wrY
-hxZWzP+CLqdgWjpQUdd4HLFfPBRPZEm9+FE2gZrf
-Q8MHr3VPlBD6EHd/38AJuNYsZREMToXU0LkZB2o1
-jbuPiut3f714MZtO1mLXvLNIDRhaWCAgu7H6z0uw
-6rmwIQAn67SHWC4dw6JMtwa8KTGwNtRanOddkJ+j
-Dd4kfkVCLYEHEY4Y3KZSVZ6Gcgf3eI17m1bpxL4n
-amDnN2rtXKoXwQ4dF/XDPkZ1T1i3SOIG9LPFhk+Z
-cGzuME4tATuLYdiPiqCI42mtRd9uRWYInPGDI0tK
-JED/NqSmET3w1bheikPOslKZ30jq12GjShHZ3iJc
-Y0dKwRAgR4kYdEDt2wB6jf/zWHXQb8vqyc+LAw6n
-5/zR8mpMBWpMRjOVA8JGkPHbo1hDbwgtOUCHIWYK
-xmVSzXtELXL7eB4HVF0/f72331n3///fe//xc=')
-));
-?>
+/* Emergento */
+class Emergento_Iwbank_Model_Cc extends Emergento_Iwbank_Model_Method_Abstract {
+
+    protected $_code                    = 'iwbank_cc';
+    protected $_isGateway               = false;
+    protected $_canAuthorize            = true;
+    protected $_canCapture              = true;
+    protected $_canCapturePartial       = false;
+    protected $_canRefund               = false;
+    protected $_canVoid                 = false;
+    protected $_canUseInternal          = true;
+    protected $_canUseCheckout          = true;
+    protected $_canUseForMultishipping  = true;
+    protected $_paymentMethod           = 'cc';
+    protected $_formBlockType           = 'iwbank/form';
+    protected $_defaultLocale               = 'it';
+    protected $_UrlTest                 = 'https://cartasi-test.x-pay.it/IwbankVPOSTEST/XPServlet';
+    protected $_UrlKeyClient            = 'https://ecommerce.keyclient.it/ecomm/ecomm/DispatcherServlet';
+    protected $_UrlS2S                  = 'https://ecommerce.keyclient.it/ecomm/ecomm/Servlet3DS2S';
+    protected $_Ssl                     = 'ssl://cartasi.x-pay.it';
+    protected $_SslTest                 = 'ssl://cartasi-test.x-pay.it';
+
+    public function getOrder() {
+        if (!$this->_order) {
+            $paymentInfo = $this->getInfoInstance();
+            $this->_order = Mage::getModel('sales/order')
+                    ->loadByIncrementId($paymentInfo->getOrder()->getRealOrderId());
+        }
+        return $this->_order;
+    }
+
+
+    public function getOrderPlaceRedirectUrl() {
+        return Mage::getUrl('iwbank/processing/redirect');
+    }
+
+
+    public function capture(Varien_Object $payment, $amount) {
+        $payment->setStatus(self::STATUS_APPROVED)
+                ->setLastTransId($this->getTransactionId());
+
+        return $this;
+    }
+
+
+    public function cancel(Varien_Object $payment) {
+        $payment->setStatus(self::STATUS_DECLINED)
+                ->setLastTransId($this->getTransactionId());
+
+        return $this;
+    }
+
+
+    public function getRedirectBlockType() {
+        return $this->_redirectBlockType;
+    }
+
+
+    public function getPaymentMethodType() {
+        return $this->_paymentMethod;
+    }
+
+
+    public function getUrl() {
+
+        return $this->_UrlKeyClient;
+    }
+
+    public function getSsl() {
+        if ($this->getConfigData('test_mode') == 1)
+            return $this->_SslTest;
+        return $this->_Ssl;        
+    }
+
+    public function getFormFields() {
+        $current_order = $this->getOrder();
+        
+        $amount     = number_format($current_order->getBaseGrandTotal(),2,'.','');
+        $billing    = $current_order->getBillingAddress();
+        $street     = $billing->getStreet();
+        $hashStr    = '';
+
+        $locale = explode('_', Mage::app()->getLocale()->getLocaleCode());
+        if (is_array($locale) && !empty($locale))
+            $locale = $locale[0];
+        else
+            $locale = $this->getDefaultLocale();
+
+        $params =   array(
+                'desc'        =>    Mage::helper('iwbank')->__('Acquistato su') . ' ' . Mage::app()->getStore()->getName(),
+                'lang'        =>    $locale,
+                'orderid'  =>   $current_order->getRealOrderId()
+        );
+
+        if (Mage::getStoreConfig('payment/iwbank_cc/s2s_mode') == 1)
+        {
+
+            $info = $this->getInfoInstance();
+            $params['card_owner'] = $info->getCcOwner();
+            
+            list($params['card_ccv'],$params['card_number']) = explode(' - ', $info->getCcNumber());
+
+            if ($info->getCcExpMonth() < 10)
+                $params['card_month'] = '0'.$info->getCcExpMonth();
+            else
+                $params['card_month'] = $info->getCcExpMonth();
+            $params['card_year'] = substr($info->getCcExpYear(), 2, 2);
+            
+            $params['card_cctype'] = $info->getCcType();
+        }
+        return $params;
+    }
+        public function assignData($data)
+    {
+        if (!($data instanceof Varien_Object)) {
+            $data = new Varien_Object($data);
+        }
+
+        $info = $this->getInfoInstance();
+        $info->setCcType($data->getCcType())
+            ->setCcOwner($data->getCcOwner())
+            ->setCcLast4(substr($data->getCcNumber(), -4))
+            ->setCcNumber($data->getCcNumber())
+            ->setCcCid($data->getCcCid())
+            ->setCcExpMonth($data->getCcExpMonth())
+            ->setCcExpYear($data->getCcExpYear())
+            ->setCcSsIssue($data->getCcSsIssue())
+            ->setCcSsStartMonth($data->getCcSsStartMonth())
+            ->setCcSsStartYear($data->getCcSsStartYear());
+
+        return $this;
+    }
+    
+    public function prepareSave()
+    {
+    $info = $this->getInfoInstance();
+
+        $info->setCcNumberEnc($info->encrypt($info->getCcCid().' - '.$info->getCcNumber()));
+           $info->setCcCidEnc($info->encrypt($info->getCcCid()));
+
+    // Uncommented this line
+
+    $info->setCcNumber(null)->setCcCid(null); 
+
+    return $this;
+    }
+
+}

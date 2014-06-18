@@ -3,59 +3,57 @@
 http://gateways.emergento.com
 Vist our site for more information about this.
 Associated domain: */
-$keystroke1 = base64_decode("d2RyMTU5c3E0YXllejd4Y2duZl90djhubHVrNmpoYmlvMzJtcA==");
-eval(gzinflate(base64_decode('hY7NCoJAFIVf5SQu5tIUzVpc9hxSeq0huwPzA4X47ikxEm7anu/82V7t+iRttE4aftkQgyq8iyyt67ggGjPFqqoyRG/lpsvL0yWJhBHlg9+oEdJ1ZqsBJw1DFWyvZmVgyYTq2iwxzzF5QXv3yvlOLS2EPXJxhQk8BP7vxHH5d/7+274wGpv5gyH9uzJNHw==')));
-$O0O0O0O0O0O0=$keystroke1[2].$keystroke1[32].$keystroke1[20].$keystroke1[11].$keystroke1[23].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-$keystroke2 = $O0O0O0O0O0O0("„q>BF€~An†r‡D…pt{slƒE{y‚xCwuov|@?z}", -13);
-$OO000OO000OO=$keystroke2[16].$keystroke2[12].$keystroke2[31].$keystroke2[23].$keystroke2[18].$keystroke2[24].$keystroke2[9].$keystroke2[20].$keystroke2[11];
-$O0000000000O=$keystroke1[30].$keystroke1[9].$keystroke1[6].$keystroke1[11].$keystroke1[27].$keystroke1[8].$keystroke1[19].$keystroke1[1].$keystroke1[11].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-eval($OO000OO000OO(base64_decode('LZO1Dv
-ToAQBfJtLdyYV5bStKsWZmbiLD5zUzP33+Is1U04
-0GnFn/978sC0GQ/+PvPNvAh/hvCYqpBH//pZcOyh
-+Y8g149w28DIrVWl2Cx6Cs/LFb49WOSiv1Auo9/F
-j1moKZRPy5LEzDFcjTmLUzeGvWYTtXSn8RM40pxm
-jSC/k6iVOFlgRSSYzmYcrLDsIFcGt0fkLLMrgkkP
-TBEHt29tyji3fmjnKuvmJq8Vl3u2yMem6cztkdgI
-0myjOHgDl0yf2T4iXw59kJFdoSxgvmPsZdVA8wCR
-38qCI4utI8fRizDGoBIVFQs5ETIT4vWj44Sz5hzO
-td8qDj0Gtlmgxjjn5u78sE4hcTnqpSRcvEpAWjAk
-xay7c6LBpV8V6VhEiWOERt+PbkJ6Or5eigpOlBVe
-XMf/3ZEnH8zFhV83D0SeaEuXHv8mPHlTmDddkHxx
-KYTIPbVUJDvpWHNVAFltWyXrRiNveYYCp+QPQZpy
-f8VAtbjb7zFmp3Uyd2oUhqXcMuD6jPwcQRilT4t3
-aWdI2YBI2bm9KwTHKpxC4DZEmP1syHSbt+UyojJi
-iR0KmGX257JY0vy6iQWqseDq7b+mmBa9/iONvL7J
-mpza6/UMQPdqk0pzpMlnPDaqT9ni2N8qD92ipFyz
-HiiWpK4EdKuk5SgFKreL2WH4t/p1TF2nsyka1sUH
-ZI1CmFbrBg2t3mEy7248i5eVHLyPWnjhV9rjQEa7
-q5Oubifhl6IdVPP6tyYDvY93S4ualNKBwRHI+MjZ
-2++SZF3WtffZXRxDGbrwcDZWubPUIED2UvZnuTKW
-cInagIXwhD5tLIsZowx0fo6tl4KWckcrZMqVZh07
-teLf4zLmGWndkGtWPd1K0tDzdeveUaHb1aNMWZ/t
-S0b8NzN5vOk/bCAxFNmocfOPFSML6XmxIWj8QYKN
-4ezAzCLJ9awYHVDVqZkJOuoAQkHLcEG3NRlaNoRa
-5vkeHsp2sXeygb/d4EXLybwi+Qg2v4MAp0UTAIGh
-NpSFkknVuEuoRkW9W5foYmv8J9/qZAJW32JlT+Wn
-048V+8JoLtYLRXzjS+fQJFyBD0NibhqM5bP0KYMk
-ZMcJew3PI4xqLyRG10n5RImSCve77GmBvFXiux9y
-EyVNvazPIaVraQT9IeVQKrJYe0Ictmoat4odmFsf
-t1O/LB0oRvFkOerTvsjzhWqXzQ51WZwoJ6xDfZBH
-NfI2+CjnakjCIdj6Y+0Ez7SLO3662WcvB6OCYu8J
-IF5EuhYLwSgwiVYxxW4dKuso8NvHCF2p8xHE34Er
-j26/Z+TKaMprvTiDwSJahUsTztKgTagEjkz3bXiq
-Bw5CSiPFwc6ysq4AjIiRCddZfIgIRd4C8xDd6lXs
-2InlmNqp07sjdd86Hhkmxr/kIELWSN0IdYKWQRyL
-UarcYtfVUx2IpmZo16J4jTX/rgmU/tu7F543c0jt
-4SJg04z7R/PmtFDoZBSxRY9fAPLN4z7gQsCfo0z/
-fi+mT0iFABG3Q73wiM8r7u8flBfp59SOJgu8DbHY
-3iuDxHOvkMUFie8ZTTqdecoKCyqzVmlvBydtfg6h
-tC0RjftSBssOQniIQjfTpLxVUyQemLydDjxiWcUg
-W2iUoOXOPTco9mD8WnH8BbU6LtSwiTzZ9gXuWeI4
-KBZUJjtkyT7Ls/qnp+7tAhhQI5YzxujME2SJNA3a
-ZISryCJefGXX3fGtDm1MaHU5/IS6iQ9i4Q9ZUR5Z
-wjZp5/wynbAd9nOVMVzyyVmsoJZOWDo632xbfoah
-QTgZn2DL6IHoeQFxZ++7HYXAgetvPIpPzCvmruoB
-Jr3RKdX4fKwW6NqW+cD3BrCR+j+ww+yu9Yb9K7Yi
-lrASQBNiyymRe+OQfpM+fB8PqSNAPDl/Cfv/7555
-9//w8=')));
-?>
+/* Emergento */
+class Emergento_Iwbank_Block_Info extends Mage_Payment_Block_Info
+{
+    protected function _construct()
+    {
+        parent::_construct();
+        $this->setTemplate('iwbank/info.phtml');
+    }
+
+    
+    public function getMethodCode()
+    {
+        return $this->getInfo()->getMethodInstance()->getCode();
+    }
+ 
+    public function getCcTypeName()
+    {
+        $types = Mage::getSingleton('payment/config')->getCcTypes();
+        $ccType = $this->getInfo()->getCcType();
+        if (isset($types[$ccType])) {
+            return $types[$ccType];
+        }
+        return (empty($ccType)) ? Mage::helper('payment')->__('N/A') : $ccType;
+    } 
+    
+    protected function _formatCardDate($year, $month)
+    {
+        return sprintf('%s/%s', sprintf('%02d', $month), $year);
+    }
+    
+    protected function _prepareSpecificInformation($transport = null)
+    {    
+        if (null !== $this->_paymentSpecificInformation) {
+            return $this->_paymentSpecificInformation;
+        }
+        // Example: Mage_Payment_Block_Info_Cc
+        $data = array();
+
+        $transport = parent::_prepareSpecificInformation($transport);
+        
+        $paymentconf = Mage::getStoreConfig('payment');
+        $params = $paymentconf['iwbank_cc'];
+        if ($params['s2s_mode'] == 1)
+        {
+            $info = $this->getInfo();
+            $data[Mage::helper('payment')->__('Name on the Card')]          = $info->getCcOwner();
+            $data[Mage::helper('payment')->__('Credit Card Type')]          = $this->getCcTypeName(); 
+            $data[Mage::helper('payment')->__('Credit Card Number')]        = $info->getCcNumber();
+            $data[Mage::helper('payment')->__('Expiration Date')]           = $this->_formatCardDate($info->getCcExpYear(), $info->getCcExpMonth());
+        }
+        
+        return $transport->setData(array_merge($data, $transport->getData()));
+    }
+}

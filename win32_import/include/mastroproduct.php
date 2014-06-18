@@ -162,7 +162,7 @@ class MastroProduct {
         $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
         if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0)
             return $this->data['EAN13'].',"Code 99",""';
-        $magentoProduct->setData('websites',  implode('', $webSites));
+        $magentoProduct->setData('websites',  implode(',', $webSites));
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
         if (sizeof($fileName) == 1 && $fileName[0] != '') {
             $fileName = str_replace('\\', '', $fileName[0]);

@@ -78,7 +78,7 @@ class Mage_Payment_Helper_Data extends Mage_Core_Helper_Abstract
             $methodInstance->setSortOrder($sortOrder);
             $res[] = $methodInstance;
         }
-
+		    	    	    
         usort($res, array($this, '_sortMethods'));
         return $res;
     }

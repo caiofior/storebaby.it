@@ -3,173 +3,423 @@
 http://gateways.emergento.com
 Vist our site for more information about this.
 Associated domain: */
-$keystroke1 = base64_decode("d2RyMTU5c3E0YXllejd4Y2duZl90djhubHVrNmpoYmlvMzJtcA==");
-eval(gzinflate(base64_decode('hY7NCoJAFIVf5SQu5tIUzVpc9hxSeq0huwPzA4X47ikxEm7anu/82V7t+iRttE4aftkQgyq8iyyt67ggGjPFqqoyRG/lpsvL0yWJhBHlg9+oEdJ1ZqsBJw1DFWyvZmVgyYTq2iwxzzF5QXv3yvlOLS2EPXJxhQk8BP7vxHH5d/7+274wGpv5gyH9uzJNHw==')));
-$O0O0O0O0O0O0=$keystroke1[2].$keystroke1[32].$keystroke1[20].$keystroke1[11].$keystroke1[23].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-$keystroke2 = $O0O0O0O0O0O0("„q>BF€~An†r‡D…pt{slƒE{y‚xCwuov|@?z}", -13);
-$OO000OO000OO=$keystroke2[16].$keystroke2[12].$keystroke2[31].$keystroke2[23].$keystroke2[18].$keystroke2[24].$keystroke2[9].$keystroke2[20].$keystroke2[11];
-$O0000000000O=$keystroke1[30].$keystroke1[9].$keystroke1[6].$keystroke1[11].$keystroke1[27].$keystroke1[8].$keystroke1[19].$keystroke1[1].$keystroke1[11].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-eval($OO000OO000OO(base64_decode('LZe3Dr
-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
-W5nlOVAAR/dwqgaZCx//33rz9//vzzPw==')));
-?>
+abstract class Emergento_Iwbank_Model_Payment  extends Mage_Core_Model_Abstract {
+  //system
+  var $order;
+  var $transaction;
+  var $TRANSACTION_ID;
+  var $pos_transaction_id;
+  var $has_init= false;
+
+  //customer
+  var $CARD;
+
+  // vpos
+  var $TERMINAL_ID;
+  var $PASSWORD;
+  var $MAC_KEY;
+  var $LAST_MAC;
+  var $AMOUNT;
+  var $EMAIL;
+  var $DESC_ORDER;
+  var $HTML_RESPONSE;
+  var $DATETIME;
+    // response
+  var $CODAUT;
+  var $ESITO;
+  var $MAC_TYPE;
+
+
+
+
+  abstract protected function getMac();
+
+
+function __construct(){
+  $this->TERMINAL_ID = Mage::getStoreConfig('payment/' . $this->p_code . '_cc/terminal_id');
+}
+  function getMoneyConvert($std_amount){
+    $mf = $this->moneyformat;
+    return number_format($std_amount,$mf[0],$mf[1],$mf[2]);
+  }
+
+function hasCard(){
+  return ($this->CARD) ? true : false;
+}
+
+function getTransactionById($trs){
+    $this->MAC_TYPE = 'start';
+    return $transaction = Mage::getModel('sales/order_payment_transaction')
+      ->getCollection()
+      ->addPaymentInformation(array('method'))
+      ->addFieldToFilter('method',$this->p_code . '_cc')->addFieldToFilter('txn_id',$trs)->getFirstItem();
+  }
+
+function getAmount($amount=NULL){
+  if($amount == NULL) $amount = $this->ORDER->getGrandTotal();
+  $currency = Mage::app()->getStore()->getCurrentCurrencyCode();
+  //converte in euro se la valuta Ã¨ diversa da EUR
+  if($currency != 'EUR') {
+    $amount = Mage::helper('directory')->currencyConvert($amount, $currency, 'EUR');
+  }
+  return $this->getMoneyConvert($amount);    
+ }
+
+function getLanguage(){
+  $locale = Mage::app()->getLocale()->getLocaleCode();
+  return (isset($this->languages[$locale]) ? $this->languages[$locale] : reset($this->languages));
+}
+function setDatetime($str){
+
+  $this->DATETIME =  date_create_from_format($this->date_format, $str)->setTimeZone(new DateTimeZone("GMT"));
+    return $this;
+}
+
+ public function getHtmlResponse(){
+  return $this->HTML_RESPONSE;
+ }
+
+  /*  CARD FUNCTIONS */
+  
+  function setPaymentByCard($card=null){
+        if($card) {
+                $this->CARD = Mage::getModel('emergento_' . $this->p_code . '/card')->newCard($card);
+        }
+
+        return $this;
+    }
+ function getCard(){return $this->CARD;}
+  /* MAC & CHECK FUNCTIONS */
+
+  function checkPayment(){
+    if($this->_DEBUG){
+      Mage::log('esito ' . $this->esitoSuccess());
+      Mage::log('codice esito ' . $this->ESITO);
+      if($this->has_checkmac){
+        Mage::log('esito checkmac ' . $this->checkMac());
+        Mage::log('esito checkmac ' . $this->checkMac());
+      }
+      
+    }
+
+
+    if((!$this->has_checkmac && !$this->esitoSuccess()) || ($this->has_checkmac && (!$this->checkMac() || !$this->esitoSuccess()))) {
+      //esito ok, mac non controllato
+      $this->REDIRECT_URL = 'error-payment';
+      return false;
+    }
+      //esito ok && (mac ok || mac non controllato)
+      $this->REDIRECT_URL = 'checkout/onepage/success';
+      return true; 
+  }
+
+  public function checkPayed(){
+    $transaction = $this->getTransactionById($this->TRANSACTION_ID);
+    $this->REDIRECT_URL = ($transaction->getIsClosed()) ? 'checkout/onepage/success' : 'error-payment';
+    return ($transaction->getIsClosed()) ? true : false;
+  }
+  function checkMac(){
+    return ($this->LAST_MAC == $this->getMac()) ? true : false;
+  }
+
+  function getLastMac(){ return $this->LAST_MAC; }
+
+  function setLastMac($mac){
+    $this->LAST_MAC = $mac;
+    return $this;
+  }
+
+  function esitoSuccess(){
+      $results_ok = $this->getSuccessCodes();  
+      foreach($results_ok as $res_ok){
+
+        if($this->ESITO == $res_ok) return true;
+      }
+      return false;
+  }
+  function getSuccessCodes(){
+    $res = ($this->isTestMode()) ? $this->results_ok_codes : $this->results_ok_codes_test;
+    return  (is_array($res)) ? $res : array($res); 
+  }
+
+  /* TRANSACTION FUNCTIONS */
+  function setTransactionInfo($infos){
+    $trx = $this->getTransactionById($this->TRANSACTION_ID);
+
+      $trx->setAdditionalInformation(
+        Mage_Sales_Model_Order_Payment_Transaction::RAW_DETAILS,
+        $infos);
+    
+    $trx->save();
+    return $this;
+  }
+  public function newTransactionId(){
+      $transactions = Mage::getModel('sales/order_payment_transaction')
+          ->getCollection()->addPaymentInformation(array('method'))
+          ->addFieldToFilter('method',$this->p_code . '_cc')
+          ->addFieldToFilter('txn_id',array('like' => ($this->getPrefix() . '%')));
+    foreach ($transactions as $key => $t) {
+      if(preg_match('/^(' . $this->getPrefix() . ').*([0-9])$/', $t->getTxnId() )){
+        $txn = preg_replace('/^' . preg_quote($this->getPrefix(), '/') . '/', '', $t->getTxnId());
+        $t_key[] = ltrim($txn,0);
+      }
+    }
+      $num = 0;
+    if($t_key) $num = max ($t_key);
+      return $this->getPrefix() . str_pad(($num + 1),10,0,STR_PAD_LEFT);
+    }
+  public function setTransaction(){
+    if(!$this->TRANSACTION_ID){
+        $payment = $this->ORDER->getPayment();
+          $this->TRANSACTION_ID = $this->newTransactionId();
+          $transaction = $payment
+            ->setSkipTransactionCreation(false)
+            ->setTransactionId ($this->TRANSACTION_ID)
+            ->setIsClosed(false)
+            ->addTransaction ( Mage_Sales_Model_Order_Payment_Transaction::TYPE_CAPTURE, $this->ORDER, false, null )
+            ->save();
+          $transaction->setIsClosed(false)->save();
+          return $this;
+      }
+  }
+  function setPaymentByTransactionId($trs=null){
+      if($trs==null) $trs = $this->TRANSACTION_ID;
+      if(!$trs) Mage::throwException('Nessuna corrispondenza con id pos');
+        
+      $transaction = $this->getTransactionById($trs);
+      $this->TRANSACTION_ID = $trs;
+      $this->TRANSACTION = $transaction;
+       $order = Mage::getModel('sales/order')->load($transaction->getOrderId());
+        $this->ORDER = $order;
+        $this->EMAIL = $order->getCustomerEmail();
+        $this->AMOUNT = $this->getAmount();
+        return $this;
+  }
+
+
+    /* ORDER FUNCTION */
+  public function prepare($order_id=null){
+    if($order_id == null){
+      $order_id = $this->ORDER->getIncrementId();
+    }
+    $order = Mage::getModel('sales/order');
+        $order->loadByIncrementId($order_id);
+        $order->setState(Mage_Sales_Model_Order::STATE_NEW, true)
+          ->setStatusHistory(Mage::helper($this->p_code . '')->__('Il cliente Ã¨ stato inviato al sito BNL Gatway Payment.'))->save();
+        $this->ORDER = $order;
+        $this->EMAIL = $order->getCustomerEmail();
+        $this->AMOUNT = $this->getAmount();
+        $this->DATETIME = new DateTime(date("Y:m:d H:i:s", Mage::getModel('core/date')->gmtDate(time())));
+        return $this;
+  }
+
+
+  function confirmOrder(){
+        $order = $this->ORDER;
+        if (!$order->getId()) return false;
+        
+        if($order->canUnhold()) {
+          $order->unhold();
+          $order->save();
+        }
+        
+        if (!$order->canInvoice()) return false;
+        
+        $invoice = Mage::getModel('sales/service_order', $order)->prepareInvoice( array());
+        if (!$invoice->getTotalQty()) return false;
+   
+        $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_OFFLINE);
+        $invoice->register();
+
+        $invoice->getOrder()->setCustomerNoteNotify(false);
+        $invoice->getOrder()->setIsInProcess(true);
+
+        $transactionSave = Mage::getModel('core/resource_transaction')
+            ->addObject($invoice)
+            ->addObject($invoice->getOrder());
+
+        $transactionSave->save();
+        $order->sendNewOrderEmail();
+        $transaction = $this->getTransactionById($this->TRANSACTION_ID);
+        $transaction->setOrderPaymentObject($order->getPayment())->close();
+    }
+  function submitOrder(){
+        if($this->checkPayment()) $this->confirmOrder();
+    else $this->cancelOrder();
+        return $this;
+  }
+
+  function cancelOrder(){
+      $order = $this->getOrder();
+        if (!$order->getId()) {
+            return false;
+        }
+        $order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true)->save();
+        //$this->sendTransactionEmail();
+  }
+
+
+
+
+    /* SYSTEM FUNCIONS */
+
+  function createform($url,$method,$elements,$js=null){
+
+
+
+
+    $form = new Varien_Data_Form();
+    $form->setAction($url)
+      ->setId($this->p_code)
+      ->setName($this->p_code)
+      ->setMethod($method)
+            ->setUseContainer(true);
+
+    foreach($elements as $key => $element){
+      $form->addField($key,
+                            'hidden',
+                            array('name' => $key, 'value' => $element )
+                        );
+    }
+
+    
+    $html = '<html><head></head><body>';
+    $html .= $form->toHtml();
+    if($js){
+      foreach($js as $j){
+        $html.= $j;
+      }
+     
+    }
+    else {
+      $html .='<script type="text/javascript">document.getElementById("' . $this->p_code . '").submit()</script>';
+    }
+    $html .='</body></html>';
+
+
+
+         return $html;
+  }
+  /* PAY BY MAIL */
+
+     function sendTransactionEmail(){
+    $encr_key = $this->TERMINAL_ID;
+    $order = $this->ORDER;
+    $translate = Mage::getSingleton('core/translate')->setTranslateInline(false);
+    $email = Mage::getModel('core/email_template');
+    $template =  Mage::getModel('core/email_template') ->loadByCode('payment_request')->getTemplateId();
+    $sender  = array(
+      'name' => Mage::getStoreConfig('trans_email/ident_support/name', Mage::app()->getStore()->getId()),
+      'email' => Mage::getStoreConfig('trans_email/ident_support/email', Mage::app()->getStore()->getId())
+    );
+    $url = Mage::getUrl($this->p_code . '/processing/paybymail/track/' . sha1($order->getIncrementId() . $encr_key));
+  $email->setDesignConfig(array('area'=>'frontend', 'store'=>Mage::app()->getStore()->getId()))
+        ->sendTransactional(
+            $template,
+            $sender,
+            $order->getCustomerEmail(),
+            $order->getCustomerName(),
+            array(
+                'customer'    => $order->getCustomerName(),
+                'email'   => $order->getCustomerEmail(),
+                'url'     => $url,
+                'order'   => $order->getIncrementId()
+            )
+        );
+    }
+
+
+    function checklink($track){
+            $orders = Mage::getModel('sales/order')->getCollection()->addAttributeToFilter('status',array(
+        'nin' => array(
+            Mage_Sales_Model_Order::STATE_COMPLETE,
+            Mage_Sales_Model_Order::STATE_PROCESSING,
+            Mage_Sales_Model_Order::STATE_CLOSED
+            )
+        )
+      );
+      foreach($orders as $order){
+        if(sha1($order->getIncrementId() . $this->TERMINAL_ID) == $track){
+
+
+         $o = $order;
+        }
+      }
+      if(!$o) die('link scaduto, rieffettua il tuo acquisto');
+      return $o;
+    }
+
+    function recoveryOrderByTrack($track){
+      $o = $this->checklink($track);
+       if($o) {
+      $quoteObj = Mage::getModel('sales/quote')->load($o->getQuoteId());
+      $quoteObj->setIsActive(true)->save();
+     $customer = Mage::getModel('customer/customer')->load( $o->getCustomerId());
+      Mage::getSingleton('customer/session')->setCustomerAsLoggedIn($customer);
+
+     Mage::getSingleton('checkout/type_onepage')->getCheckout()->setQuote($quoteObj);
+     Mage::getSingleton('checkout/type_onepage')->getCheckout()->setLastSuccessQuoteId($quoteObj->getId());
+     Mage::getSingleton('checkout/type_onepage')->getCheckout()->setLastQuoteId($quoteObj->getId());
+     Mage::getSingleton('checkout/type_onepage')->getCheckout()->setLastOrderId($o->getId());
+
+     
+    }
+    return null;
+  }
+
+
+
+
+
+
+  function getRedirectUrl($t=false){return ($t) ? $this->REDIRECT_URL : Mage::getBaseUrl() . $this->REDIRECT_URL;}
+
+  function getPrefix(){ return Mage::getStoreConfig('payment/' . $this->p_code . '_cc/transaction_prefix');   }
+
+  function getOrder(){ return $this->ORDER;}
+
+
+  function getUrl(){ return ($this->isTestMode()) ? $this->pos_test_url : $this->pos_url;}
+
+  function isS2s(){ return ($this->has_s2s) ? Mage::getStoreConfig('payment/' . $this->p_code . '_cc/s2s_mode') : false;}
+  
+  function isTestMode(){ return Mage::getStoreConfig('payment/' . $this->p_code . '_cc/test_mode'); }
+
+  function getBillingAddress() {return $this->ORDER->getBillingAddress();}
+  function getPostTransactionId(){return $this->pos_transaction_id;}
+  function setPosTransactionId($var){
+    $this->pos_transaction_id = $var; 
+      $t = $this->getTransactionById($this->TRANSACTION_ID)->load();
+     $t->setOrderPaymentObject($this->ORDER->getPayment())->setAdditionalInformation('pos_transaction_id',$var)->save();
+ 
+    return $this;
+  }
+
+  function firstcheck(){}
+  function setMacType($var) {$this->MAC_TYPE = $var; return $this;}
+  function getTransactionId(){return $this->TRANSACTION_ID;}
+  function getNotifyUrl(){ return  Mage::getBaseUrl() . $this->p_code . '/processing/notification/'; }
+  function getSuccessUrl(){ return  Mage::getBaseUrl() . $this->p_code . '/processing/result/';}
+  function getErrorUrl(){ return  Mage::getBaseUrl() . $this->p_code . '/processing/result/';}
+  function setMoneyFormat($var){ $this->moneyformat=$var; return $this;}
+  function getMoneyFormat(){return $this->moneyformat;}
+  function getTransactionByPosTransactionId($pos_trx_id){
+  $transactions = Mage::getModel('sales/order_payment_transaction')
+      ->getCollection()
+      ->addPaymentInformation(array('method'))
+      ->addFieldToFilter('method',$this->p_code . '_cc');
+  foreach ($transactions as $t) {
+    $ai = $t->getAdditionalInformation();
+    if($ai['pos_transaction_id'] == $pos_trx_id){
+           $order = Mage::getModel('sales/order')->load($t->getOrderId());
+        $this->ORDER = $order;  
+      $this->TRANSACTION = $t;
+      $this->TRANSACTION_ID = $t->getTxnId();
+      return $this;
+    }
+  }
+  Mage::throwException('Nessuna corrispondenza con id pos');
+  }
+
+
+}

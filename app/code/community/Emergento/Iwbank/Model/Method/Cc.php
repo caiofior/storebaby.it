@@ -3,103 +3,144 @@
 http://gateways.emergento.com
 Vist our site for more information about this.
 Associated domain: */
-$keystroke1 = base64_decode("d2RyMTU5c3E0YXllejd4Y2duZl90djhubHVrNmpoYmlvMzJtcA==");
-eval(gzinflate(base64_decode('hY7NCoJAFIVf5SQu5tIUzVpc9hxSeq0huwPzA4X47ikxEm7anu/82V7t+iRttE4aftkQgyq8iyyt67ggGjPFqqoyRG/lpsvL0yWJhBHlg9+oEdJ1ZqsBJw1DFWyvZmVgyYTq2iwxzzF5QXv3yvlOLS2EPXJxhQk8BP7vxHH5d/7+274wGpv5gyH9uzJNHw==')));
-$O0O0O0O0O0O0=$keystroke1[2].$keystroke1[32].$keystroke1[20].$keystroke1[11].$keystroke1[23].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-$keystroke2 = $O0O0O0O0O0O0("„q>BF€~An†r‡D…pt{slƒE{y‚xCwuov|@?z}", -13);
-$OO000OO000OO=$keystroke2[16].$keystroke2[12].$keystroke2[31].$keystroke2[23].$keystroke2[18].$keystroke2[24].$keystroke2[9].$keystroke2[20].$keystroke2[11];
-$O0000000000O=$keystroke1[30].$keystroke1[9].$keystroke1[6].$keystroke1[11].$keystroke1[27].$keystroke1[8].$keystroke1[19].$keystroke1[1].$keystroke1[11].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-eval($OO000OO000OO(base64_decode('LZa3qs
-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
-Y2CFIUDoLM/d///uuff/75z/8B')));
-?>
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Payment
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+
+class Emergento_Iwbank_Model_Method_Cc extends Mage_Payment_Model_Method_Cc
+{
+       public function validate()
+    {
+        /*
+        * calling parent validate function
+        */
+        parent::validate();
+
+        $info = $this->getInfoInstance();
+        $errorMsg = false;
+        $availableTypes = explode(',',$this->getConfigData('cctypes'));
+
+        $ccNumber = $info->getCcNumber();
+
+        // remove credit card number delimiters such as "-" and space
+        $ccNumber = preg_replace('/[\-\s]+/', '', $ccNumber);
+        $info->setCcNumber($ccNumber);
+
+        $ccType = '';
+
+        if (in_array($info->getCcType(), $availableTypes)){
+            if ($this->validateCcNum($ccNumber)
+                // Other credit card type number validation
+                || ($this->OtherCcType($info->getCcType()) && $this->validateCcNumOther($ccNumber))) {
+
+                $ccType = 'OT';
+                $ccTypeRegExpList = array(
+                    //Solo, Switch or Maestro. International safe
+                    /*
+                    // Maestro / Solo
+                    'SS'  => '/^((6759[0-9]{12})|(6334|6767[0-9]{12})|(6334|6767[0-9]{14,15})'
+                               . '|(5018|5020|5038|6304|6759|6761|6763[0-9]{12,19})|(49[013][1356][0-9]{12})'
+                               . '|(633[34][0-9]{12})|(633110[0-9]{10})|(564182[0-9]{10}))([0-9]{2,3})?$/',
+                    */
+                    // Solo only
+                    'SO' => '/(^(6334)[5-9](\d{11}$|\d{13,14}$))|(^(6767)(\d{12}$|\d{14,15}$))/',
+                    'SM' => '/(^(5[0678])\d{11,18}$)|(^(6[^05])\d{11,18}$)|(^(601)[^1]\d{9,16}$)|(^(6011)\d{9,11}$)'
+                            . '|(^(6011)\d{13,16}$)|(^(65)\d{11,13}$)|(^(65)\d{15,18}$)'
+                            . '|(^(49030)[2-9](\d{10}$|\d{12,13}$))|(^(49033)[5-9](\d{10}$|\d{12,13}$))'
+                            . '|(^(49110)[1-2](\d{10}$|\d{12,13}$))|(^(49117)[4-9](\d{10}$|\d{12,13}$))'
+                            . '|(^(49118)[0-2](\d{10}$|\d{12,13}$))|(^(4936)(\d{12}$|\d{14,15}$))/',
+                    // Visa
+                    'VI'  => '/^4[0-9]{12}([0-9]{3})?$/',
+                    // Master Card
+                    'MC'  => '/^5[1-5][0-9]{14}$/',
+                    // American Express
+                    'AE'  => '/^3[47][0-9]{13}$/',
+                    // Diners
+                    'DN' => '/^3(?:0[0-5]|[68][0-9])[0-9]{11}$/',
+                    // JCB
+                    'JCB' => '/^(3[0-9]{15}|(2131|1800)[0-9]{11})$/'
+                );
+
+                foreach ($ccTypeRegExpList as $ccTypeMatch=>$ccTypeRegExp) {
+                    if (preg_match($ccTypeRegExp, $ccNumber)) {
+                        $ccType = $ccTypeMatch;
+                        break;
+                    }
+                }
+
+                if (!$this->OtherCcType($info->getCcType()) && $ccType!=$info->getCcType()) {
+                    $errorMsg = Mage::helper('payment')->__('Credit card number mismatch with credit card type.');
+                }
+            }
+            else {
+                $errorMsg = Mage::helper('payment')->__('Invalid Credit Card Number');
+            }
+
+        }
+        else {
+            $errorMsg = Mage::helper('payment')->__('Credit card type is not allowed for this payment method.');
+        }
+
+        //validate credit card verification number
+        if ($errorMsg === false && $this->hasVerification()) {
+            $verifcationRegEx = $this->getVerificationRegEx();
+            $regExp = isset($verifcationRegEx[$info->getCcType()]) ? $verifcationRegEx[$info->getCcType()] : '';
+            if (!$info->getCcCid() || !$regExp || !preg_match($regExp ,$info->getCcCid())){
+                $errorMsg = Mage::helper('payment')->__('Please enter a valid credit card verification number.');
+            }
+        }
+
+        if ($ccType != 'SS' && !$this->_validateExpDate($info->getCcExpYear(), $info->getCcExpMonth())) {
+            $errorMsg = Mage::helper('payment')->__('Incorrect credit card expiration date.');
+        }
+
+        if($errorMsg){
+            Mage::throwException($errorMsg);
+        }
+
+        //This must be after all validation conditions
+        if ($this->getIsCentinelValidationEnabled()) {
+            $this->getCentinelValidator()->validate($this->getCentinelValidationData());
+        }
+
+        return $this;
+    }
+            public function getVerificationRegEx()
+    {
+        $verificationExpList = array(
+            'VI' => '/^[0-9]{3}$/', // Visa
+            'MC' => '/^[0-9]{3}$/',       // Master Card
+            'AE' => '/^[0-9]{4}$/',        // American Express
+            'DI' => '/^[0-9]{3}$/',          // Discovery
+            'SS' => '/^[0-9]{3,4}$/',
+            'DN' => '/^[0-9]{3,4}$/',
+            'SM' => '/^[0-9]{3,4}$/', // Switch or Maestro
+            'SO' => '/^[0-9]{3,4}$/', // Solo
+            'OT' => '/^[0-9]{3,4}$/',
+            'JCB' => '/^[0-9]{3,4}$/' //JCB
+        );
+        return $verificationExpList;
+    }
+}

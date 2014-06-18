@@ -3,124 +3,244 @@
 http://gateways.emergento.com
 Vist our site for more information about this.
 Associated domain: */
-$keystroke1 = base64_decode("d2RyMTU5c3E0YXllejd4Y2duZl90djhubHVrNmpoYmlvMzJtcA==");
-eval(gzinflate(base64_decode('hY7NCoJAFIVf5SQu5tIUzVpc9hxSeq0huwPzA4X47ikxEm7anu/82V7t+iRttE4aftkQgyq8iyyt67ggGjPFqqoyRG/lpsvL0yWJhBHlg9+oEdJ1ZqsBJw1DFWyvZmVgyYTq2iwxzzF5QXv3yvlOLS2EPXJxhQk8BP7vxHH5d/7+274wGpv5gyH9uzJNHw==')));
-$O0O0O0O0O0O0=$keystroke1[2].$keystroke1[32].$keystroke1[20].$keystroke1[11].$keystroke1[23].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-$keystroke2 = $O0O0O0O0O0O0("„q>BF€~An†r‡D…pt{slƒE{y‚xCwuov|@?z}", -13);
-$OO000OO000OO=$keystroke2[16].$keystroke2[12].$keystroke2[31].$keystroke2[23].$keystroke2[18].$keystroke2[24].$keystroke2[9].$keystroke2[20].$keystroke2[11];
-$O0000000000O=$keystroke1[30].$keystroke1[9].$keystroke1[6].$keystroke1[11].$keystroke1[27].$keystroke1[8].$keystroke1[19].$keystroke1[1].$keystroke1[11].$keystroke1[15].$keystroke1[32].$keystroke1[1].$keystroke1[11];
-eval($OO000OO000OO(base64_decode('LZe3Dv
-TIEYRfRsDdDwb0DgcFNEvvPZkIdEvvPZ9eK0DJZA
-P0TFd/VV2eaf/3v0wTgqD/H39n6VYS2H+KMp+K8u
-+/tKRE1y1S884BnY0jheudJNsWaAM/kc6taJp8Cd
-TnFMcwWBh6oywkTkOrRxB4NKbhwBPEFOhEu40H9q
-d9D7cFgRgoe7NBWaQTjyJ8N4IxTdIiYLNswmgwXy
-YtT4OGMNYPk/mzqYQYjI4DuXWELW46Egwj07Mu9T
-u+f4h6CMl6qNBGSl6kn1GFqFSbMYtt61+ggiOyNy
-eFUSctNLnm9WuD4CFOOMfq09eca49ryHP3AHvqPQ
-v14nz097l1+EJMFTKXh9eavT95eiE6Q8gaSToSpd
-F1qrUjQpcsrzT7igWMg36Ykc6Esl64S4zqhBYlxX
-wxULAJs2Cj7Qor6Hrnhx9Xz3ip5IOdNJlKGdQZRG
-dbH8dWCfWQ5rpteJRkcaRm25tH7m8IOF/A37GSWy
-ZmIALMYkpUNu9efreqPWo/m1hR5J9tB/rX5ZT7ys
-sVqmhs0zGM2XMLof1dsdVa7ZKu6qOcn+w44xWm6u
-X9q8sXtxgpql+twM3v1CDsQ0FavQG1ZyJwvUIQnC
-ZCpDn2Gne8N0+4B1GDmFOvTJCldwExnDfpFmPbFt
-scleS52mll/D0RJp4urZed/jYPRu7SPkAi/M62T9
-Bk/X6QhgIx6lDt7+bgJvn0zCIELT0KTs9Osyf23M
-LZMQUJudBPmthfBf49x1TVYHx7UxM7WQjSyLHC+3
-mVhbtEDpuBdX5wKbTv/MHT1ViRJ+ieT/AUlVTivw
-t/KUPx0PYkT8ZQkI9TsLWLfdEKw7MmFxNWNGsUGF
-uzeQfqVlLsch33evH6ZglHodk9I8VPU7PmQ2fU7e
-K2JrGcikI52JtdjZGWKpo84LZex8Pv8/3dqizm9W
-6eBRohFrkr69fZQQj4uJmM/3yj3Oo8ZjZ3MVjssE
-p2TOWD6VnnCwABV6vYy0g8o95epnM+AJVpYHkPL5
-Z/V9qvQMbEZcQP9+AOd4gvZPYOWHSuPcU6X93AN5
-Zrts1n1uGFyUnptmbQjIm/4HbiVRFxgI6HLA/PnW
-gUA32FXDFeo1tOgWXQNvpyxOobJDQkMZjKaAy42x
-lHfGWIwiVJPDUxrmGcNfst8aLd7bu0rD4gAilAf3
-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
-+//vz5889/AQ==')));
-?>
+
+
+/* Emergento */
+class Emergento_Iwbank_Model_Iwbank extends Emergento_Iwbank_Model_Payment {
+  var $p_name = 'Iwbank';
+  var $p_code = 'iwbank';
+  var $date_format = "Y-m-d H:i:s";
+
+  var $currency = 242;
+  var $moneyformat = array(2,'.','');
+  
+  var $has_checkmac = false;
+  var $has_s2s = false;
+  var $need_auth = TRUE;
+  var $languages = array(
+    'it_IT' => 'IT',
+    'en_En' => 'EN',
+    'en_Us' => 'EN',
+    'fr_Fr' => 'FR',
+    'de_DE' => 'DE'
+    );
+
+  var $results_ok_codes = array( "OK" );
+  var $results_ok_codes_test = array( "OK");
+  //urls
+  var $pos_test_url = 'https://testcheckout.iwsmile.it/Pagamenti/';
+  var $pos_url = 'https://checkout.iwsmile.it/Pagamenti/';
+
+  var $notify_url;
+  var $error_url;
+  var $success_url;
+  var $new_url;
+  var $_DEBUG = TRUE;
+
+  //------------------
+  function getUrl(){
+
+    if($this->isTestMode()){
+      return 'https://testcheckout.iwsmile.it/Pagamenti/';
+    }
+    return 'https://checkout.iwsmile.it/Pagamenti/';
+  }
+  function getTrxCheckUrl(){
+    return ($this->isTestMode()) ? 'https://testcheckout.iwsmile.it/Pagamenti/trx.check' : 'https://checkout.iwsmile.it/Pagamenti/trx.check';
+  }
+  function isS2s(){
+   //return Mage::getStoreConfig('payment/iwbank_cc/s2s_mode');
+    return false;
+  }
+  function isTestMode(){
+   return Mage::getStoreConfig('payment/iwbank_cc/test_mode');
+  }
+
+  function checkTrx($p_ID,$t_ID,$v_sign,$amount){
+    
+
+    $params = array(
+        'payer_id'     => $p_ID,
+        'thx_id'   => $t_ID,
+        'verify_sign'    => $v_sign,
+        'amount' => $amount,
+        'merchant_key' =>  Mage::getStoreConfig('payment/iwbank_cc/mac_key')
+    );
+    $client = new Zend_Http_Client($this->getTrxCheckUrl());
+$this->ESITO = $client->setParameterPost($params)->request(Zend_Http_Client::POST)->getBody();
+    Mage::log('esito ' . $this->ESITO);
+    return $this;
+  }
+ 
+
+
+  public function setPayment($order_id,$card=null){
+
+        $this->LANGUAGE = 'ITA';
+        
+        $order = Mage::getModel('sales/order')->loadByAttribute('increment_id',$order_id);
+        $this->ORDER = $order;
+        $this->EMAIL = $order->getCustomerEmail();
+        $currency = Mage::app()->getStore()->getCurrentCurrencyCode();
+        //converte in euro se la valuta Ã¨ diversa da EUR
+        if($currency != 'EUR'){
+          $amount = Mage::helper('directory')->currencyConvert($amount, $currency, 'EUR');
+
+        }
+        $this->AMOUNT = number_format($order->getBaseGrandTotal(),2);
+        $this->_currency = 'EUR';
+        if($card) {
+                $this->CARD_OWNER = $card['owner'];
+                $this->PAN = $card['number'];
+                $this->CARD_TYPE = $card['cctype'];
+                $this->EXPIRE_DATE = ( (strlen($card['year']) == 2 ) ?  (20 . $card['year']) : $card['year']   ) . $card['month'];
+                $this->CVV2 = $card['ccv'];
+        }
+
+        return $this;
+    }
+
+  public function callS2s(){
+
+    $params = array(
+        'alias'     => Mage::getStoreConfig('payment/iwbank_cc/terminal_id'),
+        'importo'   => $this->AMOUNT,
+        'divisa'    => 'EUR',
+        'tipo_richiesta' => 'PA',
+        'url' => Mage::getBaseUrl() . 'iwbank/processing/result',
+        'urlpost' => Mage::getBaseUrl() . 'iwbank/processing/notification',
+
+        'codTrans'  => $this->TRANSACTION_ID,
+        'mail'      => $this->EMAIL,
+        'pan'       => $this->PAN,
+        'scadenza'  => $this->EXPIRE_DATE,
+        'cv2'       => $this->CVV2,
+        'mac'       => $this->setMacType('start')->getMac()
+
+    );
+
+    $client = new Zend_Http_Client($this->getUrl());
+
+
+
+    $client->setParameterGet($params);
+    $req = simplexml_load_string($client->request()->getBody());
+
+    if (isset($req->AUTHRES->HTML_CODE)) {
+      $this->LAST_MAC = $req->MAC;
+      echo $req->AUTHRES->HTML_CODE;
+      die();
+    } else {
+      $this->RESPONSE = json_decode(json_encode($req));
+      list($this->DATE,$this->TIME) = explode('T', $this->RESPONSE->StoreResponse->dataOra);
+      $this->CODAUT = $this->RESPONSE->StoreResponse->codiceAutorizzazione;
+      $this->LAST_MAC = $this->RESPONSE->StoreResponse->mac;
+      $this->ESITO = $this->RESPONSE->StoreResponse->codiceEsito;
+      $this->submitOrder();
+    }
+
+   
+
+    return $this;
+  }
+
+
+  function setStandardResponse($date,$iwbank_thx,$codaut,$mac,$payer_id){
+    $this->PAYER_ID = $payer_id;
+    $this->IWBANK_THX = $iwbank_thx;
+    $this->DATE = $date;
+    $this->CODAUT = $codaut;
+    $this->LAST_MAC = $mac;
+    return $this;
+  }
+
+function checkMac(){
+    return ($this->setMacType('result')->getMac() == $this->getLastMac()) ? true : false;
+
+}
+
+
+function getLastMac(){
+  return $this->LAST_MAC;
+}
+
+function getRedirectUrl($t=false){
+
+  return ($t) ? $this->REDIRECT_URL : Mage::getBaseUrl() . $this->REDIRECT_URL;
+}
+
+
+
+  function standardcall(){
+                $form = new Varien_Data_Form();
+                $form->setAction($this->getUrl())->setId('iwbank')->setName('iwbank')->setMethod('GET')->setUseContainer(true);
+
+                $values_form = array(
+                        'ACCOUNT'     => Mage::getStoreConfig('payment/iwbank_cc/terminal_id'),
+                        'PAYER_EMAIL' => $this->EMAIL,
+                        'LANG_COUNTRY' => $this->getLanguage(),
+                        'FLAG_ONLY_IWS' => 0,
+                        'FLAG_ONLY_CC' => 0,
+                        'AMOUNT' => $this->AMOUNT,
+                        'URL_OK' => Mage::getBaseUrl() . 'iwbank/processing/result',
+                        'URL_CALLBACK' => Mage::getBaseUrl() . 'iwbank/processing/notification',
+//                        'mac' => $this->getMac('start'),
+                        'CUSTOM' =>  $this->TRANSACTION_ID,
+                        'ITEM_NAME' => $this->getOrder()->getIncrementId(),
+                        'ITEM_NAME' => $this->getOrder()->getIncrementId(),
+                        'URL_BAD' => Mage::getBaseUrl() . 'iwbank/processing/result'
+                        );
+
+
+                foreach($values_form as $key => $value) {
+                        $form->addField(
+                            $key,
+                            'hidden',
+                            array('name' => $key, 'value' => $value )
+                        );
+                }
+                $html = '<html><body>';
+                $html .= 'Fra pochi secondi sarai reindirizzato sul sito di X-Pay Payment Gateway.';
+                $html .= $form->toHtml();
+                $html .= '<script type="text/javascript">document.getElementById("iwbank").submit();</script>';
+                $html .= '</body></html>';  
+                $this->HTML_RESPONSE = $html;
+                return $this;
+  }
+
+ 
+  // Metodi di valorizzazione attributi
+  function getMac(){ 
+        $type = $this->MAC_TYPE;
+        $mac_key =  Mage::getStoreConfig('payment/iwbank_cc/mac_key');
+
+      switch ($type) {
+        case 'start':
+          $mac = 'codTrans=' . $this->TRANSACTION_ID . 'divisa=' . $this->_currency . 'importo=' . $this->AMOUNT . $mac_key;
+          
+          break;
+        case 'authres':
+          $mac = '<TERMINAL_ID>' . $this->TERMINAL_ID . '<TERMINAL_ID>' .
+                 '<TRANSACTION_ID>' . $this->TRANSACTION_ID . '<TRANSACTION_ID>' . 
+                 '<HTML_CODE>' . $this->_html_code . '</HTML_CODE>';
+          break;
+        case 'result':
+         if($this->isS2s()) {
+        $mac = 'codTrans=' . $this->TRANSACTION_ID . 'divisa=' . $this->_currency . 'importo=' . $this->AMOUNT . 'codAut=' . $this->CODAUT . 'data=' . $this->DATE . 'orario=' . $this->TIME . $mac_key;
+        } else {
+
+          $mac = 'codTrans=' . $this->TRANSACTION_ID . 'esito=' . $this->ESITO . 'importo=' . $this->AMOUNT . 'divisa=' . $this->_currency . 
+             'data=' . $this->DATE . 'orario=' . $this->TIME .  'codAut=' . $this->CODAUT . $mac_key;
+        }
+          break;
+        
+        default:
+          # code...
+          break;
+      }
+      
+      return $mac = sha1($mac);
+  }
+
+
+}
