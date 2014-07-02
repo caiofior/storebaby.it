@@ -248,7 +248,7 @@ if(!$_collectionSize): ?>
                             <div class="clear"></div>
                     </div>
                 	<div class="moreinfo-labels"><?php include('../../../../defaultw/template/catalog/product/view/labels.phtml'); ?></div>
-                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo Mage::helper('core/string')->truncate($_helper->productAttribute($_product, $_product->getName(), 'name'), $length = $trimSize, $etc = '...', $remainder = '', $breakWords = true); ?></a></h2>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">Qt.  <?php echo intval(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty()); ?> <?php echo Mage::helper('core/string')->truncate($_helper->productAttribute($_product, $_product->getName(), 'name'), $length = $trimSize, $etc = '...', $remainder = '', $breakWords = true); ?></a></h2>
                     <div id='productname<?php echo $_product->getId()?>' style='display:none'><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></div>
                     <?php echo $this->getPriceHtml($_product, true) ?>
                 	<div class="clear"></div>

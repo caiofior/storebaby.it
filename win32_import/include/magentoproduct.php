@@ -19,7 +19,7 @@ class MagentoProduct {
      */
     private static $headers = array(
         'store'=>'admin',
-        'websites'=>'Base',
+        'websites'=>'base',
         'attribute_set'=>'Default',
         'type'=>'simple',
         'categories'=>null,

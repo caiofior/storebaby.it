@@ -169,20 +169,23 @@ corrupted NUMERIC
 
                 $row = iconv('WINDOWS-1252', 'UTF-8', $row);
                 $mastroProduct->importFromCsvRow($row);
-                $magentoProduct = $mastroProduct->createMagentoProduct();
-
-                if ($magentoProduct instanceof MagentoProduct) {
-                    if (ftell($this->magentoCsvHandle) == 0)
-                        fwrite($this->magentoCsvHandle, "\xEF\xBB\xBF".$magentoProduct->getCsvHeaders() . PHP_EOL);
-                    fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow() . PHP_EOL);
-                } else {
-                   if (ftell($this->magentoExcludedCsvHandle) == 0) {
-                        $tempMastro = new MastroProduct($this);
-                        fwrite($this->magentoExcludedCsvHandle, "\xEF\xBB\xBF".'"EAN","reason","info",' . implode(',',$tempMastro->getHeaders()) . PHP_EOL);
-                   }
-                   fwrite($this->magentoExcludedCsvHandle, $magentoProduct .',"'. str_replace('**', '","', $row) .'"'.PHP_EOL);
+                $magentoProductArray = $mastroProduct->createMagentoProduct();
+                if (!is_array($magentoProductArray))
+                   $magentoProductArray = array ($magentoProductArray);
+                
+                foreach($magentoProductArray as  $magentoProduct) {
+                  if ($magentoProduct instanceof MagentoProduct) {
+                      if (ftell($this->magentoCsvHandle) == 0)
+                          fwrite($this->magentoCsvHandle, "\xEF\xBB\xBF".$magentoProduct->getCsvHeaders() . PHP_EOL);
+                      fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow() . PHP_EOL);
+                  } else {
+                     if (ftell($this->magentoExcludedCsvHandle) == 0) {
+                          $tempMastro = new MastroProduct($this);
+                          fwrite($this->magentoExcludedCsvHandle, "\xEF\xBB\xBF".'"EAN","reason","info",' . implode(',',$tempMastro->getHeaders()) . PHP_EOL);
+                     }
+                     fwrite($this->magentoExcludedCsvHandle, $magentoProduct .',"'. str_replace('**', '","', $row) .'"'.PHP_EOL);
+                  }
                 }
-                 
                 $rowCount++;
                 $row = '';
                 if ($rowCount / 100 == (int) ($rowCount / 100)) {
