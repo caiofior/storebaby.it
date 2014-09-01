@@ -139,6 +139,8 @@ LIMIT 1
 	public function processItemAfterId(&$item,$params=null)
 	{
             $googleMerchantData = $this->columns;
+            if ($item['store'] != 'admin')
+               return true;
             $googleMerchantData['id']=$item['sku'];
             if ($item['name'] == '')
                 return true;

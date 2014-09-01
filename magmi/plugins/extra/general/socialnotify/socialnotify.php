@@ -46,7 +46,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
               'media' . DIRECTORY_SEPARATOR . 'catalog' . DIRECTORY_SEPARATOR . 'product' . DIRECTORY_SEPARATOR;
 
       $imageDir = realpath($imageDir);
-      $products = $this->selectAll(
+      $product_stmt = $this->exec_stmt(
               '   SELECT `catalog_product_entity`.`entity_id` ,
                     `catalog_product_entity`.`sku` ,
                     (SELECT `value` FROM `catalog_product_entity_varchar` WHERE
@@ -116,16 +116,18 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                     `catalog_product_entity_int`.`attribute_id`= (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code`="shared_on_social_networks")
                     WHERE `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1
                     HAVING `url_path` <> ""
-                    ORDER BY `catalog_product_entity`.`updated_at` DESC 
-                LIMIT ' . $this->getParam("SOCIAL:topost", "10"));
+                    ORDER BY `catalog_product_entity`.`updated_at` DESC
+                    ');
       // Full path to twitterOAuth.php (change OAuth to your own path)
       // create new instance
       $tweet = new TwitterOAuth(
               $this->getParam("SOCIAL:twitterkey", ""), $this->getParam("SOCIAL:twittersecret", ""), $this->getParam("SOCIAL:twitterotoken", ""), $this->getParam("SOCIAL:twitterosecret", "")
       );
-      foreach ($products as $product) {
+      $productCount = 0;
+      while ($product = $product_stmt->fetch(PDO::FETCH_ASSOC) && $productCount < $this->getParam("SOCIAL:topost", "10")) {
          if (!is_file($imageDir . $product['image']))
             continue;
+         $productCount ++;
          $tags = preg_replace('/^[^,]*, /', '', $product['category_names']);
          $tags = strtolower(', '.$tags);
          $tags = str_replace(' ','_',$tags);

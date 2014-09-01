@@ -29,6 +29,13 @@
 		$logfile=isset($params["logfile"])?$params["logfile"]:null;
 		if(isset($logfile) && $logfile!="")
 		{
+			ignore_user_abort(true);
+		        ob_end_flush();
+			ob_flush(); 
+			flush();
+			if (session_id()) {
+				session_write_close(); 
+			}
 			$fname=Magmi_StateManager::getStateDir().DS.$logfile;			
 			if(file_exists($fname))
 			{

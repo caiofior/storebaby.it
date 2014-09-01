@@ -9,13 +9,13 @@ $brandLinkSearch = Mage::getStoreConfig('milanoconfig/productpage/brand_link_sea
     
   </div>
 <ul id="listbrand" class="brandfilter">
-<?php $i=0; foreach ($_brands as $_brand): $i++;
+<?php $i=0; foreach ($_brands as $brand_id=>$_brand): $i++;
 					$brandValue = $_brand;	
 					$brandValueCode = str_replace(" ", "_", strtolower($brandValue));					
 					$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
-					
 					if ($brandLinkSearch)
-						$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q=' . $brandValue;
+						$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q='.$brandValue.'&manufacturer=' . $brand_id;
+						
 					elseif ($brandPageBasePath != '')
 					{
 						$basePath = ($brandPageBasePath == '/') ? '' : $brandPageBasePath . '/';

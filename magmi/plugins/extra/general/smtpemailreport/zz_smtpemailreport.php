@@ -105,8 +105,9 @@ public function getPluginInfo()
             $mail->Body    = $content.$backuplLink.PHP_EOL;
 
             if(!$mail->send()) {
-               echo 'Message could not be sent.';
-               echo 'Mailer Error: ' . $mail->ErrorInfo;
+               $this->log('Message could not be sent. Mailer Error: ' . $mail->ErrorInfo);
+            } else {
+               $this->log('Mail sent');
             }
 	}
 

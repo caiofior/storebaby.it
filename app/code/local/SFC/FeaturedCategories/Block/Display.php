@@ -39,7 +39,7 @@ class SFC_FeaturedCategories_Block_Display extends Mage_Core_Block_Template
                 $featuredCategriesIds=$read->fetchCol(
                         'SELECT `entity_id` FROM `catalog_category_entity_int` WHERE'.
                         ' `attribute_id` = (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code` = "is_featured_category") '.
-                        ' AND `value`=1'
+                        ' AND `value`=1 AND (`catalog_category_entity_int`.`store_id` = '.Mage::app()->getStore()->getStoreId().' OR `catalog_category_entity_int`.`store_id` = 0)'
                 );
                 foreach ($featuredCategriesIds as $featuredCategoryId) {
                     if (key_exists($featuredCategoryId, $categoriesIds)) {
