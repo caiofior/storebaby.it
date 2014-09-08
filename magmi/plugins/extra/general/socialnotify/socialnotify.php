@@ -46,87 +46,113 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
               'media' . DIRECTORY_SEPARATOR . 'catalog' . DIRECTORY_SEPARATOR . 'product' . DIRECTORY_SEPARATOR;
 
       $imageDir = realpath($imageDir);
-      $product_stmt = $this->exec_stmt(
-              '   SELECT `catalog_product_entity`.`entity_id` ,
-                    `catalog_product_entity`.`sku` ,
-                    (SELECT `value` FROM `catalog_product_entity_varchar` WHERE
-                        `catalog_product_entity_varchar`.`entity_id`=`catalog_product_entity`.`entity_id` AND
-                        `catalog_product_entity_varchar`.`attribute_id`= 
-                            (SELECT `attribute_id` FROM `eav_attribute` WHERE
-                            `attribute_code`="name" AND `entity_type_id`= 
-                                (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
-                                `entity_type_code`="catalog_product"
-                                )
-                            )
-                    LIMIT 1
-                    ) as name,
-                    (SELECT `value` FROM `catalog_product_entity_text` WHERE
-                        `catalog_product_entity_text`.`entity_id`=`catalog_product_entity`.`entity_id` AND
-                        `catalog_product_entity_text`.`attribute_id`= 
-                            (SELECT `attribute_id` FROM `eav_attribute` WHERE
-                            `attribute_code`="description" AND `entity_type_id`= 
-                                (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
-                                `entity_type_code`="catalog_product"
-                                )
-                            )
-                    LIMIT 1
-                    ) as description,
-                    (SELECT `value` FROM `catalog_product_entity_varchar` WHERE
-                        `catalog_product_entity_varchar`.`entity_id`=`catalog_product_entity`.`entity_id` AND
-                        `catalog_product_entity_varchar`.`attribute_id`= 
-                            (SELECT `attribute_id` FROM `eav_attribute` WHERE
-                            `attribute_code`="url_key" AND `entity_type_id`= 
-                                (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
-                                `entity_type_code`="catalog_product"
-                                )
-                            )
-                    LIMIT 1
-                    ) as url_key ,
-                    (SELECT `value` FROM `catalog_product_entity_varchar` WHERE
-                        `catalog_product_entity_varchar`.`entity_id`=`catalog_product_entity`.`entity_id` AND
-                        `catalog_product_entity_varchar`.`attribute_id`= 
-                            (SELECT `attribute_id` FROM `eav_attribute` WHERE
-                            `attribute_code`="image" AND `entity_type_id`= 
-                                (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
-                                `entity_type_code`="catalog_product"
-                                )
-                            )
-                    LIMIT 1
-                    ) as image ,
-                    ( 
-                      SELECT GROUP_CONCAT( DISTINCT `value` SEPARATOR ", ")
-                      FROM `catalog_category_entity_varchar` WHERE
-                      `entity_id` IN (SELECT `category_id` FROM `catalog_category_product` WHERE `product_id` = `catalog_product_entity`.`entity_id`)
-                      AND `catalog_category_entity_varchar`.`attribute_id`=
-                        (SELECT `attribute_id` FROM `eav_attribute` WHERE
-                        `attribute_code`="name" AND `entity_type_id`= 
-                        (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
-                           `entity_type_code`="catalog_category"
-                        )
-                      )
-                    )
-                    as category_names ,
-                    (SELECT `request_path` FROM `core_url_rewrite`
-                        WHERE `id_path` LIKE "product/%" AND `product_id` = `catalog_product_entity`.`entity_id`
-                        ORDER BY `category_id` ASC LIMIT 1
-                    ) as url_path
-                    FROM `catalog_product_entity` 
-                    LEFT JOIN `catalog_product_entity_int` ON 
-                    `catalog_product_entity_int`.`entity_id`=`catalog_product_entity`.`entity_id` AND 
-                    `catalog_product_entity_int`.`attribute_id`= (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code`="shared_on_social_networks")
-                    WHERE `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1
-                    HAVING `url_path` <> ""
-                    ORDER BY `catalog_product_entity`.`updated_at` DESC
-                    ');
+      $name_id = $this->selectone('
+         SELECT `attribute_id` FROM `eav_attribute` WHERE
+         `attribute_code`="name" AND `entity_type_id`= 
+             (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
+             `entity_type_code`="catalog_product"
+             )
+      ',null,'attribute_id');
+      //$name = 71;
+      $description_id = $this->selectone('
+         SELECT `attribute_id` FROM `eav_attribute` WHERE
+         `attribute_code`="description" AND `entity_type_id`= 
+             (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
+             `entity_type_code`="catalog_product"
+             )
+      ',null,'attribute_id');
+      //$description = 72;
+      $url_key_id = $this->selectone('
+      SELECT `attribute_id` FROM `eav_attribute` WHERE
+         `attribute_code`="url_key" AND `entity_type_id`= 
+             (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
+             `entity_type_code`="catalog_product"
+             )
+      ',null,'attribute_id');
+      //$url_key = 97;
+      $image_id = $this->selectone('
+      SELECT `attribute_id` FROM `eav_attribute` WHERE
+      `attribute_code`="image" AND `entity_type_id`= 
+          (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
+          `entity_type_code`="catalog_product"
+          )
+      ',null,'attribute_id');
+      //$image = 85;
+      $catalog_category_id = $this->selectone('
+      SELECT `attribute_id` FROM `eav_attribute` WHERE
+      `attribute_code`="name" AND `entity_type_id`= 
+      (SELECT `entity_type_id` FROM  `eav_entity_type` WHERE
+         `entity_type_code`="catalog_category"
+      )
+      ',null,'attribute_id');
+      //$catalog_category = 41;
+      $shared_on_social_networks_id = $this->selectone('
+            SELECT `attribute_id` FROM `eav_attribute` WHERE
+            `attribute_code`="shared_on_social_networks"
+      ',null,'attribute_id');
+      //$shared_on_social_networks = 143;
+      $product_stmt = $this->exec_stmt('
+         SELECT
+         `catalog_product_entity`.`entity_id` ,
+         `catalog_product_entity`.`sku`
+         FROM `catalog_product_entity` 
+         LEFT JOIN `catalog_product_entity_int` ON 
+         `catalog_product_entity_int`.`entity_id`=`catalog_product_entity`.`entity_id` AND 
+         `catalog_product_entity_int`.`attribute_id`= '.$shared_on_social_networks_id.'
+         WHERE `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1
+         ORDER BY `catalog_product_entity`.`updated_at` DESC
+         ',null,false);
       // Full path to twitterOAuth.php (change OAuth to your own path)
       // create new instance
       $tweet = new TwitterOAuth(
               $this->getParam("SOCIAL:twitterkey", ""), $this->getParam("SOCIAL:twittersecret", ""), $this->getParam("SOCIAL:twitterotoken", ""), $this->getParam("SOCIAL:twitterosecret", "")
       );
       $productCount = 0;
-      while ($product = $product_stmt->fetch(PDO::FETCH_ASSOC) && $productCount < $this->getParam("SOCIAL:topost", "10")) {
-         if (!is_file($imageDir . $product['image']))
+      $gogglePages = explode(':',$this->getParam("SOCIAL:gpage", ""));
+      while ($productCount < $this->getParam("SOCIAL:topost", "10") && $product = $product_stmt->fetch(PDO::FETCH_ASSOC) ) {
+         $product['image']= $this->selectone('
+               SELECT `value` FROM `catalog_product_entity_varchar` WHERE
+                  `catalog_product_entity_varchar`.`entity_id`='.$product['entity_id'].' AND
+                  `catalog_product_entity_varchar`.`attribute_id`= '.$image_id.'
+               LIMIT 1
+         ',null,'value');
+         $product['url_path'] = $this->selectone('
+               SELECT `request_path` FROM `core_url_rewrite`
+               WHERE `id_path` LIKE "product/%" AND `product_id` ='.$product['entity_id'].'
+               ORDER BY `category_id` ASC LIMIT 1
+         ',null,'request_path');
+         $this->log($product['url_path'],"info");
+         if (
+                 $product['url_path'] == '' ||
+                 !is_file($imageDir . $product['image'])
+            ) {
             continue;
+         }
+         $product['name']= $this->selectone('
+               SELECT `value` FROM `catalog_product_entity_varchar` WHERE
+                     `catalog_product_entity_varchar`.`entity_id`='.$product['entity_id'].' AND
+                     `catalog_product_entity_varchar`.`attribute_id`= '.$name_id.'  
+               LIMIT 1
+         ',null,'value');
+         $product['description']= $this->selectone('
+               SELECT `value` FROM `catalog_product_entity_text` WHERE
+                     `catalog_product_entity_text`.`entity_id`='.$product['entity_id'].' AND
+                     `catalog_product_entity_text`.`attribute_id`= '.$description_id.'
+               LIMIT 1
+         ',null,'value');
+         $product['url_key']= $this->selectone('
+               SELECT `value` FROM `catalog_product_entity_varchar` WHERE
+                     `catalog_product_entity_varchar`.`entity_id`='.$product['entity_id'].' AND
+                     `catalog_product_entity_varchar`.`attribute_id`= '.$url_key_id.'
+               LIMIT 1
+         ',null,'value');
+         $product['category_names'] = $this->selectone('
+               SELECT GROUP_CONCAT( DISTINCT `value` SEPARATOR ", ") as value
+               FROM `catalog_category_entity_varchar` WHERE
+               `entity_id` IN (SELECT `category_id` FROM `catalog_category_product` WHERE `product_id` = '.$product['entity_id'].')
+               AND `catalog_category_entity_varchar`.`attribute_id`= '.$catalog_category_id.'                       
+         ',null,'value');
+         
          $productCount ++;
          $tags = preg_replace('/^[^,]*, /', '', $product['category_names']);
          $tags = strtolower(', '.$tags);
@@ -137,13 +163,16 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                  $this->getParam("SOCIAL:gpassword", "") != '' &&
                  $this->getParam("SOCIAL:gpage", "") != ''
          ) {
-            $loginError = doConnectToGooglePlus2($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
-            // Image URL
-	    $lnk = doGetGoogleUrlInfo2($config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
-            doPostToGooglePlus2($product['name'] .' '. $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'], $lnk, $this->getParam("SOCIAL:gpage", ""));
+            foreach($gogglePages as $gogglePage) {
+               $loginError = doConnectToGooglePlus2($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
+               // Image URL
+               $lnk = doGetGoogleUrlInfo2($config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
+               $this->log($lnk, "info");
+               doPostToGooglePlus2($product['name'] .' '. $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
 
-            if ($loginError != '')
-               $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
+               if ($loginError != '')
+                  $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
+            }
          }
          // Your Message
          $message = substr($product['name'], 10, 100) . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path']. ' ' . $tags;
@@ -226,13 +255,13 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
          if ($mail->send()) {
             $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " sent succesfully", "info");
             $this->exec_stmt('REPLACE INTO `catalog_product_entity_int` SET `value`=1 ,
-                        `catalog_product_entity_int`.`attribute_id`= (SELECT `attribute_id` FROM `eav_attribute` WHERE `attribute_code`="shared_on_social_networks"),
+                        `catalog_product_entity_int`.`attribute_id`= '.$shared_on_social_networks_id.',
                         `catalog_product_entity_int`.`entity_id` = ' . $product['entity_id'] . '
                          ');
          } else {
             $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $mail->ErrorInfo, "info");
          }
       }
+      $product_stmt->closeCursor();
    }
-
 }
