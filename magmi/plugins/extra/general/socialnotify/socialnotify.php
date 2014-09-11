@@ -108,6 +108,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
               $this->getParam("SOCIAL:twitterkey", ""), $this->getParam("SOCIAL:twittersecret", ""), $this->getParam("SOCIAL:twitterotoken", ""), $this->getParam("SOCIAL:twitterosecret", "")
       );
       $productCount = 0;
+      $facebookPages = explode(':',$this->getParam("SOCIAL:facebook", ""));
       $gogglePages = explode(':',$this->getParam("SOCIAL:gpage", ""));
       while ($productCount < $this->getParam("SOCIAL:topost", "10") && $product = $product_stmt->fetch(PDO::FETCH_ASSOC) ) {
          $product['image']= $this->selectone('
@@ -121,7 +122,6 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                WHERE `id_path` LIKE "product/%" AND `product_id` ='.$product['entity_id'].'
                ORDER BY `category_id` ASC LIMIT 1
          ',null,'request_path');
-         $this->log($product['url_path'],"info");
          if (
                  $product['url_path'] == '' ||
                  !is_file($imageDir . $product['image'])
@@ -164,12 +164,11 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                  $this->getParam("SOCIAL:gpage", "") != ''
          ) {
             foreach($gogglePages as $gogglePage) {
-               $loginError = doConnectToGooglePlus2($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
+               $nt = new nxsAPI_GP();
+               $loginError = $nt->connect($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
                // Image URL
-               $lnk = doGetGoogleUrlInfo2($config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
-               $this->log($lnk, "info");
-               doPostToGooglePlus2($product['name'] .' '. $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
-
+               $lnk = array('img'=>$config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
+               $nt->postGP($product['name'] .' '. $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
                if ($loginError != '')
                   $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
             }
@@ -226,7 +225,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             $client->query('metaWeblog.editPost', $post_id, $this->getParam("SOCIAL:wpusername"), $this->getParam("SOCIAL:wppassword"), $content, true);
          }
          $mail = new PHPMailer;
-         if ($this->getParam("SOCIAL:facebook", "") != '') {
+         foreach ($facebookPages as $facebookPage) {
 
             if ($config['system/lesti_smtp/enable'] == 1) {
 
@@ -242,7 +241,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
 
             $mail->From = $config['trans_email/ident_general/email'];
             $mail->FromName = $config['trans_email/ident_general/name'];
-            $mail->addAddress($this->getParam("SOCIAL:facebook", ""));
+            $mail->addAddress($facebookPage);
 
             $mail->WordWrap = 50;
             $mail->CharSet = 'UTF-8';
@@ -250,16 +249,16 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             $url_path = '';
             $mail->Subject = $product['name'] .' ' . $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'];
             $mail->Body = ' ';
-            $mail->addAttachment($imageDir . $product['image']);
-         }
-         if ($mail->send()) {
-            $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " sent succesfully", "info");
-            $this->exec_stmt('REPLACE INTO `catalog_product_entity_int` SET `value`=1 ,
-                        `catalog_product_entity_int`.`attribute_id`= '.$shared_on_social_networks_id.',
-                        `catalog_product_entity_int`.`entity_id` = ' . $product['entity_id'] . '
-                         ');
-         } else {
-            $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $mail->ErrorInfo, "info");
+            $mail->addAttachment($imageDir . $product['image']);        
+            if ($mail->send()) {
+               $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " sent succesfully", "info");
+               $this->exec_stmt('REPLACE INTO `catalog_product_entity_int` SET `value`=1 ,
+                           `catalog_product_entity_int`.`attribute_id`= '.$shared_on_social_networks_id.',
+                           `catalog_product_entity_int`.`entity_id` = ' . $product['entity_id'] . '
+                            ');
+            } else {
+               $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $mail->ErrorInfo, "info");
+            }
          }
       }
       $product_stmt->closeCursor();

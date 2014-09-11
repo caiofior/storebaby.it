@@ -1,4 +1,13 @@
 <?php
+/*#############################################################################
+Project Name: NextScripts Social Networks AutoPoster
+Project URL: http://www.nextscripts.com/snap-api/
+Description: Automatically posts to all your Social Networks
+Author: NextScripts, Inc
+File Version: 1.0.6 (June 12, 2014)
+Author URL: http://www.nextscripts.com
+Copyright 2012-2014  NextScripts, Inc
+#############################################################################*/
 if (!class_exists('nxs_Http')){ class nxs_Http { private $headers = '';
     function request( $url, $args = array() ) { //echo "############ NREW REQ #########################"; prr($url); prr($args);
         global $nxs_version;
@@ -19,9 +28,9 @@ if (!class_exists('nxs_Http')){ class nxs_Http { private $headers = '';
             'decompress' => true,
             'sslverify' => true
         );
-        $args = wp_parse_args( $args ); 
+        $args = nxs_parse_args( $args ); 
         if ( isset($args['method']) && 'HEAD' == $args['method'] ) $defaults['redirection'] = 0;
-        $r = wp_parse_args( $args, $defaults ); $r['_redirection'] = $r['redirection'];
+        $r = nxs_parse_args( $args, $defaults ); $r['_redirection'] = $r['redirection'];
         $arrURL = parse_url( $url );
 
         if ( empty( $url ) || empty( $arrURL['scheme'] ) ) return new nxs_Error('http_request_failed', 'A valid URL was not provided.');        
@@ -42,7 +51,7 @@ if (!class_exists('nxs_Http')){ class nxs_Http { private $headers = '';
         }
         return $this->curl_request($url, $r);
     }
-    function sendReq($url, $type='GET', $args = array()) { $defaults = array('method' => $type); $r = wp_parse_args( $args, $defaults ); return $this->request($url, $r);}
+    function sendReq($url, $type='GET', $args = array()) { $defaults = array('method' => $type); $r = nxs_parse_args( $args, $defaults ); return $this->request($url, $r);}
     function processResponse($strResponse) { $res = explode("\r\n\r\n", $strResponse, 2);
         return array('headers' => $res[0], 'body' => isset($res[1]) ? $res[1] : '');
     }
@@ -76,7 +85,7 @@ if (!class_exists('nxs_Http')){ class nxs_Http { private $headers = '';
     }
     public static function buildCookieHeader( &$r ) {
         if ( ! empty($r['cookies']) ) { $cookies_header = '';
-            foreach ( (array) $r['cookies'] as $cookie )  $cookies_header .= $cookie->getHeaderValue() . '; ';
+            foreach ( (array) $r['cookies'] as $cookie ) if (is_object($cookie))  $cookies_header .= $cookie->getHeaderValue() . '; ';
             $cookies_header = substr( $cookies_header, 0, -2 ); $r['headers']['cookie'] = $cookies_header;
         }
     }    
@@ -89,7 +98,7 @@ if (!class_exists('nxs_Http')){ class nxs_Http { private $headers = '';
             'blocking' => true,
             'headers' => array(), 'body' => null, 'proxy' => array(), 'cookies' => array()
         ); //## NXS -  proxy added
-        $r = wp_parse_args( $args, $defaults );
+        $r = nxs_parse_args( $args, $defaults );
         if ( isset($r['headers']['User-Agent']) ) { $r['user-agent'] = $r['headers']['User-Agent']; unset($r['headers']['User-Agent']); } 
           else if ( isset($r['headers']['user-agent']) ) { $r['user-agent'] = $r['headers']['user-agent']; unset($r['headers']['user-agent']);}
         nxs_Http::buildCookieHeader( $r ); $handle = curl_init(); 
@@ -176,7 +185,7 @@ if (!class_exists('nxs_HTTP_Proxy')){ class nxs_HTTP_Proxy {
     function authentication() { return $this->username() . ':' . $this->password();}
     function authentication_header() { return 'Proxy-Authorization: Basic ' . base64_encode( $this->authentication() ); }
     function send_through_proxy( $uri ) { $check = @parse_url($uri); if ( $check === false ) return true;
-        if ( $check['host'] == 'localhost' || $check['host'] == $_SERVER['SERVER_NAME'] ) return false;
+        if ( $check['host'] == 'localhost' || (isset($_SERVER['SERVER_NAME']) &&  $check['host'] == $_SERVER['SERVER_NAME']) ) return false;
         return true;
     }
 } }
@@ -315,9 +324,11 @@ if (!function_exists("nxs_getHttpStatusDesc")) { function nxs_getHttpStatusDesc(
         );
     if ( isset( $httpRetCodes[$code] ) ) return $httpRetCodes[$code]; else return '';
 }}
-if (!function_exists("nxs_parse_args")){ function nxs_parse_args( $args, $defaults = '' ) { if (is_object($args)) $r = get_object_vars($args); elseif (is_array($args)) $r =&$args; else wp_parse_str($args, $r);
+if (!function_exists("nxs_parse_str")){ function nxs_parse_str( $string, &$array ) { parse_str( $string, $array ); if ( get_magic_quotes_gpc() ) $array = stripslashes_deep( $array );}}
+if (!function_exists("nxs_parse_args")){ function nxs_parse_args( $args, $defaults = '' ) { if (is_object($args)) $r = get_object_vars($args); elseif (is_array($args)) $r =&$args; else nxs_parse_str($args, $r);
   if (is_array($defaults)) return array_merge($defaults, $r); return $r;
 }}
+
 if (!function_exists("nxs_staticHttpObj")) { function nxs_staticHttpObj() { static $nxs_http; if ( is_null($nxs_http) ) $nxs_http = new nxs_Http(); return $nxs_http; }}
 if (!function_exists("nxs_remote_request")) { function nxs_remote_request($url, $args = array()) { $nxs_http = nxs_staticHttpObj(); return $nxs_http->request($url, $args); }}
 if (!function_exists("nxs_remote_get")) { function nxs_remote_get($url, $args = array()) { $nxs_http = nxs_staticHttpObj(); return $nxs_http->sendReq($url, 'GET', $args); }}
