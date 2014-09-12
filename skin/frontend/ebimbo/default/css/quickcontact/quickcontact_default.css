@@ -1,0 +1,8 @@
+.footerform_container {text-align: left; float: left; margin-left: 10px; background: url(qc_bg.png) repeat scroll 0 0 #FFFFFF;
+    border: 3px solid #999999;  border-radius: 10px 10px 10px 10px; padding: 10px;}
+.footerform_container label {line-height: 14px;}
+.footerform_container .form-field .input-text {width: 170px;}
+.footerform_container .form-field textarea {width: 170px; height: 55px;}
+.footerform_container .validation-advice {width: 170px;}
+.footerform_container .form-button {margin-top: 3px;}
+#security_code {margin-top: 3px}

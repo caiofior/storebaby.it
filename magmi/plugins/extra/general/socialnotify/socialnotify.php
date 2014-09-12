@@ -41,6 +41,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                      WHERE `scope` = "default" AND ( `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%" OR `path` = "web/unsecure/base_url")') as $value) {
          $config [$value['path']] = $value['value'];
       }
+      $secondPath = $this->selectone('SELECT `path`,`value` FROM `core_config_data` WHERE `scope_id` = 2 AND `path` = "web/unsecure/base_url"');
       $imageDir = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR .
               '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR .
               'media' . DIRECTORY_SEPARATOR . 'catalog' . DIRECTORY_SEPARATOR . 'product' . DIRECTORY_SEPARATOR;
@@ -163,12 +164,15 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                  $this->getParam("SOCIAL:gpassword", "") != '' &&
                  $this->getParam("SOCIAL:gpage", "") != ''
          ) {
-            foreach($gogglePages as $gogglePage) {
+            foreach($gogglePages as $key=>$gogglePage) {
+	       $baseUrl = $config['web/unsecure/base_url'];
+	       if ($key>0 && $secondPath != '')
+		   $baseUrl = $secondPath;
                $nt = new nxsAPI_GP();
                $loginError = $nt->connect($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
                // Image URL
-               $lnk = array('img'=>$config['web/unsecure/base_url'] . '/media/catalog/product/' . $product['image']);
-               $nt->postGP($product['name'] .' '. $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
+               $lnk = array('img'=>$baseUrl. '/media/catalog/product/' . $product['image']);
+               $nt->postGP($product['name'] .' '. $tags . ' ' . $baseUrl . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
                if ($loginError != '')
                   $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
             }
@@ -224,9 +228,11 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             );
             $client->query('metaWeblog.editPost', $post_id, $this->getParam("SOCIAL:wpusername"), $this->getParam("SOCIAL:wppassword"), $content, true);
          }
-         $mail = new PHPMailer;
-         foreach ($facebookPages as $facebookPage) {
-
+         foreach ($facebookPages as $key=>$facebookPage) {
+            $mail = new PHPMailer;
+            $baseUrl = $config['web/unsecure/base_url'];
+	    if ($key>0 && $secondPath != '')
+	       $baseUrl = $secondPath;
             if ($config['system/lesti_smtp/enable'] == 1) {
 
                $mail->isSMTP();
@@ -247,7 +253,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             $mail->CharSet = 'UTF-8';
             $mail->isHTML(false);
             $url_path = '';
-            $mail->Subject = $product['name'] .' ' . $tags . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'];
+            $mail->Subject = $product['name'] .' ' . $tags . ' ' . $baseUrl . 'index.php/' . $product['url_path'];
             $mail->Body = ' ';
             $mail->addAttachment($imageDir . $product['image']);        
             if ($mail->send()) {

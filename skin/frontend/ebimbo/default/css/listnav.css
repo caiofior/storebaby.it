@@ -1,0 +1,112 @@
+.listNav, .ln-letters
+{
+	border-bottom: 1px solid #000000;
+	font-size: 14px;
+	line-height: 30px;
+	overflow: hidden;
+}
+.listNavHide
+{
+	display: none;
+}
+.letterCountShow
+{
+	display: block;
+}
+.ln-letters A
+{
+	/*[disabled]font-size:0.9em;*/
+	display: block;
+	float: left;
+	padding: 2px 10px;
+	/*[disabled]border:1px solid #C0C0C0;*/
+	border-right: none;
+	text-decoration: none;
+}
+.ln-letters .ln-last
+{
+}
+.ln-letters A:hover, .ln-letters .ln-selected
+{
+	background-color: #EAEAEA;
+}
+.ln-letters .ln-disabled
+{
+	color: #C5C5C5 !important;
+}
+.ln-letter-count
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20px;
+	text-align: center;
+	font-size: 0.8em;
+	line-height: 1.35;
+	color: #336699;
+	margin-top: -6px;
+}
+#creativeContent
+{
+	margin: 0 auto;
+	padding-bottom: 40px;
+	width: 874px;
+	color: #000000;
+	position: relative;
+	top: auto;
+	left: auto;
+	overflow: hidden;
+}
+#brands_header
+{
+	position: relative;
+}
+#brands_header H1
+{
+	font-family: Georgia, Sans-serif;
+	font-size: 124px;
+	font-weight: normal;
+	border-bottom: 5px solid #000000;
+	color: #CF9CC7;
+}
+#brands_header H1 SPAN
+{
+	margin-left: -20px;
+	font-size: 24px;
+	color: #000000;
+}
+#brands_section
+{
+}
+.brandfilter LI, .listNavShow
+{
+	width: 24%;
+	float: left;
+	margin-right: 7px;
+	margin-bottom: 4px;
+	text-align: center;
+}
+.brandfilter LI
+{
+	border-bottom: 1px dashed #CF9CC7;
+	padding: 12px 0;
+	height: 50px;
+}
+.brandfilter LI IMG
+{
+	height: 50px;
+}
+.listNavShow
+{
+	/*[disabled]display:list-item;*/
+	/*[disabled]width:100%;*/
+	/*[disabled]color:#CF9CC7;*/
+}
+.brandfilter LI A
+{
+	font-size: 11.5pt;
+}
+.brandfilter LI A SPAN
+{
+	display: none;
+}
