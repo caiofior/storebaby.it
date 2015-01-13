@@ -1,16 +1,16 @@
-;MASTRO_COMMAND = "/home/caiofior/public_html/storebaby.it/win32_import/BMP"
-BMP_DIR = "/home/caiofior/public_html/storebaby.it/win32_import/BMP"
-MASTRO_CSV_FILE = "/home/caiofior/public_html/storebaby.it/win32_import/mastro/MastroArti.CSV"
-MASTRO_UTF8_FILE = "/home/caiofior/Scrivania/MastroArtiUTF8.CSV"
-;CONVERT_COMMAND = "\"%s\" -quality 90 -colorspace sRGB -resize 1000 -strip -density 72  \"%s\""
+MASTRO_COMMAND = "START C:\Mastro20\mastrouti.exe esporta"
+BMP_DIR = "C:\Mastro20\BMP"
+MASTRO_CSV_FILE = "C:\Mastro20\MastroArti.CSV"
+MASTRO_UTF8_FILE = "C:\Mastro20UTF8\MastroArtiUTF8.CSV"
+CONVERT_COMMAND = "\"%s\" -colorspace sRGB -resize 1000^> -quality 100 -strip -density 72 \"%s\""
 ;CONVERT_COMMAND = "\"%s\" -resize 300x200 -resample 72 -gravity south  -draw \"fill black text 0,12 'storebaby.it' fill pink text 1,11 'storebaby.it'\" \"%s\""
 ;CONVERT_COMMAND_THUMBNAIL = "\"%s\" -resize 500x500 -resample 72 \"%s\""
-FTP_SERVER = "127.0.0.1"
-FTP_USER = "caiofior"
-FTP_PASSWORD = "topolino"
-FTP_BASE_DIR = "public_html/storebaby.it/"
-;CANCEL_MAGENTO_URL = "http://127.0.0.1/storebaby.it/magmi/web/magmi_cancel.php"
-;UPDATE_MAGENTO_URL = "http://127.0.0.1/storebaby.it/magmi/web/magmi_run.php?profile=default&mode=create&engine=magmi_productimportengine:Magmi_ProductImportEngine"
+FTP_SERVER = "magmi.storebaby.it"
+FTP_USER = "joachim"
+FTP_PASSWORD = "Y39sc7yt4Y"
+FTP_BASE_DIR = "public_html"
+CANCEL_MAGENTO_URL = "http://magmi.storebaby.it/web/magmi_cancel.php"
+UPDATE_MAGENTO_URL = "http://magmi.storebaby.it/web/magmi_run.php?profile=default&mode=create&engine=magmi_productimportengine:Magmi_ProductImportEngine&logfile=progress.txt"
 UPDATE_MAGENTO_CREDENTIALS = "joachim:alfaalfa56"
 CATEGORIES = "{
 '15.1':'Passeggio/Trio Combinabili',
@@ -24,15 +24,17 @@ CATEGORIES = "{
 '15.10':'Passeggio/Borsa passeggio',
 '19.1':'Passeggio/Seggiolini e biciclette;;Sicurezza e salute/Seggiolini biciclette',
 '19.9':'Passeggio/Accessori biciclette;;Sicurezza e salute/Accessori biciclette',
-'15.*':'Passeggio/Passeggini',
+'15.9':'Passeggio/Accessori passeggino',
 
 '15.12':'In auto/Navicelle 0-10 Kg (gruppo 0)',
 '15.13':'In auto/0-13 KG (gruppo 0+)',
 '15.14':'In auto/0-18 KG (gruppo 0+ 1)',
 '15.15':'In auto/9-18 KG (gruppo 1)',
 '15.16':'In auto/9-36 KG (gruppo 1-2-3)',
-'15.17':'In auto/5-36 KG (gruppo 2-3)',
+'15.17':'In auto/15-36 KG (gruppo 2-3)',
 '15.19':'In auto/Accessori auto',
+
+'15.c1':'In auto/Isofix',
 
 '16.1':'Cameretta/Lettini e cassettiere',
 '16.2':'Cameretta/Comò',
@@ -65,6 +67,7 @@ CATEGORIES = "{
 '14.11':'Giochi/Carnevale',
 '14.12':'Giochi/Giochi in legno',
 '14.13':'Giochi/Costruzioni',
+'14.14':'Giochi/Personaggi e animali',
 '14.61':'Giochi/Altalene e dondolini',
 
 '09.5':'Bagnetto igiene cambio/Accappatoi',
@@ -72,7 +75,7 @@ CATEGORIES = "{
 '11.2':'Bagnetto igiene cambio/Fasciatoio',
 '11.3':'Bagnetto igiene cambio/Vasini',
 '11.4':'Bagnetto igiene cambio/Pannolini',
-'10.9':'Cosmetica bimbo-mamma',
+'10.9':'Bagnetto igiene cambio/Cosmetica bimbo-mamma',
 
 '09.1':'Allattamento/Succhietti gommotti',
 '09.2':'Allattamento/Biberon',
@@ -95,20 +98,29 @@ CATEGORIES = "{
 '12.4':'Sicurezza e salute/Umidificatori',
 '12.5':'Sicurezza e salute/Termometri',
 '12.6':'Sicurezza e salute/Bilance',
-'12.7':'Sicurezza e salute/Aerosol'
+'12.7':'Sicurezza e salute/Aerosol',
+
+'13.1':'Alimentazione/Latte neonato',
+'13.9':'Alimentazione/Svezzamento',
 
 
+'06.9':'Articolo regalo',
+
+'04.9':'Premaman e intimo neo mamma',
+
+'02.TU':'Abbigliamento e scarpine',
+'01.TU':'Abbigliamento e scarpine'
 }"
 WEIGHTS = "{
-'14.1':'3.1',
-'14.2':'2.1',
+'14.1':'100.1',
+'14.2':'10.1',
 '15.1':'1.1',
 '15.2':'1.1',
 '15.3':'1.1',
 '15.4':'1.1',
-'16.0':'4.1',
-'16.1':'2.1',
-'16.2':'2.1',
-'16.3':'2.1'
+'16.0':'1000.1',
+'16.1':'10.1',
+'16.2':'10.1',
+'16.3':'10.1'
 }
 "

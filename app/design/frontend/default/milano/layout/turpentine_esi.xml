@@ -202,7 +202,18 @@
         </reference>
         -->
     </checkout_cart_index>
-
+    <checkout_onepage>
+      <turpentine_cache_flag value="0"/>
+    </checkout_onepage>
+    <checkout_onepage_billing>
+       <turpentine_cache_flag value="0"/>
+    </checkout_onepage_billing>
+    <checkout_onepage_quote>
+       <turpentine_cache_flag value="0"/>
+    </checkout_onepage_quote>
+    <checkout_onepage_savepayment>
+       <turpentine_cache_flag value="0"/>
+    </checkout_onepage_savepayment>
     <!-- We never cache anything in the checkout funnel -->
     <checkout_onepage_index>
         <turpentine_cache_flag value="0"/>

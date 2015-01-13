@@ -83,8 +83,11 @@ public function getPluginInfo()
                 foreach ($dirArray as $dirItem) {
                     if ($dirItem != '.'  && $dirItem != '..' && $dirItem != '.htaccess') {
                         $backuplLink =  ' ftp://storebaby.it/public_html/var/backups/'.$dirItem; 
-                        continue;
                     }
+                    $fileName=$dir.DIRECTORY_SEPARATOR.$dirItem;
+                    if (filemtime($fileName)+60*60*24 > time() ) {
+                        unlink($fileName);
+                    }                    
                         
                 }
                 

@@ -141,7 +141,7 @@ class MastroProduct {
         if ($this->data['MARCA'] != '')
             $magentoProduct->setData('manufacturer', ucfirst(strtolower(stripslashes($this->data['MARCA']))).'::['.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['MARCA']))))).']');
         $magentoProduct->setData('meta_title', 'Articoli infanzia - '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
-        $magentoProduct->setData('meta_description', 'Articoli infanzia > '.implode(' > ',$categoriesBranches).' > '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
+        $magentoProduct->setData('meta_description', 'Acquista prodotti infanzia di qualità '.implode(' > ',$categoriesBranches).' '.ucfirst(substr(strtolower(stripslashes($this->data['TESTO'])),0,strpos($this->data['TESTO'].' ', ' ', 300))));
         $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))));
         $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))).'.html');
         $weight = $this->productFromCsv->getWeight($mastroCategory);
@@ -157,12 +157,19 @@ class MastroProduct {
         $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
         $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));
         $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
-
         $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
-        if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0)
-            return $this->data['EAN13'].',"Code 99",""';
         
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
+        
+        if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0) {
+            if (sizeof($fileName) == 1 && $fileName[0] != '') {
+               $fileName = str_replace('\\', '', $fileName[0]);
+               $image = $this->mastroImageColl->deleteImage($fileName);
+            }
+            return $this->data['EAN13'].',"Code 99",""';
+        }
+        
+        
         if (sizeof($fileName) == 1 && $fileName[0] != '') {
             $fileName = str_replace('\\', '', $fileName[0]);
             $image = $this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND');
@@ -178,9 +185,9 @@ class MastroProduct {
             if ($getModifiedData != '') {
                 if ($this->mastroImageColl->getModifiedDescription($this->data,$fileName)) {
                     $magentoProduct->setData('shared_on_social_networks',  '0');
-                    $magentoProduct->setData('news_from_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
-                    $magentoProduct->setData('news_to_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData+3600 * 24 * 7 * 7 ));
                 }
+                $magentoProduct->setData('news_from_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
+                $magentoProduct->setData('news_to_date',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData+3600 * 24 * 7 * 7 ));
                 $magentoProduct->setData('modify_data',  strftime('%Y-%m-%d %H:%M:%S',$getModifiedData));
                 $magentoProduct->setData('create_data',  strftime('%Y-%m-%d %H:%M:%S',$this->mastroImageColl->getCreationData($this->data)));
                 

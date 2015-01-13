@@ -41,7 +41,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                      WHERE `scope` = "default" AND ( `path` LIKE "%/lesti_smtp/%" OR `path` LIKE "%/ident_general/%" OR `path` = "web/unsecure/base_url")') as $value) {
          $config [$value['path']] = $value['value'];
       }
-      $secondPath = $this->selectone('SELECT `path`,`value` FROM `core_config_data` WHERE `scope_id` = 2 AND `path` = "web/unsecure/base_url"');
+      $secondPath = $this->selectone('SELECT `value` FROM `core_config_data` WHERE `scope_id` = 2 AND `path` = "web/unsecure/base_url"',null,'value');
       $imageDir = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR .
               '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR .
               'media' . DIRECTORY_SEPARATOR . 'catalog' . DIRECTORY_SEPARATOR . 'product' . DIRECTORY_SEPARATOR;
@@ -92,6 +92,11 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             `attribute_code`="shared_on_social_networks"
       ',null,'attribute_id');
       //$shared_on_social_networks = 143;
+      $news_from_date = $this->selectone('
+            SELECT `attribute_id` FROM `eav_attribute` WHERE
+            `attribute_code`="news_from_date"
+      ',null,'attribute_id');
+      //$shared_on_social_networks = 93;
       $product_stmt = $this->exec_stmt('
          SELECT
          `catalog_product_entity`.`entity_id` ,
@@ -100,8 +105,13 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
          LEFT JOIN `catalog_product_entity_int` ON 
          `catalog_product_entity_int`.`entity_id`=`catalog_product_entity`.`entity_id` AND 
          `catalog_product_entity_int`.`attribute_id`= '.$shared_on_social_networks_id.'
-         WHERE `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1
-         ORDER BY `catalog_product_entity`.`updated_at` DESC
+         LEFT JOIN `catalog_product_entity_datetime` ON 
+         `catalog_product_entity_datetime`.`entity_id`=`catalog_product_entity`.`entity_id` AND 
+         `catalog_product_entity_datetime`.`attribute_id`= '.$news_from_date.'
+         WHERE 
+           ( `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1 ) AND  
+           ( `catalog_product_entity_datetime`.`value` IS NOT NULL OR `catalog_product_entity_datetime`.`value` != "" )
+         ORDER BY `catalog_product_entity_datetime`.`value` DESC
          ',null,false);
       // Full path to twitterOAuth.php (change OAuth to your own path)
       // create new instance
@@ -174,7 +184,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                $lnk = array('img'=>$baseUrl. '/media/catalog/product/' . $product['image']);
                $nt->postGP($product['name'] .' '. $tags . ' ' . $baseUrl . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
                if ($loginError != '')
-                  $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
+                  $this->log($baseUrl . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
             }
          }
          // Your Message
@@ -257,13 +267,13 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             $mail->Body = ' ';
             $mail->addAttachment($imageDir . $product['image']);        
             if ($mail->send()) {
-               $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " sent succesfully", "info");
+               $this->log($baseUrl . 'index.php/' . $product['url_path'] . " sent succesfully", "info");
                $this->exec_stmt('REPLACE INTO `catalog_product_entity_int` SET `value`=1 ,
                            `catalog_product_entity_int`.`attribute_id`= '.$shared_on_social_networks_id.',
                            `catalog_product_entity_int`.`entity_id` = ' . $product['entity_id'] . '
                             ');
             } else {
-               $this->log($config['web/unsecure/base_url'] . 'index.php/' . $product['url_path'] . " not sent succesfully " . $mail->ErrorInfo, "info");
+               $this->log($baseUrl . 'index.php/' . $product['url_path'] . " not sent succesfully " . $mail->ErrorInfo, "info");
             }
          }
       }

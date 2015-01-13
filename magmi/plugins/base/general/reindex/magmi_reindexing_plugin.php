@@ -58,6 +58,31 @@ class Magmi_ReindexingPlugin extends Magmi_GeneralImportPlugin
 			WHERE cpe.entity_id IS NULL";
 			$this->delete($sql);
 		}
+		if (intval(rand(0,7)) == 1) {	        
+		        $this->exec_stmt("TRUNCATE catalogsearch_fulltext");
+			$this->exec_stmt("TRUNCATE catalogsearch_query");
+			$this->exec_stmt("TRUNCATE core_cache");
+			$this->exec_stmt("TRUNCATE core_cache_tag");
+			$this->exec_stmt("TRUNCATE core_session");
+			$this->exec_stmt("TRUNCATE log_customer");
+			$this->exec_stmt("TRUNCATE log_visitor");
+			$this->exec_stmt("TRUNCATE log_visitor_info");
+			$this->exec_stmt("TRUNCATE log_url");
+			$this->exec_stmt("TRUNCATE log_url_info");
+			$this->exec_stmt("TRUNCATE log_quote");
+			$this->exec_stmt("TRUNCATE log_summary");
+			$this->exec_stmt("TRUNCATE log_summary_type");
+			$this->exec_stmt("TRUNCATE report_viewed_product_index");
+			$this->exec_stmt("TRUNCATE report_compared_product_index");
+			$this->exec_stmt("TRUNCATE report_event");
+			$this->exec_stmt("TRUNCATE index_event");
+			$this->exec_stmt("TRUNCATE index_process_event");
+			$this->exec_stmt("TRUNCATE catalog_compare_item");
+			$this->exec_stmt("TRUNCATE catalog_product_flat_1");
+			$this->exec_stmt("TRUNCATE catalog_product_flat_2");
+			$this->exec_stmt("TRUNCATE catalog_product_flat_3");
+			$this->exec_stmt("TRUNCATE dataflow_profile");
+		}
 	}
 	public function getPluginParamNames()
 	{

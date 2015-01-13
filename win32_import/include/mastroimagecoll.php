@@ -109,9 +109,11 @@ class MastroImageColl {
     }
     /**
      * Updates file size in db of a modified image
-     * @param string $parsedFilename
      */
-    public function saveData($parsedFilename,$data) {
+    public function saveData() {
+        $parsedFilename = $this->fileName['parsedFilename'];
+        $data = $this->mastroProduct->getData();
+                     
         $fileName = self::$imageNames[$parsedFilename];
         $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('INSERT OR IGNORE INTO product (code,ean13,modify_date,create_date) VALUES (
             \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\',
@@ -154,6 +156,18 @@ class MastroImageColl {
         
     }
     /**
+     * Deletes the image, used usually on C99
+     */
+    public function deleteImage($fileName) {
+         $this->fileName = $this->getFileName($fileName);
+         $this->createImagePath($this->fileName['filename']);
+         if (is_file($this->magentoFileName . $this->magentoPath)) {
+            if ($this->deleteFtp()) {
+               unlink($this->magentoFileName . $this->magentoPath);
+            }
+         }
+    }
+    /**
      * Resizes the image
      * @param string $fileName
      * @param string $convertCommand
@@ -174,7 +188,9 @@ class MastroImageColl {
                         
                 ) {
                     $this->imageConvert();
-                    $this->uploadFtp();
+                    if ($this->uploadFtp()) {
+                     $this->saveData();
+                    }
                 }
                 if (
                         !is_file($this->magentoFileName . $this->magentoPath) ||
@@ -300,9 +316,6 @@ class MastroImageColl {
                         $this->magentoUrl='';
                         if (is_file($this->magentoFileName . $this->magentoPath))
                             unlink($this->magentoFileName . $this->magentoPath);
-                    } else {
-                        if ($this->convertCommand == self::$mainImageConvert)
-                            $this->saveData($this->fileName['parsedFilename'],$this->mastroProduct->getData());
                     }
     }
     /**
@@ -359,8 +372,69 @@ class MastroImageColl {
                 }
                 $count++;
                 } while (($size == $fileSize || $fileSize == null) && $count < 10);
-                if ($count >=10)
+                $updated = true;
+                if ($count >=10) {
                     $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image:'.$this->mastroFile);
+                    $updated = false;
+                }
+                return $updated;
+    }
+    /**
+     * Deletes the image trought FTP
+     */
+    private function deleteFtp() {
+                $size = 0;
+                $count = 0;
+                $deleted = false;
+                do {
+                    $ftp = $this->mastroProduct->getProductFromCsv()->getFtp();
+                if (
+                        $this->magentoUrl != '' &&
+                        is_resource($ftp) &&
+                        $this->mastroProduct->getProductFromCsv()->getConfig(self::$mainImageConvert) !== false &&
+                        is_file($this->magentoFileName . $this->magentoPath)
+                        ) {
+                    ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
+                    foreach ($this->imagesSubDirs as $dir) {
+                        $fileList = ftp_nlist($ftp,'.');
+                        if (!in_array($dir, $fileList)) {
+                            ftp_mkdir($ftp,$dir);
+                        }
+                        ftp_chdir($ftp,$dir);
+   
+                    }
+                    $fileList = ftp_nlist($ftp,'.');
+                    if (
+                            !in_array($this->fileName['parsedFilename'] .$this->suffix . '.jpeg', $fileList)
+                        ) {
+                            echo 'Deleted image '.$this->fileName['filename'].PHP_EOL;
+                            $deleted = ftp_delete($ftp, $this->fileName['parsedFilename'] . $this->suffix.  '.jpeg', $this->magentoFileName . $this->magentoPath,  FTP_BINARY);
+                    }
+                    ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
+                    foreach ($this->imagesSubDirs as $dir) {
+                        $fileList = ftp_nlist($ftp,'.');
+                        if (!in_array($dir, $fileList)) {
+                            ftp_mkdir($ftp,$dir);
+                        }
+                        ftp_chdir($ftp,$dir);
+   
+                    }
+                    $fileList = ftp_nlist($ftp,'.');
+                    if (
+                           in_array($this->fileName['parsedFilename'] .$this->suffix . '.jpeg', $fileList)
+                             
+                        ) {
+                            $size = ftp_size ($ftp,$this->fileName['parsedFilename'] . $this->suffix . '.jpeg') != filesize($this->magentoFileName . $this->magentoPath);
+                    }
+                    ftp_chdir($ftp, $this->mastroProduct->getProductFromCsv()->getConfig('FTP_BASE_DIR'));
+                }
+                $count++;
+                } while ($deleted == true && $count < 10);
+                $updated = true;
+                if ($count >=10) {
+                    $this->mastroProduct->getProductFromCsv()->appendToLog('Error on image delete :'.$this->mastroFile);
+                    $updated = false;
+                }
+                return $updated;
     }
 }
-

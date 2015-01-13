@@ -42,7 +42,7 @@ class DBHelper
 		$this->_db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		$this->_db->setAttribute(PDO::ATTR_ORACLE_NULLS ,PDO::NULL_NATURAL);
 		$this->_db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-		
+
 		//set database debug mode to trace if necessary
 		$this->_debug=$debug;
 		$this->prepared=array();

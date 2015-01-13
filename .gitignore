@@ -15,3 +15,4 @@ win32_import/log/*
 win32_import/BMP/*
 win32_import/backups/*
 /nbproject/private/
+/magmi/plugins/extra/general/socialnotify/testdb.php

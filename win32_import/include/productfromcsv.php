@@ -294,11 +294,12 @@ corrupted NUMERIC
                 curl_setopt($ch, CURLOPT_HEADER,false);
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
                 curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
-                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600);
-                curl_setopt($ch,CURLOPT_TIMEOUT,3600);
+
                 
             }
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600);
+            curl_setopt($ch,CURLOPT_TIMEOUT,3600);
             curl_exec($ch);
             curl_close($ch);
         }
@@ -313,11 +314,10 @@ corrupted NUMERIC
                 curl_setopt($ch, CURLOPT_HEADER,false);
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
                 curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
-                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-                curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600);
-                curl_setopt($ch,CURLOPT_TIMEOUT,3600);
-                
             }
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600);
+            curl_setopt($ch,CURLOPT_TIMEOUT,3600);
             curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));
             curl_exec($ch);
             curl_close($ch);
