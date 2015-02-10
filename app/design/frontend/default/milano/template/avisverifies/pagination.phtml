@@ -1,0 +1,72 @@
+<?php // This Block is called to paginate reviews. ?> 
+<?php if(Mage::helper('avisverifies/Data')->isActive()): ?> 
+	<?php $p    = ($this->getRequest()->getParam('p'))? (int) $this->getRequest()->getParam('p') : 1; ?>	
+	<?php $o_av = Mage::getModel('avisverifies/reviews'); ?>
+	<?php $ProductId  = (int) $this->getRequest()->getParam('id_product');  ?> 
+    <?php // to use same code. we are going to call first page from our code. ?>
+        <?php $ProductId =($ProductId != 0)? $ProductId : $this->getData('productId'); ?>
+    <?php // to use same code. we are going to call first page from our code. ?>
+    <?php $o_av->idProduct = $ProductId; ?>
+    <?php $o_av->page = $p; ?>
+	<?php $reviews = $o_av->getProductReviews(); ?>
+    <?php $richSnipet = array('','','','','','',''); ?> 
+    <?php // $richSnipet[0] = ' itemprop="review" itemscope itemtype="http://schema.org/Review" '?>
+    <?php // $richSnipet[1] = ' itemprop="ratingValue" '?> 
+    <?php // $richSnipet[2] = ' itemprop="author" '?>    
+    <?php // $richSnipet[3] = ' <meta itemprop="datePublished" content="%s"> '?>
+    <?php // $richSnipet[4] = ' itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating" '?>
+    <?php // $richSnipet[5] = ' itemprop="bestRating" '?>
+    <?php // $richSnipet[6] = ' itemprop="description" '?>
+    
+	<?php foreach($reviews as $k_review=>$review): ?>	
+        <style>.display-all-comments{padding-left: 6px;margin-left: 30px; display: block; font-style:italic}</style>
+        <div class="reviewAV" <?php echo $richSnipet[0] ?>>
+            <div class="reviewInfosAV">
+                <div style="text-transform:capitalize" <?php echo $richSnipet[2] ?>>
+                    <?php echo $o_av->AV_sgbd_decode($review->getData('customer_name')) ?>
+                 </div>
+                 <div> &nbsp;
+                    <?php echo $this->__('the')?>
+                    <?php $date = date($this->__('d/m/Y'),($review->getData('horodate')))?>
+                    <?php echo sprintf($richSnipet[3], date("Y-m-d",$review->getData('horodate'))) ?>
+                    <?php echo $date?> 
+                 </div>
+                 <div class="rateAV" <?php echo $richSnipet[4] ?>>
+                    <img src="<?php echo $this->getSkinUrl('images/avisverifies/etoile'.$review->getData('rate').'.png')?>" width="80" height="15" />
+                    <span <?php echo $richSnipet[1] ?>><?php echo $review->getData('rate')?></span>/ <span <?php echo $richSnipet[5] ?>>5</span>
+                 </div>
+                </div>	
+                <div class="triangle-border top" <?php echo $richSnipet[6] ?>>
+                    <?php echo $this->htmlEscape($o_av->AV_sgbd_decode($review->getData('review'))) ?>
+                </div>
+            <?php  $discussions = $o_av->discussion($review->getData('discussion'),$review);?>
+            <?php  $k_discussion = 0; ?>
+            <?php  if($discussions): ?>
+                <?php  foreach($discussions as $k_discussion=>$discussion): ?>
+                    <?php $styleNumber  = ($k_discussion > 0)? 'none':'block' ?>				
+                    <div class="triangle-border top answer" style="display:<?php echo $styleNumber ?>">
+                        <span> &rsaquo;
+                            <?php echo $this->__('Comments of')?>
+                            <b style="text-transform:capitalize; font-weight:normal">
+                                <?php echo $this->__($discussion['origine'])?>
+                            </b>
+                            <?php echo $this->__('on')?>
+                            <?php echo date($this->__('d/m/Y'),$discussion['horodate'])?>
+                        </span>
+                        <p class="answer-bodyAV">
+                            <?php echo $this->htmlEscape($o_av->AV_sgbd_decode($discussion['commentaire'])) ?>
+                        </p>
+                    </div>						
+                <?php endforeach; ?>
+                <?php if($k_discussion > 0):?>
+                    <a href="javascript:void(0)" onclick="window.avisVerifies.showComments(this)" style="display:block" class="display-all-comments">
+                        <?php echo $this->__('Show conversation')?>
+                    </a>
+                    <a href="javascript:void(0)" onclick="window.avisVerifies.hideComments(this)" style="display:none" class="display-all-comments">
+                        <?php echo $this->__('Hide conversation')?>
+                    </a>
+                <?php endif; ?>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

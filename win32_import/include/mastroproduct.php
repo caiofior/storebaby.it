@@ -137,11 +137,23 @@ class MastroProduct {
         $magentoProduct->setData('xus_skus',$this->getReSkus($key));
         if ($this->data['DESCRIZIONE'] == '')
             return $this->data['EAN13'].',"Missing description",""';
+        if ($this->data['TESTO'] == '')
+            $this->data['TESTO']=$this->data['DESCRIZIONE'];
+        if ($mastroCategory == '15.1' || $mastroCategory == '15.2')
+	    $this->data['DESCRIZIONE'] = 'Passeggino '.$this->data['DESCRIZIONE'];
         $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
         if ($this->data['MARCA'] != '')
             $magentoProduct->setData('manufacturer', ucfirst(strtolower(stripslashes($this->data['MARCA']))).'::['.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['MARCA']))))).']');
-        $magentoProduct->setData('meta_title', 'Articoli infanzia - '.ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
-        $magentoProduct->setData('meta_description', 'Acquista prodotti infanzia di qualità '.implode(' > ',$categoriesBranches).' '.ucfirst(substr(strtolower(stripslashes($this->data['TESTO'])),0,strpos($this->data['TESTO'].' ', ' ', 300))));
+        $magentoProduct->setData('meta_title',
+                ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))).' '.
+                ucfirst(strtolower(stripslashes($this->data['MARCA'])))
+        );
+        $magentoProduct->setData('meta_description',
+                ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))).' a soli '.
+                str_replace(',','.',str_replace('.','',$this->data['VENDITA'])).' euro. Vasto assortimento di '.
+                array_shift($categoriesBranches).' della '.ucfirst(strtolower(stripslashes($this->data['MARCA']))).
+                ' su storebaby.it. Acquista online oggi stesso!'
+        );
         $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))));
         $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))).'.html');
         $weight = $this->productFromCsv->getWeight($mastroCategory);

@@ -1,0 +1,25 @@
+
+<?php if(Mage::helper('avisverifies/Data')->isActive()): // Our Display. ?>
+    <?php $o_av = Mage::getModel('avisverifies/reviews'); ?>
+    <?php $o_av->idProduct = $this->getProduct()->getId(); ?>
+    <?php $o_av->skuProduct = $this->getProduct()->getSku(); ?>
+    <?php $statsProduct = $o_av->getStatsProduct(); ?>
+    <?php $countReviews = $statsProduct->getData('nb_reviews'); ?>
+    <?php $getNote = $o_av->formatNote($statsProduct->getData('rate')); ?>
+    <?php if($countReviews>0):	?>
+        <div class="ratings">
+            <div class="rating-box">
+                <div class="rating" style="width:<?php echo ($getNote*20)."%" ?>"></div>
+            </div>
+            <p class="rating-link">
+                <a href="<?php echo $this->getReviewsUrl() ?>" id="AV_button">
+                    <?php if($countReviews == 1): ?>
+                        <?php echo $this->__('%d Review', $countReviews) ?>
+                    <?php else: ?>
+                        <?php echo $this->__('%d Reviews', $countReviews) ?>
+                    <?php endif; ?>
+                </a>
+            </p>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

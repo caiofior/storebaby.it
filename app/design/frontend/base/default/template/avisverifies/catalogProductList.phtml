@@ -1,0 +1,6 @@
+<?php if(Mage::helper('avisverifies/Data')->addReviewToProductPage()): // Our Display. ?>
+    <?php  echo Mage::app()->getLayout()->createBlock('core/template')
+            ->setData('productId',$this->getData('productId'))
+            ->setTemplate('avisverifies/reviewProductList.phtml')
+            ->toHtml();  ?>
+<?php endif; ?>

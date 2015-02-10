@@ -113,7 +113,7 @@ class MastroImageColl {
     public function saveData() {
         $parsedFilename = $this->fileName['parsedFilename'];
         $data = $this->mastroProduct->getData();
-                     
+        unset($data['qty']);             
         $fileName = self::$imageNames[$parsedFilename];
         $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('INSERT OR IGNORE INTO product (code,ean13,modify_date,create_date) VALUES (
             \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\',

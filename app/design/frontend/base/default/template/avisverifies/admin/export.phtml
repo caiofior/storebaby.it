@@ -1,0 +1,26 @@
+
+<style>
+    #export_storetoexport{width: 274px !important;background-color: #DBDBDB;}
+    #export_websitetoexport{width: 274px !important;background-color: #DBDBDB;}
+</style>
+
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo $this->__('Verified Reviews Form') ?></h3></td>
+            <td class="a-right">
+                <button onclick="editForm.submit()" class="scalable save" type="button"><span><?php echo $this->__('Submit') ?></span></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entry-edit">
+    <?php echo Mage::app()->getLayout()->createBlock('adminhtml/system_config_switcher')->toHtml() ?>
+    <form id="edit_form" name="edit_form" method="post" action="<?php echo $this->getUrl('*/*/save')?>">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+         <?php echo Mage::app()->getLayout()->createBlock('avisverifies/adminhtml_form_export_export')->toHtml() ?>
+    </form>
+</div>
+<script type="text/javascript">
+    var editForm = new varienForm('edit_form');
+</script>

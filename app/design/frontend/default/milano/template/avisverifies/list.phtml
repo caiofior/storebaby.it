@@ -1,0 +1,85 @@
+<?php if(Mage::helper('avisverifies/Data')->isActive()): // Our Display. ?>
+    <?php $o_av = Mage::getModel('avisverifies/reviews'); // our custom reviews model ?>
+    <?php $ProductId = $this->getData('productId'); ?>
+    <?php $o_av->idProduct = $ProductId; ?>
+    <?php $o_av->page = 1; ?>
+    <?php $statsProduct = $o_av->getStatsProduct(); ?>
+    <?php $countReviews = $statsProduct->getData('nb_reviews'); ?>
+    <?php $getNote = $o_av->formatNote($statsProduct->getData('rate')); ?>
+    <?php $maxPages = $o_av->getProductReviews(); ?>
+    <?php $maxPages = $maxPages->getLastPageNumber();?>
+
+    <?php $richSnipet = array('','',''); ?>
+    <?php // $richSnipet[0] = ' itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" '?>
+    <?php // $richSnipet[1] = ' itemprop="ratingValue" '?>
+    <?php // $richSnipet[2] = ' itemprop="reviewCount" '?>
+
+    <?php // $_product_AV = Mage::getModel('avisverifies/product')->load($ProductId); ?>
+
+    <?php if($countReviews): ?>
+        <div class="box-collateral box-reviews" id="customer-reviews">
+            <?php // info pour le js ajax	?>
+                <?php $tmp = Mage::getUrl('AvisVerifies/index/ajaxload', array('id_product' => $o_av->idProduct)) ?>
+                <input id="avisVarifiesAjaxUrl"   type="hidden" value="<?php echo $tmp ?>" />
+            <?php // info pour le js ajax	?>
+            <div id="av_more_info_tabs"></div>
+            <div class="clear"></div>
+            <div id="idTabavisverifies">
+                <div id="headerAV">
+                    <a name="hautavreview"></a>
+                    <?php echo $this->__('Product Reviews')?>
+                </div>
+                <?php $skinUrl = $this->getSkinUrl('images/avisverifies/Sceau_45'.Mage::app()->getLocale()->getLocaleCode().'.png') ?>				
+                <div id="under-headerAV"  style="background: url('<?php echo $skinUrl ?>') no-repeat #f1f1f1;">
+                    <div id="aggregateRatingAV" <?php echo $richSnipet[0] ?>>
+                        <div>
+                            <b><?php echo $this->__('Number of reviews')?></b>
+                            : <span <?php echo $richSnipet[2] ?>><?php echo $countReviews?></span>
+                        </div>
+                        <div>
+                            <b><?php echo $this->__('Average rating')?></b>
+                             : <span <?php echo $richSnipet[1] ?>><?php echo $getNote?></span> /5 
+                            <div class="ratingWrapper" style="display:inline-block;">
+                                <div class="ratingInner" style="width:<?php echo ($getNote*20)."%"?>;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="certificatAV">			
+                        <div>
+                            <?php $href = Mage::getStoreConfig('avisverifies/system/urlcertificat'); ?>
+                            <a href="<?php echo $href ?>" target="_blank" class="display_certificat_review" >
+                                <?php echo $this->__('View the trust certificate')?>
+                            </a>
+                        </div>
+                    </div>	
+                  <div class="clear"></div>
+                </div>		
+                <div id="ajax_comment_content">
+                    <?php  echo Mage::app()->getLayout()->createBlock('core/template')
+                        ->setData('productId',$ProductId)->setTemplate('avisverifies/pagination.phtml')
+                        ->toHtml();  ?>
+                </div>
+                <?php if($maxPages > 1): ?>
+                    <button onclick="window.avisVerifies.Ajax()" id="av_load_next_page" data-page="1" data-page-last="<?php echo $maxPages ?>">
+                        <?php echo $this->__('More Reviews...')?>
+                    </button>
+                    <img id="avisVarifiesAjaxImage" src="<?php echo $this->getSkinUrl('images/avisverifies/pagination-loader.gif')?>" style="display:none;margin: 10px 0px 0px 10px;" />
+                <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+    <?php else: ?>
+        <div class="box-collateral box-reviews" id="customer-reviews">
+            <div id="idTabavisverifies">
+                <div id="headerAV">
+                    <a name="hautavreview"></a>
+                    <?php echo $this->__('Product Reviews')?>
+                </div>
+                <?php $skinUrl = $this->getSkinUrl('images/avisverifies/Sceau_45'.Mage::app()->getLocale()->getLocaleCode().'.png') ?>
+                <div id="under-headerAV"  style="background: url('<?php echo $skinUrl ?>') no-repeat #f1f1f1;">
+                    <p style="padding: 17px 40px 40px 56px;"><?php echo $this->__("No reviews for this product.")?></p>
+                </div>
+             </div>   
+        </div>  
+    <?php endif; ?>
+<?php endif; ?>

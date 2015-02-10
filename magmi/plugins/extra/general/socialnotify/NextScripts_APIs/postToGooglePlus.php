@@ -4,9 +4,9 @@ Project Name: NextScripts Google+ AutoPoster
 Project URL: http://www.nextscripts.com/google-plus-automated-posting
 Description: Automatically posts to your Google+ profile and/or Google+ page.
 Author: NextScripts, Inc
-Version: 2.15.43 (July 22, 2014)
+Version: 2.15.64 (Jan 28, 2015)
 Author URL: http://www.nextscripts.com
-Copyright 2012-2013  Next Scripts, Inc
+Copyright 2012-2016  Next Scripts, Inc
 **** Please Note: This library is depreciated and will be no longer supported or updated after May, 20 2015. 
 **** Please update to the Universal SNAP API - http://www.nextscripts.com/snap-api/
 #############################################################################*/
@@ -33,6 +33,7 @@ if (!function_exists("nxs_mkImgNm")){ function nxs_mkImgNm($fn, $cType){ $iex = 
   $fn = str_replace($iex, '', $fn); if (isset($map[$cType])){return $fn.$map[$cType];} else return $fn.".jpg";    
 }}
 if (!function_exists("nxs_jsonFix")) { function nxs_jsonFix(&$item, &$key){ $item = (substr($item, -4)=='E+12')?(number_format($item, 0, '', '')):$item; }}
+
 //## Google
 // Back Version 1.x Compatibility
 if (!function_exists("doConnectToGooglePlus")) {function doConnectToGooglePlus($connectID, $email, $pass){ return doConnectToGooglePlus2($email, $pass);}}
@@ -85,7 +86,7 @@ if (!class_exists('nxsAPI_GP')){ class nxsAPI_GP{ var $ck = array(); var $debug 
         if ($srv == 'YT') $lpURL = 'https://accounts.google.com/ServiceLogin?service=oz&checkedDomains=youtube&checkConnection=youtube%3A271%3A1%2Cyoutube%3A69%3A1&continue=https://www.youtube.com/&hl=en-US';   
         if ($srv == 'BG') $lpURL = 'https://accounts.google.com/ServiceLogin?service=blogger&passive=1209600&continue=https://www.blogger.com/home&followup=https://www.blogger.com/home&ltmpl=start';
         $hdrsArr = $this->headers('https://accounts.google.com/'); $rep = nxs_remote_get($lpURL, array('headers' => $hdrsArr, 'httpversion' => '1.1', 'sslverify'=>$sslverify)); 
-        if (is_nxs_error($rep)) return false; $ck = $rep['cookies']; $contents = $rep['body']; //if ($this->debug) prr($contents); 
+        if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR X ="; return $badOut; } $ck = $rep['cookies']; $contents = $rep['body']; //if ($this->debug) prr($contents); 
         //## GET HIDDEN FIELDS
         $md = array(); $flds  = array();
         while (stripos($contents, '<input')!==false){ $inpField = trim(CutFromTo($contents,'<input', '>')); $name = trim(CutFromTo($inpField,'name="', '"'));
@@ -96,7 +97,7 @@ if (!class_exists('nxsAPI_GP')){ class nxsAPI_GP{ var $ck = array(); var $debug 
         //## ACTUAL LOGIN    
         $hdrsArr = $this->headers($lpURL, 'https://accounts.google.com', 'POST'); 
         $advSet = array('headers' => $hdrsArr, 'httpversion' => '1.1', 'timeout' => 45, 'redirection' => 0, 'cookies' => $ck, 'body' => $flds, 'sslverify'=>$sslverify);// prr($advSet);
-        $rep = nxs_remote_post('https://accounts.google.com/ServiceLoginAuth', $advSet); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; } $ck = $rep['cookies']; //prr($rep);
+        $rep = nxs_remote_post('https://accounts.google.com/ServiceLoginAuth', $advSet); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR 3="; return $badOut; } $ck = $rep['cookies']; //prr($rep);
         $unlockCaptchaMsg = "Your Google+ account is locked for the new applications to connect. Please follow this instructions to unlock it: <a href='http://www.nextscripts.com/support-faq/#q21' target='_blank'>http://www.nextscripts.com/support-faq/#q21</a> - Question #2.1.";
         if ($rep['response']['code']=='200' && !empty($rep['body'])) { $rep['body'] = str_ireplace('\'CREATE_CHANNEL_DIALOG_TITLE_IDV_CHALLENGE\': "Verify your identity"', "", $rep['body']);
             if (stripos($rep['body'],'class="error-msg"')!==false) return strip_tags(CutFromTo(CutFromTo($rep['body'],'class="error-msg"','/span>'), '>', '<'));
@@ -114,25 +115,33 @@ if (!class_exists('nxsAPI_GP')){ class nxsAPI_GP{ var $ck = array(); var $debug 
           $rep = nxs_remote_get($repLoc, array('headers' => $hdrsArr, 'redirection' => 0, 'httpversion' => '1.1', 'cookies' => $ck, 'sslverify'=>$sslverify));     
           if (!is_nxs_error($rep) && $srv == 'YT' && $rep['response']['code']=='302' && !empty($rep['headers']['location'])) { $repLoc = $rep['headers']['location'];             
             $rep = nxs_remote_get($repLoc, array('headers' => $hdrsArr, 'redirection' => 0, 'httpversion' => '1.1', 'cookies' => $ck, 'sslverify'=>$sslverify)); $ck = $rep['cookies'];                             
-          } if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; } $contents = $rep['body']; $rep['body'] = '';          
+          } if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR 4="; return $badOut; } $contents = $rep['body']; $rep['body'] = '';          
           //## BG Auth redirect          
           if ($srv != 'GP' && stripos($contents, 'meta http-equiv="refresh"')!==false) {$rURL = htmlspecialchars_decode(CutFromTo($contents,';url=','"')); 
             if ($this->debug) echo "[".$srv."] R to: ".$rURL."<br/>\r\n";  $hdrsArr = $this->headers($repLoc);// prr($hdrsArr);
             $rep = nxs_remote_get($rURL, array('headers' => $hdrsArr, 'redirection' => 0, 'httpversion' => '1.1', 'sslverify'=>$sslverify));//  prr($rep);
-            if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; } $ck = $rep['cookies'];  
+            if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR 5="; return $badOut; } $ck = $rep['cookies'];
+            if (!empty($rep['headers']['location'])) { $rURL = $rep['headers']['location'];
+              $rep = nxs_remote_get($rURL, array('headers' => $hdrsArr, 'redirection' => 0, 'httpversion' => '1.1',  'cookies' => $ck, 'sslverify'=>$sslverify));
+              if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR 6="; return $badOut; }              
+              if (!empty($rep['headers']['location'])) { $rURL = $rep['headers']['location']; 
+                $rep = nxs_remote_get($rURL, array('headers' => $hdrsArr, 'redirection' => 0, 'httpversion' => '1.1',  'cookies' => $ck, 'sslverify'=>$sslverify)); 
+                if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR 7="; return $badOut; }
+              } if (!empty($rep['headers']['location'])) $ck = $rep['cookies']; else $rep['cookies'] = $ck;
+            } $ck = $rep['cookies'];  
           } $this->ck = $ck; return false;  
         } return 'Unexpected Error, Please contact support';  
     }
     
-    function urlInfo($url){  $rnds = rndString(13); $url = urlencode($url); $sslverify = false; $ck = $this->ck; 
+    function urlInfo($url){  $rnds = rndString(13); $url = urlencode($url); /* NXSIDX2 */ $sslverify = false; $ck = $this->ck; 
       $hdrsArr = $this->headers('https://plus.google.com/'); $rep = nxs_remote_get('https://plus.google.com/', array('headers' => $hdrsArr, 'httpversion' => '1.1', 'cookies' => $ck, 'sslverify'=>$sslverify)); 
       if (is_nxs_error($rep)) return false; /* if (!empty($rep['cookies'])) $ck = $rep['cookies']; */ $contents = $rep['body']; $at = CutFromTo($contents, 'csi.gstatic.com/csi","', '",');     
       $spar='f.req=%5B%22'.$url.'%22%2Cfalse%2Cfalse%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Ctrue%5D&at='.$at."&";
       $gurl = 'https://plus.google.com/u/0/_/sharebox/linkpreview/?soc-app=1&cid=0&soc-platform=1&hl=en&rt=j'; $hdrsArr = $this->headers('https://plus.google.com/', 'https://plus.google.com', 'POST', true);
       $advSet = array('headers' => $hdrsArr, 'httpversion' => '1.1', 'timeout' => 45, 'redirection' => 0, 'cookies' => $ck, 'body' => $spar, 'sslverify'=>$sslverify);//  prr($advSet);    
-      $rep = nxs_remote_post($gurl, $advSet); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; }  $contents = $rep['body']; $json = prcGSON($contents); 
+      $rep = nxs_remote_post($gurl, $advSet); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; } $contents = $rep['body']; $json = prcGSON($contents); 
       if (version_compare(phpversion(), '5.4.0', '>=')) $arr = json_decode($json, true, 512, JSON_BIGINT_AS_STRING); 
-        else  { $arr = json_decode($json, true);  if (!is_array($arr)) return; array_walk_recursive($arr,"nxs_jsonFix"); } if (!is_array($arr)) return;      
+        else  { $arr = json_decode($json, true);  if (!is_array($arr)) return; array_walk_recursive($arr,"nxs_jsonFix"); } if (!is_array($arr)) return;  //   prr($contents); die();
       if (!isset($arr[0]) || !is_array($arr[0])) return;  if (!empty($arr[0][1][2]) && is_array($arr[0][1][2])) $arr = $arr[0][1]; elseif (!empty($arr[0][0][2]) && is_array($arr[0][0][2])) $arr = $arr[0][0];      
       if (!isset($arr[4]) || !is_array($arr[4])) return; if (!isset($arr[4][0]) || !is_array($arr[4][0])) return; 
       $out['link'] = $arr[4][0][1]; $out['title'] = $arr[4][0][3]; $out['domain'] = $arr[4][0][4];  $out['txt'] = $arr[4][0][7];   
@@ -141,9 +150,11 @@ if (!class_exists('nxsAPI_GP')){ class nxsAPI_GP{ var $ck = array(); var $debug 
         if (isset($arr[2][1][24][3])) $out['imgType'] = $arr[2][1][24][3];
         if (isset($arr[2][1][41][0])) $out['img'] = $arr[2][1][41][0][1]; elseif (isset($arr[2][1][41][1])) $out['img'] = $arr[2][1][41][1][1];
       } $out['title'] = str_replace('&#39;',"'",$out['title']); $out['txt'] = str_replace('&#39;',"'",$out['txt']);   
-      $out['txt'] = html_entity_decode($out['txt'], ENT_COMPAT, 'UTF-8');  $out['title'] = html_entity_decode($out['title'], ENT_COMPAT, 'UTF-8');   
-      if (isset($arr[5][0]) && is_array($arr[5][0])){$out['arr'] = $arr[5][0];} 
-      if (isset($out['arr'][7])){ $liar = $out['arr'][7]; reset($liar); $liarOne = key($liar); if (!empty($liarOne)) $out['arr'][7][$liarOne][10] = array();}
+      $out['txt'] = html_entity_decode($out['txt'], ENT_COMPAT, 'UTF-8');  $out['title'] = html_entity_decode($out['title'], ENT_COMPAT, 'UTF-8'); //  prr($arr);
+      if (isset($arr[5][0]) && isset($arr[5][0][6]) && isset($arr[5][0][6][7])) $arr[5][0][6][7] = ''; 
+      if (isset($arr[5][0]) && is_array($arr[5][0])){$out['arr'] = $arr[5][0];} $out['arr'][6][0] = (int) $out['arr'][6][0];  $out['arr'][6][4][0] = "ZZZZIYYYIZZZ"; $out['arr'][6][7] = "ZZZZIYYYIZZZ";
+      if (isset($out['arr'][7])){ $liar = $out['arr'][7]; reset($liar); $liarOne = (int)key($liar);// var_dump($liarOne);
+      if (!empty($liarOne)) { $out['arr'][7][$liarOne][7] = array(); } } // prr($out['arr']);
       return $out;
     }
     function getCCatsGP($commPageID){ $items = '';   $sslverify = false; $ck = $this->ck; 
@@ -207,7 +218,8 @@ if (!class_exists('nxsAPI_GP')){ class nxsAPI_GP{ var $ck = array(); var $debug 
       if (!isset($lnk['txt'])) $lnk['txt'] = '';     $txttxt = $lnk['txt'];  $txtStxt = str_replace('%5C', '%5C%5C%5C%5C%5C%5C%5C', $lnk['txt']);
       if ($isPostToComm) $proOrCommTxt = "%5B%22".$commPageID."%22%2C%22".$commPageID2."%22%5D%5D%2C%5B%5B%5Bnull%2Cnull%2Cnull%2C%5B%22".$commPageID."%22%5D%5D%5D"; else $proOrCommTxt = "%5D%2C%5B%5B%5Bnull%2Cnull%2C1%5D%5D%2Cnull";        
       if (!empty($lnk['link']) && isset($lnk['arr']) ) { 
-        $urlInfo = urlencode(str_replace('\/', '/', str_replace('##-KXKZK-##', '\""', str_replace('""', 'null', str_replace('\""', '##-KXKZK-##', json_encode($lnk['arr']))))));
+        $urlInfo = urlencode(str_replace('\/', '/', str_replace('##-KXKZK-##', '\""', str_replace('""', 'null', str_replace('\""', '##-KXKZK-##', json_encode($lnk['arr'])))))); 
+        $urlInfo = str_replace('ZZZZIYYYIZZZ', '',$urlInfo);
         $spar="f.req=%5B%22".$msg."%22%2C%22oz%3A".$pageID.".".$rnds.".0%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Ctrue%2C%5B%5D%2Cfalse%2Cnull%2Cnull%2C%5B%5D%2Cnull%2Cfalse%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cfalse%2Cfalse%2Cfalse%2Cnull%2Cnull%2Cnull%2Cnull%2C".$urlInfo."%2Cnull%2C%5B".$proOrCommTxt."%5D%2Cnull%2Cnull%2C2%2Cnull%2Cnull%2Cnull%2C%22!".$bigCode."%22%2Cnull%2Cnull%2Cnull%2C%5B%5D%2C%5B%5Btrue%5D%5D%2Cnull%2C%5B%5D%5D&at=".$at."&";
         
       }
@@ -240,11 +252,11 @@ if (!class_exists('nxsAPI_GP')){ class nxsAPI_GP{ var $ck = array(); var $debug 
     }
     //## Just Message    
     else $spar="f.req=%5B%22".$msg."%22%2C%22oz%3A".$pageID.".".$rnds.".6%22%2Cnull%2Cnull%2Cnull%2Cnull%2C%22%5B%5D%22%2Cnull%2Cnull%2Ctrue%2C%5B%5D%2Cfalse%2Cnull%2Cnull%2C%5B%5D%2Cnull%2Cfalse%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cfalse%2Cfalse%2Cfalse%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2C%5B".$proOrCommTxt."%5D%2Cnull%2Cnull%2C2%2Cnull%2Cnull%2Cnull%2C%22!".$bigCode."%22%2Cnull%2Cnull%2Cnull%2C%5B%5D%2C%5B%5Btrue%5D%5D%2Cnull%2C%5B%5D%5D&at=".$at."&";    
-    //## POST
+    //## POST  prr(urldecode($spar));
     $spar = str_ireplace('+','%20',$spar); $spar = str_ireplace(':','%3A',$spar);  $hdrsArr = $this->headers($refPage, 'https://plus.google.com', 'POST', true); $hdrsArr['X-Same-Domain']='1'; 
+    //$ckt = $ck; $ck = array(); $no = array("LSID", "ACCOUNT_CHOOSER", "GoogleAccountsLocale_session", "GAPS", "GALX"); foreach ($ckt as $c) {if (!in_array($c->name, $no)) $ck[]=$c;}
     $advSet = array('headers' => $hdrsArr, 'httpversion' => '1.1', 'timeout' => 45, 'redirection' => 0, 'cookies' => $ck, 'body' => $spar, 'sslverify'=>$sslverify);
-    $rep = nxs_remote_post($gpp, $advSet); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR POST"; return $badOut; }  $contents = $rep['body']; // prr($advSet);    prr($rep);
-        
+    $rep = nxs_remote_post($gpp, $advSet); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR POST"; return $badOut; }  $contents = $rep['body']; // prr($advSet);    prr($rep);        
     if ($rep['response']['code']=='403') return "Error: You are not authorized to publish to this page. Are you sure this is even a page? (".$pageID.")";
     if ($rep['response']['code']=='404') return "Error: Page you are posting is not found.<br/><br/> If you have entered your page ID as 117008619877691455570/117008619877691455570, please remove the second copy. It should be one number only - 117008619877691455570";
     if ($rep['response']['code']=='400') return "Error (400): Something is wrong, please contact support";
@@ -262,7 +274,7 @@ if (!class_exists('nxsAPI_GP')){ class nxsAPI_GP{ var $ck = array(); var $debug 
       $hdrsArr = $this->headers($refPage); $rep = nxs_remote_get($gpp, array('headers' => $hdrsArr, 'httpversion' => '1.1', 'cookies' => $ck, 'sslverify'=>$sslverify)); //prr($ck); prr($rep);// die();
       if (is_nxs_error($rep)) return false; /*if (!empty($rep['cookies'])) $ck = $rep['cookies']; */ $contents = $rep['body']; if ( stripos($contents, 'Error 404')!==false) return "Error: Invalid Blog ID - Blog with ID ".$blogID." Not Found";
       $jjs = CutFromTo($contents, 'BloggerClientFlags=','_layoutOnLoadHandler'); $j69 = ''; // prr($jjs); //  prr($contents); echo "\r\n"; echo "\r\n";    
-      for ($i = 54; $i <= 99; $i++) { if ($j69=='' && strpos($jjs, $i.':"')!==false){ $j69 = CutFromTo($jjs, $i.':"','"'); 
+      for ($i = 54; $i <= 129; $i++) { if ($j69=='' && strpos($jjs, $i.':"')!==false){ $j69 = CutFromTo($jjs, $i.':"','"'); 
         if (strpos($j69, ':')===false || (strpos($j69, '/')!==false) || (strpos($j69, ' ')!==false) || (strpos($j69, '\\')!==false)) $j69 = '';}
       } $gpp = "https://www.blogger.com/blogger_rpc?blogID=".$blogID; $refPage = "https://www.blogger.com/blogger.g?blogID=".$blogID;
       $spar = '{"method":"editPost","params":{"1":1,"2":"","3":"","5":0,"6":0,"7":1,"8":3,"9":0,"10":2,"11":1,"13":0,"14":{"6":""},"15":"en","16":0,"17":{"1":'.date("Y").',"2":'.date("n").',"3":'.date("j").',"4":'.date("G").',"5":'.date("i").'},"20":0,"21":"","22":{"1":1,"2":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":"0"}},"23":1},"xsrf":"'.$j69.'"}';      
@@ -317,5 +329,6 @@ if (!class_exists('nxsAPI_GP')){ class nxsAPI_GP{ var $ck = array(); var $debug 
       if ($rep['response']['code']=='200' && $contents = '{"code": "SUCCESS"}') return array("isPosted"=>"1", "postID"=>'', 'postURL'=>'', 'pDate'=>date('Y-m-d H:i:s')); else return $rep['response']['code']."|".$contents;     
     }              
 }}
+
 
 ?>

@@ -1,0 +1,10 @@
+<?php if(Mage::helper('avisverifies/Data')->isActive()): // Our Display. ?>
+    <?php $order = $this->getOrder()  ?>
+    <?php $url = '//www.netreviews.eu/index.php?action=act_order&idWebsite=' ?>
+    <?php $orderId = $order->getData('entity_id') ?>
+    <?php $orderTotal = $order->getData('base_grand_total') * 100; ?>
+    <?php $idWebsite = Mage::getStoreConfig('avisverifies/system/idwebsite'); ?>
+    <?php $langue = Mage::app()->getLocale()->getLocaleCode(); ?>
+    <?php $url .= $idWebsite.'&langue='.$langue.'&refCommande='.$orderId.'&montant='.$orderTotal ?>
+    <img height='1' hspace='0' style="position: absolute; bottom: 0; right: 0;" src='<?php echo $url ?>' />
+<?php endif;?>

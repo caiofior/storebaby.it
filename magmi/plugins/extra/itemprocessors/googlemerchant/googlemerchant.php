@@ -35,7 +35,8 @@ class GoogleMerchant extends Magmi_ItemProcessor
         'sale_price'=>null,
         'availability'=>null,
         'brand'=>null,
-        'gtin'=>null,
+        'mpn'=>null,
+        //'gtin'=>null,
         'shipping'=>null
 
     );
@@ -144,8 +145,10 @@ LIMIT 1
             $googleMerchantData['id']=$item['sku'];
             if ($item['name'] == '')
                 return true;
+            if (!is_numeric($item['qty']) || $item['qty'] < 1)
+                return true;
             $googleMerchantData['title']=str_replace("\t",' ',$item['name']);
-            $googleMerchantData['description']=str_replace("\t",' ',$item['description']);
+            $googleMerchantData['description']=substr(str_replace("\t",' ',$item['description']),0,500);
             $categories = preg_split('/[,\/]/',$item['categories']);
             $categories[]='Default Category';
             $category = '';
@@ -181,7 +184,8 @@ LIMIT 1
             $googleMerchantData['sale_price']=$salePrice;
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
-            $googleMerchantData['gtin']=$item['sku'];
+            $googleMerchantData['mpn']=substr($googleMerchantData['brand'],0,3).substr($item['sku'],8,3);
+            //$googleMerchantData['gtin']=$item['sku'];
             
             $shipExpense = '9.9';
             foreach($this->tableRates as $tWeight => $tPrice)

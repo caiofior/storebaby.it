@@ -111,6 +111,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
          WHERE 
            ( `catalog_product_entity_int`.`value` IS NULL OR `catalog_product_entity_int`.`value` != 1 ) AND  
            ( `catalog_product_entity_datetime`.`value` IS NOT NULL OR `catalog_product_entity_datetime`.`value` != "" )
+         GROUP BY `catalog_product_entity`.`entity_id`
          ORDER BY `catalog_product_entity_datetime`.`value` DESC
          ',null,false);
       // Full path to twitterOAuth.php (change OAuth to your own path)
@@ -183,12 +184,12 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                // Image URL
                $lnk = array('img'=>$baseUrl. '/media/catalog/product/' . $product['image']);
                $nt->postGP($product['name'] .' '. $tags . ' ' . $baseUrl . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
-               if ($loginError != '')
+               if ($loginError === false)
                   $this->log($baseUrl . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
             }
          }
          // Your Message
-         $message = substr($product['name'], 10, 100) . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path']. ' ' . $tags;
+         $message = substr($product['name'], 0, 100) . ' ' . $config['web/unsecure/base_url'] . 'index.php/' . $product['url_path']. ' ' . $tags;
 
          if (
                  $this->getParam("SOCIAL:twitterkey", "") != '' &&
@@ -276,6 +277,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                $this->log($baseUrl . 'index.php/' . $product['url_path'] . " not sent succesfully " . $mail->ErrorInfo, "info");
             }
          }
+         unlink('/tmp/storebaby.jpg');
       }
       $product_stmt->closeCursor();
    }

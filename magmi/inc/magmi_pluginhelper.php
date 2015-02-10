@@ -130,7 +130,7 @@ class Magmi_PluginHelper
 			self::scanPlugins($ptype);
 		}
 		$plinst=new $pclass();
-		
+
 		$plinst->pluginInit($mmi,$this->getPluginMeta($plinst),$params,($mmi!=null),$this->_profile);
 		return $plinst;
 	}

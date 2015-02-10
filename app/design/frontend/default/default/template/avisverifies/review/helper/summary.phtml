@@ -1,0 +1,27 @@
+<?php // FOR OLD Backward Compatibility ?>
+<?php if(Mage::helper('avisverifies/Data')->isActive()): // Our Display.?>
+    <?php $o_av = Mage::getModel('avisverifies/reviews'); ?>
+    <?php $o_av->idProduct = $this->getProduct()->getId(); ?>
+    <?php $o_av->skuProduct = $this->getProduct()->getSku(); ?>
+    <?php $statsProduct = $o_av->getStatsProduct(); ?>
+    <?php $countReviews = $statsProduct->getData('nb_reviews'); ?>
+    <?php $getNote = $o_av->formatNote($statsProduct->getData('rate')); ?>
+    <?php if($countReviews): ?>
+        <div id="av_product_award">
+            <div id="top">
+                <div class="ratingWrapper">
+                    <div class="ratingInner" style="width:<?php echo ($getNote*20)."%" ?>;"></div>
+                </div>
+                <?php if($countReviews == 1): ?>
+                    <b><?php echo $this->__('%d Review', $countReviews) ?></b>
+                <?php else: ?>
+                    <b><?php echo $this->__('%d Reviews', $countReviews) ?></b>
+                <?php endif; ?>
+            </div>
+            <div id="bottom">
+                <a href="<?php echo $this->getReviewsUrl() ?>" id="AV_button"><?php echo $this->__('See the review(s)')?></a>
+            </div>
+            <img id="sceau" src="<?php echo $this->getSkinUrl('images/avisverifies/Sceau_100'.Mage::app()->getLocale()->getLocaleCode().'.png') ?>" />
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

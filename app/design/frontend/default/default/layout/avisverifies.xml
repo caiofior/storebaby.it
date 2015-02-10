@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+    <!-- All Stores -->
+    <default>
+        <!-- Loaded in the head block -->
+        <reference name="head">
+            <block name="avisverifies.float" template="avisverifies/float.phtml" type="core/template"/>
+        </reference>
+        <!-- Loaded in the left block -->
+        <reference name="left">
+            <block after="-" name="avisverifies.left" template="avisverifies/left.phtml" type="core/template"/>
+        </reference>
+        <!-- Loaded in the right block -->
+        <reference name="right">
+            <block after="-" name="avisverifies.right" template="avisverifies/right.phtml" type="core/template"/>
+        </reference>
+    </default>
+    <!-- !!!! -->
+    <review_product_list>
+        <reference name="head"> 
+            <block name="avisverifies_css" type="core/template" template="avisverifies/css.phtml"/>
+            <block name="avisverifies_js" type="core/template" template="avisverifies/js.phtml"/>
+        </reference>
+        <action method="setTemplate" block="product_review_list.count">
+            <tpl>avisverifies/review/product/view/count.phtml</tpl>
+        </action>
+    </review_product_list>
+    <!-- !!!! -->
+    <catalog_product_view>
+        <reference name="head"> 
+            <block name="avisverifies_css" type="core/template" template="avisverifies/css.phtml"/>
+            <block name="avisverifies_js" type="core/template" template="avisverifies/js.phtml"/>
+        </reference>
+        <reference name="content">
+            <block after="product_additional_data" type="review/product_view_list" name="product.info.product_additional_data2" as="reviews" template="avisverifies/catalogProductList.phtml"/>
+        </reference>
+    </catalog_product_view>
+    
+    <!-- !!!! -->
+    <catalog_category_view>
+        <reference name="head">
+            <block name="avisverifies_css" type="core/template" template="avisverifies/css.phtml"/>
+        </reference>
+    </catalog_category_view>
+    
+    <!-- Checkout process -->
+    <checkout_track>
+        <reference name="content">
+            <block type="avisverifies/observers_checkout" name="avisverifies.observers.checkout" template="avisverifies/observers/checkout.phtml"/>
+        </reference>
+    </checkout_track>
+    <!-- Checkout process -->
+</layout>

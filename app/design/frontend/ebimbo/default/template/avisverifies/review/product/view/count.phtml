@@ -1,0 +1,8 @@
+<?php // THIS File is important, we override Magento file here to have empty return ?>
+<?php if(Mage::helper('avisverifies/Data')->isActive()): // Our Display. ?>
+    <?php return ''; ?>
+<?php endif;?>
+<?php // Copy of Magento code ?>
+<?php if (!empty($count)):?>
+    <a href="#customer-reviews" class="nobr"><?php echo $this->__('%s Review(s)', $count) ?></a>
+<?php endif;?>

@@ -1,0 +1,5 @@
+<?php // Important: this block is called on the head block area. ?>
+<?php $SCRIPTFIXE_ALLOWED = (Mage::getStoreConfig(strtolower('avisverifies/system/SCRIPTFLOAT_ALLOWED'))=='yes') ?>
+<?php if($SCRIPTFIXE_ALLOWED): ?>
+    <?php echo Mage::getStoreConfig(strtolower('avisverifies/system/SCRIPTFLOAT')) ?>
+<?php endif;?>

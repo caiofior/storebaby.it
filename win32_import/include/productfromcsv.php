@@ -293,10 +293,10 @@ corrupted NUMERIC
             if (key_exists('UPDATE_MAGENTO_CREDENTIALS', $this->config)) {
                 curl_setopt($ch, CURLOPT_HEADER,false);
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
-                curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
 
                 
             }
+	    curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
             curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600);
             curl_setopt($ch,CURLOPT_TIMEOUT,3600);
@@ -314,8 +314,10 @@ corrupted NUMERIC
                 curl_setopt($ch, CURLOPT_HEADER,false);
                 $header = array( 'Authorization: Basic ' . base64_encode($this->config['UPDATE_MAGENTO_CREDENTIALS']));
                 curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
+
+                
             }
-            curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+			curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
             curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,3600);
             curl_setopt($ch,CURLOPT_TIMEOUT,3600);
             curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($data));

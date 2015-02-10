@@ -1,0 +1,9 @@
+<?php // Important: this block is called on the left block area. ?>
+<?php $SCRIPTFIXE_ALLOWED = (Mage::getStoreConfig(strtolower('avisverifies/system/SCRIPTFIXE_ALLOWED'))=='yes') ?>
+<?php $SCRIPTFIXE_POSITION = (Mage::getStoreConfig(strtolower('avisverifies/system/SCRIPTFIXE_POSITION')) == "left") ?>
+<?php if($SCRIPTFIXE_ALLOWED && $SCRIPTFIXE_POSITION): ?>
+    <div style="margin: auto;">
+        <?php echo Mage::getStoreConfig(strtolower('avisverifies/system/SCRIPTFIXE')) ?>
+    </div>
+<?php endif;?>
+

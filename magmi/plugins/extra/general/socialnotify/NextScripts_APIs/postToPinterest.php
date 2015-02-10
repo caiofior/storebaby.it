@@ -4,9 +4,9 @@ Project Name: NextScripts Pinterest AutoPoster
 Project URL: http://www.nextscripts.com/pinterest-automated-posting/
 Description: Automatically posts to your Pinterest profile
 Author: NextScripts, Inc
-Version: 2.15.38 (June, 26 2014)
+Version: 2.15.64 (Jan, 28 2015)
 Author URL: http://www.nextscripts.com
-Copyright 2012-2014  Next Scripts, Inc
+Copyright 2012-2015  Next Scripts, Inc
 **** Please Note: This library is depreciated and will be no longer supported or updated after May, 20 2015. 
 **** Please update to the Universal SNAP API - http://www.nextscripts.com/snap-api/
 #############################################################################*/
@@ -33,6 +33,7 @@ if (!function_exists("nxs_mkImgNm")){ function nxs_mkImgNm($fn, $cType){ $iex = 
   $fn = str_replace($iex, '', $fn); if (isset($map[$cType])){return $fn.$map[$cType];} else return $fn.".jpg";    
 }}
 if (!function_exists("nxs_jsonFix")) { function nxs_jsonFix(&$item, &$key){ $item = (substr($item, -4)=='E+12')?(number_format($item, 0, '', '')):$item; }}
+
 //================================Pinterest===========================================
 //## Check current  Pinterest session
 if (!function_exists("doConnectToPinterest")) {function doConnectToPinterest($email, $pass, $iidb=-1){ global $nxs_plurl, $nxs_gCookiesArr, $plgn_NS_SNAutoPoster;  
@@ -65,7 +66,7 @@ if (!class_exists('nxsAPI_PN')){class nxsAPI_PN{ var $ck = array(); var $tk=''; 
       $hdrsArr['Accept-Language']='en-US,en;q=0.8'; return $hdrsArr;         
     }
     function check($u=''){ $ck = $this->ck;  if (!empty($ck) && is_array($ck)) { $hdrsArr = $this->headers('https://www.pinterest.com/settings/'); if ($this->debug) echo "[PN] Checking....;<br/>\r\n";
-        $rep = nxs_remote_get('https://www.pinterest.com/settings/', array('headers' => $hdrsArr, 'httpversion' => '1.1', 'cookies' => $ck)); 
+        $rep = nxs_remote_get('https://www.pinterest.com/settings/', array('headers' => $hdrsArr, 'timeout' => 45, 'httpversion' => '1.1', 'cookies' => $ck)); 
         if (is_nxs_error($rep)) return false; $ck = $rep['cookies']; $contents = $rep['body']; //if ($this->debug) prr($contents);
         $ret = stripos($contents, 'href="#accountBasics"')!==false; $usr = CutFromTo($contents, '"email": "', '"'); if ($ret & $this->debug) echo "[PN] Logged as:".$usr."<br/>\r\n"; 
         if (empty($u) || $u==$usr) return $ret; else return false;
@@ -74,22 +75,22 @@ if (!class_exists('nxsAPI_PN')){class nxsAPI_PN{ var $ck = array(); var $tk=''; 
     function connect($u,$p){ $badOut = 'Error: '; 
       //## Check if alrady IN
       if (!$this->check($u)){ if ($this->debug) echo "[PN] NO Saved Data; Logging in...<br/>\r\n";
-        $hdrsArr = $this->headers('https://www.pinterest.com/login/'); $rep = nxs_remote_get('https://www.pinterest.com/login/', array('headers' => $hdrsArr, 'httpversion' => '1.1'));         
-        if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; } $ck = $rep['cookies']; $contents = $rep['body'];  $apVer = trim(CutFromTo($contents,'"app_version": "', '"')); 
-        $fldsTxt = 'data=%7B%22options%22%3A%7B%22username_or_email%22%3A%22'.urlencode($u).'%22%2C%22password%22%3A%22'.urlencode($p).'%22%7D%2C%22context%22%3A%7B%22app_version%22%3A%22'.$apVer.
+        $hdrsArr = $this->headers('https://www.pinterest.com/login/'); $rep = nxs_remote_get('https://www.pinterest.com/login/', array('headers' => $hdrsArr, 'timeout' => 45, 'httpversion' => '1.1'));         
+        if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR -01-"; return $badOut; } $ck = $rep['cookies']; $contents = $rep['body'];  $apVer = trim(CutFromTo($contents,'"app_version": "', '"')); 
+        $fldsTxt = 'data=%7B%22options%22%3A%7B%22username_or_email%22%3A%22'.urlencode($u).'%22%2C%22password%22%3A%22'.str_replace('%5C','%5C%5C',urlencode($p)).'%22%7D%2C%22context%22%3A%7B%22app_version%22%3A%22'.$apVer.
     '%22%7D%7D&source_url=%2Flogin%2F&module_path=App()%3ELoginPage()%3ELogin()%3EButton(class_name%3Dprimary%2C+text%3DLog+in%2C+type%3Dsubmit%2C+tagName%3Dbutton%2C+size%3Dlarge)';          
         foreach ($ck as $c) if ($c->name=='csrftoken') $xftkn = $c->value;
         //## ACTUAL LOGIN 
         $hdrsArr = $this->headers('https://www.pinterest.com/login/', 'https://www.pinterest.com', 'POST', true); $hdrsArr['X-NEW-APP']='1'; $hdrsArr['X-APP-VERSION']=$apVer; $hdrsArr['X-CSRFToken']=$xftkn;        
         $advSet = array('headers' => $hdrsArr, 'httpversion' => '1.1', 'timeout' => 45, 'redirection' => 0, 'cookies' => $ck, 'body' => $fldsTxt); // prr($advSet);
-        $rep = nxs_remote_post('https://www.pinterest.com/resource/UserSessionResource/create/', $advSet); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; } 
-        if (!empty($rep['body'])) { $contents = $rep['body']; $resp = json_decode($contents, true); } else { $badOut = print_r($rep, true)." - ERROR"; return $badOut; }
+        $rep = nxs_remote_post('https://www.pinterest.com/resource/UserSessionResource/create/', $advSet); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR -02-"; return $badOut; } 
+        if (!empty($rep['body'])) { $contents = $rep['body']; $resp = json_decode($contents, true); } else { $badOut = print_r($rep, true)." - ERROR -03-"; return $badOut; }
           if (is_array($resp) && empty($resp['resource_response']['error'])) { $ck = $rep['cookies'];  foreach ($ck as $ci=>$cc) $ck[$ci]->value = str_replace(' ','+', $cc->value);  
-            $hdrsArr = $this->headers('https://www.pinterest.com/login'); $rep=nxs_remote_get('https://www.pinterest.com/', array('headers' => $hdrsArr, 'redirection' => 0, 'cookies' => $ck, 'httpversion' => '1.1'));
+            $hdrsArr = $this->headers('https://www.pinterest.com/login'); $rep=nxs_remote_get('https://www.pinterest.com/', array('headers' => $hdrsArr, 'timeout' => 45, 'redirection' => 0, 'cookies' => $ck, 'httpversion' => '1.1')); if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR -02.1-"; return $badOut; } 
             if (!empty($rep['cookies'])) foreach ($rep['cookies'] as $ccN) { $fdn = false; foreach ($ck as $ci=>$cc) if ($ccN->name == $cc->name) { $fdn = true; $ck[$ci] = $ccN;  } if (!$fdn) $ck[] = $ccN; }
             foreach ($ck as $ci=>$cc) $ck[$ci]->value = str_replace(' ','+', $cc->value); $this->tk = $xftkn; $this->ck = $ck;  $this->apVer = $apVer;           
             if ($this->debug) echo "[PN] You are IN;<br/>\r\n"; return false; // echo "You are IN";                                       
-          } elseif (is_array($resp) && isset($resp['resource_response']['error'])) return "ERROR: ".$resp['resource_response']['error']['http_status']." | ".$resp['resource_response']['error']['message'];
+          } elseif (is_array($resp) && isset($resp['resource_response']['error'])) return "ERROR -04-: ".$resp['resource_response']['error']['http_status']." | ".$resp['resource_response']['error']['message'];
           elseif (stripos($contents, 'CSRF verification failed')!==false) { $retText = trim(str_replace(array("\r\n", "\r", "\n"), " | ", strip_tags(CutFromTo($contents, '</head>', '</body>'))));
             return "CSRF verification failed - Please contact NextScripts Support | Pinterest Message:".$retText;
           } elseif (stripos($contents, 'IP because of suspicious activity')!==false) return 'Pinterest blocked logins from this IP because of suspicious activity'; 
@@ -106,8 +107,12 @@ if (!class_exists('nxsAPI_PN')){class nxsAPI_PN{ var $ck = array(); var $tk=''; 
         $dt = '{"options":{},"context":{},"module":{"name":"PinCreate","options":{"image_url":"'.$iu.'","action":"create","method":"scraped","link":"'.$iu.'","transparent_modal":false}},"append":false,"error_strategy":0}';
         $advSet = array('headers' => $hdrsArr, 'httpversion' => '1.1', 'timeout' => 45, 'redirection' => 0, 'cookies' => $ck);
         $rep = nxs_remote_get('http://www.pinterest.com/resource/NoopResource/get/?source_url='.urlencode($su).'&data='.urlencode($dt), $advSet);
-        if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; } $ck = $rep['cookies']; $contents = $rep['body'];  
-        $k = json_decode($contents, true); $khtml = CutFromTo($k['module']['html'], "boardPickerInnerWrapper", "</ul>"); $khA = explode('<li', $khtml);
+        if (is_nxs_error($rep)) {  $badOut = print_r($rep, true)." - ERROR"; return $badOut; } $ck = $rep['cookies']; $contents = $rep['body'];   $k = json_decode($contents, true);         
+        if (!empty($k['module']['tree']) && !empty($k['module']['tree']['children'][0]) && !empty($k['module']['tree']['children'][0]['children'])) $brdsA = $k['module']['tree']['children'][0]['children'];
+          foreach ($brdsA as $ab) { if (!empty($ab) && !empty($ab['data']['all_boards'])) { $ba = $ab['data']['all_boards']; 
+            foreach ($ba as $kh) { $boards .= '<option value="'.$kh['id'].'">'.$kh['name'].'</option>'; $brdsArr[] = array('id'=>$kh['id'], 'n'=>$kh['name']); } $this->boards = $brdsArr; return $boards; 
+          } $khtml = CutFromTo($k['module']['html'], "boardPickerInnerWrapper", "</ul>"); $khA = explode('<li', $khtml);
+        }
         foreach ($khA as $kh) if (stripos($kh, 'data-id')!==false) { $bid = CutFromTo($kh, 'data-id="', '"'); $bname = trim(CutFromTo($kh, '</div>', '</li>'));
           if (isset($bid)) { $boards .= '<option value="'.$bid.'">'.trim($bname).'</option>'; $brdsArr[] = array('id'=>$bid, 'n'=>trim($bname)); }
         } $this->boards = $brdsArr; return $boards;  
@@ -142,5 +147,6 @@ if (!class_exists('nxsAPI_PN')){class nxsAPI_PN{ var $ck = array(); var $tk=''; 
       else return "Somethig is Wrong - Pinterest Returned Error 502";         
     }    
 }} 
+
 
 ?>
