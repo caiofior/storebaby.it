@@ -1,0 +1,31 @@
+<?php
+/**
+ *
+ * @category MultiSafepay
+ * @package  MultiSafepay_Msp
+ * @license  http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php /** @var $this MultiSafepay_Msp_Block_IdealIssuers */ ?>
+<?php $_code=$this->getMethodCode() ?>
+<ul  class="form-list" id="payment_form_<?php echo $_code ?>" style="display:none">	
+        <li>
+	<?php  $instructions = Mage::getStoreConfig('msp/'.$this->getMethodCode().'/instructions', Mage::app()->getStore()->getId()); ?>		
+			
+		<?php if($instructions != '')
+		{
+			echo $instructions;
+			echo '<br /><br/>';
+		}
+		?>
+         <?php $_banks = $this->getIdealIssuers(); ?>
+		 <select id="<?php echo $_code ?>_bank" name="payment[<?php echo $_code ?>_bank]" class="input-text validate-text required-entry">
+			<option value=""><?php echo $this->__('Selecteer een bank...'); ?></option>
+				<?php foreach ($_banks as $bank){ ?>
+					<option value="<?php echo $bank['code']['VALUE'] ?>"><?php echo $bank['description']['VALUE'] ?></option>
+				<?php } ?>
+			</select>
+		 
+        </li>
+
+    </ul>

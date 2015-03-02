@@ -1,0 +1,105 @@
+"Dutch","Holländisch";
+"English","Englisch";
+"German","Deutsch";
+"French","Französisch";
+"Spanish","Spanisch";
+"Interface language","Interface Sprache";
+"New order status","Neue Bestellung";
+"Payment complete status","Zahlung erfolgt";
+"Create invoice after payment","Nach Bezahlung Rechnung erstellen";
+"Mail invoice to customer","Rechnung an Kunde versenden";
+"Gateway selection","Zahlungsportal auswählen";
+"Auto redirect","Automatische Weiterleitung";
+"Bank selection","Bank auswählen";
+"Direct Debit","Direktabbuchung";
+"Bank Transfer","Banküberweisung";
+"Banktransfer","Banküberweisung";
+"Sign up for a free test account","Anmelden zum Testkonto";
+"<a href=\'http://www.multisafepay.com/nl/klantenservice-zakelijk/open-een-testaccount.html\' target=\'_blank\'>Sign up for a free test account</a>","<a href=\'http://www.multisafepay.com/nl/klantenservice-zakelijk/open-een-testaccount.html\' target=\'_blank\'>Gratis Testkonto erstellen</a>";
+"Automatically redirects the customer back to the webshop after payment. (Skips the 'Transaction Complete' screen)","Kunde wird nach der Bezahlung  automatisch an dem Webshop zurückgeleitet (`Transaktion vollendet` wird ausgelassen)";
+"- Or use -","-oder benutzen-";
+"New order mail","Neue Bestellung Email";
+"After notification","Nach Benachrichtigung";
+"After payment complete","Nach Bezahlung";
+"Force accept agreements","Allgemeine Geschäftsbedingungen";
+"If enabled the customer must accept the terms and conditions in the fast checkout process","Wenn eingeschaltet", Kunde muss Allgemeine Geschäftsbedingungen akzeptieren";
+"Alternate Agreements URL","Alternative Bedingungen URL";
+"Leave this empty for the standard URL for the agreements","Frei lassen um URL einzufügen von Allgemeine Geschäftsbedingungen";
+"Add company name field","Firmenname Feld zufügen";
+"Company name cannot be empty","Firmenname Feld muss ausgefüllt werden";
+"This will enable the Table Rates method configured at Shipping Methods -> Table Rates","Einblenden von Tabellenkurse die bei den Versandmethoden eingestellten wurden";
+"Allowed Currency","Erlaubte Währung";
+"Allow currency conversion to Euro","Währungwechsel zu Euro erlauben";
+"If store currency is not allowed by settings. Used for each gateway.","Wenn Währung von dem Webshop ist nicht erlaubt für die ausgewählte Zahlungsmethode", dann wird es in Euro umgerechnet";
+"New order mail","Neue Email Bestellung";
+"E-mail invoice to customer","Rechnung an Kunde versenden";
+"Send the order update e-mail to customer","Bestellungsupdate an Kunde versenden";
+"Keep the cart","Einkaufswagen behalten";
+"Cart remains active when the customer returns to the webshop or cancels an order.","Einkaufswagen bleibt erhalten auch wenn der Kunde an dem Webshop zurückkehrt oder eine Bestellung annulliert";
+"Are you using the One Step Checkout Module?","One Step Checkout Module benutzen?";
+"<![CDATA[<a href='https://www.multisafepay.com/en/Open-a-test-account.html' target='_blank'>Sign up for a free test account</a>]]>"," "<![CDATA[<a href='https://www.multisafepay.com/en/Open-a-test-account.html' target='_blank'>Testkonto eroeffnen</a>]]>";
+"Automatically redirects a customer back to the webshop after a succesful payment. (Skips MultiSafepay's 'Transaction Complete' screen)","Automatische Rückleitung von Kunden an Webshop nach Bezahlung";
+"Receive payments from applicable countries","Welche Länder kann ich Zahlungen erhalten?";
+"Sort order","Bestellung einordnen";
+"New order e-mail","Neue Bestellung Email";
+"Receive payments from specific countries","Zahlungen erhalten von ausgewählten Ländern";
+"After order confirmation","Bestätigung der Bestellung";
+"After notification", including cancelled order","Nach Status update"","Stornierte Transaktionen inkl.";
+"After notification", excluding cancelled order","Nach Status update"","Ohne stornierte Transaktionen";
+"If store currency is not allowed by settings. Used for each gateways.","Wenn Währung von dem Webshop ist nicht erlaubt für die ausgewählte Zahlungsmethode", dann wird es in Euro umgerechnet";
+"Cart remains active when the customer returns to the webshop or cancels an order.","Einkaufswagen bleibt erhalten auch wenn der Kunde an dem Webshop zurückkehrt oder eine Bestellung annulliert";
+"Show the gateway image if it exists","Logo des Zahlungsportals anzeigen wenn vorhanden";
+"Show the gateway image if it exists in front of the title","Logo des Zahlungsportals für den Titel anzeigen";
+"Show iDEAL banklist in checkout","Liste von iDEAL Banken im Checkout anzeigen";
+"Account ID (for Test Accounts)","Konto ID (für Testkonten)";
+"Site ID (for Test Accounts)","Site ID (für Testkonten)";
+"Site Code (for Test Accounts)","Site Kode (für Testkonten)";
+"Days active before requests expires?","Tage bevor Anfrage abläuft?";
+"Enable the invoice e-mail for this payment method?","Rechnung per Email versenden freischalten für diese Zahlungsmethode?";
+"Payment fee description", visible in order totals","Angaben der Gebühren von den Zahlungsmethoden""," zichtbaar bij de order totalen.";
+"Enable IP validation","IP Gültigkeitskontrolle aktivieren?";
+"Only visible for the following IP address","Zahlungsmethoden sind sichtbar nur für diese IP Adresse";
+"You can add multiple addresses seperated by ;  ","Mehrere Zahlungsmethoden angeben", eine Zahlungsmethode auswählen";
+"Only visible for the following IP address (for Test Account)","Sichtbar nur für die folgende IP Adressen (für Testkonten)";
+"Enable Test Account for these IP(s) when enabled Live Account","Testeinstellungen  für diese IP Adressen aktivieren wenn das Live-Konto aktiv ist";
+"You can add multiple addresses separated by ; . Feature enabled only when \'Type account\' set \'Live account\'","Sie können erschiedene IP Adressen zufügen", eine Adresse auswählen";
+"Send request after complete order","Anfrage versenden nach Bestellung";
+"Request will be send after update statuse to Complete for PAD only","Anfrage wird versendet nachdem Bestellungstatus 'Vollendet' anzeigt"","Nur bei Bezahlungen per Nachnahme";
+"Use for refund?"," "Refunds toestaan bij het aanmaken van een creditmemo?";
+"Enable direct banktransfer (no MultiSafepay page)"", Activeer de directe bankoverschrijving"," de consument zien geen MultiSafepay pagina";
+"Send new account email","Neue Emailkonto versenden";
+"Send the new account email when a customer account is created after using Fast Checkout","Email versenden wenn ein Konto im Magento durch Fast Checkout erstellt wurde";
+"Automatic login","Kunde automatisch einloggen?";
+"Login the customer after returning from Fast Checkout ","Kunde einloggen nach dem Rückkehr via Fast Checkout?";
+"Let the customer redirect to their account page","Kunde an Kontoseite zurückleiten nach der Transaktion";
+"Company name","Fimenname";
+"Birthday","Geburtstdatum";
+"Chamber of Commerce (CoC/KvK)","Handelskammmer";
+"VAT number","UID Nummer";
+"Passport number","Nummer des Reisepasses";
+"Drivers license","Nummer des Führerscheines";
+"Sex","Geschlecht";
+"Cart remains active when the customer returns to the webshop or cancels an order","Einkaufswagen bleibt erhalten auch wenn der Kunde an dem Webshop zurückkehrt oder eine Bestellung annulliert";
+"Fee in EURO. Example 2.95 (2.95 is the maximum)","Gebühren in Euro. Beispiel 2.95 (Max. 2.95)";
+"Enable fee (inc. Tax)","Gebühren zugeben (inkl. MwSt.)";
+"Payment fee amount","Summe der Gebühren";
+"Show payment fee incl. tax during checkout","Summe der Gebühren zeigen inkl. MwSt.";
+"Tax class for payment fee","MwSt. Klasse für Bezahlung";
+"Select which tax class should be used for the payment fee","Richtige MwSt. Klasse für die Bezahlung auswählen";
+"Title", "Titel"
+"Enabled", "Aktiviert"
+"Instructions", "Anleitung"
+"Maximum Order Total", "Maximalbestellung"
+"Payment fee description, visible in order totals", "Angaben zu Zahlungsgebühren, siehe auch in Gesamtbestellung"
+"Sort order", "Bestellungsortierung ändern"
+"API Key", "API Schlüssel"
+"One Step Checkout", "One Step Checkout"
+"Account type", "Kontotyp"
+"Minimum Order Total", "Minimalbestellung"
+"Send shipped status after complete order", "Versendet Status aktivieren nach vollendeter Bestellung"
+"Enable", "Aktivieren"
+"Account", "Konto"
+"Newsletter", "Newsletter"
+"Comment", "Kommentar"
+"Type account", "Kontotyp"
+

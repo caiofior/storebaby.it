@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ *
+ * @category MultiSafepay
+ * @package  MultiSafepay_Msp
+ * @license  http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<layout version="0.1.0">
+    <checkout_onepage_paymentmethod>
+        <remove name="right"/>
+        <remove name="left"/>
+        <remove name="root"/>
+        <block type="msp/checkout_onepage_payment_methods" name="msp_payment_method" output="toHtml" template="msp/default.phtml">
+            <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+        </block>
+    </checkout_onepage_paymentmethod>
+
+    <checkout_cart_index>
+        <reference name="checkout.cart.top_methods">
+            <block type="msp/link" name="checkout.cart.methods.msp.top" template="msp/link.phtml" before="-"/>
+        </reference>
+        <reference name="checkout.cart.methods">
+            <block type="msp/link" name="checkout.cart.methods.msp.bottomText" template="msp/linkText.phtml"/>
+            <block type="msp/link" name="checkout.cart.methods.msp.bottom" template="msp/link.phtml"/>
+        </reference>
+    </checkout_cart_index>
+
+  
+</layout>

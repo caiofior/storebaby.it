@@ -197,7 +197,7 @@
         <jobs>
             <catalogrule_apply_all>
                 <schedule>
-                    <cron_expr>0 1 * * *</cron_expr>
+                    <cron_expr>0 3 * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>catalogrule/observer::dailyCatalogUpdate</model>

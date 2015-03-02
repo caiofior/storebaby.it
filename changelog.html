@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html> 
+
+<head>
+</head>
+
+<body>
+	<div id="container" style="width:900px; margin-left:100">
+
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 2.0.2 (Oct 10, 2014)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Added an option to set the daysactive for an PAD transaction. When not payed in time, the transaction will expired and the shop will be notified</li>
+				<li>Added extra line to set the order total to paid if it hasn't been done</li>
+				<li>Now use the fee price formatter so it includes the selected currency</li>
+				<li>Force ordertotal set to paid when transaction is completed and invoice creation is disabled.
+				    Only show creation of transaction note once</li>
+				<li>Added version number to config title line</li>
+				<li>Textual improvements</li>
+				<li>Better check on order confirmation email sending</li>
+				<li>Rrecalculate the product price without tax as Magento round at 2 decimals by default and we use 4. 
+				    This resulted in a amount mismatch when ordering larger quantities of the same product</li>
+				<li>Better support for special chars</li>
+				<li>Enabled locking again but return false instead of showing error and exit. This should avoid duplicate invoices when callback is called while before the redirecturl set the orderstatus</li>
+			</ul>
+			<br/>			
+
+			<b>Changes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+ 				<li>FEE base is rewritten</li>
+ 				<li>Upgrade the php dependence to 5.5.12.</li>
+				<li>Now get the selected gateway from the quote instead of the gateway model. This adds better compatibility with third party onestepcheckout modules</li>
+			</ul>
+			<br>
+			
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Fixed bug for error #1016 on the Return-URL</li>
+				<li>Fixed bug with gateway title not beeing visible in checkout</li>
+				<li>Fixed bug with missing housenumber on connect transactions</li>
+				<li>Fixed bug with order email not beeing sent after transaction complete</li>
+				<li>Fixed bug with double totalPaid amount</li>
+			</ul>
+			
+		</p>
+		<br/>
+		<br/>
+
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 2.0.0 (May 20, 2014)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>added support for refunds from out of the backoffice of the webshop</li>
+				<li>Fast Checkout now use the Magento Shipping methods</li>
+				<li>when the orderstatus of an Pay After Delivery order in the webshop is set to 'Shipped',
+				    the status of the transaction is also changed in the Multisafepay backend</li>
+				<li>currency not supported by Multisafepay can now be converted to euro's</li>	
+				<li>programm structure of the plugin changed to the standard Magento way</li>					
+				<li>added support for Fashion-cheque</li>
+				<li>added support for Lief cadeaukaart</li>				
+				<li>added support in the configuration for minimal order amount for iDEAL</li>
+				<li>added (limited) support for Magento Connect package (Only for new installations, not for an update from an older version of plugin)</li>				
+			</ul>
+			<br/>			
+
+			<b>Changes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+ 				<li>the 'Solve fee bug' setting has been removed from the configuration. This is fixed in the software</li>
+ 				<li>the gateway 'Fijncadeau' is deleted because it is no longer available</li>	
+				<li>Transaction-ID is added to the redirect URL, for the case that our system doesn't </li>
+				<li>disable log for status-request to avoid large log files</li>
+				<li>lockfile systeem uitgeschakeld</li>
+			</ul>
+			<br>
+			
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>fixed bug in the AMEX config</li>
+				<li>fixed 500 error when developers mode is enabled and iDEAL is selected without bank preselection</li>				
+				<li>fixed bug with images in checkout</li>	
+				<li>fixed bug with currency for separate gateway's</li>
+				<li>fixed bug with the language</li>
+				<li>the additional fee is removed by normal operation.(Bug reported in v1.4.4)</li>
+				<li>fixed memory limit bug cause by recursion in the Payafter.php model.</li>
+				<li>fixed undefined index notices</li>
+			</ul>
+			
+		</p>
+		<br/>
+		<br/>
+
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.4.4 (Apr 28, 2014)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Better support for OneStepCheckout</li>
+				<li>Better support for Apptha OneStepCheckout</li>
+			</ul>
+			<br>
+
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>fixed bug with total amount when using conversion</li>
+				<li>Fixed bug with autocreate invoice</li>
+				<li>Fixed bug with double fee calculation.</li>
+				<li>Fixed bug with fee by payments other than Pay After Delivery</li>
+			</ul>
+		</p>
+		<br/>
+		<br/>
+
+		
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.4.3 (Apr 8, 2014)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Filtering for special characters in XML</li>
+				<li>Added option to show the PAD fee incl or excl tax during checkout, without changing calculations.</li>
+				<li>Added BnO template for direct bno transaction request.</li>
+				<li>Added AMEX as payment method</li>
+				<li>Added max amount for some gateways.</li>
+			</ul>
+			<br>
+
+			<b>Changes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Always get first IP address for customer IP and forwarded IP that it finds withing the given value.</li>
+				<li>Create invoice after payment has been completed, Magento changed things, if invoice isn't created then the order is processing with unpaid status.</li>
+				<li>Changed default/template/msp/default.phtml files. This provides gateway html for other gateways other then MSP.</li>
+				<li>Removed housenumber feature. If housenumber isnt available after parse the address then we use street2.</li>
+				<li>Changed the way how discounts are processed.</li>
+				<li>Change store name for connect transactions.</li>
+				<li>No more redirect to checkoutcontroller for FCO transactions. All is done from within the standardcontroller. This solves 302 and 307 offline action errors.</li>
+			</ul>
+			<br>
+
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>google checkout bug fix</li>
+				<li>Fixed bug with configurable product only show the correct item and don't show up twice in items listing</li>
+				<li>Fixed bug with order data.</li>
+				<li>Fixed return to empty cart page when offline actions are slow</li>
+				<li>fixed issue on error 503 in offline actions. No need to fill in account details in 3 different places.</li>
+				<li>Fixed bug with directdebit and sofort.</li>
+				<li>Fixed bug with empty return-url</li>
+			</ul>
+		</p>
+		<br/>
+		<br/>
+
+		
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.4.2 (Feb 4, 2014)</b>
+		</div>
+		<p>
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Invoice e-mails are now send correctly when using Magento 1.8.1</li>
+				<li>Better support for Pay After Delivery</li>
+			</ul>
+		</p>
+		<br>
+
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.4.1 (Sep 19, 2013)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Support for free shipping method</li>
+				<li>Fee configurable option for the amount.</li>
+				<li>HTML instructions support for connect Gateway </li>
+				<li>Support for the onestepcheckout housenumber feature. This function seperates the address and housenumber, with this option enabled BnO would fail on missing data.</li>
+				<li>Amount validation check. If the quote amount is not equal to the order amount the transaction creation will stoped to prevent an underpaid order.</li>
+				<li>Currency selection support for each separate gateway. Now you can select the currencies that are supported, the gateway will only be visible with the selected currencies.</li>
+				<li>Ddegrotespeelgoedwinkel coupon as supported gateway</li>
+				<li>Support for gateway descriptions per gateway. You can also use html within the description field to add nice gateway descriptions.</li>
+				<li>Configurable 'multisafepay servicekosten' label for BnO. This label can now be changed</li>
+				<li>Support for gateway images. Option to select only an image, the title, or both.</li>
+				<li>Support for void, declined and expire status codes in combination with CANCELLED STATE.</li>
+			</ul>
+			<br>
+
+			<b>Changes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Direct e-banking is now SOFORT banking</li>
+				<li>Moved the fee line within the order totals table to above the tax</li>
+				<li>The Fee tax description so it uses the configured label</li>
+				<li>Disabled discontinued Fijncadeau coupon card</li>
+				<li>Fooman surcharge fix no longer applies. To avoid confusion this is removed from the package.</li>
+			</ul>
+			<br>
+
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Wrong fee percentage for BNO Tax</li>
+				<li>Disable visibility for the (old) msPyament notification URL</li>
+				<li>Language was missing by use of Fast Checkout</li>
+				<li>Bank selection was alway visable with ideal, even when the option was disabled.</li>
+				<li>Parfumcadeaukaart coupon is now working correctly</li>
+				<li>'The cart is not equal' is now solved for normal checkout as the one step checkout.</li>
+				<li>When no fee is active the service cost's won't be visible.</li>
+			</ul>
+		</p>
+		<br/>
+		<br/>
+
+		
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.3.3 (Mar 26, 2013)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Added an 'send order status update email' option</li>
+				<li>Added an option to keep the cart active</li>
+				<li>Added override for the order submit function. Now we can keep the cart active when a customer cancelled the order.</li>
+				<li>Added the Fast Checkout method to the normal checkout process</li>
+				<li>Added creation of an account within the store when a customer uses Fast Checkout.</li>
+				<li>Better UTF-8 compatiblity for Fast Checkout to prevent error 1000 messages.</li>
+			</ul>
+		</p>
+
+		
+		<br><br><br>
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.3.2 (Mar 10, 2013)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Added Pay After Delivery support</li>
+				<li>Added an extra check to that an invoice won't be created twice</li>
+				<li>Added bank_id check</li>
+				<li>Better onte step checkout compatibility wiht ideal issuer selection</li>
+				</ul>
+			<br>
+
+			<b>Changes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+ 				<li>Updated Gateway template for direct banking.</li>
+ 				<li>Removed the Invoice observer to avoid problems with invoice creation. The observer activated an update function that isn't needed.</li>
+				<li>Updated the default Fast Checkout logo</li>
+			</ul>
+			<br>
+
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Fixed bug ideal issuers list with productin environment</li>
+				<li>Fixed bug registered bank_id bug, now whe have a select your bank option to avoid errors when customers forget to select a bank</li>
+				<li>Fixed bug for empty order status when an order was cancelled</li>
+				<li>Fixed bug that caused a duplicate transaction reqeust</li>
+				<li>Fixed store_id bug</li>
+				<li>Fixed bug that cause useless Notification notices within the error logs</li>
+			</ul>
+		</p>
+		<br/>
+		<br/>
+		
+
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.3.1 (Jan 10, 2013)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>DirectXML for banktransfer</li>
+			</ul>
+		</p>
+		
+
+		<br><br><br>
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.3.0 (Dec 10, 2012)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>DirectXML for iDEAL</li>
+			</ul>
+		</p>
+
+
+		<br><br><br>
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.2.9 (Jan 12, 2011)</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>New order e-mail option is active, you can now set when you want to send the order emails.</li>
+				<li>New feature added that allows for reopening cancelled orders. If a cancelled order got paid by using second chance etc, the order will be processed again and an invoice is created etc.</li>
+				<li>Added gateways for ebon, babygiftcard, boekenbon, erotiekbon, fijncadeau, webshopgiftcard, parfumnl, parfumcadeaukaart.</li>
+			</ul>
+			<br>
+
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Quantity didn't got updated correct when some statusses got processed.</li>
+				<li>Fix bug that allowed the processing of the same status multiple times. Check added so that a status will only be processed once</li>
+			</ul>
+		</p>
+
+
+		<br><br><br>
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.2.8 ()</b>
+		</div>
+		<p>
+			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>STATE_CANCELED changed to STATE_PENDING due to second chance</li>
+			</ul>
+			<br>
+
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Canceled Orders will now actualy be canceled</li>
+			</ul>
+		</p>
+
+
+		<br><br><br>
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.2.7 ()</b>
+		</div>
+		<p>
+ 			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Better handling of manual invoice creation</li>
+				<li>Extra lock check that if an error occures the status message is Not OK</li>
+				<li>use_shipping_notification set to false to overcome issue with "Cannot send order to ##Specified## country</li>
+			</ul>
+			<br>
+
+			<b>Fixes</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Canceled Orders will now actualy be canceled</li>
+			</ul>
+		</p>
+
+
+		<br><br><br>
+		<div id="version" style="background-color:#E0E0E0 ;">
+			<b>Release Notes - Magento 1.2.6 ()</b>
+		</div>
+		<p>
+ 			<b>Improvements</b>
+			<hr size=1 color="#E0E0E0";>
+			<ul>
+				<li>Send email on Processing (instead of initial)</li>
+				<li>Manual create invoices for orders</li>
+				<li>Payment Overview Canceled status for: Void, Declined & Expired</li>
+			</ul>
+		</p>
+		
+	</div>	
+	
+</body>
+</html>

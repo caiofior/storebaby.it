@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<config>
+	<tabs>
+		<avisverifies module="avisverifies" translate="label">
+			<label>VerifiedReviews</label>
+			<sort_order>100</sort_order>
+		</avisverifies>
+	</tabs>
+	<sections>
+		<avisverifies module="avisverifies" translate="label tab">
+			<label>Configuration</label>
+			<tab>VerifiedReviews</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>200</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<introtext translate="label">
+					<label>General Info</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<sort_order>1</sort_order>
+                    <!-- to open the tab here we use 0 -->
+					<expanded>0</expanded>
+                    <comment>You can configure the module, for all website or a specific website or a specific store view</comment>
+				</introtext>
+				<system translate="label">
+					<label>System integration</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<sort_order>10</sort_order>
+					<fields>
+						<enabledwebsite translate="label comment">
+							<label>Enable Module on this Website</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>By activating the module, you will reap your reviews sites. To harvest the products reviews, go to the last part of the configuration</comment>
+						</enabledwebsite>
+						<idwebsite translate="label">
+							<label>IdWebsite</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</idwebsite>
+						<secretkey translate="label">
+							<label>Secret Key</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</secretkey>
+					</fields>
+				</system>
+                <extra>
+                    <label>Advanced configuration</label>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+                    <!-- to open the tab here we use 1 -->
+                    <expanded>1</expanded>
+					<sort_order>20</sort_order>
+                    <fields>
+                        <useProductSKU translate="label comment">
+							<label>Use product sku </label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Advanced Configuration: This configuration is used to identify product by their sku instead of their sql ids.</comment>
+						</useProductSKU>
+                        <useProductUrl translate="label comment">
+							<label>Use product Url Link in stars reviews</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Advanced Configuration: This configuration is used to change review star url to product url.</comment>
+						</useProductUrl>
+                        <addReviewToProductPage translate="label comment">
+							<label>Add Review to product Page</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Advanced Configuration: This configuration is used to add our product review block to the product page.</comment>
+						</addReviewToProductPage>
+                        <productLightWidget translate="label comment">
+							<label>Product Light widget</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>45</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Advanced Configuration: Use this configuration to change the type of product widget to small design.</comment>
+						</productLightWidget>
+                        <hasjQuery translate="label comment">
+							<label>jQuery present on the site ? </label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Advanced Configuration: change this to yes, if jQuery is all-ready used on the site.</comment>
+						</hasjQuery>
+                        <force_product_parent_id translate="label comment">
+							<label>Force parent product id</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Advanced Configuration: This configuration is used to tell our module to only get the parent id of the child id.</comment>
+						</force_product_parent_id>
+                    </fields>
+                </extra>
+			</groups>
+		</avisverifies>
+	</sections>
+</config>

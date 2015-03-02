@@ -21,7 +21,7 @@ class MastroProduct {
      * Mastro Product data
      * @var array
      */
-    private $data = array();
+    protected $data = array();
 
     /**
      * Reference to Mastro Image Collection
@@ -106,7 +106,10 @@ class MastroProduct {
     public function createMagentoProduct() {
         $magentoProduct = $this->magentoProduct;
         $magentoProduct->emptyData();
-        
+        if (!array_key_exists('DESCRIZIONE', $this->data)) {
+             echo 'Missing mastro data'.PHP_EOL;
+             return;
+        }
         $key = $this->generateKey($this->data['DESCRIZIONE']);
         $mastroCategory = $this->data['REPARTO'];
         if (
@@ -137,25 +140,40 @@ class MastroProduct {
         $magentoProduct->setData('xus_skus',$this->getReSkus($key));
         if ($this->data['DESCRIZIONE'] == '')
             return $this->data['EAN13'].',"Missing description",""';
+        $this->data['DESCRIZIONE'] = ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE'])));
         if ($this->data['TESTO'] == '')
             $this->data['TESTO']=$this->data['DESCRIZIONE'];
-        if ($mastroCategory == '15.1' || $mastroCategory == '15.2')
-	    $this->data['DESCRIZIONE'] = 'Passeggino '.$this->data['DESCRIZIONE'];
-        $magentoProduct->setData('name', ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))));
-        if ($this->data['MARCA'] != '')
-            $magentoProduct->setData('manufacturer', ucfirst(strtolower(stripslashes($this->data['MARCA']))).'::['.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['MARCA']))))).']');
+        $this->data['TESTO'] = preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']));
+        
+        $magentoProduct->setData('name', $this->fixCategoryName($mastroCategory));
+        if ($this->data['MARCA'] != '') {
+            $this->data['MARCA'] = trim(strtolower(stripslashes($this->data['MARCA'])));
+            switch ($this->data['MARCA']) {
+               case 'jane':
+                  $this->data['MARCA'] = 'jane\'';
+               break;
+               case 'philips':
+                  $this->data['MARCA'] = 'philips avent';
+               break;
+            }
+            $magentoProduct->setData('manufacturer', ucfirst($this->data['MARCA']).'::['.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',$this->data['MARCA']))).']');
+            $this->data['MARCA']=ucfirst($this->data['MARCA']);
+        }
+        
         $magentoProduct->setData('meta_title',
-                ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))).' '.
-                ucfirst(strtolower(stripslashes($this->data['MARCA'])))
-        );
-        $magentoProduct->setData('meta_description',
-                ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE']))).' a soli '.
-                str_replace(',','.',str_replace('.','',$this->data['VENDITA'])).' euro. Vasto assortimento di '.
-                array_shift($categoriesBranches).' della '.ucfirst(strtolower(stripslashes($this->data['MARCA']))).
-                ' su storebaby.it. Acquista online oggi stesso!'
-        );
-        $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))));
-        $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(' ','_',strtolower( iconv('UTF-8', 'ASCII//TRANSLIT',trim(stripslashes($this->data['DESCRIZIONE']))))).'.html');
+            $magentoProduct->getData('name')
+	);
+	$magentoProduct->setData('meta_description',
+            $this->data['DESCRIZIONE'].' a soli '.
+            intval($this->data['VENDITA']).' euro. Vasto assortimento di '.
+            strtolower(array_shift($categoriesBranches)).' della '.$this->data['MARCA'].
+            ' su storebaby.it. Acquista online oggi stesso!'
+	);
+        $magentoProduct->setData('description', $this->data['TESTO']);
+        $magentoProduct->setData('short_description', $magentoProduct->getData('name'));
+        $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
+        $magentoProduct->setData('url_key', 'articoli_infanzia_'.str_replace(array(' ','/','.'),'_',strtolower( $magentoProduct->getData('name') )));
+        $magentoProduct->setData('url_path', 'articoli_infanzia_'.str_replace(array(' ','/','.'),'_',strtolower( $magentoProduct->getData('name') )).'.html');
         $weight = $this->productFromCsv->getWeight($mastroCategory);
         if ($weight ==false) $weight = '0.1';
         $magentoProduct->setData('weight', $weight);
@@ -165,10 +183,10 @@ class MastroProduct {
         if ($this->data['VENDITA'] == '')
             return $this->data['EAN13'].',"Missing price",""';
 	$magentoProduct->setData('price',str_replace(',','.',str_replace('.','',$this->data['VENDITA'])));
-        $magentoProduct->setData('tax_class_id', $iva);
-        $magentoProduct->setData('description', preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO'])));
-        $magentoProduct->setData('short_description', preg_replace('/\..*/','.',preg_replace('/^DESCRIZIONE[ (\<br\/\>)]*/i', '', stripslashes($this->data['TESTO']))));
-        $magentoProduct->setData('meta_keyword', 'articoli infanzia,'.implode(',',  array_slice(array_unique(array_merge($categoriesWords,$nameWords)),0,5)));
+        $magentoProduct->setData('tax_class_id', $iva);        
+        if(get_class($this) == 'TestMastroProduct') {
+            return $magentoProduct;
+        }
         $magentoProduct->setData('qty',max(0,$this->data['ESISTENZA']-$this->data['IMPEGNATO']));
         
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
@@ -266,7 +284,7 @@ class MastroProduct {
       * @return string
       */
      private function generateKey($descrizione) {
-         preg_match('/[^ ]*( [^ ]*)?( [^ ]*)?/',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT',$descrizione)),$key);
+         preg_match('/[^ ]*( [^ ]*)?( [^ ]*)?( [^ ]*)?/',strtolower(iconv('UTF-8', 'ASCII//TRANSLIT',$descrizione)),$key);
          if (sizeof($key)>0)
              return $key[0];
          else return '';
@@ -280,5 +298,201 @@ class MastroProduct {
          if (key_exists($key,$this->related))
             return $this->related[$key];
          else return '';
+     }
+     /**
+      * Fixes category name
+      * @param sting $mastroCategory
+      */
+     private function fixCategoryName ($mastroCategory) {
+        $description = $this->data['DESCRIZIONE'];
+        $secondWord = trim(strtolower($this->data['MARCA']));
+        $lastWord = $this->data['COD.PRODOTTO'];
+        switch ('#'.$mastroCategory) {
+           case '#8.1';
+           case '#08.1';
+               $firstWord = 'Cancelletto di sicurezza';
+           break;
+           case '#8.2';    
+           case '#08.2';
+               $firstWord = 'Barriera letto';
+           break;
+           case '#9.1';
+           case '#09.1';
+               $firstWord = 'Sicchiotto gommotto';
+           break;
+           case '#9.2';
+           case '#09.2';
+               $firstWord = 'Biberon';
+           break;        
+           case '#9.3';
+           case '#09.3';
+               $firstWord = 'Tettarelle';
+           break;        
+           case '#9.4';
+           case '#09.4';          
+               $firstWord = 'Thermos';
+           break;        
+           case '#9.5';
+           case '#09.5';
+               $firstWord = 'Accappatoio';
+           break;      
+           case '#9.6';
+           case '#09.6';
+               $firstWord = 'Occhiali';
+           break;        
+           case '#9.7';
+           case '#09.7';
+               $firstWord = 'Borsa nursery';
+           break;
+           case '#11.1';
+               $firstWord = 'Bagnetto';
+           break;
+           case '#11.2';
+               $firstWord = 'Faciatoio';
+           break;
+           case '#11.3';
+               $firstWord = 'Vasino';
+           break;
+           case '#12.1';
+               $firstWord = 'Radioline neonati';
+           break;
+           case '#12.2';
+               $firstWord = 'Scaldabiberon';
+           break;
+           case '#12.3';
+               $firstWord = 'Sterilizzatore';
+           break;
+           case '#12.4';
+               $firstWord = 'Umidificatore';
+           break;
+           case '#12.5';
+               $firstWord = 'Termometro';
+           break;
+           case '#12.6';
+               $firstWord = 'Bilancia neonato';
+           break;
+           case '#12.7';
+               $firstWord = 'Aereosol';
+           break;
+           case '#12.8';
+               $firstWord = 'Tiralatte';
+           break;
+           case '#13.1';
+               $firstWord = 'Latte neonato';
+           break;
+           case '#14.1';
+               $firstWord = 'Giochi da giardino';
+           break;
+           case '#14.10';
+               $firstWord = 'Bambole e accessori';
+           break;
+           case '#14.12';
+               $firstWord = 'Gioco in legno';
+           break;
+           case '#14.2';
+               $firstWord = 'Giocattolo elettrico';
+           break;
+           case '#14.3';
+               $firstWord = 'Giostrine carillon';
+           break;
+           case '#14.4';
+               $firstWord = 'Tappeto palestrina';
+           break;
+           case '#14.5';
+               $firstWord = 'Gioco neonati';
+           break;
+           case '#14.6';
+               $firstWord = 'Banco mobilità gioco';
+           break;
+           case '#14.61';
+               $firstWord = 'Altalena dondolino';
+           break;
+           case '#14.7';
+               $firstWord = 'Cavalcabile';
+           break;
+           case '#14.8';
+               $firstWord = 'Giocattolo';
+           break;
+           case '#15.1';
+               $firstWord = 'Passeggino trio';
+           break;
+           case '#15.12';
+               $firstWord = 'Navicella auto';
+           break;
+           case '#15.13';
+           case '#15.14';
+           case '#15.15';
+           case '#15.16';
+           case '#15.17';
+           case '#15.18';
+           case '#15.20';
+               $firstWord = 'Seggiolino auto';
+           break;
+           case '#15.2';
+               $firstWord = 'Passeggino duo';
+           break;
+           case '#15.21';
+               $firstWord = 'Seggiolone pappa';
+           break;
+           case '#15.3';
+               $firstWord = 'Passeggino';
+           break;
+           case '#15.31';
+               $firstWord = 'Box';
+           break;
+           case '#15.4';
+               $firstWord = 'Passeggino gemellare';
+           break;
+           case '#15.41';
+               $firstWord = 'Girello';
+           break;
+           case '#15.5';
+               $firstWord = 'Lettini da campeggio - viaggio';
+           break;
+           case '#15.51';
+               $firstWord = 'Sdraietta';
+           break;
+           case '#15.6';
+               $firstWord = 'Marsupio';
+           break;
+           case '#15.61';
+               $firstWord = 'Altalena dondolino';
+           break;
+           case '#15.7';
+               $firstWord = 'Ombrellino passeggino';
+           break;
+           case '#15.8';
+               $firstWord = 'Sacco passeggino';
+           break;
+           case '#15.c1';
+              $firstWord = 'Seggiolino auto isofix';
+           break;
+           case '#17.3';
+              $firstWord = 'Cuscino allattamento';
+           break;
+           case '#17.4';
+              $firstWord = 'Sacco nanna';
+           break;
+           case '#17.5';
+              $firstWord = 'Tappeto';
+           break;
+           case '#19.1';
+              $firstWord = 'Seggiolino bicicletta';
+           break;
+         }
+         if (isset($firstWord)) {
+                $description = preg_replace('/\b'.$firstWord.'\b/i', '', $description);
+         } else {
+                $firstWord='';
+         }
+         if ($secondWord != '') {
+            $description = preg_replace('/\b'.preg_quote($secondWord).'\b/i', '', $description);
+         }
+         if ($lastWord != '') {
+            $description = preg_replace('/\b'.preg_quote($lastWord).'\b/i', '', $description);
+         }
+         $description = $firstWord.' '.ucfirst($secondWord).' '.ucfirst(strtolower($description)).' '.$lastWord;
+         $description = trim(preg_replace('/ +/', ' ', $description));
+         return $description;
      }
 }

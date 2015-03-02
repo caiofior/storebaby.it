@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ *
+ * @category MultiSafepay
+ * @package  MultiSafepay_Msp
+ * @license  http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <MultiSafepay_Msp>
+            <version>2.0.2</version>
+        </MultiSafepay_Msp>
+    </modules>
+    <global>
+        <models>
+            <msp>
+                <class>MultiSafepay_Msp_Model</class>
+                <resourceModel>msp_resource</resourceModel>
+            </msp>
+            <msp_resource>
+                <class>MultiSafepay_Msp_Model_Resource</class>
+                <deprecatedNode>msp_mysql4</deprecatedNode>
+                <entities />
+            </msp_resource>
+<sales>
+                <rewrite>
+                    <service_quote>MultiSafepay_Msp_Model_Service_Quote</service_quote>
+                </rewrite>
+            </sales>
+        </models>
+	<sales>
+             <quote>
+                    <totals>
+                        <servicecost>
+                            <class>MultiSafepay_Msp_Model_Servicecost_Quote_Address_Total_Servicecost</class>
+                            <after>subtotal,discount,shipping,tax</after>
+				<before>grand_total</before>
+                        </servicecost>
+                    </totals>
+                </quote>
+		<order_invoice>
+				<totals>
+					<servicecost>
+						<class>MultiSafepay_Msp_Model_Servicecost_Invoice_Totals</class>
+						<after>subtotal,discount,shipping,tax</after>
+						<before>grand_total</before>
+					</servicecost>
+				</totals>
+			</order_invoice>
+		 <order_creditmemo>
+                <totals>
+                    <servicecost>
+                        <class>MultiSafepay_Msp_Model_Servicecost_Creditmemo_Total</class>
+                    </servicecost>
+                </totals>
+            </order_creditmemo>
+          </sales>
+            <fieldsets>
+                <sales_convert_quote>
+                    <servicecost><to_order>*</to_order></servicecost>
+			<base_servicecost><to_order>*</to_order></base_servicecost>
+                    <servicecost_tax><to_order>*</to_order></servicecost_tax>
+ 			<base_servicecost_tax><to_order>*</to_order></base_servicecost_tax>
+			<servicecost_pdf><to_order>*</to_order></servicecost_pdf>
+                </sales_convert_quote>
+            </fieldsets>
+<pdf>
+            <totals>
+                <servicecost translate="title">
+                    <title>MultiSafepay Fee</title>
+                    <source_field>servicecost_pdf</source_field>
+                    <font_size>7</font_size>
+                    <display_zero>0</display_zero>
+                    <sort_order>650</sort_order>
+                    <amount_prefix></amount_prefix>
+                </servicecost>
+            </totals>
+        </pdf>
+        <resources>
+            <msp_setup>
+                <setup>
+                    <module>MultiSafepay_Msp</module>
+                    <class>MultiSafepay_Msp_Model_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </msp_setup>
+            <msp_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </msp_write>
+            <msp_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </msp_read>
+        </resources>
+        <blocks>
+            <msp>
+                <class>MultiSafepay_Msp_Block</class>
+            </msp>
+		<adminhtml>
+		<rewrite>
+			<sales_order_totals>MultiSafepay_Msp_Block_Adminhtml_Servicecost_Totals_Order</sales_order_totals>
+			<sales_order_invoice_totals>MultiSafepay_Msp_Block_Adminhtml_Servicecost_Totals_Invoice</sales_order_invoice_totals>
+			<sales_order_creditmemo_totals>MultiSafepay_Msp_Block_Adminhtml_Servicecost_Totals_Creditmemo</sales_order_creditmemo_totals>
+		</rewrite>
+	</adminhtml>
+	<sales>
+				<rewrite>
+					<order_totals>MultiSafepay_Msp_Block_Servicecost_Order_Totals</order_totals>
+					<order_invoice_totals>MultiSafepay_Msp_Block_Servicecost_Order_Totals</order_invoice_totals>
+				</rewrite>
+			</sales>
+
+            <checkout>
+                <rewrite>
+                    <onepage_payment_methods>MultiSafepay_Msp_Block_Checkout_Onepage_Payment_Methods</onepage_payment_methods>
+
+                </rewrite>
+            </checkout>
+        </blocks>
+        <helpers>
+            <msp>
+                <class>MultiSafepay_Msp_Helper</class>
+            </msp>
+        </helpers>
+<events>
+  <sales_order_creditmemo_save_after>
+                <observers>
+                    <msp_creditmemo_save_after>
+                        <type>singleton</type>
+                        <class>msp/observer_creditmemo</class>
+                        <method>sales_order_creditmemo_save_after</method>
+                    </msp_creditmemo_save_after>
+                </observers>
+            </sales_order_creditmemo_save_after>
+            <sales_order_shipment_save_after>
+                <observers>
+                    <msp_shipment_save_after>
+                        <type>singleton</type>
+                        <class>msp/observer_shipment</class>
+                        <method>sales_order_shipment_save_after</method>
+                    </msp_shipment_save_after>
+                </observers>
+            </sales_order_shipment_save_after>
+
+
+		<sales_order_invoice_save_after>
+                <observers>
+                    <sales_order_invoice_save_after>
+                        <class>msp/servicecost_observer</class>
+                        <method>invoiceSaveAfter</method>
+                    </sales_order_invoice_save_after>
+                </observers>
+            </sales_order_invoice_save_after>
+            <sales_order_creditmemo_save_after>
+               <observers>
+                   <sales_order_creditmemo_save_after>
+                       <class>msp/servicecost_observer</class>
+                       <method>creditmemoSaveAfter</method>
+                   </sales_order_creditmemo_save_after>
+               </observers>
+           </sales_order_creditmemo_save_after>
+
+
+
+</events>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <MultiSafepay_Msp>
+                    <files>
+                        <default>MultiSafepay_Msp.csv</default>
+                    </files>
+                </MultiSafepay_Msp>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <msp>
+                <use>standard</use>
+                <args>
+                    <module>MultiSafepay_Msp</module>
+                    <frontName>msp</frontName>
+                </args>
+            </msp>
+        </routers>
+        <translate>
+            <modules>
+                <MultiSafepay_Msp>
+                    <files>
+                        <default>MultiSafepay_Msp.csv</default>
+                    </files>
+                </MultiSafepay_Msp>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <msp>
+                    <file>msp.xml</file>
+                </msp>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <!-- begin: Main Settings ('Payment Methods' tab) -->
+        <payment>
+            <msp>
+                <active>0</active>
+                <model>msp/gateway_standard</model>
+                <gateway_select>0</gateway_select>
+                <title>MultiSafepay: iDeal, Visa, MasterCard, Mistercash, Overboeking</title>
+                <lang>nl</lang>
+                <order_status>pending</order_status>
+                <complete_status>processing</complete_status>
+                <initialized_status>pending</initialized_status>
+                <uncleared_status>pending</uncleared_status>
+                <reserved_status>pending</reserved_status>
+                <void_status>canceled</void_status>
+                <declined_status>canceled</declined_status>
+                <reversed_status>canceled</reversed_status>
+                <refunded_status>canceled</refunded_status>
+                <expired_status>canceled</expired_status>
+                <autocreate_invoice>0</autocreate_invoice>
+                <mail_invoice>0</mail_invoice>
+                <test_api>live</test_api>
+                <use_refund_credit_memo>0</use_refund_credit_memo>
+                <allow_convert_currency>1</allow_convert_currency>
+            </msp>
+            <mspcheckout>
+                <active>1</active>
+                <model>msp/checkout</model>
+                <title>MultiSafepay Fast Checkout</title>
+                <sort_order>450</sort_order>
+            </mspcheckout>
+            <msp_ideal>
+                <active>1</active>
+                <model>msp/gateway_ideal</model>
+                <title>MSP iDEAL</title>
+            </msp_ideal>
+            <msp_payafter>
+                <active>1</active>
+                <model>msp/gateway_payafter</model>
+                <title>MSP Betaal na Ontvangst</title>
+            </msp_payafter>
+				<msp_amex>
+				<active>1</active>
+				<model>msp/gateway_amex</model>
+				<title>MSP American Express</title>
+			</msp_amex>
+            <msp_mistercash>
+                <active>1</active>
+                <model>msp/gateway_mistercash</model>
+                <title>MSP MisterCash</title>
+            </msp_mistercash>
+            <msp_visa>
+                <active>1</active>
+                <model>msp/gateway_visa</model>
+                <title>MSP Visa</title>
+            </msp_visa>
+            <msp_mastercard>
+                <active>1</active>
+                <model>msp/gateway_mastercard</model>
+                <title>MSP MasterCard</title>
+            </msp_mastercard>
+            <msp_banktransfer>
+                <active>1</active>
+                <model>msp/gateway_banktransfer</model>
+                <title>MSP Bank Transfer</title>
+            </msp_banktransfer>
+            <msp_maestro>
+                <active>1</active>
+                <model>msp/gateway_maestro</model>
+                <title>MSP Maestro</title>
+            </msp_maestro>
+            <msp_paypal>
+                <active>1</active>
+                <model>msp/gateway_paypal</model>
+                <title>MSP PayPal</title>
+            </msp_paypal>
+            <msp_webgift>
+                <active>1</active>
+                <model>msp/gateway_webgift</model>
+                <title>MSP Webgift</title>
+            </msp_webgift>
+            <msp_ebon>
+                <active>1</active>
+                <model>msp/gateway_ebon</model>
+                <title>MSP E-bon</title>
+            </msp_ebon>
+			 <msp_lief>
+                <active>1</active>
+                <model>msp/gateway_lief</model>
+                <title>MSP Lief</title>
+            </msp_lief>
+            <msp_babygiftcard>
+                <active>1</active>
+                <model>msp/gateway_babygiftcard</model>
+                <title>MSP Baby giftcard</title>
+            </msp_babygiftcard>
+			 <msp_gezondheidsbon>
+                <active>1</active>
+                <model>msp/gateway_gezondheidsbon</model>
+                <title>MSP Gezondheidsbon</title>
+            </msp_gezondheidsbon>
+            <msp_boekenbon>
+                <active>1</active>
+                <model>msp/gateway_boekenbon</model>
+                <title>MSP Boekenbon</title>
+            </msp_boekenbon>
+            <msp_erotiekbon>
+                <active>1</active>
+                <model>msp/gateway_erotiekbon</model>
+                <title>MSP Erotiekbon</title>
+            </msp_erotiekbon>
+            <msp_parfumnl>
+                <active>1</active>
+                <model>msp/gateway_parfumnl</model>
+                <title>MSP Parfum NL</title>
+            </msp_parfumnl>
+            <msp_parfumcadeaukaart>
+                <active>1</active>
+                <model>msp/gateway_parfumcadeaukaart</model>
+                <title>MSP Parfum cadeaukaart</title>
+            </msp_parfumcadeaukaart>
+			 <msp_fashioncheque>
+                <active>1</active>
+                <model>msp/gateway_fashioncheque</model>
+                <title>MSP Fahion Cheque</title>
+            </msp_fashioncheque>
+            <msp_degrotespeelgoedwinkel>
+                <active>1</active>
+                <model>msp/gateway_degrotespeelgoedwinkel</model>
+                <title>MSP de grote speelgoedwinkel cadeaukaart</title>
+            </msp_degrotespeelgoedwinkel>
+            <msp_giropay>
+                <active>1</active>
+                <model>msp/gateway_giroPay</model>
+                <title>MSP GiroPay</title>
+            </msp_giropay>
+            <msp_multisafepay>
+                <active>1</active>
+                <model>msp/gateway_multiSafepay</model>
+                <title>MSP Wallet</title>
+            </msp_multisafepay>
+            <msp_directebanking>
+                <active>1</active>
+                <model>msp/gateway_directEbanking</model>
+                <title>MSP Sofort Banking</title>
+            </msp_directebanking>
+            <msp_directdebit>
+                <active>1</active>
+                <model>msp/gateway_directDebit</model>
+                <title>MSP Direct Debit</title>
+            </msp_directdebit>
+            <msp_fastcheckout>
+                <active>1</active>
+                <model>msp/gateway_fastcheckout</model>
+                <title>MSP Fast Checkout</title>
+            </msp_fastcheckout>
+        </payment>
+        <!-- end: Main Settings (Payment Methods tab) -->
+        <!-- begin: MSP Gateways -->
+        <msp>
+            <settings>
+                <model>msp/gateway_standard</model>
+                <order_status>pending</order_status>
+                <complete_status>processing</complete_status>
+                <initialized_status>pending</initialized_status>
+                <uncleared_status>pending</uncleared_status>
+                <reserved_status>pending</reserved_status>
+                <void_status>canceled</void_status>
+                <declined_status>canceled</declined_status>
+                <reversed_status>canceled</reversed_status>
+                <refunded_status>canceled</refunded_status>
+                <expired_status>canceled</expired_status>
+                <autocreate_invoice>0</autocreate_invoice>
+                <mail_invoice>0</mail_invoice>
+                <test_api>live</test_api>
+                <allow_convert_currency>1</allow_convert_currency>
+                <use_refund_credit_memo>0</use_refund_credit_memo>
+            </settings>
+            <msp_ideal translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_ideal</model>
+                <title>iDEAL</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_ideal>
+            <msp_payafter translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_payafter</model>
+                <title>Betaal na Ontvangst</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+                <min_order_total>15</min_order_total>
+                <max_order_total>300</max_order_total>
+                <send_request_after_shipping>0</send_request_after_shipping>
+            </msp_payafter>
+			<msp_amex translate="title" module="msp">
+				<active>0</active>
+				<model>msp/gateway_amex</model>
+				<title>American Express</title>
+				<allowed_currency>EUR</allowed_currency>
+				<lang>nl</lang>
+			</msp_amex>
+            <msp_mistercash translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_mistercash</model>
+                <title>MisterCash</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_mistercash>
+            <msp_visa translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_visa</model>
+                <title>Visa</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_visa>
+            <msp_mastercard translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_mastercard</model>
+                <title>Mastercard</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_mastercard>
+            <msp_banktransfer translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_banktransfer</model>
+                <title>Banktransfer</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_banktransfer>
+            <msp_maestro translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_maestro</model>
+                <title>Maestro</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_maestro>
+            <msp_paypal translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_paypal</model>
+                <title>PayPal</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_paypal>
+            <msp_webgift translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_webgift</model>
+                <title>Webshop Giftcard</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_webgift>
+            <msp_ebon translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_ebon</model>
+                <title>E-bon</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_ebon>
+			  <msp_lief translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_lief</model>
+                <title>Lief</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_lief>
+            <msp_babygiftcard translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_babygiftcard</model>
+                <title>Baby giftcard</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_babygiftcard>
+			<msp_gezondheidsbon translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_gezondheidsbon</model>
+                <title>Gezondheidsbon</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_gezondheidsbon>
+            <msp_boekenbon translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_boekenbon</model>
+                <title>Boekenbon</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_boekenbon>
+            <msp_erotiekbon translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_erotiekbon</model>
+                <title>Erotiekbon</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_erotiekbon>
+            <msp_parfumnl translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_parfumnl</model>
+                <title>Parfum NL</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_parfumnl>
+            <msp_parfumcadeaukaart translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_parfumcadeaukaart</model>
+                <title>Parfum cadeaukaart</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_parfumcadeaukaart>
+			<msp_fashioncheque translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_fashioncheque</model>
+                <title>Fashion Cheque</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_fashioncheque>
+            <msp_degrotespeelgoedwinkel translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_degrotespeelgoedwinkel</model>
+                <title>De grote speelgoedwinkel</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_degrotespeelgoedwinkel>
+            <msp_giropay translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_giroPay</model>
+                <title>GiroPay</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_giropay>
+            <msp_multisafepay translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_multiSafepay</model>
+                <title>MultiSafepay wallet</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_multisafepay>
+            <msp_directebanking translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_directEbanking</model>
+                <title>Sofort Banking</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_directebanking>
+            <msp_directdebit translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_directDebit</model>
+                <title>Direct Debit</title>
+                <allowed_currency>EUR</allowed_currency>
+                <lang>nl</lang>
+            </msp_directdebit>
+            <msp_fastcheckout translate="title" module="msp">
+                <active>0</active>
+                <model>msp/gateway_fastcheckout</model>
+                <title>Fast Checkout</title>
+                <lang>nl</lang>
+                <sort_order>450</sort_order>
+            </msp_fastcheckout>
+        </msp>
+        <!-- end: MSP Gateways -->
+        <!-- begin: MSP Fast Checkout -->
+        <mspcheckout>
+            <settings>
+                <order_status>pending</order_status>
+                <complete_status>processing</complete_status>
+                <initialized_status>pending</initialized_status>
+                <uncleared_status>pending</uncleared_status>
+                <reserved_status>pending</reserved_status>
+                <void_status>canceled</void_status>
+                <declined_status>canceled</declined_status>
+                <reversed_status>canceled</reversed_status>
+                <refunded_status>canceled</refunded_status>
+                <expired_status>canceled</expired_status>
+                <autocreate_invoice>0</autocreate_invoice>
+                <mail_invoice>0</mail_invoice>
+                <send_new_account_email>1</send_new_account_email>
+                <redirect_to_account>0</redirect_to_account>
+                <auto_login_fco_user>0</auto_login_fco_user>
+                <test_api>live</test_api>
+                <use_refund_credit_memo>0</use_refund_credit_memo>
+            </settings>
+            <freeshipping>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <cutoff_cost>50</cutoff_cost>
+                <name>Free</name>
+                <title>Free Shipping</title>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+            </freeshipping>
+        </mspcheckout>
+        <!-- end: MSP Fast Checkout -->
+    </default>
+</config>

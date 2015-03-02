@@ -57,7 +57,7 @@ class ProductFromCsv {
 * Association with categories
 * @var array
 */
-    private $categories = array();
+    protected $categories = array();
     /**
 *Association with weights
 * @var array
@@ -118,6 +118,18 @@ class ProductFromCsv {
                 unlink ($this->lock);
         touch($this->lock);
         $dbFile .= DIRECTORY_SEPARATOR . 'mastro';
+        echo 'Setting up database' . PHP_EOL;
+        $this->setUpDb($dbFile);
+        echo 'Fixing database' . PHP_EOL;
+        if (@$this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL;') === false) {
+            unlink($dbFile);
+            $this->setUpDb($dbFile);
+        }
+    }
+    /**
+     * Sets up the db
+     */
+    private function setUpDb($dbFile) {
         $this->imageDb = new SQLite3($dbFile);
         echo 'Setting up database' . PHP_EOL;
         $this->imageDb->exec('CREATE TABLE IF NOT EXISTS product (
@@ -134,8 +146,6 @@ create_date NUMERIC,
 expire_date NUMERIC,
 corrupted NUMERIC
 );');
-        echo 'Fixing database' . PHP_EOL;
-        $this->imageDb->exec('UPDATE product SET expire_date = DATETIME(\'now\') WHERE expire_date=\'\' OR expire_date IS NULL;');
     }
 
     /**

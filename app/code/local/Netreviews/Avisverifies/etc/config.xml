@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<config>
+    <!-- General Config -->
+    <modules>
+        <Netreviews_Avisverifies>
+            <version>2.6.5.5</version>
+        </Netreviews_Avisverifies>
+    </modules>
+    <!-- General Config -->
+    <!-- Global -->
+    <global>
+        <blocks>
+            <avisverifies>
+                <class>Netreviews_Avisverifies_Block</class>
+            </avisverifies>
+            <review>
+                <rewrite>
+                    <helper>Netreviews_Avisverifies_Block_Review_Helper</helper>
+                    <product_view_list>Netreviews_Avisverifies_Block_Review_Product_View_List</product_view_list>
+                </rewrite>
+            </review>
+            <rating>
+                <rewrite>
+                    <entity_detailed>Netreviews_Avisverifies_Block_Rating_Entity_Detailed</entity_detailed>
+                </rewrite>
+            </rating>
+        </blocks>
+        <models>
+            <avisverifies>
+                <class>Netreviews_Avisverifies_Model</class>
+                <resourceModel>avisverifies_mysql4</resourceModel>
+            </avisverifies>
+            <avisverifies_mysql4>
+                <class>Netreviews_Avisverifies_Model_Mysql4</class>
+                <!-- used by the api -->
+                <entities>
+                    <reviews>
+                        <table>avisverifies_products_reviews</table>
+                    </reviews>
+                    <average>
+                        <table>avisverifies_products_average</table>
+                    </average>
+                </entities>
+            </avisverifies_mysql4>
+        </models>
+        <resources>
+            <avisverifies_setup>
+                <setup>
+                    <module>Netreviews_Avisverifies</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </avisverifies_setup>
+            <avisverifies_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </avisverifies_write>
+            <avisverifies_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </avisverifies_read>
+        </resources>        
+        <!-- Data Helper -->
+        <helpers>
+            <avisverifies>
+                <class>Netreviews_Avisverifies_Helper</class>
+            </avisverifies>
+        </helpers>        
+        <!-- Observers -->        
+        <events>            
+            <!-- Event: Checkout\controllers\OnepageController.php:273 -->            
+            <checkout_onepage_controller_success_action>              
+                <observers>                
+                    <avisverifies_checkout_observer>                  
+                        <type>singleton</type>                  
+                        <class>Netreviews_Avisverifies_Model_Observers_Checkout_Track</class>                  
+                        <method>trackCheckout</method>                
+                    </avisverifies_checkout_observer>              
+                </observers>            
+            </checkout_onepage_controller_success_action>            
+            <!-- Event: Checkout\controllers\MultishippingController.php:545 -->            
+            <checkout_multishipping_controller_success_action>              
+                <observers>                
+                    <avisverifies_checkout_observer_multi>                  
+                        <type>singleton</type>                  
+                        <class>Netreviews_Avisverifies_Model_Observers_Checkout_Track</class>                  
+                        <method>trackCheckout</method>                
+                    </avisverifies_checkout_observer_multi>              
+                </observers>            
+            </checkout_multishipping_controller_success_action>            
+            <!-- Event: /app/code/core/Mage/Catalog/Block/Product/List.php:162 -->            
+            <catalog_block_product_list_collection>                
+                <observers>                    
+                    <avisverifies_product_Observer>                        
+                        <type>singleton</type>                        
+                        <class>Netreviews_Avisverifies_Model_Observers_Product_List</class>                        
+                        <method>updateProductRatingSummary</method>                   
+                    </avisverifies_product_Observer>                
+                </observers>            
+            </catalog_block_product_list_collection>
+            <!-- module system config save -->
+            <admin_system_config_changed_section_avisverifies>
+                <observers>
+                    <avisverifies>
+                        <type>singleton</type>
+                        <class>avisverifies/observers_system</class>
+                        <method>save</method>
+                    </avisverifies>
+                </observers>
+            </admin_system_config_changed_section_avisverifies>        
+        </events>
+    </global>
+    <!-- Global -->
+    <!-- Frontend -->
+    <frontend>
+        <routers>
+            <avisverifies>
+                <use>standard</use>
+                <args>
+                    <module>Netreviews_Avisverifies</module>
+                    <frontName>AvisVerifies</frontName>
+                </args>
+            </avisverifies>
+        </routers>
+        <layout>
+            <updates>
+                <avisverifies>
+                    <file>avisverifies.xml</file>
+                </avisverifies>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <avisverifies>
+                    <files>
+                        <default>avisverifies.csv</default>
+                    </files>
+                </avisverifies>
+            </modules>
+        </translate>
+    </frontend>
+    <!-- Frontend -->
+    <!-- Admin -->
+    <admin>
+        <routers>
+            <avisverifies>
+                <use>admin</use>
+                <args>
+                    <module>Netreviews_Avisverifies</module>
+                    <frontName>AvisVerifies</frontName>
+                </args>
+            </avisverifies>
+        </routers>
+    </admin>
+    <!-- Admin -->
+    <!-- AdminHtml -->
+    <adminhtml>            
+        <menu>                
+            <catalog>                    
+                <children>                        
+                    <avisverifies module="avisverifies" translate="title">                            
+                        <title>VerifiedReviews</title>                                
+                        <sort_order>100</sort_order>                                
+                        <children>                                    
+                            <form module="avisverifies" translate="title">                                        
+                                <title>Management</title>                                        
+                                <sort_order>0</sort_order>                                        
+                                <action>avisverifies/adminhtml_avisverifies</action>                                    
+                            </form>                                    
+                            <config module="avisverifies" translate="title">                                        
+                                <title>Configuration</title>                                        
+                                <sort_order>10</sort_order>                                        
+                                <action>adminhtml/system_config/edit/section/avisverifies/</action>                                    
+                            </config>                                    
+                            <check module="avisverifies" translate="title">                                        
+                                <title>Check Installation</title>                                        
+                                <sort_order>20</sort_order>                                        
+                                <action>avisverifies/adminhtml_avisverifies/checkInstallation</action>                                    
+                            </check>                                
+                        </children>                            
+                    </avisverifies>                        
+                </children>                    
+            </catalog>
+        </menu>
+        <translate>
+            <modules>
+                <avisverifies>
+                    <files>                                            
+                        <default>avisverifies.csv</default>
+                    </files>
+                </avisverifies>
+            </modules>
+        </translate>
+        <acl>                    
+            <resources>                        
+                <admin>                            
+                    <children>                                
+                        <system>                                    
+                            <children>                                        
+                                <config>                                            
+                                    <children>                                                
+                                        <avisverifies module="avisverifies" translate="title">                                                    
+                                            <title>VerifiedReviews</title>                                                
+                                        </avisverifies>                                            
+                                    </children>                                        
+                                </config>                                    
+                            </children>                                
+                        </system>                                
+                        <catalog>                                    
+                            <children>                                        
+                                <avisverifies module="avisverifies" translate="title">                                                                
+                                    <title>VerifiedReviews</title>                                                                
+                                    <sort_order>100</sort_order>                                                                
+                                    <children>                                                                        
+                                        <form module="avisverifies" translate="title">                                
+                                            <title>Management</title>                                
+                                            <sort_order>0</sort_order>                                
+                                            <action>avisverifies/adminhtml_avisverifies</action>                            
+                                        </form>                            
+                                        <config module="avisverifies" translate="title">                                
+                                            <title>Configuration</title>                                
+                                            <sort_order>10</sort_order>                                
+                                            <action>adminhtml/system_config/edit/section/avisverifies/</action>                            
+                                        </config>                            
+                                        <check module="avisverifies" translate="title">                                
+                                            <title>Check Installation</title>                                
+                                            <sort_order>20</sort_order>                                
+                                            <action>avisverifies/adminhtml_avisverifies/checkInstallation</action>                            
+                                        </check>                                                                
+                                    </children>                                        
+                                </avisverifies>                                    
+                            </children>                                
+                        </catalog>                            
+                    </children>                        
+                </admin>                    
+            </resources>
+        </acl>
+    </adminhtml>
+    <!-- AdminHtml -->
+</config>

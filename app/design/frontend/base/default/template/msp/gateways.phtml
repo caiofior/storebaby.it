@@ -1,0 +1,31 @@
+<?php
+/**
+ *
+ * @category MultiSafepay
+ * @package  MultiSafepay_Msp
+ * @license  http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php /** @var $this MultiSafepay_Msp_Block_Gateways */ ?>
+<?php if ($this->getMethodCode()=='msp_fastcheckout') { ?>
+    <a class="msp_checkout_link" href="<?php echo Mage::getUrl("msp/checkout/redirect") ?>">
+        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'msp'.DS.'button.png' ?>" style="margin-left: -0px;"/>
+    </a>
+    <script type="text/javascript">
+        element1 = document.getElementById('p_method_msp_fastcheckout');
+        element1.style.display = 'none';
+    </script>
+<?php } ?>
+
+<fieldset class="form-list">
+    <ul id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none">
+        <li>
+          <?php if ($this->getMethodCode()=='msp_banktransfer') { ?>
+            <input name='payment[accountid]'            value=""   id="accountid"/>             <label for="accountid"             style="width: 200px !important;">Rekeningnummer:</label><br />
+            <input name='payment[accountholdername]'    value=""   id="accountholdername"/>     <label for="accountholdername"     style="width: 200px !important;">Naam rekeninghouder:</label><br />
+            <input name='payment[accountholdercity]'    value=""   id="accountholdercity"/>     <label for="accountholdercity"     style="width: 200px !important;">Plaats Bank:</label><br />
+            <input name='payment[accountholdercountry]' value="NL" id="accountholdercountry"/>  <label for="accountholdercountry"  style="width: 200px !important;">Landcode bank:</label><br />
+          <?php } ?>
+        </li>
+    </ul>
+</fieldset>
