@@ -1,0 +1,37 @@
+<?php
+/**
+ * Innoexts
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@innoexts.com so we can send you a copy immediately.
+ *
+ * @category    Innoexts
+ * @package     Innoexts_InnoCore
+ * @copyright   Copyright (c) 2012 Innoexts (http://www.innoexts.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if ($this->hasForm()) : ?>
+<div id="<?php echo $this->getFormHtmlId() ?>" class="editable-grid-form">
+<?php echo $this->getFormHtml() ?>
+</div>
+<?php endif; ?>
+<?php if ($this->hasGrid()) : ?><?php echo $this->getGridHtml() ?><?php endif; ?>
+<?php if ($this->hasGrid() && $this->hasForm()) : ?>
+<script type="text/javascript">
+//<![CDATA[
+var <?php echo $this->getFormJsObjectName() ?> = new editableGridForm(
+    <?php echo $this->getGridJsObjectName() ?>, 
+    '<?php echo $this->getFormHtmlId() ?>', '<?php echo $this->getFormHtmlIdPrefix() ?>', 
+    <?php echo $this->getFormFieldNamesJson() ?>, <?php echo $this->getFormDefaultsJson() ?>
+);
+//]]>
+</script>
+<?php endif; ?>

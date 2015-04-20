@@ -1,0 +1,69 @@
+<?php
+/**
+ * Innoexts
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@innoexts.com so we can send you a copy immediately.
+ *
+ * @category    Innoexts
+ * @package     Innoexts_InnoCore
+ * @copyright   Copyright (c) 2012 Innoexts (http://www.innoexts.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if ($this->hasForm()) : ?>
+<div id="<?php echo $this->getFormHtmlId() ?>" class="editable-grid-form">
+<?php echo $this->getFormHtml() ?>
+</div>
+<?php endif; ?>
+<?php if ($this->hasGrid()) : ?><?php echo $this->getGridHtml() ?><?php endif; ?>
+<?php if ($this->hasGrid() && $this->hasForm()) : ?>
+<script type="text/javascript">
+//<![CDATA[
+
+var editableGridAreaForm = Class.create(editableGridForm, {
+    initialize : function($super, grid, formId, elementIdPrefix, elementNames, defaults, regionUpdater, validationUrl) {
+        $super(grid, formId, elementIdPrefix, elementNames, defaults, validationUrl);
+        this.regionUpdater = regionUpdater;
+    }, 
+    setValue : function(name, value) {
+        if (this.hasElement(name)) {
+            if ((name == 'country_id') || (name == 'region_id')) {
+                if (value === '0') value = '';
+            } else if (name == 'zip') {
+                if (!value) value = '*';
+            }
+            this.getElement(name).setValue(value);
+            if (name == 'country_id') {
+                if (this.regionUpdater) {
+                    this.regionUpdater.update();
+                }
+            }
+        }
+    }
+});
+var editableGridAreaFormRegionUpdater = new RegionUpdater(
+    '<?php echo $this->getFormHtmlIdPrefix() ?>country_id', 
+    'none', 
+    '<?php echo $this->getFormHtmlIdPrefix() ?>region_id', 
+    <?php echo $this->getRegionsJson(); ?>, 
+    'disable'
+);
+var <?php echo $this->getFormJsObjectName() ?> = new editableGridAreaForm(
+    <?php echo $this->getGridJsObjectName() ?>, 
+    '<?php echo $this->getFormHtmlId() ?>', 
+    '<?php echo $this->getFormHtmlIdPrefix() ?>', 
+    <?php echo $this->getFormFieldNamesJson() ?>, 
+    <?php echo $this->getFormDefaultsJson() ?>, 
+    editableGridAreaFormRegionUpdater
+);
+//]]>
+</script>
+<?php endif; ?>

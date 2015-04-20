@@ -16,7 +16,6 @@ class MastroProduct {
      * @var MagentoProduct
      */
     private $magentoProduct;
-
     /**
      * Mastro Product data
      * @var array
@@ -70,8 +69,8 @@ class MastroProduct {
      * 
      * @param ProductFromCsv $product_from_csvInstantiates references to image collection e magento product
      */
-    public function __construct(ProductFromCsv $product_from_csv) {
-        $this->productFromCsv = $product_from_csv;
+    public function __construct(ProductFromCsv $productFromCsv) {
+        $this->productFromCsv = $productFromCsv;
         $this->magentoProduct = new MagentoProduct($this);
         $this->mastroImageColl = new MastroImageColl($this);
     }
@@ -108,7 +107,7 @@ class MastroProduct {
         $magentoProduct->emptyData();
         if (!array_key_exists('DESCRIZIONE', $this->data)) {
              echo 'Missing mastro data'.PHP_EOL;
-             return;
+             return array();
         }
         $key = $this->generateKey($this->data['DESCRIZIONE']);
         $mastroCategory = $this->data['REPARTO'];
@@ -120,8 +119,10 @@ class MastroProduct {
 
 
         $categories = $this->productFromCsv->getCategory($mastroCategory);
-        if ($categories == false)
-            return $this->data['EAN13'].',"Category not found","'.$mastroCategory.'"';
+        if ($categories == false) {
+            fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Category not found","'.$mastroCategory.'"'.PHP_EOL);
+            return array();
+        }
         $categoriesBranches = array_unique(preg_split('/[;,\/]/', $categories));
         $rawCategoriesWords = array_unique(preg_split('/[ ;,\/]/', strtolower($categories)));
         $categoriesWords = array();
@@ -138,8 +139,10 @@ class MastroProduct {
         $magentoProduct->setData('categories',$categories);
         $magentoProduct->setData('sku',$this->data['EAN13']);
         $magentoProduct->setData('xus_skus',$this->getReSkus($key));
-        if ($this->data['DESCRIZIONE'] == '')
-            return $this->data['EAN13'].',"Missing description",""';
+        if ($this->data['DESCRIZIONE'] == '') {
+           fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Missing description","","'. implode(',',$this->data) .'"'.PHP_EOL);
+           return array();
+        }
         $this->data['DESCRIZIONE'] = ucfirst(strtolower(stripslashes($this->data['DESCRIZIONE'])));
         if ($this->data['TESTO'] == '')
             $this->data['TESTO']=$this->data['DESCRIZIONE'];
@@ -180,9 +183,11 @@ class MastroProduct {
         $iva =  $this->data['IVA'];
         if ($iva == '21') $iva = '22';
         //$magentoProduct->setData('price',$this->data['VENDITA']+1*($iva/100));
-        if ($this->data['VENDITA'] == '')
-            return $this->data['EAN13'].',"Missing price",""';
-	$magentoProduct->setData('price',str_replace(',','.',str_replace('.','',$this->data['VENDITA'])));
+        if ($this->data['VENDITA'] == '') {
+           fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Missing price",""'.PHP_EOL);
+           return array();
+        }
+        $magentoProduct->setData('price',str_replace(',','.',str_replace('.','',$this->data['VENDITA'])));
         $magentoProduct->setData('tax_class_id', $iva);        
         if(get_class($this) == 'TestMastroProduct') {
             return $magentoProduct;
@@ -196,7 +201,8 @@ class MastroProduct {
                $fileName = str_replace('\\', '', $fileName[0]);
                $image = $this->mastroImageColl->deleteImage($fileName);
             }
-            return $this->data['EAN13'].',"Code 99",""';
+            fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Code 99","","'. implode(',',$this->data) .'"'.PHP_EOL);
+            return array();
         }
         
         
@@ -208,9 +214,8 @@ class MastroProduct {
             $magentoProduct->setData('small_image',$image);
             $magentoProduct->setData('thumbnail',$image);
         }
-        if ( $magentoProduct->getData('image') != '') {
+        if ( $magentoProduct->getData('image') != '' ) {
             $getModifiedData = $this->mastroImageColl->getModifiedData($this->data);
-            
             
             if ($getModifiedData != '') {
                 if ($this->mastroImageColl->getModifiedDescription($this->data,$fileName)) {
@@ -232,26 +237,48 @@ class MastroProduct {
                             $this->related[$key] .= ',';
                     $this->related[$key] .= $this->data['EAN13'];
                 }
-                
+                $magentoProductColl = array(
+                     0=>$magentoProduct
+                );
                 if ($this->data['ESISTENZA']-$this->data['IMPEGNATO'] == 0) {
-                     //$magentoProduct->setData('store',  implode(',', array('storebaby','ebimbo')));  
-					 //$magentoProduct->setData('websites',  implode(',', array('storebaby','ebimbo')));  
-                     $magentoProduct = array(
-                         0=>$magentoProduct
-                     );
-                     
-                     $magentoProduct[1]= clone $magentoProduct[0];
-					 $magentoProduct[1]->setData('store',  'retail'); 
-                     //$magentoProduct[1]->setData('websites',  'retail'); 
-					 $magentoProduct[1]->setData('status', '2'); 					 
-                    
+                     $id=sizeof($magentoProductColl);
+                     $magentoProductColl[$id]= clone $magentoProduct;
+					      $magentoProductColl[$id]->setData('store',  'retail'); 
+					      $magentoProductColl[$id]->setData('status', '2'); 					 
                 }
-                return $magentoProduct;
+                $customPrices = $this->productFromCsv->getCustomPrices($magentoProduct->getData('sku'));
+                if (sizeof($customPrices)>0) {
+                   foreach ($magentoProductColl as $magentoProductItem) {
+                     foreach($customPrices as $store =>$customPrice ) {
+                        if ($store == $magentoProductItem->getData('store')) {                     
+                           $magentoProductItem->setData('price',$customPrice);
+                           unset ($customPrices[$store]);
+                           fwrite($this->productFromCsv->getCustomPricesHandler(),implode(',', array($magentoProductItem->getData('sku'),$store,$customPrice)).PHP_EOL);
+                        }
+                     }
+                  }
+                  if (sizeof($customPrices)>0) {
+                     foreach($customPrices as $store =>$customPrice ) {
+                        $id=sizeof($magentoProductColl);
+                        $magentoProductColl[$id]= clone $magentoProduct;
+                        $magentoProductColl[$id]->setData('store',  $store); 
+                        $magentoProductColl[$id]->setData('price', $customPrice);
+                        fwrite($this->productFromCsv->getCustomPricesHandler(),implode(',', array($magentoProduct->getData('sku'),$store,$customPrice)).PHP_EOL);
+                     }
+                  }
+                }
+                
+                return $magentoProductColl;
             }
-            else $this->data['EAN13'].',"Nothing modified",""';
+            else {
+               fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Nothing modified","","'. implode(',',$this->data) .'"'.PHP_EOL);
+               return array();
+            };
             
-        } else
-            return $this->data['EAN13'].',"Missing image",""';
+        } else {
+            fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Missing image","","'. implode(',',$this->data) .'"'.PHP_EOL);
+            return array();
+        }
     }
     /**
      * Returns product data
@@ -306,7 +333,7 @@ class MastroProduct {
      private function fixCategoryName ($mastroCategory) {
         $description = $this->data['DESCRIZIONE'];
         $secondWord = trim(strtolower($this->data['MARCA']));
-        $lastWord = $this->data['COD.PRODOTTO'];
+        $lastWord = str_replace('/', '', $this->data['COD.PRODOTTO']);
         switch ('#'.$mastroCategory) {
            case '#8.1';
            case '#08.1';
@@ -481,15 +508,15 @@ class MastroProduct {
            break;
          }
          if (isset($firstWord)) {
-                $description = preg_replace('/\b'.$firstWord.'\b/i', '', $description);
+                $description = preg_replace('/\b'.preg_quote(trim($firstWord)).'\b/i', '', $description);
          } else {
                 $firstWord='';
          }
          if ($secondWord != '') {
-            $description = preg_replace('/\b'.preg_quote($secondWord).'\b/i', '', $description);
+            $description = preg_replace('/\b'.preg_quote(trim($secondWord)).'\b/i', '', $description);
          }
          if ($lastWord != '') {
-            $description = preg_replace('/\b'.preg_quote($lastWord).'\b/i', '', $description);
+            $description = preg_replace('/\b'.preg_quote(trim($lastWord)).'\b/i', '', $description);
          }
          $description = $firstWord.' '.ucfirst($secondWord).' '.ucfirst(strtolower($description)).' '.$lastWord;
          $description = trim(preg_replace('/ +/', ' ', $description));

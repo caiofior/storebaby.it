@@ -29,7 +29,7 @@ class ProductFromCsv {
 * Magento CSV Handle
 * @var resource
 */
-    private $magentoCsvHandle;
+    private $magentoCsvHandler;
         /**
 * Magento Excluded CSV File
 * @var string
@@ -39,7 +39,7 @@ class ProductFromCsv {
 * Magento Excluded CSV Handle
 * @var resource
 */
-    private $magentoExcludedCsvHandle;
+    private $magentoExcludedCsvHandler;
 
     /**
 * Last position
@@ -91,6 +91,22 @@ class ProductFromCsv {
 * @var string
 */
     private $lock;
+    /**
+     * Shop codes
+     */
+    private $shopCodes=array('retail','ebimbo','storebaby');
+    /**
+     * Custom prices from csv
+     */
+    private $customPricesFromCsv=array();
+    /**
+     * Name of the custom prices file
+     */
+    private $customPricesCsvFilname;
+    /**
+     * Handler of the custom prices file
+     */
+    private $customPricesCsvHandler;
 
     /**
 * Parses config file
@@ -125,6 +141,28 @@ class ProductFromCsv {
             unlink($dbFile);
             $this->setUpDb($dbFile);
         }
+        foreach($this->shopCodes as $shopCode) {
+           $customPriceFile = getcwd() . DIRECTORY_SEPARATOR . 'custom_price' . DIRECTORY_SEPARATOR. $shopCode. '.csv';
+           if (!is_file($customPriceFile)) {
+              continue;
+           }
+           echo 'Found custom file for shop ' . $shopCode . PHP_EOL;
+           $customPriceHandler = fopen($customPriceFile,'r');
+           $header = fgetcsv($customPriceHandler,0,',','"',"\\");
+           $header = array_map('trim',$header);
+           if (
+            !in_array('EAN13', $header) ||
+            !in_array('VENDITA', $header)
+           ) {
+               echo 'Missing EAN13 or VENDITA column in custom price file for ' . $shopCode . PHP_EOL;
+               continue;              
+           }
+           $this->customPricesFromCsv[$shopCode]=array();
+           while($data = fgetcsv($customPriceHandler,0,',','"',"\\")) {              
+              $this->customPricesFromCsv[$shopCode][$data[array_search('EAN13',$header)]]=(float)str_replace(',','.',str_replace(array('.','"'),'',$data[array_search('VENDITA',$header)]));
+           }
+           array_filter($this->customPricesFromCsv[$shopCode]);
+        }
     }
     /**
      * Sets up the db
@@ -149,17 +187,16 @@ corrupted NUMERIC
     }
 
     /**
-* Starts data import
-* @throws Exception
-*/
+    * Starts data import
+    * @throws Exception
+    */
     public function import() {
-        $this->setuUpCvs();
+        $this->setuUpCsv();
         $row = '';
         $mastroProduct = new MastroProduct($this);
         $rowCount = 0;
         $byteCount = 0;
         while (($buffer = fgets($this->mastroCsvHandle, 4096)) !== false) {
-
             $byteCount += (strlen($buffer) + 2);
             $lastchar = ord(substr($buffer, strlen($buffer) - 1));
 
@@ -180,20 +217,11 @@ corrupted NUMERIC
                 $row = iconv('WINDOWS-1252', 'UTF-8', $row);
                 $mastroProduct->importFromCsvRow($row);
                 $magentoProductArray = $mastroProduct->createMagentoProduct();
-                if (!is_array($magentoProductArray))
-                   $magentoProductArray = array ($magentoProductArray);
-                
                 foreach($magentoProductArray as  $magentoProduct) {
                   if ($magentoProduct instanceof MagentoProduct) {
-                      if (ftell($this->magentoCsvHandle) == 0)
-                          fwrite($this->magentoCsvHandle, "\xEF\xBB\xBF".$magentoProduct->getCsvHeaders() . PHP_EOL);
-                      fwrite($this->magentoCsvHandle, $magentoProduct->getCsvRow() . PHP_EOL);
-                  } else {
-                     if (ftell($this->magentoExcludedCsvHandle) == 0) {
-                          $tempMastro = new MastroProduct($this);
-                          fwrite($this->magentoExcludedCsvHandle, "\xEF\xBB\xBF".'"EAN","reason","info",' . implode(',',$tempMastro->getHeaders()) . PHP_EOL);
-                     }
-                     fwrite($this->magentoExcludedCsvHandle, $magentoProduct .',"'. str_replace('**', '","', $row) .'"'.PHP_EOL);
+                      if (ftell($this->magentoCsvHandler) == 0)
+                          fwrite($this->magentoCsvHandler, "\xEF\xBB\xBF".$magentoProduct->getCsvHeaders() . PHP_EOL);
+                      fwrite($this->magentoCsvHandler, $magentoProduct->getCsvRow() . PHP_EOL);
                   }
                 }
                 $rowCount++;
@@ -406,110 +434,71 @@ DATETIME(\'now\'),
 */
     private function uploadCsv (){
         fclose($this->mastroCsvHandle);
-        fclose($this->magentoCsvHandle);
-        fclose($this->magentoExcludedCsvHandle);
+        fclose($this->magentoCsvHandler);
+        fclose($this->magentoExcludedCsvHandler);
+        fclose($this->customPricesCsvHandler);
         if (is_resource($this->mastroUtf8CsvHandle))
             fclose($this->mastroUtf8CsvHandle);
         if (is_resource($this->ftp)) {
-        $size = 0;
-        $count = 0;
-        $fileSize = null;
-        if (is_file($this->magentoCsvFilname))
-            $fileSize = filesize($this->magentoCsvFilname);
-        do {
-        $this->setUpFtp();
-        
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            $imagesSubDirs = array('var', 'import');
-            foreach ($imagesSubDirs as $dir) {
-                $fileList = ftp_nlist($this->ftp, '.');
-                if (!is_array($fileList) || !in_array($dir, $fileList)) {
-                    ftp_mkdir($this->ftp, $dir);
-                }
-                ftp_chdir($this->ftp, $dir);
-            }
-            $fileList = ftp_nlist($this->ftp, '.');
-            if (is_array($fileList) && in_array('import.csv', $fileList))
-                ftp_delete($this->ftp, 'import.csv');
-            echo 'Uploading import.csv'.PHP_EOL;
-            ftp_put($this->ftp, 'import.csv', $this->magentoCsvFilname, FTP_ASCII);
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            foreach (array('media','import') as $dir) {
-                $fileList = ftp_nlist($this->ftp,'.');
-                if (!in_array($dir, $fileList)) {
-                    ftp_mkdir($this->ftp,$dir);
-                }
-                ftp_chdir($this->ftp,$dir);
-                $fileList = ftp_nlist($this->ftp, '.');
-                if (in_array('progress.txt',$fileList))
-                    ftp_delete($this->ftp, 'progress.txt');
-            }
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            $imagesSubDirs = array('var', 'import');
-            foreach ($imagesSubDirs as $dir) {
-                $fileList = ftp_nlist($this->ftp, '.');
-                if (!is_array($fileList) || !in_array($dir, $fileList)) {
-                    ftp_mkdir($this->ftp, $dir);
-                }
-                ftp_chdir($this->ftp, $dir);
-            }
-            $fileList = ftp_nlist($this->ftp, '.');
-            if (is_array($fileList) && in_array('import.csv', $fileList))
-                $size = ftp_size ($this->ftp, 'import.csv');
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            $count++;
-            
-        } while (($size == $fileSize || $fileSize == null) && $count < 10);
-        if ($count >=10)
-                $this->appendToLog('Error on uploading CSV ');
-
-        
-        $size = 0;
-        $count = 0;
-        $fileSize = null;
-        if (is_file($this->magentoExcludedCsvFilname))
-            $fileSize = filesize($this->magentoExcludedCsvFilname);
-        do {
-        $this->setUpFtp();
-        
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            $imagesSubDirs = array('var', 'import');
-            foreach ($imagesSubDirs as $dir) {
-                $fileList = ftp_nlist($this->ftp, '.');
-                if (!is_array($fileList) || !in_array($dir, $fileList)) {
-                    ftp_mkdir($this->ftp, $dir);
-                }
-                ftp_chdir($this->ftp, $dir);
-            }
-            $fileList = ftp_nlist($this->ftp, '.');
-            if (is_array($fileList) && in_array('excluded.csv', $fileList))
-                ftp_delete($this->ftp, 'excluded.csv');
-            echo 'Uploading excluded.txt'.PHP_EOL;
-            ftp_put($this->ftp, 'excluded.csv', $this->magentoExcludedCsvFilname, FTP_ASCII);
-
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            $imagesSubDirs = array('var', 'import');
-            foreach ($imagesSubDirs as $dir) {
-                $fileList = ftp_nlist($this->ftp, '.');
-                if (!is_array($fileList) || !in_array($dir, $fileList)) {
-                    ftp_mkdir($this->ftp, $dir);
-                }
-                ftp_chdir($this->ftp, $dir);
-            }
-            $fileList = ftp_nlist($this->ftp, '.');
-            if (is_array($fileList) && in_array('excluded.csv', $fileList))
-                $size = ftp_size ($this->ftp, 'excluded.csv');
-            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
-            $count++;
-            
-        } while (($size == $fileSize || $fileSize == null) && $count < 10);
-        if ($count >=10)
-                $this->appendToLog('Error on uploading excluded CSV ');
+         
+        $this->uploadSingleFile($this->magentoCsvFilname);
+        $this->uploadSingleFile($this->magentoExcludedCsvFilname);
+        $this->uploadSingleFile($this->customPricesCsvFilname);
       }
-}
+    }
     /**
-* Downloads the backup
-*/
+     * Upload single file
+     * @param $filePath file path
+     */
+    private function uploadSingleFile($filePath) {
+        $fileName = basename($filePath);
+        $size = 0;
+        $count = 0;
+        $fileSize = null;
+        if (is_file($filePath))
+            $fileSize = filesize($filePath);
+        do {
+        $this->setUpFtp();
+        
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $imagesSubDirs = array('var', 'import');
+            foreach ($imagesSubDirs as $dir) {
+                $fileList = ftp_nlist($this->ftp, '.');
+                if (!is_array($fileList) || !in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp, $dir);
+                }
+                ftp_chdir($this->ftp, $dir);
+            }
+            $fileList = ftp_nlist($this->ftp, '.');
+                        
+            if (is_array($fileList) && in_array($fileName, $fileList))
+                ftp_delete($this->ftp, $fileName);
+            echo 'Uploading '.$fileName.PHP_EOL;
+            ftp_put($this->ftp, $fileName, $filePath, FTP_ASCII);
+
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);
+            $imagesSubDirs = array('var', 'import');
+            foreach ($imagesSubDirs as $dir) {
+                $fileList = ftp_nlist($this->ftp, '.');
+                if (!is_array($fileList) || !in_array($dir, $fileList)) {
+                    ftp_mkdir($this->ftp, $dir);
+                }
+                ftp_chdir($this->ftp, $dir);
+            }
+            $fileList = ftp_nlist($this->ftp, '.');
+            if (is_array($fileList) && in_array($fileName, $fileList))
+                $size = ftp_size ($this->ftp, $fileName);
+            ftp_chdir($this->ftp, $this->config['FTP_BASE_DIR']);            
+            $count++;
+            
+        } while (($size == $fileSize || $fileSize == null) && $count < 10);
+        if ($count >=10)
+                $this->appendToLog('Error on uploading '.$fileName);
+    }
+
+    /**
+    * Downloads the backup
+    */
     private function downloadBackup (){
         if (is_resource($this->ftp)) {
             echo 'Downloading backups'.PHP_EOL;
@@ -565,10 +554,43 @@ DATETIME(\'now\'),
         }
     }
     /**
-* Sets up the output csv
-* @throws Exception
-*/
-    private function setuUpCvs () {
+     * Gets the custom prices based on an SKU
+     * @param string $sku
+     * @return array
+     */
+    public function getCustomPrices ($sku) {
+       $customPrices =array();
+       foreach($this->shopCodes as $shop) {
+          if (array_key_exists($shop,$this->customPricesFromCsv) && array_key_exists($sku, $this->customPricesFromCsv[$shop])) {
+               $customPrices[$shop]=$this->customPricesFromCsv[$shop][$sku];     
+          }
+       } 
+       return $customPrices;
+    }
+     /**
+     * Gets a reference to the custom price handler
+     */
+    public function getMagentoExcludedCsvHandler() {
+       if (ftell($this->magentoExcludedCsvHandler) == 0) {
+           $tempMastro = new MastroProduct($this);
+           fwrite($this->magentoExcludedCsvHandler, "\xEF\xBB\xBF".'"EAN","reason","info",' . implode(',',$tempMastro->getHeaders()) . PHP_EOL);
+       }
+       return $this->magentoExcludedCsvHandler;
+    }
+    /**
+     * Gets a reference to the custom price handler
+     */
+    public function getCustomPricesHandler() {
+       if (ftell($this->customPricesCsvHandler) == 0) {
+           fwrite($this->customPricesCsvHandler, "\xEF\xBB\xBF".'"EAN","shop","price"'. PHP_EOL);
+       }
+       return $this->customPricesCsvHandler;
+    }
+    /**
+     * Sets up the output csv
+     * @throws Exception
+     */
+    private function setuUpCsv () {
         if (key_exists('MASTRO_COMMAND', $this->config)) {
             echo 'Export command ' . $this->config['MASTRO_COMMAND'] . PHP_EOL;
             echo exec($this->config['MASTRO_COMMAND']) . PHP_EOL;
@@ -589,15 +611,17 @@ DATETIME(\'now\'),
         $this->magentoCsvFilname .= DIRECTORY_SEPARATOR . 'import.csv';
         if (is_file($this->magentoCsvFilname))
             unlink($this->magentoCsvFilname);
-        $this->magentoCsvHandle = fopen($this->magentoCsvFilname, 'w');
+        $this->magentoCsvHandler = fopen($this->magentoCsvFilname, 'w');
         
-        $this->magentoExcludedCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv';
-        if (!is_dir($this->magentoExcludedCsvFilname))
-            mkdir($this->magentoExcludedCsvFilname);
-        $this->magentoExcludedCsvFilname .= DIRECTORY_SEPARATOR . 'excluded.csv';
+        $this->magentoExcludedCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv' . DIRECTORY_SEPARATOR . 'excluded.csv';
         if (is_file($this->magentoExcludedCsvFilname))
             unlink($this->magentoExcludedCsvFilname);
-        $this->magentoExcludedCsvHandle = fopen($this->magentoExcludedCsvFilname, 'w');
+        $this->magentoExcludedCsvHandler = fopen($this->magentoExcludedCsvFilname, 'w');
+        
+        $this->customPricesCsvFilname = getcwd() . DIRECTORY_SEPARATOR . 'magento_csv' . DIRECTORY_SEPARATOR . 'custom_prices.csv';
+        if (is_file($this->customPricesCsvFilname))
+            unlink($this->customPricesCsvFilname);
+        $this->customPricesCsvHandler = fopen($this->customPricesCsvFilname, 'w');
 
         $this->categories = json_decode(str_replace("'", '"', $this->config['CATEGORIES']), true);
         if (!is_array($this->categories))

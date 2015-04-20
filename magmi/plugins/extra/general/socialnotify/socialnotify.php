@@ -11,6 +11,27 @@ require "NextScripts_APIs/postToGooglePlus.php";
 require "twitteroauth-master/twitteroauth/twitteroauth.php";
 require "wp/class-IXR.php";
 require "wp/mimetype.php";
+require 'Facebook/Facebook.php';
+require 'Facebook/FacebookApp.php';
+require 'Facebook/FacebookClient.php';
+require 'Facebook/HttpClients/FacebookCurl.php';
+require 'Facebook/HttpClients/FacebookHttpClientInterface.php';
+require 'Facebook/HttpClients/FacebookCurlHttpClient.php';
+require 'Facebook/Authentication/AccessToken.php';
+require 'Facebook/FacebookRequest.php';
+require 'Facebook/Url/FacebookUrlManipulator.php';
+require 'Facebook/Http/RequestBodyInterface.php';
+require 'Facebook/Http/RequestBodyUrlEncoded.php';
+require 'Facebook/Http/GraphRawResponse.php';
+require 'Facebook/FacebookResponse.php';
+require 'Facebook/GraphNodes/GraphObjectFactory.php';
+require 'Facebook/GraphNodes/Collection.php';
+require 'Facebook/GraphNodes/GraphObject.php';
+require 'Facebook/GraphNodes/GraphList.php';
+require 'Facebook/Exceptions/FacebookSDKException.php';
+require 'Facebook/Exceptions/FacebookResponseException.php';
+require 'Facebook/Exceptions/FacebookAuthorizationException.php';
+
 
 class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
 
@@ -183,6 +204,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                $loginError = $nt->connect($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
                // Image URL
                $lnk = array('img'=>$baseUrl. '/media/catalog/product/' . $product['image']);
+	       $lnk = null;
                $nt->postGP($product['name'] .' '. $tags . ' ' . $baseUrl . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
                if ($loginError === false)
                   $this->log($baseUrl . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
@@ -239,42 +261,29 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             );
             $client->query('metaWeblog.editPost', $post_id, $this->getParam("SOCIAL:wpusername"), $this->getParam("SOCIAL:wppassword"), $content, true);
          }
-         foreach ($facebookPages as $key=>$facebookPage) {
-            $mail = new PHPMailer;
-            $baseUrl = $config['web/unsecure/base_url'];
-	    if ($key>0 && $secondPath != '')
-	       $baseUrl = $secondPath;
-            if ($config['system/lesti_smtp/enable'] == 1) {
-
-               $mail->isSMTP();
-               $mail->Host = $config['system/lesti_smtp/host'];
-               if ($config['system/lesti_smtp/username'] != '' && $config['system/lesti_smtp/password'] != '')
-                  $mail->SMTPAuth = true;
-               $mail->Username = $config['system/lesti_smtp/username'];
-               $mail->Password = $config['system/lesti_smtp/password'];
-               if ($config['system/lesti_smtp/ssl'] != '')
-                  $mail->SMTPSecure = $config['system/lesti_smtp/ssl'];
-            }
-
-            $mail->From = $config['trans_email/ident_general/email'];
-            $mail->FromName = $config['trans_email/ident_general/name'];
-            $mail->addAddress($facebookPage);
-
-            $mail->WordWrap = 50;
-            $mail->CharSet = 'UTF-8';
-            $mail->isHTML(false);
-            $url_path = '';
-            $mail->Subject = $product['name'] .' ' . $tags . ' ' . $baseUrl . 'index.php/' . $product['url_path'];
-            $mail->Body = ' ';
-            $mail->addAttachment($imageDir . $product['image']);        
-            if ($mail->send()) {
-               $this->log($baseUrl . 'index.php/' . $product['url_path'] . " sent succesfully", "info");
-               $this->exec_stmt('REPLACE INTO `catalog_product_entity_int` SET `value`=1 ,
-                           `catalog_product_entity_int`.`attribute_id`= '.$shared_on_social_networks_id.',
-                           `catalog_product_entity_int`.`entity_id` = ' . $product['entity_id'] . '
-                            ');
-            } else {
-               $this->log($baseUrl . 'index.php/' . $product['url_path'] . " not sent succesfully " . $mail->ErrorInfo, "info");
+         $fbConfigFile = __DIR__.'/fbConf.php';
+         if (is_file($fbConfigFile)) {
+             require $fbConfigFile;
+             $fb = new Facebook\Facebook(array(
+                        'app_id' => $fbConfig['appId'],
+                        'app_secret' => $fbConfig['appSecret'],
+                        'default_graph_version' => 'v2.2'
+             ));
+             foreach($fbConfig['pages'] as $pageId=>$pageToken) {
+               $linkData = [
+		  'link' =>  $baseUrl . 'index.php/' . $product['url_path'],
+                  'name' =>  $product['name'] .' ' . $tags,
+		  'message' =>  $product['name'] .' ' . $tags,
+                  'picture' => $baseUrl. '/media/catalog/product/' . $product['image']
+		  ];
+		  try {
+		  // Returns a `Facebook\FacebookResponse` object
+		  $response = $fb->post('/'. substr($pageId,1,99) .'/feed', $linkData,$pageToken);
+                  } catch(Facebook\Exceptions\FacebookResponseException $e) {
+                    echo 'Graph returned an error: ' . $e->getMessage();
+                  } catch(Facebook\Exceptions\FacebookSDKException $e) {
+                    echo 'Facebook SDK returned an error: ' . $e->getMessage();
+                  }
             }
          }
          unlink('/tmp/storebaby.jpg');

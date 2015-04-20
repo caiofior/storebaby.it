@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Innoexts
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@innoexts.com so we can send you a copy immediately.
+ * 
+ * @category    Innoexts
+ * @package     Innoexts_StorePricing
+ * @copyright   Copyright (c) 2012 Innoexts (http://www.innoexts.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Innoexts_StorePricing>
+            <version>1.0.1</version>
+        </Innoexts_StorePricing>
+    </modules>
+    <frontend>
+        <translate>
+            <modules>
+                <Innoexts_StorePricing>
+                    <files>
+                        <default>Innoexts_StorePricing.csv</default>
+                    </files>
+                </Innoexts_StorePricing>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Innoexts_StorePricing>
+                    <files>
+                        <default>Innoexts_StorePricing.csv</default>
+                    </files>
+                </Innoexts_StorePricing>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+        <models>
+            <storepricing>
+                <class>Innoexts_StorePricing_Model</class>
+            </storepricing>
+            <storepricing_mysql4>
+                <class>Innoexts_StorePricing_Model_Mysql4</class>
+            </storepricing_mysql4>
+            <adminhtml>
+                <rewrite>
+                    <system_config_source_price_scope>Innoexts_StorePricing_Model_Adminhtml_System_Config_Source_Price_Scope</system_config_source_price_scope>
+                </rewrite>
+            </adminhtml>
+            <bundle_mysql4>
+                <rewrite>
+                    <indexer_price>Innoexts_StorePricing_Model_Mysql4_Bundle_Indexer_Price</indexer_price>
+                </rewrite>
+            </bundle_mysql4>
+            <catalog>
+                <rewrite>
+                    <product_attribute_backend_price>Innoexts_StorePricing_Model_Catalog_Product_Attribute_Backend_Price</product_attribute_backend_price>
+                </rewrite>
+            </catalog>
+            <catalog_resource_eav_mysql4>
+                <rewrite>
+                    <product_indexer_price_default>Innoexts_StorePricing_Model_Mysql4_Catalog_Product_Indexer_Price_Default</product_indexer_price_default>
+                    <product_indexer_price_grouped>Innoexts_StorePricing_Model_Mysql4_Catalog_Product_Indexer_Price_Grouped</product_indexer_price_grouped>
+                    <product_indexer_price_configurable>Innoexts_StorePricing_Model_Mysql4_Catalog_Product_Indexer_Price_Configurable</product_indexer_price_configurable>
+                </rewrite>
+            </catalog_resource_eav_mysql4>
+            <downloadable_mysql4>
+                <rewrite>
+                    <indexer_price>Innoexts_StorePricing_Model_Mysql4_Downloadable_Indexer_Price</indexer_price>
+                </rewrite>
+            </downloadable_mysql4>
+        </models>
+        <resources>
+            <storepricing_setup>
+                <setup>
+                    <module>Innoexts_StorePricing</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </storepricing_setup>
+            <storepricing_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </storepricing_write>
+            <storepricing_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </storepricing_read>
+        </resources>
+        <events>
+            <!-- Product -->
+            <catalog_product_collection_load_before>
+                <observers>
+                    <storepricing_before_product_collection_load>
+                        <class>storepricing/observer_catalog</class>
+                        <method>beforeProductCollectionLoad</method>
+                    </storepricing_before_product_collection_load>
+                </observers>
+            </catalog_product_collection_load_before>
+        </events>
+        <blocks>
+            <storepricing>
+                <class>Innoexts_StorePricing_Block</class>
+            </storepricing>
+        </blocks>
+        <helpers>
+            <storepricing>
+                <class>Innoexts_StorePricing_Helper</class>
+            </storepricing>
+        </helpers>
+    </global>
+    <default>
+        <catalog>
+            <price>
+                <scope>2</scope>
+            </price>
+        </catalog>
+    </default>
+</config>

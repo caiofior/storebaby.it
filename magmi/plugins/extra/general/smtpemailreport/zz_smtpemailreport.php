@@ -58,7 +58,6 @@ public function getPluginInfo()
             $dir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     'var'.DIRECTORY_SEPARATOR.'import'.DIRECTORY_SEPARATOR;
-            chmod($dir,0777);
             if(is_file($dir.'import.csv')) {
                 $status = exec('gzip -c '.$dir.'import.csv > '.$dir.'last_import.csv.gz');
                 if(is_file($dir.'last_import.csv.gz'))
@@ -73,21 +72,27 @@ public function getPluginInfo()
                 else
                     $content .= 'Unable to create gzip file '.$status;
             }
+             if(is_file($dir.'custom_prices.csv')) {
+                $status = exec('gzip -c '.$dir.'custom_prices.csv > '.$dir.'last_custom_prices.csv.gz');
+                if(is_file($dir.'last_custom_prices.csv.gz'))
+                    $mail->addAttachment($dir.'last_custom_prices.csv.gz');
+                else
+                    $content .= 'Unable to create gzip file '.$status;
+            }
             $backuplLink = '';
             $dir = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.
                     'var'.DIRECTORY_SEPARATOR.'backups'.DIRECTORY_SEPARATOR;
-            chmod($dir,0777);
             if (is_dir($dir)) {
                 $dirArray = scandir ($dir,SCANDIR_SORT_DESCENDING);
                 foreach ($dirArray as $dirItem) {
                     if ($dirItem != '.'  && $dirItem != '..' && $dirItem != '.htaccess') {
-                        $backuplLink =  ' ftp://storebaby.it/public_html/var/backups/'.$dirItem; 
+                        $backuplLink =  ' ftp://magmi.storebaby.it/public_html/var/backups/'.$dirItem; 
                     }
                     $fileName=$dir.DIRECTORY_SEPARATOR.$dirItem;
-                    if (filemtime($fileName)+60*60*24 > time() ) {
+                    if ($dirItem != '.'  && $dirItem != '..' && (time()-filemtime($fileName)) >(60*60*24) ) {
                         unlink($fileName);
-                    }                    
+                    }          
                         
                 }
                 
