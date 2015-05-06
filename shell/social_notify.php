@@ -17,3 +17,4 @@ $snp->pluginInit($engine,array(
   'file' =>'socialnotify.php'
 ));
 $snp->afterImport();
+echo PHP_EOL;

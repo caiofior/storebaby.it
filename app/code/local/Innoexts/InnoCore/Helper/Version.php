@@ -105,13 +105,31 @@ class Innoexts_InnoCore_Helper_Version extends Mage_Core_Helper_Abstract
         return $this->compare($version, '==');
     }
     /**
+     * Get enterprise edition minimal version
+     * 
+     * @return string
+     */
+    protected function getEEMinVersion()
+    {
+        return '1.8.0.0';
+    }
+    /**
+     * Check if EE version is running
+     * 
+     * @return bool
+     */
+    public function isEE()
+    {
+        return $this->isGe($this->getEEMinVersion());
+    }
+    /**
      * Check if current version is equal or greater then 1.5.0.0 
      * 
      * @return bool
      */
     public function isGe1500()
     {
-        return $this->isGe('1.5.0.0');
+        return (($this->isGe('1.5.0.0') && !$this->isEE()) || ($this->isGe('1.10.0.0') && $this->isEE()));
     }
     /**
      * Check if current version is equal or greater then 1.5.1.0 
@@ -120,7 +138,7 @@ class Innoexts_InnoCore_Helper_Version extends Mage_Core_Helper_Abstract
      */
     public function isGe1510()
     {
-        return $this->isGe('1.5.1.0');
+        return (($this->isGe('1.5.1.0') && !$this->isEE()) || ($this->isGe('1.10.1.0') && $this->isEE()));
     }
     /**
      * Check if current version is equal or greater then 1.6.0.0 
@@ -129,7 +147,7 @@ class Innoexts_InnoCore_Helper_Version extends Mage_Core_Helper_Abstract
      */
     public function isGe1600()
     {
-        return $this->isGe('1.6.0.0');
+        return (($this->isGe('1.6.0.0') && !$this->isEE()) || ($this->isGe('1.11.0.0') && $this->isEE()));
     }
     /**
      * Check if current version is equal or greater then 1.6.1.0 
@@ -138,7 +156,7 @@ class Innoexts_InnoCore_Helper_Version extends Mage_Core_Helper_Abstract
      */
     public function isGe1610()
     {
-        return $this->isGe('1.6.1.0');
+        return (($this->isGe('1.6.1.0') && !$this->isEE()) || ($this->isGe('1.11.1.0') && $this->isEE()));
     }
     /**
      * Check if current version is equal or greater then 1.6.2.0 
@@ -147,7 +165,7 @@ class Innoexts_InnoCore_Helper_Version extends Mage_Core_Helper_Abstract
      */
     public function isGe1620()
     {
-        return $this->isGe('1.6.2.0');
+        return (($this->isGe('1.6.2.0') && !$this->isEE()) || ($this->isGe('1.11.2.0') && $this->isEE()));
     }
     /**
      * Check if current version is equal or greater then 1.7.0.0 
@@ -156,7 +174,16 @@ class Innoexts_InnoCore_Helper_Version extends Mage_Core_Helper_Abstract
      */
     public function isGe1700()
     {
-        return $this->isGe('1.7.0.0');
+        return (($this->isGe('1.7.0.0') && !$this->isEE()) || ($this->isGe('1.12.0.0') && $this->isEE()));
+    }
+    /**
+     * Check if current version is equal or greater then 1.7.0.1 
+     * 
+     * @return bool
+     */
+    public function isGe1701()
+    {
+        return (($this->isGe('1.7.0.1') && !$this->isEE()) || ($this->isGe('1.12.0.1') && $this->isEE()));
     }
     /**
      * Check if current version is equal or greater then 1.7.1.0 
@@ -165,6 +192,6 @@ class Innoexts_InnoCore_Helper_Version extends Mage_Core_Helper_Abstract
      */
     public function isGe1710()
     {
-        return $this->isGe('1.7.1.0');
+        return (($this->isGe('1.7.1.0') && !$this->isEE()) || ($this->isGe('1.12.1.0') && $this->isEE()));
     }
 }

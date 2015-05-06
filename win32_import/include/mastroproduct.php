@@ -252,6 +252,7 @@ class MastroProduct {
                      foreach($customPrices as $store =>$customPrice ) {
                         if ($store == $magentoProductItem->getData('store')) {                     
                            $magentoProductItem->setData('price',$customPrice);
+                           $magentoProductItem->setData('show_cupon',1);
                            unset ($customPrices[$store]);
                            fwrite($this->productFromCsv->getCustomPricesHandler(),implode(',', array($magentoProductItem->getData('sku'),$store,$customPrice)).PHP_EOL);
                         }
@@ -263,6 +264,7 @@ class MastroProduct {
                         $magentoProductColl[$id]= clone $magentoProduct;
                         $magentoProductColl[$id]->setData('store',  $store); 
                         $magentoProductColl[$id]->setData('price', $customPrice);
+                        $magentoProductColl[$id]->setData('show_cupon',1);
                         fwrite($this->productFromCsv->getCustomPricesHandler(),implode(',', array($magentoProduct->getData('sku'),$store,$customPrice)).PHP_EOL);
                      }
                   }

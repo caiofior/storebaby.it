@@ -98,7 +98,8 @@ class MagentoProduct {
         'store_id'=>'0',
         'product_type_id'=>'simple',
         'product_status_changed'=>null,
-        'product_changed_websites'=>null
+        'product_changed_websites'=>null,
+        'show_cupon'=>0
 
     );
     /**

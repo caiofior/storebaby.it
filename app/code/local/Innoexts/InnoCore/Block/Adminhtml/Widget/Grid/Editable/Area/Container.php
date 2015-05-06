@@ -43,6 +43,6 @@ class Innoexts_InnoCore_Block_Adminhtml_Widget_Grid_Editable_Area_Container
      */
     public function getRegionsJson()
     {
-        return $this->helper('directory')->getRegionJson();
+        return Mage::helper('innocore')->getDirectoryHelper()->getRegionJson2();
     }
 }

@@ -22,6 +22,7 @@ require 'Facebook/FacebookRequest.php';
 require 'Facebook/Url/FacebookUrlManipulator.php';
 require 'Facebook/Http/RequestBodyInterface.php';
 require 'Facebook/Http/RequestBodyUrlEncoded.php';
+require 'Facebook/Http/RequestBodyMultipart.php';
 require 'Facebook/Http/GraphRawResponse.php';
 require 'Facebook/FacebookResponse.php';
 require 'Facebook/GraphNodes/GraphObjectFactory.php';
@@ -31,6 +32,8 @@ require 'Facebook/GraphNodes/GraphList.php';
 require 'Facebook/Exceptions/FacebookSDKException.php';
 require 'Facebook/Exceptions/FacebookResponseException.php';
 require 'Facebook/Exceptions/FacebookAuthorizationException.php';
+require 'Facebook/Exceptions/FacebookAuthenticationException.php';
+
 
 
 class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
@@ -267,8 +270,9 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
              $fb = new Facebook\Facebook(array(
                         'app_id' => $fbConfig['appId'],
                         'app_secret' => $fbConfig['appSecret'],
-                        'default_graph_version' => 'v2.2'
+                        'default_graph_version' => 'v2.3'
              ));
+	     
              foreach($fbConfig['pages'] as $pageId=>$pageToken) {
                $linkData = [
 		  'link' =>  $baseUrl . 'index.php/' . $product['url_path'],
@@ -278,13 +282,18 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
 		  ];
 		  try {
 		  // Returns a `Facebook\FacebookResponse` object
-		  $response = $fb->post('/'. substr($pageId,1,99) .'/feed', $linkData,$pageToken);
+                  $fb->post('/'. substr($pageId,1,99) .'/feed', $linkData,$pageToken);
+
                   } catch(Facebook\Exceptions\FacebookResponseException $e) {
                     echo 'Graph returned an error: ' . $e->getMessage();
                   } catch(Facebook\Exceptions\FacebookSDKException $e) {
                     echo 'Facebook SDK returned an error: ' . $e->getMessage();
                   }
             }
+	    $this->exec_stmt('REPLACE INTO `catalog_product_entity_int` SET `value`=1 ,
+            	`catalog_product_entity_int`.`attribute_id`= '.$shared_on_social_networks_id.',
+                `catalog_product_entity_int`.`entity_id` = ' . $product['entity_id'] . '
+            ');
          }
          unlink('/tmp/storebaby.jpg');
       }

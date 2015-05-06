@@ -14,25 +14,16 @@
  * 
  * @category    Innoexts
  * @package     Innoexts_StorePricing
- * @copyright   Copyright (c) 2012 Innoexts (http://www.innoexts.com)
+ * @copyright   Copyright (c) 2013 Innoexts (http://www.innoexts.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 $installer = $this;
 $connection = $installer->getConnection();
 
-$catalogEavAttributeTable = $installer->getTable('catalog/eav_attribute');
-$eavAttributeTable = $installer->getTable('eav/attribute');
-$eavEntityTypeTable = $installer->getTable('eav/entity_type');
 $storeTable = $installer->getTable('core/store');
 
 $installer->startSetup();
-
-$installer->run("UPDATE `{$catalogEavAttributeTable}` SET `is_global` = 0 WHERE `attribute_id` = (
-    SELECT `attribute_id` FROM `{$eavAttributeTable}` WHERE (`attribute_code` = 'price') AND (`entity_type_id` = (
-        SELECT `entity_type_id` FROM `{$eavEntityTypeTable}` WHERE `entity_type_code` = 'catalog_product')
-    )
-);");
 
 /**
  * Price index

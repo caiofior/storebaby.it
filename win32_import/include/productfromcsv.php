@@ -550,7 +550,25 @@ DATETIME(\'now\'),
                 $count++;
             }
             echo 'Downloading backups end'.PHP_EOL;
-        ftp_close($this->ftp);
+            ftp_close($this->ftp);
+            
+            $dir = opendir($backupDir);
+            $list = array();
+            while($file = readdir($dir)){
+                if ($file != '.' and $file != '..'){
+                    $ctime = filemtime($backupDir .DIRECTORY_SEPARATOR. $file) . ',' . $file;
+                    $list[$ctime.$file] = $file;
+                }
+            }
+            closedir($dir);
+            ksort($list);
+            $c=0;
+            foreach ($list as $file) {
+                if ($c++ < 5) {
+                    continue;
+                }
+                unlink($backupDir.DIRECTORY_SEPARATOR.$file);
+            }             
         }
     }
     /**

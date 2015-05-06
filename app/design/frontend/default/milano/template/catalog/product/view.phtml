@@ -26,6 +26,13 @@ $_shortDescription = $_product->getShortDescription();
                     <h1 itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                     <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
                 </div>
+                <?php 
+                $showCupon = $_product->getResource()->getAttribute('show_cupon')->getFrontend()->getValue($_product);
+                $cuponTextFile = __DIR__.DIRECTORY_SEPARATOR.'cupon.phtml';
+                if ($showCupon == 1 && is_file($cuponTextFile)){
+                    require($cuponTextFile);
+                }
+                ?>
                 <div class="addtocont clear">
                 	<?php if($_product->getTypeId() != 'bundle'): ?>
                     	<?php echo $this->getPriceHtml($_product) ?>

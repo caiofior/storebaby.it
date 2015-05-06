@@ -45,4 +45,22 @@ class Innoexts_InnoCore_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::helper('innocore/version');
     }
+    /**
+     * Get database helper
+     * 
+     * @return Innoexts_InnoCore_Helper_Database
+     */
+    public function getDatabaseHelper()
+    {
+        return Mage::helper('innocore/database');
+    }
+    /**
+     * Get directory helper
+     * 
+     * @return Innoexts_InnoCore_Helper_Directory
+     */
+    public function getDirectoryHelper()
+    {
+        return Mage::helper('innocore/directory');
+    }
 }

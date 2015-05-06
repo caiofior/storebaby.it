@@ -51,6 +51,11 @@ class GoogleMerchant extends Magmi_ItemProcessor
      */
     private $tableRates = array();
     /**
+     * Array of ean code of the products with custom price
+     * @var array
+     */
+    private $customPrice = array();
+    /**
      * Returns plugin informations
      * @return array
      */
@@ -130,6 +135,20 @@ LIMIT 1
             $this->googleMerchantHandle = fopen($file, 'w');
             $columns = array_keys($this->columns);
             fwrite($this->googleMerchantHandle, "\xEF\xBB\xBF".implode("\t",$columns).PHP_EOL);
+            
+            $customPriceFile = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
+                .DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
+                .DIRECTORY_SEPARATOR.'var'.DIRECTORY_SEPARATOR.'import'
+                .DIRECTORY_SEPARATOR.'custom_prices.csv';
+            if (is_file($customPriceFile)) {
+                $customPriceHandler = fopen($customPriceFile,'r');
+                $header = fgetcsv($customPriceHandler,0,',','"',"\\");
+                $header = array_map(create_function('$val', 'return preg_replace("/[^[:alnum:]]/","",$val);'),$header);
+                while($data = fgetcsv($customPriceHandler,0,',','"',"\\")) {              
+                  $this->customPrice[] = $data[array_search('EAN13',$header)];
+                }
+                $this->customPrice = array_unique($this->customPrice);
+            }
 	}
 	/**
          * Add item to csv
@@ -140,8 +159,19 @@ LIMIT 1
 	public function processItemAfterId(&$item,$params=null)
 	{
             $googleMerchantData = $this->columns;
-            if ($item['store'] != 'admin')
+            if (
+                    (
+                        $item['store'] != 'admin' && !in_array($item['sku'],$this->customPrice)
+                    )
+                        ||
+                    (
+                        $item['store'] == 'admin' && in_array($item['sku'],$this->customPrice)
+                    )
+               )
                return true;
+            if ($item['store'] == 'storebaby') {
+                $this->log("Special price for SKU '".$item["sku"]."' =>".$pid,"info");
+            }
             $googleMerchantData['id']=$item['sku'];
             if ($item['name'] == '')
                 return true;
@@ -184,7 +214,9 @@ LIMIT 1
             $googleMerchantData['sale_price']=$salePrice;
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
-            $googleMerchantData['mpn']=substr($googleMerchantData['brand'],0,3).substr($item['sku'],8,3);
+            $googleMerchantData['mpn']=
+               substr(trim(substr($googleMerchantData['brand'],0,3)).substr($item['sku'],4,3),0,3).
+               str_pad(substr($item['sku'],9,4),4,'0',STR_PAD_LEFT);
             //$googleMerchantData['gtin']=$item['sku'];
             
             $shipExpense = '9.9';

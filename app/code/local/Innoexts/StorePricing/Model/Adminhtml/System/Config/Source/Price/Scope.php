@@ -14,7 +14,7 @@
  * 
  * @category    Innoexts
  * @package     Innoexts_StorePricing
- * @copyright   Copyright (c) 2012 Innoexts (http://www.innoexts.com)
+ * @copyright   Copyright (c) 2013 Innoexts (http://www.innoexts.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -25,7 +25,8 @@
  * @package    Innoexts_StorePricing
  * @author     Innoexts Team <developers@innoexts.com>
  */
-class Innoexts_StorePricing_Model_Adminhtml_System_Config_Source_Price_Scope extends Mage_Adminhtml_Model_System_Config_Source_Price_Scope 
+class Innoexts_StorePricing_Model_Adminhtml_System_Config_Source_Price_Scope 
+    extends Mage_Adminhtml_Model_System_Config_Source_Price_Scope 
 {
     /**
      * Get store pricing helper
@@ -43,10 +44,11 @@ class Innoexts_StorePricing_Model_Adminhtml_System_Config_Source_Price_Scope ext
      */
     public function toOptionArray()
     {
+        $helper = $this->getStorePricingHelper();
         return array(
             array('value' => '0', 'label' => Mage::helper('core')->__('Global')), 
             array('value' => '1', 'label' => Mage::helper('core')->__('Website')), 
-            array('value' => '2', 'label' => $this->getStorePricingHelper()->__('Store View')), 
+            array('value' => '2', 'label' => $helper->__('Store View')), 
         );
     }
 }

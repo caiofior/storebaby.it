@@ -19,8 +19,11 @@ require $baseDir.'/Facebook/GraphNodes/Collection.php';
 require $baseDir.'/Facebook/GraphNodes/GraphObject.php';
 require $baseDir.'/Facebook/GraphNodes/GraphList.php';
 require $baseDir.'/Facebook/Exceptions/FacebookSDKException.php';
-$appId = '614363568708508';
-$appSecret='79c8c0b73df09d94fb7837d86e4dab5b';
+require $baseDir.'/Facebook/Exceptions/FacebookResponseException.php';
+require $baseDir.'/Facebook/Exceptions/FacebookAuthorizationException.php';
+
+$appId = '768074056624586';
+$appSecret='214351f71348c3fb0f092d05fffdc8bb';
 $config = array(
   'appId'=>$appId,
   'appSecret'=>$appSecret,
@@ -30,9 +33,11 @@ if (array_key_exists('authResponse', $_REQUEST)) {
     $fb = new Facebook\Facebook(array(
             'app_id' => $appId,
             'app_secret' => $appSecret,
-            'default_graph_version' => 'v2.2',
+            'default_graph_version' => 'v2.3',
             'default_access_token' =>$_REQUEST['authResponse']['accessToken']
    ));
+   $userProfile = $fb->get('/me')->getGraphUser()->asArray();
+   $config['userId']=$userProfile['id'];
    $pages = $fb->get('/me/accounts')->getGraphList();
    foreach ($pages as $page) {
      $page = $page->asArray();
@@ -84,7 +89,7 @@ if (array_key_exists('authResponse', $_REQUEST)) {
 </head>
 <body>
         <div id="fb-root"></div>
-        <fb:login-button scope="public_profile,email,manage_pages,publish_actions,offline_access,publish_stream,publish_pages" onlogin="checkLoginState();"></fb:login-button>
+        <fb:login-button scope="public_profile,email,manage_pages,publish_actions,offline_access,read_stream,publish_stream,publish_pages,status_update " onlogin="checkLoginState();"></fb:login-button>
         <div id="fbstatus"></div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
