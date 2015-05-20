@@ -17,7 +17,11 @@ require 'Facebook/FacebookClient.php';
 require 'Facebook/HttpClients/FacebookCurl.php';
 require 'Facebook/HttpClients/FacebookHttpClientInterface.php';
 require 'Facebook/HttpClients/FacebookCurlHttpClient.php';
+require 'Facebook/HttpClients/FacebookStream.php';
+require 'Facebook/HttpClients/FacebookStreamHttpClient.php';
 require 'Facebook/Authentication/AccessToken.php';
+require 'Facebook/PersistentData/PersistentDataInterface.php';
+require 'Facebook/PersistentData/FacebookMemoryPersistentDataHandler.php';
 require 'Facebook/FacebookRequest.php';
 require 'Facebook/Url/FacebookUrlManipulator.php';
 require 'Facebook/Http/RequestBodyInterface.php';
@@ -272,18 +276,17 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                         'app_secret' => $fbConfig['appSecret'],
                         'default_graph_version' => 'v2.3'
              ));
-	     
              foreach($fbConfig['pages'] as $pageId=>$pageToken) {
+                   $fb->setDefaultAccessToken($pageToken);
                $linkData = [
 		  'link' =>  $baseUrl . 'index.php/' . $product['url_path'],
                   'name' =>  $product['name'] .' ' . $tags,
-		  'message' =>  $product['name'] .' ' . $tags,
+ 		  'message' =>  $product['name'] .' ' . $tags,
                   'picture' => $baseUrl. '/media/catalog/product/' . $product['image']
 		  ];
 		  try {
 		  // Returns a `Facebook\FacebookResponse` object
                   $fb->post('/'. substr($pageId,1,99) .'/feed', $linkData,$pageToken);
-
                   } catch(Facebook\Exceptions\FacebookResponseException $e) {
                     echo 'Graph returned an error: ' . $e->getMessage();
                   } catch(Facebook\Exceptions\FacebookSDKException $e) {

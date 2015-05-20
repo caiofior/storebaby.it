@@ -1,7 +1,0 @@
-AuthName "Magento Admin"
-AuthType Basic
-require valid-user
-AuthUserFile "/home/joachim/.htpasswds/public_html/magmi/passwd"
-<IfModule mod_rewrite.c>
-RewriteEngine off
-</IfModule>
