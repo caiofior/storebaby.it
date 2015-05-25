@@ -211,7 +211,6 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
                $loginError = $nt->connect($this->getParam("SOCIAL:gemail", ""), $this->getParam("SOCIAL:gpassword", ""));
                // Image URL
                $lnk = array('img'=>$baseUrl. '/media/catalog/product/' . $product['image']);
-	       $lnk = null;
                $nt->postGP($product['name'] .' '. $tags . ' ' . $baseUrl . 'index.php/' . $product['url_path'], $lnk, $gogglePage);
                if ($loginError === false)
                   $this->log($baseUrl . 'index.php/' . $product['url_path'] . " not sent succesfully " . $loginError, "info");
@@ -271,6 +270,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
          $fbConfigFile = __DIR__.'/fbConf.php';
          if (is_file($fbConfigFile)) {
              require $fbConfigFile;
+             $baseUrl = $config['web/unsecure/base_url'];
              $fb = new Facebook\Facebook(array(
                         'app_id' => $fbConfig['appId'],
                         'app_secret' => $fbConfig['appSecret'],
