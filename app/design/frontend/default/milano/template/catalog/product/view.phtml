@@ -78,12 +78,12 @@ $_shortDescription = $_product->getShortDescription();
     $productAlert->setProduct($_product);
     ?>
     <a href="<?php echo $productAlert->getSaveUrl(); ?>">Registrati per venir informato quanto il prodotto sarà nuovamente disponibile</a> -->
-		<?php else: ?>
+    <?php endif; ?>
         
            <?php if ($cheapestrate):?><span class="product-shipping"><b>Le spese di trasporto sono relative a questo prodotto.</b><?php echo $this->__('Spedizione corriere espresso:').' <strong>'.$corehelper->currency($cheapestrate).'</strong>'.'<br>Pronta consegna 1-2 giorni lavorativi'; ?></span><?php endif;?>
 <!-- END SHOW SHIPPING RATES-->
 
-    <?php endif; ?>
+    
                 
                 <?php echo $this->getChildHtml('upsell_products') ?>
 				<?php if($_brand_enabled):
