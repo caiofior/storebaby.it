@@ -159,7 +159,10 @@ class ProductFromCsv {
            }
            $this->customPricesFromCsv[$shopCode]=array();
            while($data = fgetcsv($customPriceHandler,0,',','"',"\\")) {              
-              $this->customPricesFromCsv[$shopCode][$data[array_search('EAN13',$header)]]=(float)str_replace(',','.',str_replace(array('.','"'),'',$data[array_search('VENDITA',$header)]));
+              $this->customPricesFromCsv[$shopCode][$data[array_search('EAN13',$header)]]=array(
+                  'special_price'=>(float)str_replace(',','.',str_replace(array('.','"'),'',$data[array_search('VENDITA',$header)])),
+                  'use_cupon'=>($data[array_search('CUPON',$header)]==1?1:0)
+              );
            }
            array_filter($this->customPricesFromCsv[$shopCode]);
         }
@@ -561,7 +564,7 @@ DATETIME(\'now\'),
                 }
             }
             closedir($dir);
-            ksort($list);
+            krsort($list);
             $c=0;
             foreach ($list as $file) {
                 if ($c++ < 5) {
@@ -600,7 +603,7 @@ DATETIME(\'now\'),
      */
     public function getCustomPricesHandler() {
        if (ftell($this->customPricesCsvHandler) == 0) {
-           fwrite($this->customPricesCsvHandler, "\xEF\xBB\xBF".'"EAN","shop","price"'. PHP_EOL);
+           fwrite($this->customPricesCsvHandler, "\xEF\xBB\xBF".'"EAN","shop","price","cupon"'. PHP_EOL);
        }
        return $this->customPricesCsvHandler;
     }

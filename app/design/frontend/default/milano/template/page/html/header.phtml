@@ -19,10 +19,16 @@
     <div class="header-main-container">
     	<div class="header">
             <div class="header-left header-logo ">
-            	<?php if ($this->getIsHomePage()):?>
-                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><h1><strong><?php echo Mage::getStoreConfig('general/store_information/name') ?></strong></h1><img src="/<?php echo Mage::registry('themeMediaUrl').Mage::getStoreConfig('milanoconfig/generaloptions/logo'); ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+            	<?php if ($this->getIsHomePage()):
+                    $logoUrl = Mage::registry('themeMediaUrl');
+                    if ($logoUrl == '') {
+                        $logoUrl = '/';
+                    }
+                    $logoUrl .= Mage::getStoreConfig('milanoconfig/generaloptions/logo');
+                    ?>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><h1><strong><?php echo Mage::getStoreConfig('general/store_information/name') ?></strong></h1><img src="<?php echo $logoUrl; ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
                 <?php else:?>
-                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><h2><strong><?php echo Mage::getStoreConfig('general/store_information/name') ?></strong></h2><img src="/<?php echo Mage::registry('themeMediaUrl').Mage::getStoreConfig('milanoconfig/generaloptions/logo'); ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><h2><strong><?php echo Mage::getStoreConfig('general/store_information/name') ?></strong></h2><img src="<?php echo $logoUrl; ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
                 <?php endif?>
             </div>
             <div class="header-center header-menu">

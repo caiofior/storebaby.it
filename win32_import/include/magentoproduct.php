@@ -99,8 +99,8 @@ class MagentoProduct {
         'product_type_id'=>'simple',
         'product_status_changed'=>null,
         'product_changed_websites'=>null,
-        'show_cupon'=>0
-
+        'show_cupon'=>0,
+        'use_cupon'=>0
     );
     /**
      * Creates reference to PrductFromCsv

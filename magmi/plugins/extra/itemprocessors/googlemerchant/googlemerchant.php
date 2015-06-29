@@ -205,13 +205,13 @@ LIMIT 1
                 return true;
             $googleMerchantData['price']=$item['price'].' EUR';
             
-            $salePrice = $this->selectone(
+            /*$salePrice = $this->selectone(
                'SELECT MAX(`rule_price`) as "discounted_price" FROM `catalogrule_product_price` 
                 WHERE `product_id` = "'.$params['product_id'].'" AND `rule_date`=CURDATE()'
             ,null,'discounted_price');
             if ($salePrice != '')
                $salePrice .= ' EUR';
-            $googleMerchantData['sale_price']=$salePrice;
+            $googleMerchantData['sale_price']=$salePrice;*/
             $googleMerchantData['availability']='in stock';
             $googleMerchantData['brand']= preg_replace('/::.*/','',$item['manufacturer']);
             $googleMerchantData['mpn']=

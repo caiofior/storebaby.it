@@ -214,7 +214,10 @@ class MastroProduct {
             $magentoProduct->setData('small_image',$image);
             $magentoProduct->setData('thumbnail',$image);
         }
-        if ( $magentoProduct->getData('image') != '' ) {
+        if (is_array($fileName)) {
+            $fileName = current($fileName);
+        }
+        if ( $magentoProduct->getData('image') != '') {
             $getModifiedData = $this->mastroImageColl->getModifiedData($this->data);
             
             if ($getModifiedData != '') {
@@ -237,24 +240,35 @@ class MastroProduct {
                             $this->related[$key] .= ',';
                     $this->related[$key] .= $this->data['EAN13'];
                 }
+                $customPrices = $this->productFromCsv->getCustomPrices($magentoProduct->getData('sku'));
+                
+                $useCupon = '';
+                if (sizeof($customPrices)>0) {
+                    foreach($customPrices as $store =>$customPrice ) {
+                        if ($useCupon =='') $useCupon = $customPrice['use_cupon'];
+                    }
+                }
+                
+                $magentoProduct->setData('use_cupon',$useCupon);
+                
                 $magentoProductColl = array(
                      0=>$magentoProduct
                 );
                 if ($this->data['ESISTENZA']-$this->data['IMPEGNATO'] == 0) {
-                     $id=sizeof($magentoProductColl);
-                     $magentoProductColl[$id]= clone $magentoProduct;
-					      $magentoProductColl[$id]->setData('store',  'retail'); 
-					      $magentoProductColl[$id]->setData('status', '2'); 					 
+                    $id=sizeof($magentoProductColl);
+                    $magentoProductColl[$id]= clone $magentoProduct;
+                    $magentoProductColl[$id]->setData('store',  'retail'); 
+                    $magentoProductColl[$id]->setData('status', '2'); 					 
                 }
-                $customPrices = $this->productFromCsv->getCustomPrices($magentoProduct->getData('sku'));
+                
                 if (sizeof($customPrices)>0) {
                    foreach ($magentoProductColl as $magentoProductItem) {
                      foreach($customPrices as $store =>$customPrice ) {
                         if ($store == $magentoProductItem->getData('store')) {                     
-                           $magentoProductItem->setData('price',$customPrice);
-                           $magentoProductItem->setData('show_cupon',1);
+                           $magentoProductItem->setData('price',$customPrice['special_price']);
+                           $magentoProductItem->setData('show_cupon',$customPrice['use_cupon']);
                            unset ($customPrices[$store]);
-                           fwrite($this->productFromCsv->getCustomPricesHandler(),implode(',', array($magentoProductItem->getData('sku'),$store,$customPrice)).PHP_EOL);
+                           fwrite($this->productFromCsv->getCustomPricesHandler(),implode(',', array($magentoProductItem->getData('sku'),$store,$customPrice['special_price'],$customPrice['use_cupon'])).PHP_EOL);
                         }
                      }
                   }
@@ -263,9 +277,9 @@ class MastroProduct {
                         $id=sizeof($magentoProductColl);
                         $magentoProductColl[$id]= clone $magentoProduct;
                         $magentoProductColl[$id]->setData('store',  $store); 
-                        $magentoProductColl[$id]->setData('price', $customPrice);
-                        $magentoProductColl[$id]->setData('show_cupon',1);
-                        fwrite($this->productFromCsv->getCustomPricesHandler(),implode(',', array($magentoProduct->getData('sku'),$store,$customPrice)).PHP_EOL);
+                        $magentoProductColl[$id]->setData('price', $customPrice['special_price']);
+                        $magentoProductColl[$id]->setData('show_cupon',$customPrice['use_cupon']);
+                        fwrite($this->productFromCsv->getCustomPricesHandler(),implode(',', array($magentoProduct->getData('sku'),$store,$customPrice['special_price'],$customPrice['use_cupon'])).PHP_EOL);
                      }
                   }
                 }
@@ -347,7 +361,7 @@ class MastroProduct {
            break;
            case '#9.1';
            case '#09.1';
-               $firstWord = 'Sicchiotto gommotto';
+               $firstWord = 'Succhietto gommotto';
            break;
            case '#9.2';
            case '#09.2';
