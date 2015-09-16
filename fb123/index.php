@@ -1,26 +1,7 @@
 <?php
 $baseDir = __DIR__.'/../magmi/plugins/extra/general/socialnotify/';
-require $baseDir.'/Facebook/Facebook.php';
-require $baseDir.'/Facebook/FacebookApp.php';
-require $baseDir.'/Facebook/FacebookClient.php';
-require $baseDir.'/Facebook/FacebookRequest.php';
-require $baseDir.'/Facebook/HttpClients/FacebookCurl.php';
-require $baseDir.'/Facebook/HttpClients/FacebookHttpClientInterface.php';
-require $baseDir.'/Facebook/HttpClients/FacebookCurlHttpClient.php';
-require $baseDir.'/Facebook/Authentication/AccessToken.php';
-require $baseDir.'/Facebook/FacebookRequest.php';
-require $baseDir.'/Facebook/Url/FacebookUrlManipulator.php';
-require $baseDir.'/Facebook/Http/RequestBodyInterface.php';
-require $baseDir.'/Facebook/Http/RequestBodyUrlEncoded.php';
-require $baseDir.'/Facebook/Http/GraphRawResponse.php';
-require $baseDir.'/Facebook/FacebookResponse.php';
-require $baseDir.'/Facebook/GraphNodes/GraphObjectFactory.php';
-require $baseDir.'/Facebook/GraphNodes/Collection.php';
-require $baseDir.'/Facebook/GraphNodes/GraphObject.php';
-require $baseDir.'/Facebook/GraphNodes/GraphList.php';
-require $baseDir.'/Facebook/Exceptions/FacebookSDKException.php';
-require $baseDir.'/Facebook/Exceptions/FacebookResponseException.php';
-require $baseDir.'/Facebook/Exceptions/FacebookAuthorizationException.php';
+require_once __DIR__.'/../magmi/plugins/extra/general/socialnotify/Facebook/autoload.php';
+
 
 $appId = '768074056624586';
 $appSecret='214351f71348c3fb0f092d05fffdc8bb';
@@ -89,7 +70,7 @@ if (array_key_exists('authResponse', $_REQUEST)) {
 </head>
 <body>
         <div id="fb-root"></div>
-        <fb:login-button scope="public_profile,email,manage_pages,publish_actions,offline_access,read_stream,publish_stream,publish_pages,status_update " onlogin="checkLoginState();"></fb:login-button>
+        <fb:login-button scope="public_profile,email,manage_pages,publish_actions,read_stream,publish_pages " onlogin="checkLoginState();"></fb:login-button>
         <div id="fbstatus"></div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>

@@ -21,27 +21,52 @@
  * DEALINGS IN THE SOFTWARE.
  *
  */
-namespace Facebook\HttpClients;
+namespace Facebook\GraphNodes;
 
 /**
- * Interface FacebookHttpClientInterface
+ * Class GraphCoverPhoto
  *
  * @package Facebook
  */
-interface FacebookHttpClientInterface
+class GraphCoverPhoto extends GraphNode
 {
     /**
-     * Sends a request to the server and returns the raw response.
+     * Returns the id of cover if it exists
      *
-     * @param string $url     The endpoint to send the request to.
-     * @param string $method  The request method.
-     * @param string $body    The body of the request.
-     * @param array  $headers The request headers.
-     * @param int    $timeOut The timeout in seconds for the request.
-     *
-     * @return \Facebook\Http\GraphRawResponse Raw response from the server.
-     *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @return int|null
      */
-    public function send($url, $method, $body, array $headers, $timeOut);
+    public function getId()
+    {
+        return $this->getField('id');
+    }
+    
+    /**
+     * Returns the source of cover if it exists
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->getField('source');
+    }
+
+    /**
+     * Returns the offset_x of cover if it exists
+     *
+     * @return int|null
+     */
+    public function getOffsetX()
+    {
+        return $this->getField('offset_x');
+    }
+
+    /**
+     * Returns the offset_y of cover if it exists
+     *
+     * @return int|null
+     */
+    public function getOffsetY()
+    {
+        return $this->getField('offset_y');
+    }
 }

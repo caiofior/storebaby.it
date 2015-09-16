@@ -11,32 +11,8 @@ require "NextScripts_APIs/postToGooglePlus.php";
 require "twitteroauth-master/twitteroauth/twitteroauth.php";
 require "wp/class-IXR.php";
 require "wp/mimetype.php";
-require 'Facebook/Facebook.php';
-require 'Facebook/FacebookApp.php';
-require 'Facebook/FacebookClient.php';
-require 'Facebook/HttpClients/FacebookCurl.php';
-require 'Facebook/HttpClients/FacebookHttpClientInterface.php';
-require 'Facebook/HttpClients/FacebookCurlHttpClient.php';
-require 'Facebook/HttpClients/FacebookStream.php';
-require 'Facebook/HttpClients/FacebookStreamHttpClient.php';
-require 'Facebook/Authentication/AccessToken.php';
-require 'Facebook/PersistentData/PersistentDataInterface.php';
-require 'Facebook/PersistentData/FacebookMemoryPersistentDataHandler.php';
-require 'Facebook/FacebookRequest.php';
-require 'Facebook/Url/FacebookUrlManipulator.php';
-require 'Facebook/Http/RequestBodyInterface.php';
-require 'Facebook/Http/RequestBodyUrlEncoded.php';
-require 'Facebook/Http/RequestBodyMultipart.php';
-require 'Facebook/Http/GraphRawResponse.php';
-require 'Facebook/FacebookResponse.php';
-require 'Facebook/GraphNodes/GraphObjectFactory.php';
-require 'Facebook/GraphNodes/Collection.php';
-require 'Facebook/GraphNodes/GraphObject.php';
-require 'Facebook/GraphNodes/GraphList.php';
-require 'Facebook/Exceptions/FacebookSDKException.php';
-require 'Facebook/Exceptions/FacebookResponseException.php';
-require 'Facebook/Exceptions/FacebookAuthorizationException.php';
-require 'Facebook/Exceptions/FacebookAuthenticationException.php';
+require_once __DIR__ . '/Facebook/autoload.php';
+
 
 
 

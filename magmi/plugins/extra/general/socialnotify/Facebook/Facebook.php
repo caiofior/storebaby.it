@@ -27,7 +27,7 @@ use Facebook\Authentication\AccessToken;
 use Facebook\Authentication\OAuth2Client;
 use Facebook\FileUpload\FacebookFile;
 use Facebook\FileUpload\FacebookVideo;
-use Facebook\GraphNodes\GraphList;
+use Facebook\GraphNodes\GraphEdge;
 use Facebook\Url\UrlDetectionInterface;
 use Facebook\Url\FacebookUrlDetectionHandler;
 use Facebook\PseudoRandomString\PseudoRandomStringGeneratorInterface;
@@ -57,12 +57,12 @@ class Facebook
     /**
      * @const string Version number of the Facebook PHP SDK.
      */
-    const VERSION = '4.1.0-dev';
+    const VERSION = '5.0.0';
 
     /**
      * @const string Default Graph API version for requests.
      */
-    const DEFAULT_GRAPH_VERSION = 'v2.2';
+    const DEFAULT_GRAPH_VERSION = 'v2.4';
 
     /**
      * @const string The name of the environment variable that contains the app ID.
@@ -199,6 +199,7 @@ class Facebook
         if (isset($config['default_graph_version'])) {
             $this->defaultGraphVersion = $config['default_graph_version'];
         } else {
+            // @todo v6: Throw an InvalidArgumentException if "default_graph_version" is not set
             $this->defaultGraphVersion = static::DEFAULT_GRAPH_VERSION;
         }
     }
@@ -405,6 +406,7 @@ class Facebook
      * Sends a DELETE request to Graph and returns the result.
      *
      * @param string                  $endpoint
+     * @param array                   $params
      * @param AccessToken|string|null $accessToken
      * @param string|null             $eTag
      * @param string|null             $graphVersion
@@ -413,12 +415,12 @@ class Facebook
      *
      * @throws FacebookSDKException
      */
-    public function delete($endpoint, $accessToken = null, $eTag = null, $graphVersion = null)
+    public function delete($endpoint, array $params = [], $accessToken = null, $eTag = null, $graphVersion = null)
     {
         return $this->sendRequest(
             'DELETE',
             $endpoint,
-            $params = [],
+            $params,
             $accessToken,
             $eTag,
             $graphVersion
@@ -428,55 +430,55 @@ class Facebook
     /**
      * Sends a request to Graph for the next page of results.
      *
-     * @param GraphList $graphList The GraphList to paginate over.
+     * @param GraphEdge $graphEdge The GraphEdge to paginate over.
      *
-     * @return GraphList|null
+     * @return GraphEdge|null
      *
      * @throws FacebookSDKException
      */
-    public function next(GraphList $graphList)
+    public function next(GraphEdge $graphEdge)
     {
-        return $this->getPaginationResults($graphList, 'next');
+        return $this->getPaginationResults($graphEdge, 'next');
     }
 
     /**
      * Sends a request to Graph for the previous page of results.
      *
-     * @param GraphList $graphList The GraphList to paginate over.
+     * @param GraphEdge $graphEdge The GraphEdge to paginate over.
      *
-     * @return GraphList|null
+     * @return GraphEdge|null
      *
      * @throws FacebookSDKException
      */
-    public function previous(GraphList $graphList)
+    public function previous(GraphEdge $graphEdge)
     {
-        return $this->getPaginationResults($graphList, 'previous');
+        return $this->getPaginationResults($graphEdge, 'previous');
     }
 
     /**
      * Sends a request to Graph for the next page of results.
      *
-     * @param GraphList $graphList The GraphList to paginate over.
+     * @param GraphEdge $graphEdge The GraphEdge to paginate over.
      * @param string    $direction The direction of the pagination: next|previous.
      *
-     * @return GraphList|null
+     * @return GraphEdge|null
      *
      * @throws FacebookSDKException
      */
-    public function getPaginationResults(GraphList $graphList, $direction)
+    public function getPaginationResults(GraphEdge $graphEdge, $direction)
     {
-        $paginationRequest = $graphList->getPaginationRequest($direction);
+        $paginationRequest = $graphEdge->getPaginationRequest($direction);
         if (!$paginationRequest) {
             return null;
         }
 
         $this->lastResponse = $this->client->sendRequest($paginationRequest);
 
-        // Keep the same GraphObject subclass
-        $subClassName = $graphList->getSubClassName();
-        $graphList = $this->lastResponse->getGraphList($subClassName, false);
+        // Keep the same GraphNode subclass
+        $subClassName = $graphEdge->getSubClassName();
+        $graphEdge = $this->lastResponse->getGraphEdge($subClassName, false);
 
-        return count($graphList) > 0 ? $graphList : null;
+        return count($graphEdge) > 0 ? $graphEdge : null;
     }
 
     /**

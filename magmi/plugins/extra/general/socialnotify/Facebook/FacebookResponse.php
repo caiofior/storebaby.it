@@ -23,7 +23,7 @@
  */
 namespace Facebook;
 
-use Facebook\GraphNodes\GraphObjectFactory;
+use Facebook\GraphNodes\GraphNodeFactory;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 
@@ -225,7 +225,7 @@ class FacebookResponse
      *
      * Graph will return 2 types of responses:
      * - JSON(P)
-     *    Most responses from Grpah are JSON(P)
+     *    Most responses from Graph are JSON(P)
      * - application/x-www-form-urlencoded key/value pairs
      *    Happens on the `/oauth/access_token` endpoint when exchanging
      *    a short-lived access token for a long-lived access token
@@ -259,17 +259,34 @@ class FacebookResponse
     /**
      * Instantiate a new GraphObject from response.
      *
-     * @param string|null $subclassName The GraphObject sub class to cast to.
+     * @param string|null $subclassName The GraphNode subclass to cast to.
      *
      * @return \Facebook\GraphNodes\GraphObject
      *
      * @throws FacebookSDKException
+     *
+     * @deprecated 5.0.0 getGraphObject() has been renamed to getGraphNode()
+     * @todo v6: Remove this method
      */
     public function getGraphObject($subclassName = null)
     {
-        $factory = new GraphObjectFactory($this);
+        return $this->getGraphNode($subclassName);
+    }
 
-        return $factory->makeGraphObject($subclassName);
+    /**
+     * Instantiate a new GraphNode from response.
+     *
+     * @param string|null $subclassName The GraphNode subclass to cast to.
+     *
+     * @return \Facebook\GraphNodes\GraphNode
+     *
+     * @throws FacebookSDKException
+     */
+    public function getGraphNode($subclassName = null)
+    {
+        $factory = new GraphNodeFactory($this);
+
+        return $factory->makeGraphNode($subclassName);
     }
 
     /**
@@ -281,7 +298,7 @@ class FacebookResponse
      */
     public function getGraphAlbum()
     {
-        $factory = new GraphObjectFactory($this);
+        $factory = new GraphNodeFactory($this);
 
         return $factory->makeGraphAlbum();
     }
@@ -295,7 +312,7 @@ class FacebookResponse
      */
     public function getGraphPage()
     {
-        $factory = new GraphObjectFactory($this);
+        $factory = new GraphNodeFactory($this);
 
         return $factory->makeGraphPage();
     }
@@ -309,7 +326,7 @@ class FacebookResponse
      */
     public function getGraphSessionInfo()
     {
-        $factory = new GraphObjectFactory($this);
+        $factory = new GraphNodeFactory($this);
 
         return $factory->makeGraphSessionInfo();
     }
@@ -323,25 +340,71 @@ class FacebookResponse
      */
     public function getGraphUser()
     {
-        $factory = new GraphObjectFactory($this);
+        $factory = new GraphNodeFactory($this);
 
         return $factory->makeGraphUser();
     }
 
     /**
+     * Convenience method for creating a GraphEvent collection.
+     *
+     * @return \Facebook\GraphNodes\GraphEvent
+     *
+     * @throws FacebookSDKException
+     */
+    public function getGraphEvent()
+    {
+        $factory = new GraphNodeFactory($this);
+
+        return $factory->makeGraphEvent();
+    }
+
+    /**
+     * Convenience method for creating a GraphGroup collection.
+     *
+     * @return \Facebook\GraphNodes\GraphGroup
+     *
+     * @throws FacebookSDKException
+     */
+    public function getGraphGroup()
+    {
+        $factory = new GraphNodeFactory($this);
+
+        return $factory->makeGraphGroup();
+    }
+
+    /**
      * Instantiate a new GraphList from response.
      *
-     * @param string|null $subclassName The GraphObject sub class to cast list items to.
+     * @param string|null $subclassName The GraphNode subclass to cast list items to.
      * @param boolean     $auto_prefix  Toggle to auto-prefix the subclass name.
      *
      * @return \Facebook\GraphNodes\GraphList
      *
      * @throws FacebookSDKException
+     *
+     * @deprecated 5.0.0 getGraphList() has been renamed to getGraphEdge()
+     * @todo v6: Remove this method
      */
     public function getGraphList($subclassName = null, $auto_prefix = true)
     {
-        $factory = new GraphObjectFactory($this);
+        return $this->getGraphEdge($subclassName, $auto_prefix);
+    }
 
-        return $factory->makeGraphList($subclassName, $auto_prefix);
+    /**
+     * Instantiate a new GraphEdge from response.
+     *
+     * @param string|null $subclassName The GraphNode subclass to cast list items to.
+     * @param boolean     $auto_prefix  Toggle to auto-prefix the subclass name.
+     *
+     * @return \Facebook\GraphNodes\GraphEdge
+     *
+     * @throws FacebookSDKException
+     */
+    public function getGraphEdge($subclassName = null, $auto_prefix = true)
+    {
+        $factory = new GraphNodeFactory($this);
+
+        return $factory->makeGraphEdge($subclassName, $auto_prefix);
     }
 }
