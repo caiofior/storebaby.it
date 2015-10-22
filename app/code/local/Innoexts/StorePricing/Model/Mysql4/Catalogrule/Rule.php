@@ -87,7 +87,7 @@ class Innoexts_StorePricing_Model_Mysql4_Catalogrule_Rule
      */
     public function getStoreIds($ruleId)
     {
-        return $this->getAssociatedEntityIds($ruleId, 'store');
+        return $this->getAssociatedEntityIds($ruleId, 'website');
     }
     /**
      * After load
