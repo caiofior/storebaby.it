@@ -26,8 +26,12 @@ $_shortDescription = $_product->getShortDescription();
                     <h1 itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                     <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
                 </div>
-                <?php 
-                $showCupon = $_product->getResource()->getAttribute('show_cupon')->getFrontend()->getValue($_product);
+                <?php
+                $showCupon = 0;
+                $showCuponAttribute = $_product->getResource()->getAttribute('show_cupon');
+                if (is_object($showCuponAttribute)) {
+                    $showCupon = $showCuponAttribute->getFrontend()->getValue($_product);
+                }
                 $cuponTextFile = __DIR__.DIRECTORY_SEPARATOR.'cupon.phtml';
                 if ($showCupon == 1 && is_file($cuponTextFile)){
                     require($cuponTextFile);
