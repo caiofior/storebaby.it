@@ -197,7 +197,7 @@ class MastroProduct {
         preg_match('/\\\[^\\\]+$/', $this->data['FOTO_ARTICOLO'], $fileName);
         
         if($this->data['LOCAZIONE_MAG']=='99' && $magentoProduct->getData('qty')== 0) {
-            $image = $this->mastroImageColl->deleteImage($this->data['EAN13']);
+            $this->mastroImageColl->deleteImage($this->data['EAN13']);
             fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Code 99","","'. implode(',',$this->data) .'"'.PHP_EOL);
             return array();
         }
@@ -288,7 +288,7 @@ class MastroProduct {
             };
             
         } else {
-            fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Missing image","","'. implode(',',$this->data) .'"'.PHP_EOL);
+            fwrite($this->productFromCsv->getMagentoExcludedCsvHandler(), $this->data['EAN13'].',"Missing image ","","'. implode(',',$this->data) .'"'.PHP_EOL);
             return array();
         }
     }

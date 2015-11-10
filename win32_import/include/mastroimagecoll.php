@@ -10,6 +10,10 @@ class MastroImageColl {
      */
     private static $imageNames = array();
     /**
+     * Array of remote image file names
+     */
+    private static $remoteImagenames = array();
+    /**
      * Reference to mastro Product
      * @var MastroProduct
      */
@@ -266,7 +270,7 @@ class MastroImageColl {
         return $this->mastroProduct->getProductFromCsv()->getImageDb()->querySingle('SELECT strftime(\'%s\',create_date) FROM product WHERE ean13 =\''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\'');
     }
     /**
-     * Composes the image path
+     * Composes the image path, if image name is already present prepends EAN code
      */
     private function createImagePath() {
         $this->magentoPath = '';
@@ -276,7 +280,14 @@ class MastroImageColl {
         
         $mastroData = $this->mastroProduct->getData();
         if (array_key_exists('DESCRIZIONE', $mastroData)) {
-            $destinationFilename = str_replace(' ','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($mastroData['DESCRIZIONE']))));
+            $destinationFilename = preg_replace('/[^[:alnum:]]/','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($mastroData['DESCRIZIONE']))));
+            if (
+                    array_key_exists($destinationFilename, self::$remoteImagenames) &&
+                    self::$remoteImagenames[$destinationFilename]!=$mastroData['FOTO_ARTICOLO']
+            ) {
+                $destinationFilename = preg_replace('/[^[:alnum:]]/','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($mastroData['EAN13'])))).'_'.$destinationFilename;
+            } 
+            self::$remoteImagenames[$destinationFilename]=$mastroData['FOTO_ARTICOLO'];  
         }
         
         if (strlen($destinationFilename) > 2) {
