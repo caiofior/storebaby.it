@@ -56,11 +56,6 @@ class MastroImageColl {
      */
     private $magentoUrl;
     /**
-     * Images sub dirs
-     * @var array
-     */
-    private $imagesSubDirs;
-    /**
      * Image sufix
      * @var String
      */
@@ -105,27 +100,14 @@ class MastroImageColl {
         }
     }
     /**
-     * Gets the file name from the name present in mastro csv
-     * @param string $fileName
-     * @return array
-     */
-    public function getFileName($fileName) {
-        $parsedFilename = $this->parseFilename($fileName);
-        if (!key_exists($parsedFilename,self::$imageNames))
-                return array('parsedFilename' => $parsedFilename ,'filename'=>false);
-        return array('parsedFilename' => $parsedFilename ,'filename' =>self::$imageNames[$parsedFilename]);
-        
-    }
-    /**
      * Updates file size in db of a modified image
      */
     public function saveData() {
-        $parsedFilename = $this->fileName['parsedFilename'];
         $data = $this->mastroProduct->getData();
         unset($data['qty']);             
-        $fileName = self::$imageNames[$parsedFilename];
+        $fileName = self::$imageNames[$this->fileName['parsedFilename']];
         $this->mastroProduct->getProductFromCsv()->getImageDb()->exec('INSERT OR IGNORE INTO product (code,ean13,modify_date,create_date) VALUES (
-            \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($parsedFilename).'\',
+            \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($this->fileName['parsedFilename']).'\',
             \''.$this->mastroProduct->getProductFromCsv()->getImageDb()->escapeString($data['EAN13']).'\',
             DATETIME(\'now\'),
             DATETIME(\'now\')
@@ -191,10 +173,15 @@ class MastroImageColl {
      * @param string $convertCommand
      * @return string
      */
-    public function resizeImage($fileName,$convertCommand) {
-        $this->fileName = $this->getFileName($fileName);
+    public function resizeImage($fileName,$convertCommand,$remoteFilename) {
+        $parsedFilename = $this->parseFilename($fileName);
+        if (!key_exists($parsedFilename,self::$imageNames))
+            $this->fileName = array('parsedFilename' => $parsedFilename ,'filename'=>false);
+        else 
+            $this->fileName = array('parsedFilename' => $parsedFilename ,'filename' =>self::$imageNames[$parsedFilename]);
+        
         $this->convertCommand = $convertCommand;
-        $this->createImagePath($this->fileName['filename']);
+        $this->createImagePath($remoteFilename);
         if (
                 $this->fileName['filename'] != '' &&
                 (
@@ -272,7 +259,7 @@ class MastroImageColl {
     /**
      * Composes the image path, if image name is already present prepends EAN code
      */
-    private function createImagePath() {
+    private function createImagePath($remoteFilename) {
         $this->magentoPath = '';
         $this->magentoUrl = '+';
         
@@ -280,12 +267,12 @@ class MastroImageColl {
         
         $mastroData = $this->mastroProduct->getData();
         if (array_key_exists('DESCRIZIONE', $mastroData)) {
-            $destinationFilename = preg_replace('/[^[:alnum:]]/','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($mastroData['DESCRIZIONE']))));
+            $destinationFilename = preg_replace('/[^[:alnum:]]/','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($remoteFilename))));
             if (
                     array_key_exists($destinationFilename, self::$remoteImagenames) &&
                     self::$remoteImagenames[$destinationFilename]!=$mastroData['FOTO_ARTICOLO']
             ) {
-                $destinationFilename = preg_replace('/[^[:alnum:]]/','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($mastroData['EAN13'])))).'_'.$destinationFilename;
+                $destinationFilename = preg_replace('/[^[:alnum:]]/','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($mastroData['EAN13'])))).'_'.preg_replace('/[^[:alnum:]]/','_',strtolower(iconv('WINDOWS-1252', 'ASCII//TRANSLIT',trim($remoteFilename))));
             } 
             self::$remoteImagenames[$destinationFilename]=$mastroData['FOTO_ARTICOLO'];  
         }
@@ -312,7 +299,7 @@ class MastroImageColl {
     }
     /**
      * 
-     * Convertts the image
+     * Converts the image
      */
     private function imageConvert() {
         $status = '';
@@ -328,7 +315,7 @@ class MastroImageColl {
             $this->deleteImage($data['EAN13']);
         }
         if (!is_file($mastroImageFile)) {
-            echo 'Manca file di input '.$mastroImageFile.PHP_EOL;
+            echo 'Input file missing '.$mastroImageFile.PHP_EOL;
         }
         switch (PHP_OS) {
             case 'WINNT' :

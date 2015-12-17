@@ -75,8 +75,6 @@ class Magmi_ReindexingPlugin extends Magmi_GeneralImportPlugin
 			$this->exec_stmt("TRUNCATE report_viewed_product_index");
 			$this->exec_stmt("TRUNCATE report_compared_product_index");
 			$this->exec_stmt("TRUNCATE report_event");
-			$this->exec_stmt("TRUNCATE index_event");
-			$this->exec_stmt("TRUNCATE index_process_event");
 			$this->exec_stmt("TRUNCATE catalog_compare_item");
 			$this->exec_stmt("TRUNCATE catalog_product_flat_1");
 			$this->exec_stmt("TRUNCATE catalog_product_flat_2");
@@ -109,7 +107,17 @@ class Magmi_ReindexingPlugin extends Magmi_GeneralImportPlugin
 			
 	
                 exec('pkill -9 indexer.php');
-                pclose(popen("nohup \"".__DIR__."/indexer.sh\" 2>&1 > /dev/null &","r"));
+                $basePath = realpath(__DIR__.str_repeat(DIRECTORY_SEPARATOR.'..',5));
+                $commands = array(
+                     "sh -c \"sleep 600; /usr/local/bin/php $basePath/shell/pricerule.php\"",
+                     "sh -c \"sleep 800; /usr/local/bin/php $basePath/shell/indexer.php --reindexall\" 2>&1 > $basePath/reindex.log",
+                     "sh -c \"sleep 1800; /usr/local/bin/php $basePath/shell/turpentine.php\"",
+                     "find $basePath/media/catalog/product/cache/ -type f -mtime +30 -delete",
+                     "find $basePath/var/report/ -type f  -mtime +2 -delete"
+                );
+                foreach ($commands as $command) {
+                    pclose(popen("$command 2>&1 > /dev/null &","r"));
+                }
 		$out = shell_exec('ps ax | grep php');
 		$this->log($out,"info");
 		$tend=microtime(true);

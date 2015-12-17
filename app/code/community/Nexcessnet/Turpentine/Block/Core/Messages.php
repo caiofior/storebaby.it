@@ -198,7 +198,12 @@ class Nexcessnet_Turpentine_Block_Core_Messages extends Mage_Core_Block_Messages
             } else {
                 $this->_loadMessages();
                 $this->_loadSavedMessages();
-                $html = $this->_real_toHtml();
+                if ( count($this->getMessages()) ) {
+                    $html = $this->_real_toHtml();
+                } else {
+                    // Prevent returning an empty <ul></ul>
+                    $html = '';
+                }
             }
         } else {
             $html = $this->_real_toHtml();

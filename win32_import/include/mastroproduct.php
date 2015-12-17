@@ -204,9 +204,9 @@ class MastroProduct {
         
         if (sizeof($fileName) == 1 && $fileName[0] != '') {
             $fileName = str_replace('\\', '', $fileName[0]);
-            $image = $this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND');
+            $image = $this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND',$magentoProduct->getData('name'));
             $magentoProduct->setData('image',$image);
-            //$image = $this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND_THUMBNAIL');
+            //$image = $this->mastroImageColl->resizeImage($fileName,'CONVERT_COMMAND_THUMBNAIL',$magentoProduct->getData('name'));
             $magentoProduct->setData('small_image',$image);
             $magentoProduct->setData('thumbnail',$image);
         }

@@ -230,7 +230,7 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
             
             $content = array(
                 'name' => basename($product['image']),
-                'type' => mime_content_type(basename($product['image'])),
+                'type' => 'image/jpeg',
                 'bits' => new IXR_Base64(file_get_contents('/tmp/storebaby.jpg')),
                 true
             );
@@ -254,12 +254,12 @@ class SocialNotifyPlugin extends Magmi_GeneralImportPlugin {
              ));
              foreach($fbConfig['pages'] as $pageId=>$pageToken) {
                    $fb->setDefaultAccessToken($pageToken);
-               $linkData = [
+               $linkData = array(
 		  'link' =>  $baseUrl . 'index.php/' . $product['url_path'],
                   'name' =>  $product['name'] .' ' . $tags,
  		  'message' =>  $product['name'] .' ' . $tags,
                   'picture' => $baseUrl. '/media/catalog/product/' . $product['image']
-		  ];
+		  );
 		  try {
 		  // Returns a `Facebook\FacebookResponse` object
                   $fb->post('/'. substr($pageId,1,99) .'/feed', $linkData,$pageToken);

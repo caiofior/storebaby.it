@@ -85,4 +85,11 @@ $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : ''
 /* Run store or run website */
 $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 
+if ($_SERVER['HTTP_HOST'] == 'shop.e-bimbo.it') {
+  $mageRunCode = 'ebimbo';
+  $mageRunType = 'website';
+} else if ($_SERVER['HTTP_HOST'] == 'retail.e-bimbo.it') {
+  $mageRunCode = 'retail';
+  $mageRunType = 'website';
+}
 Mage::run($mageRunCode, $mageRunType);

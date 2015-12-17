@@ -181,7 +181,7 @@ class Nexcessnet_Turpentine_Helper_Esi extends Mage_Core_Helper_Abstract {
         if( $url === null ) {
             $url = $this->getDummyUrl();
         }
-        $request = new Nexcessnet_Turpentine_Model_Dummy_Request( $url );
+        $request = Mage::getModel('turpentine/dummy_request', $url);
         $request->fakeRouterDispatch();
         return $request;
     }
@@ -357,7 +357,10 @@ class Nexcessnet_Turpentine_Helper_Esi extends Mage_Core_Helper_Abstract {
             $this->getEsiScopeParam()       => 'global',
             $this->getEsiCacheTypeParam()   => 'private',
         );
-        return Mage::getUrl( 'turpentine/esi/getFormKey', $urlOptions );
+        $esiUrl = Mage::getUrl( 'turpentine/esi/getFormKey', $urlOptions );
+        // setting [web/unsecure/base_url] can be https://... but ESI can never be HTTPS
+        $esiUrl = preg_replace( '|^https://|i', 'http://', $esiUrl );
+        return $esiUrl;
     }
 
     /**
