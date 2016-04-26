@@ -367,7 +367,7 @@ class Mage_Adminhtml_Model_Extension extends Varien_Object
         $result = $pear->run('info', $options, array($package));
         if ($result instanceof PEAR_Error) {
             Mage::throwException($result->message);
-            break;
+            return;
         }
 
         $output = $pear->getOutput();
